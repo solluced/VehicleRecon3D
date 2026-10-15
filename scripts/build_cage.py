@@ -12,6 +12,10 @@ from project import *
 def p(u,y,v): return (sx(u),y,sz(v))
 BLUE=emissive('MAT_CAGE_BLUE',(.015,.14,.65))
 CYAN=emissive('MAT_CAGE_SECTION',(.04,.42,.66))
+prior_visibility={ob.name:ob.hide_render for ob in bpy.data.objects}
+prior_model_status=bpy.context.scene.get('model_status','CURVE_CAGE_ONLY_NO_BODY')
+has_body=any(ob.type=='MESH' for ob in coll('03_BODY').objects)
+if 'STUDIO_GROUND' in bpy.data.objects:bpy.data.objects['STUDIO_GROUND'].hide_render=True
 for col in ('02_BLOCKOUT','03_BODY','04_PANELS','05_GLASS','06_LIGHTS','07_WHEELS','08_INTERIOR'):
     for ob in coll(col).objects: ob.hide_render=True
 for ob in list(coll('01_CURVE_CAGE').objects): bpy.data.objects.remove(ob,do_unlink=True)
@@ -83,4 +87,11 @@ for view,dims in [('side',(1200,560)),('top',(1200,600)),('front',(800,640)),('r
         ref=bpy.data.objects['REF_'+view.upper()]; ref.hide_render=False
         render('validation/cage_overlay_'+view+'.png',cam,*dims)
         ref.hide_render=True
-print('CAGE_CREATED',len(coll('01_CURVE_CAGE').objects),'semantic curves; no surfaces')
+if has_body:
+    for name,hidden in prior_visibility.items():
+        if name in bpy.data.objects and not name.startswith('CAGE_'):bpy.data.objects[name].hide_render=hidden
+    for ob in coll('01_CURVE_CAGE').objects:ob.hide_render=True;ob.hide_set(True)
+    bpy.context.scene['model_status']=prior_model_status
+    bpy.context.scene['cage_status']='REVIEWED_SIDE_TOP_FRONT_OVERLAYS'
+bpy.context.scene.camera=bpy.data.objects['CAM_3Q'];save()
+print('CAGE_CREATED',len(coll('01_CURVE_CAGE').objects),'semantic curves; existing body retained' if has_body else 'no body surfaces')
