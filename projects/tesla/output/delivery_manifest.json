@@ -81,22 +81,22 @@
     {
       "path": "output/export_manifest.json",
       "bytes": 54570,
-      "sha256": "c63ae08755d97b654622e3f8069fb8f8f5219332ccd3a6f4ee6a5d09a2a1c850"
+      "sha256": "6e712890c874acc3a18e7b93812d6be5f0a074699d6bbe15c23d6cffb7c8917a"
     },
     {
       "path": "output/tesla_surface_model.blend",
-      "bytes": 6129378,
-      "sha256": "0c69f1467bbe55e830a3f4a9b27df38f021b7eb82335d38062e8c33053f25504"
+      "bytes": 6129214,
+      "sha256": "664455c2d6301c2c2a00759e1e9a22100b76b8e4bdc927723c517fc5e696103e"
     },
     {
       "path": "output/tesla_surface_model.glb",
       "bytes": 4128592,
-      "sha256": "5d45c5124d3ef5543bddffe0d10308f075bac91bbc3e47952ed1a37c2fd7987c"
+      "sha256": "3de4b61c2e198c8409321a31f325b1b664c8977498cc4e9d0660380b24c7b95d"
     },
     {
       "path": "output/viewer.html",
       "bytes": 5523068,
-      "sha256": "22583f7d1f50968c40b1a18742c91a49211e858d9609c49a6cd2c3aa4f879940"
+      "sha256": "2623c837183c37d2250990e49ce8cffdfd2bc6e8cb4c184891a9394d563c4319"
     },
     {
       "path": "project.json",
@@ -186,7 +186,7 @@
     {
       "path": "validation/delivery_report.json",
       "bytes": 509,
-      "sha256": "bbf0d66bd40f38008e9cf2206444787ccf463443c212fe4b9857a6550bb75321"
+      "sha256": "e5487b5365bb6a319d3c2b25dd7c21bd32301111fa8016fb037f57e51a028224"
     },
     {
       "path": "validation/final_masks/comparison_front.png",
@@ -251,7 +251,7 @@
     {
       "path": "validation/final_migration_report.json",
       "bytes": 2661,
-      "sha256": "d252430cba7df8919067c3126d754193cd39d6d99fd6b058e50751b47fdaf221"
+      "sha256": "8ee5225c2fbb2e0f1786baacba9c865844606346199dab344e833a55d2cc9ab0"
     },
     {
       "path": "validation/front.png",
@@ -261,12 +261,12 @@
     {
       "path": "validation/geometry_audit.json",
       "bytes": 25061,
-      "sha256": "817d58921011b6d135d7a0b7990865bbc2dabd77e609f357c62ab07e01807f15"
+      "sha256": "709a4ab74cf76699b055f1a4ec7ad04c3ee35bdd66e39996e6c550fa9e14cd00"
     },
     {
       "path": "validation/glb_geometry_report.json",
       "bytes": 32484,
-      "sha256": "0ff8367cbb683056a81d489f870ee4c9d9c717b7bb178a397eb4c374bee15b1e"
+      "sha256": "976eb7e942ce70aaecc4063e3fffc5cc24b4308000326ce35c86743b2bba586e"
     },
     {
       "path": "validation/perspective.png",
@@ -302,6 +302,11 @@
       "path": "validation/review.json",
       "bytes": 1574,
       "sha256": "7fef3dac19791f6e643395e0dc39cbc6aae24818285d01e6fc53effc38b2ae5b"
+    },
+    {
+      "path": "validation/runtime.json",
+      "bytes": 266,
+      "sha256": "a74f211250441c71e368f7f021a771aa675049c1ddfe5bb1af0cc72138740971"
     },
     {
       "path": "validation/side.png",
@@ -381,7 +386,7 @@
     {
       "path": "validation/surface_migration_report.json",
       "bytes": 2684,
-      "sha256": "5012e8a60ae777287fe6cd620206b0e3df1fb4196d5301b81b6778aa6d6f1e9c"
+      "sha256": "055e2bb9b1c961b551837b1ad0496e6f30bdd6ea2b35019ade3141d807600fc2"
     },
     {
       "path": "validation/surface_reflections.png",
@@ -401,7 +406,7 @@
     {
       "path": "validation/viewer_build.json",
       "bytes": 230,
-      "sha256": "bc0b8927f97007fc96291459788ac728e6cece24f2c51a11802b54b5de852c6a"
+      "sha256": "ec49982fa61cebc55b73ad3d3526dfc08b353b071698089d63c3f806c2da5c2a"
     },
     {
       "path": "validation/viewer_desktop.png",
@@ -416,7 +421,7 @@
     {
       "path": "validation/viewer_qa.json",
       "bytes": 4238,
-      "sha256": "079b35ef731567ccf130d70a87637f65784e1aab31c459d112bca4f47e140477"
+      "sha256": "feeb53eb66041a27ce6e171629894a2a744070c99c34ca7db42d4d9154b09ee4"
     }
   ]
 }

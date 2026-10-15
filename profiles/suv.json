@@ -26,5 +26,11 @@
   "optional_roles": [
     "trunk",
     "hatch"
-  ]
+  ],
+  "minimum_iou": {
+    "side": 0.94,
+    "top": 0.92,
+    "front": 0.92,
+    "rear": 0.9
+  }
 }

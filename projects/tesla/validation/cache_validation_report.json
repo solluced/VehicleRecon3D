@@ -1,0 +1,47 @@
+{
+  "status": "PASS",
+  "cold_run": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+  ],
+  "verified_repeat_run": [
+    "PASS",
+    "SKIP",
+    "SKIP",
+    "SKIP",
+    "SKIP",
+    "SKIP",
+    "SKIP",
+    "SKIP",
+    "SKIP",
+    "SKIP",
+    "SKIP",
+    "SKIP",
+    "SKIP",
+    "SKIP"
+  ],
+  "unit_tests_passed_at_checkpoint": 101,
+  "cache_cases_tested": [
+    "verified output skip",
+    "viewer-label change: viewer/delivery only",
+    "lights change: preserve calibration/cage/surfaces",
+    "cage downstream invalidation",
+    "calibration downstream invalidation",
+    "corrupt/missing output cache miss",
+    "dependency output hash propagation",
+    "implementation version invalidation"
+  ],
+  "scope": "Real cold/warm Blender+browser runs; configuration invalidation and corruption cases additionally exercise real cache/pipeline code with mocked build actions."
+}

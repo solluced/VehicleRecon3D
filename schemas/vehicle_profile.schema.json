@@ -26,6 +26,38 @@
         "type": "string",
         "minLength": 1
       }
+    },
+    "minimum_iou": {
+      "type": "object",
+      "properties": {
+        "side": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "top": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "front": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "rear": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        }
+      },
+      "required": [
+        "side",
+        "top",
+        "front",
+        "rear"
+      ],
+      "additionalProperties": false
     }
   },
   "required": [
@@ -33,7 +65,8 @@
     "id",
     "category",
     "roles",
-    "optional_roles"
+    "optional_roles",
+    "minimum_iou"
   ],
   "additionalProperties": false
 }

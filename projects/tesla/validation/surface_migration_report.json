@@ -1,6 +1,6 @@
 {
   "status": "PASS",
-  "source_blend_sha256": "f0f9d82b2588b0b9572e1bb135fd1b73dc2bf4de31ea4e6526ec41cb208443bb",
+  "source_blend_sha256": "1aeae8161c09fb8bfacd011f64b5a5886ef2b8c3c2102868c76a5a446da95cfe",
   "views": {
     "side": {
       "status": "PASS",
@@ -128,5 +128,5 @@
   "method": "Actual opaque geometry renders from calibrated fixed cameras, no per-view fitting",
   "source_mask_method": "Manual exterior landmark traces from reference_multiview.png; pixel coordinates in the original full sheet. Shadows excluded. Approximate illustrative source, not ground-truth CAD masks.",
   "label": "surface",
-  "input_state_hash": "8280a2b41c48200afd793761063ca634e96d917066746bddf626022b1c249849"
+  "input_state_hash": "83719730f4bf08ff7e921743a01467809968c9c20f4d9b4f9d7e4fd23e820d06"
 }

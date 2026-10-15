@@ -3,7 +3,7 @@
   "finite_and_nonzero_faces": true,
   "geometry_hash": "6fa8c5a8174917222d9b7b8641dc28afbc55dbc388e67313362924ec43f2e96d",
   "audit_mutated_geometry": false,
-  "source_blend_sha256": "c098769d50d1b167eb9fa5cd9c3727d3d988ab9fe5276b136a0251f9cb808e85",
+  "source_blend_sha256": "e07762aa1818d9aa838d88e1416c3855f7cbc611387553358feca015b58f9e32",
   "surface_control_mesh": {
     "vertices": 4563,
     "faces": 3693,

@@ -69,7 +69,7 @@ def validate(project,label='surface'):
                 'source_blend_sha256':digest_file(bpy.data.filepath),'views':results,
                 'baseline_delta':{v:round(r['iou']-baseline[v],6) for v,r in results.items()},
                 'method':'Actual opaque geometry renders from calibrated fixed cameras, no per-view fitting',
-                'source_mask_method':traces['method'],'label':label,'input_state_hash':model_inputs_hash(project)}
+                'source_mask_method':traces['method'],'label':label,'input_state_hash':model_inputs_hash(project,scope=label)}
         write_json(project.path(f'validation/{label}_migration_report.json'),report)
         require(results,baseline,config['max_iou_regression'])
         return report

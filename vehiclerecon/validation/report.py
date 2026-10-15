@@ -3,12 +3,12 @@ from ..core.errors import BlockedError,GateError
 from ..core.project import validate,read_json
 from ..core.manifest import digest_file,digest_data,write_json
 
-def model_inputs_hash(project):
+def model_inputs_hash(project,scope='final'):
     data=project.data
-    keys=('dimensions','materials','scene','presentation')
+    keys=('dimensions','materials','scene','presentation') if scope=='final' else ('dimensions','materials','scene')
     value={k:data[k] for k in keys}
     value['generated']={k:digest_file(project.path(path,exists=True)) for k,path in data['generated'].items()
-                        if k in ('calibration','cage','surface_graph','details','silhouette_traces')}
+                        if k in (('calibration','cage','surface_graph','details','silhouette_traces') if scope=='final' else ('calibration','cage','surface_graph','silhouette_traces'))}
     value['references']={k:digest_file(project.path(path,exists=True)) for k,path in data['references'].items()}
     return digest_data(value)
 

@@ -1,11 +1,19 @@
 """Current-artifact release checks and project-scoped output manifest."""
 from .project import read_json
 from .manifest import digest_file,manifest,write_json
-from .errors import GateError
+from .errors import GateError,ReconError
 from ..validation.geometry import require_audit
 from ..validation.silhouette import require
 from ..validation.report import review,model_inputs_hash
 from ..viewer.builder import embedded_bytes
+
+def verify_manifest(project):
+    try:
+        value=read_json(project.path('output/delivery_manifest.json',exists=True))
+        if value['status']!='PASS' or not value['files']:return False
+        return all(digest_file(project.path(item['path'],exists=True))==item['sha256'] for item in value['files'])
+    except (OSError,KeyError,ValueError,ReconError):
+        return False
 
 def deliver(project):
     audit=read_json(project.path('validation/geometry_audit.json',exists=True));require_audit(audit)

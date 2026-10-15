@@ -1,7 +1,7 @@
 {
   "status": "PASS",
-  "glb_sha256": "5d45c5124d3ef5543bddffe0d10308f075bac91bbc3e47952ed1a37c2fd7987c",
-  "source_blend_sha256": "0c69f1467bbe55e830a3f4a9b27df38f021b7eb82335d38062e8c33053f25504",
+  "glb_sha256": "3de4b61c2e198c8409321a31f325b1b664c8977498cc4e9d0660380b24c7b95d",
+  "source_blend_sha256": "664455c2d6301c2c2a00759e1e9a22100b76b8e4bdc927723c517fc5e696103e",
   "geometry_hash": "6fa8c5a8174917222d9b7b8641dc28afbc55dbc388e67313362924ec43f2e96d",
   "mesh_nodes": 191,
   "triangles": 245920,

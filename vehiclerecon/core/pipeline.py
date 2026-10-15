@@ -51,8 +51,10 @@ def dependency_order(stages):
     return result
 
 class Pipeline:
-    def __init__(self,project,*,blender=None):
-        self.project=project;self.blender=blender;self.results=[]
+    def __init__(self,project,*,blender=None,use_cache=True,implementation=None):
+        self.project=project;self.blender=blender;self.results=[];self.use_cache=use_cache;self.keys={}
+        from .cache import StageCache
+        self.cache=StageCache(project,implementation) if use_cache else None
 
     def blender_run(self,stage,source=None):
         from ..blender.runner import run
@@ -65,11 +67,17 @@ class Pipeline:
             from ..cage.builder import records
             from ..surfaces.builder import order
             from ..details.builder import check
-            from ..blender.runner import discover
+            from ..blender.runner import discover,version
+            from ..viewer.qa import browser
+            from .manifest import digest_file
+            import sys
             for kind in ('calibration','cage','surface_graph','details','silhouette_traces'):
                 if kind not in p.data['generated']:raise BlockedError(f'Authoring data missing: {kind}')
             load(p);records(p);order(p.generated('surface_graph')['nodes']);check(p.generated('details'));discover(self.blender)
-            return []
+            write_json(p.path('validation/runtime.json'),{'blender_executable':str(discover(self.blender)),
+                       'blender_version':version(self.blender),'browser_executable_sha256':digest_file(browser()),
+                       'python_version':sys.version.split()[0]})
+            return ['validation/runtime.json']
         if stage=='references':
             from ..reference.panels import inventory
             write_json(p.path('validation/reference_inventory.json'),inventory(p))
@@ -99,9 +107,17 @@ class Pipeline:
             return ['.cache/cleaned.blend','validation/topology_cleanup.json','validation/geometry_audit.json']
         if stage=='presentation':
             from ..validation.report import review
-            self.blender_run('presentation',p.path('.cache/cleaned.blend'));self.blender_run('final_masks',p.blend)
+            from .cache import input_slice
+            inputs=input_slice(p,'presentation',include_review=False)
+            dependencies={'geometry':self.keys.get('geometry','uncached')}
+            key=self.cache.key('presentation_assets',inputs,dependencies) if self.cache else None
+            entry=self.cache.hit('presentation_assets',key) if self.cache else None
+            outputs=['output/'+p.blend.name,'validation/final_migration_report.json',*p.data['presentation']['review_proofs'],*[f'validation/final_masks/{kind}_{v}.png' for v in ('front','side','rear','top') for kind in ('model','reference','comparison')]]
+            if not entry:
+                self.blender_run('presentation',p.path('.cache/cleaned.blend'));self.blender_run('final_masks',p.blend)
+                if self.cache:self.cache.store('presentation_assets',key,outputs,dependencies,inputs)
             audit=read_json(p.path('validation/geometry_audit.json'));review(p,audit['geometry_hash'])
-            return ['output/'+p.blend.name,'validation/final_migration_report.json',*p.data['presentation']['review_proofs'],*[f'validation/final_masks/{kind}_{v}.png' for v in ('front','side','rear','top') for kind in ('model','reference','comparison')]]
+            return outputs
         if stage=='export':
             from ..export.glb import export
             export(p,executable=self.blender);return ['output/'+p.glb.name,'output/export_manifest.json']
@@ -120,17 +136,43 @@ class Pipeline:
 
     def run(self,*,actions=None,until=None):
         self.results=[];failed=False
+        cache=self.cache if actions is None else None
         for stage in dependency_order(STAGES):
+            key=None;inputs={};dependencies={}
             if failed:
                 result=StageResult(stage.id,Status.BLOCKED,'Required earlier gate failed or is blocked')
             else:
                 try:
-                    outputs=(actions[stage.id]() if actions is not None else self.execute(stage.id)) or []
-                    result=StageResult(stage.id,Status.PASS,outputs=outputs)
+                    entry=None
+                    if cache:
+                        from .cache import input_slice
+                        inputs=input_slice(self.project,stage.id)
+                        dependencies={d:self.keys[d] for d in stage.dependencies}
+                        key=cache.key(stage.id,inputs,dependencies)
+                        entry=cache.hit(stage.id,key) if stage.id!='preflight' else None
+                        if entry and stage.id=='presentation':
+                            from ..validation.report import review
+                            audit=read_json(self.project.path('validation/geometry_audit.json'))
+                            review(self.project,audit['geometry_hash'])
+                        if entry and stage.id=='delivery':
+                            from .delivery import verify_manifest
+                            if not verify_manifest(self.project):entry=None
+                    if entry:
+                        outputs=[v['path'] for v in entry['outputs']]
+                        self.keys[stage.id]=entry['result_key']
+                        result=StageResult(stage.id,Status.SKIP,'Verified cache outputs',outputs)
+                    else:
+                        outputs=(actions[stage.id]() if actions is not None else self.execute(stage.id)) or []
+                        result=StageResult(stage.id,Status.PASS,outputs=outputs)
+                        if cache:
+                            saved=cache.store(stage.id,key,outputs,dependencies,inputs)
+                            self.keys[stage.id]=saved['result_key']
                 except BlockedError as exc:
                     result=StageResult(stage.id,Status.BLOCKED,str(exc));failed=True
                 except (ReconError,OSError,ValueError,KeyError) as exc:
                     result=StageResult(stage.id,Status.FAIL,str(exc));failed=True
+                if cache and result.exit_code and key:
+                    cache.store(stage.id,key,[],dependencies,inputs,status=result.status.value,message=result.message)
             self.results.append(result)
             print(f'{stage.label}: {result.status.value}'+(f' — {result.message}' if result.message else ''),flush=True)
             if until==stage.id:break

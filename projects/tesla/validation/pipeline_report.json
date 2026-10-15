@@ -5,168 +5,170 @@
       "stage": "preflight",
       "status": "PASS",
       "message": "",
-      "outputs": []
+      "outputs": [
+        "validation/runtime.json"
+      ]
     },
     {
       "stage": "references",
-      "status": "PASS",
-      "message": "",
+      "status": "SKIP",
+      "message": "Verified cache outputs",
       "outputs": [
         "validation/reference_inventory.json"
       ]
     },
     {
       "stage": "calibration",
-      "status": "PASS",
-      "message": "",
+      "status": "SKIP",
+      "message": "Verified cache outputs",
       "outputs": [
         ".cache/calibration.blend",
-        "validation/reference_alignment.png",
-        "validation/calibration_migration_report.json",
-        "validation/alignment_side.png",
-        "validation/alignment_front.png",
-        "validation/alignment_rear.png",
-        "validation/alignment_top.png",
-        "generated/crop_side.png",
         "generated/crop_front.png",
         "generated/crop_rear.png",
-        "generated/crop_top.png"
+        "generated/crop_side.png",
+        "generated/crop_top.png",
+        "validation/alignment_front.png",
+        "validation/alignment_rear.png",
+        "validation/alignment_side.png",
+        "validation/alignment_top.png",
+        "validation/calibration_migration_report.json",
+        "validation/reference_alignment.png"
       ]
     },
     {
       "stage": "overlay",
-      "status": "PASS",
-      "message": "",
+      "status": "SKIP",
+      "message": "Verified cache outputs",
       "outputs": [
         "generated/overlay_raw.json"
       ]
     },
     {
       "stage": "cage",
-      "status": "PASS",
-      "message": "",
+      "status": "SKIP",
+      "message": "Verified cache outputs",
       "outputs": [
         ".cache/cage.blend",
-        "validation/cage_inventory.json",
         "validation/cage_front.png",
-        "validation/cage_side.png",
-        "validation/cage_rear.png",
-        "validation/cage_top.png",
-        "validation/cage_perspective.png",
+        "validation/cage_inventory.json",
         "validation/cage_overlay_front.png",
-        "validation/cage_overlay_side.png",
         "validation/cage_overlay_rear.png",
-        "validation/cage_overlay_top.png"
+        "validation/cage_overlay_side.png",
+        "validation/cage_overlay_top.png",
+        "validation/cage_perspective.png",
+        "validation/cage_rear.png",
+        "validation/cage_side.png",
+        "validation/cage_top.png"
       ]
     },
     {
       "stage": "surfaces",
-      "status": "PASS",
-      "message": "",
+      "status": "SKIP",
+      "message": "Verified cache outputs",
       "outputs": [
         ".cache/surfaces.blend"
       ]
     },
     {
       "stage": "silhouette",
-      "status": "PASS",
-      "message": "",
+      "status": "SKIP",
+      "message": "Verified cache outputs",
       "outputs": [
-        "validation/surface_migration_report.json",
-        "validation/surface_masks/model_front.png",
-        "validation/surface_masks/reference_front.png",
         "validation/surface_masks/comparison_front.png",
-        "validation/surface_masks/model_side.png",
-        "validation/surface_masks/reference_side.png",
-        "validation/surface_masks/comparison_side.png",
-        "validation/surface_masks/model_rear.png",
-        "validation/surface_masks/reference_rear.png",
         "validation/surface_masks/comparison_rear.png",
+        "validation/surface_masks/comparison_side.png",
+        "validation/surface_masks/comparison_top.png",
+        "validation/surface_masks/model_front.png",
+        "validation/surface_masks/model_rear.png",
+        "validation/surface_masks/model_side.png",
         "validation/surface_masks/model_top.png",
+        "validation/surface_masks/reference_front.png",
+        "validation/surface_masks/reference_rear.png",
+        "validation/surface_masks/reference_side.png",
         "validation/surface_masks/reference_top.png",
-        "validation/surface_masks/comparison_top.png"
+        "validation/surface_migration_report.json"
       ]
     },
     {
       "stage": "details",
-      "status": "PASS",
-      "message": "",
+      "status": "SKIP",
+      "message": "Verified cache outputs",
       "outputs": [
         ".cache/details.blend"
       ]
     },
     {
       "stage": "geometry",
-      "status": "PASS",
-      "message": "",
+      "status": "SKIP",
+      "message": "Verified cache outputs",
       "outputs": [
         ".cache/cleaned.blend",
-        "validation/topology_cleanup.json",
-        "validation/geometry_audit.json"
+        "validation/geometry_audit.json",
+        "validation/topology_cleanup.json"
       ]
     },
     {
       "stage": "presentation",
-      "status": "PASS",
-      "message": "",
+      "status": "SKIP",
+      "message": "Verified cache outputs",
       "outputs": [
         "output/tesla_surface_model.blend",
-        "validation/final_migration_report.json",
-        "validation/surface_reflections.png",
-        "validation/surface_matcap.png",
-        "validation/perspective_surface.png",
-        "validation/front.png",
-        "validation/side.png",
-        "validation/rear.png",
-        "validation/top.png",
-        "validation/perspective.png",
-        "validation/final_masks/model_front.png",
-        "validation/final_masks/reference_front.png",
         "validation/final_masks/comparison_front.png",
-        "validation/final_masks/model_side.png",
-        "validation/final_masks/reference_side.png",
-        "validation/final_masks/comparison_side.png",
-        "validation/final_masks/model_rear.png",
-        "validation/final_masks/reference_rear.png",
         "validation/final_masks/comparison_rear.png",
+        "validation/final_masks/comparison_side.png",
+        "validation/final_masks/comparison_top.png",
+        "validation/final_masks/model_front.png",
+        "validation/final_masks/model_rear.png",
+        "validation/final_masks/model_side.png",
         "validation/final_masks/model_top.png",
+        "validation/final_masks/reference_front.png",
+        "validation/final_masks/reference_rear.png",
+        "validation/final_masks/reference_side.png",
         "validation/final_masks/reference_top.png",
-        "validation/final_masks/comparison_top.png"
+        "validation/final_migration_report.json",
+        "validation/front.png",
+        "validation/perspective.png",
+        "validation/perspective_surface.png",
+        "validation/rear.png",
+        "validation/side.png",
+        "validation/surface_matcap.png",
+        "validation/surface_reflections.png",
+        "validation/top.png"
       ]
     },
     {
       "stage": "export",
-      "status": "PASS",
-      "message": "",
+      "status": "SKIP",
+      "message": "Verified cache outputs",
       "outputs": [
-        "output/tesla_surface_model.glb",
-        "output/export_manifest.json"
+        "output/export_manifest.json",
+        "output/tesla_surface_model.glb"
       ]
     },
     {
       "stage": "glb_verify",
-      "status": "PASS",
-      "message": "",
+      "status": "SKIP",
+      "message": "Verified cache outputs",
       "outputs": [
         "validation/glb_geometry_report.json"
       ]
     },
     {
       "stage": "viewer",
-      "status": "PASS",
-      "message": "",
+      "status": "SKIP",
+      "message": "Verified cache outputs",
       "outputs": [
         "output/viewer.html",
         "validation/viewer_build.json",
-        "validation/viewer_qa.json",
         "validation/viewer_desktop.png",
-        "validation/viewer_mobile.png"
+        "validation/viewer_mobile.png",
+        "validation/viewer_qa.json"
       ]
     },
     {
       "stage": "delivery",
-      "status": "PASS",
-      "message": "",
+      "status": "SKIP",
+      "message": "Verified cache outputs",
       "outputs": [
         "output/delivery_manifest.json",
         "validation/delivery_report.json"

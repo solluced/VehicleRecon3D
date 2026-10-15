@@ -7,6 +7,7 @@ from .project import REPOSITORY
 
 def initialize(root,profile='sedan'):
     root=Path(root).resolve()
+    if not re.fullmatch('[a-z_]+',profile):raise SchemaError('Unsafe profile identifier')
     if not (REPOSITORY/'profiles'/f'{profile}.json').is_file():raise SchemaError('Unknown automobile profile')
     if (root/'project.json').exists():raise SchemaError('Project already exists; refusing to overwrite')
     for folder in ('input','generated','validation','output','.cache'):(root/folder).mkdir(parents=True,exist_ok=True)

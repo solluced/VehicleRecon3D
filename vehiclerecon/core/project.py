@@ -1,6 +1,7 @@
 """Validated project loading without Blender imports or vehicle constants."""
 import json
 import math
+import re
 from pathlib import Path, PureWindowsPath
 from .errors import SchemaError, ReferenceError
 
@@ -53,9 +54,14 @@ class Project:
         for name, value in self.data.get("dimensions", {}).items():
             if name.endswith("_m") and (not isinstance(value, (int, float)) or isinstance(value, bool) or value <= 0):
                 raise SchemaError(f"Dimension must be positive: {name}")
+        if not re.fullmatch('[a-z_]+',self.data['vehicle_profile']):
+            raise SchemaError('Unsafe vehicle profile identifier')
         self.profile = read_json(REPOSITORY / "profiles" / f"{self.data['vehicle_profile']}.json")
         if check:
             validate(self.profile, "vehicle_profile")
+        for view,minimum in self.profile.get('minimum_iou',{}).items():
+            if self.data['validation']['thresholds'][view]<minimum:
+                raise SchemaError(f'{view}: project threshold cannot weaken profile floor {minimum}')
         for path in self.data["references"].values():
             self.path(path, exists=True)
         for path in self.data.get("generated", {}).values():
