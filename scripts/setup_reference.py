@@ -1,4 +1,4 @@
-﻿"""Calibrate bundled references in the supplied starter. Creates no vehicle geometry."""
+"""Calibrate bundled references in the supplied starter. Creates no vehicle geometry."""
 import sys, hashlib, json
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parent))

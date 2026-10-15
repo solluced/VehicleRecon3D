@@ -3,7 +3,7 @@
 Run inside Blender with the saved project. No independent per-view fitting,
 bounding-box rescaling, synthetic model masks, or acceptance overrides.
 """
-import sys,json
+import sys,json,hashlib
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parent))
 from project import *
@@ -17,6 +17,8 @@ saved={ob.name:ob.hide_render for ob in bpy.data.objects}
 for col in ('00_REFERENCE','01_CURVE_CAGE','09_PRESENTATION'):
     for ob in coll(col).objects:
         if ob.type!='CAMERA': ob.hide_render=True
+for ob in bpy.data.objects:
+    if ob.name.startswith('WIRE_'):ob.hide_render=True
 s.render.engine='CYCLES'; s.cycles.samples=1; s.render.film_transparent=False
 s.view_settings.view_transform='Standard'
 oldworld=s.world
@@ -54,6 +56,8 @@ for view,w,h,threshold in [('side',1200,560,.94),('top',1200,600,.92),('front',8
         q=world_to_camera_view(s,cam,Vector(world(u,v)))
         return (q.x*w,(1-q.y)*h)
     reference=polygon_mask([project(*a) for a in traces[view]['body']],w,h)
+    for component in traces[view].get('components',[]):
+        reference|=polygon_mask([project(*a) for a in component],w,h)
     for u,v,r in traces[view].get('tires',[]):
         points=[project(u+r*math.cos(a),v+r*math.sin(a)) for a in [i*math.tau/128 for i in range(128)]]
         reference|=polygon_mask(points,w,h)
@@ -80,6 +84,7 @@ for view,w,h,threshold in [('side',1200,560,.94),('top',1200,600,.92),('front',8
     image_save('comparison_'+view,comparison)
 passed=all(v['status']=='PASS' for v in results.values())
 report={'status':'silhouette_pass_surface_review_pending' if passed else 'silhouette_fail_refinement_required',
+    'source_blend_sha256':hashlib.sha256((ROOT/'tesla_surface_model.blend').read_bytes()).hexdigest(),
     'reference_calibration':'REGISTERED_WITH_DOCUMENTED_SOURCE_INCONSISTENCIES',
     'source_mask_method':traces['method'],'model_mask_method':'Actual opaque black-material Blender renders from fixed calibrated cameras; no per-view rescaling',
     'cage_status':s.get('cage_status'),'model_status':s.get('model_status'),

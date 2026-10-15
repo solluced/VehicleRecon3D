@@ -1,28 +1,21 @@
-# START HERE — Tesla Surface Model Production Pass
+# START HERE — EV Surface Model Delivery
 
-This package is the continuation of the existing Blender starter. The previous work cycle stopped correctly because the image references were missing. **They are now bundled in `refs/`.**
+Open `tesla_surface_model.blend` for the editable model and studio presentation, or double-click `exports/viewer.html` for the offline interactive viewer. The viewer embeds the exact Blender-exported GLB.
 
-## Immediate task
+## Review the result
 
-1. Read `PRODUCTION_HANDOFF.md` completely.
-2. Verify all five images listed in `refs/README.md` can be opened.
-3. Open `tesla_surface_model.blend`; do not replace it with a generic procedural body.
-4. Calibrate FRONT / SIDE / REAR / TOP references into one coordinate system.
-5. Update `docs/reference_dimensions.md` with measured normalized ratios and chosen physical scale.
-6. Save an alignment proof render/screenshot under `validation/reference_alignment.png`.
-7. Build the **semantic 3D curve cage** before creating the final body surface.
-8. Validate cage silhouettes in SIDE, TOP and FRONT before detailed surfacing.
+1. Inspect `validation/perspective.png` and the four orthographic renders.
+2. Read `docs/validation_summary.md` for measured results and verification limits.
+3. Read `docs/reference_dimensions.md` for the assumed scale, raw landmarks and source conflicts.
+4. In Blender, unhide `00_REFERENCE` objects or `01_CURVE_CAGE` to inspect registration and semantic controls. They are hidden for presentation renders.
+5. Use `docs/modeling_notes.md` for component organization and the rebuild sequence.
 
 ## Important
 
-The clean blue wireframe image is the **quality target**, while `reference_multiview.png` is the **geometry source of truth**.
+The original five references remain in `refs/`, with verified original hashes. `reference_multiview.png` controls proportions; the surface target and workflow guide quality and presentation. Physical length is assumed at 4.8 m. The illustrative views require the documented reconciliation.
 
-Do not recreate the previous failed pipeline:
+The retained modeling workflow is:
 
-`silhouette -> generic sections -> lofted blob -> decorative wireframe`
+`calibrated multiview -> semantic feature curves and sections -> quad surface patches -> silhouette and reflection checks -> panel/aperture details -> real topology overlay -> exact GLB export -> offline viewer`
 
-Required pipeline:
-
-`calibrated multiview -> semantic feature curves -> transverse sections -> validated 3D cage -> controlled SubD/NURBS surface -> validation -> details -> exact GLB export -> HTML viewer`
-
-The project is not complete until the definition-of-done in `PRODUCTION_HANDOFF.md` is satisfied.
+`PRODUCTION_HANDOFF.md` retains the original task specification. `docs/development_log.md` records failed intermediate checks and their fixes. `MANIFEST.sha256` covers the delivered files.

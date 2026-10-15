@@ -1,4 +1,4 @@
-﻿# Reference calibration
+# Reference calibration
 All five original PNGs were opened, decoded and checked against refs/manifest.json. Pixel sizes: multiview, surface target and workflow 1536 × 1152; both secondary studies 1448 × 1086. Original files are unchanged. See validation/reference_inventory.json.
 
 Registration status: PASS for a common landmark coordinate system, with documented source inconsistencies. This is an illustrative multiview sheet, not an exact orthographic engineering drawing. No completed body validation is implied.
@@ -27,3 +27,6 @@ Front and rear side-view tire radii are approximately 64 and 60 pixels (6.45% di
 ## Alignment proof
 validation/reference_alignment.png combines four actual Blender camera renders of the calibrated image planes with centerline, ground, envelope and axle datums. Individual alignment_SIDE/TOP/FRONT/REAR renders use lowercase filenames. Planes have packed cropped textures; original full-resolution references are also loaded. All references are hidden for geometry-only validation and can be unhidden for inspection.
 
+
+## Greenhouse reconciliation
+The top-view roof footprint suggests a wider upper greenhouse than the rectified end views. Roof-edge half-width was reconciled to approximately 0.61–0.62 m through the B-pillar zone, widening to about 0.74 m at the windshield base; window sills are about 0.73 m from center. The side roof profile remains authoritative vertically. Mirror housings use an approximately 1.905 m total envelope because top/end mirror projection disagrees. These choices are inferences from adjacent primary views, not independent dimensional claims from the quality target.
