@@ -1,0 +1,27 @@
+{
+  "operation": "EXPLICIT_CLEANUP",
+  "changes": [
+    {
+      "object": "COWL_TRANSITION",
+      "before": [
+        70,
+        52
+      ],
+      "after": [
+        66,
+        52
+      ]
+    },
+    {
+      "object": "FRAME_BACK_GLASS_REAR_SIDE",
+      "before": [
+        45,
+        32
+      ],
+      "after": [
+        40,
+        32
+      ]
+    }
+  ]
+}

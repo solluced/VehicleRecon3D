@@ -1,0 +1,131 @@
+{
+  "status": "FAIL",
+  "iou": {
+    "side": {
+      "status": "PASS",
+      "iou": 0.95723,
+      "threshold": 0.94,
+      "pixel_mismatch_percent_of_frame": 1.5582,
+      "pixel_mismatch_percent_of_union": 4.277,
+      "reference_bbox_px": [
+        76,
+        114,
+        1124,
+        449
+      ],
+      "model_bbox_px": [
+        76,
+        114,
+        1125,
+        446
+      ],
+      "bbox_difference_px": [
+        0,
+        0,
+        1,
+        -3
+      ],
+      "render_size": [
+        1200,
+        560
+      ]
+    },
+    "top": {
+      "status": "PASS",
+      "iou": 0.936083,
+      "threshold": 0.92,
+      "pixel_mismatch_percent_of_frame": 3.6761,
+      "pixel_mismatch_percent_of_union": 6.3917,
+      "reference_bbox_px": [
+        76,
+        84,
+        1124,
+        517
+      ],
+      "model_bbox_px": [
+        76,
+        92,
+        1125,
+        508
+      ],
+      "bbox_difference_px": [
+        0,
+        8,
+        1,
+        -9
+      ],
+      "render_size": [
+        1200,
+        600
+      ]
+    },
+    "front": {
+      "status": "PASS",
+      "iou": 0.931202,
+      "threshold": 0.92,
+      "pixel_mismatch_percent_of_frame": 1.6385,
+      "pixel_mismatch_percent_of_union": 6.8798,
+      "reference_bbox_px": [
+        191,
+        150,
+        609,
+        490
+      ],
+      "model_bbox_px": [
+        188,
+        151,
+        612,
+        490
+      ],
+      "bbox_difference_px": [
+        -3,
+        1,
+        3,
+        0
+      ],
+      "render_size": [
+        800,
+        640
+      ]
+    },
+    "rear": {
+      "status": "PASS",
+      "iou": 0.944724,
+      "threshold": 0.9,
+      "pixel_mismatch_percent_of_frame": 1.3064,
+      "pixel_mismatch_percent_of_union": 5.5276,
+      "reference_bbox_px": [
+        191,
+        150,
+        609,
+        490
+      ],
+      "model_bbox_px": [
+        188,
+        151,
+        612,
+        490
+      ],
+      "bbox_difference_px": [
+        -3,
+        1,
+        3,
+        0
+      ],
+      "render_size": [
+        800,
+        640
+      ]
+    }
+  },
+  "max_exported_bounds_delta_m": 0.00016033649444580078,
+  "triangle_changes": [
+    {
+      "object": "WIRE_COWL_TRANSITION",
+      "baseline": 1904,
+      "current": 1872
+    }
+  ],
+  "mesh_nodes": 191,
+  "explanation": "Cleanup is now explicit before presentation. Wire overlay is copied from the cleaned actual control topology, eliminating 32 redundant wire triangles at the welded cowl corner. Physical model topology/counts and all four IoUs are preserved; no vehicle redesign."
+}

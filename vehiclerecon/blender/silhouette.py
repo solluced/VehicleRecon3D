@@ -5,6 +5,7 @@ from bpy_extras.object_utils import world_to_camera_view
 from ..reference.transforms import CalibrationTransform
 from ..validation.silhouette import polygon_mask,metrics,require
 from ..core.manifest import digest_file,write_json
+from ..validation.report import model_inputs_hash
 from .scene import render
 from .materials import material
 
@@ -68,7 +69,7 @@ def validate(project,label='surface'):
                 'source_blend_sha256':digest_file(bpy.data.filepath),'views':results,
                 'baseline_delta':{v:round(r['iou']-baseline[v],6) for v,r in results.items()},
                 'method':'Actual opaque geometry renders from calibrated fixed cameras, no per-view fitting',
-                'source_mask_method':traces['method'],'label':label}
+                'source_mask_method':traces['method'],'label':label,'input_state_hash':model_inputs_hash(project)}
         write_json(project.path(f'validation/{label}_migration_report.json'),report)
         require(results,baseline,config['max_iou_regression'])
         return report

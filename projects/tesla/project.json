@@ -194,6 +194,127 @@
           1000
         ]
       }
+    ],
+    "materials": [
+      {
+        "name": "MAT_WIREFRAME",
+        "kind": "principled",
+        "color": [
+          0.012,
+          0.09,
+          0.42
+        ],
+        "roughness": 0.5,
+        "metallic": 0,
+        "inputs": {
+          "Emission Color": [
+            0.006,
+            0.04,
+            0.16,
+            1
+          ],
+          "Emission Strength": 0.15
+        }
+      },
+      {
+        "name": "MAT_GLASS",
+        "kind": "principled",
+        "color": [
+          0.42,
+          0.47,
+          0.53
+        ],
+        "roughness": 0.1,
+        "metallic": 0,
+        "inputs": {
+          "Transmission Weight": 0.9
+        }
+      },
+      {
+        "name": "MAT_STUDIO_GROUND",
+        "kind": "principled",
+        "color": [
+          0.72,
+          0.74,
+          0.77
+        ],
+        "roughness": 0.65,
+        "metallic": 0
+      }
+    ],
+    "wire_sources": [
+      "HOOD",
+      "FENDER_FRONT",
+      "FENDER_REAR",
+      "DOOR_FL",
+      "DOOR_FR",
+      "DOOR_RL",
+      "DOOR_RR",
+      "BUMPER_FRONT",
+      "BUMPER_REAR",
+      "REAR_HATCH",
+      "REAR_HATCH_TOP",
+      "PILLAR_C_QUARTER",
+      "PILLAR_A_FOOT",
+      "NOSE_HOOD_BRIDGE",
+      "NOSE_CHEEK",
+      "BELTLINE_LEDGE",
+      "COWL_TRANSITION",
+      "GLASS_WINDSHIELD",
+      "GLASS_ROOF",
+      "GLASS_REAR",
+      "GLASS_FRONT_LEFT",
+      "GLASS_FRONT_RIGHT",
+      "GLASS_REAR_LEFT",
+      "GLASS_REAR_RIGHT"
+    ],
+    "wire": {
+      "collection": "03_BODY",
+      "prefix": "WIRE_",
+      "material": "MAT_WIREFRAME",
+      "offset": 0.0008,
+      "thickness": 0.0018
+    },
+    "ground": {
+      "name": "STUDIO_GROUND",
+      "size": 200,
+      "position": [
+        0,
+        0,
+        -0.012
+      ],
+      "material": "MAT_STUDIO_GROUND",
+      "collection": "09_PRESENTATION"
+    },
+    "camera": {
+      "name": "CAM_3Q",
+      "type": "ORTHO",
+      "position": [
+        -7.5,
+        -8,
+        3.2
+      ],
+      "target": [
+        0,
+        0,
+        0.75
+      ],
+      "scale": 5.6
+    },
+    "samples": 32,
+    "diagnostic_size": [
+      1600,
+      1000
+    ],
+    "review_proofs": [
+      "validation/surface_reflections.png",
+      "validation/surface_matcap.png",
+      "validation/perspective_surface.png",
+      "validation/front.png",
+      "validation/side.png",
+      "validation/rear.png",
+      "validation/top.png",
+      "validation/perspective.png"
     ]
   },
   "export": {
@@ -201,10 +322,85 @@
       "00_REFERENCE",
       "01_CURVE_CAGE",
       "09_PRESENTATION"
+    ],
+    "collections": [
+      "03_BODY",
+      "04_PANELS",
+      "05_GLASS",
+      "06_LIGHTS",
+      "07_WHEELS",
+      "08_INTERIOR"
+    ],
+    "default_group": "body",
+    "group_rules": [
+      {
+        "group": "wire",
+        "property": "source_topology_object"
+      },
+      {
+        "group": "wheels",
+        "ancestor_prefixes": [
+          "WHEEL_"
+        ]
+      },
+      {
+        "group": "glass",
+        "name_prefixes": [
+          "GLASS_",
+          "MIRROR_GLASS_"
+        ]
+      }
+    ],
+    "formats": [
+      "glb"
     ]
   },
   "viewer": {
-    "title": "EV Surface Model"
+    "title": "EV Surface Model",
+    "eyebrow": "Surface study / 01",
+    "groups": [
+      {
+        "id": "body",
+        "label": "Body"
+      },
+      {
+        "id": "wire",
+        "label": "Wireframe"
+      },
+      {
+        "id": "glass",
+        "label": "Glass"
+      },
+      {
+        "id": "wheels",
+        "label": "Wheels"
+      }
+    ],
+    "wire_group": "wire",
+    "glass_group": "glass",
+    "fit_margin": 0.84,
+    "presets": {
+      "front": [
+        -1.5707963267948966,
+        0
+      ],
+      "side": [
+        0,
+        0
+      ],
+      "rear": [
+        1.5707963267948966,
+        0
+      ],
+      "top": [
+        0,
+        1.5706963267948966
+      ],
+      "three": [
+        -0.7531512809621944,
+        0.21981079991903668
+      ]
+    }
   },
   "validation": {
     "thresholds": {
@@ -221,6 +417,22 @@
       "top": 0.936083,
       "front": 0.931202,
       "rear": 0.944724
+    },
+    "geometry": {
+      "surface_collections": [
+        "03_BODY",
+        "04_PANELS",
+        "05_GLASS"
+      ],
+      "surface_exclude_prefixes": [
+        "WIRE_",
+        "INNER_",
+        "MIRROR_",
+        "WHEELHOUSE"
+      ],
+      "weld_distance_m": 1e-07,
+      "area_epsilon": 1e-12,
+      "pivot_tolerance_m": 1e-06
     }
   }
 }

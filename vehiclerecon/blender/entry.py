@@ -33,6 +33,18 @@ def main():
     elif stage == 'final_masks':
         from vehiclerecon.blender.silhouette import validate
         validate(project,'final')
+    elif stage == 'cleanup':
+        from vehiclerecon.blender.audit import cleanup
+        cleanup(project)
+    elif stage == 'audit':
+        from vehiclerecon.blender.audit import audit
+        audit(project)
+    elif stage == 'presentation':
+        from vehiclerecon.blender.presentation import build
+        build(project)
+    elif stage == 'export':
+        from vehiclerecon.blender.export import export
+        export(project)
     else:
         raise ReconError(f'Unsupported Blender stage: {stage}')
 

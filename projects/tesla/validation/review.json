@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "reviewer": "Codex: explicit visual inspection of eight Blender proof renders",
+  "decision": "PASS",
+  "notes": [
+    "Inspected front, side, rear, top, studio wire, surface-only, reflection stripes and matcap images.",
+    "Body forms, panel openings, wheel stance and reflected flow retain the frozen legacy reconstruction; no geometry redesign.",
+    "Blue overlay follows actual control topology."
+  ],
+  "geometry_hash": "6fa8c5a8174917222d9b7b8641dc28afbc55dbc388e67313362924ec43f2e96d",
+  "input_state_hash": "8280a2b41c48200afd793761063ca634e96d917066746bddf626022b1c249849",
+  "proof_hashes": {
+    "validation/surface_reflections.png": "781bc669946a16d0f7f5e0fe8e72fda7ebc801672c3c9b67a7deb818da993ed3",
+    "validation/surface_matcap.png": "1c5b4a4801d7489e56e1a2dd4bc6e471f0f81314a5342fe8dc626e570fca7760",
+    "validation/perspective_surface.png": "04d07115db4cf2590be49d96c67edd5dea0eb1f508bd445e39ff282a32368c32",
+    "validation/front.png": "36beff550855e41fbe6aaff5cbc5a63c99dd5cc5b1f763e31a0b91de3c67f133",
+    "validation/side.png": "96f281bc6237d63a5345ec945295fe3ed6b4c207d0cc6df6ff0241e8e14429fb",
+    "validation/rear.png": "f6064727721a78f51e52d30e9884e29641b0b6f686293b9b302c92a4e8fadf50",
+    "validation/top.png": "56eb9d779917ceddf2fbd193c91fddd7977a94d918e3cfd86bc11e39aa74ba99",
+    "validation/perspective.png": "ee04af3f2aa0e30fefc2331606a4ee8328f44bc66e7ebe546fa79db71c8d049a"
+  },
+  "limitations": [
+    "Visual reconstruction of an illustrative sheet; no manufacturing/G2 claim.",
+    "Absolute scale remains the legacy assumed 4.8m length.",
+    "Simplified interior and lamps retained from baseline."
+  ]
+}
