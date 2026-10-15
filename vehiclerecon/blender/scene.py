@@ -37,3 +37,5 @@ def render(path, name, width, height):
     scene.render.filepath = str(path)
     path.parent.mkdir(parents=True, exist_ok=True)
     bpy.ops.render.render(write_still=True)
+    from ..validation.images import stable_png
+    path.write_bytes(stable_png(path.read_bytes()))

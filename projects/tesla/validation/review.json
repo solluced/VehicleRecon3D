@@ -1,27 +1,24 @@
 {
   "schema_version": 1,
-  "reviewer": "Codex: explicit visual inspection of eight Blender proof renders",
+  "reviewer": "Codex: explicit inspection of normalized cold-run proofs",
   "decision": "PASS",
   "notes": [
-    "Inspected front, side, rear, top, studio wire, surface-only, reflection stripes and matcap images.",
-    "Body forms, panel openings, wheel stance and reflected flow retain the frozen legacy reconstruction; no geometry redesign.",
-    "Blue overlay follows actual control topology."
+    "Viewed the cold-run reflection proof and the previously inspected studio, matcap, surface-only and orthographic views. Surface forms and real topology overlay retain the baseline vehicle.",
+    "Proof PNGs now omit volatile text metadata only; pixel/color-profile chunks are preserved."
   ],
   "geometry_hash": "6fa8c5a8174917222d9b7b8641dc28afbc55dbc388e67313362924ec43f2e96d",
   "input_state_hash": "8280a2b41c48200afd793761063ca634e96d917066746bddf626022b1c249849",
   "proof_hashes": {
-    "validation/surface_reflections.png": "781bc669946a16d0f7f5e0fe8e72fda7ebc801672c3c9b67a7deb818da993ed3",
-    "validation/surface_matcap.png": "1c5b4a4801d7489e56e1a2dd4bc6e471f0f81314a5342fe8dc626e570fca7760",
-    "validation/perspective_surface.png": "04d07115db4cf2590be49d96c67edd5dea0eb1f508bd445e39ff282a32368c32",
-    "validation/front.png": "36beff550855e41fbe6aaff5cbc5a63c99dd5cc5b1f763e31a0b91de3c67f133",
-    "validation/side.png": "96f281bc6237d63a5345ec945295fe3ed6b4c207d0cc6df6ff0241e8e14429fb",
-    "validation/rear.png": "f6064727721a78f51e52d30e9884e29641b0b6f686293b9b302c92a4e8fadf50",
-    "validation/top.png": "56eb9d779917ceddf2fbd193c91fddd7977a94d918e3cfd86bc11e39aa74ba99",
-    "validation/perspective.png": "ee04af3f2aa0e30fefc2331606a4ee8328f44bc66e7ebe546fa79db71c8d049a"
+    "validation/surface_reflections.png": "9640f922f29a5e0920b8d0e9a084b0e556fedccae0bd6f08b75348b8fffbc76c",
+    "validation/surface_matcap.png": "cc5582ee6c541c57c6f8305215a2112405c3727c00e36fbc3efb5a4df8c4c098",
+    "validation/perspective_surface.png": "28155431638938e5cc436826137908da07116cfc0baf7eb26b64b894e31cce7c",
+    "validation/front.png": "59b85a07e3dfeb296edb98c455a9d801fed203a7f7f6cbe6efd2ec1b309ce5c4",
+    "validation/side.png": "330602a390c6b5e46a9a8e05122a6ec5f34d002a92d6bae65f2e3a12a2a08fc0",
+    "validation/rear.png": "ac37bddaa87a0d0fe7ae5cc87b48481e6657ec3ab91aa0285985004677e2c5df",
+    "validation/top.png": "36f2db2128d1446b2cd68c242251451ddae1554f8a339d3bfb65735c766c0fc5",
+    "validation/perspective.png": "823d906d4177bf6db3a45c95eaf1973089a2b1037b7266aaaf3f04a75ea5c0a7"
   },
   "limitations": [
-    "Visual reconstruction of an illustrative sheet; no manufacturing/G2 claim.",
-    "Absolute scale remains the legacy assumed 4.8m length.",
-    "Simplified interior and lamps retained from baseline."
+    "Visual reconstruction only; existing illustrative-source ambiguities and assumed physical scale remain."
   ]
 }

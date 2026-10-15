@@ -3,7 +3,7 @@
     "initial": {
       "ready": true,
       "errors": [],
-      "glbSHA256": "a5f3def5e35275319f7902720e8288f8cc331f5a5b092e48af2dd0cd9ddfa23e",
+      "glbSHA256": "5d45c5124d3ef5543bddffe0d10308f075bac91bbc3e47952ed1a37c2fd7987c",
       "boundsNDC": {
         "min": [
           -0.8002777080310182,
@@ -198,5 +198,5 @@
   "errors": [],
   "status": "PASS",
   "geometry_matches_glb": true,
-  "glb_sha256": "a5f3def5e35275319f7902720e8288f8cc331f5a5b092e48af2dd0cd9ddfa23e"
+  "glb_sha256": "5d45c5124d3ef5543bddffe0d10308f075bac91bbc3e47952ed1a37c2fd7987c"
 }

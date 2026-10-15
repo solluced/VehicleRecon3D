@@ -45,6 +45,9 @@ def main():
     elif stage == 'export':
         from vehiclerecon.blender.export import export
         export(project)
+    elif stage == 'overlay':
+        from vehiclerecon.blender.overlay import build
+        build(project)
     else:
         raise ReconError(f'Unsupported Blender stage: {stage}')
 

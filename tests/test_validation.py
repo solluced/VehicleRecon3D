@@ -18,3 +18,12 @@ def test_masks():
     assert mask.sum()==4
     assert metrics(mask,mask,1)['status']=='PASS'
     assert metrics(mask,mask,1)['iou']==1
+
+def test_render_metadata_does_not_change_proof_pixels():
+    import struct,zlib
+    from vehiclerecon.validation.images import stable_png
+    from vehiclerecon.core.project import REPOSITORY
+    raw=(REPOSITORY/'refs/crop_front.png').read_bytes()
+    data=b'Date\x00volatile timestamp';tag=b'tEXt'
+    chunk=struct.pack('>I',len(data))+tag+data+struct.pack('>I',zlib.crc32(tag+data)&0xffffffff)
+    assert stable_png(raw[:8]+chunk+raw[8:])==stable_png(raw)

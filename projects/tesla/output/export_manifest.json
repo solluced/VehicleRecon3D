@@ -1,8 +1,8 @@
 {
-  "source_blend_sha256": "24320bd611c6d9ad195a3db3710a697f6075c8b08b5d6e99f7c92f2f52cf90f7",
+  "source_blend_sha256": "0c69f1467bbe55e830a3f4a9b27df38f021b7eb82335d38062e8c33053f25504",
   "geometry_hash": "6fa8c5a8174917222d9b7b8641dc28afbc55dbc388e67313362924ec43f2e96d",
   "input_state_hash": "8280a2b41c48200afd793761063ca634e96d917066746bddf626022b1c249849",
-  "glb_sha256": "a5f3def5e35275319f7902720e8288f8cc331f5a5b092e48af2dd0cd9ddfa23e",
+  "glb_sha256": "5d45c5124d3ef5543bddffe0d10308f075bac91bbc3e47952ed1a37c2fd7987c",
   "size_bytes": 4128592,
   "source_geometry": {
     "COWL_TRANSITION": {
