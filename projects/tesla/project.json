@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "project_id": "tesla_reference",
+  "category": "automobile",
+  "vehicle_profile": "fastback_suv",
+  "asset_name": "tesla_surface_model",
+  "references": {
+    "multiview": "input/reference_multiview.png",
+    "control_overlay": "input/reference_dense_control_points.png",
+    "surface_target": "input/reference_surface_target.png",
+    "workflow": "input/reference_workflow.png",
+    "cage_overlay": "input/reference_control_cage_overlay.png"
+  },
+  "dimensions": {
+    "length_m": 4.8,
+    "width_m": 1.8823529411764706,
+    "height_m": 1.5257844474761255,
+    "wheelbase_m": 3.077762619372442,
+    "provenance": "Assumed length 4.8m; all other envelope values derived from image ratios. Not OEM measurements."
+  },
+  "generated": {},
+  "materials": [],
+  "scene": {
+    "name": "SCENE_PRESENTATION",
+    "collections": [
+      "00_REFERENCE",
+      "01_CURVE_CAGE",
+      "02_BLOCKOUT",
+      "03_BODY",
+      "04_PANELS",
+      "05_GLASS",
+      "06_LIGHTS",
+      "07_WHEELS",
+      "08_INTERIOR",
+      "09_PRESENTATION"
+    ],
+    "world_color": [
+      0.8,
+      0.8,
+      0.8,
+      1
+    ],
+    "world_strength": 1
+  },
+  "presentation": {},
+  "export": {},
+  "viewer": {
+    "title": "EV Surface Model"
+  },
+  "validation": {
+    "thresholds": {
+      "side": 0.94,
+      "top": 0.92,
+      "front": 0.92,
+      "rear": 0.9
+    },
+    "max_iou_regression": 0.002,
+    "bounds_tolerance_m": 0.0001,
+    "review_required": true
+  }
+}

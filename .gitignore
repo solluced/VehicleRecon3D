@@ -6,3 +6,8 @@ validation/*.log
 .preview-browser/
 .preview/
 *.zip
+.venv/
+*.egg-info/
+projects/*/.cache/
+projects/*/validation/execution/
+.pytest_cache/

@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vehiclerecon.local/schemas/surface_graph.schema.json",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "nodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "op": {
+            "enum": [
+              "polyline",
+              "chord_hermite",
+              "shape_preserving_hermite",
+              "bezier_rail_range",
+              "curve_sample",
+              "lerp",
+              "offset",
+              "coons",
+              "cubic_boundary_roll",
+              "arch_annulus",
+              "ribbon",
+              "bilinear_patch",
+              "boundary_stitch"
+            ]
+          },
+          "parameters": {
+            "type": "object"
+          },
+          "dependencies": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "required": [
+          "id",
+          "op",
+          "parameters",
+          "dependencies"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "patches": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "settings": {
+      "type": "object"
+    }
+  },
+  "required": [
+    "schema_version",
+    "nodes",
+    "patches",
+    "settings"
+  ],
+  "additionalProperties": false
+}

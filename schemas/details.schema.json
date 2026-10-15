@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vehiclerecon.local/schemas/details.schema.json",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "components": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "type": {
+            "enum": [
+              "wheel",
+              "wheel_arch",
+              "door",
+              "glass",
+              "mirror",
+              "light",
+              "bumper",
+              "intake",
+              "interior"
+            ]
+          },
+          "parameters": {
+            "type": "object"
+          }
+        },
+        "required": [
+          "id",
+          "type",
+          "parameters"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "schema_version",
+    "components"
+  ],
+  "additionalProperties": false
+}

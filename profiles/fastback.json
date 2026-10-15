@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "id": "fastback",
+  "category": "automobile",
+  "roles": [
+    "hood",
+    "front_bumper",
+    "front_fender",
+    "front_door",
+    "rear_door",
+    "rear_quarter",
+    "roof",
+    "windshield",
+    "rear_glass",
+    "a_pillar",
+    "b_pillar",
+    "c_pillar",
+    "rocker",
+    "rear_bumper",
+    "wheel_arch",
+    "wheel",
+    "mirror",
+    "headlight",
+    "taillight"
+  ],
+  "optional_roles": [
+    "trunk",
+    "hatch"
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vehiclerecon.local/schemas/cage.schema.json",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "collection": {
+      "type": "string",
+      "minLength": 1
+    },
+    "curves": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "role": {
+            "type": "string",
+            "minLength": 1
+          },
+          "kind": {
+            "enum": [
+              "rail",
+              "section",
+              "wheel",
+              "arch"
+            ]
+          },
+          "points": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 3,
+              "maxItems": 3
+            },
+            "minItems": 2
+          },
+          "symmetry": {
+            "type": "boolean"
+          },
+          "cyclic": {
+            "type": "boolean"
+          },
+          "material": {
+            "type": "string",
+            "minLength": 1
+          },
+          "radius": {
+            "type": "number",
+            "exclusiveMinimum": 0
+          },
+          "handles": {
+            "enum": [
+              "AUTO",
+              "VECTOR"
+            ]
+          },
+          "landmark": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "id",
+          "role",
+          "kind",
+          "points",
+          "symmetry",
+          "cyclic",
+          "material",
+          "radius",
+          "handles"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "landmarks": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        },
+        "minItems": 3,
+        "maxItems": 3
+      }
+    }
+  },
+  "required": [
+    "schema_version",
+    "collection",
+    "curves",
+    "landmarks"
+  ],
+  "additionalProperties": false
+}
