@@ -13,8 +13,8 @@ from mathutils.geometry import interpolate_bezier
 
 def p(u,y,v): return Vector((sx(u),y,sz(v)))
 BODY=mat('MAT_BODY_SURFACE',(.77,.80,.84),.29,.12)
-GLASS=mat('MAT_GLASS',(.018,.027,.04),.15,.12)
-GLASS.node_tree.nodes.get('Principled BSDF').inputs['Transmission Weight'].default_value=.32
+GLASS=mat('MAT_GLASS',(.08,.10,.12),.10,.02)
+GLASS.node_tree.nodes.get('Principled BSDF').inputs['Transmission Weight'].default_value=.82
 BLACK=mat('MAT_TRIM',(.012,.017,.022),.32)
 TIRE=mat('MAT_TIRE',(.012,.014,.017),.65)
 
@@ -80,7 +80,12 @@ def finish(ob,direction,mirror=True,subdivision=2):
 def grid(name,sample,nu=12,nv=6,material=BODY,collection='03_BODY',normal=(0,0,1),mirror=True):
     # Support rows preserve panel boundaries and corners under SubD.
     def params(n): return [0,.012]+[i/n for i in range(1,n)]+[.988,1]
-    us=params(nu); vs=params(nv); verts=[sample(u,v) for v in vs for u in us]; faces=[]
+    us=params(nu); vs=params(nv)
+    # The mirror seam is an interior surface, so it must not receive the
+    # closely spaced support row used at an actual panel boundary.
+    if mirror and all(abs(sample(u,0).y)<1e-7 for u in (0,.5,1)):vs.remove(.012)
+    if mirror and all(abs(sample(0,v).y)<1e-7 for v in (0,.5,1)):us.remove(.012)
+    verts=[sample(u,v) for v in vs for u in us]; faces=[]
     for j in range(len(vs)-1):
         for i in range(len(us)-1):
             a=j*len(us)+i; faces.append((a,a+1,a+1+len(us),a+len(us)))
@@ -95,6 +100,10 @@ hood_edge=rail('L02_HOOD_SHOULDER_R',425,623)
 hood_front=authored([hood_center(0),p(415,.25,639),hood_edge(0)])
 hood_back=authored([hood_center(1),p(623,.4,579),hood_edge(1)])
 grid('HOOD',coons(hood_center,hood_edge,hood_front,hood_back),14,7,collection='04_PANELS')
+cowl_start=p(623,0,577);cowl_end=p(633,.74,579)
+cowl_front=authored([cowl_start,(cowl_start+cowl_end)/2+Vector((0,0,.012)),cowl_end])
+grid('COWL_TRANSITION',coons(hood_back,cowl_front),12,2,normal=(0,0,1))
+grid('PILLAR_A_FOOT',coons(authored([p(623,.78,582),p(633,.74,579)]),authored([p(623,.86,589),p(635,.86,589)])),4,4,normal=(0,1,1))
 
 # Front bridge between hood leading edge and bowed fascia.
 nose_top=authored([p(402,0,646),p(408,.30,646),p(425,.60,640),p(448,.84,633)])
