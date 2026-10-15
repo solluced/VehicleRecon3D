@@ -1,0 +1,596 @@
+{
+  "executable_script_count": 20,
+  "named_python_function_count": 52,
+  "script_classification_counts": {
+    "GENERICIZE": 15,
+    "GENERIC": 3,
+    "OBSOLETE": 1,
+    "TEST/REGRESSION": 1,
+    "PROJECT_DATA": 0
+  },
+  "coupling_unit_counts": {
+    "calibration_groups": 12,
+    "cage_definitions": 35,
+    "surface_definitions": 26,
+    "detail_parameter_groups": 22
+  },
+  "counting_method": "Named migration units; see docs/extraction_audit.md. HTML template is an extra asset, not in the 20 executable count.",
+  "scripts": [
+    {
+      "script": "audit_geometry.py",
+      "classification": "GENERICIZE",
+      "sha256": "0a3ddafbc4123ee2af843adbabe3222aff392a7b59c59fcfa6e6eec42d5b576b",
+      "functions": [],
+      "anonymous_python_lambdas": []
+    },
+    {
+      "script": "build_cage.py",
+      "classification": "GENERICIZE",
+      "sha256": "056209d2c0cb6e9abc1a7fc52c27695c843a881a58df2f6d85bc9f4193a432c1",
+      "functions": [
+        {
+          "name": "p",
+          "line": 12,
+          "end_line": 12,
+          "classification": "GENERICIZE",
+          "migration_map": "docs/extraction_audit.md#complete-named-python-function-map"
+        }
+      ],
+      "anonymous_python_lambdas": []
+    },
+    {
+      "script": "build_details.py",
+      "classification": "GENERICIZE",
+      "sha256": "70fdb7fb0850838940323dbbd07945955f9419fa6ded92ab6a4d5122a04cef31",
+      "functions": [
+        {
+          "name": "flip",
+          "line": 24,
+          "end_line": 25,
+          "classification": "GENERIC",
+          "migration_map": "docs/extraction_audit.md#complete-named-python-function-map"
+        },
+        {
+          "name": "subdiv",
+          "line": 26,
+          "end_line": 27,
+          "classification": "GENERIC",
+          "migration_map": "docs/extraction_audit.md#complete-named-python-function-map"
+        },
+        {
+          "name": "mirror",
+          "line": 28,
+          "end_line": 29,
+          "classification": "GENERIC",
+          "migration_map": "docs/extraction_audit.md#complete-named-python-function-map"
+        },
+        {
+          "name": "split",
+          "line": 30,
+          "end_line": 37,
+          "classification": "GENERIC",
+          "migration_map": "docs/extraction_audit.md#complete-named-python-function-map"
+        },
+        {
+          "name": "box",
+          "line": 38,
+          "end_line": 47,
+          "classification": "GENERICIZE",
+          "migration_map": "docs/extraction_audit.md#complete-named-python-function-map"
+        },
+        {
+          "name": "cavity",
+          "line": 49,
+          "end_line": 79,
+          "classification": "GENERICIZE",
+          "migration_map": "docs/extraction_audit.md#complete-named-python-function-map"
+        },
+        {
+          "name": "cylinder",
+          "line": 130,
+          "end_line": 134,
+          "classification": "GENERICIZE",
+          "migration_map": "docs/extraction_audit.md#complete-named-python-function-map"
+        }
+      ],
+      "anonymous_python_lambdas": [
+        {
+          "line": 81,
+          "classification": "PROJECT_DATA predicate",
+          "migration_map": "docs/extraction_audit.md"
+        },
+        {
+          "line": 86,
+          "classification": "PROJECT_DATA predicate",
+          "migration_map": "docs/extraction_audit.md"
+        },
+        {
+          "line": 87,
+          "classification": "PROJECT_DATA predicate",
+          "migration_map": "docs/extraction_audit.md"
+        },
+        {
+          "line": 92,
+          "classification": "PROJECT_DATA predicate",
+          "migration_map": "docs/extraction_audit.md"
+        },
+        {
+          "line": 94,
+          "classification": "PROJECT_DATA predicate",
+          "migration_map": "docs/extraction_audit.md"
+        }
+      ]
+    },
+    {
+      "script": "build_surfaces.py",
+      "classification": "GENERICIZE",
+      "sha256": "25c8e0e5fd4f5732608db66142c5a95554a2f3b8b2112f8e3fa0c2d15700e934",
+      "functions": [
+        {
+          "name": "p",
+          "line": 14,
+          "end_line": 14,
+          "classification": "GENERICIZE",
+          "migration_map": "docs/extraction_audit.md#complete-named-python-function-map"
+        },
+        {
+          "name": "cubic",
+          "line": 27,
+          "end_line": 27,
+          "classification": "GENERIC",
+          "migration_map": "docs/extraction_audit.md#complete-named-python-function-map"
+        },
+        {
+          "name": "at_x",
+          "line": 28,
+          "end_line": 40,
+          "classification": "GENERICIZE",
+          "migration_map": "docs/extraction_audit.md#complete-named-python-function-map"
+        },
+        {
+          "name": "rail",
+          "line": 41,
+          "end_line": 41,
+          "classification": "GENERICIZE",
+          "migration_map": "docs/extraction_audit.md#complete-named-python-function-map"
+        },
+        {
+          "name": "authored",
+          "line": 43,
+          "end_line": 59,
+          "classification": "GENERIC",
+          "migration_map": "docs/extraction_audit.md#complete-named-python-function-map"
+        },
+        {
+          "name": "authored.sample",
+          "line": 53,
+          "end_line": 58,
+          "classification": "GENERIC",
+          "migration_map": "docs/extraction_audit.md#complete-named-python-function-map"
+        },
+        {
+          "name": "coons",
+          "line": 61,
+          "end_line": 66,
+          "classification": "GENERIC",
+          "migration_map": "docs/extraction_audit.md#complete-named-python-function-map"
+        },
+        {
+          "name": "coons.sample",
+          "line": 64,
+          "end_line": 65,
+          "classification": "GENERIC",
+          "migration_map": "docs/extraction_audit.md#complete-named-python-function-map"
+        },
+        {
+          "name": "finish",
+          "line": 68,
+          "end_line": 78,
+          "classification": "GENERICIZE",
+          "migration_map": "docs/extraction_audit.md#complete-named-python-function-map"
+        },
+        {
+          "name": "grid",
+          "line": 80,
+          "end_line": 95,
+          "classification": "GENERICIZE",
+          "migration_map": "docs/extraction_audit.md#complete-named-python-function-map"
+        },
+        {
+          "name": "grid.params",
+          "line": 82,
+          "end_line": 82,
+          "classification": "GENERICIZE",
+          "migration_map": "docs/extraction_audit.md#complete-named-python-function-map"
+        },
+        {
+          "name": "indexed",
+          "line": 132,
+          "end_line": 147,
+          "classification": "GENERICIZE",
+          "migration_map": "docs/extraction_audit.md#complete-named-python-function-map"
+        },
+        {
+          "name": "indexed.sample",
+          "line": 144,
+          "end_line": 146,
+          "classification": "GENERICIZE",
+          "migration_map": "docs/extraction_audit.md#complete-named-python-function-map"
+        },
+        {
+          "name": "rolled",
+          "line": 154,
+          "end_line": 164,
+          "classification": "GENERICIZE",
+          "migration_map": "docs/extraction_audit.md#complete-named-python-function-map"
+        }
+      ],
+      "anonymous_python_lambdas": [
+        {
+          "line": 41,
+          "classification": "GENERICIZE callback",
+          "migration_map": "docs/extraction_audit.md"
+        },
+        {
+          "line": 63,
+          "classification": "GENERICIZE callback",
+          "migration_map": "docs/extraction_audit.md"
+        },
+        {
+          "line": 63,
+          "classification": "GENERICIZE callback",
+          "migration_map": "docs/extraction_audit.md"
+        },
+        {
+          "line": 166,
+          "classification": "GENERICIZE callback",
+          "migration_map": "docs/extraction_audit.md"
+        },
+        {
+          "line": 216,
+          "classification": "GENERICIZE callback",
+          "migration_map": "docs/extraction_audit.md"
+        }
+      ]
+    },
+    {
+      "script": "build_viewer.py",
+      "classification": "GENERICIZE",
+      "sha256": "0a256628404afc337799efb19e4a72bfb6fcd6ca8544c594c4c25466249b21f9",
+      "functions": [],
+      "anonymous_python_lambdas": []
+    },
+    {
+      "script": "export_glb.py",
+      "classification": "GENERICIZE",
+      "sha256": "e08bb165510a70b2d500c413f180995a9cfdb47140af8b449a67d1cc998cb8cb",
+      "functions": [],
+      "anonymous_python_lambdas": []
+    },
+    {
+      "script": "finalize_delivery.py",
+      "classification": "GENERICIZE",
+      "sha256": "997a64d16455de32c426c69346843e3c252a4e10140cb0fb670656efac11bb6d",
+      "functions": [
+        {
+          "name": "read",
+          "line": 5,
+          "end_line": 5,
+          "classification": "GENERICIZE",
+          "migration_map": "docs/extraction_audit.md#complete-named-python-function-map"
+        },
+        {
+          "name": "digest",
+          "line": 6,
+          "end_line": 6,
+          "classification": "GENERICIZE",
+          "migration_map": "docs/extraction_audit.md#complete-named-python-function-map"
+        },
+        {
+          "name": "write",
+          "line": 7,
+          "end_line": 7,
+          "classification": "GENERICIZE",
+          "migration_map": "docs/extraction_audit.md#complete-named-python-function-map"
+        }
+      ],
+      "anonymous_python_lambdas": [
+        {
+          "line": 130,
+          "classification": "GENERICIZE callback",
+          "migration_map": "docs/extraction_audit.md"
+        }
+      ]
+    },
+    {
+      "script": "finalize_scene.py",
+      "classification": "GENERICIZE",
+      "sha256": "1c08b76f45fb58acdaf0b1fd134bc701a10ed94b809403678c95f5793fa6b0dd",
+      "functions": [],
+      "anonymous_python_lambdas": []
+    },
+    {
+      "script": "fit_lamp_returns.py",
+      "classification": "GENERICIZE",
+      "sha256": "ec8b7f2fb66389e3d841abc8e2e2521a094675da514bd497ff935b386cee6cc9",
+      "functions": [],
+      "anonymous_python_lambdas": []
+    },
+    {
+      "script": "inspect_surface.py",
+      "classification": "GENERIC",
+      "sha256": "5ab2ebbd3a05adaaaed5734163599b9dbce5822ab39dfb6eb0e5ca3ba9df6979",
+      "functions": [],
+      "anonymous_python_lambdas": []
+    },
+    {
+      "script": "presentation.py",
+      "classification": "GENERICIZE",
+      "sha256": "aefb9d25184645e2233348a2efaa998b5e2030a17078fb2a973ef11429bfea08",
+      "functions": [],
+      "anonymous_python_lambdas": []
+    },
+    {
+      "script": "project.py",
+      "classification": "GENERICIZE",
+      "sha256": "ff1000b4a7e0da824b5e7348d2dd5830565f36466cd7568c1a3ae9ac39464bb5",
+      "functions": [
+        {
+          "name": "sx",
+          "line": 11,
+          "end_line": 11,
+          "classification": "GENERICIZE",
+          "migration_map": "docs/extraction_audit.md#complete-named-python-function-map"
+        },
+        {
+          "name": "sz",
+          "line": 12,
+          "end_line": 12,
+          "classification": "GENERICIZE",
+          "migration_map": "docs/extraction_audit.md#complete-named-python-function-map"
+        },
+        {
+          "name": "ty",
+          "line": 13,
+          "end_line": 13,
+          "classification": "GENERICIZE",
+          "migration_map": "docs/extraction_audit.md#complete-named-python-function-map"
+        },
+        {
+          "name": "tx",
+          "line": 14,
+          "end_line": 14,
+          "classification": "GENERICIZE",
+          "migration_map": "docs/extraction_audit.md#complete-named-python-function-map"
+        },
+        {
+          "name": "coll",
+          "line": 15,
+          "end_line": 15,
+          "classification": "GENERIC",
+          "migration_map": "docs/extraction_audit.md#complete-named-python-function-map"
+        },
+        {
+          "name": "move",
+          "line": 16,
+          "end_line": 19,
+          "classification": "GENERIC",
+          "migration_map": "docs/extraction_audit.md#complete-named-python-function-map"
+        },
+        {
+          "name": "aim",
+          "line": 20,
+          "end_line": 20,
+          "classification": "GENERIC",
+          "migration_map": "docs/extraction_audit.md#complete-named-python-function-map"
+        },
+        {
+          "name": "camera",
+          "line": 21,
+          "end_line": 27,
+          "classification": "GENERICIZE",
+          "migration_map": "docs/extraction_audit.md#complete-named-python-function-map"
+        },
+        {
+          "name": "mat",
+          "line": 28,
+          "end_line": 34,
+          "classification": "GENERIC",
+          "migration_map": "docs/extraction_audit.md#complete-named-python-function-map"
+        },
+        {
+          "name": "emissive",
+          "line": 35,
+          "end_line": 38,
+          "classification": "GENERIC",
+          "migration_map": "docs/extraction_audit.md#complete-named-python-function-map"
+        },
+        {
+          "name": "curve",
+          "line": 39,
+          "end_line": 46,
+          "classification": "GENERIC",
+          "migration_map": "docs/extraction_audit.md#complete-named-python-function-map"
+        },
+        {
+          "name": "mesh",
+          "line": 47,
+          "end_line": 52,
+          "classification": "GENERIC",
+          "migration_map": "docs/extraction_audit.md#complete-named-python-function-map"
+        },
+        {
+          "name": "save",
+          "line": 53,
+          "end_line": 55,
+          "classification": "GENERICIZE",
+          "migration_map": "docs/extraction_audit.md#complete-named-python-function-map"
+        },
+        {
+          "name": "render",
+          "line": 56,
+          "end_line": 59,
+          "classification": "GENERICIZE",
+          "migration_map": "docs/extraction_audit.md#complete-named-python-function-map"
+        }
+      ],
+      "anonymous_python_lambdas": []
+    },
+    {
+      "script": "record_surface_review.py",
+      "classification": "GENERICIZE",
+      "sha256": "fde5ecae9f8e2b73897d39849cbcfc65a6feee0f3b0e75eea6e271151f65479b",
+      "functions": [],
+      "anonymous_python_lambdas": []
+    },
+    {
+      "script": "refine_final.py",
+      "classification": "OBSOLETE",
+      "sha256": "b4f010ebd0fc5da8c64af2ae949f4b837de4407b5f1b53f96bfa76691c5e1168",
+      "functions": [
+        {
+          "name": "authored",
+          "line": 20,
+          "end_line": 31,
+          "classification": "OBSOLETE",
+          "migration_map": "docs/extraction_audit.md#complete-named-python-function-map"
+        },
+        {
+          "name": "authored.sample",
+          "line": 26,
+          "end_line": 30,
+          "classification": "OBSOLETE",
+          "migration_map": "docs/extraction_audit.md#complete-named-python-function-map"
+        },
+        {
+          "name": "p",
+          "line": 32,
+          "end_line": 32,
+          "classification": "OBSOLETE",
+          "migration_map": "docs/extraction_audit.md#complete-named-python-function-map"
+        },
+        {
+          "name": "cage_x",
+          "line": 48,
+          "end_line": 58,
+          "classification": "OBSOLETE",
+          "migration_map": "docs/extraction_audit.md#complete-named-python-function-map"
+        }
+      ],
+      "anonymous_python_lambdas": []
+    },
+    {
+      "script": "render_matcap.py",
+      "classification": "GENERIC",
+      "sha256": "60514ec443520c8718f97966d6e99383e26e9a252e3c83650e54390afc459f7e",
+      "functions": [],
+      "anonymous_python_lambdas": []
+    },
+    {
+      "script": "render_validation.py",
+      "classification": "GENERIC",
+      "sha256": "0859e36973cdba106851525daff3f0d5affdb3dd9682b612bacd7b122c098597",
+      "functions": [],
+      "anonymous_python_lambdas": []
+    },
+    {
+      "script": "setup_reference.py",
+      "classification": "GENERICIZE",
+      "sha256": "ee71fb90660a97437a523f3eed029f7a3c112e1a9371b21d3a6879e139719d52",
+      "functions": [],
+      "anonymous_python_lambdas": [
+        {
+          "line": 36,
+          "classification": "GENERICIZE callback",
+          "migration_map": "docs/extraction_audit.md"
+        }
+      ]
+    },
+    {
+      "script": "test_viewer.mjs",
+      "classification": "TEST/REGRESSION",
+      "sha256": "dac429e1f3838dc499bd24d0ea0536d9a9086a0998dba257212cefeb63e1743c",
+      "functions": [],
+      "anonymous_python_lambdas": []
+    },
+    {
+      "script": "validate_silhouette.py",
+      "classification": "GENERICIZE",
+      "sha256": "00afbef5dc9a9fa1b165ce32950ed97b4e20f843610369ae5b5ed7bd8c962864",
+      "functions": [
+        {
+          "name": "polygon_mask",
+          "line": 30,
+          "end_line": 35,
+          "classification": "GENERIC",
+          "migration_map": "docs/extraction_audit.md#complete-named-python-function-map"
+        },
+        {
+          "name": "image_save",
+          "line": 36,
+          "end_line": 40,
+          "classification": "GENERIC",
+          "migration_map": "docs/extraction_audit.md#complete-named-python-function-map"
+        },
+        {
+          "name": "bbox",
+          "line": 41,
+          "end_line": 43,
+          "classification": "GENERIC",
+          "migration_map": "docs/extraction_audit.md#complete-named-python-function-map"
+        },
+        {
+          "name": "world",
+          "line": 50,
+          "end_line": 54,
+          "classification": "GENERICIZE",
+          "migration_map": "docs/extraction_audit.md#complete-named-python-function-map"
+        },
+        {
+          "name": "project",
+          "line": 55,
+          "end_line": 57,
+          "classification": "GENERICIZE",
+          "migration_map": "docs/extraction_audit.md#complete-named-python-function-map"
+        }
+      ],
+      "anonymous_python_lambdas": []
+    },
+    {
+      "script": "verify_glb.py",
+      "classification": "GENERICIZE",
+      "sha256": "9153b43ff93323c24bd4da47a151c8867505d55cb5623148fdc335c34e5f2dd4",
+      "functions": [
+        {
+          "name": "mul",
+          "line": 14,
+          "end_line": 14,
+          "classification": "GENERIC",
+          "migration_map": "docs/extraction_audit.md#complete-named-python-function-map"
+        },
+        {
+          "name": "local",
+          "line": 15,
+          "end_line": 18,
+          "classification": "GENERIC",
+          "migration_map": "docs/extraction_audit.md#complete-named-python-function-map"
+        },
+        {
+          "name": "points",
+          "line": 19,
+          "end_line": 22,
+          "classification": "GENERICIZE",
+          "migration_map": "docs/extraction_audit.md#complete-named-python-function-map"
+        },
+        {
+          "name": "walk",
+          "line": 24,
+          "end_line": 35,
+          "classification": "GENERICIZE",
+          "migration_map": "docs/extraction_audit.md#complete-named-python-function-map"
+        }
+      ],
+      "anonymous_python_lambdas": []
+    }
+  ]
+}

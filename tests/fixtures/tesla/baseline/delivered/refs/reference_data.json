@@ -1,0 +1,28 @@
+{
+  "source": "reference_multiview.png",
+  "source_size": [1536, 1152],
+  "scale": {
+    "length_m": 4.8,
+    "width_m": 1.8823529411764706,
+    "height_m": 1.5257844474761255,
+    "wheelbase_m": 3.077762619372442,
+    "wheel_radius_m": 0.40600272851296043,
+    "front_track_m": 1.61,
+    "rear_track_m": 1.64,
+    "absolute_scale_status": "Assumed length 4.8m; all other envelope values derived from image ratios. Not OEM measurements."
+  },
+  "views": {
+    "side": {"crop": [385, 495, 1140, 748], "body_bbox": [395, 508, 1128, 741], "front_wheel": [520, 679], "rear_wheel": [990, 681], "wheel_radii_px": [64, 60]},
+    "front": {"crop": [15, 495, 363, 749], "body_bbox": [25, 508, 353, 741], "centerline_u": 189, "ground_v": 741, "roof_v": 508, "track_centers_u": [49, 329]},
+    "rear": {"crop": [1174, 495, 1526, 749], "body_bbox": [1185, 508, 1517, 741], "centerline_u": 1351, "ground_v": 741, "roof_v": 508, "track_centers_u": [1207, 1495]},
+    "top": {"crop": [390, 780, 1130, 1083], "body_bbox": [403, 792, 1117, 1072], "centerline_v": 932}
+  },
+  "uncertainty": {
+    "landmark_px": 3,
+    "side_tire_size_difference_percent": 6.45,
+    "front_width_height_ratio": 1.407725322,
+    "side_top_reconciled_width_height_ratio": 1.233679,
+    "front_horizontal_rectification_factor": 0.8763,
+    "policy": "Preserve side longitudinal/vertical ratios and top width/length ratio. Rectify each end view width to the same body envelope; retain original images and document anisotropic correction. Mirrors excluded from body width. Do not claim original sheet is an exact engineering drawing."
+  }
+}

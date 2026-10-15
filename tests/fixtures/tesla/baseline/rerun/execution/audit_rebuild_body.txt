@@ -1,0 +1,168 @@
+00:01.125  blend            | Read blend: "F:\T\.preview\vehiclerecon-baseline-run\tesla_surface_model.blend"
+blender.exe : F:\T\.preview\vehiclerecon-baseline-run\scripts\setup_reference.py:39: DeprecationWarning: 'Material.use_
+nodes' is expected to be removed in Blender 6.0
+строка:28 знак:1
++ & 'C:\Program Files\Blender Foundation\Blender 5.2\blender.exe' --bac ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (F:\T\.preview\v... in Blender 6.0:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+  m=bpy.data.materials.new('MAT_REFERENCE_'+view); m.use_nodes=True
+00:03.297  render           | Saved: 'F:\T\.preview\vehiclerecon-baseline-run\validation\alignment_side.png'
+00:04.672  render           | Saved: 'F:\T\.preview\vehiclerecon-baseline-run\validation\alignment_top.png'
+00:05.843  render           | Saved: 'F:\T\.preview\vehiclerecon-baseline-run\validation\alignment_front.png'
+00:07.000  render           | Saved: 'F:\T\.preview\vehiclerecon-baseline-run\validation\alignment_rear.png'
+00:07.547  image.write      | ERROR OpenImageIO write failed: Could not open file "C:\Users\sol\.thumbnails\large\blender_26484_f583da740455139d45f5513a980b8cc5.png.png"
+Info: Saved as "tesla_surface_model.blend"
+REFERENCE_SETUP_FINISHED: 5 images decoded, 4 packed calibrated planes, 4 camera alignment renders
+00:07.593  image.write      | ERROR OpenImageIO write failed: Could not open file "C:\Users\sol\.thumbnails\large\blender_26484_f583da740455139d45f5513a980b8cc5.png.png"
+00:09.422  render           | Saved: 'F:\T\.preview\vehiclerecon-baseline-run\validation\cage_side.png'
+00:11.203  render           | Saved: 'F:\T\.preview\vehiclerecon-baseline-run\validation\cage_overlay_side.png'
+00:13.187  render           | Saved: 'F:\T\.preview\vehiclerecon-baseline-run\validation\cage_top.png'
+00:15.109  render           | Saved: 'F:\T\.preview\vehiclerecon-baseline-run\validation\cage_overlay_top.png'
+00:16.500  render           | Saved: 'F:\T\.preview\vehiclerecon-baseline-run\validation\cage_front.png'
+00:17.937  render           | Saved: 'F:\T\.preview\vehiclerecon-baseline-run\validation\cage_overlay_front.png'
+00:19.312  render           | Saved: 'F:\T\.preview\vehiclerecon-baseline-run\validation\cage_rear.png'
+00:20.672  render           | Saved: 'F:\T\.preview\vehiclerecon-baseline-run\validation\cage_overlay_rear.png'
+00:23.187  render           | Saved: 'F:\T\.preview\vehiclerecon-baseline-run\validation\cage_perspective.png'
+00:23.218  image.write      | ERROR OpenImageIO write failed: Could not open file "C:\Users\sol\.thumbnails\large\blender_26484_f583da740455139d45f5513a980b8cc5.png.png"
+Info: Saved as "tesla_surface_model.blend"
+Info: Saved as "tesla_surface_model.blend"
+CAGE_CREATED 53 semantic curves; existing body retained
+00:23.468  image.write      | ERROR OpenImageIO write failed: Could not open file "C:\Users\sol\.thumbnails\large\blender_26484_f583da740455139d45f5513a980b8cc5.png.png"
+00:26.718  render           | Saved: 'F:\T\.preview\vehiclerecon-baseline-run\validation\side.png'
+00:31.422  render           | Saved: 'F:\T\.preview\vehiclerecon-baseline-run\validation\top.png'
+00:33.718  render           | Saved: 'F:\T\.preview\vehiclerecon-baseline-run\validation\front.png'
+00:36.000  render           | Saved: 'F:\T\.preview\vehiclerecon-baseline-run\validation\rear.png'
+00:40.812  render           | Saved: 'F:\T\.preview\vehiclerecon-baseline-run\validation\perspective.png'
+Info: Saved as "tesla_surface_model.blend"
+PATCH_BLOCKOUT_CREATED: validation required before details or export
+F:\T\.preview\vehiclerecon-baseline-run\scripts\validate_silhouette.py:25: DeprecationWarning: 'World.use_nodes' is exp
+ected to be removed in Blender 6.0
+  white=bpy.data.worlds.new('MASK_WORLD'); white.use_nodes=True
+00:43.140  render           | Saved: 'F:\T\.preview\vehiclerecon-baseline-run\validation\masks\model_side.png'
+00:45.343  render           | Saved: 'F:\T\.preview\vehiclerecon-baseline-run\validation\masks\model_top.png'
+00:47.078  render           | Saved: 'F:\T\.preview\vehiclerecon-baseline-run\validation\masks\model_front.png'
+00:48.906  render           | Saved: 'F:\T\.preview\vehiclerecon-baseline-run\validation\masks\model_rear.png'
+{
+  "side": {
+    "status": "PASS",
+    "iou": 0.956557,
+    "threshold": 0.94,
+    "pixel_mismatch_percent_of_frame": 1.5829,
+    "pixel_mismatch_percent_of_union": 4.3443,
+    "reference_bbox_px": [
+      76,
+      114,
+      1124,
+      449
+    ],
+    "model_bbox_px": [
+      77,
+      114,
+      1125,
+      446
+    ],
+    "bbox_difference_px": [
+      1,
+      0,
+      1,
+      -3
+    ],
+    "render_size": [
+      1200,
+      560
+    ]
+  },
+  "top": {
+    "status": "PASS",
+    "iou": 0.935656,
+    "threshold": 0.92,
+    "pixel_mismatch_percent_of_frame": 3.6942,
+    "pixel_mismatch_percent_of_union": 6.4344,
+    "reference_bbox_px": [
+      76,
+      84,
+      1124,
+      517
+    ],
+    "model_bbox_px": [
+      77,
+      95,
+      1125,
+      505
+    ],
+    "bbox_difference_px": [
+      1,
+      11,
+      1,
+      -12
+    ],
+    "render_size": [
+      1200,
+      600
+    ]
+  },
+  "front": {
+    "status": "PASS",
+    "iou": 0.932623,
+    "threshold": 0.92,
+    "pixel_mismatch_percent_of_frame": 1.5947,
+    "pixel_mismatch_percent_of_union": 6.7377,
+    "reference_bbox_px": [
+      191,
+      150,
+      609,
+      490
+    ],
+    "model_bbox_px": [
+      191,
+      151,
+      609,
+      490
+    ],
+    "bbox_difference_px": [
+      0,
+      1,
+      0,
+      0
+    ],
+    "render_size": [
+      800,
+      640
+    ]
+  },
+  "rear": {
+    "status": "PASS",
+    "iou": 0.946921,
+    "threshold": 0.9,
+    "pixel_mismatch_percent_of_frame": 1.2463,
+    "pixel_mismatch_percent_of_union": 5.3079,
+    "reference_bbox_px": [
+      191,
+      150,
+      609,
+      490
+    ],
+    "model_bbox_px": [
+      191,
+      151,
+      609,
+      490
+    ],
+    "bbox_difference_px": [
+      0,
+      1,
+      0,
+      0
+    ],
+    "render_size": [
+      800,
+      640
+    ]
+  }
+}
+SILHOUETTE_GATE True SURFACE_GATE False
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit

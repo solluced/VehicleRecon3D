@@ -1,0 +1,7 @@
+00:00.516  blend            | Read blend: "F:\T\tesla_surface_model.blend"
+00:00.641  blend            | Read blend: "F:\T\.preview\vehiclerecon-baseline-run\tesla_surface_model.blend"
+SCENE_INVENTORY delivered 262 objects
+SCENE_INVENTORY rerun 262 objects
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit

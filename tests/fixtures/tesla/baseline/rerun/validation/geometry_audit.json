@@ -1,0 +1,586 @@
+{
+  "status": "geometry_checks_pass",
+  "finite_and_nonzero_faces": true,
+  "surface_control_mesh": {
+    "vertices": 4563,
+    "faces": 3693,
+    "quads": 3686,
+    "quad_percent": 99.81045220687788
+  },
+  "evaluated_envelope_excludes_mirrors_wheels_display_overlays": {
+    "min": [
+      -2.399505376815796,
+      -0.9409999847412109,
+      0.14306223392486572
+    ],
+    "max": [
+      2.4078965187072754,
+      0.9409999847412109,
+      1.5239678621292114
+    ],
+    "size": [
+      4.807401657104492,
+      1.8819999694824219,
+      1.3809056282043457
+    ]
+  },
+  "wheel_root_centers_m": {
+    "WHEEL_FL": [
+      -1.5814461708068848,
+      -0.8050000071525574,
+      0.4059999883174896
+    ],
+    "WHEEL_FR": [
+      -1.5814461708068848,
+      0.8050000071525574,
+      0.4059999883174896
+    ],
+    "WHEEL_RL": [
+      1.4963165521621704,
+      -0.8199999928474426,
+      0.4059999883174896
+    ],
+    "WHEEL_RR": [
+      1.4963165521621704,
+      0.8199999928474426,
+      0.4059999883174896
+    ]
+  },
+  "wheelbase_m": 3.077762722969055,
+  "cleaned_corner_vertices": [
+    {
+      "object": "COWL_TRANSITION",
+      "before": [
+        70,
+        52
+      ],
+      "after": [
+        66,
+        52
+      ]
+    },
+    {
+      "object": "FRAME_BACK_GLASS_REAR_SIDE",
+      "before": [
+        45,
+        32
+      ],
+      "after": [
+        40,
+        32
+      ]
+    }
+  ],
+  "objects": [
+    {
+      "name": "COWL_TRANSITION",
+      "vertices": 66,
+      "faces": 52,
+      "quads": 48,
+      "finite": true,
+      "zero_area_faces": 0,
+      "modifiers": [
+        "MIRROR",
+        "SUBSURF",
+        "SOLIDIFY"
+      ]
+    },
+    {
+      "name": "NOSE_HOOD_BRIDGE",
+      "vertices": 98,
+      "faces": 78,
+      "quads": 78,
+      "finite": true,
+      "zero_area_faces": 0,
+      "modifiers": [
+        "MIRROR",
+        "SUBSURF",
+        "SOLIDIFY"
+      ]
+    },
+    {
+      "name": "NOSE_CHEEK",
+      "vertices": 72,
+      "faces": 44,
+      "quads": 44,
+      "finite": true,
+      "zero_area_faces": 0,
+      "modifiers": [
+        "MIRROR",
+        "SUBSURF",
+        "SOLIDIFY"
+      ]
+    },
+    {
+      "name": "BUMPER_FRONT",
+      "vertices": 153,
+      "faces": 112,
+      "quads": 112,
+      "finite": true,
+      "zero_area_faces": 0,
+      "modifiers": [
+        "MIRROR",
+        "SUBSURF",
+        "SOLIDIFY"
+      ]
+    },
+    {
+      "name": "LIP_FRONT",
+      "vertices": 96,
+      "faces": 75,
+      "quads": 75,
+      "finite": true,
+      "zero_area_faces": 0,
+      "modifiers": [
+        "MIRROR",
+        "SUBSURF",
+        "SOLIDIFY"
+      ]
+    },
+    {
+      "name": "FENDER_FRONT",
+      "vertices": 313,
+      "faces": 272,
+      "quads": 272,
+      "finite": true,
+      "zero_area_faces": 0,
+      "modifiers": [
+        "MIRROR",
+        "SUBSURF",
+        "SOLIDIFY"
+      ]
+    },
+    {
+      "name": "ARCH_RETURN_FRONT",
+      "vertices": 135,
+      "faces": 104,
+      "quads": 104,
+      "finite": true,
+      "zero_area_faces": 0,
+      "modifiers": [
+        "MIRROR",
+        "SUBSURF",
+        "SOLIDIFY"
+      ]
+    },
+    {
+      "name": "FENDER_REAR",
+      "vertices": 297,
+      "faces": 260,
+      "quads": 260,
+      "finite": true,
+      "zero_area_faces": 0,
+      "modifiers": [
+        "MIRROR",
+        "SUBSURF",
+        "SOLIDIFY"
+      ]
+    },
+    {
+      "name": "ARCH_RETURN_REAR",
+      "vertices": 135,
+      "faces": 104,
+      "quads": 104,
+      "finite": true,
+      "zero_area_faces": 0,
+      "modifiers": [
+        "MIRROR",
+        "SUBSURF",
+        "SOLIDIFY"
+      ]
+    },
+    {
+      "name": "BELTLINE_LEDGE",
+      "vertices": 138,
+      "faces": 110,
+      "quads": 110,
+      "finite": true,
+      "zero_area_faces": 0,
+      "modifiers": [
+        "MIRROR",
+        "SUBSURF",
+        "SOLIDIFY"
+      ]
+    },
+    {
+      "name": "FRAME_TOP_GLASS_FRONT",
+      "vertices": 75,
+      "faces": 56,
+      "quads": 56,
+      "finite": true,
+      "zero_area_faces": 0,
+      "modifiers": [
+        "MIRROR",
+        "SUBSURF",
+        "SOLIDIFY"
+      ]
+    },
+    {
+      "name": "FRAME_BOTTOM_GLASS_FRONT",
+      "vertices": 75,
+      "faces": 56,
+      "quads": 56,
+      "finite": true,
+      "zero_area_faces": 0,
+      "modifiers": [
+        "MIRROR",
+        "SUBSURF",
+        "SOLIDIFY"
+      ]
+    },
+    {
+      "name": "FRAME_FRONT_GLASS_FRONT",
+      "vertices": 45,
+      "faces": 32,
+      "quads": 32,
+      "finite": true,
+      "zero_area_faces": 0,
+      "modifiers": [
+        "MIRROR",
+        "SUBSURF",
+        "SOLIDIFY"
+      ]
+    },
+    {
+      "name": "FRAME_TOP_GLASS_REAR_SIDE",
+      "vertices": 75,
+      "faces": 56,
+      "quads": 56,
+      "finite": true,
+      "zero_area_faces": 0,
+      "modifiers": [
+        "MIRROR",
+        "SUBSURF",
+        "SOLIDIFY"
+      ]
+    },
+    {
+      "name": "FRAME_BOTTOM_GLASS_REAR_SIDE",
+      "vertices": 75,
+      "faces": 56,
+      "quads": 56,
+      "finite": true,
+      "zero_area_faces": 0,
+      "modifiers": [
+        "MIRROR",
+        "SUBSURF",
+        "SOLIDIFY"
+      ]
+    },
+    {
+      "name": "FRAME_BACK_GLASS_REAR_SIDE",
+      "vertices": 40,
+      "faces": 32,
+      "quads": 29,
+      "finite": true,
+      "zero_area_faces": 0,
+      "modifiers": [
+        "MIRROR",
+        "SUBSURF",
+        "SOLIDIFY"
+      ]
+    },
+    {
+      "name": "ROOF_RAIL",
+      "vertices": 135,
+      "faces": 104,
+      "quads": 104,
+      "finite": true,
+      "zero_area_faces": 0,
+      "modifiers": [
+        "MIRROR",
+        "SUBSURF",
+        "SOLIDIFY"
+      ]
+    },
+    {
+      "name": "PILLAR_C_QUARTER",
+      "vertices": 136,
+      "faces": 112,
+      "quads": 112,
+      "finite": true,
+      "zero_area_faces": 0,
+      "modifiers": [
+        "MIRROR",
+        "SUBSURF",
+        "SOLIDIFY"
+      ]
+    },
+    {
+      "name": "BUMPER_REAR",
+      "vertices": 104,
+      "faces": 79,
+      "quads": 79,
+      "finite": true,
+      "zero_area_faces": 0,
+      "modifiers": [
+        "MIRROR",
+        "SUBSURF",
+        "SOLIDIFY"
+      ]
+    },
+    {
+      "name": "ROCKER",
+      "vertices": 138,
+      "faces": 110,
+      "quads": 110,
+      "finite": true,
+      "zero_area_faces": 0,
+      "modifiers": [
+        "MIRROR",
+        "SUBSURF",
+        "SOLIDIFY"
+      ]
+    },
+    {
+      "name": "PILLAR_B",
+      "vertices": 4,
+      "faces": 1,
+      "quads": 1,
+      "finite": true,
+      "zero_area_faces": 0,
+      "modifiers": [
+        "MIRROR",
+        "SOLIDIFY",
+        "BEVEL"
+      ]
+    },
+    {
+      "name": "PILLAR_A_FOOT",
+      "vertices": 49,
+      "faces": 36,
+      "quads": 36,
+      "finite": true,
+      "zero_area_faces": 0,
+      "modifiers": [
+        "MIRROR",
+        "SUBSURF",
+        "SOLIDIFY"
+      ]
+    },
+    {
+      "name": "HOOD",
+      "vertices": 153,
+      "faces": 128,
+      "quads": 128,
+      "finite": true,
+      "zero_area_faces": 0,
+      "modifiers": [
+        "MIRROR",
+        "SUBSURF",
+        "SOLIDIFY"
+      ]
+    },
+    {
+      "name": "DOOR_FR",
+      "vertices": 180,
+      "faces": 154,
+      "quads": 154,
+      "finite": true,
+      "zero_area_faces": 0,
+      "modifiers": [
+        "SUBSURF",
+        "SOLIDIFY"
+      ]
+    },
+    {
+      "name": "DOOR_RR",
+      "vertices": 180,
+      "faces": 154,
+      "quads": 154,
+      "finite": true,
+      "zero_area_faces": 0,
+      "modifiers": [
+        "SUBSURF",
+        "SOLIDIFY"
+      ]
+    },
+    {
+      "name": "REAR_HATCH_TOP",
+      "vertices": 98,
+      "faces": 78,
+      "quads": 78,
+      "finite": true,
+      "zero_area_faces": 0,
+      "modifiers": [
+        "MIRROR",
+        "SUBSURF",
+        "SOLIDIFY"
+      ]
+    },
+    {
+      "name": "REAR_HATCH",
+      "vertices": 176,
+      "faces": 136,
+      "quads": 136,
+      "finite": true,
+      "zero_area_faces": 0,
+      "modifiers": [
+        "MIRROR",
+        "SUBSURF",
+        "SOLIDIFY"
+      ]
+    },
+    {
+      "name": "DOOR_FL",
+      "vertices": 180,
+      "faces": 154,
+      "quads": 154,
+      "finite": true,
+      "zero_area_faces": 0,
+      "modifiers": [
+        "SUBSURF",
+        "SOLIDIFY"
+      ]
+    },
+    {
+      "name": "DOOR_RL",
+      "vertices": 180,
+      "faces": 154,
+      "quads": 154,
+      "finite": true,
+      "zero_area_faces": 0,
+      "modifiers": [
+        "SUBSURF",
+        "SOLIDIFY"
+      ]
+    },
+    {
+      "name": "HANDLE_FL",
+      "vertices": 8,
+      "faces": 6,
+      "quads": 6,
+      "finite": true,
+      "zero_area_faces": 0,
+      "modifiers": [
+        "BEVEL",
+        "WEIGHTED_NORMAL"
+      ]
+    },
+    {
+      "name": "HANDLE_FR",
+      "vertices": 8,
+      "faces": 6,
+      "quads": 6,
+      "finite": true,
+      "zero_area_faces": 0,
+      "modifiers": [
+        "BEVEL",
+        "WEIGHTED_NORMAL"
+      ]
+    },
+    {
+      "name": "HANDLE_RL",
+      "vertices": 8,
+      "faces": 6,
+      "quads": 6,
+      "finite": true,
+      "zero_area_faces": 0,
+      "modifiers": [
+        "BEVEL",
+        "WEIGHTED_NORMAL"
+      ]
+    },
+    {
+      "name": "HANDLE_RR",
+      "vertices": 8,
+      "faces": 6,
+      "quads": 6,
+      "finite": true,
+      "zero_area_faces": 0,
+      "modifiers": [
+        "BEVEL",
+        "WEIGHTED_NORMAL"
+      ]
+    },
+    {
+      "name": "GLASS_WINDSHIELD",
+      "vertices": 150,
+      "faces": 126,
+      "quads": 126,
+      "finite": true,
+      "zero_area_faces": 0,
+      "modifiers": [
+        "MIRROR",
+        "SUBSURF",
+        "SOLIDIFY"
+      ]
+    },
+    {
+      "name": "GLASS_ROOF",
+      "vertices": 150,
+      "faces": 126,
+      "quads": 126,
+      "finite": true,
+      "zero_area_faces": 0,
+      "modifiers": [
+        "MIRROR",
+        "SUBSURF",
+        "SOLIDIFY"
+      ]
+    },
+    {
+      "name": "GLASS_REAR",
+      "vertices": 150,
+      "faces": 126,
+      "quads": 126,
+      "finite": true,
+      "zero_area_faces": 0,
+      "modifiers": [
+        "MIRROR",
+        "SUBSURF",
+        "SOLIDIFY"
+      ]
+    },
+    {
+      "name": "GLASS_FRONT_RIGHT",
+      "vertices": 120,
+      "faces": 98,
+      "quads": 98,
+      "finite": true,
+      "zero_area_faces": 0,
+      "modifiers": [
+        "SUBSURF",
+        "SOLIDIFY"
+      ]
+    },
+    {
+      "name": "GLASS_REAR_RIGHT",
+      "vertices": 120,
+      "faces": 98,
+      "quads": 98,
+      "finite": true,
+      "zero_area_faces": 0,
+      "modifiers": [
+        "SUBSURF",
+        "SOLIDIFY"
+      ]
+    },
+    {
+      "name": "GLASS_FRONT_LEFT",
+      "vertices": 120,
+      "faces": 98,
+      "quads": 98,
+      "finite": true,
+      "zero_area_faces": 0,
+      "modifiers": [
+        "SUBSURF",
+        "SOLIDIFY"
+      ]
+    },
+    {
+      "name": "GLASS_REAR_LEFT",
+      "vertices": 120,
+      "faces": 98,
+      "quads": 98,
+      "finite": true,
+      "zero_area_faces": 0,
+      "modifiers": [
+        "SUBSURF",
+        "SOLIDIFY"
+      ]
+    }
+  ],
+  "surface_quality_note": "Topology/finite-coordinate checks do not certify curvature continuity; inspect surface_reflections.png and surface-only renders.",
+  "wire_method": "Duplicate actual quad control-mesh edges, follow refined source surface, Wireframe modifier. No independent decorative grid."
+}

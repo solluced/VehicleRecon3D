@@ -1,0 +1,31 @@
+{
+  "status": "PASS",
+  "triangles": 245952,
+  "groups": {
+    "body": 78,
+    "wire": 24,
+    "glass": 9,
+    "wheels": 80
+  },
+  "interactions": {
+    "body": {
+      "before": 245952,
+      "after": 120832
+    },
+    "wire": {
+      "before": 245952,
+      "after": 162440
+    },
+    "glass": {
+      "before": 245952,
+      "after": 225768
+    },
+    "wheels": {
+      "before": 245952,
+      "after": 228816
+    },
+    "orbit": -1.3131512809621944,
+    "wheelZoom": 1.1972173631218102,
+    "pinchZoom": 0.6153846153846154
+  }
+}

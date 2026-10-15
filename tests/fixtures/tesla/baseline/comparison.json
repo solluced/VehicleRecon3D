@@ -1,0 +1,110 @@
+{
+  "status": "PASS",
+  "scope": "Audit-cycle unchanged legacy pipeline rerun, NOT the future generic framework regression",
+  "source_archive_sha256": "156bd5ab0353a266e4362f282ecaac11cc7b243ae742f79eb95fd781a9aa808d",
+  "source_commit": "5dad4d9",
+  "environment": {
+    "blender": "5.2.2 LTS d13f752e3b9c",
+    "python_driver": "3.12",
+    "node": "24.18.0",
+    "browser": "Installed Microsoft Edge, isolated headless profile, localhost:9333",
+    "browser_retry": "Sandboxed browser exited before CDP Page.enable (Node exit 13); same unchanged test passed with approved execution outside sandbox."
+  },
+  "views": {
+    "side": {
+      "delivered_iou": 0.95723,
+      "rerun_iou": 0.95723,
+      "delta": 0.0,
+      "minimum": 0.94,
+      "pass": true,
+      "all_view_metrics_identical": true
+    },
+    "top": {
+      "delivered_iou": 0.936083,
+      "rerun_iou": 0.936083,
+      "delta": 0.0,
+      "minimum": 0.92,
+      "pass": true,
+      "all_view_metrics_identical": true
+    },
+    "front": {
+      "delivered_iou": 0.931202,
+      "rerun_iou": 0.931202,
+      "delta": 0.0,
+      "minimum": 0.92,
+      "pass": true,
+      "all_view_metrics_identical": true
+    },
+    "rear": {
+      "delivered_iou": 0.944724,
+      "rerun_iou": 0.944724,
+      "delta": 0.0,
+      "minimum": 0.9,
+      "pass": true,
+      "all_view_metrics_identical": true
+    }
+  },
+  "dimensions_identical": true,
+  "surface_topology_identical": true,
+  "body_envelope_identical": true,
+  "wheel_centers_identical": true,
+  "wheelbase_m": 3.077762722969055,
+  "object_count_delivered": 262,
+  "object_count_rerun": 262,
+  "object_ids_identical": true,
+  "collections_identical": true,
+  "all_control_mesh_and_curve_hashes_identical": true,
+  "scene_inventory_differences": [
+    {
+      "object": "STUDIO_GROUND",
+      "fields": [
+        "hide_render"
+      ]
+    }
+  ],
+  "difference_explanation": "Only STUDIO_GROUND.hide_render differs (delivered true, rerun false); this is a presentation object excluded from vehicle masks/export. No vehicle geometry, transforms, wheel positions or camera settings differ. Cleanup logs additionally report an already-cleaned frame on a fresh rebuild; resulting geometry hashes match.",
+  "geometry_audit": "geometry_checks_pass",
+  "glb_verify": "PASS",
+  "viewer": "PASS",
+  "exported_source_geometry_identical": true,
+  "viewer_exact_exported_glb": true,
+  "original_blend_sha256": "1c94cceac6a785576ee0c9ef014d5893051f3d5f84eef7ed4ea0ca8b796d86df",
+  "rerun_blend_sha256": "0b5f5ef72409d8fab56c5b7a718b52253d692016c9b022639bb421c2675cf243",
+  "original_glb_sha256": "a71194f68f59ae6ba0a297d5ac4bce02aec00a69b9416b65a02f281d17141887",
+  "rerun_glb_sha256": "aea942843a6016c862e0eaa0aa7411ba4006546e3aa29558d44c8709838824f5",
+  "byte_identity_required": false,
+  "production_code_modified": false,
+  "legacy_execution_exit_codes": {
+    "reference_cage_surface_masks": 0,
+    "details_refinement_presentation_audit_final_masks": 0,
+    "record_surface_review": 0,
+    "export_glb": 0,
+    "verify_glb": 0,
+    "build_viewer": 0,
+    "browser_qa_retry": 0,
+    "finalize_delivery": 0,
+    "read_only_scene_inventory": 0
+  },
+  "execution_log_normalization": [
+    {
+      "log": "audit_browser.txt",
+      "source_encoding": "utf-16"
+    },
+    {
+      "log": "audit_rebuild_body.txt",
+      "source_encoding": "utf-16"
+    },
+    {
+      "log": "audit_rebuild_details.txt",
+      "source_encoding": "utf-16"
+    },
+    {
+      "log": "audit_rebuild_export.txt",
+      "source_encoding": "utf-16"
+    },
+    {
+      "log": "audit_scene_inventory.txt",
+      "source_encoding": "utf-16"
+    }
+  ]
+}

@@ -1,0 +1,176 @@
+00:00.484  blend            | Read blend: "F:\T\.preview\vehiclerecon-baseline-run\tesla_surface_model.blend"
+00:01.031  image.write      | ERROR OpenImageIO write failed: Could not open file "C:\Users\sol\.thumbnails\large\blender_4852_f583da740455139d45f5513a980b8cc5.png.png"
+Info: Saved as "tesla_surface_model.blend"
+DETAIL_GEOMETRY_SAVED; final masks and reflection review still required
+00:01.063  image.write      | ERROR OpenImageIO write failed: Could not open file "C:\Users\sol\.thumbnails\large\blender_4852_f583da740455139d45f5513a980b8cc5.png.png"
+Info: Saved as "tesla_surface_model.blend"
+REVIEW_CORRECTIONS_APPLIED: cowl boundary continuous; brake discs behind spokes
+00:01.078  image.write      | ERROR OpenImageIO write failed: Could not open file "C:\Users\sol\.thumbnails\large\blender_4852_f583da740455139d45f5513a980b8cc5.png.png"
+Info: Saved as "tesla_surface_model.blend"
+REAR_LAMP_RETURNS_SEATED_ON_REFINED_HATCH
+00:01.125  image.write      | ERROR OpenImageIO write failed: Could not open file "C:\Users\sol\.thumbnails\large\blender_4852_f583da740455139d45f5513a980b8cc5.png.png"
+00:23.750  render           | Saved: 'F:\T\.preview\vehiclerecon-baseline-run\validation\perspective.png'
+00:45.563  render           | Saved: 'F:\T\.preview\vehiclerecon-baseline-run\validation\perspective_surface.png'
+Info: Saved as "tesla_surface_model.blend"
+PRESENTATION_SAVED: real topology overlay and surface-only renders
+00:45.688  image.write      | ERROR OpenImageIO write failed: Could not open file "C:\Users\sol\.thumbnails\large\blender_4852_f583da740455139d45f5513a980b8cc5.png.png"
+Info: Saved as "tesla_surface_model.blend"
+{
+  "status": "geometry_checks_pass",
+  "surface_control_mesh": {
+    "vertices": 4563,
+    "faces": 3693,
+    "quads": 3686,
+    "quad_percent": 99.81045220687788
+  },
+  "wheelbase_m": 3.077762722969055
+}
+blender.exe : F:\T\.preview\vehiclerecon-baseline-run\scripts\inspect_surface.py:12: DeprecationWarning: 'Material.use_
+nodes' is expected to be removed in Blender 6.0
+строка:6 знак:1
++ & 'C:\Program Files\Blender Foundation\Blender 5.2\blender.exe' --bac ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (F:\T\.preview\v... in Blender 6.0:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+  m=bpy.data.materials.new('MAT_REFLECTION_STRIPES'); m.use_nodes=True
+00:58.141  render           | Saved: 'F:\T\.preview\vehiclerecon-baseline-run\validation\surface_reflections.png'
+REFLECTION_INSPECTION_RENDERED; manual surface review required
+00:59.922  render           | Saved: 'F:\T\.preview\vehiclerecon-baseline-run\validation\surface_matcap.png'
+ACTUAL_WORKBENCH_REFLECTION_MATCAP_RENDERED
+01:04.859  render           | Saved: 'F:\T\.preview\vehiclerecon-baseline-run\validation\side.png'
+01:14.547  render           | Saved: 'F:\T\.preview\vehiclerecon-baseline-run\validation\top.png'
+01:17.516  render           | Saved: 'F:\T\.preview\vehiclerecon-baseline-run\validation\front.png'
+01:20.406  render           | Saved: 'F:\T\.preview\vehiclerecon-baseline-run\validation\rear.png'
+01:36.906  render           | Saved: 'F:\T\.preview\vehiclerecon-baseline-run\validation\perspective.png'
+01:36.922  image.write      | ERROR OpenImageIO write failed: Could not open file "C:\Users\sol\.thumbnails\large\blender_4852_f583da740455139d45f5513a980b8cc5.png.png"
+Info: Saved as "tesla_surface_model.blend"
+F:\T\.preview\vehiclerecon-baseline-run\scripts\validate_silhouette.py:25: DeprecationWarning: 'World.use_nodes' is exp
+ected to be removed in Blender 6.0
+  white=bpy.data.worlds.new('MASK_WORLD'); white.use_nodes=True
+01:39.297  render           | Saved: 'F:\T\.preview\vehiclerecon-baseline-run\validation\masks\model_side.png'
+01:41.688  render           | Saved: 'F:\T\.preview\vehiclerecon-baseline-run\validation\masks\model_top.png'
+01:43.453  render           | Saved: 'F:\T\.preview\vehiclerecon-baseline-run\validation\masks\model_front.png'
+01:45.125  render           | Saved: 'F:\T\.preview\vehiclerecon-baseline-run\validation\masks\model_rear.png'
+{
+  "side": {
+    "status": "PASS",
+    "iou": 0.95723,
+    "threshold": 0.94,
+    "pixel_mismatch_percent_of_frame": 1.5582,
+    "pixel_mismatch_percent_of_union": 4.277,
+    "reference_bbox_px": [
+      76,
+      114,
+      1124,
+      449
+    ],
+    "model_bbox_px": [
+      76,
+      114,
+      1125,
+      446
+    ],
+    "bbox_difference_px": [
+      0,
+      0,
+      1,
+      -3
+    ],
+    "render_size": [
+      1200,
+      560
+    ]
+  },
+  "top": {
+    "status": "PASS",
+    "iou": 0.936083,
+    "threshold": 0.92,
+    "pixel_mismatch_percent_of_frame": 3.6761,
+    "pixel_mismatch_percent_of_union": 6.3917,
+    "reference_bbox_px": [
+      76,
+      84,
+      1124,
+      517
+    ],
+    "model_bbox_px": [
+      76,
+      92,
+      1125,
+      508
+    ],
+    "bbox_difference_px": [
+      0,
+      8,
+      1,
+      -9
+    ],
+    "render_size": [
+      1200,
+      600
+    ]
+  },
+  "front": {
+    "status": "PASS",
+    "iou": 0.931202,
+    "threshold": 0.92,
+    "pixel_mismatch_percent_of_frame": 1.6385,
+    "pixel_mismatch_percent_of_union": 6.8798,
+    "reference_bbox_px": [
+      191,
+      150,
+      609,
+      490
+    ],
+    "model_bbox_px": [
+      188,
+      151,
+      612,
+      490
+    ],
+    "bbox_difference_px": [
+      -3,
+      1,
+      3,
+      0
+    ],
+    "render_size": [
+      800,
+      640
+    ]
+  },
+  "rear": {
+    "status": "PASS",
+    "iou": 0.944724,
+    "threshold": 0.9,
+    "pixel_mismatch_percent_of_frame": 1.3064,
+    "pixel_mismatch_percent_of_union": 5.5276,
+    "reference_bbox_px": [
+      191,
+      150,
+      609,
+      490
+    ],
+    "model_bbox_px": [
+      188,
+      151,
+      612,
+      490
+    ],
+    "bbox_difference_px": [
+      -3,
+      1,
+      3,
+      0
+    ],
+    "render_size": [
+      800,
+      640
+    ]
+  }
+}
+SILHOUETTE_GATE True SURFACE_GATE False
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit

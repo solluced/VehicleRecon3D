@@ -1,0 +1,30 @@
+{
+  "status": "PASS",
+  "method": "Visual review of actual Blender SubD, studio, reflection-coordinate stripes and Workbench matcap renders",
+  "source_blend_sha256": "1c94cceac6a785576ee0c9ef014d5893051f3d5f84eef7ed4ea0ca8b796d86df",
+  "proof_sha256": {
+    "surface_reflections.png": "6e07b801e62061da8775de3e1660774ff23de641dd2a90da9b4370e4f46ff4f0",
+    "surface_matcap.png": "458b6f03df9e61dcac634778d29f3f8a1448c89ca4a5cfc9f7f269946c3ddedc",
+    "perspective_surface.png": "19508a4295f2adae6c351a8893acb448c1ff17d1a6256d551c24759a54e30896",
+    "front.png": "c1ca0a324c3df5c739dcc808d94fa6ef68efc53528684b9baea2b7d8728ecc58",
+    "side.png": "ce964d7141ed995987a31d4be627769cc75100a85a0caf1f4369b616454a59cd",
+    "rear.png": "07ad5c413728b8c69a8235ffd7008d76f6fe39380ca8b4b62f35ebbe32dec1af",
+    "top.png": "cabf7a041da10a66757c126fde1b7617925a7006600c9417208f939efb4c8baa",
+    "perspective.png": "fcd276217d4065cee4a5edb4a48e70178e1b345d879a9c72fc3dc602fbf73566"
+  },
+  "reviewed_zones": [
+    "hood crown and shoulder",
+    "roof and windshield",
+    "front/rear fender crowns and geometric arch returns",
+    "door centers and panel seams",
+    "C-pillar and rear-quarter transition",
+    "front and rear fascia cavities"
+  ],
+  "scope": "Visual reference reconstruction and SubD surface presentation; no numerical G2 or manufacturing certification asserted.",
+  "source_limits": [
+    "End-view horizontal rectification and greenhouse width reconciliation documented in reference_dimensions.md",
+    "Scale assumes 4.8m length",
+    "Illustrative source views disagree in tire sizes, roof width and mirror projection"
+  ],
+  "topology_quad_percent": 99.81045220687788
+}
