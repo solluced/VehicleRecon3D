@@ -1,0 +1,1674 @@
+{
+  "schema_version": 1,
+  "components": [
+    {
+      "id": "component_001",
+      "type": "light",
+      "parameters": {
+        "operation": "cavity",
+        "source": "NOSE_CHEEK",
+        "name": "LIGHT_HEAD",
+        "selection": {
+          "u": [
+            0.02,
+            0.98
+          ],
+          "v": [
+            0.04,
+            0.65
+          ]
+        },
+        "material": "MAT_LIGHT_FRONT",
+        "offset": [
+          0,
+          -0.003,
+          -0.004
+        ],
+        "collection": "06_LIGHTS",
+        "symmetric": true,
+        "smoothing": 1,
+        "thickness": 0.004,
+        "crease": 0.72,
+        "edge_offset": 0.003
+      }
+    },
+    {
+      "id": "component_002",
+      "type": "light",
+      "parameters": {
+        "operation": "split",
+        "source": "LIGHT_HEAD",
+        "left": "LIGHT_HEAD_L",
+        "right": "LIGHT_HEAD_R"
+      }
+    },
+    {
+      "id": "component_003",
+      "type": "light",
+      "parameters": {
+        "operation": "curve",
+        "name": "LED_HEAD_L",
+        "points": [
+          [
+            -2.0927562713623047,
+            -0.6290183663368225,
+            0.7614995837211609
+          ],
+          [
+            -2.074761390686035,
+            -0.6467364430427551,
+            0.7676122188568115
+          ],
+          [
+            -2.0551159381866455,
+            -0.6660794019699097,
+            0.7742856740951538
+          ],
+          [
+            -2.035470724105835,
+            -0.6854223608970642,
+            0.7809589505195618
+          ],
+          [
+            -2.0158257484436035,
+            -0.7047653794288635,
+            0.787632167339325
+          ],
+          [
+            -1.9961802959442139,
+            -0.7241083979606628,
+            0.7943053841590881
+          ],
+          [
+            -1.9765348434448242,
+            -0.7434511184692383,
+            0.8009787797927856
+          ],
+          [
+            -1.9585397243499756,
+            -0.7611691951751709,
+            0.8070914149284363
+          ]
+        ],
+        "material": "MAT_DRL",
+        "radius": 0.0026,
+        "collection": "06_LIGHTS",
+        "cyclic": false,
+        "handles": "AUTO"
+      }
+    },
+    {
+      "id": "component_004",
+      "type": "light",
+      "parameters": {
+        "operation": "curve",
+        "name": "LED_HEAD_R",
+        "points": [
+          [
+            -2.0927562713623047,
+            0.6290183663368225,
+            0.7614995837211609
+          ],
+          [
+            -2.074761390686035,
+            0.6467364430427551,
+            0.7676122188568115
+          ],
+          [
+            -2.0551159381866455,
+            0.6660794019699097,
+            0.7742856740951538
+          ],
+          [
+            -2.035470724105835,
+            0.6854223608970642,
+            0.7809589505195618
+          ],
+          [
+            -2.0158257484436035,
+            0.7047653794288635,
+            0.787632167339325
+          ],
+          [
+            -1.9961802959442139,
+            0.7241083979606628,
+            0.7943053841590881
+          ],
+          [
+            -1.9765348434448242,
+            0.7434511184692383,
+            0.8009787797927856
+          ],
+          [
+            -1.9585397243499756,
+            0.7611691951751709,
+            0.8070914149284363
+          ]
+        ],
+        "material": "MAT_DRL",
+        "radius": 0.0026,
+        "collection": "06_LIGHTS",
+        "cyclic": false,
+        "handles": "AUTO"
+      }
+    },
+    {
+      "id": "component_005",
+      "type": "intake",
+      "parameters": {
+        "operation": "cavity",
+        "source": "BUMPER_FRONT",
+        "name": "INTAKE_CENTER",
+        "selection": {
+          "u": [
+            null,
+            0.69
+          ],
+          "v": [
+            0.04,
+            0.34
+          ]
+        },
+        "material": "MAT_TRIM",
+        "offset": [
+          0.025,
+          0,
+          0
+        ],
+        "collection": "06_LIGHTS",
+        "symmetric": true,
+        "smoothing": 1,
+        "thickness": 0.004,
+        "crease": 0.72,
+        "edge_offset": 0.003
+      }
+    },
+    {
+      "id": "component_006",
+      "type": "intake",
+      "parameters": {
+        "operation": "cavity",
+        "source": "BUMPER_FRONT",
+        "name": "INTAKE_SIDE",
+        "selection": {
+          "u": [
+            0.74,
+            0.988
+          ],
+          "v": [
+            0.2,
+            0.52
+          ]
+        },
+        "material": "MAT_TRIM",
+        "offset": [
+          0.018,
+          -0.003,
+          0
+        ],
+        "collection": "06_LIGHTS",
+        "symmetric": true,
+        "smoothing": 1,
+        "thickness": 0.004,
+        "crease": 0.72,
+        "edge_offset": 0.003
+      }
+    },
+    {
+      "id": "component_007",
+      "type": "intake",
+      "parameters": {
+        "operation": "split",
+        "source": "INTAKE_SIDE",
+        "left": "INTAKE_SIDE_L",
+        "right": "INTAKE_SIDE_R"
+      }
+    },
+    {
+      "id": "component_008",
+      "type": "intake",
+      "parameters": {
+        "operation": "curve",
+        "name": "GRILLE_SLAT",
+        "points": [
+          [
+            -2.26,
+            -0.59,
+            0.285
+          ],
+          [
+            -2.35,
+            -0.35,
+            0.285
+          ],
+          [
+            -2.365,
+            0,
+            0.285
+          ],
+          [
+            -2.35,
+            0.35,
+            0.285
+          ],
+          [
+            -2.26,
+            0.59,
+            0.285
+          ]
+        ],
+        "material": "MAT_RIM",
+        "radius": 0.003,
+        "collection": "06_LIGHTS",
+        "cyclic": false,
+        "handles": "AUTO"
+      }
+    },
+    {
+      "id": "component_009",
+      "type": "intake",
+      "parameters": {
+        "operation": "curve",
+        "name": "GRILLE_SLAT.001",
+        "points": [
+          [
+            -2.26,
+            -0.59,
+            0.325
+          ],
+          [
+            -2.35,
+            -0.35,
+            0.325
+          ],
+          [
+            -2.365,
+            0,
+            0.325
+          ],
+          [
+            -2.35,
+            0.35,
+            0.325
+          ],
+          [
+            -2.26,
+            0.59,
+            0.325
+          ]
+        ],
+        "material": "MAT_RIM",
+        "radius": 0.003,
+        "collection": "06_LIGHTS",
+        "cyclic": false,
+        "handles": "AUTO"
+      }
+    },
+    {
+      "id": "component_010",
+      "type": "intake",
+      "parameters": {
+        "operation": "curve",
+        "name": "GRILLE_SLAT.002",
+        "points": [
+          [
+            -2.26,
+            -0.59,
+            0.365
+          ],
+          [
+            -2.35,
+            -0.35,
+            0.365
+          ],
+          [
+            -2.365,
+            0,
+            0.365
+          ],
+          [
+            -2.35,
+            0.35,
+            0.365
+          ],
+          [
+            -2.26,
+            0.59,
+            0.365
+          ]
+        ],
+        "material": "MAT_RIM",
+        "radius": 0.003,
+        "collection": "06_LIGHTS",
+        "cyclic": false,
+        "handles": "AUTO"
+      }
+    },
+    {
+      "id": "component_011",
+      "type": "light",
+      "parameters": {
+        "operation": "cavity",
+        "source": "REAR_HATCH",
+        "name": "LIGHT_TAIL",
+        "selection": {
+          "u": [
+            null,
+            0.988
+          ],
+          "v": [
+            0.84,
+            0.988
+          ]
+        },
+        "material": "MAT_LIGHT_REAR",
+        "offset": [
+          0.006,
+          0,
+          0
+        ],
+        "collection": "06_LIGHTS",
+        "symmetric": true,
+        "smoothing": 1,
+        "thickness": 0.004,
+        "crease": 0.72,
+        "edge_offset": 0.003
+      }
+    },
+    {
+      "id": "component_012",
+      "type": "light",
+      "parameters": {
+        "operation": "split",
+        "source": "LIGHT_TAIL",
+        "left": "LIGHT_TAIL_L",
+        "right": "LIGHT_TAIL_R"
+      }
+    },
+    {
+      "id": "component_013",
+      "type": "bumper",
+      "parameters": {
+        "operation": "cavity",
+        "source": "BUMPER_REAR",
+        "name": "DIFFUSER_REAR",
+        "selection": {
+          "u": [
+            null,
+            0.96
+          ],
+          "v": [
+            null,
+            0.46
+          ]
+        },
+        "material": "MAT_TRIM",
+        "offset": [
+          -0.015,
+          0,
+          0
+        ],
+        "collection": "06_LIGHTS",
+        "symmetric": true,
+        "smoothing": 1,
+        "thickness": 0.004,
+        "crease": 0.72,
+        "edge_offset": 0.003
+      }
+    },
+    {
+      "id": "component_014",
+      "type": "bumper",
+      "parameters": {
+        "operation": "box",
+        "name": "DIFFUSER_FIN",
+        "position": [
+          2.19,
+          -0.55,
+          0.2
+        ],
+        "size": [
+          0.14,
+          0.014,
+          0.05
+        ],
+        "material": "MAT_TRIM",
+        "collection": "06_LIGHTS",
+        "bevel": 0.006,
+        "segments": 3,
+        "rotation": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "id": "component_015",
+      "type": "bumper",
+      "parameters": {
+        "operation": "box",
+        "name": "DIFFUSER_FIN.001",
+        "position": [
+          2.19,
+          -0.28,
+          0.2
+        ],
+        "size": [
+          0.14,
+          0.014,
+          0.05
+        ],
+        "material": "MAT_TRIM",
+        "collection": "06_LIGHTS",
+        "bevel": 0.006,
+        "segments": 3,
+        "rotation": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "id": "component_016",
+      "type": "bumper",
+      "parameters": {
+        "operation": "box",
+        "name": "DIFFUSER_FIN.002",
+        "position": [
+          2.19,
+          0,
+          0.2
+        ],
+        "size": [
+          0.14,
+          0.014,
+          0.05
+        ],
+        "material": "MAT_TRIM",
+        "collection": "06_LIGHTS",
+        "bevel": 0.006,
+        "segments": 3,
+        "rotation": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "id": "component_017",
+      "type": "bumper",
+      "parameters": {
+        "operation": "box",
+        "name": "DIFFUSER_FIN.003",
+        "position": [
+          2.19,
+          0.28,
+          0.2
+        ],
+        "size": [
+          0.14,
+          0.014,
+          0.05
+        ],
+        "material": "MAT_TRIM",
+        "collection": "06_LIGHTS",
+        "bevel": 0.006,
+        "segments": 3,
+        "rotation": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "id": "component_018",
+      "type": "bumper",
+      "parameters": {
+        "operation": "box",
+        "name": "DIFFUSER_FIN.004",
+        "position": [
+          2.19,
+          0.55,
+          0.2
+        ],
+        "size": [
+          0.14,
+          0.014,
+          0.05
+        ],
+        "material": "MAT_TRIM",
+        "collection": "06_LIGHTS",
+        "bevel": 0.006,
+        "segments": 3,
+        "rotation": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "id": "component_019",
+      "type": "door",
+      "parameters": {
+        "operation": "door_split",
+        "source": "DOOR_F",
+        "left": "DOOR_FL",
+        "right": "DOOR_FR",
+        "gap": 0.003,
+        "backing_inset": 0.008,
+        "backing_prefix": "INNER_",
+        "backing_material": "MAT_TRIM"
+      }
+    },
+    {
+      "id": "component_020",
+      "type": "door",
+      "parameters": {
+        "operation": "door_split",
+        "source": "DOOR_R",
+        "left": "DOOR_RL",
+        "right": "DOOR_RR",
+        "gap": 0.003,
+        "backing_inset": 0.008,
+        "backing_prefix": "INNER_",
+        "backing_material": "MAT_TRIM"
+      }
+    },
+    {
+      "id": "component_021",
+      "type": "glass",
+      "parameters": {
+        "operation": "split",
+        "source": "GLASS_FRONT",
+        "left": "GLASS_FRONT_LEFT",
+        "right": "GLASS_FRONT_RIGHT"
+      }
+    },
+    {
+      "id": "component_022",
+      "type": "glass",
+      "parameters": {
+        "operation": "split",
+        "source": "GLASS_REAR_SIDE",
+        "left": "GLASS_REAR_LEFT",
+        "right": "GLASS_REAR_RIGHT"
+      }
+    },
+    {
+      "id": "component_023",
+      "type": "glass",
+      "parameters": {
+        "operation": "polygon",
+        "name": "PILLAR_B",
+        "points": [
+          [
+            0.25866302864938606,
+            0.716,
+            1.0804911323328785
+          ],
+          [
+            0.3961800818553888,
+            0.715,
+            1.0870395634379262
+          ],
+          [
+            0.3961800818553888,
+            0.61,
+            1.4210095497953614
+          ],
+          [
+            0.25866302864938606,
+            0.61,
+            1.4210095497953614
+          ]
+        ],
+        "faces": [
+          [
+            0,
+            1,
+            2,
+            3
+          ]
+        ],
+        "material": "MAT_TRIM",
+        "collection": "03_BODY",
+        "remove": [
+          "FRAME_BACK_GLASS_FRONT",
+          "FRAME_FRONT_GLASS_REAR_SIDE",
+          "PILLAR_B"
+        ],
+        "mirror": true,
+        "thickness": 0.005,
+        "bevel": 0.002,
+        "segments": 2
+      }
+    },
+    {
+      "id": "component_024",
+      "type": "door",
+      "parameters": {
+        "operation": "box",
+        "name": "HANDLE_FL",
+        "position": [
+          0.13424283765347886,
+          -0.935,
+          0.9102319236016371
+        ],
+        "size": [
+          0.2,
+          0.012,
+          0.028
+        ],
+        "material": "MAT_RIM",
+        "collection": "04_PANELS",
+        "bevel": 0.009,
+        "segments": 3,
+        "rotation": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "id": "component_025",
+      "type": "door",
+      "parameters": {
+        "operation": "box",
+        "name": "HANDLE_FR",
+        "position": [
+          0.13424283765347886,
+          0.935,
+          0.9102319236016371
+        ],
+        "size": [
+          0.2,
+          0.012,
+          0.028
+        ],
+        "material": "MAT_RIM",
+        "collection": "04_PANELS",
+        "bevel": 0.009,
+        "segments": 3,
+        "rotation": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "id": "component_026",
+      "type": "door",
+      "parameters": {
+        "operation": "box",
+        "name": "HANDLE_RL",
+        "position": [
+          1.116507503410641,
+          -0.935,
+          0.9757162346521145
+        ],
+        "size": [
+          0.2,
+          0.012,
+          0.028
+        ],
+        "material": "MAT_RIM",
+        "collection": "04_PANELS",
+        "bevel": 0.009,
+        "segments": 3,
+        "rotation": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "id": "component_027",
+      "type": "door",
+      "parameters": {
+        "operation": "box",
+        "name": "HANDLE_RR",
+        "position": [
+          1.116507503410641,
+          0.935,
+          0.9757162346521145
+        ],
+        "size": [
+          0.2,
+          0.012,
+          0.028
+        ],
+        "material": "MAT_RIM",
+        "collection": "04_PANELS",
+        "bevel": 0.009,
+        "segments": 3,
+        "rotation": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "id": "component_028",
+      "type": "mirror",
+      "parameters": {
+        "operation": "curve",
+        "name": "MIRROR_STEM_L",
+        "points": [
+          [
+            -0.7432469304229194,
+            -0.77,
+            1.04
+          ],
+          [
+            -0.730150068212824,
+            -0.88,
+            1.06
+          ]
+        ],
+        "material": "MAT_TRIM",
+        "radius": 0.013,
+        "collection": "04_PANELS",
+        "cyclic": false,
+        "handles": "AUTO"
+      }
+    },
+    {
+      "id": "component_029",
+      "type": "mirror",
+      "parameters": {
+        "operation": "box",
+        "name": "MIRROR_L",
+        "position": [
+          -0.7105047748976807,
+          -0.9,
+          1.105
+        ],
+        "size": [
+          0.24,
+          0.105,
+          0.12
+        ],
+        "material": "MAT_BODY_SURFACE",
+        "collection": "04_PANELS",
+        "bevel": 0.035,
+        "segments": 3,
+        "rotation": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "id": "component_030",
+      "type": "mirror",
+      "parameters": {
+        "operation": "box",
+        "name": "MIRROR_GLASS_L",
+        "position": [
+          -0.5945047748976807,
+          -0.9,
+          1.105
+        ],
+        "size": [
+          0.006,
+          0.088,
+          0.084
+        ],
+        "material": "MAT_MACHINED",
+        "collection": "05_GLASS",
+        "bevel": 0.012,
+        "segments": 3,
+        "rotation": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "id": "component_031",
+      "type": "mirror",
+      "parameters": {
+        "operation": "curve",
+        "name": "MIRROR_STEM_R",
+        "points": [
+          [
+            -0.7432469304229194,
+            0.77,
+            1.04
+          ],
+          [
+            -0.730150068212824,
+            0.88,
+            1.06
+          ]
+        ],
+        "material": "MAT_TRIM",
+        "radius": 0.013,
+        "collection": "04_PANELS",
+        "cyclic": false,
+        "handles": "AUTO"
+      }
+    },
+    {
+      "id": "component_032",
+      "type": "mirror",
+      "parameters": {
+        "operation": "box",
+        "name": "MIRROR_R",
+        "position": [
+          -0.7105047748976807,
+          0.9,
+          1.105
+        ],
+        "size": [
+          0.24,
+          0.105,
+          0.12
+        ],
+        "material": "MAT_BODY_SURFACE",
+        "collection": "04_PANELS",
+        "bevel": 0.035,
+        "segments": 3,
+        "rotation": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "id": "component_033",
+      "type": "mirror",
+      "parameters": {
+        "operation": "box",
+        "name": "MIRROR_GLASS_R",
+        "position": [
+          -0.5945047748976807,
+          0.9,
+          1.105
+        ],
+        "size": [
+          0.006,
+          0.088,
+          0.084
+        ],
+        "material": "MAT_MACHINED",
+        "collection": "05_GLASS",
+        "bevel": 0.012,
+        "segments": 3,
+        "rotation": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "id": "wheel_assemblies",
+      "type": "wheel",
+      "parameters": {
+        "operation": "wheels",
+        "tire_name": "WHEEL_{label}",
+        "renamed_tire": "TIRE_{label}",
+        "root_name": "WHEEL_{label}",
+        "disc_name": "WHEEL_BLOCKOUT_DISC_{label}",
+        "brake_name": "BRAKE_DISC_{label}",
+        "rim_name": "RIM_{label}",
+        "spoke_name": "AERO_SPOKE_{label}_{index}",
+        "hub_name": "HUB_{label}",
+        "cap_name": "CENTER_CAP_{label}",
+        "lug_name": "LUG_{label}",
+        "collection": "07_WHEELS",
+        "brake_material": "MAT_BRAKE",
+        "rim_material": "MAT_MACHINED",
+        "spoke_material": "MAT_RIM",
+        "hub_material": "MAT_RIM",
+        "cap_material": "MAT_MACHINED",
+        "brake_depth": 0.088,
+        "rim_profile": [
+          [
+            0.293,
+            0.095
+          ],
+          [
+            0.312,
+            0.095
+          ],
+          [
+            0.317,
+            0.106
+          ],
+          [
+            0.313,
+            0.115
+          ],
+          [
+            0.296,
+            0.115
+          ],
+          [
+            0.291,
+            0.107
+          ]
+        ],
+        "rim_segments": 64,
+        "spoke_count": 10,
+        "spoke_polygon": [
+          [
+            0.075,
+            -0.1
+          ],
+          [
+            0.294,
+            0.15
+          ],
+          [
+            0.304,
+            0.44
+          ],
+          [
+            0.133,
+            0.31
+          ]
+        ],
+        "spoke_depth": 0.11,
+        "spoke_thickness": 0.018,
+        "spoke_bevel": 0.005,
+        "spoke_bevel_segments": 3,
+        "hub": {
+          "radius": 0.069,
+          "depth": 0.018,
+          "offset": 0.118
+        },
+        "cap": {
+          "radius": 0.037,
+          "depth": 0.004,
+          "offset": 0.125
+        },
+        "lug": {
+          "radius": 0.007,
+          "depth": 0.009,
+          "offset": 0.126,
+          "count": 5,
+          "bolt_circle_radius": 0.049
+        },
+        "cylinder_segments": 32
+      }
+    },
+    {
+      "id": "component_035",
+      "type": "interior",
+      "parameters": {
+        "operation": "box",
+        "name": "FRONT_SEAT_BASE",
+        "position": [
+          -0.1,
+          -0.42,
+          0.46
+        ],
+        "size": [
+          0.48,
+          0.44,
+          0.15
+        ],
+        "material": "MAT_INTERIOR",
+        "collection": "08_INTERIOR",
+        "bevel": 0.07,
+        "segments": 3,
+        "rotation": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "id": "component_036",
+      "type": "interior",
+      "parameters": {
+        "operation": "box",
+        "name": "FRONT_SEAT_BACK",
+        "position": [
+          0.13,
+          -0.42,
+          0.83
+        ],
+        "size": [
+          0.14,
+          0.45,
+          0.58
+        ],
+        "material": "MAT_INTERIOR",
+        "collection": "08_INTERIOR",
+        "bevel": 0.065,
+        "segments": 3,
+        "rotation": [
+          0.0,
+          -0.11999999731779099,
+          0.0
+        ]
+      }
+    },
+    {
+      "id": "component_037",
+      "type": "interior",
+      "parameters": {
+        "operation": "box",
+        "name": "FRONT_HEADREST",
+        "position": [
+          0.18,
+          -0.42,
+          1.17
+        ],
+        "size": [
+          0.13,
+          0.28,
+          0.19
+        ],
+        "material": "MAT_INTERIOR",
+        "collection": "08_INTERIOR",
+        "bevel": 0.045,
+        "segments": 3,
+        "rotation": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "id": "component_038",
+      "type": "interior",
+      "parameters": {
+        "operation": "box",
+        "name": "FRONT_SEAT_BASE.001",
+        "position": [
+          -0.1,
+          0.42,
+          0.46
+        ],
+        "size": [
+          0.48,
+          0.44,
+          0.15
+        ],
+        "material": "MAT_INTERIOR",
+        "collection": "08_INTERIOR",
+        "bevel": 0.07,
+        "segments": 3,
+        "rotation": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "id": "component_039",
+      "type": "interior",
+      "parameters": {
+        "operation": "box",
+        "name": "FRONT_SEAT_BACK.001",
+        "position": [
+          0.13,
+          0.42,
+          0.83
+        ],
+        "size": [
+          0.14,
+          0.45,
+          0.58
+        ],
+        "material": "MAT_INTERIOR",
+        "collection": "08_INTERIOR",
+        "bevel": 0.065,
+        "segments": 3,
+        "rotation": [
+          0.0,
+          -0.11999999731779099,
+          0.0
+        ]
+      }
+    },
+    {
+      "id": "component_040",
+      "type": "interior",
+      "parameters": {
+        "operation": "box",
+        "name": "FRONT_HEADREST.001",
+        "position": [
+          0.18,
+          0.42,
+          1.17
+        ],
+        "size": [
+          0.13,
+          0.28,
+          0.19
+        ],
+        "material": "MAT_INTERIOR",
+        "collection": "08_INTERIOR",
+        "bevel": 0.045,
+        "segments": 3,
+        "rotation": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "id": "component_041",
+      "type": "interior",
+      "parameters": {
+        "operation": "box",
+        "name": "REAR_BENCH",
+        "position": [
+          0.98,
+          0,
+          0.49
+        ],
+        "size": [
+          0.48,
+          1.25,
+          0.18
+        ],
+        "material": "MAT_INTERIOR",
+        "collection": "08_INTERIOR",
+        "bevel": 0.07,
+        "segments": 3,
+        "rotation": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "id": "component_042",
+      "type": "interior",
+      "parameters": {
+        "operation": "box",
+        "name": "REAR_BACKREST",
+        "position": [
+          1.2,
+          0,
+          0.82
+        ],
+        "size": [
+          0.14,
+          1.25,
+          0.48
+        ],
+        "material": "MAT_INTERIOR",
+        "collection": "08_INTERIOR",
+        "bevel": 0.07,
+        "segments": 3,
+        "rotation": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "id": "component_043",
+      "type": "interior",
+      "parameters": {
+        "operation": "box",
+        "name": "DASHBOARD",
+        "position": [
+          -0.83,
+          0,
+          0.94
+        ],
+        "size": [
+          0.23,
+          1.27,
+          0.15
+        ],
+        "material": "MAT_TRIM",
+        "collection": "08_INTERIOR",
+        "bevel": 0.045,
+        "segments": 3,
+        "rotation": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "id": "component_044",
+      "type": "interior",
+      "parameters": {
+        "operation": "box",
+        "name": "CENTER_CONSOLE",
+        "position": [
+          -0.1,
+          0,
+          0.61
+        ],
+        "size": [
+          0.73,
+          0.19,
+          0.18
+        ],
+        "material": "MAT_TRIM",
+        "collection": "08_INTERIOR",
+        "bevel": 0.035,
+        "segments": 3,
+        "rotation": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "id": "component_045",
+      "type": "interior",
+      "parameters": {
+        "operation": "box",
+        "name": "CENTER_DISPLAY",
+        "position": [
+          -0.67,
+          0,
+          1.12
+        ],
+        "size": [
+          0.025,
+          0.32,
+          0.19
+        ],
+        "material": "MAT_TRIM",
+        "collection": "08_INTERIOR",
+        "bevel": 0.009,
+        "segments": 3,
+        "rotation": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "id": "steering",
+      "type": "interior",
+      "parameters": {
+        "operation": "torus",
+        "name": "STEERING_WHEEL",
+        "major_radius": 0.14,
+        "minor_radius": 0.012,
+        "major_segments": 48,
+        "minor_segments": 12,
+        "position": [
+          -0.6,
+          -0.42,
+          0.98
+        ],
+        "rotation": [
+          0,
+          1.5707963267948966,
+          0
+        ],
+        "collection": "08_INTERIOR",
+        "material": "MAT_TRIM"
+      }
+    },
+    {
+      "id": "component_046",
+      "type": "interior",
+      "parameters": {
+        "operation": "box",
+        "name": "CABIN_FLOOR",
+        "position": [
+          0.3,
+          0,
+          0.22
+        ],
+        "size": [
+          2.8,
+          1.46,
+          0.05
+        ],
+        "material": "MAT_TRIM",
+        "collection": "08_INTERIOR",
+        "bevel": 0.015,
+        "segments": 3,
+        "rotation": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "id": "component_048",
+      "type": "door",
+      "parameters": {
+        "operation": "assembly",
+        "name": "BODY_MASTER",
+        "collection": "03_BODY",
+        "member_collections": [
+          "03_BODY",
+          "04_PANELS"
+        ]
+      }
+    },
+    {
+      "id": "component_049",
+      "type": "light",
+      "parameters": {
+        "operation": "curve",
+        "name": "TAIL_RETURN_HOUSING_L",
+        "points": [
+          [
+            2.3,
+            -0.67,
+            1.025
+          ],
+          [
+            2.24,
+            -0.81,
+            1.025
+          ],
+          [
+            2.265,
+            -0.82,
+            0.953
+          ],
+          [
+            2.31,
+            -0.69,
+            0.95
+          ]
+        ],
+        "material": "MAT_TRIM",
+        "radius": 0.011,
+        "collection": "06_LIGHTS",
+        "cyclic": false,
+        "handles": "AUTO"
+      }
+    },
+    {
+      "id": "component_050",
+      "type": "light",
+      "parameters": {
+        "operation": "curve",
+        "name": "TAIL_RETURN_LENS_L",
+        "points": [
+          [
+            2.304,
+            -0.67,
+            1.025
+          ],
+          [
+            2.244,
+            -0.81,
+            1.025
+          ],
+          [
+            2.269,
+            -0.82,
+            0.953
+          ],
+          [
+            2.314,
+            -0.69,
+            0.95
+          ]
+        ],
+        "material": "MAT_LIGHT_REAR",
+        "radius": 0.0055,
+        "collection": "06_LIGHTS",
+        "cyclic": false,
+        "handles": "AUTO"
+      }
+    },
+    {
+      "id": "component_051",
+      "type": "light",
+      "parameters": {
+        "operation": "attach",
+        "target": "REAR_HATCH",
+        "sources": [
+          "TAIL_RETURN_HOUSING_L",
+          "TAIL_RETURN_LENS_L"
+        ],
+        "offsets": [
+          0.002,
+          0.01
+        ]
+      }
+    },
+    {
+      "id": "component_052",
+      "type": "light",
+      "parameters": {
+        "operation": "curve",
+        "name": "TAIL_RETURN_HOUSING_R",
+        "points": [
+          [
+            2.3,
+            0.67,
+            1.025
+          ],
+          [
+            2.24,
+            0.81,
+            1.025
+          ],
+          [
+            2.265,
+            0.82,
+            0.953
+          ],
+          [
+            2.31,
+            0.69,
+            0.95
+          ]
+        ],
+        "material": "MAT_TRIM",
+        "radius": 0.011,
+        "collection": "06_LIGHTS",
+        "cyclic": false,
+        "handles": "AUTO"
+      }
+    },
+    {
+      "id": "component_053",
+      "type": "light",
+      "parameters": {
+        "operation": "curve",
+        "name": "TAIL_RETURN_LENS_R",
+        "points": [
+          [
+            2.304,
+            0.67,
+            1.025
+          ],
+          [
+            2.244,
+            0.81,
+            1.025
+          ],
+          [
+            2.269,
+            0.82,
+            0.953
+          ],
+          [
+            2.314,
+            0.69,
+            0.95
+          ]
+        ],
+        "material": "MAT_LIGHT_REAR",
+        "radius": 0.0055,
+        "collection": "06_LIGHTS",
+        "cyclic": false,
+        "handles": "AUTO"
+      }
+    },
+    {
+      "id": "component_054",
+      "type": "light",
+      "parameters": {
+        "operation": "attach",
+        "target": "REAR_HATCH",
+        "sources": [
+          "TAIL_RETURN_HOUSING_R",
+          "TAIL_RETURN_LENS_R"
+        ],
+        "offsets": [
+          0.002,
+          0.01
+        ]
+      }
+    }
+  ],
+  "materials": [
+    {
+      "name": "MAT_RIM",
+      "kind": "principled",
+      "color": [
+        0.054999999701976776,
+        0.06499999761581421,
+        0.07999999821186066
+      ],
+      "roughness": 0.25999999046325684,
+      "metallic": 0.8500000238418579,
+      "inputs": {
+        "Emission Color": [
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "Emission Strength": 0.0
+      }
+    },
+    {
+      "name": "MAT_MACHINED",
+      "kind": "principled",
+      "color": [
+        0.3100000023841858,
+        0.36000001430511475,
+        0.4099999964237213
+      ],
+      "roughness": 0.20000000298023224,
+      "metallic": 0.949999988079071,
+      "inputs": {
+        "Emission Color": [
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "Emission Strength": 0.0
+      }
+    },
+    {
+      "name": "MAT_BRAKE",
+      "kind": "principled",
+      "color": [
+        0.07999999821186066,
+        0.09000000357627869,
+        0.10000000149011612
+      ],
+      "roughness": 0.4000000059604645,
+      "metallic": 0.800000011920929,
+      "inputs": {
+        "Emission Color": [
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "Emission Strength": 0.0
+      }
+    },
+    {
+      "name": "MAT_LIGHT_FRONT",
+      "kind": "principled",
+      "color": [
+        0.017999999225139618,
+        0.02500000037252903,
+        0.03400000184774399
+      ],
+      "roughness": 0.11999999731779099,
+      "metallic": 0.4000000059604645,
+      "inputs": {
+        "Emission Color": [
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "Emission Strength": 0.0
+      }
+    },
+    {
+      "name": "MAT_LIGHT_REAR",
+      "kind": "principled",
+      "color": [
+        0.4000000059604645,
+        0.0020000000949949026,
+        0.004000000189989805
+      ],
+      "roughness": 0.18000000715255737,
+      "metallic": 0.25,
+      "inputs": {
+        "Emission Color": [
+          0.4000000059604645,
+          0.0010000000474974513,
+          0.0020000000949949026,
+          1.0
+        ],
+        "Emission Strength": 1.2000000476837158
+      }
+    },
+    {
+      "name": "MAT_DRL",
+      "kind": "emission",
+      "color": [
+        0.7599999904632568,
+        0.8600000143051147,
+        1.0
+      ]
+    },
+    {
+      "name": "MAT_INTERIOR",
+      "kind": "principled",
+      "color": [
+        0.054999999701976776,
+        0.06499999761581421,
+        0.07500000298023224
+      ],
+      "roughness": 0.6200000047683716,
+      "metallic": 0.0,
+      "inputs": {
+        "Emission Color": [
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "Emission Strength": 0.0
+      }
+    }
+  ]
+}

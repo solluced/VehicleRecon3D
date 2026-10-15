@@ -6,6 +6,9 @@
     "schema_version": {
       "const": 1
     },
+    "materials": {
+      "$ref": "https://vehiclerecon.local/schemas/project.schema.json#/properties/materials"
+    },
     "components": {
       "type": "array",
       "items": {
@@ -29,7 +32,706 @@
             ]
           },
           "parameters": {
-            "type": "object"
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "operation": {
+                    "const": "cavity"
+                  },
+                  "source": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "name": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "selection": {
+                    "type": "object",
+                    "properties": {
+                      "u": {
+                        "type": "array",
+                        "items": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "minItems": 2,
+                        "maxItems": 2
+                      },
+                      "v": {
+                        "type": "array",
+                        "items": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "minItems": 2,
+                        "maxItems": 2
+                      }
+                    },
+                    "required": [
+                      "u",
+                      "v"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "material": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "offset": {
+                    "type": "array",
+                    "items": {
+                      "type": "number"
+                    },
+                    "minItems": 3,
+                    "maxItems": 3
+                  },
+                  "collection": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "symmetric": {
+                    "type": "boolean"
+                  },
+                  "smoothing": {
+                    "type": "number"
+                  },
+                  "thickness": {
+                    "type": "number"
+                  },
+                  "crease": {
+                    "type": "number"
+                  },
+                  "edge_offset": {
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "operation",
+                  "source",
+                  "name",
+                  "selection",
+                  "material",
+                  "offset",
+                  "collection",
+                  "symmetric",
+                  "smoothing",
+                  "thickness",
+                  "crease",
+                  "edge_offset"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "operation": {
+                    "const": "split"
+                  },
+                  "source": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "left": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "right": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "required": [
+                  "operation",
+                  "source",
+                  "left",
+                  "right"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "operation": {
+                    "const": "curve"
+                  },
+                  "name": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "points": {
+                    "type": "array",
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "type": "number"
+                      }
+                    }
+                  },
+                  "material": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "radius": {
+                    "type": "number"
+                  },
+                  "collection": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "cyclic": {
+                    "type": "boolean"
+                  },
+                  "handles": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "required": [
+                  "operation",
+                  "name",
+                  "points",
+                  "material",
+                  "radius",
+                  "collection",
+                  "cyclic",
+                  "handles"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "operation": {
+                    "const": "box"
+                  },
+                  "name": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "position": {
+                    "type": "array",
+                    "items": {
+                      "type": "number"
+                    },
+                    "minItems": 3,
+                    "maxItems": 3
+                  },
+                  "size": {
+                    "type": "array",
+                    "items": {
+                      "type": "number",
+                      "exclusiveMinimum": 0
+                    },
+                    "minItems": 3,
+                    "maxItems": 3
+                  },
+                  "material": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "collection": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "bevel": {
+                    "type": "number"
+                  },
+                  "segments": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "rotation": {
+                    "type": "array",
+                    "items": {
+                      "type": "number"
+                    },
+                    "minItems": 3,
+                    "maxItems": 3
+                  }
+                },
+                "required": [
+                  "operation",
+                  "name",
+                  "position",
+                  "size",
+                  "material",
+                  "collection",
+                  "bevel",
+                  "segments",
+                  "rotation"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "operation": {
+                    "const": "door_split"
+                  },
+                  "source": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "left": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "right": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "gap": {
+                    "type": "number"
+                  },
+                  "backing_inset": {
+                    "type": "number"
+                  },
+                  "backing_prefix": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "backing_material": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "required": [
+                  "operation",
+                  "source",
+                  "left",
+                  "right",
+                  "gap",
+                  "backing_inset",
+                  "backing_prefix",
+                  "backing_material"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "operation": {
+                    "const": "polygon"
+                  },
+                  "name": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "points": {
+                    "type": "array",
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "type": "number"
+                      }
+                    }
+                  },
+                  "faces": {
+                    "type": "array",
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "minItems": 3
+                    }
+                  },
+                  "material": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "collection": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "remove": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  },
+                  "mirror": {
+                    "type": "boolean"
+                  },
+                  "thickness": {
+                    "type": "number"
+                  },
+                  "bevel": {
+                    "type": "number"
+                  },
+                  "segments": {
+                    "type": "integer",
+                    "minimum": 1
+                  }
+                },
+                "required": [
+                  "operation",
+                  "name",
+                  "points",
+                  "faces",
+                  "material",
+                  "collection",
+                  "remove",
+                  "mirror",
+                  "thickness",
+                  "bevel",
+                  "segments"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "operation": {
+                    "const": "wheels"
+                  },
+                  "tire_name": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "renamed_tire": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "root_name": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "disc_name": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "brake_name": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "rim_name": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "spoke_name": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "hub_name": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "cap_name": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "lug_name": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "collection": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "brake_material": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "rim_material": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "spoke_material": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "hub_material": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "cap_material": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "brake_depth": {
+                    "type": "number"
+                  },
+                  "rim_profile": {
+                    "type": "array",
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "type": "number"
+                      }
+                    }
+                  },
+                  "rim_segments": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "spoke_count": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "spoke_polygon": {
+                    "type": "array",
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "type": "number"
+                      }
+                    }
+                  },
+                  "spoke_depth": {
+                    "type": "number"
+                  },
+                  "spoke_thickness": {
+                    "type": "number"
+                  },
+                  "spoke_bevel": {
+                    "type": "number"
+                  },
+                  "spoke_bevel_segments": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "hub": {
+                    "type": "object",
+                    "properties": {
+                      "radius": {
+                        "type": "number"
+                      },
+                      "depth": {
+                        "type": "number"
+                      },
+                      "offset": {
+                        "type": "number"
+                      }
+                    },
+                    "required": [
+                      "radius",
+                      "depth",
+                      "offset"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "cap": {
+                    "type": "object",
+                    "properties": {
+                      "radius": {
+                        "type": "number"
+                      },
+                      "depth": {
+                        "type": "number"
+                      },
+                      "offset": {
+                        "type": "number"
+                      }
+                    },
+                    "required": [
+                      "radius",
+                      "depth",
+                      "offset"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "lug": {
+                    "type": "object",
+                    "properties": {
+                      "radius": {
+                        "type": "number"
+                      },
+                      "depth": {
+                        "type": "number"
+                      },
+                      "offset": {
+                        "type": "number"
+                      },
+                      "count": {
+                        "type": "number"
+                      },
+                      "bolt_circle_radius": {
+                        "type": "number"
+                      }
+                    },
+                    "required": [
+                      "radius",
+                      "depth",
+                      "offset",
+                      "count",
+                      "bolt_circle_radius"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "cylinder_segments": {
+                    "type": "integer",
+                    "minimum": 1
+                  }
+                },
+                "required": [
+                  "operation",
+                  "tire_name",
+                  "renamed_tire",
+                  "root_name",
+                  "disc_name",
+                  "brake_name",
+                  "rim_name",
+                  "spoke_name",
+                  "hub_name",
+                  "cap_name",
+                  "lug_name",
+                  "collection",
+                  "brake_material",
+                  "rim_material",
+                  "spoke_material",
+                  "hub_material",
+                  "cap_material",
+                  "brake_depth",
+                  "rim_profile",
+                  "rim_segments",
+                  "spoke_count",
+                  "spoke_polygon",
+                  "spoke_depth",
+                  "spoke_thickness",
+                  "spoke_bevel",
+                  "spoke_bevel_segments",
+                  "hub",
+                  "cap",
+                  "lug",
+                  "cylinder_segments"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "operation": {
+                    "const": "torus"
+                  },
+                  "name": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "major_radius": {
+                    "type": "number"
+                  },
+                  "minor_radius": {
+                    "type": "number"
+                  },
+                  "major_segments": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "minor_segments": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "position": {
+                    "type": "array",
+                    "items": {
+                      "type": "number"
+                    },
+                    "minItems": 3,
+                    "maxItems": 3
+                  },
+                  "rotation": {
+                    "type": "array",
+                    "items": {
+                      "type": "number"
+                    },
+                    "minItems": 3,
+                    "maxItems": 3
+                  },
+                  "collection": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "material": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "required": [
+                  "operation",
+                  "name",
+                  "major_radius",
+                  "minor_radius",
+                  "major_segments",
+                  "minor_segments",
+                  "position",
+                  "rotation",
+                  "collection",
+                  "material"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "operation": {
+                    "const": "assembly"
+                  },
+                  "name": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "collection": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "member_collections": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  }
+                },
+                "required": [
+                  "operation",
+                  "name",
+                  "collection",
+                  "member_collections"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "operation": {
+                    "const": "attach"
+                  },
+                  "target": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "sources": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  },
+                  "offsets": {
+                    "type": "array",
+                    "items": {
+                      "type": "number"
+                    }
+                  }
+                },
+                "required": [
+                  "operation",
+                  "target",
+                  "sources",
+                  "offsets"
+                ],
+                "additionalProperties": false
+              }
+            ]
           }
         },
         "required": [
@@ -43,6 +745,7 @@
   },
   "required": [
     "schema_version",
+    "materials",
     "components"
   ],
   "additionalProperties": false

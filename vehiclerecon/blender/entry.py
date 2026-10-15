@@ -27,6 +27,12 @@ def main():
     elif stage == 'surface_masks':
         from vehiclerecon.blender.silhouette import validate
         validate(project,'surface')
+    elif stage == 'details':
+        from vehiclerecon.blender.details import build
+        build(project)
+    elif stage == 'final_masks':
+        from vehiclerecon.blender.silhouette import validate
+        validate(project,'final')
     else:
         raise ReconError(f'Unsupported Blender stage: {stage}')
 

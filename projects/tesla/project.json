@@ -22,7 +22,8 @@
     "calibration": "generated/calibration.json",
     "cage": "generated/cage.json",
     "surface_graph": "generated/surface_graph.json",
-    "silhouette_traces": "generated/silhouette_traces.json"
+    "silhouette_traces": "generated/silhouette_traces.json",
+    "details": "generated/details.json"
   },
   "materials": [
     {

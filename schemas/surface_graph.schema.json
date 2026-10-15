@@ -1043,13 +1043,22 @@
             "collection": {
               "type": "string",
               "minLength": 1
+            },
+            "profile_units": {
+              "const": "radius_ratio"
+            },
+            "name": {
+              "type": "string",
+              "minLength": 1
             }
           },
           "required": [
             "profile",
             "segments",
             "material",
-            "collection"
+            "collection",
+            "profile_units",
+            "name"
           ],
           "additionalProperties": false
         },
