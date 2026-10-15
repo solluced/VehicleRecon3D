@@ -1,0 +1,271 @@
+{
+  "status": "PASS",
+  "method": "Legacy build_surfaces plus refine_final compared against declarative graph, before any details. Same vertex indexing and polygon connectivity; 0.01mm positional tolerance chosen before comparison.",
+  "objects": [
+    {
+      "object": "ARCH_RETURN_FRONT",
+      "same_topology": true,
+      "max_control_position_error_m": 0.0,
+      "pass": true
+    },
+    {
+      "object": "ARCH_RETURN_REAR",
+      "same_topology": true,
+      "max_control_position_error_m": 0.0,
+      "pass": true
+    },
+    {
+      "object": "BELTLINE_LEDGE",
+      "same_topology": true,
+      "max_control_position_error_m": 0.0,
+      "pass": true
+    },
+    {
+      "object": "BUMPER_FRONT",
+      "same_topology": true,
+      "max_control_position_error_m": 0.0,
+      "pass": true
+    },
+    {
+      "object": "BUMPER_REAR",
+      "same_topology": true,
+      "max_control_position_error_m": 0.0,
+      "pass": true
+    },
+    {
+      "object": "COWL_TRANSITION",
+      "same_topology": true,
+      "max_control_position_error_m": 0.0,
+      "pass": true
+    },
+    {
+      "object": "DOOR_F",
+      "same_topology": true,
+      "max_control_position_error_m": 0.0,
+      "pass": true
+    },
+    {
+      "object": "DOOR_R",
+      "same_topology": true,
+      "max_control_position_error_m": 0.0,
+      "pass": true
+    },
+    {
+      "object": "FENDER_FRONT",
+      "same_topology": true,
+      "max_control_position_error_m": 1.1920928955078125e-07,
+      "pass": true
+    },
+    {
+      "object": "FENDER_REAR",
+      "same_topology": true,
+      "max_control_position_error_m": 0.0,
+      "pass": true
+    },
+    {
+      "object": "FRAME_BACK_GLASS_FRONT",
+      "same_topology": true,
+      "max_control_position_error_m": 0.0,
+      "pass": true
+    },
+    {
+      "object": "FRAME_BACK_GLASS_REAR_SIDE",
+      "same_topology": true,
+      "max_control_position_error_m": 0.0,
+      "pass": true
+    },
+    {
+      "object": "FRAME_BOTTOM_GLASS_FRONT",
+      "same_topology": true,
+      "max_control_position_error_m": 0.0,
+      "pass": true
+    },
+    {
+      "object": "FRAME_BOTTOM_GLASS_REAR_SIDE",
+      "same_topology": true,
+      "max_control_position_error_m": 0.0,
+      "pass": true
+    },
+    {
+      "object": "FRAME_FRONT_GLASS_FRONT",
+      "same_topology": true,
+      "max_control_position_error_m": 0.0,
+      "pass": true
+    },
+    {
+      "object": "FRAME_FRONT_GLASS_REAR_SIDE",
+      "same_topology": true,
+      "max_control_position_error_m": 0.0,
+      "pass": true
+    },
+    {
+      "object": "FRAME_TOP_GLASS_FRONT",
+      "same_topology": true,
+      "max_control_position_error_m": 0.0,
+      "pass": true
+    },
+    {
+      "object": "FRAME_TOP_GLASS_REAR_SIDE",
+      "same_topology": true,
+      "max_control_position_error_m": 0.0,
+      "pass": true
+    },
+    {
+      "object": "GLASS_FRONT",
+      "same_topology": true,
+      "max_control_position_error_m": 0.0,
+      "pass": true
+    },
+    {
+      "object": "GLASS_REAR",
+      "same_topology": true,
+      "max_control_position_error_m": 0.0,
+      "pass": true
+    },
+    {
+      "object": "GLASS_REAR_SIDE",
+      "same_topology": true,
+      "max_control_position_error_m": 0.0,
+      "pass": true
+    },
+    {
+      "object": "GLASS_ROOF",
+      "same_topology": true,
+      "max_control_position_error_m": 0.0,
+      "pass": true
+    },
+    {
+      "object": "GLASS_WINDSHIELD",
+      "same_topology": true,
+      "max_control_position_error_m": 0.0,
+      "pass": true
+    },
+    {
+      "object": "HOOD",
+      "same_topology": true,
+      "max_control_position_error_m": 0.0,
+      "pass": true
+    },
+    {
+      "object": "LIP_FRONT",
+      "same_topology": true,
+      "max_control_position_error_m": 0.0,
+      "pass": true
+    },
+    {
+      "object": "NOSE_CHEEK",
+      "same_topology": true,
+      "max_control_position_error_m": 0.0,
+      "pass": true
+    },
+    {
+      "object": "NOSE_HOOD_BRIDGE",
+      "same_topology": true,
+      "max_control_position_error_m": 0.0,
+      "pass": true
+    },
+    {
+      "object": "PILLAR_A_FOOT",
+      "same_topology": true,
+      "max_control_position_error_m": 0.0,
+      "pass": true
+    },
+    {
+      "object": "PILLAR_B",
+      "same_topology": true,
+      "max_control_position_error_m": 0.0,
+      "pass": true
+    },
+    {
+      "object": "PILLAR_C_QUARTER",
+      "same_topology": true,
+      "max_control_position_error_m": 0.0,
+      "pass": true
+    },
+    {
+      "object": "REAR_HATCH",
+      "same_topology": true,
+      "max_control_position_error_m": 0.0,
+      "pass": true
+    },
+    {
+      "object": "REAR_HATCH_TOP",
+      "same_topology": true,
+      "max_control_position_error_m": 0.0,
+      "pass": true
+    },
+    {
+      "object": "ROCKER",
+      "same_topology": true,
+      "max_control_position_error_m": 0.0,
+      "pass": true
+    },
+    {
+      "object": "ROOF_RAIL",
+      "same_topology": true,
+      "max_control_position_error_m": 0.0,
+      "pass": true
+    },
+    {
+      "object": "WHEEL_BLOCKOUT_DISC_FL",
+      "same_topology": true,
+      "max_control_position_error_m": 0.0,
+      "pass": true
+    },
+    {
+      "object": "WHEEL_BLOCKOUT_DISC_FR",
+      "same_topology": true,
+      "max_control_position_error_m": 0.0,
+      "pass": true
+    },
+    {
+      "object": "WHEEL_BLOCKOUT_DISC_RL",
+      "same_topology": true,
+      "max_control_position_error_m": 0.0,
+      "pass": true
+    },
+    {
+      "object": "WHEEL_BLOCKOUT_DISC_RR",
+      "same_topology": true,
+      "max_control_position_error_m": 0.0,
+      "pass": true
+    },
+    {
+      "object": "WHEEL_FL",
+      "same_topology": true,
+      "max_control_position_error_m": 0.0,
+      "pass": true
+    },
+    {
+      "object": "WHEEL_FR",
+      "same_topology": true,
+      "max_control_position_error_m": 0.0,
+      "pass": true
+    },
+    {
+      "object": "WHEEL_RL",
+      "same_topology": true,
+      "max_control_position_error_m": 0.0,
+      "pass": true
+    },
+    {
+      "object": "WHEEL_RR",
+      "same_topology": true,
+      "max_control_position_error_m": 0.0,
+      "pass": true
+    },
+    {
+      "object": "WHEELHOUSE_FRONT",
+      "same_topology": true,
+      "max_control_position_error_m": 0.0,
+      "pass": true
+    },
+    {
+      "object": "WHEELHOUSE_REAR",
+      "same_topology": true,
+      "max_control_position_error_m": 0.0,
+      "pass": true
+    }
+  ],
+  "max_error_m": 1.1920928955078125e-07
+}

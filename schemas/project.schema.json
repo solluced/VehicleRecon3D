@@ -279,13 +279,46 @@
         },
         "review_required": {
           "type": "boolean"
+        },
+        "baseline_iou": {
+          "type": "object",
+          "properties": {
+            "side": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "top": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "front": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "rear": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            }
+          },
+          "required": [
+            "side",
+            "top",
+            "front",
+            "rear"
+          ],
+          "additionalProperties": false
         }
       },
       "required": [
         "thresholds",
         "max_iou_regression",
         "bounds_tolerance_m",
-        "review_required"
+        "review_required",
+        "baseline_iou"
       ],
       "additionalProperties": false
     }
