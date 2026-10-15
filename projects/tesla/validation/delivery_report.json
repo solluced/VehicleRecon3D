@@ -1,8 +1,8 @@
 {
   "status": "PASS",
   "project_id": "tesla_reference",
-  "source_blend_sha256": "664455c2d6301c2c2a00759e1e9a22100b76b8e4bdc927723c517fc5e696103e",
-  "glb_sha256": "3de4b61c2e198c8409321a31f325b1b664c8977498cc4e9d0660380b24c7b95d",
+  "source_blend_sha256": "315b0ea2d7749bbc87d187a44c1083f7831ef85adf45cbf3451f1299c8b0597f",
+  "glb_sha256": "2404bead6869697426c0be61017180211d474cb76fd1a4660c1b8373eed02377",
   "geometry_hash": "6fa8c5a8174917222d9b7b8641dc28afbc55dbc388e67313362924ec43f2e96d",
   "exact_embedded_glb": true,
   "viewer_desktop": "PASS",

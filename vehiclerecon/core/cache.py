@@ -1,13 +1,14 @@
 """Inspectable content cache: a hit verifies every recorded output byte."""
 import re
-from .project import read_json,REPOSITORY
+from .project import read_json,REPOSITORY,RESOURCE_ROOT
 from .manifest import digest_file,digest_data,write_json
 from .errors import SchemaError,ReferenceError
 
 def implementation_hash():
-    roots=[REPOSITORY/'vehiclerecon',REPOSITORY/'schemas',REPOSITORY/'profiles']
-    files=[p for root in roots for p in root.rglob('*') if p.is_file() and p.suffix in ('.py','.html','.mjs','.json') and '__pycache__' not in p.parts]
-    return digest_data({p.relative_to(REPOSITORY).as_posix():digest_file(p) for p in sorted(files)})
+    roots={'package':REPOSITORY/'vehiclerecon','schemas':RESOURCE_ROOT/'schemas','profiles':RESOURCE_ROOT/'profiles'}
+    files={label+'/'+p.relative_to(root).as_posix():digest_file(p) for label,root in roots.items()
+           for p in sorted(root.rglob('*')) if p.is_file() and p.suffix in ('.py','.html','.mjs','.json') and '__pycache__' not in p.parts}
+    return digest_data(files)
 
 class StageCache:
     def __init__(self,project,implementation=None):
@@ -60,9 +61,9 @@ def input_slice(project,stage,*,include_review=True):
     if stage=='overlay':return {'annotation_convention':'orange-blue-red-green-v1'}
     if stage=='cage':return {'cage':generated('cage')}
     if stage=='surfaces':return {'graph':generated('surface_graph')}
-    if stage=='silhouette':return {'traces':generated('silhouette_traces'),'validation':validation(),'views':[v for v in d['presentation']['views'] if v['view']!='perspective']}
+    if stage=='silhouette':return {'traces':generated('silhouette_traces'),'validation':validation(),'mask_exclusions':d['export']['excluded_collections'],'views':[v for v in d['presentation']['views'] if v['view']!='perspective']}
     if stage=='details':return {'details':generated('details')}
-    if stage=='geometry':return d['validation']['geometry']
+    if stage=='geometry':return {'policy':d['validation']['geometry'],'roles':d['roles'],'model_collections':d['export']['collections']}
     if stage=='presentation':
         result={'presentation':d['presentation'],'validation':validation()}
         if include_review:

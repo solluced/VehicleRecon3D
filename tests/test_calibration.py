@@ -35,7 +35,7 @@ def test_prefer_separate(tmp_path,calibration):
     from types import SimpleNamespace
     from vehiclerecon.reference.panels import png_size
     import shutil
-    source=REPOSITORY/'refs/crop_front.png'
+    source=REPOSITORY/'tests/fixtures/tesla/legacy_source/refs/crop_front.png'
     shutil.copyfile(source,tmp_path/'front.png')
     fake=SimpleNamespace(data={'references':{'front':'front.png','multiview':'missing.png'}},path=lambda p,**kw:tmp_path/p)
     path,separate=select_panel(fake,'front',calibration[0]['views']['front'])

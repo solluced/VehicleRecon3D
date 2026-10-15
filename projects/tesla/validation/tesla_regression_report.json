@@ -1,0 +1,1161 @@
+{
+  "status": "PASS",
+  "physical_objects": [
+    {
+      "object": "COWL_TRANSITION",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 1872,
+      "current_triangles": 1872
+    },
+    {
+      "object": "NOSE_HOOD_BRIDGE",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 2752,
+      "current_triangles": 2752
+    },
+    {
+      "object": "NOSE_CHEEK",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 1856,
+      "current_triangles": 1856
+    },
+    {
+      "object": "BUMPER_FRONT",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 4168,
+      "current_triangles": 4168
+    },
+    {
+      "object": "LIP_FRONT",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 2680,
+      "current_triangles": 2680
+    },
+    {
+      "object": "FENDER_FRONT",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 9344,
+      "current_triangles": 9344
+    },
+    {
+      "object": "ARCH_RETURN_FRONT",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 3808,
+      "current_triangles": 3808
+    },
+    {
+      "object": "WHEELHOUSE_FRONT",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 392,
+      "current_triangles": 392
+    },
+    {
+      "object": "FENDER_REAR",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 8896,
+      "current_triangles": 8896
+    },
+    {
+      "object": "ARCH_RETURN_REAR",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 3808,
+      "current_triangles": 3808
+    },
+    {
+      "object": "WHEELHOUSE_REAR",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 392,
+      "current_triangles": 392
+    },
+    {
+      "object": "BELTLINE_LEDGE",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 3952,
+      "current_triangles": 3952
+    },
+    {
+      "object": "FRAME_TOP_GLASS_FRONT",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 2080,
+      "current_triangles": 2080
+    },
+    {
+      "object": "FRAME_BOTTOM_GLASS_FRONT",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 2080,
+      "current_triangles": 2080
+    },
+    {
+      "object": "FRAME_FRONT_GLASS_FRONT",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 1216,
+      "current_triangles": 1216
+    },
+    {
+      "object": "FRAME_TOP_GLASS_REAR_SIDE",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 2080,
+      "current_triangles": 2080
+    },
+    {
+      "object": "FRAME_BOTTOM_GLASS_REAR_SIDE",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 2080,
+      "current_triangles": 2080
+    },
+    {
+      "object": "FRAME_BACK_GLASS_REAR_SIDE",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 1136,
+      "current_triangles": 1136
+    },
+    {
+      "object": "ROOF_RAIL",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 3808,
+      "current_triangles": 3808
+    },
+    {
+      "object": "PILLAR_C_QUARTER",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 3952,
+      "current_triangles": 3952
+    },
+    {
+      "object": "BUMPER_REAR",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 2872,
+      "current_triangles": 2872
+    },
+    {
+      "object": "ROCKER",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 3952,
+      "current_triangles": 3952
+    },
+    {
+      "object": "PILLAR_B",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 216,
+      "current_triangles": 216
+    },
+    {
+      "object": "PILLAR_A_FOOT",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 1344,
+      "current_triangles": 1344
+    },
+    {
+      "object": "HOOD",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 4352,
+      "current_triangles": 4352
+    },
+    {
+      "object": "DOOR_FR",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 2664,
+      "current_triangles": 2664
+    },
+    {
+      "object": "DOOR_RR",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 2664,
+      "current_triangles": 2664
+    },
+    {
+      "object": "REAR_HATCH_TOP",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 2752,
+      "current_triangles": 2752
+    },
+    {
+      "object": "REAR_HATCH",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 4904,
+      "current_triangles": 4904
+    },
+    {
+      "object": "DOOR_FL",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 2664,
+      "current_triangles": 2664
+    },
+    {
+      "object": "INNER_DOOR_FL",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 2664,
+      "current_triangles": 2664
+    },
+    {
+      "object": "INNER_DOOR_FR",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 2664,
+      "current_triangles": 2664
+    },
+    {
+      "object": "DOOR_RL",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 2664,
+      "current_triangles": 2664
+    },
+    {
+      "object": "INNER_DOOR_RL",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 2664,
+      "current_triangles": 2664
+    },
+    {
+      "object": "INNER_DOOR_RR",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 2664,
+      "current_triangles": 2664
+    },
+    {
+      "object": "HANDLE_FL",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 188,
+      "current_triangles": 188
+    },
+    {
+      "object": "HANDLE_FR",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 188,
+      "current_triangles": 188
+    },
+    {
+      "object": "HANDLE_RL",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 188,
+      "current_triangles": 188
+    },
+    {
+      "object": "HANDLE_RR",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 188,
+      "current_triangles": 188
+    },
+    {
+      "object": "MIRROR_STEM_L",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 256,
+      "current_triangles": 256
+    },
+    {
+      "object": "MIRROR_L",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 188,
+      "current_triangles": 188
+    },
+    {
+      "object": "MIRROR_STEM_R",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 256,
+      "current_triangles": 256
+    },
+    {
+      "object": "MIRROR_R",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 188,
+      "current_triangles": 188
+    },
+    {
+      "object": "GLASS_WINDSHIELD",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 4288,
+      "current_triangles": 4288
+    },
+    {
+      "object": "GLASS_ROOF",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 4288,
+      "current_triangles": 4288
+    },
+    {
+      "object": "GLASS_REAR",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 4288,
+      "current_triangles": 4288
+    },
+    {
+      "object": "GLASS_FRONT_RIGHT",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 1736,
+      "current_triangles": 1736
+    },
+    {
+      "object": "GLASS_REAR_RIGHT",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 1736,
+      "current_triangles": 1736
+    },
+    {
+      "object": "GLASS_FRONT_LEFT",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 1736,
+      "current_triangles": 1736
+    },
+    {
+      "object": "GLASS_REAR_LEFT",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 1736,
+      "current_triangles": 1736
+    },
+    {
+      "object": "MIRROR_GLASS_L",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 188,
+      "current_triangles": 188
+    },
+    {
+      "object": "MIRROR_GLASS_R",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 188,
+      "current_triangles": 188
+    },
+    {
+      "object": "LIGHT_HEAD_R",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 536,
+      "current_triangles": 536
+    },
+    {
+      "object": "LIGHT_HEAD_L",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 536,
+      "current_triangles": 536
+    },
+    {
+      "object": "LED_HEAD_L",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 1792,
+      "current_triangles": 1792
+    },
+    {
+      "object": "LED_HEAD_R",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 1792,
+      "current_triangles": 1792
+    },
+    {
+      "object": "INTAKE_CENTER",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 1164,
+      "current_triangles": 1164
+    },
+    {
+      "object": "INTAKE_SIDE_R",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 176,
+      "current_triangles": 176
+    },
+    {
+      "object": "INTAKE_SIDE_L",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 176,
+      "current_triangles": 176
+    },
+    {
+      "object": "GRILLE_SLAT",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 1024,
+      "current_triangles": 1024
+    },
+    {
+      "object": "GRILLE_SLAT.001",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 1024,
+      "current_triangles": 1024
+    },
+    {
+      "object": "GRILLE_SLAT.002",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 1024,
+      "current_triangles": 1024
+    },
+    {
+      "object": "LIGHT_TAIL_R",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 344,
+      "current_triangles": 344
+    },
+    {
+      "object": "LIGHT_TAIL_L",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 344,
+      "current_triangles": 344
+    },
+    {
+      "object": "DIFFUSER_REAR",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 2072,
+      "current_triangles": 2072
+    },
+    {
+      "object": "DIFFUSER_FIN",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 188,
+      "current_triangles": 188
+    },
+    {
+      "object": "DIFFUSER_FIN.001",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 188,
+      "current_triangles": 188
+    },
+    {
+      "object": "DIFFUSER_FIN.002",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 188,
+      "current_triangles": 188
+    },
+    {
+      "object": "DIFFUSER_FIN.003",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 188,
+      "current_triangles": 188
+    },
+    {
+      "object": "DIFFUSER_FIN.004",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 188,
+      "current_triangles": 188
+    },
+    {
+      "object": "TAIL_RETURN_HOUSING_L",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 768,
+      "current_triangles": 768
+    },
+    {
+      "object": "TAIL_RETURN_LENS_L",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 768,
+      "current_triangles": 768
+    },
+    {
+      "object": "TAIL_RETURN_HOUSING_R",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 768,
+      "current_triangles": 768
+    },
+    {
+      "object": "TAIL_RETURN_LENS_R",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 768,
+      "current_triangles": 768
+    },
+    {
+      "object": "TIRE_FL",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 1024,
+      "current_triangles": 1024
+    },
+    {
+      "object": "BRAKE_DISC_FL",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 64,
+      "current_triangles": 64
+    },
+    {
+      "object": "TIRE_FR",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 1024,
+      "current_triangles": 1024
+    },
+    {
+      "object": "BRAKE_DISC_FR",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 64,
+      "current_triangles": 64
+    },
+    {
+      "object": "TIRE_RL",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 1024,
+      "current_triangles": 1024
+    },
+    {
+      "object": "BRAKE_DISC_RL",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 64,
+      "current_triangles": 64
+    },
+    {
+      "object": "TIRE_RR",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 1024,
+      "current_triangles": 1024
+    },
+    {
+      "object": "BRAKE_DISC_RR",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 64,
+      "current_triangles": 64
+    },
+    {
+      "object": "RIM_FL",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 768,
+      "current_triangles": 768
+    },
+    {
+      "object": "AERO_SPOKE_FL_1",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 156,
+      "current_triangles": 156
+    },
+    {
+      "object": "AERO_SPOKE_FL_2",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 156,
+      "current_triangles": 156
+    },
+    {
+      "object": "AERO_SPOKE_FL_3",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 156,
+      "current_triangles": 156
+    },
+    {
+      "object": "AERO_SPOKE_FL_4",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 156,
+      "current_triangles": 156
+    },
+    {
+      "object": "AERO_SPOKE_FL_5",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 156,
+      "current_triangles": 156
+    },
+    {
+      "object": "AERO_SPOKE_FL_6",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 156,
+      "current_triangles": 156
+    },
+    {
+      "object": "AERO_SPOKE_FL_7",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 156,
+      "current_triangles": 156
+    },
+    {
+      "object": "AERO_SPOKE_FL_8",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 156,
+      "current_triangles": 156
+    },
+    {
+      "object": "AERO_SPOKE_FL_9",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 156,
+      "current_triangles": 156
+    },
+    {
+      "object": "AERO_SPOKE_FL_10",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 156,
+      "current_triangles": 156
+    },
+    {
+      "object": "HUB_FL",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 124,
+      "current_triangles": 124
+    },
+    {
+      "object": "CENTER_CAP_FL",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 124,
+      "current_triangles": 124
+    },
+    {
+      "object": "LUG_FL",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 124,
+      "current_triangles": 124
+    },
+    {
+      "object": "LUG_FL.001",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 124,
+      "current_triangles": 124
+    },
+    {
+      "object": "LUG_FL.002",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 124,
+      "current_triangles": 124
+    },
+    {
+      "object": "LUG_FL.003",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 124,
+      "current_triangles": 124
+    },
+    {
+      "object": "LUG_FL.004",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 124,
+      "current_triangles": 124
+    },
+    {
+      "object": "RIM_FR",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 768,
+      "current_triangles": 768
+    },
+    {
+      "object": "AERO_SPOKE_FR_1",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 156,
+      "current_triangles": 156
+    },
+    {
+      "object": "AERO_SPOKE_FR_2",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 156,
+      "current_triangles": 156
+    },
+    {
+      "object": "AERO_SPOKE_FR_3",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 156,
+      "current_triangles": 156
+    },
+    {
+      "object": "AERO_SPOKE_FR_4",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 156,
+      "current_triangles": 156
+    },
+    {
+      "object": "AERO_SPOKE_FR_5",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 156,
+      "current_triangles": 156
+    },
+    {
+      "object": "AERO_SPOKE_FR_6",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 156,
+      "current_triangles": 156
+    },
+    {
+      "object": "AERO_SPOKE_FR_7",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 156,
+      "current_triangles": 156
+    },
+    {
+      "object": "AERO_SPOKE_FR_8",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 156,
+      "current_triangles": 156
+    },
+    {
+      "object": "AERO_SPOKE_FR_9",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 156,
+      "current_triangles": 156
+    },
+    {
+      "object": "AERO_SPOKE_FR_10",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 156,
+      "current_triangles": 156
+    },
+    {
+      "object": "HUB_FR",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 124,
+      "current_triangles": 124
+    },
+    {
+      "object": "CENTER_CAP_FR",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 124,
+      "current_triangles": 124
+    },
+    {
+      "object": "LUG_FR",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 124,
+      "current_triangles": 124
+    },
+    {
+      "object": "LUG_FR.001",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 124,
+      "current_triangles": 124
+    },
+    {
+      "object": "LUG_FR.002",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 124,
+      "current_triangles": 124
+    },
+    {
+      "object": "LUG_FR.003",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 124,
+      "current_triangles": 124
+    },
+    {
+      "object": "LUG_FR.004",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 124,
+      "current_triangles": 124
+    },
+    {
+      "object": "RIM_RL",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 768,
+      "current_triangles": 768
+    },
+    {
+      "object": "AERO_SPOKE_RL_1",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 156,
+      "current_triangles": 156
+    },
+    {
+      "object": "AERO_SPOKE_RL_2",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 156,
+      "current_triangles": 156
+    },
+    {
+      "object": "AERO_SPOKE_RL_3",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 156,
+      "current_triangles": 156
+    },
+    {
+      "object": "AERO_SPOKE_RL_4",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 156,
+      "current_triangles": 156
+    },
+    {
+      "object": "AERO_SPOKE_RL_5",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 156,
+      "current_triangles": 156
+    },
+    {
+      "object": "AERO_SPOKE_RL_6",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 156,
+      "current_triangles": 156
+    },
+    {
+      "object": "AERO_SPOKE_RL_7",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 156,
+      "current_triangles": 156
+    },
+    {
+      "object": "AERO_SPOKE_RL_8",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 156,
+      "current_triangles": 156
+    },
+    {
+      "object": "AERO_SPOKE_RL_9",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 156,
+      "current_triangles": 156
+    },
+    {
+      "object": "AERO_SPOKE_RL_10",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 156,
+      "current_triangles": 156
+    },
+    {
+      "object": "HUB_RL",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 124,
+      "current_triangles": 124
+    },
+    {
+      "object": "CENTER_CAP_RL",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 124,
+      "current_triangles": 124
+    },
+    {
+      "object": "LUG_RL",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 124,
+      "current_triangles": 124
+    },
+    {
+      "object": "LUG_RL.001",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 124,
+      "current_triangles": 124
+    },
+    {
+      "object": "LUG_RL.002",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 124,
+      "current_triangles": 124
+    },
+    {
+      "object": "LUG_RL.003",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 124,
+      "current_triangles": 124
+    },
+    {
+      "object": "LUG_RL.004",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 124,
+      "current_triangles": 124
+    },
+    {
+      "object": "RIM_RR",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 768,
+      "current_triangles": 768
+    },
+    {
+      "object": "AERO_SPOKE_RR_1",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 156,
+      "current_triangles": 156
+    },
+    {
+      "object": "AERO_SPOKE_RR_2",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 156,
+      "current_triangles": 156
+    },
+    {
+      "object": "AERO_SPOKE_RR_3",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 156,
+      "current_triangles": 156
+    },
+    {
+      "object": "AERO_SPOKE_RR_4",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 156,
+      "current_triangles": 156
+    },
+    {
+      "object": "AERO_SPOKE_RR_5",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 156,
+      "current_triangles": 156
+    },
+    {
+      "object": "AERO_SPOKE_RR_6",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 156,
+      "current_triangles": 156
+    },
+    {
+      "object": "AERO_SPOKE_RR_7",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 156,
+      "current_triangles": 156
+    },
+    {
+      "object": "AERO_SPOKE_RR_8",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 156,
+      "current_triangles": 156
+    },
+    {
+      "object": "AERO_SPOKE_RR_9",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 156,
+      "current_triangles": 156
+    },
+    {
+      "object": "AERO_SPOKE_RR_10",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 156,
+      "current_triangles": 156
+    },
+    {
+      "object": "HUB_RR",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 124,
+      "current_triangles": 124
+    },
+    {
+      "object": "CENTER_CAP_RR",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 124,
+      "current_triangles": 124
+    },
+    {
+      "object": "LUG_RR",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 124,
+      "current_triangles": 124
+    },
+    {
+      "object": "LUG_RR.001",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 124,
+      "current_triangles": 124
+    },
+    {
+      "object": "LUG_RR.002",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 124,
+      "current_triangles": 124
+    },
+    {
+      "object": "LUG_RR.003",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 124,
+      "current_triangles": 124
+    },
+    {
+      "object": "LUG_RR.004",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 124,
+      "current_triangles": 124
+    },
+    {
+      "object": "FRONT_SEAT_BASE",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 188,
+      "current_triangles": 188
+    },
+    {
+      "object": "FRONT_SEAT_BACK",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 188,
+      "current_triangles": 188
+    },
+    {
+      "object": "FRONT_HEADREST",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 188,
+      "current_triangles": 188
+    },
+    {
+      "object": "FRONT_SEAT_BASE.001",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 188,
+      "current_triangles": 188
+    },
+    {
+      "object": "FRONT_SEAT_BACK.001",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 188,
+      "current_triangles": 188
+    },
+    {
+      "object": "FRONT_HEADREST.001",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 188,
+      "current_triangles": 188
+    },
+    {
+      "object": "REAR_BENCH",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 188,
+      "current_triangles": 188
+    },
+    {
+      "object": "REAR_BACKREST",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 188,
+      "current_triangles": 188
+    },
+    {
+      "object": "DASHBOARD",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 188,
+      "current_triangles": 188
+    },
+    {
+      "object": "CENTER_CONSOLE",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 188,
+      "current_triangles": 188
+    },
+    {
+      "object": "CENTER_DISPLAY",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 188,
+      "current_triangles": 188
+    },
+    {
+      "object": "STEERING_WHEEL",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 1152,
+      "current_triangles": 1152
+    },
+    {
+      "object": "CABIN_FLOOR",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 188,
+      "current_triangles": 188
+    }
+  ],
+  "topology_overlays": [
+    {
+      "object": "WIRE_HOOD",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 4352,
+      "current_triangles": 4352
+    },
+    {
+      "object": "WIRE_FENDER_FRONT",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 9344,
+      "current_triangles": 9344
+    },
+    {
+      "object": "WIRE_FENDER_REAR",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 8896,
+      "current_triangles": 8896
+    },
+    {
+      "object": "WIRE_DOOR_FL",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 2664,
+      "current_triangles": 2664
+    },
+    {
+      "object": "WIRE_DOOR_FR",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 2664,
+      "current_triangles": 2664
+    },
+    {
+      "object": "WIRE_DOOR_RL",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 2664,
+      "current_triangles": 2664
+    },
+    {
+      "object": "WIRE_DOOR_RR",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 2664,
+      "current_triangles": 2664
+    },
+    {
+      "object": "WIRE_BUMPER_FRONT",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 4168,
+      "current_triangles": 4168
+    },
+    {
+      "object": "WIRE_BUMPER_REAR",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 2872,
+      "current_triangles": 2872
+    },
+    {
+      "object": "WIRE_REAR_HATCH",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 4904,
+      "current_triangles": 4904
+    },
+    {
+      "object": "WIRE_REAR_HATCH_TOP",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 2752,
+      "current_triangles": 2752
+    },
+    {
+      "object": "WIRE_PILLAR_C_QUARTER",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 3952,
+      "current_triangles": 3952
+    },
+    {
+      "object": "WIRE_PILLAR_A_FOOT",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 1344,
+      "current_triangles": 1344
+    },
+    {
+      "object": "WIRE_NOSE_HOOD_BRIDGE",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 2752,
+      "current_triangles": 2752
+    },
+    {
+      "object": "WIRE_NOSE_CHEEK",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 1856,
+      "current_triangles": 1856
+    },
+    {
+      "object": "WIRE_BELTLINE_LEDGE",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 3952,
+      "current_triangles": 3952
+    },
+    {
+      "object": "WIRE_COWL_TRANSITION",
+      "max_bounds_delta_m": 0.00016033649444580078,
+      "baseline_triangles": 1904,
+      "current_triangles": 1872
+    },
+    {
+      "object": "WIRE_GLASS_WINDSHIELD",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 4288,
+      "current_triangles": 4288
+    },
+    {
+      "object": "WIRE_GLASS_ROOF",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 4288,
+      "current_triangles": 4288
+    },
+    {
+      "object": "WIRE_GLASS_REAR",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 4288,
+      "current_triangles": 4288
+    },
+    {
+      "object": "WIRE_GLASS_FRONT_LEFT",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 1736,
+      "current_triangles": 1736
+    },
+    {
+      "object": "WIRE_GLASS_FRONT_RIGHT",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 1736,
+      "current_triangles": 1736
+    },
+    {
+      "object": "WIRE_GLASS_REAR_LEFT",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 1736,
+      "current_triangles": 1736
+    },
+    {
+      "object": "WIRE_GLASS_REAR_RIGHT",
+      "max_bounds_delta_m": 0.0,
+      "baseline_triangles": 1736,
+      "current_triangles": 1736
+    }
+  ],
+  "max_physical_bounds_delta_m": 0.0,
+  "max_overlay_bounds_delta_m": 0.00016033649444580078,
+  "physical_failures": [],
+  "policy": "Vehicle surfaces/details retain source bounds and triangle counts. Diagnostic mesh-edge overlays are compared and reported separately; each current exported overlay still must pass direct Blender-to-GLB verification.",
+  "baseline_commit": "eb2e48d",
+  "source_blend_sha256": "315b0ea2d7749bbc87d187a44c1083f7831ef85adf45cbf3451f1299c8b0597f",
+  "current_glb_sha256": "2404bead6869697426c0be61017180211d474cb76fd1a4660c1b8373eed02377",
+  "overlay_explanation": "Wire copied from the actual cleaned cowl replaces the historical unwelded wire. Physical geometry is unchanged; the diagnostic overlay has 32 fewer redundant triangles and 0.160336 mm bounds difference."
+}

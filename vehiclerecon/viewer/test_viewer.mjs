@@ -2,6 +2,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 const root=path.resolve(process.argv[2]);
 const port=Number(process.argv[3]);
+const projectConfig=JSON.parse(fs.readFileSync(path.join(root,'project.json'),'utf8'));
+const fitLimit=projectConfig.viewer.fit_margin+.02;
 let targets;
 for(let attempt=0;attempt<40;attempt++){try{targets=await(await fetch(`http://127.0.0.1:${port}/json`)).json();break;}catch{await new Promise(r=>setTimeout(r,500));}}
 if(!targets)throw Error('Isolated preview browser did not start');
@@ -22,7 +24,7 @@ result.desktop.initial=await evaluate('({...__viewerQA,boundsNDC:__viewerQA.boun
 const expected=JSON.parse(fs.readFileSync(path.join(root,'validation/glb_geometry_report.json'),'utf8'));
 if(result.desktop.initial.model.triangles!==expected.triangles)throw Error('Viewer triangle count differs from exported GLB');
 if(result.desktop.initial.glbSHA256!==expected.glb_sha256)throw Error('Embedded model digest mismatch');
-function fitted(bounds){return bounds.min.every(v=>v>=-.86)&&bounds.max.every(v=>v<=.86);}
+function fitted(bounds){return bounds.min.every(v=>v>=-fitLimit)&&bounds.max.every(v=>v<=fitLimit);}
 if(!fitted(result.desktop.initial.boundsNDC))throw Error('Initial desktop framing clips the model');
 let shot=await call('Page.captureScreenshot',{format:'png'});fs.writeFileSync(path.join(root,'validation/viewer_desktop.png'),Buffer.from(shot.data,'base64'));
 for(const view of ['front','side','rear','top','three']){
@@ -30,7 +32,7 @@ for(const view of ['front','side','rear','top','three']){
     const q=await evaluate('({state:__viewerQA.state,bounds:__viewerQA.boundsNDC()})');
     if(q.state.view!==view||!fitted(q.bounds))throw Error('View or fit failed: '+view);result.desktop[view]=q;
 }
-for(const group of ['body','wire','glass','wheels']){
+for(const group of projectConfig.viewer.groups.map(g=>g.id)){
     const before=await evaluate('__viewerQA.drawnTriangles');await evaluate(`document.querySelector('[data-group="${group}"]').click()`);await frame();
     const q=await evaluate('({visibility:__viewerQA.visibility,triangles:__viewerQA.drawnTriangles})');
     if(q.visibility[group]!==false||q.triangles>=before)throw Error('Layer toggle failed: '+group);

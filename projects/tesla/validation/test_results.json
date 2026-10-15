@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "version": "0.1.0",
+  "implementation_hash": "5f66c3e024645302217e490d2b2851dc5aaeb18aebce7b1a85dfe90742d67185",
+  "executed": 123,
+  "passed": 123,
+  "failed": 0,
+  "skipped": 0,
+  "command": "python -m pytest tests --ignore=tests/fixtures -q --tb=short -p no:cacheprovider --junitxml .preview/final_tests.xml",
+  "coverage_scope": "Unit, schema, graph operation, cache dependency/failure, installed-wheel Blender calibration, and current end-to-end Tesla artifact acceptance tests."
+}

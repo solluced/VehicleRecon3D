@@ -562,6 +562,11 @@
             "three"
           ],
           "additionalProperties": false
+        },
+        "glass_alpha": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
         }
       },
       "required": [
@@ -571,7 +576,8 @@
         "wire_group",
         "glass_group",
         "fit_margin",
-        "presets"
+        "presets",
+        "glass_alpha"
       ],
       "additionalProperties": false
     },
@@ -699,6 +705,18 @@
         "geometry"
       ],
       "additionalProperties": false
+    },
+    "roles": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "minLength": 1
+        },
+        "minItems": 1,
+        "uniqueItems": true
+      }
     }
   },
   "required": [
@@ -715,7 +733,8 @@
     "presentation",
     "export",
     "viewer",
-    "validation"
+    "validation",
+    "roles"
   ],
   "additionalProperties": false
 }

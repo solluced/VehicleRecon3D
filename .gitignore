@@ -11,3 +11,5 @@ validation/*.log
 projects/*/.cache/
 projects/*/validation/execution/
 .pytest_cache/
+/build/
+/dist/

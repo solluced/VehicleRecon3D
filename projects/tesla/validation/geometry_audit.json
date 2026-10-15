@@ -3,7 +3,15 @@
   "finite_and_nonzero_faces": true,
   "geometry_hash": "6fa8c5a8174917222d9b7b8641dc28afbc55dbc388e67313362924ec43f2e96d",
   "audit_mutated_geometry": false,
-  "source_blend_sha256": "e07762aa1818d9aa838d88e1416c3855f7cbc611387553358feca015b58f9e32",
+  "semantic_roles_pass": true,
+  "semantic_bindings": {
+    "pass": true,
+    "missing_roles": [],
+    "missing_objects": [],
+    "empty_roles": []
+  },
+  "metric_units": true,
+  "source_blend_sha256": "def7c7e2da3952d847d14b9b68c96437e24a579c83d22ad0ca554231c605a7c2",
   "surface_control_mesh": {
     "vertices": 4563,
     "faces": 3693,

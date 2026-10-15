@@ -26,7 +26,7 @@ def version(executable=None):
 def run(project, stage, *, source=None, executable=None, extra=None):
     exe = discover(executable)
     runtime_version = version(exe)
-    command = [str(exe), "--background"]
+    command = [str(exe), "--factory-startup", "--background"]
     if source:
         command.append(str(source))
     command += ["--python-exit-code", "1", "--python", str(REPOSITORY / "vehiclerecon/blender/entry.py"),

@@ -4,7 +4,7 @@ import numpy as np
 from mathutils import Vector
 from ..core.errors import GateError
 from ..core.manifest import digest_data,write_json,digest_file
-from ..validation.geometry import require_audit
+from ..validation.geometry import require_audit,validate_roles
 from .scene import save
 
 def model_objects(project,include_wire=False):
@@ -69,9 +69,13 @@ def audit(project):
         centers[name]=list(actual);pivot_errors[name]=(actual-expected).length
     after=geometry_hash(project)
     if before!=after:raise GateError('Read-only audit changed geometry')
-    passed=bad==0 and max(pivot_errors.values(),default=0)<=config['pivot_tolerance_m']
+    roles=validate_roles(project.profile,project.data['roles'],{o.name for o in model_objects(project)})
+    metric=bpy.context.scene.unit_settings.system=='METRIC' and bpy.context.scene.unit_settings.scale_length==1
+    passed=bad==0 and roles['pass'] and metric and max(pivot_errors.values(),default=0)<=config['pivot_tolerance_m']
     report={'status':'PASS' if passed else 'FAIL','finite_and_nonzero_faces':bad==0,'geometry_hash':before,
-            'audit_mutated_geometry':False,'source_blend_sha256':digest_file(bpy.data.filepath),
+            'audit_mutated_geometry':False,'semantic_roles_pass':roles['pass'],'semantic_bindings':roles,
+            'metric_units':metric,
+            'source_blend_sha256':digest_file(bpy.data.filepath),
             'surface_control_mesh':{'vertices':sum(o['vertices'] for o in surface),'faces':faces,'quads':quads,'quad_percent':100*quads/max(1,faces)},
             'evaluated_body_envelope':{'min':low.tolist(),'max':high.tolist(),'size':(high-low).tolist()},
             'wheel_root_centers_m':centers,'wheel_pivot_errors_m':pivot_errors,'wheel_pivots_pass':passed,'objects':objects}

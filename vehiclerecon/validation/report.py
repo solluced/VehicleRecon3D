@@ -7,6 +7,10 @@ def model_inputs_hash(project,scope='final'):
     data=project.data
     keys=('dimensions','materials','scene','presentation') if scope=='final' else ('dimensions','materials','scene')
     value={k:data[k] for k in keys}
+    value['mask_exclusions']=data['export']['excluded_collections']
+    if scope=='final':
+        value['roles']=data['roles']
+        value['model_collections']=data['export']['collections']
     value['generated']={k:digest_file(project.path(path,exists=True)) for k,path in data['generated'].items()
                         if k in (('calibration','cage','surface_graph','details','silhouette_traces') if scope=='final' else ('calibration','cage','surface_graph','silhouette_traces'))}
     value['references']={k:digest_file(project.path(path,exists=True)) for k,path in data['references'].items()}

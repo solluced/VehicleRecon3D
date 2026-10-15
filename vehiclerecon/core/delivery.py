@@ -36,7 +36,7 @@ def deliver(project):
     paths=[project.root/'project.json']
     for folder in ['input','generated','output','validation']:
         paths.extend(p for p in project.path(folder).rglob('*') if p.is_file() and 'execution' not in p.parts
-                     and p.name not in ('delivery_manifest.json','pipeline_report.json','test_results.json') and p.suffix not in ('.log',))
+                     and p.name not in ('delivery_manifest.json','pipeline_report.json') and p.suffix not in ('.log',))
     output={'schema_version':1,'status':'PASS','project_id':project.data['project_id'],'files':manifest(project.root,paths)}
     write_json(project.path('output/delivery_manifest.json'),output)
     return report

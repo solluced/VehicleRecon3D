@@ -15,6 +15,9 @@ def project(tmp_path):
     p=Project(tmp_path)
     for relative in ['validation/geometry_audit.json','validation/review.json',*p.data['presentation']['review_proofs']]:
         target=p.path(relative);target.parent.mkdir(exist_ok=True);shutil.copyfile(source/relative,target)
+    from vehiclerecon.validation.report import record_review
+    record_review(p,reviewer='Mocked cache test fixture',decision='PASS',
+                  notes=['Explicit synthetic decision for dependency tests, not a production visual review.'],limitations=[])
     return p
 
 def fake_pipeline(project):
@@ -86,3 +89,10 @@ def test_implementation_and_dependency_keys(project):
     assert a.key('cage',{}, {})!=b.key('cage',{}, {})
     assert a.key('cage',{}, {'calibration':'a'})!=a.key('cage',{}, {'calibration':'b'})
     assert a.key('cage',{'x':1,'y':2},{})==a.key('cage',{'y':2,'x':1},{})
+
+def test_role_bindings_invalidate_audit_not_geometry_construction(project):
+    pipeline,counts=fake_pipeline(project);assert pipeline.run()==0
+    project.data['roles']['hood']=['another_surface']
+    assert pipeline.run()==0
+    assert counts['surfaces']==1 and counts['details']==1
+    assert counts['geometry']==2 and counts['presentation']==2

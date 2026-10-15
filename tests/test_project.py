@@ -50,6 +50,16 @@ def test_additional_properties(project):
     with pytest.raises(SchemaError):
         validate(bad, 'project')
 
+def test_profile_floor_cannot_be_weakened(project):
+    data=copy.deepcopy(project.data);data['validation']['thresholds']['side']=.1
+    (project.root/'project.json').write_text(json.dumps(data))
+    with pytest.raises(SchemaError):Project(project.root)
+
+def test_profile_path_rejected_even_in_worker(project):
+    data=copy.deepcopy(project.data);data['vehicle_profile']='../outside'
+    (project.root/'project.json').write_text(json.dumps(data))
+    with pytest.raises(SchemaError):Project(project.root,check=False)
+
 def test_nonfinite_json(tmp_path):
     p = tmp_path/'bad.json'
     p.write_text('{"value":NaN}')

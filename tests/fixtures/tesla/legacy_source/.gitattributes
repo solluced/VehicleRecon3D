@@ -1,0 +1,13 @@
+* text=auto
+.gitignore text eol=lf
+.gitattributes text eol=lf
+*.py text eol=lf
+*.mjs text eol=lf
+*.md text eol=lf
+*.txt text eol=lf
+*.json text eol=lf
+*.html text eol=lf
+*.sha256 text eol=lf
+*.blend binary
+*.png binary
+*.glb binary

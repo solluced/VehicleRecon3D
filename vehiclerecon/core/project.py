@@ -2,10 +2,14 @@
 import json
 import math
 import re
+import sys
 from pathlib import Path, PureWindowsPath
 from .errors import SchemaError, ReferenceError
 
 REPOSITORY = Path(__file__).resolve().parents[2]
+RESOURCE_ROOT = next((root for root in [REPOSITORY,REPOSITORY/'share/vehiclerecon',
+    *[p/'share/vehiclerecon' for p in list(REPOSITORY.parents)[:3]],Path(sys.prefix)/'share/vehiclerecon']
+    if (root/'schemas/project.schema.json').is_file()),REPOSITORY)
 
 
 def finite(value):
@@ -32,7 +36,7 @@ def read_json(path):
 def validate(value, schema_name):
     from jsonschema import Draft202012Validator
     from referencing import Registry, Resource
-    schema_root = REPOSITORY / "schemas"
+    schema_root = RESOURCE_ROOT / "schemas"
     schemas = [read_json(p) for p in sorted(schema_root.glob("*.schema.json"))]
     registry = Registry().with_resources((s["$id"], Resource.from_contents(s)) for s in schemas)
     schema = read_json(schema_root / f"{schema_name}.schema.json")
@@ -56,12 +60,19 @@ class Project:
                 raise SchemaError(f"Dimension must be positive: {name}")
         if not re.fullmatch('[a-z_]+',self.data['vehicle_profile']):
             raise SchemaError('Unsafe vehicle profile identifier')
-        self.profile = read_json(REPOSITORY / "profiles" / f"{self.data['vehicle_profile']}.json")
+        self.profile = read_json(RESOURCE_ROOT / "profiles" / f"{self.data['vehicle_profile']}.json")
         if check:
             validate(self.profile, "vehicle_profile")
         for view,minimum in self.profile.get('minimum_iou',{}).items():
             if self.data['validation']['thresholds'][view]<minimum:
                 raise SchemaError(f'{view}: project threshold cannot weaken profile floor {minimum}')
+        allowed_roles=set(self.profile['roles'])|set(self.profile['optional_roles'])
+        if set(self.data['roles'])-allowed_roles:
+            raise SchemaError('Project has semantic roles outside its vehicle profile')
+        if set(self.profile['roles'])-set(self.data['roles']):
+            raise SchemaError('Required semantic role bindings are missing')
+        if set(self.data['export']['collections'])&set(self.data['export']['excluded_collections']):
+            raise SchemaError('Export model collections cannot be excluded from silhouette validation')
         for path in self.data["references"].values():
             self.path(path, exists=True)
         for path in self.data.get("generated", {}).values():

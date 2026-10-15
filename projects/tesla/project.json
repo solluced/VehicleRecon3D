@@ -400,7 +400,8 @@
         -0.7531512809621944,
         0.21981079991903668
       ]
-    }
+    },
+    "glass_alpha": 0.27
   },
   "validation": {
     "thresholds": {
@@ -434,5 +435,81 @@
       "area_epsilon": 1e-12,
       "pivot_tolerance_m": 1e-06
     }
+  },
+  "roles": {
+    "hood": [
+      "HOOD"
+    ],
+    "front_bumper": [
+      "BUMPER_FRONT"
+    ],
+    "front_fender": [
+      "FENDER_FRONT"
+    ],
+    "front_door": [
+      "DOOR_FL",
+      "DOOR_FR"
+    ],
+    "rear_door": [
+      "DOOR_RL",
+      "DOOR_RR"
+    ],
+    "rear_quarter": [
+      "FENDER_REAR",
+      "PILLAR_C_QUARTER"
+    ],
+    "roof": [
+      "ROOF_RAIL",
+      "GLASS_ROOF"
+    ],
+    "windshield": [
+      "GLASS_WINDSHIELD"
+    ],
+    "rear_glass": [
+      "GLASS_REAR"
+    ],
+    "a_pillar": [
+      "PILLAR_A_FOOT",
+      "FRAME_FRONT_GLASS_FRONT"
+    ],
+    "b_pillar": [
+      "PILLAR_B"
+    ],
+    "c_pillar": [
+      "PILLAR_C_QUARTER",
+      "FRAME_BACK_GLASS_REAR_SIDE"
+    ],
+    "rocker": [
+      "ROCKER"
+    ],
+    "rear_bumper": [
+      "BUMPER_REAR"
+    ],
+    "wheel_arch": [
+      "ARCH_RETURN_FRONT",
+      "ARCH_RETURN_REAR"
+    ],
+    "wheel": [
+      "WHEEL_FL",
+      "WHEEL_FR",
+      "WHEEL_RL",
+      "WHEEL_RR"
+    ],
+    "mirror": [
+      "MIRROR_L",
+      "MIRROR_R"
+    ],
+    "headlight": [
+      "LIGHT_HEAD_L",
+      "LIGHT_HEAD_R"
+    ],
+    "taillight": [
+      "LIGHT_TAIL_L",
+      "LIGHT_TAIL_R"
+    ],
+    "hatch": [
+      "REAR_HATCH",
+      "REAR_HATCH_TOP"
+    ]
   }
 }

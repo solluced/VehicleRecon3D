@@ -11,3 +11,4 @@
 *.blend binary
 *.png binary
 *.glb binary
+*.toml text eol=lf

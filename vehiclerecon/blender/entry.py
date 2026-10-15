@@ -1,7 +1,14 @@
 """Single background-worker entry. Host validates schemas before execution."""
 import sys
 from pathlib import Path
-sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+from importlib.util import spec_from_file_location,module_from_spec
+# Load this exact trusted package without adding host site-packages ahead of
+# Blender's binary dependencies (host and Blender may use different Python ABIs).
+package_path=Path(__file__).resolve().parents[1]
+package_spec=spec_from_file_location('vehiclerecon',package_path/'__init__.py',submodule_search_locations=[str(package_path)])
+package=module_from_spec(package_spec)
+sys.modules['vehiclerecon']=package
+package_spec.loader.exec_module(package)
 from vehiclerecon.core.project import Project
 from vehiclerecon.core.errors import ReconError
 
@@ -13,6 +20,9 @@ def main():
         from vehiclerecon.blender.scene import initialize, save
         initialize(project)
         save(project.path('.cache/initialize.blend'))
+        from vehiclerecon.core.manifest import write_json
+        from vehiclerecon.core.project import RESOURCE_ROOT
+        write_json(project.path('validation/initialize_report.json'),{'package_file':package.__file__,'resource_root':str(RESOURCE_ROOT)})
     elif stage == 'calibration':
         from vehiclerecon.blender.scene import initialize
         from vehiclerecon.blender.reference import build
@@ -48,6 +58,9 @@ def main():
     elif stage == 'overlay':
         from vehiclerecon.blender.overlay import build
         build(project)
+    elif stage == 'regression':
+        from vehiclerecon.blender.regression import compare
+        compare(project,Path(args[2]))
     else:
         raise ReconError(f'Unsupported Blender stage: {stage}')
 

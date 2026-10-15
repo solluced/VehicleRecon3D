@@ -1,0 +1,94 @@
+{
+  "status": "PASS",
+  "version": "0.1.0",
+  "baseline_commit": "eb2e48d",
+  "implementation_hash": "5f66c3e024645302217e490d2b2851dc5aaeb18aebce7b1a85dfe90742d67185",
+  "tests": {
+    "status": "PASS",
+    "version": "0.1.0",
+    "implementation_hash": "5f66c3e024645302217e490d2b2851dc5aaeb18aebce7b1a85dfe90742d67185",
+    "executed": 123,
+    "passed": 123,
+    "failed": 0,
+    "skipped": 0,
+    "command": "python -m pytest tests --ignore=tests/fixtures -q --tb=short -p no:cacheprovider --junitxml .preview/final_tests.xml",
+    "coverage_scope": "Unit, schema, graph operation, cache dependency/failure, installed-wheel Blender calibration, and current end-to-end Tesla artifact acceptance tests."
+  },
+  "fixture_files_verified": {
+    "baseline": 112,
+    "legacy_source": 91
+  },
+  "genericization": {
+    "project_python_files_required": 0,
+    "tesla_specific_coordinates_in_framework_python": 0,
+    "schemas": "PASS",
+    "schema_count": 7,
+    "cli": "PASS",
+    "cache": "PASS"
+  },
+  "iou": {
+    "side": {
+      "iou": 0.95723,
+      "baseline_delta": 0.0,
+      "floor": 0.94
+    },
+    "top": {
+      "iou": 0.936083,
+      "baseline_delta": 0.0,
+      "floor": 0.92
+    },
+    "front": {
+      "iou": 0.931202,
+      "baseline_delta": 0.0,
+      "floor": 0.92
+    },
+    "rear": {
+      "iou": 0.944724,
+      "baseline_delta": 0.0,
+      "floor": 0.9
+    }
+  },
+  "geometry_audit": "PASS",
+  "audit_mutated_geometry": false,
+  "semantic_roles_pass": true,
+  "metric_units": true,
+  "control_regression": "PASS",
+  "max_control_coordinate_error_m": 1.1920928955078125e-07,
+  "cage_controls_handles_exact": true,
+  "glb_verify": "PASS",
+  "mesh_nodes": 191,
+  "triangles": 245920,
+  "source_blend_sha256": "315b0ea2d7749bbc87d187a44c1083f7831ef85adf45cbf3451f1299c8b0597f",
+  "glb_sha256": "2404bead6869697426c0be61017180211d474cb76fd1a4660c1b8373eed02377",
+  "viewer_desktop": "PASS",
+  "viewer_mobile": "PASS",
+  "exact_embedded_glb": true,
+  "cold_pipeline": {
+    "preflight": "PASS",
+    "references": "PASS",
+    "calibration": "PASS",
+    "overlay": "PASS",
+    "cage": "PASS",
+    "surfaces": "PASS",
+    "silhouette": "PASS",
+    "details": "PASS",
+    "geometry": "PASS",
+    "presentation": "PASS",
+    "export": "PASS",
+    "glb_verify": "PASS",
+    "viewer": "PASS",
+    "delivery": "PASS"
+  },
+  "documentation": {
+    "architecture": "PASS",
+    "project_format": "PASS",
+    "inference_standard": "PASS",
+    "pipeline": "PASS",
+    "adding_a_vehicle": "PASS"
+  },
+  "limitations": [
+    "Migration acceptance against the supplied illustrative fixture: assumed physical scale; simplified lights and interior; existing shoulder/arch transitions and panel edge creases remain visible. This review does not certify automotive Class-A surfacing or a game-ready import."
+  ],
+  "reserved_project": "Pre-existing untracked Mark II folder was not read, migrated, modeled or modified.",
+  "blockers": []
+}

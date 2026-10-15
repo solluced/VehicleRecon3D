@@ -1,0 +1,8 @@
+*.blend1
+*.blend2
+__pycache__/
+validation/logs/
+validation/*.log
+.preview-browser/
+.preview/
+*.zip
