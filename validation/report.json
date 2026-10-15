@@ -1,17 +1,140 @@
 {
-  "status": "ready_for_reference_calibration",
-  "reference_calibration": "PENDING",
-  "reference_calibration_reason": "All required reference images are bundled in refs/; calibration has not yet been performed.",
-  "model_status": "starter_only_no_vehicle_geometry",
-  "cage_status": "not_started",
-  "dimensions": null,
-  "views": {
-    "front": {"status": "pending", "iou": null, "pixel_mismatch_percent": null, "bbox_difference": null},
-    "side": {"status": "pending", "iou": null, "pixel_mismatch_percent": null, "bbox_difference": null},
-    "rear": {"status": "pending", "iou": null, "pixel_mismatch_percent": null, "bbox_difference": null},
-    "top": {"status": "pending", "iou": null, "pixel_mismatch_percent": null, "bbox_difference": null},
-    "perspective": {"status": "pending"}
+  "status": "silhouette_pass_surface_review_pending",
+  "reference_calibration": "REGISTERED_WITH_DOCUMENTED_SOURCE_INCONSISTENCIES",
+  "source_mask_method": "Manual exterior landmark traces from reference_multiview.png; pixel coordinates in the original full sheet. Shadows excluded. Approximate illustrative source, not ground-truth CAD masks.",
+  "model_mask_method": "Actual opaque black-material Blender renders from fixed calibrated cameras; no per-view rescaling",
+  "cage_status": "REVIEWED_SIDE_TOP_FRONT_OVERLAYS",
+  "model_status": "PATCH_BLOCKOUT_PENDING_SILHOUETTE_VALIDATION",
+  "dimensions": {
+    "length_m": 4.8,
+    "width_m": 1.8823529411764706,
+    "height_m": 1.5257844474761255,
+    "wheelbase_m": 3.077762619372442,
+    "wheel_radius_m": 0.40600272851296043,
+    "front_track_m": 1.61,
+    "rear_track_m": 1.64,
+    "absolute_scale_status": "Assumed length 4.8m; all other envelope values derived from image ratios. Not OEM measurements."
   },
+  "views": {
+    "side": {
+      "status": "PASS",
+      "iou": 0.955359,
+      "threshold": 0.94,
+      "pixel_mismatch_percent_of_frame": 1.6275,
+      "pixel_mismatch_percent_of_union": 4.4641,
+      "reference_bbox_px": [
+        76,
+        114,
+        1124,
+        449
+      ],
+      "model_bbox_px": [
+        77,
+        114,
+        1125,
+        446
+      ],
+      "bbox_difference_px": [
+        1,
+        0,
+        1,
+        -3
+      ],
+      "render_size": [
+        1200,
+        560
+      ]
+    },
+    "top": {
+      "status": "PASS",
+      "iou": 0.927234,
+      "threshold": 0.92,
+      "pixel_mismatch_percent_of_frame": 4.1708,
+      "pixel_mismatch_percent_of_union": 7.2766,
+      "reference_bbox_px": [
+        76,
+        95,
+        1124,
+        505
+      ],
+      "model_bbox_px": [
+        77,
+        95,
+        1125,
+        505
+      ],
+      "bbox_difference_px": [
+        1,
+        0,
+        1,
+        0
+      ],
+      "render_size": [
+        1200,
+        600
+      ]
+    },
+    "front": {
+      "status": "PASS",
+      "iou": 0.93753,
+      "threshold": 0.92,
+      "pixel_mismatch_percent_of_frame": 1.4658,
+      "pixel_mismatch_percent_of_union": 6.247,
+      "reference_bbox_px": [
+        191,
+        150,
+        609,
+        490
+      ],
+      "model_bbox_px": [
+        191,
+        151,
+        609,
+        490
+      ],
+      "bbox_difference_px": [
+        0,
+        1,
+        0,
+        0
+      ],
+      "render_size": [
+        800,
+        640
+      ]
+    },
+    "rear": {
+      "status": "PASS",
+      "iou": 0.948268,
+      "threshold": 0.9,
+      "pixel_mismatch_percent_of_frame": 1.2066,
+      "pixel_mismatch_percent_of_union": 5.1732,
+      "reference_bbox_px": [
+        191,
+        150,
+        609,
+        490
+      ],
+      "model_bbox_px": [
+        191,
+        151,
+        609,
+        490
+      ],
+      "bbox_difference_px": [
+        0,
+        1,
+        0,
+        0
+      ],
+      "render_size": [
+        800,
+        640
+      ]
+    }
+  },
+  "silhouette_pass": true,
+  "surface_quality_pass": false,
   "export_allowed": false,
   "complete": false
 }
