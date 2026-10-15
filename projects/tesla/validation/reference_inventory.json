@@ -1,0 +1,42 @@
+{
+  "multiview": {
+    "path": "input/reference_multiview.png",
+    "size": [
+      1536,
+      1152
+    ],
+    "sha256": "52ef4d29e730999f7d080a8328a1a625435fab7bd239fd0b96ef3e1db0cfef72"
+  },
+  "control_overlay": {
+    "path": "input/reference_dense_control_points.png",
+    "size": [
+      1448,
+      1086
+    ],
+    "sha256": "eb7ce962f0c0628ca74bcd33a63b8af7c3b796573ca0ef93520853c46add582b"
+  },
+  "surface_target": {
+    "path": "input/reference_surface_target.png",
+    "size": [
+      1536,
+      1152
+    ],
+    "sha256": "e2e9ef7bcbd86cd42ebd738799774fbc823ace57f5ee2e747b3400bdfa349d46"
+  },
+  "workflow": {
+    "path": "input/reference_workflow.png",
+    "size": [
+      1536,
+      1152
+    ],
+    "sha256": "a2d0304bfa4aa192d7918bde7903e6a75ab66a0dfca96886f1f2f18f3d711d8f"
+  },
+  "cage_overlay": {
+    "path": "input/reference_control_cage_overlay.png",
+    "size": [
+      1448,
+      1086
+    ],
+    "sha256": "e953f53cb081639278b202af77aa84d00bafc32c6c8e931e51167cb6dfa6c591"
+  }
+}

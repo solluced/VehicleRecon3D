@@ -13,6 +13,11 @@ def main():
         from vehiclerecon.blender.scene import initialize, save
         initialize(project)
         save(project.path('.cache/initialize.blend'))
+    elif stage == 'calibration':
+        from vehiclerecon.blender.scene import initialize
+        from vehiclerecon.blender.reference import build
+        initialize(project)
+        build(project)
     else:
         raise ReconError(f'Unsupported Blender stage: {stage}')
 

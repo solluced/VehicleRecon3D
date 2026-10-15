@@ -18,7 +18,9 @@
     "wheelbase_m": 3.077762619372442,
     "provenance": "Assumed length 4.8m; all other envelope values derived from image ratios. Not OEM measurements."
   },
-  "generated": {},
+  "generated": {
+    "calibration": "generated/calibration.json"
+  },
   "materials": [],
   "scene": {
     "name": "SCENE_PRESENTATION",

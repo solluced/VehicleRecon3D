@@ -15,6 +15,7 @@ def project(tmp_path):
     source = ROOT / 'projects/tesla'
     shutil.copytree(source/'input', tmp_path/'input')
     shutil.copyfile(source/'project.json', tmp_path/'project.json')
+    shutil.copytree(source/'generated', tmp_path/'generated')
     return Project(tmp_path)
 
 def test_project(project):
