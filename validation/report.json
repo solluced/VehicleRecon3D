@@ -1,0 +1,17 @@
+{
+  "status": "ready_for_reference_calibration",
+  "reference_calibration": "PENDING",
+  "reference_calibration_reason": "All required reference images are bundled in refs/; calibration has not yet been performed.",
+  "model_status": "starter_only_no_vehicle_geometry",
+  "cage_status": "not_started",
+  "dimensions": null,
+  "views": {
+    "front": {"status": "pending", "iou": null, "pixel_mismatch_percent": null, "bbox_difference": null},
+    "side": {"status": "pending", "iou": null, "pixel_mismatch_percent": null, "bbox_difference": null},
+    "rear": {"status": "pending", "iou": null, "pixel_mismatch_percent": null, "bbox_difference": null},
+    "top": {"status": "pending", "iou": null, "pixel_mismatch_percent": null, "bbox_difference": null},
+    "perspective": {"status": "pending"}
+  },
+  "export_allowed": false,
+  "complete": false
+}
