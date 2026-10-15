@@ -1,0 +1,7 @@
+{
+  "status": "PASS",
+  "baseline_curves": 53,
+  "generated_curves": 53,
+  "differing_curves": [],
+  "method": "Exact world-space Bezier control and handle hashes, including cyclic flags"
+}

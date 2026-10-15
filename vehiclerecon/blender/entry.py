@@ -18,6 +18,9 @@ def main():
         from vehiclerecon.blender.reference import build
         initialize(project)
         build(project)
+    elif stage == 'cage':
+        from vehiclerecon.blender.cage import build
+        build(project)
     else:
         raise ReconError(f'Unsupported Blender stage: {stage}')
 

@@ -92,13 +92,159 @@
         "minItems": 3,
         "maxItems": 3
       }
+    },
+    "sides": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "prefixItems": [
+          {
+            "type": "string"
+          },
+          {
+            "enum": [
+              -1,
+              1
+            ]
+          }
+        ],
+        "items": false,
+        "minItems": 2,
+        "maxItems": 2
+      }
+    },
+    "materials": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "kind": {
+            "const": "emission"
+          },
+          "color": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 3,
+            "maxItems": 3
+          }
+        },
+        "required": [
+          "name",
+          "kind",
+          "color"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "guides": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "kind": {
+            "enum": [
+              "wheel",
+              "arch"
+            ]
+          },
+          "name": {
+            "type": "string"
+          },
+          "axles": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "segments": {
+            "type": "integer",
+            "minimum": 3
+          },
+          "radius_m": {
+            "type": "number",
+            "exclusiveMinimum": 0
+          },
+          "half_width_m": {
+            "type": "number"
+          },
+          "width_crown_m": {
+            "type": "number"
+          },
+          "angles_deg": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          },
+          "material": {
+            "type": "string"
+          },
+          "radius": {
+            "type": "number",
+            "exclusiveMinimum": 0
+          }
+        },
+        "required": [
+          "kind",
+          "name",
+          "axles",
+          "material",
+          "radius"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "renders": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "view": {
+            "type": "string"
+          },
+          "camera": {
+            "type": "string"
+          },
+          "reference": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "size": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "minItems": 2,
+            "maxItems": 2
+          }
+        },
+        "required": [
+          "view",
+          "camera",
+          "reference",
+          "size"
+        ],
+        "additionalProperties": false
+      }
     }
   },
   "required": [
     "schema_version",
     "collection",
     "curves",
-    "landmarks"
+    "landmarks",
+    "sides",
+    "materials",
+    "guides",
+    "renders"
   ],
   "additionalProperties": false
 }

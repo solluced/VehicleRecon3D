@@ -1,0 +1,217 @@
+{
+  "objects": [
+    {
+      "name": "CAGE_L00_CENTERLINE",
+      "curve_sha256": "89f4bebe5e648187447570ec82ecb64826168dda29929444a3fa9a5a064fe48c"
+    },
+    {
+      "name": "CAGE_L01_HOOD_CENTER",
+      "curve_sha256": "600343dc4f86d73e5f0ee96cc56e5cdfebd5b29b28d5c5f9589b6d9710e4ecb0"
+    },
+    {
+      "name": "CAGE_L02_HOOD_SHOULDER_L",
+      "curve_sha256": "e359063700d4aa3032f5c28d8a78ebbcf41d0a08fcca44401e54dae1031232b4"
+    },
+    {
+      "name": "CAGE_L02_HOOD_SHOULDER_R",
+      "curve_sha256": "52fa15c777cf9fbe4a10ed594edba75cf86857ef43db8a3db9d7197e7d6eb8c8"
+    },
+    {
+      "name": "CAGE_L03_FRONT_FENDER_CROWN_L",
+      "curve_sha256": "f6bb3bf34d8dfdf1505992a03b97ae1cd1d17a0b07e706fd6d4ad896d7acc291"
+    },
+    {
+      "name": "CAGE_L03_FRONT_FENDER_CROWN_R",
+      "curve_sha256": "2df6187fabf594f89506d3c5b64e10678cd3202189617b42fc785a71fd0c774c"
+    },
+    {
+      "name": "CAGE_L04_UPPER_ARCH_TRANSITION_L",
+      "curve_sha256": "36dda05c35322ded6cdfb7e3a27814e708c5280b14b686a53dad3d5ba158daa4"
+    },
+    {
+      "name": "CAGE_L04_UPPER_ARCH_TRANSITION_R",
+      "curve_sha256": "b353ae83f0d09db7ee0bc7bfffa3d6ac321cf306a3ded9bb6030a1452d21275b"
+    },
+    {
+      "name": "CAGE_L05_BELT_L",
+      "curve_sha256": "b9d48b901942c965c8da38cfc8de1e03cc8266ae35c02e3cb5004301a96070e1"
+    },
+    {
+      "name": "CAGE_L05_BELT_R",
+      "curve_sha256": "0b296230078c382845d40d772c6c4eb39e428ec3d9e9b0cbb6d868b06ab78d5f"
+    },
+    {
+      "name": "CAGE_L06_SHOULDER_CHARACTER_L",
+      "curve_sha256": "10e926935539160b0327f1ffd5f038a961d317b776eac6d0c801249094f50b91"
+    },
+    {
+      "name": "CAGE_L06_SHOULDER_CHARACTER_R",
+      "curve_sha256": "ce83f95ca690f4b55a0fb103d548d798a8d89715598ed84394b87cee0b21a79b"
+    },
+    {
+      "name": "CAGE_L07_DOOR_LOWER_CHARACTER_L",
+      "curve_sha256": "a302a076d296bc4ec2f7afdf0e1f3ae428f94ffe32b1d7dcc251f9461c122fa0"
+    },
+    {
+      "name": "CAGE_L07_DOOR_LOWER_CHARACTER_R",
+      "curve_sha256": "2c77ecae30540dc67368d14a5b3a9a39cf724b1a2137117302eebd47721e26c9"
+    },
+    {
+      "name": "CAGE_L08_ROCKER_UPPER_L",
+      "curve_sha256": "5d52c3bb9e09165c0940f1452967d066ab7337fe5db01c31af5038921e09c278"
+    },
+    {
+      "name": "CAGE_L08_ROCKER_UPPER_R",
+      "curve_sha256": "6adc877a950b7e8d909cf48ce208e4b723fedad201c2f4ec4e31a925e7030955"
+    },
+    {
+      "name": "CAGE_L09_ROCKER_LOWER_L",
+      "curve_sha256": "0b22149c64f3fa463085ae155104a38ff4356b8b7d317046845701fe080ef6fc"
+    },
+    {
+      "name": "CAGE_L09_ROCKER_LOWER_R",
+      "curve_sha256": "1b739c2a2a7ab4bf623949612608d9eb06930ecfeac74e7efb6b9af345f9cc32"
+    },
+    {
+      "name": "CAGE_L10_WINDOW_SILL_L",
+      "curve_sha256": "5fc5aee74593d51c1d37b44693244cdd376fc45118d4643060e81d1fe9a26f01"
+    },
+    {
+      "name": "CAGE_L10_WINDOW_SILL_R",
+      "curve_sha256": "f4e917ba9e4299b6562d43716e025841f9d0948da50ef6cc7722f8edc024cc3e"
+    },
+    {
+      "name": "CAGE_L11_ROOF_EDGE_L",
+      "curve_sha256": "1931e6674f94ac7f2ec91a62fa3efd6ce54233c930dfda31724936080a3386a5"
+    },
+    {
+      "name": "CAGE_L11_ROOF_EDGE_R",
+      "curve_sha256": "8f7d799be5c0504ee70143b5f17bcea68ba0a72a59c7ace6edee388565c48a2b"
+    },
+    {
+      "name": "CAGE_L12_ROOF_CENTER",
+      "curve_sha256": "02c89dbba326db34d690cde2454dc8e9fa5385a94a7721c158cbab6bd2a07081"
+    },
+    {
+      "name": "CAGE_L13_REAR_QUARTER_SHOULDER_L",
+      "curve_sha256": "f3b7b12b2832a9f3a9c07278ab8c7ccc35e65a707359f90fe0d8ffeeb6213dd7"
+    },
+    {
+      "name": "CAGE_L13_REAR_QUARTER_SHOULDER_R",
+      "curve_sha256": "1b5f455c70aabae91153e2d9a3eec7bde686a128bcd3d2af060b1f5d6c485502"
+    },
+    {
+      "name": "CAGE_L14_HATCH_TRANSITION_L",
+      "curve_sha256": "f1a456bbf5f689ca0785e471077908435dfac02c62795186f3efcf87d2b70b82"
+    },
+    {
+      "name": "CAGE_L14_HATCH_TRANSITION_R",
+      "curve_sha256": "d8fa1e5dcbe544c87b6ce0f025f5b1f87b4f7cfe5de8225c57f76fb459399b54"
+    },
+    {
+      "name": "CAGE_L15_LOWER_BUMPER_L",
+      "curve_sha256": "ff2a31d054455c78a09c45831de0de295b2da959884135c8eb94ee82f9ac63fd"
+    },
+    {
+      "name": "CAGE_L15_LOWER_BUMPER_R",
+      "curve_sha256": "50a0224429636191dd18b9c6594ec7b2ab85b8b9ea4803ded308e8ebfc51cabe"
+    },
+    {
+      "name": "CAGE_L15_REAR_LOWER_BUMPER_L",
+      "curve_sha256": "95adf9e7a054646e9383646013a65d5bdf9f833e657c3bbb28893c6d9af8aa11"
+    },
+    {
+      "name": "CAGE_L15_REAR_LOWER_BUMPER_R",
+      "curve_sha256": "0ef9bd5f1f28c8d8098012cc8f44d4b6fd88d6ae07cdfb67e927de30a1940c23"
+    },
+    {
+      "name": "CAGE_T00_FRONT_BUMPER",
+      "curve_sha256": "c1b03311593c33b3a9f652ad1ad4698332d119fb57a13c45e3c4bc343967f9be"
+    },
+    {
+      "name": "CAGE_T01_FRONT_LAMP",
+      "curve_sha256": "18d79306aa9bf30f294245c185c73050d1a6d36b614853dc35f9560126871c09"
+    },
+    {
+      "name": "CAGE_T02_HOOD_FRONT",
+      "curve_sha256": "8dad7d73d276a4adeb1b177b87eb0d2467c25ed1f180bb8fe6dc150a43c00dca"
+    },
+    {
+      "name": "CAGE_T03_FRONT_WHEEL",
+      "curve_sha256": "e832219fe7ab43ace65f488472d11d2bb1ad354ca6bf028bd0a19fd1c0bd6a3b"
+    },
+    {
+      "name": "CAGE_T04_REAR_FRONT_WHEEL",
+      "curve_sha256": "2b214ab98d78b34ce9b8cc2b2906886f4c9403deef857be645d4859b5f59b8d2"
+    },
+    {
+      "name": "CAGE_T05_A_PILLAR",
+      "curve_sha256": "996309e04e78c272bd269e3b1cd8682ab7635b1da8184f0339e333a5522b7d29"
+    },
+    {
+      "name": "CAGE_T06_FRONT_SEAT",
+      "curve_sha256": "490d20a96b83dc3e1bd324f62e8c679d413e698eef5898a569f9b3ccd41f6f6a"
+    },
+    {
+      "name": "CAGE_T07_B_PILLAR",
+      "curve_sha256": "8b3756e5e790ab2640256bfa4d3b2d899f89d3d7ec69cbb305c6135a1bd4d539"
+    },
+    {
+      "name": "CAGE_T08_REAR_DOOR",
+      "curve_sha256": "a773fe92bb5b0e82f3a5c8305903b79278d050c371acd91b53784a5a9a11ad2f"
+    },
+    {
+      "name": "CAGE_T09_C_PILLAR",
+      "curve_sha256": "e60a99793ea2ff153fd5bc2b34d3c310249d8c18c2eb06ad75bec87743eeb605"
+    },
+    {
+      "name": "CAGE_T10_REAR_WHEEL",
+      "curve_sha256": "1779c87f6b3d5d54576e0105be3a35970b8a07ebf6d5b00dd74c5002daa00cfd"
+    },
+    {
+      "name": "CAGE_T11_REAR_QUARTER",
+      "curve_sha256": "cf04de904f415578094a606f978d3ea64d7c9c0ccbcc4c37ec4b901dcba5861c"
+    },
+    {
+      "name": "CAGE_T12_REAR_LAMP",
+      "curve_sha256": "6b5c553259483e0590a82d52000f4d587260204209f1370387799b5e8e70f941"
+    },
+    {
+      "name": "CAGE_T13_REAR_BUMPER",
+      "curve_sha256": "da103dcec3df1da32a4b6b2ddbe388828167cf03efd15bf4b458aebdc01aa3ed"
+    },
+    {
+      "name": "CAGE_WHEEL_FRONT_L",
+      "curve_sha256": "1dac360f7c6972834833093afa5d0db1dd01fd2546cd9dac898e47f021d9350e"
+    },
+    {
+      "name": "CAGE_WHEEL_FRONT_R",
+      "curve_sha256": "d98e37afe7af92901cd86a982fadcef495610a2689a961183d763312fdb46146"
+    },
+    {
+      "name": "CAGE_WHEEL_REAR_L",
+      "curve_sha256": "c2d3fcd6f77a44cd343540e5ff75fcdf207b84d0b2882bd0e8854dd2cfc95a70"
+    },
+    {
+      "name": "CAGE_WHEEL_REAR_R",
+      "curve_sha256": "33849b7c224469d09c2eec910e5bf2110863efdc9b4e49b959db2871004fdad4"
+    },
+    {
+      "name": "CAGE_ARCH_FRONT_L",
+      "curve_sha256": "337879942f245b4fa2e34cf82e433903e71cc1b587e9cd6cf1cb19450baa0820"
+    },
+    {
+      "name": "CAGE_ARCH_FRONT_R",
+      "curve_sha256": "aa5ba40979d8a67af8a476077510a5fdf81b358c8143d2aeca54d40526cc3d58"
+    },
+    {
+      "name": "CAGE_ARCH_REAR_L",
+      "curve_sha256": "6f37e8d4d4d63a8e2c8ada6615b39d247e3716aba565fe90a07a1ce9fc94a3a1"
+    },
+    {
+      "name": "CAGE_ARCH_REAR_R",
+      "curve_sha256": "2b8e71803ef5dcc9df9a1fdec7a3d655a537a626952941b4b95da4a5d794b86f"
+    }
+  ],
+  "count": 53
+}

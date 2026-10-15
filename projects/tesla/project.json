@@ -19,7 +19,8 @@
     "provenance": "Assumed length 4.8m; all other envelope values derived from image ratios. Not OEM measurements."
   },
   "generated": {
-    "calibration": "generated/calibration.json"
+    "calibration": "generated/calibration.json",
+    "cage": "generated/cage.json"
   },
   "materials": [],
   "scene": {
