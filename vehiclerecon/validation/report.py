@@ -32,6 +32,12 @@ def review(project,geometry_hash,*,check_schema=True):
     return record
 
 def record_review(project,*,reviewer,decision,notes,limitations):
+    from ..core.locking import ProjectLock
+    from ..core.project import Project
+    with ProjectLock(project.root,'visual-review'):
+        return _record_review(Project(project.root),reviewer=reviewer,decision=decision,notes=notes,limitations=limitations)
+
+def _record_review(project,*,reviewer,decision,notes,limitations):
     evidence=read_json(project.path('validation/geometry_audit.json',exists=True))
     record={'schema_version':1,'reviewer':reviewer,'decision':decision,'notes':notes,
             'geometry_hash':evidence['geometry_hash'],'input_state_hash':model_inputs_hash(project),

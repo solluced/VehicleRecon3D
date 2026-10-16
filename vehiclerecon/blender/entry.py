@@ -14,7 +14,7 @@ from vehiclerecon.core.errors import ReconError
 
 def main():
     args = sys.argv[sys.argv.index('--')+1:]
-    project = Project(args[0], check=False)
+    project = Project.worker_snapshot(args[0])
     stage = args[1]
     if stage == 'initialize':
         from vehiclerecon.blender.scene import initialize, save

@@ -51,8 +51,10 @@ def dependency_order(stages):
     return result
 
 class Pipeline:
-    def __init__(self,project,*,blender=None,use_cache=True,implementation=None):
+    def __init__(self,project,*,blender=None,use_cache=True,implementation=None,observers=()):
         self.project=project;self.blender=blender;self.results=[];self.use_cache=use_cache;self.keys={};self.target='delivery'
+        from .events import Events
+        self.events=Events(observers);self.active_stage=None;self.control=None
         from .cache import StageCache
         self.cache=StageCache(project,implementation) if use_cache else None
 
@@ -158,9 +160,35 @@ class Pipeline:
             require_acceptance(Workspace(self.project.root))
 
     def run(self,*,actions=None,until=None):
+        from contextlib import nullcontext
+        from .locking import ProjectLock
+        from .execution import current_execution, Cancelled
+        self.control=current_execution()
+        if self.control:self.events=self.control.events
+        root=getattr(self.project,'root',None)
+        with ProjectLock(root,'pipeline-build') if root else nullcontext():
+            try:return self._run(actions=actions,until=until)
+            except Cancelled:
+                interrupted=[]
+                if self.active_stage:
+                    interrupted=[{'stage':self.active_stage,'activity':'INTERRUPTED','reason':'CANCELLED'}]
+                    self.events.emit('stage_interrupted',stage=self.active_stage,reason='CANCELLED')
+                completed={r.stage for r in self.results}
+                self.interrupted=interrupted
+                report={'status':'FAIL' if any(r.status==Status.FAIL for r in self.results) else 'BLOCKED','stages':[{'stage':r.stage,'status':r.status.value,'message':r.message,'outputs':r.outputs} for r in self.results],
+                        'interrupted':interrupted,'unexecuted':[s.id for s in STAGES if s.id not in completed and s.id!=self.active_stage],
+                        'reason':'Managed job cancellation; no artificial stage FAIL'}
+                write_json(self.project.path('validation/pipeline_report.json'),report)
+                raise
+
+    def _run(self,*,actions=None,until=None):
         self.results=[];failed=False;self.target=until or 'delivery'
         cache=self.cache if actions is None else None
         for stage in dependency_order(STAGES):
+            if self.control:
+                self.control.token.check();self.control.stage=stage.id
+            self.active_stage=stage.id if not failed else None
+            if not failed:self.events.emit('stage_started',stage=stage.id)
             key=None;inputs={};dependencies={}
             if failed:
                 result=StageResult(stage.id,Status.BLOCKED,'Required earlier gate failed or is blocked')
@@ -182,11 +210,13 @@ class Pipeline:
                             from .delivery import verify_manifest
                             if not verify_manifest(self.project):entry=None
                     if entry:
+                        if self.control:self.control.token.check()
                         outputs=[v['path'] for v in entry['outputs']]
                         self.keys[stage.id]=entry['result_key']
                         result=StageResult(stage.id,Status.SKIP,'Verified cache outputs',outputs)
                     else:
                         outputs=(actions[stage.id]() if actions is not None else self.execute(stage.id)) or []
+                        if self.control:self.control.token.check()
                         result=StageResult(stage.id,Status.PASS,outputs=outputs)
                         if cache:
                             saved=cache.store(stage.id,key,outputs,dependencies,inputs)
@@ -198,6 +228,11 @@ class Pipeline:
                 if cache and result.exit_code and key:
                     cache.store(stage.id,key,[],dependencies,inputs,status=result.status.value,message=result.message)
             self.results.append(result)
+            self.active_stage=None
+            self.events.emit('stage_finished',stage=stage.id,result=result.status.value,message=result.message)
+            self.events.emit('stage_progress',stage=stage.id,completed=len(self.results),total=len(STAGES))
+            for path in result.outputs:
+                if self.project.path(path).is_file():self.events.emit('artifact_created',stage=stage.id,path=path)
             print(f'{stage.label}: {result.status.value}'+(f' — {result.message}' if result.message else ''),flush=True)
             if until==stage.id:break
         report={'status':'FAIL' if any(r.exit_code for r in self.results) else 'PASS',

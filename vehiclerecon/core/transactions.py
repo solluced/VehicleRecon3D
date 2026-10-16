@@ -86,6 +86,9 @@ def recover(root, *, prefer='new', locked=False):
             raise ConflictError('External edit prevents transaction recovery: '+entry['path'])
     for entry in journal['entries']:
         raw = decoded(entry[prefer]);path = safe_path(root, entry['path'])
+        actual = path.read_bytes() if path.is_file() else None
+        if actual not in (decoded(entry['old']), decoded(entry['new'])):
+            raise ConflictError('External edit during transaction recovery: '+entry['path'])
         if raw is None:
             if path.is_file():path.unlink()
         else:atomic_write(root, entry['path'], raw)

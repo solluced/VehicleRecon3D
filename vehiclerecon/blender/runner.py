@@ -24,6 +24,13 @@ def version(executable=None):
 
 
 def run(project, stage, *, source=None, executable=None, extra=None):
+    from ..core.locking import ProjectLock
+    from ..core.transactions import recover
+    with ProjectLock(project.root,'blender-'+stage):
+        recover(project.root,locked=True)
+        return _run_locked(project,stage,source=source,executable=executable,extra=extra)
+
+def _run_locked(project, stage, *, source=None, executable=None, extra=None):
     exe = discover(executable)
     runtime_version = version(exe)
     command = [str(exe), "--factory-startup", "--background"]
@@ -33,7 +40,10 @@ def run(project, stage, *, source=None, executable=None, extra=None):
                 "--", str(project.root), stage]
     if extra:
         command += list(extra)
-    result = subprocess.run(command, cwd=REPOSITORY, capture_output=True, text=True, encoding="utf-8", errors="replace")
+    from ..core.execution import current_execution
+    control=current_execution()
+    result = (control.run_process(command,cwd=REPOSITORY) if control else
+              subprocess.run(command, cwd=REPOSITORY, capture_output=True, text=True, encoding="utf-8", errors="replace"))
     logs = project.path("validation/execution")
     logs.mkdir(parents=True, exist_ok=True)
     (logs / f"{stage}.stdout.txt").write_text(result.stdout, encoding="utf-8", newline="\n")

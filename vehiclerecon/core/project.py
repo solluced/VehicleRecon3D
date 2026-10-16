@@ -94,6 +94,18 @@ class Project:
         for folder in ("input", "generated", "validation", "output", ".cache"):
             self.path(folder).mkdir(exist_ok=True)
 
+    @classmethod
+    def worker_snapshot(cls, root):
+        """Trusted worker read under the parent runner's held project lock.
+
+        The worker must not acquire its parent's exclusive OS lock. This is an
+        internal read-only construction path, never an authoring write API.
+        """
+        project = object.__new__(cls)
+        project.root = Path(root).resolve()
+        project._load(check=False)
+        return project
+
     def path(self, relative, *, exists=False):
         if not isinstance(relative, str) or not relative or "\\" in relative:
             raise ReferenceError(f"Use nonempty project-relative POSIX paths: {relative!r}")
