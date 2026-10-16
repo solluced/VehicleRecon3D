@@ -181,3 +181,13 @@ def test_proof_replacement_cannot_retarget_explicit_review(root):
     inspected=subject(Workspace(root),'source');proof.write_bytes(proof.read_bytes()+b'new artifact')
     with pytest.raises(ConflictError):
         apply(s,{'type':'SetSourceDisposition','decision':'ACCEPTED','reviewer':'Reviewer','notes':['Old image inspected.'],'expected_subject':inspected})
+
+
+def test_settings_cannot_commit_export_policy_that_next_open_rejects(root):
+    s=AuthoringSession(root);before=s.revision
+    export=copy.deepcopy(Project(REPOSITORY/'projects/tesla').data['export'])
+    export['excluded_collections'].append(export['collections'][0])
+    with pytest.raises(SchemaError,match='cannot be excluded'):
+        apply(s,{'type':'SetProjectSettings','section':'export','value':export})
+    assert s.revision==before
+    assert Project(root).data['schema_version']==2

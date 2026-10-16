@@ -4,6 +4,21 @@ Status: design contract only. Existing v1 files are unchanged. Proposed core
 authoring extensions below require separate versioned implementation and tests;
 examples must not be pasted into a v1 project and assumed to work.
 
+v0.1A implementation clarification: the [core authoring API](core_authoring.md)
+implements the generic v2 contracts and services anticipated below. The original
+v1/design discussion is retained as historical context. Actual canonical review
+paths are `validation/source_review.json` and `validation/cage_review.json`
+(`reference_review.json` was a proposed name). Inactive candidate records are
+implemented at the proposed path, without automatic activation. Explicit
+decisions/candidates contribute to the authoring revision; derived reports,
+proofs, session state and caches do not. Proof hashes are independently checked
+by review subjects and job input pinning. Core jobs use `.cache/jobs/` with a
+verified current pointer. Shared OS locks, journalled transactions, explicit
+migration and stage-specific v2 draft readiness now exist. Backend editor leases,
+watcher UI/rebase, provider envelopes, graph editors and HTTP transport remain
+planned. Exact schema/command details follow the core API rather than the
+illustrative prototypes below.
+
 ## Canonical ownership
 
 | File / record | Owns | Studio behavior |
@@ -16,11 +31,11 @@ examples must not be pasted into a v1 project and assumed to work.
 | Configured `generated/details.json` | Supported detail components | Reuse core operation vocabulary |
 | Configured `generated/silhouette_traces.json` | Accepted independent source silhouettes | Accept contour proposal explicitly; never derive reference mask from the built car |
 | `validation/review.json` | Existing final visual-review record | Standard core review writer, bound to actual geometry/inputs/proofs |
-| Proposed `validation/reference_review.json`, `validation/cage_review.json` | Core-readable authoring acceptance evidence | Current explicit decisions; proposed schemas/gates, not Studio-only truth |
+| `validation/source_review.json`, `validation/cage_review.json` (v2) | Core-readable authoring acceptance evidence | Current explicit decisions through versioned core schemas/gates |
 | Proposed `validation/rectification_candidates/*.json` | Candidate calibration and diagnostic/reviewer evidence | Inactive unless explicitly accepted into canonical calibration |
 | `.studio/session.json` | Pane layout, zoom, layer visibility/lock/opacity, selection, active tool | Reconstructible preferences only; no vehicle geometry/accepted warp |
 | `.cache/authoring/*` | Recovery commands, checkpoint snapshots, previews, proposal blobs | Disposable/recoverable supporting state, not compiler inputs |
-| `.cache/studio/jobs/*` | Run journals, event cursors, log indices | Runtime transport state; core reports remain authoritative results |
+| `.cache/jobs/*` (core), future Studio transport state separately | Run journals, pinned workspaces, verified current pointer | Runtime state; canonical source documents remain authoritative |
 
 Canonical file paths come from `project.json`, not hard-coded `generated/`
 assumptions. A checkpoint/recovery backup is explicitly a backup of canonical

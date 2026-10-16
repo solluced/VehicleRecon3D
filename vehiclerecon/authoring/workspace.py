@@ -55,6 +55,10 @@ class Workspace:
         roles = set(p.profile['roles']+p.profile['optional_roles'])
         if set(data.get('roles', {}))-roles:
             raise SchemaError('Unknown profile role')
+        if data['authoring_state']=='READY' and set(p.profile['roles'])-set(data.get('roles',{})):
+            raise SchemaError('Required semantic role bindings are missing')
+        if data.get('export') and set(data['export']['collections']) & set(data['export']['excluded_collections']):
+            raise SchemaError('Export model collections cannot be excluded from silhouette validation')
         for view, threshold in data.get('validation', {}).get('thresholds', {}).items():
             if threshold < p.profile.get('minimum_iou', {}).get(view, 0):
                 raise SchemaError('Cannot weaken a profile floor')

@@ -1,5 +1,10 @@
 # VehicleRecon Studio architecture baseline
 
+Implementation update, v0.1A: the [core authoring foundation](core_authoring.md)
+now provides v2 contracts, editing/storage, early reviews and managed jobs.
+The design-phase status below records the original architecture baseline;
+the Studio HTTP backend/frontend/launch command remain unimplemented.
+
 Status: **design complete for review; not implemented**. Base: VehicleRecon3D
 [`a3592f3`](https://github.com/solluced/VehicleRecon3D/commit/a3592f33f3070f98aa8e6e1547da1bcb76c4eb15),
 2026-10-16. This documentation phase changes no reconstruction code, schemas,

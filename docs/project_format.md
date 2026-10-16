@@ -1,4 +1,12 @@
-# Project format v1
+# Project formats v1 and v2
+
+v1 below remains the legacy reconstruction contract. The explicit v2 authoring
+family adds typed observations, shared world correspondences, stable IDs,
+measurements, drafts and current source/cage reviews. See
+[core authoring](core_authoring.md) for schemas, APIs, migration and storage.
+Opening v1 never migrates it; unsupported future versions are read-only.
+
+## Legacy v1
 
 `project.json` uses `schema_version: 1` and category `automobile`. Unknown
 structural properties, unsupported versions, nonfinite coordinates and

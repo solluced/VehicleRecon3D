@@ -4,6 +4,11 @@ Status: architecture baseline for review. This phase delivers documentation only
 on core base `a3592f3`; no production Studio code or optional prototype is added.
 The command/API/packages described in these documents are planned capabilities.
 
+v0.1A implementation update: the six core foundation dependencies below are now
+implemented and tested; see [core authoring](core_authoring.md) and phase evidence
+in `validation/studio_v0.1a/`. The design-phase text records the original baseline.
+This does not start production FastAPI, React or Mark II reconstruction.
+
 ## Architecture decisions selected for review
 
 Separate optional Studio workspace; React/TypeScript shell; Konva 2D adapter;

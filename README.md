@@ -45,8 +45,11 @@ and [adding a vehicle](docs/adding_a_vehicle.md).
 
 The planned local visual editor is documented in the
 [VehicleRecon Studio architecture baseline](docs/studio_architecture.md) and
-[implementation roadmap](docs/studio_roadmap.md). This is a documentation-only
-design; a Studio frontend, backend and launch command are not implemented yet.
+[implementation roadmap](docs/studio_roadmap.md). The
+[v0.1A core authoring foundation](docs/core_authoring.md) implements v2 contracts,
+typed editing, atomic recovery, acceptance gates and managed jobs. A production
+Studio frontend, HTTP backend and launch command are not implemented.
+V1 projects continue without migration or Studio dependencies.
 
 The accepted baseline remains frozen in `tests/fixtures/tesla/baseline/`.
 The original 91-file Tesla project, including its coupled Python scripts, is

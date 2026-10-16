@@ -1,0 +1,134 @@
+{
+  "status": "PASS",
+  "phase": "VehicleRecon Studio v0.1A Core Authoring Foundation",
+  "architecture_base": "58f13e8efe1ea9e7f8dea9ad93b3c4937a33d1ea",
+  "final_implementation_sha256": "eec6ec8fd3916fe5dff94ef63c1402047fc5b9d3a1e87796c633ef862d89c3bb",
+  "cold_v1_run_code_checkpoint": "c7d3549",
+  "v1_only_note": "Subsequent production refinement adds v2 Workspace settings invariants only; final full suite and managed workers use final implementation.",
+  "tests": {
+    "tests": 216,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "passed": 216
+  },
+  "schema_family": 2,
+  "v1_auto_migrated": false,
+  "contracts": {
+    "typed_observations": "PASS",
+    "stable_ids": "PASS",
+    "source_world_separation": "PASS",
+    "correspondences": "PASS",
+    "measurements_provenance": "PASS",
+    "source_disposition": "PASS",
+    "cage_review": "PASS"
+  },
+  "services": {
+    "typed_commands": "PASS",
+    "live_session_undo_redo": "PASS",
+    "individual_residuals": "PASS",
+    "projection": "PASS",
+    "preview_sampling": "PASS",
+    "explicit_migration": "PASS",
+    "deterministic_revisions": "PASS",
+    "external_conflicts": "PASS",
+    "shared_os_lock": "PASS",
+    "multi_file_recovery": "PASS",
+    "invalidation": "PASS",
+    "readiness": "PASS",
+    "optional_events": "PASS",
+    "pinned_jobs": "PASS"
+  },
+  "gates": {
+    "v2_source_current_accepted_required": "PASS",
+    "v2_cage_current_accepted_required": "PASS",
+    "before_cache_and_direct_entry": "PASS",
+    "independent_consistent_v2_fixture": "PASS",
+    "negative_fixtures": "PASS"
+  },
+  "cancellation": {
+    "ADR-0008": "ACCEPTED",
+    "native_stage_results": [
+      "PASS",
+      "FAIL",
+      "SKIP",
+      "BLOCKED"
+    ],
+    "separate_CANCELLED_outcome": "PASS",
+    "queued": "PASS",
+    "pre_first_stage": "PASS",
+    "between_stages": "PASS",
+    "running_non_Blender": "PASS",
+    "real_Blender": "PASS",
+    "owned_descendant_fencing": "PASS",
+    "genuine_failure_precedence": "PASS",
+    "repeated_request": "PASS",
+    "post_finalization_noop": "PASS",
+    "cancelled_promotion_prevented": "PASS",
+    "stale_promotion_prevented": "PASS",
+    "proof_dependencies_pinned": "PASS"
+  },
+  "tesla": {
+    "cold_14_stages": "PASS",
+    "iou": {
+      "side": 0.95723,
+      "top": 0.936083,
+      "front": 0.931202,
+      "rear": 0.944724
+    },
+    "control_topology": "PASS",
+    "GLB": "PASS",
+    "viewer_desktop": "PASS",
+    "viewer_mobile": "PASS",
+    "manifest_valid": true,
+    "no_fabricated_review": true,
+    "proofs_byte_identical": true,
+    "glb_physical_attributes_exact": true,
+    "UV_max_difference": 5.960464477539063e-08
+  },
+  "mark2": {
+    "source": "INCONSISTENT_SOURCE",
+    "portability": "BLOCKED",
+    "active_calibration_changed": false,
+    "surfaces": "NOT STARTED",
+    "details": "NOT STARTED",
+    "protected_sha256_checks": {
+      "project.json": true,
+      "generated/calibration.json": true,
+      "generated/cage.json": true,
+      "generated/surface_graph.json": true,
+      "generated/details.json": true,
+      "output/mark2_cage_corrected.blend": true,
+      "input/multiview.png": true,
+      "input/control_overlay.png": true,
+      "input/surface_target.png": true
+    }
+  },
+  "protected_tracked_changes": [],
+  "Studio": {
+    "FastAPI": "NOT STARTED",
+    "React": "NOT STARTED",
+    "new_core_web_dependencies": false
+  },
+  "limitations": [
+    "AUTO feedback exposes approximate control polygon; final Blender handles remain authoritative.",
+    "In-process Python cancellation is cooperative; CANCELLING persists until return/check.",
+    "Journal pruning, restarted-job resume, HTTP leases/security/UI are future adapters.",
+    "Analytical v2 fixture validates authoring contracts, not a complete surfaced vehicle."
+  ],
+  "blockers": [],
+  "evidence_sha256": {
+    "glb_comparison.json": "8d099f5d82b93ff833304b19d91dc2585696ef53f0ca8c6f4e32ccec357f1602",
+    "managed_worker.json": "38da191fda5498891e8ace660a2f3552fdd63778c1c798a5b45bee0cd9ace1cb",
+    "pytest.xml": "3eaa0d3ab81d1d55f3d401700abe786aa8670f6c9f2dd22665fb34a2d4e6973d",
+    "README.md": "7fc527dccdcefd8c46776a0600b97f8e52ce68375587f3193b7b18c12332d5f9",
+    "tesla/calibration_migration_report.json": "149c6db413db9425f5d606a5d25e84a10dabc0d1dcbb48aac7e23ce6fec06372",
+    "tesla/control_regression.json": "bdf8afa8e03f04274b6ac947417a5d55830642b3efe27643a283e8b994762855",
+    "tesla/delivery_report.json": "6094eb3a0281ee003c796b27b5460a1976134c0911975214b2e903bd5a0a42b2",
+    "tesla/final_migration_report.json": "5cb42a7254e91bb785ddba6ec50858e9088078b5494233b462236ff9664b8561",
+    "tesla/geometry_audit.json": "e8e28994d762089c424aaa0e308ca09869f5bf192ad81535bf69ff1d02027981",
+    "tesla/glb_geometry_report.json": "09fef8446936e14ab8b6bd9776dd9e832583d000f459faf012c654d4846f5525",
+    "tesla/pipeline_report.json": "b7f5b1b399e478d9ec439ae4e22cc5f6a2caaac0fa1d04b00f3f7512e0cf0cae",
+    "tesla/viewer_qa.json": "5def2fa2753913148e3efc72c31d6c5353f48f4832ae775c4308264e7a627225"
+  }
+}

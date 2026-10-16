@@ -4,6 +4,16 @@ Status: **proposed API v1, not implemented**. Document-schema versions are
 independent. FastAPI/OpenAPI and generated TypeScript clients are planned;
 the examples below are contract prototypes, not existing endpoints.
 
+v0.1A implementation mapping: future HTTP handlers can adapt
+`authoring.service.AuthoringSession`, `authoring.versions`, `authoring.readiness`,
+`authoring.projection`, `core.locking`, `core.transactions` and `core.jobs`.
+See [core authoring](core_authoring.md) for exact command payloads and storage.
+Core commands take `expected_revision`; HTTP If-Match/leases/opaque artifact
+registries are still adapter work. Core jobs use `.cache/jobs/`, isolated run
+workspaces and a hash-checked current pointer, not `.cache/studio/jobs/`.
+ADR-0008's accepted cancellation semantics govern this mapping; no endpoint
+implementation is implied by those reusable services.
+
 ## Startup and transport
 
 Future command: `vehicle-recon studio`, optionally with trusted startup

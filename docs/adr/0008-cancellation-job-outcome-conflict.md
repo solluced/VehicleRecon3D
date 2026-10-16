@@ -79,7 +79,7 @@ outcomes are immutable. Freshness remains independent; cancelled and stale jobs
 are never promotable. These rules require deterministic tests, including worker
 termination, before claiming implementation complete.
 
-## Work preserved and next validation
+## Historical proposal stop and next validation
 
 Only this ADR and its index entry are added. Core code, schemas, profiles,
 project data, package dependencies, baseline evidence and existing architecture
@@ -91,3 +91,13 @@ documentation-only stop. On resolution, implement the v0.1A shared services in
 reviewable commits and run the requested focused tests plus full exact-metric
 Tesla regression. A recorded proposed resolution alone is not an implemented
 authoring foundation.
+
+## Implementation after acceptance
+
+The preceding section records the original proposal stop, preserved in history.
+After the user's explicit acceptance, v0.1A implements the separate job outcome
+and activity in `core.jobs`, owned-worker cancellation in `core.execution`, and
+native pipeline interruption records. See [core authoring](../core_authoring.md)
+for the executable contract and `tests/test_managed_jobs.py` for deterministic
+queued/running/real-Blender/failure-race/promotion tests. Phase validation evidence
+is separate from the unchanged Tesla and Mark II project data.

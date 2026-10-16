@@ -1,0 +1,309 @@
+{
+  "status": "PASS",
+  "runs": [
+    {
+      "schema_version": 1,
+      "job_id": "0e26033620724e908cfe436519190cfa",
+      "pinned_revision": "62fb7411bd055212781cbb3006c77534efb68dd6b1962d61419c5153d54013e4",
+      "input_hashes": {
+        "generated/cage.json": "2f77f23cc19527352ee4bc3f7139a40cba4e3def5608dae9eeefa2398e6ce1c4",
+        "generated/calibration.json": "1ef6004a230c3294cf85e4017e10252f8c00f36046e82de83b0453c6871cdfa0",
+        "generated/details.json": "2f20d8d1c0989152423c18f21d9925b911a92d5626b39290448f1354b491f099",
+        "generated/silhouette_traces.json": "f8d8ccad2a7dbb14fdb2c5e48b1acd1aaed38a4a23d764f93abeadc53dc636c5",
+        "generated/surface_graph.json": "be459482d31552cff7dabc4c5402cde8406d5381ef5e9b24fdc4df01282c2746",
+        "input/reference_control_cage_overlay.png": "e953f53cb081639278b202af77aa84d00bafc32c6c8e931e51167cb6dfa6c591",
+        "input/reference_dense_control_points.png": "eb7ce962f0c0628ca74bcd33a63b8af7c3b796573ca0ef93520853c46add582b",
+        "input/reference_multiview.png": "52ef4d29e730999f7d080a8328a1a625435fab7bd239fd0b96ef3e1db0cfef72",
+        "input/reference_surface_target.png": "e2e9ef7bcbd86cd42ebd738799774fbc823ace57f5ee2e747b3400bdfa349d46",
+        "input/reference_workflow.png": "a2d0304bfa4aa192d7918bde7903e6a75ab66a0dfca96886f1f2f18f3d711d8f",
+        "project.json": "bffbc76c3b0b85021c235e062470033d979c29d875c61234697c0e8dd4fe961f",
+        "validation/cage_review.json": null,
+        "validation/review.json": "746aafa562b94dc9f7955db4c84865bcac6185d913922956e77e995535048237",
+        "validation/source_review.json": null
+      },
+      "implementation": "eec6ec8fd3916fe5dff94ef63c1402047fc5b9d3a1e87796c633ef862d89c3bb",
+      "until": "calibration",
+      "activity": "FINISHED",
+      "result": "SUCCEEDED",
+      "freshness": "current",
+      "promotable": true,
+      "artifacts": {
+        "validation/runtime.json": "6241c01d8afdd88f9c6d0e741ee45c7663f19bce9023f90427a457c940e6ce1a",
+        "validation/reference_inventory.json": "ae4386927f2aa4a708199fcbbaa18d88f8ba720f5a4be9e28f1a6acf0c30b9ee",
+        ".cache/calibration.blend": "cd6463372e502d22e6ca7a5f5bad9176fb47ddec408cc3512cd9e9993c16cdb4",
+        "validation/reference_alignment.png": "9e5257fbd604b14d580c177d81207b2ee7acaf27be8470e3766259428829afe5",
+        "validation/calibration_migration_report.json": "149c6db413db9425f5d606a5d25e84a10dabc0d1dcbb48aac7e23ce6fec06372",
+        "validation/alignment_side.png": "8d6c290e55007344a51299c697a7eb9a4091a8584237514a85deeb52d6c2c621",
+        "validation/alignment_front.png": "16815ff2538c426a267763538dcd3d3e1dd43483c2fc1f2f0b98ee615d3b42be",
+        "validation/alignment_rear.png": "ab8a8d5690e1fe49ba0c74434cbef6a714a8cc7c50dbcab8d7c757805a7b5934",
+        "validation/alignment_top.png": "3643ea72400a83ebac76015452dafb6ed67ad8e4bcd109d6ac408a36ffac62ca",
+        "generated/crop_side.png": "c34c7c034e3e410beb3cd223b324f1ca7b209d099d02156489e6ebc7111bdf71",
+        "generated/crop_front.png": "3a1dc921e6fa7a4a7070f9f2ccd254621cc404c534d70b90eebf33aa517b833e",
+        "generated/crop_rear.png": "9fc56cc5c44be4f5fb8bf2fa7532992b7a4108fc520bebb9f27d8bea60d7d0b4",
+        "generated/crop_top.png": "06c8d5e0c1504127b738660d3c05ba443fdbb5a85ddc4715455f3d4064a08c75"
+      },
+      "logs": [
+        {
+          "channel": "stdout",
+          "text": "00:03.484  render           | Saved: 'F:\\T\\build\\studio-v01a-managed-worker\\.cache\\jobs\\0e26033620724e908cfe436519190cfa\\workspace\\validation\\alignment_side.png'\n"
+        },
+        {
+          "channel": "stdout",
+          "text": "00:04.609  render           | Saved: 'F:\\T\\build\\studio-v01a-managed-worker\\.cache\\jobs\\0e26033620724e908cfe436519190cfa\\workspace\\validation\\alignment_front.png'\n"
+        },
+        {
+          "channel": "stdout",
+          "text": "00:05.687  render           | Saved: 'F:\\T\\build\\studio-v01a-managed-worker\\.cache\\jobs\\0e26033620724e908cfe436519190cfa\\workspace\\validation\\alignment_rear.png'\n"
+        },
+        {
+          "channel": "stdout",
+          "text": "00:06.937  render           | Saved: 'F:\\T\\build\\studio-v01a-managed-worker\\.cache\\jobs\\0e26033620724e908cfe436519190cfa\\workspace\\validation\\alignment_top.png'\n"
+        },
+        {
+          "channel": "stdout",
+          "text": "Info: Saved as \"calibration.blend\"\n"
+        },
+        {
+          "channel": "stdout",
+          "text": "Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)\n"
+        },
+        {
+          "channel": "stdout",
+          "text": "\n"
+        },
+        {
+          "channel": "stdout",
+          "text": "Blender quit\n"
+        }
+      ],
+      "stages": [
+        {
+          "stage": "preflight",
+          "result": "PASS",
+          "message": ""
+        },
+        {
+          "stage": "references",
+          "result": "PASS",
+          "message": ""
+        },
+        {
+          "stage": "calibration",
+          "result": "PASS",
+          "message": ""
+        }
+      ],
+      "interrupted": [],
+      "error": null,
+      "workers": [
+        {
+          "pid": 3416,
+          "fence": "windows_job",
+          "cleaned": true
+        }
+      ]
+    },
+    {
+      "schema_version": 1,
+      "job_id": "856f29f0b54f415996bee8ad0eb9dbfe",
+      "pinned_revision": "62fb7411bd055212781cbb3006c77534efb68dd6b1962d61419c5153d54013e4",
+      "input_hashes": {
+        "generated/cage.json": "2f77f23cc19527352ee4bc3f7139a40cba4e3def5608dae9eeefa2398e6ce1c4",
+        "generated/calibration.json": "1ef6004a230c3294cf85e4017e10252f8c00f36046e82de83b0453c6871cdfa0",
+        "generated/details.json": "2f20d8d1c0989152423c18f21d9925b911a92d5626b39290448f1354b491f099",
+        "generated/silhouette_traces.json": "f8d8ccad2a7dbb14fdb2c5e48b1acd1aaed38a4a23d764f93abeadc53dc636c5",
+        "generated/surface_graph.json": "be459482d31552cff7dabc4c5402cde8406d5381ef5e9b24fdc4df01282c2746",
+        "input/reference_control_cage_overlay.png": "e953f53cb081639278b202af77aa84d00bafc32c6c8e931e51167cb6dfa6c591",
+        "input/reference_dense_control_points.png": "eb7ce962f0c0628ca74bcd33a63b8af7c3b796573ca0ef93520853c46add582b",
+        "input/reference_multiview.png": "52ef4d29e730999f7d080a8328a1a625435fab7bd239fd0b96ef3e1db0cfef72",
+        "input/reference_surface_target.png": "e2e9ef7bcbd86cd42ebd738799774fbc823ace57f5ee2e747b3400bdfa349d46",
+        "input/reference_workflow.png": "a2d0304bfa4aa192d7918bde7903e6a75ab66a0dfca96886f1f2f18f3d711d8f",
+        "project.json": "bffbc76c3b0b85021c235e062470033d979c29d875c61234697c0e8dd4fe961f",
+        "validation/cage_review.json": null,
+        "validation/review.json": "746aafa562b94dc9f7955db4c84865bcac6185d913922956e77e995535048237",
+        "validation/source_review.json": null
+      },
+      "implementation": "eec6ec8fd3916fe5dff94ef63c1402047fc5b9d3a1e87796c633ef862d89c3bb",
+      "until": "calibration",
+      "activity": "FINISHED",
+      "result": "SUCCEEDED",
+      "freshness": "current",
+      "promotable": true,
+      "artifacts": {
+        "validation/runtime.json": "6241c01d8afdd88f9c6d0e741ee45c7663f19bce9023f90427a457c940e6ce1a",
+        "validation/reference_inventory.json": "ae4386927f2aa4a708199fcbbaa18d88f8ba720f5a4be9e28f1a6acf0c30b9ee",
+        ".cache/calibration.blend": "f115f75b65cd130b22477d1c19d9baebf5ab24622bb029c1051b28a588827f14",
+        "validation/reference_alignment.png": "9e5257fbd604b14d580c177d81207b2ee7acaf27be8470e3766259428829afe5",
+        "validation/calibration_migration_report.json": "149c6db413db9425f5d606a5d25e84a10dabc0d1dcbb48aac7e23ce6fec06372",
+        "validation/alignment_side.png": "8d6c290e55007344a51299c697a7eb9a4091a8584237514a85deeb52d6c2c621",
+        "validation/alignment_front.png": "16815ff2538c426a267763538dcd3d3e1dd43483c2fc1f2f0b98ee615d3b42be",
+        "validation/alignment_rear.png": "ab8a8d5690e1fe49ba0c74434cbef6a714a8cc7c50dbcab8d7c757805a7b5934",
+        "validation/alignment_top.png": "3643ea72400a83ebac76015452dafb6ed67ad8e4bcd109d6ac408a36ffac62ca",
+        "generated/crop_side.png": "c34c7c034e3e410beb3cd223b324f1ca7b209d099d02156489e6ebc7111bdf71",
+        "generated/crop_front.png": "3a1dc921e6fa7a4a7070f9f2ccd254621cc404c534d70b90eebf33aa517b833e",
+        "generated/crop_rear.png": "9fc56cc5c44be4f5fb8bf2fa7532992b7a4108fc520bebb9f27d8bea60d7d0b4",
+        "generated/crop_top.png": "06c8d5e0c1504127b738660d3c05ba443fdbb5a85ddc4715455f3d4064a08c75"
+      },
+      "logs": [
+        {
+          "channel": "stdout",
+          "text": "00:03.625  render           | Saved: 'F:\\T\\build\\studio-v01a-managed-worker\\.cache\\jobs\\856f29f0b54f415996bee8ad0eb9dbfe\\workspace\\validation\\alignment_side.png'\n"
+        },
+        {
+          "channel": "stdout",
+          "text": "00:04.750  render           | Saved: 'F:\\T\\build\\studio-v01a-managed-worker\\.cache\\jobs\\856f29f0b54f415996bee8ad0eb9dbfe\\workspace\\validation\\alignment_front.png'\n"
+        },
+        {
+          "channel": "stdout",
+          "text": "00:05.828  render           | Saved: 'F:\\T\\build\\studio-v01a-managed-worker\\.cache\\jobs\\856f29f0b54f415996bee8ad0eb9dbfe\\workspace\\validation\\alignment_rear.png'\n"
+        },
+        {
+          "channel": "stdout",
+          "text": "00:07.094  render           | Saved: 'F:\\T\\build\\studio-v01a-managed-worker\\.cache\\jobs\\856f29f0b54f415996bee8ad0eb9dbfe\\workspace\\validation\\alignment_top.png'\n"
+        },
+        {
+          "channel": "stdout",
+          "text": "Info: Saved as \"calibration.blend\"\n"
+        },
+        {
+          "channel": "stdout",
+          "text": "Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)\n"
+        },
+        {
+          "channel": "stdout",
+          "text": "\n"
+        },
+        {
+          "channel": "stdout",
+          "text": "Blender quit\n"
+        }
+      ],
+      "stages": [
+        {
+          "stage": "preflight",
+          "result": "PASS",
+          "message": ""
+        },
+        {
+          "stage": "references",
+          "result": "PASS",
+          "message": ""
+        },
+        {
+          "stage": "calibration",
+          "result": "PASS",
+          "message": ""
+        }
+      ],
+      "interrupted": [],
+      "error": null,
+      "workers": [
+        {
+          "pid": 15924,
+          "fence": "windows_job",
+          "cleaned": true
+        }
+      ]
+    },
+    {
+      "schema_version": 1,
+      "job_id": "cb721e4c9ed2429f9015f5cb218ffd70",
+      "pinned_revision": "62fb7411bd055212781cbb3006c77534efb68dd6b1962d61419c5153d54013e4",
+      "input_hashes": {
+        "generated/cage.json": "2f77f23cc19527352ee4bc3f7139a40cba4e3def5608dae9eeefa2398e6ce1c4",
+        "generated/calibration.json": "1ef6004a230c3294cf85e4017e10252f8c00f36046e82de83b0453c6871cdfa0",
+        "generated/details.json": "2f20d8d1c0989152423c18f21d9925b911a92d5626b39290448f1354b491f099",
+        "generated/silhouette_traces.json": "f8d8ccad2a7dbb14fdb2c5e48b1acd1aaed38a4a23d764f93abeadc53dc636c5",
+        "generated/surface_graph.json": "be459482d31552cff7dabc4c5402cde8406d5381ef5e9b24fdc4df01282c2746",
+        "input/reference_control_cage_overlay.png": "e953f53cb081639278b202af77aa84d00bafc32c6c8e931e51167cb6dfa6c591",
+        "input/reference_dense_control_points.png": "eb7ce962f0c0628ca74bcd33a63b8af7c3b796573ca0ef93520853c46add582b",
+        "input/reference_multiview.png": "52ef4d29e730999f7d080a8328a1a625435fab7bd239fd0b96ef3e1db0cfef72",
+        "input/reference_surface_target.png": "e2e9ef7bcbd86cd42ebd738799774fbc823ace57f5ee2e747b3400bdfa349d46",
+        "input/reference_workflow.png": "a2d0304bfa4aa192d7918bde7903e6a75ab66a0dfca96886f1f2f18f3d711d8f",
+        "project.json": "bffbc76c3b0b85021c235e062470033d979c29d875c61234697c0e8dd4fe961f",
+        "validation/cage_review.json": null,
+        "validation/review.json": "746aafa562b94dc9f7955db4c84865bcac6185d913922956e77e995535048237",
+        "validation/source_review.json": null
+      },
+      "implementation": "eec6ec8fd3916fe5dff94ef63c1402047fc5b9d3a1e87796c633ef862d89c3bb",
+      "until": "calibration",
+      "activity": "FINISHED",
+      "result": "SUCCEEDED",
+      "freshness": "current",
+      "promotable": true,
+      "artifacts": {
+        "validation/runtime.json": "6241c01d8afdd88f9c6d0e741ee45c7663f19bce9023f90427a457c940e6ce1a",
+        "validation/reference_inventory.json": "ae4386927f2aa4a708199fcbbaa18d88f8ba720f5a4be9e28f1a6acf0c30b9ee",
+        ".cache/calibration.blend": "f115f75b65cd130b22477d1c19d9baebf5ab24622bb029c1051b28a588827f14",
+        "generated/crop_front.png": "3a1dc921e6fa7a4a7070f9f2ccd254621cc404c534d70b90eebf33aa517b833e",
+        "generated/crop_rear.png": "9fc56cc5c44be4f5fb8bf2fa7532992b7a4108fc520bebb9f27d8bea60d7d0b4",
+        "generated/crop_side.png": "c34c7c034e3e410beb3cd223b324f1ca7b209d099d02156489e6ebc7111bdf71",
+        "generated/crop_top.png": "06c8d5e0c1504127b738660d3c05ba443fdbb5a85ddc4715455f3d4064a08c75",
+        "validation/alignment_front.png": "16815ff2538c426a267763538dcd3d3e1dd43483c2fc1f2f0b98ee615d3b42be",
+        "validation/alignment_rear.png": "ab8a8d5690e1fe49ba0c74434cbef6a714a8cc7c50dbcab8d7c757805a7b5934",
+        "validation/alignment_side.png": "8d6c290e55007344a51299c697a7eb9a4091a8584237514a85deeb52d6c2c621",
+        "validation/alignment_top.png": "3643ea72400a83ebac76015452dafb6ed67ad8e4bcd109d6ac408a36ffac62ca",
+        "validation/calibration_migration_report.json": "149c6db413db9425f5d606a5d25e84a10dabc0d1dcbb48aac7e23ce6fec06372",
+        "validation/reference_alignment.png": "9e5257fbd604b14d580c177d81207b2ee7acaf27be8470e3766259428829afe5"
+      },
+      "logs": [],
+      "stages": [
+        {
+          "stage": "preflight",
+          "result": "PASS",
+          "message": ""
+        },
+        {
+          "stage": "references",
+          "result": "SKIP",
+          "message": "Verified cache outputs"
+        },
+        {
+          "stage": "calibration",
+          "result": "SKIP",
+          "message": "Verified cache outputs"
+        }
+      ],
+      "interrupted": [],
+      "error": null,
+      "workers": []
+    }
+  ],
+  "current": {
+    "schema_version": 1,
+    "job_id": "cb721e4c9ed2429f9015f5cb218ffd70",
+    "input_revision": "62fb7411bd055212781cbb3006c77534efb68dd6b1962d61419c5153d54013e4",
+    "implementation": "eec6ec8fd3916fe5dff94ef63c1402047fc5b9d3a1e87796c633ef862d89c3bb",
+    "input_hashes": {
+      "generated/cage.json": "2f77f23cc19527352ee4bc3f7139a40cba4e3def5608dae9eeefa2398e6ce1c4",
+      "generated/calibration.json": "1ef6004a230c3294cf85e4017e10252f8c00f36046e82de83b0453c6871cdfa0",
+      "generated/details.json": "2f20d8d1c0989152423c18f21d9925b911a92d5626b39290448f1354b491f099",
+      "generated/silhouette_traces.json": "f8d8ccad2a7dbb14fdb2c5e48b1acd1aaed38a4a23d764f93abeadc53dc636c5",
+      "generated/surface_graph.json": "be459482d31552cff7dabc4c5402cde8406d5381ef5e9b24fdc4df01282c2746",
+      "input/reference_control_cage_overlay.png": "e953f53cb081639278b202af77aa84d00bafc32c6c8e931e51167cb6dfa6c591",
+      "input/reference_dense_control_points.png": "eb7ce962f0c0628ca74bcd33a63b8af7c3b796573ca0ef93520853c46add582b",
+      "input/reference_multiview.png": "52ef4d29e730999f7d080a8328a1a625435fab7bd239fd0b96ef3e1db0cfef72",
+      "input/reference_surface_target.png": "e2e9ef7bcbd86cd42ebd738799774fbc823ace57f5ee2e747b3400bdfa349d46",
+      "input/reference_workflow.png": "a2d0304bfa4aa192d7918bde7903e6a75ab66a0dfca96886f1f2f18f3d711d8f",
+      "project.json": "bffbc76c3b0b85021c235e062470033d979c29d875c61234697c0e8dd4fe961f",
+      "validation/cage_review.json": null,
+      "validation/review.json": "746aafa562b94dc9f7955db4c84865bcac6185d913922956e77e995535048237",
+      "validation/source_review.json": null
+    },
+    "artifacts": {
+      "validation/runtime.json": "6241c01d8afdd88f9c6d0e741ee45c7663f19bce9023f90427a457c940e6ce1a",
+      "validation/reference_inventory.json": "ae4386927f2aa4a708199fcbbaa18d88f8ba720f5a4be9e28f1a6acf0c30b9ee",
+      ".cache/calibration.blend": "f115f75b65cd130b22477d1c19d9baebf5ab24622bb029c1051b28a588827f14",
+      "generated/crop_front.png": "3a1dc921e6fa7a4a7070f9f2ccd254621cc404c534d70b90eebf33aa517b833e",
+      "generated/crop_rear.png": "9fc56cc5c44be4f5fb8bf2fa7532992b7a4108fc520bebb9f27d8bea60d7d0b4",
+      "generated/crop_side.png": "c34c7c034e3e410beb3cd223b324f1ca7b209d099d02156489e6ebc7111bdf71",
+      "generated/crop_top.png": "06c8d5e0c1504127b738660d3c05ba443fdbb5a85ddc4715455f3d4064a08c75",
+      "validation/alignment_front.png": "16815ff2538c426a267763538dcd3d3e1dd43483c2fc1f2f0b98ee615d3b42be",
+      "validation/alignment_rear.png": "ab8a8d5690e1fe49ba0c74434cbef6a714a8cc7c50dbcab8d7c757805a7b5934",
+      "validation/alignment_side.png": "8d6c290e55007344a51299c697a7eb9a4091a8584237514a85deeb52d6c2c621",
+      "validation/alignment_top.png": "3643ea72400a83ebac76015452dafb6ed67ad8e4bcd109d6ac408a36ffac62ca",
+      "validation/calibration_migration_report.json": "149c6db413db9425f5d606a5d25e84a10dabc0d1dcbb48aac7e23ce6fec06372",
+      "validation/reference_alignment.png": "9e5257fbd604b14d580c177d81207b2ee7acaf27be8470e3766259428829afe5"
+    }
+  }
+}

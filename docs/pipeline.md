@@ -1,5 +1,14 @@
 # Pipeline and acceptance
 
+v2 adds a SURFACES gate requiring current explicit source/cage ACCEPTED reviews,
+including before cache reuse. V1 semantics below remain unchanged. Stage-specific
+v2 readiness reports missing authoring inputs without a build. See
+[core authoring](core_authoring.md). Managed jobs wrap the same pipeline with
+pinned isolated inputs. Their SUCCEEDED/FAILED/BLOCKED/CANCELLED outcome and
+QUEUED/RUNNING/CANCELLING/FINISHED activity are separate from native stage status.
+Accepted [ADR-0008](adr/0008-cancellation-job-outcome-conflict.md) defines cancellation
+precedence and forbids promoting cancelled/stale output.
+
 Primary command: `python -m vehiclerecon run projects/tesla`. `inspect` validates
 metadata; `init` creates a draft; `review` records an explicitly supplied visual
 decision. `run --until <stage-id>` stops at a migration boundary. `--no-cache`
