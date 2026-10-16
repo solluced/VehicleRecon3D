@@ -11,6 +11,11 @@ REVIEWS = ('validation/source_review.json', 'validation/cage_review.json')
 
 class Workspace:
     def __init__(self, root):
+        from ..core.locking import ProjectLock
+        with ProjectLock(root, 'authoring-read'):
+            self._load(root)
+
+    def _load(self, root):
         self.project = Project(root)
         if self.project.data['schema_version'] != 2:
             raise SchemaError('Writable authoring requires an explicit v2 migration')
@@ -25,6 +30,8 @@ class Workspace:
                 self.files[relative] = path.read_bytes()
         self.documents = self.decode(self.files)
         self.validate(self.files)
+        from ..core.revisions import revision
+        self.revision = revision(self.root)
 
     @staticmethod
     def decode(files):

@@ -52,6 +52,13 @@ def validate(value, schema_name):
 class Project:
     def __init__(self, root, *, check=True):
         self.root = Path(root).resolve()
+        from .locking import ProjectLock
+        from .transactions import recover
+        with ProjectLock(self.root, 'project-read'):
+            recover(self.root, locked=True)
+            self._load(check=check)
+
+    def _load(self, *, check):
         self.data = read_json(self.root / "project.json")
         version = self.data.get("schema_version")
         if version not in (1,2):
