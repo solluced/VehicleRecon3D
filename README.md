@@ -43,6 +43,11 @@ See [architecture](docs/architecture.md), [project format](docs/project_format.m
 [inference standard](docs/inference_standard.md), [pipeline](docs/pipeline.md)
 and [adding a vehicle](docs/adding_a_vehicle.md).
 
+The planned local visual editor is documented in the
+[VehicleRecon Studio architecture baseline](docs/studio_architecture.md) and
+[implementation roadmap](docs/studio_roadmap.md). This is a documentation-only
+design; a Studio frontend, backend and launch command are not implemented yet.
+
 The accepted baseline remains frozen in `tests/fixtures/tesla/baseline/`.
 The original 91-file Tesla project, including its coupled Python scripts, is
 archived byte-for-byte in `tests/fixtures/tesla/legacy_source/` for regression
