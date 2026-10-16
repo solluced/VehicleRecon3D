@@ -75,20 +75,33 @@ def observed_pixel(observation, link):
 def semantic_check(project, calibration, cage):
     """Authoring validity, not acceptance: valid drafts can contain bad fits."""
     obs = observations(calibration)
+    from ..reference.rectification import AxisRectification
+    for data in calibration.get('views',{}).values():
+        if 'rectification' in data:AxisRectification(data['rectification'])
     measurements = calibration.get('datums', {}).get('measurements', [])
     names = [m['id'] for m in measurements]
     if len(names) != len(set(names)):
         raise SchemaError('Duplicate measurement ID')
     roles = set(project.profile['roles']+project.profile['optional_roles']) | {'axis', 'datum', 'measurement'}
     knots = {}
+    identities = {}
     for o in obs.values():
         if o['semantic_role'] not in roles:
             raise SchemaError('Unsupported observation semantic role')
         reference = o['reference_id']
         if reference not in project.data['references']:
             raise ReferenceError('Observation reference ID missing')
-        if digest_file(project.path(project.data['references'][reference], exists=True)) != o['source_sha256']:
+        if reference not in identities:
+            from ..reference.panels import png_size
+            path = project.path(project.data['references'][reference], exists=True)
+            identities[reference] = (digest_file(path),png_size(path))
+        if identities[reference][0] != o['source_sha256']:
             raise ReferenceError('Observation source identity is stale')
+        pixels = ([o['pixel']] if o['kind']=='point' and o['pixel'] is not None else
+                  [o['center']] if o['kind']=='circle' else [p['pixel'] for p in o.get('points',[])])
+        width,height = identities[reference][1]
+        if any(not (0 <= p[0] <= width and 0 <= p[1] <= height) for p in pixels):
+            raise ReferenceError('Observation is outside its original source image')
         data = calibration['views'][o['view']]
         if o['crop_id'] != crop_identity(reference, data.get('crop')):
             raise ReferenceError('Observation crop identity is stale')

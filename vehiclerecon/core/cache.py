@@ -60,7 +60,11 @@ def input_slice(project,stage,*,include_review=True):
     if stage=='calibration':return {'calibration':generated('calibration'),'scene':d['scene'],'materials':d['materials'],'dimensions':d['dimensions']}
     if stage=='overlay':return {'annotation_convention':'orange-blue-red-green-v1'}
     if stage=='cage':return {'cage':generated('cage')}
-    if stage=='surfaces':return {'graph':generated('surface_graph')}
+    if stage=='surfaces':
+        result={'graph':generated('surface_graph')}
+        if d['schema_version']==2:
+            result['authoring_reviews']={kind:digest_file(project.path('validation/'+kind+'_review.json',exists=True)) for kind in ('source','cage')}
+        return result
     if stage=='silhouette':return {'traces':generated('silhouette_traces'),'validation':validation(),'mask_exclusions':d['export']['excluded_collections'],'views':[v for v in d['presentation']['views'] if v['view']!='perspective']}
     if stage=='details':return {'details':generated('details')}
     if stage=='geometry':return {'policy':d['validation']['geometry'],'roles':d['roles'],'model_collections':d['export']['collections']}

@@ -28,6 +28,8 @@ class Workspace:
             path = self.project.path(relative)
             if path.is_file():
                 self.files[relative] = path.read_bytes()
+        from ..core.revisions import snapshot, candidate_path
+        self.files.update({p:raw for p,raw in snapshot(self.root).items() if candidate_path(p) and raw is not None})
         self.documents = self.decode(self.files)
         self.validate(self.files)
         from ..core.revisions import revision
@@ -82,4 +84,10 @@ class Workspace:
                 expected = 'source' if path == REVIEWS[0] else 'cage'
                 if record['review_type'] != expected:
                     raise SchemaError('Review stored under wrong canonical identity')
+        from ..core.revisions import candidate_path
+        for path,raw in files.items():
+            if candidate_path(path):
+                candidate = json.loads(raw.decode('utf-8-sig'));validate(candidate,'rectification_candidate')
+                if path != 'validation/rectification_candidates/'+candidate['id']+'.json':
+                    raise SchemaError('Candidate ID/path mismatch')
         return documents

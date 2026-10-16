@@ -1,0 +1,598 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vehiclerecon.local/schemas/authoring_command.schema.json",
+  "oneOf": [
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "AddObservation"
+        },
+        "view": {
+          "enum": [
+            "front",
+            "side",
+            "rear",
+            "top"
+          ]
+        },
+        "observation": {
+          "$ref": "https://vehiclerecon.local/schemas/authoring.schema.json#/$defs/observation"
+        }
+      },
+      "required": [
+        "type",
+        "view",
+        "observation"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "MoveObservation"
+        },
+        "observation_id": {
+          "$ref": "https://vehiclerecon.local/schemas/authoring.schema.json#/$defs/id"
+        },
+        "pixel": {
+          "$ref": "https://vehiclerecon.local/schemas/authoring.schema.json#/$defs/pixel"
+        }
+      },
+      "required": [
+        "type",
+        "observation_id",
+        "pixel"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "DeleteObservation"
+        },
+        "observation_id": {
+          "$ref": "https://vehiclerecon.local/schemas/authoring.schema.json#/$defs/id"
+        }
+      },
+      "required": [
+        "type",
+        "observation_id"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "AddWorldLandmark"
+        },
+        "world_entity_id": {
+          "$ref": "https://vehiclerecon.local/schemas/authoring.schema.json#/$defs/id"
+        },
+        "point": {
+          "$ref": "https://vehiclerecon.local/schemas/authoring.schema.json#/$defs/world_point"
+        }
+      },
+      "required": [
+        "type",
+        "world_entity_id",
+        "point"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "MoveWorldLandmark"
+        },
+        "world_entity_id": {
+          "$ref": "https://vehiclerecon.local/schemas/authoring.schema.json#/$defs/id"
+        },
+        "point": {
+          "$ref": "https://vehiclerecon.local/schemas/authoring.schema.json#/$defs/world_point"
+        }
+      },
+      "required": [
+        "type",
+        "world_entity_id",
+        "point"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "DeleteWorldLandmark"
+        },
+        "world_entity_id": {
+          "$ref": "https://vehiclerecon.local/schemas/authoring.schema.json#/$defs/id"
+        }
+      },
+      "required": [
+        "type",
+        "world_entity_id"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "BindObservation"
+        },
+        "correspondence": {
+          "$ref": "https://vehiclerecon.local/schemas/authoring.schema.json#/$defs/correspondence"
+        }
+      },
+      "required": [
+        "type",
+        "correspondence"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "UnbindObservation"
+        },
+        "correspondence_id": {
+          "$ref": "https://vehiclerecon.local/schemas/authoring.schema.json#/$defs/id"
+        }
+      },
+      "required": [
+        "type",
+        "correspondence_id"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "AddSplinePoint"
+        },
+        "target": {
+          "enum": [
+            "observation",
+            "cage"
+          ]
+        },
+        "entity_id": {
+          "$ref": "https://vehiclerecon.local/schemas/authoring.schema.json#/$defs/id"
+        },
+        "after_point_id": {
+          "$ref": "https://vehiclerecon.local/schemas/authoring.schema.json#/$defs/id"
+        },
+        "point_id": {
+          "$ref": "https://vehiclerecon.local/schemas/authoring.schema.json#/$defs/id"
+        },
+        "point": {
+          "oneOf": [
+            {
+              "$ref": "https://vehiclerecon.local/schemas/authoring.schema.json#/$defs/pixel"
+            },
+            {
+              "$ref": "https://vehiclerecon.local/schemas/authoring.schema.json#/$defs/world_point"
+            }
+          ]
+        }
+      },
+      "required": [
+        "type",
+        "target",
+        "entity_id",
+        "after_point_id",
+        "point_id",
+        "point"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "MoveSplinePoint"
+        },
+        "target": {
+          "enum": [
+            "observation",
+            "cage"
+          ]
+        },
+        "entity_id": {
+          "$ref": "https://vehiclerecon.local/schemas/authoring.schema.json#/$defs/id"
+        },
+        "point_id": {
+          "$ref": "https://vehiclerecon.local/schemas/authoring.schema.json#/$defs/id"
+        },
+        "point": {
+          "oneOf": [
+            {
+              "$ref": "https://vehiclerecon.local/schemas/authoring.schema.json#/$defs/pixel"
+            },
+            {
+              "$ref": "https://vehiclerecon.local/schemas/authoring.schema.json#/$defs/world_point"
+            }
+          ]
+        }
+      },
+      "required": [
+        "type",
+        "target",
+        "entity_id",
+        "point_id",
+        "point"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "DeleteSplinePoint"
+        },
+        "target": {
+          "enum": [
+            "observation",
+            "cage"
+          ]
+        },
+        "entity_id": {
+          "$ref": "https://vehiclerecon.local/schemas/authoring.schema.json#/$defs/id"
+        },
+        "point_id": {
+          "$ref": "https://vehiclerecon.local/schemas/authoring.schema.json#/$defs/id"
+        }
+      },
+      "required": [
+        "type",
+        "target",
+        "entity_id",
+        "point_id"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "SplitSpline"
+        },
+        "target": {
+          "enum": [
+            "observation",
+            "cage"
+          ]
+        },
+        "entity_id": {
+          "$ref": "https://vehiclerecon.local/schemas/authoring.schema.json#/$defs/id"
+        },
+        "point_id": {
+          "$ref": "https://vehiclerecon.local/schemas/authoring.schema.json#/$defs/id"
+        },
+        "new_entity_id": {
+          "$ref": "https://vehiclerecon.local/schemas/authoring.schema.json#/$defs/id"
+        }
+      },
+      "required": [
+        "type",
+        "target",
+        "entity_id",
+        "point_id",
+        "new_entity_id"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "MergeSpline"
+        },
+        "target": {
+          "enum": [
+            "observation",
+            "cage"
+          ]
+        },
+        "entity_id": {
+          "$ref": "https://vehiclerecon.local/schemas/authoring.schema.json#/$defs/id"
+        },
+        "other_entity_id": {
+          "$ref": "https://vehiclerecon.local/schemas/authoring.schema.json#/$defs/id"
+        }
+      },
+      "required": [
+        "type",
+        "target",
+        "entity_id",
+        "other_entity_id"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "SetMeasurement"
+        },
+        "measurement": {
+          "$ref": "https://vehiclerecon.local/schemas/authoring.schema.json#/$defs/measurement"
+        },
+        "dimension": {
+          "enum": [
+            "length_m",
+            "width_m",
+            "height_m",
+            "wheelbase_m"
+          ]
+        }
+      },
+      "required": [
+        "type",
+        "measurement"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "SetTolerance"
+        },
+        "correspondence_id": {
+          "$ref": "https://vehiclerecon.local/schemas/authoring.schema.json#/$defs/id"
+        },
+        "allowed_px": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "provenance": {
+          "$ref": "https://vehiclerecon.local/schemas/authoring.schema.json#/$defs/provenance"
+        }
+      },
+      "required": [
+        "type",
+        "correspondence_id",
+        "allowed_px",
+        "provenance"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "SetSourceDisposition"
+        },
+        "decision": {
+          "enum": [
+            "ACCEPTED",
+            "NEEDS_CORRECTION",
+            "INCONSISTENT_SOURCE"
+          ]
+        },
+        "reviewer": {
+          "type": "string",
+          "minLength": 1
+        },
+        "notes": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1
+        },
+        "expected_subject": {
+          "$ref": "https://vehiclerecon.local/schemas/authoring.schema.json#/$defs/sha256"
+        }
+      },
+      "required": [
+        "type",
+        "decision",
+        "reviewer",
+        "notes"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "SetCageReview"
+        },
+        "decision": {
+          "enum": [
+            "ACCEPTED",
+            "NEEDS_CORRECTION"
+          ]
+        },
+        "reviewer": {
+          "type": "string",
+          "minLength": 1
+        },
+        "notes": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1
+        },
+        "expected_subject": {
+          "$ref": "https://vehiclerecon.local/schemas/authoring.schema.json#/$defs/sha256"
+        }
+      },
+      "required": [
+        "type",
+        "decision",
+        "reviewer",
+        "notes"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "SetCoveragePolicy"
+        },
+        "policy": {
+          "$ref": "https://vehiclerecon.local/schemas/authoring.schema.json#/$defs/policy"
+        }
+      },
+      "required": [
+        "type",
+        "policy"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "SetViewerLabel"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "type",
+        "title"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "SetCalibrationView"
+        },
+        "view": {
+          "enum": [
+            "front",
+            "side",
+            "rear",
+            "top"
+          ]
+        },
+        "data": {
+          "type": "object"
+        }
+      },
+      "required": [
+        "type",
+        "view",
+        "data"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "SetProjectSettings"
+        },
+        "section": {
+          "enum": [
+            "materials",
+            "scene",
+            "roles",
+            "presentation",
+            "export",
+            "viewer",
+            "validation",
+            "authoring_state"
+          ]
+        },
+        "value": {}
+      },
+      "required": [
+        "type",
+        "section",
+        "value"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "AddRectificationAnchor"
+        },
+        "candidate_id": {
+          "$ref": "https://vehiclerecon.local/schemas/authoring.schema.json#/$defs/id"
+        },
+        "view": {
+          "enum": [
+            "front",
+            "side",
+            "rear",
+            "top"
+          ]
+        },
+        "anchor": {
+          "type": "object",
+          "properties": {
+            "image": {
+              "type": "number"
+            },
+            "world_normalized": {
+              "type": "number"
+            },
+            "semantic": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "image",
+            "world_normalized",
+            "semantic"
+          ],
+          "additionalProperties": false
+        },
+        "rectification": {
+          "type": "object"
+        }
+      },
+      "required": [
+        "type",
+        "candidate_id",
+        "view",
+        "anchor"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "RemoveRectificationAnchor"
+        },
+        "candidate_id": {
+          "$ref": "https://vehiclerecon.local/schemas/authoring.schema.json#/$defs/id"
+        },
+        "semantic": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "type",
+        "candidate_id",
+        "semantic"
+      ],
+      "additionalProperties": false
+    }
+  ]
+}

@@ -1,0 +1,112 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vehiclerecon.local/schemas/rectification_candidate.schema.json",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": 2
+    },
+    "id": {
+      "$ref": "https://vehiclerecon.local/schemas/authoring.schema.json#/$defs/id"
+    },
+    "view": {
+      "enum": [
+        "front",
+        "side",
+        "rear",
+        "top"
+      ]
+    },
+    "status": {
+      "enum": [
+        "CANDIDATE",
+        "REJECTED"
+      ]
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "base_calibration_hash": {
+      "$ref": "https://vehiclerecon.local/schemas/authoring.schema.json#/$defs/sha256"
+    },
+    "rectification": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "piecewise_monotonic"
+        },
+        "axis": {
+          "enum": [
+            "u",
+            "v"
+          ]
+        },
+        "image_domain_px": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "affine_domain_px": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "anchors": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "object",
+            "properties": {
+              "image": {
+                "type": "number"
+              },
+              "world_normalized": {
+                "type": "number"
+              },
+              "semantic": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "image",
+              "world_normalized",
+              "semantic"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "max_scale_change": {
+          "type": "number",
+          "minimum": 0,
+          "exclusiveMaximum": 1
+        }
+      },
+      "required": [
+        "type",
+        "axis",
+        "image_domain_px",
+        "affine_domain_px",
+        "anchors"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "schema_version",
+    "id",
+    "view",
+    "status",
+    "revision",
+    "base_calibration_hash",
+    "rectification"
+  ],
+  "additionalProperties": false
+}

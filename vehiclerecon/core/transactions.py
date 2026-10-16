@@ -7,7 +7,7 @@ import uuid
 import re
 from .errors import ConflictError, SchemaError
 from .locking import ProjectLock
-from .revisions import safe_path, revision, canonical_paths, DECISIONS, AUTHORED
+from .revisions import safe_path, revision, canonical_paths, DECISIONS, AUTHORED, candidate_path
 
 PENDING = '.cache/authoring/pending.json'
 
@@ -78,7 +78,7 @@ def recover(root, *, prefer='new', locked=False):
     for entry in journal['entries']:
         if any(digest(decoded(entry[key])) != entry[key+'_sha256'] for key in ('old','new')):
             raise ConflictError('Recovery journal content hash mismatch')
-        if entry['path'] not in allowed or entry['path'] in protected:
+        if (entry['path'] not in allowed and not candidate_path(entry['path'])) or entry['path'] in protected:
             raise ConflictError('Journal targets a noncanonical or protected source file')
         path = safe_path(root, entry['path'])
         actual = path.read_bytes() if path.is_file() else None
@@ -106,9 +106,11 @@ def commit(root, changes, *, expected_revision, validator, operation='authoring'
         new_project = json.loads(changes.get('project.json', original).decode('utf-8-sig'))
         allowed = _allowed([old_project, new_project])
         sources = {p for d in (old_project, new_project) for p in d.get('references', {}).values()}
-        if set(changes)-allowed or set(changes) & sources:
+        if any(p not in allowed and not candidate_path(p) for p in changes) or set(changes) & sources:
             raise SchemaError('Transaction may edit only canonical JSON and acceptance records')
         files = {}
+        from .revisions import snapshot
+        files.update({p:raw for p,raw in snapshot(root).items() if candidate_path(p) and raw is not None})
         for path in allowed:
             target = safe_path(root, path)
             if target.is_file():files[path] = target.read_bytes()

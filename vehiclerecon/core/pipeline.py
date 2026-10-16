@@ -52,7 +52,7 @@ def dependency_order(stages):
 
 class Pipeline:
     def __init__(self,project,*,blender=None,use_cache=True,implementation=None):
-        self.project=project;self.blender=blender;self.results=[];self.use_cache=use_cache;self.keys={}
+        self.project=project;self.blender=blender;self.results=[];self.use_cache=use_cache;self.keys={};self.target='delivery'
         from .cache import StageCache
         self.cache=StageCache(project,implementation) if use_cache else None
 
@@ -63,6 +63,22 @@ class Pipeline:
     def execute(self,stage):
         p=self.project
         if stage=='preflight':
+            if p.data['schema_version']==2:
+                from ..authoring.readiness import readiness
+                report=readiness(p.root)
+                if self.target=='preflight':return []
+                names=[s.id for s in STAGES];rank=names.index(self.target)
+                for component in ('references','calibration','cage'):
+                    if rank>=names.index(component) and report[component]['state']!='READY':
+                        raise BlockedError('; '.join(report[component]['reasons']))
+                if rank>=names.index('calibration') and not all(k in p.data for k in ('scene','materials')):
+                    raise BlockedError('Build scene/materials not authored; metric draft remains incomplete')
+                for kind,first in [('surface_graph','surfaces'),('silhouette_traces','silhouette'),('details','details')]:
+                    if rank>=names.index(first) and kind not in p.data['generated']:
+                        raise BlockedError('Authoring data missing: '+kind)
+                from ..blender.runner import discover,version
+                if rank>=names.index('calibration'):discover(self.blender)
+                return []
             from ..reference.calibration import load
             from ..cage.builder import records
             from ..surfaces.builder import order
@@ -96,6 +112,7 @@ class Pipeline:
             self.blender_run('cage',p.path('.cache/calibration.blend'))
             return ['.cache/cage.blend','validation/cage_inventory.json',*[f'validation/cage_{v}.png' for v in ('front','side','rear','top','perspective')],*[f'validation/cage_overlay_{v}.png' for v in ('front','side','rear','top')]]
         if stage=='surfaces':
+            self.authoring_gate()
             self.blender_run('surfaces',p.path('.cache/cage.blend'));return ['.cache/surfaces.blend']
         if stage=='silhouette':
             self.blender_run('surface_masks',p.path('.cache/surfaces.blend'))
@@ -134,8 +151,14 @@ class Pipeline:
             deliver(p);return ['output/delivery_manifest.json','validation/delivery_report.json']
         raise SchemaError(f'Unknown pipeline stage: {stage}')
 
+    def authoring_gate(self):
+        if getattr(self.project,'data',{}).get('schema_version')==2:
+            from ..authoring.workspace import Workspace
+            from ..authoring.reviews import require_acceptance
+            require_acceptance(Workspace(self.project.root))
+
     def run(self,*,actions=None,until=None):
-        self.results=[];failed=False
+        self.results=[];failed=False;self.target=until or 'delivery'
         cache=self.cache if actions is None else None
         for stage in dependency_order(STAGES):
             key=None;inputs={};dependencies={}
@@ -143,6 +166,7 @@ class Pipeline:
                 result=StageResult(stage.id,Status.BLOCKED,'Required earlier gate failed or is blocked')
             else:
                 try:
+                    if stage.id=='surfaces':self.authoring_gate()
                     entry=None
                     if cache:
                         from .cache import input_slice

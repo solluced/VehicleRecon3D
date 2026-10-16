@@ -1,0 +1,12 @@
+{
+  "schema_version": 2,
+  "review_type": "cage",
+  "decision": "ACCEPTED",
+  "reviewer": "Synthetic fixture contract author",
+  "notes": [
+    "Explicit acceptance of the specified analytic four-view test fixture and its individual zero-residual correspondences. This is not vehicle or final surface acceptance."
+  ],
+  "subject_hash": "20421dffbe71d6a0ac4eabf8ca3d79b74f17bc6aa195a7c65ea028a770222299",
+  "proof_hashes": {},
+  "residual_evidence_hash": "15940e6d2217f5309466e42444ef3692072254e0138318903ed7f180e5a0141c"
+}

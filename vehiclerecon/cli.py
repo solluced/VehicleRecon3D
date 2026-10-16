@@ -11,6 +11,7 @@ def main(argv=None):
     inspect.add_argument('project')
     init=commands.add_parser('init');init.add_argument('project');init.add_argument('--profile',default='sedan');init.add_argument('--schema-version',type=int,choices=[1,2],default=1)
     migration=commands.add_parser('migrate');migration.add_argument('project');migration.add_argument('--to',type=int,required=True);migration.add_argument('--dry-run',action='store_true');migration.add_argument('--expected-revision')
+    authoring=commands.add_parser('authoring-status');authoring.add_argument('project')
     run=commands.add_parser('run');run.add_argument('project');run.add_argument('--blender');run.add_argument('--no-cache',action='store_true');run.add_argument('--until',choices=['preflight','references','calibration','overlay','cage','surfaces','silhouette','details','geometry','presentation','export','glb_verify','viewer','delivery'])
     review=commands.add_parser('review');review.add_argument('project');review.add_argument('--reviewer',required=True);review.add_argument('--decision',choices=['PASS','FAIL'],required=True);review.add_argument('--note',action='append',required=True);review.add_argument('--limitation',action='append',default=[])
     args = parser.parse_args(argv)
@@ -26,6 +27,13 @@ def main(argv=None):
             plan=preview_migration(args.project,target=args.to)
             result=plan if args.dry_run else execute_migration(args.project,target=args.to,expected_revision=args.expected_revision or plan['source_revision'])
             print(json.dumps({k:v for k,v in result.items() if k!='documents'},indent=2));return 0
+        if args.command=='authoring-status':
+            from .authoring.versions import inspect_version
+            info=inspect_version(args.project)
+            if not info['supported']:
+                print(json.dumps(info,indent=2));return 1
+            from .authoring.readiness import readiness
+            print(json.dumps(readiness(args.project),indent=2));return 0
         project = Project(args.project)
         if args.command=='run':
             from .core.pipeline import Pipeline
