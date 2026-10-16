@@ -17,3 +17,9 @@ class BlockedError(ReconError):
 
 class BlenderError(ReconError):
     pass
+
+class ConflictError(ReconError):
+    """An expected revision, stable binding or external file identity changed."""
+
+class LockError(ConflictError):
+    """Another thread/process owns the project mutation lock."""

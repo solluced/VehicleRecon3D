@@ -1,0 +1,1208 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vehiclerecon.local/schemas/authoring.schema.json",
+  "$defs": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Za-z_][A-Za-z0-9_.:-]*$",
+      "maxLength": 160
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "world_point": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      },
+      "minItems": 3,
+      "maxItems": 3
+    },
+    "pixel": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      },
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "provenance": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "enum": [
+            "official",
+            "measured",
+            "inferred",
+            "approximate"
+          ]
+        },
+        "method": {
+          "type": "string",
+          "minLength": 1
+        },
+        "citation": {
+          "type": "string",
+          "minLength": 1
+        },
+        "confidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "provider": {
+          "type": "string",
+          "minLength": 1
+        },
+        "author": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "type",
+        "method"
+      ],
+      "additionalProperties": false
+    },
+    "knot": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Za-z_][A-Za-z0-9_.:-]*$",
+          "maxLength": 160
+        },
+        "pixel": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "left": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "right": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 2,
+          "maxItems": 2
+        }
+      },
+      "required": [
+        "id",
+        "pixel"
+      ],
+      "additionalProperties": false
+    },
+    "observation": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "pattern": "^[A-Za-z_][A-Za-z0-9_.:-]*$",
+              "maxLength": 160
+            },
+            "view": {
+              "enum": [
+                "front",
+                "side",
+                "rear",
+                "top"
+              ]
+            },
+            "kind": {
+              "const": "point"
+            },
+            "semantic_role": {
+              "type": "string",
+              "pattern": "^[A-Za-z_][A-Za-z0-9_.:-]*$",
+              "maxLength": 160
+            },
+            "reference_id": {
+              "type": "string",
+              "pattern": "^[A-Za-z_][A-Za-z0-9_.:-]*$",
+              "maxLength": 160
+            },
+            "source_sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "crop_id": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "revision": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "provenance": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "enum": [
+                    "official",
+                    "measured",
+                    "inferred",
+                    "approximate"
+                  ]
+                },
+                "method": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "citation": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "confidence": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                },
+                "provider": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "author": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "type",
+                "method"
+              ],
+              "additionalProperties": false
+            },
+            "uncertainty_px": {
+              "type": "number",
+              "minimum": 0
+            },
+            "visibility": {
+              "enum": [
+                "observed",
+                "inferred",
+                "occluded",
+                "unobserved"
+              ]
+            },
+            "measured": {
+              "type": "boolean"
+            },
+            "pixel": {
+              "anyOf": [
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "number"
+                  },
+                  "minItems": 2,
+                  "maxItems": 2
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "id",
+            "view",
+            "kind",
+            "semantic_role",
+            "reference_id",
+            "source_sha256",
+            "crop_id",
+            "revision",
+            "provenance",
+            "uncertainty_px",
+            "visibility",
+            "measured",
+            "pixel"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "pattern": "^[A-Za-z_][A-Za-z0-9_.:-]*$",
+              "maxLength": 160
+            },
+            "view": {
+              "enum": [
+                "front",
+                "side",
+                "rear",
+                "top"
+              ]
+            },
+            "kind": {
+              "const": "polyline"
+            },
+            "semantic_role": {
+              "type": "string",
+              "pattern": "^[A-Za-z_][A-Za-z0-9_.:-]*$",
+              "maxLength": 160
+            },
+            "reference_id": {
+              "type": "string",
+              "pattern": "^[A-Za-z_][A-Za-z0-9_.:-]*$",
+              "maxLength": 160
+            },
+            "source_sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "crop_id": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "revision": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "provenance": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "enum": [
+                    "official",
+                    "measured",
+                    "inferred",
+                    "approximate"
+                  ]
+                },
+                "method": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "citation": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "confidence": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                },
+                "provider": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "author": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "type",
+                "method"
+              ],
+              "additionalProperties": false
+            },
+            "uncertainty_px": {
+              "type": "number",
+              "minimum": 0
+            },
+            "visibility": {
+              "enum": [
+                "observed",
+                "inferred",
+                "occluded",
+                "unobserved"
+              ]
+            },
+            "measured": {
+              "type": "boolean"
+            },
+            "points": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z_][A-Za-z0-9_.:-]*$",
+                    "maxLength": 160
+                  },
+                  "pixel": {
+                    "type": "array",
+                    "items": {
+                      "type": "number"
+                    },
+                    "minItems": 2,
+                    "maxItems": 2
+                  },
+                  "left": {
+                    "type": "array",
+                    "items": {
+                      "type": "number"
+                    },
+                    "minItems": 2,
+                    "maxItems": 2
+                  },
+                  "right": {
+                    "type": "array",
+                    "items": {
+                      "type": "number"
+                    },
+                    "minItems": 2,
+                    "maxItems": 2
+                  }
+                },
+                "required": [
+                  "id",
+                  "pixel"
+                ],
+                "additionalProperties": false
+              },
+              "minItems": 2,
+              "maxItems": 100000
+            }
+          },
+          "required": [
+            "id",
+            "view",
+            "kind",
+            "semantic_role",
+            "reference_id",
+            "source_sha256",
+            "crop_id",
+            "revision",
+            "provenance",
+            "uncertainty_px",
+            "visibility",
+            "measured",
+            "points"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "pattern": "^[A-Za-z_][A-Za-z0-9_.:-]*$",
+              "maxLength": 160
+            },
+            "view": {
+              "enum": [
+                "front",
+                "side",
+                "rear",
+                "top"
+              ]
+            },
+            "kind": {
+              "const": "spline"
+            },
+            "semantic_role": {
+              "type": "string",
+              "pattern": "^[A-Za-z_][A-Za-z0-9_.:-]*$",
+              "maxLength": 160
+            },
+            "reference_id": {
+              "type": "string",
+              "pattern": "^[A-Za-z_][A-Za-z0-9_.:-]*$",
+              "maxLength": 160
+            },
+            "source_sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "crop_id": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "revision": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "provenance": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "enum": [
+                    "official",
+                    "measured",
+                    "inferred",
+                    "approximate"
+                  ]
+                },
+                "method": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "citation": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "confidence": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                },
+                "provider": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "author": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "type",
+                "method"
+              ],
+              "additionalProperties": false
+            },
+            "uncertainty_px": {
+              "type": "number",
+              "minimum": 0
+            },
+            "visibility": {
+              "enum": [
+                "observed",
+                "inferred",
+                "occluded",
+                "unobserved"
+              ]
+            },
+            "measured": {
+              "type": "boolean"
+            },
+            "points": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z_][A-Za-z0-9_.:-]*$",
+                    "maxLength": 160
+                  },
+                  "pixel": {
+                    "type": "array",
+                    "items": {
+                      "type": "number"
+                    },
+                    "minItems": 2,
+                    "maxItems": 2
+                  },
+                  "left": {
+                    "type": "array",
+                    "items": {
+                      "type": "number"
+                    },
+                    "minItems": 2,
+                    "maxItems": 2
+                  },
+                  "right": {
+                    "type": "array",
+                    "items": {
+                      "type": "number"
+                    },
+                    "minItems": 2,
+                    "maxItems": 2
+                  }
+                },
+                "required": [
+                  "id",
+                  "pixel"
+                ],
+                "additionalProperties": false
+              },
+              "minItems": 2,
+              "maxItems": 100000
+            }
+          },
+          "required": [
+            "id",
+            "view",
+            "kind",
+            "semantic_role",
+            "reference_id",
+            "source_sha256",
+            "crop_id",
+            "revision",
+            "provenance",
+            "uncertainty_px",
+            "visibility",
+            "measured",
+            "points"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "pattern": "^[A-Za-z_][A-Za-z0-9_.:-]*$",
+              "maxLength": 160
+            },
+            "view": {
+              "enum": [
+                "front",
+                "side",
+                "rear",
+                "top"
+              ]
+            },
+            "kind": {
+              "const": "axis"
+            },
+            "semantic_role": {
+              "type": "string",
+              "pattern": "^[A-Za-z_][A-Za-z0-9_.:-]*$",
+              "maxLength": 160
+            },
+            "reference_id": {
+              "type": "string",
+              "pattern": "^[A-Za-z_][A-Za-z0-9_.:-]*$",
+              "maxLength": 160
+            },
+            "source_sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "crop_id": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "revision": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "provenance": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "enum": [
+                    "official",
+                    "measured",
+                    "inferred",
+                    "approximate"
+                  ]
+                },
+                "method": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "citation": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "confidence": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                },
+                "provider": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "author": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "type",
+                "method"
+              ],
+              "additionalProperties": false
+            },
+            "uncertainty_px": {
+              "type": "number",
+              "minimum": 0
+            },
+            "visibility": {
+              "enum": [
+                "observed",
+                "inferred",
+                "occluded",
+                "unobserved"
+              ]
+            },
+            "measured": {
+              "type": "boolean"
+            },
+            "points": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z_][A-Za-z0-9_.:-]*$",
+                    "maxLength": 160
+                  },
+                  "pixel": {
+                    "type": "array",
+                    "items": {
+                      "type": "number"
+                    },
+                    "minItems": 2,
+                    "maxItems": 2
+                  },
+                  "left": {
+                    "type": "array",
+                    "items": {
+                      "type": "number"
+                    },
+                    "minItems": 2,
+                    "maxItems": 2
+                  },
+                  "right": {
+                    "type": "array",
+                    "items": {
+                      "type": "number"
+                    },
+                    "minItems": 2,
+                    "maxItems": 2
+                  }
+                },
+                "required": [
+                  "id",
+                  "pixel"
+                ],
+                "additionalProperties": false
+              },
+              "minItems": 2,
+              "maxItems": 2
+            }
+          },
+          "required": [
+            "id",
+            "view",
+            "kind",
+            "semantic_role",
+            "reference_id",
+            "source_sha256",
+            "crop_id",
+            "revision",
+            "provenance",
+            "uncertainty_px",
+            "visibility",
+            "measured",
+            "points"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "pattern": "^[A-Za-z_][A-Za-z0-9_.:-]*$",
+              "maxLength": 160
+            },
+            "view": {
+              "enum": [
+                "front",
+                "side",
+                "rear",
+                "top"
+              ]
+            },
+            "kind": {
+              "const": "circle"
+            },
+            "semantic_role": {
+              "type": "string",
+              "pattern": "^[A-Za-z_][A-Za-z0-9_.:-]*$",
+              "maxLength": 160
+            },
+            "reference_id": {
+              "type": "string",
+              "pattern": "^[A-Za-z_][A-Za-z0-9_.:-]*$",
+              "maxLength": 160
+            },
+            "source_sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "crop_id": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "revision": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "provenance": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "enum": [
+                    "official",
+                    "measured",
+                    "inferred",
+                    "approximate"
+                  ]
+                },
+                "method": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "citation": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "confidence": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                },
+                "provider": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "author": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "type",
+                "method"
+              ],
+              "additionalProperties": false
+            },
+            "uncertainty_px": {
+              "type": "number",
+              "minimum": 0
+            },
+            "visibility": {
+              "enum": [
+                "observed",
+                "inferred",
+                "occluded",
+                "unobserved"
+              ]
+            },
+            "measured": {
+              "type": "boolean"
+            },
+            "center": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 2,
+              "maxItems": 2
+            },
+            "radius_px": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            }
+          },
+          "required": [
+            "id",
+            "view",
+            "kind",
+            "semantic_role",
+            "reference_id",
+            "source_sha256",
+            "crop_id",
+            "revision",
+            "provenance",
+            "uncertainty_px",
+            "visibility",
+            "measured",
+            "center",
+            "radius_px"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "pattern": "^[A-Za-z_][A-Za-z0-9_.:-]*$",
+              "maxLength": 160
+            },
+            "view": {
+              "enum": [
+                "front",
+                "side",
+                "rear",
+                "top"
+              ]
+            },
+            "kind": {
+              "const": "measurement"
+            },
+            "semantic_role": {
+              "type": "string",
+              "pattern": "^[A-Za-z_][A-Za-z0-9_.:-]*$",
+              "maxLength": 160
+            },
+            "reference_id": {
+              "type": "string",
+              "pattern": "^[A-Za-z_][A-Za-z0-9_.:-]*$",
+              "maxLength": 160
+            },
+            "source_sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "crop_id": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "revision": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "provenance": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "enum": [
+                    "official",
+                    "measured",
+                    "inferred",
+                    "approximate"
+                  ]
+                },
+                "method": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "citation": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "confidence": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                },
+                "provider": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "author": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "type",
+                "method"
+              ],
+              "additionalProperties": false
+            },
+            "uncertainty_px": {
+              "type": "number",
+              "minimum": 0
+            },
+            "visibility": {
+              "enum": [
+                "observed",
+                "inferred",
+                "occluded",
+                "unobserved"
+              ]
+            },
+            "measured": {
+              "type": "boolean"
+            },
+            "measurement_id": {
+              "type": "string",
+              "pattern": "^[A-Za-z_][A-Za-z0-9_.:-]*$",
+              "maxLength": 160
+            }
+          },
+          "required": [
+            "id",
+            "view",
+            "kind",
+            "semantic_role",
+            "reference_id",
+            "source_sha256",
+            "crop_id",
+            "revision",
+            "provenance",
+            "uncertainty_px",
+            "visibility",
+            "measured",
+            "measurement_id"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "measurement": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Za-z_][A-Za-z0-9_.:-]*$",
+          "maxLength": 160
+        },
+        "value": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "unit": {
+          "enum": [
+            "m",
+            "mm",
+            "px",
+            "deg"
+          ]
+        },
+        "meaning": {
+          "type": "string",
+          "minLength": 1
+        },
+        "provenance": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "enum": [
+                "official",
+                "measured",
+                "inferred",
+                "approximate"
+              ]
+            },
+            "method": {
+              "type": "string",
+              "minLength": 1
+            },
+            "citation": {
+              "type": "string",
+              "minLength": 1
+            },
+            "confidence": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "provider": {
+              "type": "string",
+              "minLength": 1
+            },
+            "author": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "type",
+            "method"
+          ],
+          "additionalProperties": false
+        },
+        "uncertainty": {
+          "type": "number",
+          "minimum": 0
+        },
+        "locked": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "id",
+        "value",
+        "unit",
+        "meaning",
+        "provenance"
+      ],
+      "additionalProperties": false
+    },
+    "correspondence": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Za-z_][A-Za-z0-9_.:-]*$",
+          "maxLength": 160
+        },
+        "observation_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z_][A-Za-z0-9_.:-]*$",
+          "maxLength": 160
+        },
+        "observation_revision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "world_entity_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z_][A-Za-z0-9_.:-]*$",
+          "maxLength": 160
+        },
+        "binding_type": {
+          "enum": [
+            "landmark",
+            "curve_point"
+          ]
+        },
+        "point_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z_][A-Za-z0-9_.:-]*$",
+          "maxLength": 160
+        },
+        "observation_point_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z_][A-Za-z0-9_.:-]*$",
+          "maxLength": 160
+        },
+        "side": {
+          "enum": [
+            -1,
+            0,
+            1
+          ]
+        },
+        "required": {
+          "type": "boolean"
+        },
+        "tolerance_policy": {
+          "type": "object",
+          "properties": {
+            "metric": {
+              "const": "euclidean_px"
+            },
+            "allowed_px": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            }
+          },
+          "required": [
+            "metric",
+            "allowed_px"
+          ],
+          "additionalProperties": false
+        },
+        "semantic_role": {
+          "type": "string",
+          "pattern": "^[A-Za-z_][A-Za-z0-9_.:-]*$",
+          "maxLength": 160
+        },
+        "provenance": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "enum": [
+                "official",
+                "measured",
+                "inferred",
+                "approximate"
+              ]
+            },
+            "method": {
+              "type": "string",
+              "minLength": 1
+            },
+            "citation": {
+              "type": "string",
+              "minLength": 1
+            },
+            "confidence": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "provider": {
+              "type": "string",
+              "minLength": 1
+            },
+            "author": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "type",
+            "method"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "id",
+        "observation_id",
+        "observation_revision",
+        "world_entity_id",
+        "binding_type",
+        "required",
+        "tolerance_policy",
+        "semantic_role",
+        "provenance"
+      ],
+      "additionalProperties": false
+    },
+    "policy": {
+      "type": "object",
+      "properties": {
+        "coverage_confirmed": {
+          "type": "boolean"
+        },
+        "critical_correspondence_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z_][A-Za-z0-9_.:-]*$",
+            "maxLength": 160
+          },
+          "minItems": 0,
+          "maxItems": 100000
+        },
+        "required_views": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "front",
+              "side",
+              "rear",
+              "top"
+            ]
+          },
+          "minItems": 0,
+          "maxItems": 4
+        },
+        "required_proofs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 0,
+          "maxItems": 100
+        }
+      },
+      "required": [
+        "coverage_confirmed",
+        "critical_correspondence_ids",
+        "required_views",
+        "required_proofs"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

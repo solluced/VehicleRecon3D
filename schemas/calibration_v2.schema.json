@@ -1,0 +1,728 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vehiclerecon.local/schemas/calibration_v2.schema.json",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": 2
+    },
+    "source": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_size": {
+      "type": "array",
+      "items": {
+        "type": "integer",
+        "minimum": 1
+      },
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "source_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "views": {
+      "type": "object",
+      "properties": {
+        "front": {
+          "type": "object",
+          "properties": {
+            "origin": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 3,
+              "maxItems": 3
+            },
+            "u_basis": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 3,
+              "maxItems": 3
+            },
+            "v_basis": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 3,
+              "maxItems": 3
+            },
+            "crop": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 4,
+              "maxItems": 4
+            },
+            "landmarks": {
+              "type": "object",
+              "properties": {
+                "observations": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "https://vehiclerecon.local/schemas/authoring.schema.json#/$defs/observation"
+                  },
+                  "minItems": 0,
+                  "maxItems": 100000
+                },
+                "source_curves": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "https://vehiclerecon.local/schemas/authoring.schema.json#/$defs/observation"
+                  },
+                  "minItems": 0,
+                  "maxItems": 100000
+                }
+              }
+            },
+            "plane_offset": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 3,
+              "maxItems": 3
+            },
+            "camera": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "position": {
+                  "type": "array",
+                  "items": {
+                    "type": "number"
+                  },
+                  "minItems": 3,
+                  "maxItems": 3
+                },
+                "target": {
+                  "type": "array",
+                  "items": {
+                    "type": "number"
+                  },
+                  "minItems": 3,
+                  "maxItems": 3
+                },
+                "scale": {
+                  "type": "number",
+                  "exclusiveMinimum": 0
+                },
+                "type": {
+                  "enum": [
+                    "ORTHO"
+                  ]
+                },
+                "size": {
+                  "type": "array",
+                  "items": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "minItems": 2,
+                  "maxItems": 2
+                }
+              },
+              "required": [
+                "name",
+                "position",
+                "target",
+                "scale"
+              ],
+              "additionalProperties": false
+            },
+            "rectification": {
+              "$ref": "#/$defs/axis_rectification"
+            }
+          },
+          "required": [
+            "landmarks"
+          ],
+          "additionalProperties": false
+        },
+        "side": {
+          "type": "object",
+          "properties": {
+            "origin": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 3,
+              "maxItems": 3
+            },
+            "u_basis": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 3,
+              "maxItems": 3
+            },
+            "v_basis": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 3,
+              "maxItems": 3
+            },
+            "crop": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 4,
+              "maxItems": 4
+            },
+            "landmarks": {
+              "type": "object",
+              "properties": {
+                "observations": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "https://vehiclerecon.local/schemas/authoring.schema.json#/$defs/observation"
+                  },
+                  "minItems": 0,
+                  "maxItems": 100000
+                },
+                "source_curves": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "https://vehiclerecon.local/schemas/authoring.schema.json#/$defs/observation"
+                  },
+                  "minItems": 0,
+                  "maxItems": 100000
+                }
+              }
+            },
+            "plane_offset": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 3,
+              "maxItems": 3
+            },
+            "camera": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "position": {
+                  "type": "array",
+                  "items": {
+                    "type": "number"
+                  },
+                  "minItems": 3,
+                  "maxItems": 3
+                },
+                "target": {
+                  "type": "array",
+                  "items": {
+                    "type": "number"
+                  },
+                  "minItems": 3,
+                  "maxItems": 3
+                },
+                "scale": {
+                  "type": "number",
+                  "exclusiveMinimum": 0
+                },
+                "type": {
+                  "enum": [
+                    "ORTHO"
+                  ]
+                },
+                "size": {
+                  "type": "array",
+                  "items": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "minItems": 2,
+                  "maxItems": 2
+                }
+              },
+              "required": [
+                "name",
+                "position",
+                "target",
+                "scale"
+              ],
+              "additionalProperties": false
+            },
+            "rectification": {
+              "$ref": "#/$defs/axis_rectification"
+            }
+          },
+          "required": [
+            "landmarks"
+          ],
+          "additionalProperties": false
+        },
+        "rear": {
+          "type": "object",
+          "properties": {
+            "origin": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 3,
+              "maxItems": 3
+            },
+            "u_basis": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 3,
+              "maxItems": 3
+            },
+            "v_basis": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 3,
+              "maxItems": 3
+            },
+            "crop": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 4,
+              "maxItems": 4
+            },
+            "landmarks": {
+              "type": "object",
+              "properties": {
+                "observations": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "https://vehiclerecon.local/schemas/authoring.schema.json#/$defs/observation"
+                  },
+                  "minItems": 0,
+                  "maxItems": 100000
+                },
+                "source_curves": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "https://vehiclerecon.local/schemas/authoring.schema.json#/$defs/observation"
+                  },
+                  "minItems": 0,
+                  "maxItems": 100000
+                }
+              }
+            },
+            "plane_offset": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 3,
+              "maxItems": 3
+            },
+            "camera": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "position": {
+                  "type": "array",
+                  "items": {
+                    "type": "number"
+                  },
+                  "minItems": 3,
+                  "maxItems": 3
+                },
+                "target": {
+                  "type": "array",
+                  "items": {
+                    "type": "number"
+                  },
+                  "minItems": 3,
+                  "maxItems": 3
+                },
+                "scale": {
+                  "type": "number",
+                  "exclusiveMinimum": 0
+                },
+                "type": {
+                  "enum": [
+                    "ORTHO"
+                  ]
+                },
+                "size": {
+                  "type": "array",
+                  "items": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "minItems": 2,
+                  "maxItems": 2
+                }
+              },
+              "required": [
+                "name",
+                "position",
+                "target",
+                "scale"
+              ],
+              "additionalProperties": false
+            },
+            "rectification": {
+              "$ref": "#/$defs/axis_rectification"
+            }
+          },
+          "required": [
+            "landmarks"
+          ],
+          "additionalProperties": false
+        },
+        "top": {
+          "type": "object",
+          "properties": {
+            "origin": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 3,
+              "maxItems": 3
+            },
+            "u_basis": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 3,
+              "maxItems": 3
+            },
+            "v_basis": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 3,
+              "maxItems": 3
+            },
+            "crop": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 4,
+              "maxItems": 4
+            },
+            "landmarks": {
+              "type": "object",
+              "properties": {
+                "observations": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "https://vehiclerecon.local/schemas/authoring.schema.json#/$defs/observation"
+                  },
+                  "minItems": 0,
+                  "maxItems": 100000
+                },
+                "source_curves": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "https://vehiclerecon.local/schemas/authoring.schema.json#/$defs/observation"
+                  },
+                  "minItems": 0,
+                  "maxItems": 100000
+                }
+              }
+            },
+            "plane_offset": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 3,
+              "maxItems": 3
+            },
+            "camera": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "position": {
+                  "type": "array",
+                  "items": {
+                    "type": "number"
+                  },
+                  "minItems": 3,
+                  "maxItems": 3
+                },
+                "target": {
+                  "type": "array",
+                  "items": {
+                    "type": "number"
+                  },
+                  "minItems": 3,
+                  "maxItems": 3
+                },
+                "scale": {
+                  "type": "number",
+                  "exclusiveMinimum": 0
+                },
+                "type": {
+                  "enum": [
+                    "ORTHO"
+                  ]
+                },
+                "size": {
+                  "type": "array",
+                  "items": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "minItems": 2,
+                  "maxItems": 2
+                }
+              },
+              "required": [
+                "name",
+                "position",
+                "target",
+                "scale"
+              ],
+              "additionalProperties": false
+            },
+            "rectification": {
+              "$ref": "#/$defs/axis_rectification"
+            }
+          },
+          "required": [
+            "landmarks"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    },
+    "perspective_camera": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "position": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 3,
+          "maxItems": 3
+        },
+        "target": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 3,
+          "maxItems": 3
+        },
+        "scale": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "type": {
+          "enum": [
+            "ORTHO"
+          ]
+        },
+        "size": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "minItems": 2,
+          "maxItems": 2
+        }
+      },
+      "required": [
+        "name",
+        "position",
+        "target",
+        "scale"
+      ],
+      "additionalProperties": false
+    },
+    "uncertainty": {
+      "type": "object"
+    },
+    "datums": {
+      "type": "object",
+      "properties": {
+        "measurements": {
+          "type": "array",
+          "items": {
+            "$ref": "https://vehiclerecon.local/schemas/authoring.schema.json#/$defs/measurement"
+          },
+          "minItems": 0,
+          "maxItems": 100000
+        }
+      }
+    },
+    "proof_layout": {
+      "type": "object"
+    },
+    "wheel_geometry": {
+      "type": "object",
+      "properties": {
+        "radius_m": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "axles": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "x": {
+                "type": "number"
+              },
+              "track_m": {
+                "type": "number",
+                "exclusiveMinimum": 0
+              },
+              "z": {
+                "type": "number",
+                "exclusiveMinimum": 0
+              }
+            },
+            "required": [
+              "id",
+              "x",
+              "track_m",
+              "z"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "radius_m",
+        "axles"
+      ],
+      "additionalProperties": false
+    },
+    "correspondences": {
+      "type": "array",
+      "items": {
+        "$ref": "https://vehiclerecon.local/schemas/authoring.schema.json#/$defs/correspondence"
+      },
+      "minItems": 0,
+      "maxItems": 100000
+    },
+    "authoring_policy": {
+      "$ref": "https://vehiclerecon.local/schemas/authoring.schema.json#/$defs/policy"
+    }
+  },
+  "required": [
+    "schema_version",
+    "views",
+    "datums",
+    "correspondences",
+    "authoring_policy"
+  ],
+  "additionalProperties": false,
+  "$defs": {
+    "axis_rectification": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "piecewise_monotonic"
+        },
+        "axis": {
+          "enum": [
+            "u",
+            "v"
+          ]
+        },
+        "image_domain_px": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "affine_domain_px": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "anchors": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "object",
+            "properties": {
+              "image": {
+                "type": "number"
+              },
+              "world_normalized": {
+                "type": "number"
+              },
+              "semantic": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "image",
+              "world_normalized",
+              "semantic"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "max_scale_change": {
+          "type": "number",
+          "minimum": 0,
+          "exclusiveMaximum": 1
+        }
+      },
+      "required": [
+        "type",
+        "axis",
+        "image_domain_px",
+        "affine_domain_px",
+        "anchors"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

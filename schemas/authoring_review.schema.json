@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vehiclerecon.local/schemas/authoring_review.schema.json",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": 2
+    },
+    "review_type": {
+      "enum": [
+        "source",
+        "cage"
+      ]
+    },
+    "decision": {
+      "type": "string",
+      "minLength": 1
+    },
+    "reviewer": {
+      "type": "string",
+      "minLength": 1
+    },
+    "notes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1,
+      "maxItems": 100
+    },
+    "subject_hash": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "proof_hashes": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string",
+        "pattern": "^[0-9a-f]{64}$"
+      }
+    },
+    "residual_evidence_hash": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    }
+  },
+  "required": [
+    "schema_version",
+    "review_type",
+    "decision",
+    "reviewer",
+    "notes",
+    "subject_hash",
+    "proof_hashes",
+    "residual_evidence_hash"
+  ],
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "review_type": {
+            "const": "source"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "decision": {
+            "enum": [
+              "ACCEPTED",
+              "NEEDS_CORRECTION",
+              "INCONSISTENT_SOURCE"
+            ]
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "decision": {
+            "enum": [
+              "ACCEPTED",
+              "NEEDS_CORRECTION"
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

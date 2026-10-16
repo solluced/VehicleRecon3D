@@ -37,6 +37,8 @@ def validate(value, schema_name):
     from jsonschema import Draft202012Validator
     from referencing import Registry, Resource
     schema_root = RESOURCE_ROOT / "schemas"
+    if schema_name in ('project','calibration','cage') and value.get('schema_version') == 2:
+        schema_name += '_v2'
     schemas = [read_json(p) for p in sorted(schema_root.glob("*.schema.json"))]
     registry = Registry().with_resources((s["$id"], Resource.from_contents(s)) for s in schemas)
     schema = read_json(schema_root / f"{schema_name}.schema.json")
@@ -51,11 +53,14 @@ class Project:
     def __init__(self, root, *, check=True):
         self.root = Path(root).resolve()
         self.data = read_json(self.root / "project.json")
-        if self.data.get("schema_version") != 1:
+        version = self.data.get("schema_version")
+        if version not in (1,2):
             raise SchemaError("Unsupported project schema_version")
         if check:
             validate(self.data, "project")
         for name, value in self.data.get("dimensions", {}).items():
+            if version == 2 and self.data.get('authoring_state') == 'DRAFT' and value is None:
+                continue
             if name.endswith("_m") and (not isinstance(value, (int, float)) or isinstance(value, bool) or value <= 0):
                 raise SchemaError(f"Dimension must be positive: {name}")
         if not re.fullmatch('[a-z_]+',self.data['vehicle_profile']):
@@ -64,14 +69,16 @@ class Project:
         if check:
             validate(self.profile, "vehicle_profile")
         for view,minimum in self.profile.get('minimum_iou',{}).items():
+            if version == 2 and self.data.get('authoring_state') == 'DRAFT' and not self.data.get('validation'):
+                break
             if self.data['validation']['thresholds'][view]<minimum:
                 raise SchemaError(f'{view}: project threshold cannot weaken profile floor {minimum}')
         allowed_roles=set(self.profile['roles'])|set(self.profile['optional_roles'])
-        if set(self.data['roles'])-allowed_roles:
+        if set(self.data.get('roles',{}))-allowed_roles:
             raise SchemaError('Project has semantic roles outside its vehicle profile')
-        if set(self.profile['roles'])-set(self.data['roles']):
+        if (version == 1 or self.data.get('authoring_state') == 'READY') and set(self.profile['roles'])-set(self.data.get('roles',{})):
             raise SchemaError('Required semantic role bindings are missing')
-        if set(self.data['export']['collections'])&set(self.data['export']['excluded_collections']):
+        if self.data.get('export') and set(self.data['export']['collections'])&set(self.data['export']['excluded_collections']):
             raise SchemaError('Export model collections cannot be excluded from silhouette validation')
         for path in self.data["references"].values():
             self.path(path, exists=True)
@@ -98,6 +105,9 @@ class Project:
         value = read_json(self.path(self.data["generated"][kind], exists=True))
         if check:
             validate(value, kind)
+        if kind == 'cage' and value.get('schema_version') == 2:
+            from ..authoring.contracts import resolved_cage
+            value = resolved_cage(value)
         return value
 
     @property

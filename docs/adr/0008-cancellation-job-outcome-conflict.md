@@ -1,9 +1,10 @@
 # ADR 0008 — Cancellation outcome conflicts with the locked API baseline
 
-Status: **PROPOSED — implementation stopped pending architecture clarification**.
+Status: **ACCEPTED — explicit operator decision, 2026-10-16**.
 Date: 2026-10-16. Locked baseline: `58f13e8efe1ea9e7f8dea9ad93b3c4937a33d1ea`.
-This ADR records a contradiction; it does not supersede or approve a change to
-the existing architecture, implement jobs, or complete Studio v0.1A.
+The operator accepted the recommended resolution in the follow-up architecture
+decision. This ADR now supersedes the conflicting cancellation clauses of the
+backend API. It does not by itself implement jobs or complete Studio v0.1A.
 
 ## Sources of the contradiction
 
@@ -39,14 +40,14 @@ changing the job outcome silently would reverse the locked API instruction.
 Cancellation during a stage additionally needs a decision about whether an
 interrupted stage is falsely categorized as a failure.
 
-## Recommended resolution, not activated
+## Accepted resolution
 
 Introduce a separate managed-job outcome, independent of native stage results:
 
 | Concept | Proposed meaning |
 |---|---|
 | Native stage result | Preserve `PASS`, `FAIL`, `SKIP`, `BLOCKED`; never add `CANCELLED` to the existing enum |
-| Managed job result | Explicit `CANCELLED` when managed cancellation terminates a pending/running run, distinct from genuine failure |
+| Managed job result | `SUCCEEDED`, `FAILED`, `BLOCKED`, `CANCELLED`; cancellation is distinct from genuine failure and blocking |
 | Interrupted active stage | Retain any real completed result; otherwise no fabricated `FAIL` solely because cancellation interrupted execution |
 | Unexecuted dependencies | May be reported `BLOCKED` with cancellation as cause, without changing the job result to `BLOCKED` |
 | Job freshness | Independent current/stale input identity; cancelled or stale output is not promotable |
@@ -70,11 +71,13 @@ No v1 project-name exception or Studio/web dependency is needed.
    the previous `FAIL`/`BLOCKED` cancellation outcomes; it does not satisfy the
    handoff as currently written.
 
-No choice is inferred from this ADR's creation or commit. Do not change the
-locked documents, introduce schemas/services based on either interpretation,
-or mark any v0.1A Definition of Done item complete until the contradiction is
-resolved. The requested stop applies to implementation, not just the last job
-module in a sequence of otherwise speculative commits.
+The original proposed ADR/stop remains in Git history. The subsequent explicit
+decision selects alternative 1 and authorizes continuing v0.1A. Cancellation
+does not manufacture a stage FAIL. A real independently observed stage failure
+retains FAIL and takes precedence over a later cancellation. Terminal job
+outcomes are immutable. Freshness remains independent; cancelled and stale jobs
+are never promotable. These rules require deterministic tests, including worker
+termination, before claiming implementation complete.
 
 ## Work preserved and next validation
 

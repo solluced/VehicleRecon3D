@@ -1,0 +1,824 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vehiclerecon.local/schemas/project_v2.schema.json",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": 2
+    },
+    "project_id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_]*$"
+    },
+    "category": {
+      "const": "automobile"
+    },
+    "vehicle_profile": {
+      "type": "string",
+      "pattern": "^[a-z_]+$"
+    },
+    "asset_name": {
+      "type": "string",
+      "pattern": "^[a-zA-Z0-9_-]+$"
+    },
+    "references": {
+      "type": "object",
+      "properties": {
+        "multiview": {
+          "type": "string",
+          "minLength": 1
+        },
+        "control_overlay": {
+          "type": "string",
+          "minLength": 1
+        },
+        "surface_target": {
+          "type": "string",
+          "minLength": 1
+        },
+        "workflow": {
+          "type": "string",
+          "minLength": 1
+        },
+        "cage_overlay": {
+          "type": "string",
+          "minLength": 1
+        },
+        "front": {
+          "type": "string",
+          "minLength": 1
+        },
+        "side": {
+          "type": "string",
+          "minLength": 1
+        },
+        "rear": {
+          "type": "string",
+          "minLength": 1
+        },
+        "top": {
+          "type": "string",
+          "minLength": 1
+        },
+        "hero": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    },
+    "dimensions": {
+      "type": "object",
+      "properties": {
+        "length_m": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "exclusiveMinimum": 0
+        },
+        "width_m": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "exclusiveMinimum": 0
+        },
+        "height_m": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "exclusiveMinimum": 0
+        },
+        "wheelbase_m": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "exclusiveMinimum": 0
+        },
+        "provenance": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "length_m",
+        "width_m",
+        "height_m",
+        "wheelbase_m",
+        "provenance"
+      ],
+      "additionalProperties": false
+    },
+    "generated": {
+      "type": "object",
+      "properties": {
+        "calibration": {
+          "type": "string",
+          "minLength": 1
+        },
+        "cage": {
+          "type": "string",
+          "minLength": 1
+        },
+        "surface_graph": {
+          "type": "string",
+          "minLength": 1
+        },
+        "details": {
+          "type": "string",
+          "minLength": 1
+        },
+        "silhouette_traces": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    },
+    "materials": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "kind": {
+            "enum": [
+              "principled",
+              "emission"
+            ]
+          },
+          "color": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 3,
+            "maxItems": 3
+          },
+          "roughness": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "metallic": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "strength": {
+            "type": "number",
+            "exclusiveMinimum": 0
+          },
+          "inputs": {
+            "type": "object",
+            "additionalProperties": {
+              "oneOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "number"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "required": [
+          "name",
+          "kind",
+          "color"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "scene": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "collections": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "world_color": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 4,
+          "maxItems": 4
+        },
+        "world_strength": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        }
+      },
+      "required": [
+        "name",
+        "collections",
+        "world_color",
+        "world_strength"
+      ],
+      "additionalProperties": false
+    },
+    "presentation": {
+      "type": "object",
+      "properties": {
+        "lights": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "minLength": 1
+              },
+              "position": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                }
+              },
+              "power": {
+                "type": "number"
+              },
+              "size": {
+                "type": "number"
+              },
+              "target": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                }
+              }
+            },
+            "required": [
+              "name",
+              "position",
+              "power",
+              "size",
+              "target"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "views": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "view": {
+                "type": "string",
+                "minLength": 1
+              },
+              "camera": {
+                "type": "string",
+                "minLength": 1
+              },
+              "size": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                }
+              }
+            },
+            "required": [
+              "view",
+              "camera",
+              "size"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "materials": {
+          "$ref": "#/properties/materials"
+        },
+        "wire_sources": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "wire": {
+          "type": "object",
+          "properties": {
+            "collection": {
+              "type": "string",
+              "minLength": 1
+            },
+            "prefix": {
+              "type": "string",
+              "minLength": 1
+            },
+            "material": {
+              "type": "string",
+              "minLength": 1
+            },
+            "offset": {
+              "type": "number"
+            },
+            "thickness": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "collection",
+            "prefix",
+            "material",
+            "offset",
+            "thickness"
+          ],
+          "additionalProperties": false
+        },
+        "ground": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "minLength": 1
+            },
+            "size": {
+              "type": "number"
+            },
+            "position": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              }
+            },
+            "material": {
+              "type": "string",
+              "minLength": 1
+            },
+            "collection": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "name",
+            "size",
+            "position",
+            "material",
+            "collection"
+          ],
+          "additionalProperties": false
+        },
+        "camera": {
+          "$ref": "https://vehiclerecon.local/schemas/calibration.schema.json#/properties/perspective_camera"
+        },
+        "samples": {
+          "type": "number"
+        },
+        "diagnostic_size": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          }
+        },
+        "review_proofs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "required": [
+        "lights",
+        "views",
+        "materials",
+        "wire_sources",
+        "wire",
+        "ground",
+        "camera",
+        "samples",
+        "diagnostic_size",
+        "review_proofs"
+      ],
+      "additionalProperties": false
+    },
+    "export": {
+      "type": "object",
+      "properties": {
+        "excluded_collections": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "collections": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "default_group": {
+          "type": "string",
+          "minLength": 1
+        },
+        "group_rules": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "group": {
+                "type": "string",
+                "minLength": 1
+              },
+              "property": {
+                "type": "string",
+                "minLength": 1
+              },
+              "ancestor_prefixes": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "name_prefixes": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "required": [
+              "group"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "formats": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "required": [
+        "excluded_collections",
+        "collections",
+        "default_group",
+        "group_rules",
+        "formats"
+      ],
+      "additionalProperties": false
+    },
+    "viewer": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "eyebrow": {
+          "type": "string",
+          "minLength": 1
+        },
+        "groups": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "label": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "id",
+              "label"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "wire_group": {
+          "type": "string",
+          "minLength": 1
+        },
+        "glass_group": {
+          "type": "string",
+          "minLength": 1
+        },
+        "fit_margin": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 0.95
+        },
+        "presets": {
+          "type": "object",
+          "properties": {
+            "front": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              }
+            },
+            "side": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              }
+            },
+            "rear": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              }
+            },
+            "top": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              }
+            },
+            "three": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              }
+            }
+          },
+          "required": [
+            "front",
+            "side",
+            "rear",
+            "top",
+            "three"
+          ],
+          "additionalProperties": false
+        },
+        "glass_alpha": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        }
+      },
+      "required": [
+        "title",
+        "eyebrow",
+        "groups",
+        "wire_group",
+        "glass_group",
+        "fit_margin",
+        "presets",
+        "glass_alpha"
+      ],
+      "additionalProperties": false
+    },
+    "validation": {
+      "type": "object",
+      "properties": {
+        "thresholds": {
+          "type": "object",
+          "properties": {
+            "side": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "top": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "front": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "rear": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            }
+          },
+          "required": [
+            "side",
+            "top",
+            "front",
+            "rear"
+          ],
+          "additionalProperties": false
+        },
+        "max_iou_regression": {
+          "type": "number",
+          "minimum": 0
+        },
+        "bounds_tolerance_m": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "review_required": {
+          "type": "boolean"
+        },
+        "baseline_iou": {
+          "type": "object",
+          "properties": {
+            "side": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "top": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "front": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "rear": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            }
+          },
+          "required": [
+            "side",
+            "top",
+            "front",
+            "rear"
+          ],
+          "additionalProperties": false
+        },
+        "geometry": {
+          "type": "object",
+          "properties": {
+            "surface_collections": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "surface_exclude_prefixes": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "weld_distance_m": {
+              "type": "number"
+            },
+            "area_epsilon": {
+              "type": "number"
+            },
+            "pivot_tolerance_m": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "surface_collections",
+            "surface_exclude_prefixes",
+            "weld_distance_m",
+            "area_epsilon",
+            "pivot_tolerance_m"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "thresholds",
+        "max_iou_regression",
+        "bounds_tolerance_m",
+        "review_required",
+        "baseline_iou",
+        "geometry"
+      ],
+      "additionalProperties": false
+    },
+    "roles": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "minLength": 1
+        },
+        "minItems": 1,
+        "uniqueItems": true
+      }
+    },
+    "authoring_state": {
+      "enum": [
+        "DRAFT",
+        "READY"
+      ]
+    }
+  },
+  "required": [
+    "schema_version",
+    "project_id",
+    "category",
+    "vehicle_profile",
+    "asset_name",
+    "references",
+    "generated",
+    "dimensions",
+    "authoring_state"
+  ],
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "authoring_state": {
+            "const": "READY"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "schema_version",
+          "project_id",
+          "category",
+          "vehicle_profile",
+          "asset_name",
+          "references",
+          "dimensions",
+          "generated",
+          "materials",
+          "scene",
+          "presentation",
+          "export",
+          "viewer",
+          "validation",
+          "roles"
+        ],
+        "properties": {
+          "dimensions": {
+            "type": "object",
+            "properties": {
+              "length_m": {
+                "type": "number",
+                "exclusiveMinimum": 0
+              },
+              "width_m": {
+                "type": "number",
+                "exclusiveMinimum": 0
+              },
+              "height_m": {
+                "type": "number",
+                "exclusiveMinimum": 0
+              },
+              "wheelbase_m": {
+                "type": "number",
+                "exclusiveMinimum": 0
+              },
+              "provenance": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "length_m",
+              "width_m",
+              "height_m",
+              "wheelbase_m",
+              "provenance"
+            ],
+            "additionalProperties": false
+          },
+          "references": {
+            "required": [
+              "multiview",
+              "control_overlay",
+              "surface_target"
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

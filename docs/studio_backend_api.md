@@ -197,9 +197,16 @@ Stage `result` is absent/null while not finished; when present it is only PASS,
 FAIL, SKIP or BLOCKED with the native reason and artifact IDs. Job `activity`
 is separate transport/process metadata: QUEUED, RUNNING, CANCELLING, FINISHED,
 INTERRUPTED. These words never replace stage results or enter core reports as
-new result statuses. A cancelled active stage records FAIL with reason
-`CANCELLED`; unexecuted dependents are BLOCKED. A job cancelled before it starts
-has no fabricated successful stages and a BLOCKED outcome/reason. A restart
+new result statuses. Under accepted [ADR-0008](adr/0008-cancellation-job-outcome-conflict.md),
+managed jobs have separate terminal outcomes SUCCEEDED, FAILED, BLOCKED and
+CANCELLED. Cancellation before start or during execution terminates as CANCELLED
+only after workers exit or are safely fenced. It does not manufacture a stage
+FAIL; an interrupted stage retains an execution record without a false terminal
+result. Unexecuted dependents may be BLOCKED with cancellation as cause. Genuine
+failures take precedence over later cancellation, and finalized outcomes cannot
+be rewritten. Freshness is independent; cancelled/stale jobs are not promotable.
+This explicitly supersedes the original FAIL/BLOCKED cancellation clauses from
+the architecture baseline; that conflict remains recorded in ADR-0008. A restart
 interrupts/fences unfinished jobs until their process state is reconciled.
 
 The current Pipeline has printed results/final report but no structured observer
