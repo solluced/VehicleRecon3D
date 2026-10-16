@@ -14,6 +14,7 @@ Studio capabilities or operator approval of an implementation. Base core commit:
 | [0005](0005-cv-results-are-proposals.md) | Optional CV outputs remain proposals until explicit acceptance |
 | [0006](0006-observations-and-world-geometry.md) | Source observations and shared world geometry are separate |
 | [0007](0007-source-inconsistency-first-class.md) | Source inconsistency is a first-class authoring result |
+| [0008](0008-cancellation-job-outcome-conflict.md) | Proposed: resolve v0.1A cancellation outcome conflict; implementation stopped |
 
 Technology comparisons are in [architecture](../studio_architecture.md).
 Dependent implementation gates are in [roadmap](../studio_roadmap.md). Amend
