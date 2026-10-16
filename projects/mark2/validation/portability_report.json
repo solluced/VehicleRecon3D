@@ -1,0 +1,146 @@
+{
+  "status": "BLOCKED",
+  "report_type": "Combined standard CLI results and explicit required cage visual acceptance; original CLI report retained separately.",
+  "base_commit": "060309de6014a760339ab100e4d61ecece102b72",
+  "framework_core_modified": false,
+  "project_specific_python_files": 0,
+  "init_cli": "PASS",
+  "source_import": "PASS",
+  "scale_basis_pending": false,
+  "scale_anchor": "Toyota official E-JZX100 wheelbase 2.730 m, assumed unchanged on depicted build; body envelope is inferred.",
+  "stages": [
+    {
+      "stage": "preflight",
+      "status": "PASS",
+      "executed": true,
+      "latest_cli_status": "PASS",
+      "reason": "Standard CLI stage passed."
+    },
+    {
+      "stage": "references",
+      "status": "PASS",
+      "executed": true,
+      "latest_cli_status": "SKIP",
+      "reason": "Verified cached output from the prior successful run."
+    },
+    {
+      "stage": "calibration",
+      "status": "PASS",
+      "executed": true,
+      "latest_cli_status": "PASS",
+      "reason": "Standard CLI stage passed."
+    },
+    {
+      "stage": "overlay",
+      "status": "PASS",
+      "executed": true,
+      "latest_cli_status": "SKIP",
+      "reason": "Verified cached output from the prior successful run."
+    },
+    {
+      "stage": "cage",
+      "status": "FAIL",
+      "executed": true,
+      "cli_status": "PASS",
+      "review_status": "FAIL",
+      "reason": "See cage_residuals.json: TOP critical landmarks fail after correction; door cuts remain deferred."
+    },
+    {
+      "stage": "surfaces",
+      "status": "BLOCKED",
+      "executed": false,
+      "reason": "Required explicit cage review is FAIL; stopped before surface construction."
+    },
+    {
+      "stage": "silhouette",
+      "status": "BLOCKED",
+      "executed": false,
+      "reason": "Required explicit cage review is FAIL; stopped before surface construction."
+    },
+    {
+      "stage": "details",
+      "status": "BLOCKED",
+      "executed": false,
+      "reason": "Required explicit cage review is FAIL; stopped before surface construction."
+    },
+    {
+      "stage": "geometry",
+      "status": "BLOCKED",
+      "executed": false,
+      "reason": "Required explicit cage review is FAIL; stopped before surface construction."
+    },
+    {
+      "stage": "presentation",
+      "status": "BLOCKED",
+      "executed": false,
+      "reason": "Required explicit cage review is FAIL; stopped before surface construction."
+    },
+    {
+      "stage": "export",
+      "status": "BLOCKED",
+      "executed": false,
+      "reason": "Required explicit cage review is FAIL; stopped before surface construction."
+    },
+    {
+      "stage": "glb_verify",
+      "status": "BLOCKED",
+      "executed": false,
+      "reason": "Required explicit cage review is FAIL; stopped before surface construction."
+    },
+    {
+      "stage": "viewer",
+      "status": "BLOCKED",
+      "executed": false,
+      "reason": "Required explicit cage review is FAIL; stopped before surface construction."
+    },
+    {
+      "stage": "delivery",
+      "status": "BLOCKED",
+      "executed": false,
+      "reason": "Required explicit cage review is FAIL; stopped before surface construction."
+    }
+  ],
+  "authoring": {
+    "metric_calibration_records": 4,
+    "cage_rails": 54,
+    "cage_sections": 4,
+    "cage_arch_boundaries": 4,
+    "expanded_blender_curves": 161,
+    "surface_patches_authored": 28,
+    "surface_patches_constructed": 0,
+    "detail_components_authored": 27,
+    "detail_components_executed": 0
+  },
+  "cache": {
+    "cold_run": "PARTIAL: first four stages PASS; cage construction PASS on the next incremental run, visual review FAIL.",
+    "second_run": "Full second run NOT RUN after required cage failure.",
+    "verified_partial_reuse": [
+      "references",
+      "overlay"
+    ]
+  },
+  "metrics": {
+    "side_iou": null,
+    "top_iou": null,
+    "front_iou": null,
+    "rear_iou": null,
+    "geometry_audit": "NOT RUN",
+    "glb_verify": "NOT RUN",
+    "viewer_desktop": "NOT RUN",
+    "viewer_mobile": "NOT RUN"
+  },
+  "framework_gaps": [],
+  "framework_gap_assessment": "No missing bounded operation or reusable automotive capability has been demonstrated. The unresolved failure is candidate feature placement and cross-view fit; later pipeline stages remain untested.",
+  "blockers": [
+    "Cage correction review FAIL: unresolved TOP greenhouse/pillar correspondence; no thresholds lowered."
+  ],
+  "outputs_generated": [
+    "output/mark2_calibrated.blend",
+    "output/mark2_cage_review.blend",
+    "output/mark2_cage_corrected.blend"
+  ],
+  "outputs_status": "Editable checkpoints only; no accepted surface model, GLB, viewer or final delivery manifest.",
+  "gate_thresholds_changed": false,
+  "tesla_geometry_reused": false,
+  "current_correction_report": "validation/cage_correction_report.json"
+}

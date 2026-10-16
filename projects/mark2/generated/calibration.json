@@ -1,0 +1,520 @@
+{
+  "source": "input/multiview.png",
+  "schema_version": 1,
+  "source_size": [
+    1448,
+    1086
+  ],
+  "perspective_camera": {
+    "position": [
+      -6,
+      -7,
+      3.2
+    ],
+    "name": "CAM_3Q",
+    "type": "ORTHO",
+    "scale": 5.7,
+    "target": [
+      0,
+      0,
+      0.6
+    ],
+    "size": [
+      1200,
+      760
+    ]
+  },
+  "uncertainty": {
+    "wheelbase_applicability_m": 0.05,
+    "side_landmarks_px": 5,
+    "length_m": 0.09,
+    "rectification": "Front/rear share vertical scale inferred from SIDE height; width follows their common extent. TOP transverse axis is anisotropically rectified to that width; original view is visibly oblique, not strict orthographic. No gate floor is reduced.",
+    "scale_anchor": "OEM E-JZX100 wheelbase 2.730 m; applicability to depicted modified chassis is an inference",
+    "height_m": 0.04,
+    "illustrative_source": true,
+    "top_transverse_rectification_ratio": 1.1347500946213929,
+    "width_m": 0.13,
+    "top_landmarks_px": 10,
+    "correction_method": "Axle-only joint residual fit; 2.730 m locked. TOP origin and small in-plane shear adjusted to match common wheel axes; no greenhouse/door observation used. Original 5 px SIDE/end and 10 px TOP uncertainties are unchanged.",
+    "top_axle_translation_px": 14.5,
+    "top_axle_shear_px_per_m": -0.5999999999999992
+  },
+  "views": {
+    "top": {
+      "landmarks": {
+        "body_bbox": [
+          326,
+          721,
+          1117,
+          1034
+        ],
+        "centerline_v": 874.0000000000009,
+        "front_axle_u_range": [
+          450,
+          470
+        ],
+        "rear_axle_u_range": [
+          915,
+          937
+        ],
+        "centerline_slope_px_per_m": -0.5999999999999992
+      },
+      "plane_offset": [
+        0,
+        0,
+        0
+      ],
+      "camera": {
+        "position": [
+          0,
+          0,
+          10
+        ],
+        "name": "CAM_TOP",
+        "type": "ORTHO",
+        "scale": 4.95,
+        "target": [
+          0,
+          0,
+          0
+        ],
+        "size": [
+          900,
+          440
+        ]
+      },
+      "v_basis": [
+        0,
+        -0.006455754344383034,
+        0
+      ],
+      "crop": [
+        309,
+        705,
+        1131,
+        1049
+      ],
+      "u_basis": [
+        0.005738645850726332,
+        -2.2228372729021287e-05,
+        0
+      ],
+      "origin": [
+        -3.970300446652196,
+        5.6577080676049665,
+        0
+      ]
+    },
+    "side": {
+      "landmarks": {
+        "body_bbox": [
+          367,
+          480,
+          1072,
+          673
+        ],
+        "rear_wheel": [
+          918,
+          625
+        ],
+        "front_wheel": [
+          494,
+          625
+        ],
+        "ground_y": 673
+      },
+      "plane_offset": [
+        0,
+        0,
+        0
+      ],
+      "camera": {
+        "position": [
+          0,
+          -10,
+          0.62
+        ],
+        "name": "CAM_SIDE",
+        "type": "ORTHO",
+        "scale": 4.95,
+        "target": [
+          0,
+          0,
+          0.62
+        ],
+        "size": [
+          900,
+          320
+        ]
+      },
+      "v_basis": [
+        0,
+        0,
+        -0.006438679245283019
+      ],
+      "crop": [
+        350,
+        466,
+        1085,
+        681
+      ],
+      "u_basis": [
+        0.006438679245283019,
+        0,
+        0
+      ],
+      "origin": [
+        -4.545707547169811,
+        0,
+        4.333231132075472
+      ]
+    },
+    "front": {
+      "landmarks": {
+        "body_bbox": [
+          18,
+          480,
+          328,
+          669
+        ],
+        "ground_y": 669,
+        "centerline_u": 173
+      },
+      "plane_offset": [
+        0,
+        0,
+        0
+      ],
+      "camera": {
+        "position": [
+          -10,
+          0,
+          0.62
+        ],
+        "name": "CAM_FRONT",
+        "type": "ORTHO",
+        "scale": 2.45,
+        "target": [
+          0,
+          0,
+          0.62
+        ],
+        "size": [
+          400,
+          320
+        ]
+      },
+      "v_basis": [
+        0,
+        0,
+        -0.006574947589098532
+      ],
+      "crop": [
+        7,
+        469,
+        337,
+        680
+      ],
+      "u_basis": [
+        0,
+        -0.006574947589098532,
+        0
+      ],
+      "origin": [
+        0,
+        1.1374659329140462,
+        4.3986399371069185
+      ]
+    },
+    "rear": {
+      "landmarks": {
+        "body_bbox": [
+          1117,
+          480,
+          1427,
+          669
+        ],
+        "ground_y": 669,
+        "centerline_u": 1272
+      },
+      "plane_offset": [
+        0,
+        0,
+        0
+      ],
+      "camera": {
+        "position": [
+          10,
+          0,
+          0.62
+        ],
+        "name": "CAM_REAR",
+        "type": "ORTHO",
+        "scale": 2.45,
+        "target": [
+          0,
+          0,
+          0.62
+        ],
+        "size": [
+          400,
+          320
+        ]
+      },
+      "v_basis": [
+        0,
+        0,
+        -0.006574947589098532
+      ],
+      "crop": [
+        1105,
+        469,
+        1437,
+        681
+      ],
+      "u_basis": [
+        0,
+        0.006574947589098532,
+        0
+      ],
+      "origin": [
+        0,
+        -8.363333333333333,
+        4.3986399371069185
+      ]
+    }
+  },
+  "datums": {
+    "views": {
+      "top": [
+        {
+          "radius": 0.003,
+          "points": [
+            [
+              -2.5,
+              0,
+              0.02
+            ],
+            [
+              2.5,
+              0,
+              0.02
+            ]
+          ]
+        },
+        {
+          "radius": 0.003,
+          "points": [
+            [
+              -1.365,
+              -1.2,
+              0.02
+            ],
+            [
+              -1.365,
+              1.2,
+              0.02
+            ]
+          ]
+        },
+        {
+          "radius": 0.003,
+          "points": [
+            [
+              1.365,
+              -1.2,
+              0.02
+            ],
+            [
+              1.365,
+              1.2,
+              0.02
+            ]
+          ]
+        }
+      ],
+      "front": [
+        {
+          "radius": 0.004,
+          "points": [
+            [
+              -0.02,
+              -1.2,
+              0
+            ],
+            [
+              -0.02,
+              1.2,
+              0
+            ]
+          ]
+        },
+        {
+          "radius": 0.003,
+          "points": [
+            [
+              -0.02,
+              0,
+              0
+            ],
+            [
+              -0.02,
+              0,
+              1.4
+            ]
+          ]
+        }
+      ],
+      "side": [
+        {
+          "radius": 0.004,
+          "points": [
+            [
+              -2.5,
+              -0.02,
+              0
+            ],
+            [
+              2.5,
+              -0.02,
+              0
+            ]
+          ]
+        },
+        {
+          "radius": 0.003,
+          "points": [
+            [
+              -1.365,
+              -0.02,
+              0
+            ],
+            [
+              -1.365,
+              -0.02,
+              1.4
+            ]
+          ]
+        },
+        {
+          "radius": 0.003,
+          "points": [
+            [
+              1.365,
+              -0.02,
+              0
+            ],
+            [
+              1.365,
+              -0.02,
+              1.4
+            ]
+          ]
+        }
+      ],
+      "rear": [
+        {
+          "radius": 0.004,
+          "points": [
+            [
+              0.02,
+              -1.2,
+              0
+            ],
+            [
+              0.02,
+              1.2,
+              0
+            ]
+          ]
+        },
+        {
+          "radius": 0.003,
+          "points": [
+            [
+              0.02,
+              0,
+              0
+            ],
+            [
+              0.02,
+              0,
+              1.4
+            ]
+          ]
+        }
+      ]
+    },
+    "style": {
+      "color": [
+        0.02,
+        0.5,
+        0.09
+      ],
+      "name": "DATUM_GREEN",
+      "strength": 1,
+      "kind": "emission"
+    },
+    "stock_body_dimensions_m": {
+      "length": 4.76,
+      "width": 1.755,
+      "height": 1.4,
+      "wheelbase": 2.73
+    },
+    "envelope_policy": "Stock body dimensions are separately recorded. project.dimensions are the illustrative visual envelope; the old width includes tires, not structural sheet metal. Stock structural half-width is 0.8775 m. No flare edge defines structural body width."
+  },
+  "proof_layout": {
+    "panels": [
+      {
+        "view": "side",
+        "position": [
+          0,
+          0
+        ]
+      },
+      {
+        "view": "front",
+        "position": [
+          900,
+          0
+        ]
+      },
+      {
+        "view": "rear",
+        "position": [
+          900,
+          320
+        ]
+      },
+      {
+        "view": "top",
+        "position": [
+          0,
+          380
+        ]
+      }
+    ],
+    "size": [
+      1300,
+      1000
+    ]
+  },
+  "wheel_geometry": {
+    "radius_m": 0.3090566037735849,
+    "axles": [
+      {
+        "z": 0.3090566037735849,
+        "id": "front",
+        "track_m": 1.8549999999999984,
+        "x": -1.365
+      },
+      {
+        "z": 0.3090566037735849,
+        "id": "rear",
+        "track_m": 1.879999999999998,
+        "x": 1.365
+      }
+    ]
+  },
+  "source_sha256": "5c9a5bfaff9414ef3c8e835fdea43f21741d54d5836d4d4e01e5ca599accd09a"
+}

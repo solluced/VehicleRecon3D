@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "max_normalized_residual": 0.8616451276432606,
+  "solution": {
+    "front_track_m": 1.8549999999999984,
+    "rear_track_m": 1.879999999999998,
+    "top_u_translation_px": 14.5,
+    "top_axis_center_v": 874.0000000000009,
+    "top_centerline_slope_px_per_m": -0.5999999999999992,
+    "top_v_scale": 0.006455754344383034
+  },
+  "policy": "Fit only axle/ground observations before body or greenhouse; unchanged uncertainties and 2.730 m SIDE wheelbase; TOP envelope spans remain unchanged."
+}

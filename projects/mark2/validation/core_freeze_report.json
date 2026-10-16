@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "base_commit": "060309de6014a760339ab100e4d61ecece102b72",
+  "frozen_paths": [
+    "vehiclerecon/",
+    "schemas/",
+    "profiles/"
+  ],
+  "working_tree_diff": "EMPTY",
+  "project_python_file_count": 0,
+  "body_mesh_count": 0,
+  "surface_details_stages_invoked": false
+}

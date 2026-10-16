@@ -1,0 +1,33 @@
+{
+    "sources":  [
+                    {
+                        "stock_track_rear_m":  1.49,
+                        "title":  "Toyota official catalog: Mark II Tourer V E-JZX100, September 1996",
+                        "url":  "https://toyota.jp/ucar/catalog/brand-TOYOTA/car-MARK_II/199609/1001095/",
+                        "stock_length_m":  4.76,
+                        "stock_height_m":  1.4,
+                        "stock_width_m":  1.755,
+                        "stock_track_front_m":  1.485,
+                        "stock_wheelbase_m":  2.73
+                    },
+                    {
+                        "corroborated_wheelbase_m":  2.73,
+                        "title":  "Toyota 75-year history: eighth-generation Mark II",
+                        "url":  "https://www.toyota-global.com/company/history_of_toyota/75years/vehicle_lineage/car/id60013052/index.html"
+                    }
+                ],
+    "policy":  "Only stock wheelbase is adopted as a scale anchor, assuming unchanged axle spacing. Kit envelope, wheel diameter, track and height are image estimates, not Toyota specifications. Actual custom-build measurements are unavailable.",
+    "baseline_iou_policy":  "No previous Mark II model baseline exists. Zero baseline values disable nonexistent-model regression comparison; independent nonzero sedan target floors remain unchanged.",
+    "accessed":  "2026-10-15",
+    "image_estimates":  {
+                            "front_track_m":  1.75,
+                            "wheel_radius_m":  0.3090566037735849,
+                            "rear_overhang_m":  0.99155660377358479,
+                            "height_m":  1.2426650943396227,
+                            "width_m":  2.0382337526205454,
+                            "front_overhang_m":  0.81771226415094334,
+                            "length_m":  4.5392688679245285,
+                            "rear_track_m":  1.77
+                        },
+    "status":  "RESEARCH_COMPLETE_SCALE_ASSUMPTION_EXPLICIT"
+}

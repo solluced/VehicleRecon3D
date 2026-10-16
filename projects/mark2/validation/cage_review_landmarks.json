@@ -1,0 +1,7 @@
+{
+  "source": "validation/correction_reference_landmarks.json",
+  "source_sha256": "00b83c84cc84a31fb2c1b3b7f687fa21e96eb01c9a82045532691db8bdb0e78a",
+  "actual_residuals": "validation/cage_residuals.json",
+  "critical_rows": 66,
+  "method": "Original source observations and actual Blender controls; all failed rows retained."
+}

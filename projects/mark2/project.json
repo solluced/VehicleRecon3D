@@ -1,0 +1,513 @@
+{
+  "schema_version": 1,
+  "project_id": "mark2",
+  "category": "automobile",
+  "vehicle_profile": "sedan",
+  "asset_name": "mark2_drift",
+  "references": {
+    "surface_target": "input/surface_target.png",
+    "control_overlay": "input/control_overlay.png",
+    "multiview": "input/multiview.png"
+  },
+  "dimensions": {
+    "length_m": 4.5392688679245285,
+    "provenance": "Official E-JZX100 stock body is 4.760 x 1.755 x 1.400 m, wheelbase 2.730 m. The 2.730 m wheelbase is authoritative for this build. Numeric dimensions here retain the separately inferred illustrative outer envelope, including tires; they are not structural stock body dimensions. See calibration.datums.stock_body_dimensions_m, validation/physical_scale.json and recorded uncertainty.",
+    "height_m": 1.2426650943396227,
+    "wheelbase_m": 2.73,
+    "width_m": 2.0382337526205454
+  },
+  "generated": {
+    "calibration": "generated/calibration.json",
+    "details": "generated/details.json",
+    "cage": "generated/cage.json",
+    "silhouette_traces": "generated/silhouette_traces.json",
+    "surface_graph": "generated/surface_graph.json"
+  },
+  "materials": [
+    {
+      "color": [
+        0.82,
+        0.85,
+        0.88
+      ],
+      "name": "PAINT",
+      "metallic": 0.24,
+      "roughness": 0.26,
+      "kind": "principled"
+    },
+    {
+      "color": [
+        0.065,
+        0.085,
+        0.1
+      ],
+      "name": "GLASS",
+      "metallic": 0.1,
+      "roughness": 0.18,
+      "kind": "principled"
+    },
+    {
+      "color": [
+        0.017,
+        0.019,
+        0.022
+      ],
+      "name": "TRIM",
+      "roughness": 0.4,
+      "kind": "principled"
+    },
+    {
+      "color": [
+        0.012,
+        0.013,
+        0.015
+      ],
+      "name": "RUBBER",
+      "roughness": 0.82,
+      "kind": "principled"
+    },
+    {
+      "color": [
+        0.07,
+        0.075,
+        0.08
+      ],
+      "name": "RIM",
+      "metallic": 0.86,
+      "roughness": 0.24,
+      "kind": "principled"
+    },
+    {
+      "color": [
+        0.53,
+        0.6,
+        0.63
+      ],
+      "name": "HEADLIGHT",
+      "metallic": 0.5,
+      "roughness": 0.16,
+      "kind": "principled"
+    },
+    {
+      "color": [
+        0.4,
+        0.012,
+        0.018
+      ],
+      "name": "TAILLIGHT",
+      "roughness": 0.2,
+      "kind": "principled"
+    },
+    {
+      "color": [
+        0.28,
+        0.29,
+        0.31
+      ],
+      "name": "GROUND",
+      "roughness": 0.9,
+      "kind": "principled"
+    },
+    {
+      "color": [
+        0.03,
+        0.18,
+        0.8
+      ],
+      "name": "CAGE_BLUE",
+      "strength": 1,
+      "kind": "emission"
+    },
+    {
+      "color": [
+        0.02,
+        0.5,
+        0.09
+      ],
+      "name": "DATUM_GREEN",
+      "strength": 1,
+      "kind": "emission"
+    },
+    {
+      "color": [
+        0.025,
+        0.1,
+        0.36
+      ],
+      "name": "WIRE_BLUE",
+      "roughness": 0.5,
+      "kind": "principled"
+    }
+  ],
+  "scene": {
+    "world_strength": 0.5,
+    "collections": [
+      "00_REFERENCE",
+      "01_CAGE",
+      "02_BODY",
+      "03_GLASS",
+      "04_DETAILS",
+      "05_WHEELS",
+      "06_INTERIOR",
+      "08_TOPOLOGY",
+      "09_PRESENTATION"
+    ],
+    "name": "MARK_II_PORTABILITY",
+    "world_color": [
+      0.65,
+      0.67,
+      0.7,
+      1
+    ]
+  },
+  "roles": {
+    "taillight": [
+      "TAILLIGHT_L",
+      "TAILLIGHT_R"
+    ],
+    "trunk": [
+      "TRUNK"
+    ],
+    "headlight": [
+      "HEADLIGHT_L",
+      "HEADLIGHT_R"
+    ],
+    "windshield": [
+      "WINDSHIELD"
+    ],
+    "a_pillar": [
+      "A_PILLAR"
+    ],
+    "front_fender": [
+      "FENDER_FRONT_UPPER",
+      "OVERFENDER_FRONT"
+    ],
+    "rear_door": [
+      "DOOR_RL",
+      "DOOR_RR"
+    ],
+    "front_door": [
+      "DOOR_FL",
+      "DOOR_FR"
+    ],
+    "wheel": [
+      "WHEEL_FL",
+      "WHEEL_FR",
+      "WHEEL_RL",
+      "WHEEL_RR"
+    ],
+    "rear_quarter": [
+      "QUARTER_REAR_UPPER",
+      "OVERFENDER_REAR"
+    ],
+    "c_pillar": [
+      "C_PILLAR"
+    ],
+    "rear_bumper": [
+      "BUMPER_REAR"
+    ],
+    "rocker": [
+      "SIDE_SKIRT"
+    ],
+    "front_bumper": [
+      "BUMPER_FRONT"
+    ],
+    "hood": [
+      "HOOD"
+    ],
+    "mirror": [
+      "MIRROR"
+    ],
+    "roof": [
+      "ROOF"
+    ],
+    "b_pillar": [
+      "B_PILLAR"
+    ],
+    "rear_glass": [
+      "REAR_GLASS"
+    ],
+    "wheel_arch": [
+      "OVERFENDER_FRONT",
+      "OVERFENDER_REAR"
+    ]
+  },
+  "presentation": {
+    "lights": [
+      {
+        "position": [
+          -3,
+          -4,
+          6
+        ],
+        "power": 1000,
+        "name": "KEY",
+        "target": [
+          0,
+          0,
+          0.6
+        ],
+        "size": 5
+      },
+      {
+        "position": [
+          2,
+          3,
+          4
+        ],
+        "power": 700,
+        "name": "FILL",
+        "target": [
+          0,
+          0,
+          0.6
+        ],
+        "size": 4
+      }
+    ],
+    "review_proofs": [
+      "validation/perspective.png",
+      "validation/perspective_surface.png",
+      "validation/surface_reflections.png",
+      "validation/surface_matcap.png",
+      "validation/front.png",
+      "validation/side.png",
+      "validation/rear.png",
+      "validation/top.png"
+    ],
+    "camera": {
+      "position": [
+        -6,
+        -7,
+        3.2
+      ],
+      "name": "CAM_3Q",
+      "type": "ORTHO",
+      "scale": 5.7,
+      "target": [
+        0,
+        0,
+        0.6
+      ],
+      "size": [
+        1200,
+        760
+      ]
+    },
+    "diagnostic_size": [
+      1200,
+      760
+    ],
+    "materials": [],
+    "views": [
+      {
+        "camera": "CAM_FRONT",
+        "view": "front",
+        "size": [
+          600,
+          480
+        ]
+      },
+      {
+        "camera": "CAM_SIDE",
+        "view": "side",
+        "size": [
+          1000,
+          380
+        ]
+      },
+      {
+        "camera": "CAM_REAR",
+        "view": "rear",
+        "size": [
+          600,
+          480
+        ]
+      },
+      {
+        "camera": "CAM_TOP",
+        "view": "top",
+        "size": [
+          1000,
+          480
+        ]
+      },
+      {
+        "camera": "CAM_3Q",
+        "view": "perspective",
+        "size": [
+          1200,
+          760
+        ]
+      }
+    ],
+    "ground": {
+      "position": [
+        0,
+        0,
+        -0.015
+      ],
+      "material": "GROUND",
+      "name": "STUDIO_GROUND",
+      "size": 200,
+      "collection": "09_PRESENTATION"
+    },
+    "wire_sources": [
+      "HOOD",
+      "ROOF",
+      "WINDSHIELD",
+      "REAR_GLASS",
+      "TRUNK",
+      "GLASS_FRONT_DOOR",
+      "GLASS_REAR_DOOR",
+      "A_PILLAR",
+      "B_PILLAR",
+      "C_PILLAR",
+      "DOOR_FRONT",
+      "DOOR_REAR",
+      "NOSE_CHEEK",
+      "FENDER_RETURN",
+      "QUARTER_TAIL",
+      "SIDE_SKIRT",
+      "BUMPER_FRONT",
+      "FRONT_FASCIA",
+      "FRONT_LIP",
+      "BUMPER_REAR",
+      "REAR_FASCIA",
+      "REAR_LIP",
+      "TRUNK_LIP",
+      "MIRROR",
+      "OVERFENDER_FRONT",
+      "FENDER_FRONT_UPPER",
+      "OVERFENDER_REAR",
+      "QUARTER_REAR_UPPER"
+    ],
+    "wire": {
+      "collection": "08_TOPOLOGY",
+      "material": "WIRE_BLUE",
+      "offset": 0.001,
+      "thickness": 0.0007,
+      "prefix": "WIRE_"
+    },
+    "samples": 24
+  },
+  "export": {
+    "excluded_collections": [
+      "00_REFERENCE",
+      "01_CAGE",
+      "09_PRESENTATION"
+    ],
+    "collections": [
+      "02_BODY",
+      "03_GLASS",
+      "04_DETAILS",
+      "05_WHEELS",
+      "06_INTERIOR",
+      "08_TOPOLOGY"
+    ],
+    "group_rules": [
+      {
+        "property": "source_topology_object",
+        "group": "wire"
+      },
+      {
+        "group": "wheels",
+        "name_prefixes": [
+          "TIRE_",
+          "DISC_",
+          "WHEEL_"
+        ],
+        "ancestor_prefixes": [
+          "WHEEL_"
+        ]
+      },
+      {
+        "name_prefixes": [
+          "GLASS_",
+          "WINDSHIELD",
+          "REAR_GLASS"
+        ],
+        "group": "glass"
+      }
+    ],
+    "formats": [
+      "glb"
+    ],
+    "default_group": "body"
+  },
+  "viewer": {
+    "title": "Toyota Mark II Drift",
+    "glass_group": "glass",
+    "fit_margin": 0.84,
+    "wire_group": "wire",
+    "eyebrow": "VehicleRecon3D / portability",
+    "groups": [
+      {
+        "id": "body",
+        "label": "Body"
+      },
+      {
+        "id": "wire",
+        "label": "Topology"
+      },
+      {
+        "id": "glass",
+        "label": "Glass"
+      },
+      {
+        "id": "wheels",
+        "label": "Wheels"
+      }
+    ],
+    "presets": {
+      "three": [
+        -0.78,
+        0.23
+      ],
+      "top": [
+        0,
+        1.57069632679
+      ],
+      "front": [
+        -1.57079632679,
+        0
+      ],
+      "side": [
+        0,
+        0
+      ],
+      "rear": [
+        1.57079632679,
+        0
+      ]
+    },
+    "glass_alpha": 0.3
+  },
+  "validation": {
+    "geometry": {
+      "area_epsilon": 1e-10,
+      "surface_collections": [
+        "02_BODY",
+        "03_GLASS"
+      ],
+      "surface_exclude_prefixes": [],
+      "pivot_tolerance_m": 1e-05,
+      "weld_distance_m": 1e-05
+    },
+    "bounds_tolerance_m": 0.0001,
+    "baseline_iou": {
+      "front": 0,
+      "top": 0,
+      "side": 0,
+      "rear": 0
+    },
+    "thresholds": {
+      "front": 0.92,
+      "top": 0.92,
+      "side": 0.94,
+      "rear": 0.9
+    },
+    "review_required": true,
+    "max_iou_regression": 0
+  }
+}

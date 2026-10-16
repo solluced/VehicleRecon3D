@@ -1,0 +1,78 @@
+{
+  "reviewer": "Codex explicit Mark II cage-correction inspection",
+  "decision": "FAIL",
+  "scope": "One corrected world-space cage, individual critical residuals, original reference underlays and actual Blender controls. Not final surface review.",
+  "source_checkpoint_sha256": "fd144b554945c936bdd7e7c9c1d40f2bc08e1bd0fc17f68cf736a58aa7757117",
+  "input_hashes": {
+    "input/multiview.png": "5c9a5bfaff9414ef3c8e835fdea43f21741d54d5836d4d4e01e5ca599accd09a",
+    "generated/calibration.json": "f5c807bb0071b1573b0436a238f00adb060ad5d6fc79aa3efaaebfb83ef61bea",
+    "generated/cage.json": "1bbf514cd9bd55381b2e3b934543500afad5fb6579b6b0cfa479473d9990216a",
+    "validation/correction_reference_landmarks.json": "00b83c84cc84a31fb2c1b3b7f687fa21e96eb01c9a82045532691db8bdb0e78a",
+    "project.json": "6d711561682fba27ed4caa002cc81f5fff5b3b2d180471e1be3174fb9dc29a0e"
+  },
+  "proof_hashes": {
+    "validation/cage_side.png": "b308ed65bcbc24d2ffff7f329443c318b25f57bc1d8fd219941f3b9802514d79",
+    "validation/cage_top.png": "c50a2fc96df1369350c79fc5a3867541df463eaa8b897f01318d4a38bbe5d11e",
+    "validation/cage_front.png": "3c81e043c7fb33e906072dbe207660b42c38df3581eef1f2177088348be5ac4e",
+    "validation/cage_rear.png": "58d1c470e1d9e07eeec78957ad6b2aa9df14bad44c4a7e2559de0565e43075b5",
+    "validation/cage_perspective.png": "090512c125fe2e15ccaffff8394c8bd04e9af6cccb763c986694b9d8c8895113"
+  },
+  "residuals": "validation/cage_residuals.json",
+  "summary": {
+    "maximum_critical_residual_px": 52.27267757996422,
+    "mean_critical_residual_px": 10.397444901101448,
+    "critical_observations": 66,
+    "passed_observations": 44,
+    "failed_observations": 22,
+    "front_door_leading_edge_residual_px": 32.67975472519686,
+    "a_pillar_roof": {
+      "side": 0.23280634897595917,
+      "front": 1.0000010186737582,
+      "top": 52.27267757996422
+    },
+    "b_pillar_roof": {
+      "side": 6.520128186315035e-06,
+      "top": 29.242675922832287
+    },
+    "c_pillar_side_roof": {
+      "side": 7.5262913300466545e-06,
+      "top": 43.14946615817108
+    },
+    "c_pillar_rear_roof": {
+      "side": 1.5533608237478191,
+      "rear": 1.5533692659306038,
+      "top": 38.49074138577816
+    },
+    "greenhouse_by_view": {
+      "front": 1.0000010186737582,
+      "rear": 3.997535333190343,
+      "side": 3.9975368164431173,
+      "top": 52.27267757996422
+    },
+    "pillar_group_maxima": {
+      "A": {
+        "side": 32.67975472519686,
+        "front": 1.0000010186737582,
+        "top": 52.27267757996422
+      },
+      "B": {
+        "side": 22.878696726385254,
+        "top": 29.242675922832287
+      },
+      "C": {
+        "side": 23.102513827587778,
+        "rear": 3.997535333190343,
+        "top": 43.14946615817108
+      }
+    }
+  },
+  "findings": [
+    "Axle/ground lock passes without reducing uncertainty.",
+    "Measured FRONT/REAR greenhouse points pass after common 3D corner correction.",
+    "TOP greenhouse/correspondence residuals fail; independent A-B roof/wheelbase ratio intervals do not overlap.",
+    "Door cuts were not moved before pillar acceptance; their failures remain visible and unchanged."
+  ],
+  "continuation": "SURFACES and DETAILS NOT STARTED; review source correspondence/projection before proceeding.",
+  "perspective_policy": "Actual 3Q cage plus uncalibrated hero inset, not a calibrated hero overlay.",
+  "output_blend_sha256": "907148c0d8e8136dc7f45611df6c1f1d7ddb6df8a2c974f79f682bdb7439b856"
+}

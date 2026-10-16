@@ -1,0 +1,22 @@
+{
+  "status": "PASS",
+  "max_pixel_roundtrip_error": 4.547473508864641e-13,
+  "source_hash": "5c9a5bfaff9414ef3c8e835fdea43f21741d54d5836d4d4e01e5ca599accd09a",
+  "uncertainty_preserved": {
+    "wheelbase_applicability_m": 0.05,
+    "side_landmarks_px": 5,
+    "length_m": 0.09,
+    "rectification": "Front/rear share vertical scale inferred from SIDE height; width follows their common extent. TOP transverse axis is anisotropically rectified to that width; original view is visibly oblique, not strict orthographic. No gate floor is reduced.",
+    "scale_anchor": "OEM E-JZX100 wheelbase 2.730 m; applicability to depicted modified chassis is an inference",
+    "height_m": 0.04,
+    "illustrative_source": true,
+    "top_transverse_rectification_ratio": 1.1347500946213929,
+    "width_m": 0.13,
+    "top_landmarks_px": 10,
+    "correction_method": "Axle-only joint residual fit; 2.730 m locked. TOP origin and small in-plane shear adjusted to match common wheel axes; no greenhouse/door observation used. Original 5 px SIDE/end and 10 px TOP uncertainties are unchanged.",
+    "top_axle_translation_px": 14.5,
+    "top_axle_shear_px_per_m": -0.5999999999999992
+  },
+  "fresh_scene": true,
+  "reference_proof": "reference_alignment.png"
+}

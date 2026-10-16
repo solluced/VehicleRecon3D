@@ -1,0 +1,362 @@
+{
+  "status": "PASS",
+  "measured_wheelbase_m": 2.730000004172325,
+  "target_wheelbase_m": 2.73,
+  "wheelbase_error_m": 4.172325152040912e-09,
+  "wheelbase_tolerance_m": 0.05,
+  "ground_z_m": 0,
+  "wheel_radius_m": 0.3090566037735849,
+  "front_center_m": [
+    -1.3650000020861626,
+    0.0,
+    0.30905660372809507
+  ],
+  "rear_center_m": [
+    1.3650000020861626,
+    0.0,
+    0.30905660372809507
+  ],
+  "front_track_m": 1.8549999999999984,
+  "rear_track_m": 1.879999999999998,
+  "max_normalized_residual": 0.8616451276432702,
+  "observations": [
+    {
+      "semantic_id": "front_axle_L",
+      "view": "side",
+      "axle": "front",
+      "side": -1,
+      "reference_pixel": [
+        494,
+        625
+      ],
+      "uncertainty_px": 5,
+      "world": [
+        -1.365,
+        -0.9274999999999992,
+        0.3090566037735849
+      ],
+      "projected_pixel": [
+        493.99999999999994,
+        625.0000000000001
+      ],
+      "dx": -5.684341886080802e-14,
+      "dy": 1.1368683772161603e-13,
+      "residual_px": 1.2710574864626038e-13,
+      "pass": true
+    },
+    {
+      "semantic_id": "rear_axle_L",
+      "view": "side",
+      "axle": "rear",
+      "side": -1,
+      "reference_pixel": [
+        918,
+        625
+      ],
+      "uncertainty_px": 5,
+      "world": [
+        1.365,
+        -0.939999999999999,
+        0.3090566037735849
+      ],
+      "projected_pixel": [
+        918.0,
+        625.0000000000001
+      ],
+      "dx": 0.0,
+      "dy": 1.1368683772161603e-13,
+      "residual_px": 1.1368683772161603e-13,
+      "pass": true
+    },
+    {
+      "semantic_id": "front_axle_L",
+      "view": "front",
+      "axle": "front",
+      "side": -1,
+      "reference_pixel": [
+        310,
+        623
+      ],
+      "uncertainty_px": 5,
+      "world": [
+        -1.365,
+        -0.9274999999999992,
+        0.3090566037735849
+      ],
+      "projected_pixel": [
+        314.0657632522917,
+        621.9948186528499
+      ],
+      "dx": 4.065763252291674,
+      "dy": -1.0051813471501418,
+      "residual_px": 4.188176257554587,
+      "pass": true
+    },
+    {
+      "semantic_id": "front_axle_R",
+      "view": "front",
+      "axle": "front",
+      "side": 1,
+      "reference_pixel": [
+        35,
+        623
+      ],
+      "uncertainty_px": 5,
+      "world": [
+        -1.365,
+        0.9274999999999992,
+        0.3090566037735849
+      ],
+      "projected_pixel": [
+        31.934236747708386,
+        621.9948186528499
+      ],
+      "dx": -3.065763252291614,
+      "dy": -1.0051813471501418,
+      "residual_px": 3.226343729325849,
+      "pass": true
+    },
+    {
+      "semantic_id": "rear_axle_L",
+      "view": "rear",
+      "axle": "rear",
+      "side": -1,
+      "reference_pixel": [
+        1133,
+        623
+      ],
+      "uncertainty_px": 5,
+      "world": [
+        1.365,
+        -0.939999999999999,
+        0.3090566037735849
+      ],
+      "projected_pixel": [
+        1129.033080908729,
+        621.9948186528499
+      ],
+      "dx": -3.9669190912709382,
+      "dy": -1.0051813471501418,
+      "residual_px": 4.092289898986682,
+      "pass": true
+    },
+    {
+      "semantic_id": "rear_axle_R",
+      "view": "rear",
+      "axle": "rear",
+      "side": 1,
+      "reference_pixel": [
+        1412,
+        623
+      ],
+      "uncertainty_px": 5,
+      "world": [
+        1.365,
+        0.939999999999999,
+        0.3090566037735849
+      ],
+      "projected_pixel": [
+        1414.9669190912716,
+        621.9948186528499
+      ],
+      "dx": 2.9669190912716203,
+      "dy": -1.0051813471501418,
+      "residual_px": 3.1325705793821457,
+      "pass": true
+    },
+    {
+      "semantic_id": "front_axle_L",
+      "view": "top",
+      "axle": "front",
+      "side": -1,
+      "reference_pixel": [
+        455,
+        1010
+      ],
+      "uncertainty_px": 10,
+      "world": [
+        -1.365,
+        -0.9274999999999992,
+        0.3090566037735849
+      ],
+      "projected_pixel": [
+        453.99219858156033,
+        1018.4892746917557
+      ],
+      "dx": -1.0078014184396693,
+      "dy": 8.489274691755668,
+      "residual_px": 8.548885804073668,
+      "pass": true
+    },
+    {
+      "semantic_id": "front_axle_R",
+      "view": "top",
+      "axle": "front",
+      "side": 1,
+      "reference_pixel": [
+        460,
+        725
+      ],
+      "uncertainty_px": 10,
+      "world": [
+        -1.365,
+        0.9274999999999992,
+        0.3090566037735849
+      ],
+      "projected_pixel": [
+        453.99219858156033,
+        731.1487253082463
+      ],
+      "dx": -6.007801418439669,
+      "dy": 6.1487253082462985,
+      "residual_px": 8.596540048163227,
+      "pass": true
+    },
+    {
+      "semantic_id": "rear_axle_L",
+      "view": "top",
+      "axle": "rear",
+      "side": -1,
+      "reference_pixel": [
+        925,
+        1026
+      ],
+      "uncertainty_px": 10,
+      "world": [
+        1.365,
+        -0.939999999999999,
+        0.3090566037735849
+      ],
+      "projected_pixel": [
+        929.7141843971632,
+        1018.7875317630729
+      ],
+      "dx": 4.714184397163194,
+      "dy": -7.212468236927066,
+      "residual_px": 8.616451276432702,
+      "pass": true
+    },
+    {
+      "semantic_id": "rear_axle_R",
+      "view": "top",
+      "axle": "rear",
+      "side": 1,
+      "reference_pixel": [
+        926,
+        725
+      ],
+      "uncertainty_px": 10,
+      "world": [
+        1.365,
+        0.939999999999999,
+        0.3090566037735849
+      ],
+      "projected_pixel": [
+        929.7141843971632,
+        727.5744682369291
+      ],
+      "dx": 3.7141843971631943,
+      "dy": 2.5744682369290786,
+      "residual_px": 4.519187143622982,
+      "pass": true
+    },
+    {
+      "semantic_id": "front_contact_L",
+      "view": "side",
+      "axle": "front",
+      "side": -1,
+      "reference_pixel": [
+        494,
+        673
+      ],
+      "uncertainty_px": 5,
+      "world": [
+        -1.365,
+        -0.9274999999999992,
+        0
+      ],
+      "projected_pixel": [
+        493.99999999999994,
+        673.0
+      ],
+      "dx": -5.684341886080802e-14,
+      "dy": 0.0,
+      "residual_px": 5.684341886080802e-14,
+      "pass": true
+    },
+    {
+      "semantic_id": "rear_contact_L",
+      "view": "side",
+      "axle": "rear",
+      "side": -1,
+      "reference_pixel": [
+        918,
+        673
+      ],
+      "uncertainty_px": 5,
+      "world": [
+        1.365,
+        -0.939999999999999,
+        0
+      ],
+      "projected_pixel": [
+        918.0,
+        673.0
+      ],
+      "dx": 0.0,
+      "dy": 0.0,
+      "residual_px": 0.0,
+      "pass": true
+    },
+    {
+      "semantic_id": "front_contact_L",
+      "view": "front",
+      "axle": "front",
+      "side": -1,
+      "reference_pixel": [
+        310,
+        669
+      ],
+      "uncertainty_px": 5,
+      "world": [
+        -1.365,
+        -0.9274999999999992,
+        0
+      ],
+      "projected_pixel": [
+        314.0657632522917,
+        669.0000000000001
+      ],
+      "dx": 4.065763252291674,
+      "dy": 1.1368683772161603e-13,
+      "residual_px": 4.065763252291674,
+      "pass": true
+    },
+    {
+      "semantic_id": "rear_contact_L",
+      "view": "rear",
+      "axle": "rear",
+      "side": -1,
+      "reference_pixel": [
+        1133,
+        669
+      ],
+      "uncertainty_px": 5,
+      "world": [
+        1.365,
+        -0.939999999999999,
+        0
+      ],
+      "projected_pixel": [
+        1129.033080908729,
+        669.0000000000001
+      ],
+      "dx": -3.9669190912709382,
+      "dy": 1.1368683772161603e-13,
+      "residual_px": 3.9669190912709382,
+      "pass": true
+    }
+  ],
+  "basis": "SIDE determines X/Z and common ground; end views constrain track; TOP verifies common axes. Not stock track specifications.",
+  "actual_blender_controls_verified": true
+}

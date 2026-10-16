@@ -1,0 +1,2521 @@
+{
+    "nodes":  [
+                  {
+                      "op":  "chord_hermite",
+                      "parameters":  {
+                                         "points":  [
+                                                        [
+                                                            -2.10,
+                                                            0,
+                                                            0.655
+                                                        ],
+                                                        [
+                                                            -1.82,
+                                                            0,
+                                                            0.705
+                                                        ],
+                                                        [
+                                                            -1.20,
+                                                            0,
+                                                            0.785
+                                                        ],
+                                                        [
+                                                            -0.76,
+                                                            0,
+                                                            0.825
+                                                        ]
+                                                    ]
+                                     },
+                      "id":  "HOOD_bottom",
+                      "dependencies":  [
+
+                                       ]
+                  },
+                  {
+                      "op":  "chord_hermite",
+                      "parameters":  {
+                                         "points":  [
+                                                        [
+                                                            -2.065,
+                                                            0.78,
+                                                            0.625
+                                                        ],
+                                                        [
+                                                            -1.80,
+                                                            0.82,
+                                                            0.68
+                                                        ],
+                                                        [
+                                                            -1.20,
+                                                            0.83,
+                                                            0.76
+                                                        ],
+                                                        [
+                                                            -0.75,
+                                                            0.82,
+                                                            0.79
+                                                        ]
+                                                    ]
+                                     },
+                      "id":  "HOOD_top",
+                      "dependencies":  [
+
+                                       ]
+                  },
+                  {
+                      "op":  "coons",
+                      "parameters":  {
+                                         "top":  "HOOD_top",
+                                         "bottom":  "HOOD_bottom"
+                                     },
+                      "id":  "HOOD_surface",
+                      "dependencies":  [
+                                           "HOOD_bottom",
+                                           "HOOD_top"
+                                       ]
+                  },
+                  {
+                      "op":  "chord_hermite",
+                      "parameters":  {
+                                         "points":  [
+                                                        [
+                                                            -0.16,
+                                                            0,
+                                                            1.22
+                                                        ],
+                                                        [
+                                                            0.12,
+                                                            0,
+                                                            1.2426
+                                                        ],
+                                                        [
+                                                            0.55,
+                                                            0,
+                                                            1.24
+                                                        ],
+                                                        [
+                                                            0.81,
+                                                            0,
+                                                            1.215
+                                                        ]
+                                                    ]
+                                     },
+                      "id":  "ROOF_bottom",
+                      "dependencies":  [
+
+                                       ]
+                  },
+                  {
+                      "op":  "chord_hermite",
+                      "parameters":  {
+                                         "points":  [
+                                                        [
+                                                            -0.10,
+                                                            0.65,
+                                                            1.19
+                                                        ],
+                                                        [
+                                                            0.15,
+                                                            0.68,
+                                                            1.212
+                                                        ],
+                                                        [
+                                                            0.55,
+                                                            0.68,
+                                                            1.21
+                                                        ],
+                                                        [
+                                                            0.80,
+                                                            0.65,
+                                                            1.185
+                                                        ]
+                                                    ]
+                                     },
+                      "id":  "ROOF_top",
+                      "dependencies":  [
+
+                                       ]
+                  },
+                  {
+                      "op":  "coons",
+                      "parameters":  {
+                                         "top":  "ROOF_top",
+                                         "bottom":  "ROOF_bottom"
+                                     },
+                      "id":  "ROOF_surface",
+                      "dependencies":  [
+                                           "ROOF_bottom",
+                                           "ROOF_top"
+                                       ]
+                  },
+                  {
+                      "op":  "chord_hermite",
+                      "parameters":  {
+                                         "points":  [
+                                                        [
+                                                            -0.76,
+                                                            0,
+                                                            0.825
+                                                        ],
+                                                        [
+                                                            -0.76,
+                                                            0.43,
+                                                            0.82
+                                                        ],
+                                                        [
+                                                            -0.75,
+                                                            0.82,
+                                                            0.79
+                                                        ]
+                                                    ]
+                                     },
+                      "id":  "WINDSHIELD_bottom",
+                      "dependencies":  [
+
+                                       ]
+                  },
+                  {
+                      "op":  "chord_hermite",
+                      "parameters":  {
+                                         "points":  [
+                                                        [
+                                                            -0.16,
+                                                            0,
+                                                            1.22
+                                                        ],
+                                                        [
+                                                            -0.14,
+                                                            0.34,
+                                                            1.215
+                                                        ],
+                                                        [
+                                                            -0.10,
+                                                            0.65,
+                                                            1.19
+                                                        ]
+                                                    ]
+                                     },
+                      "id":  "WINDSHIELD_top",
+                      "dependencies":  [
+
+                                       ]
+                  },
+                  {
+                      "op":  "coons",
+                      "parameters":  {
+                                         "top":  "WINDSHIELD_top",
+                                         "bottom":  "WINDSHIELD_bottom"
+                                     },
+                      "id":  "WINDSHIELD_surface",
+                      "dependencies":  [
+                                           "WINDSHIELD_bottom",
+                                           "WINDSHIELD_top"
+                                       ]
+                  },
+                  {
+                      "op":  "chord_hermite",
+                      "parameters":  {
+                                         "points":  [
+                                                        [
+                                                            0.81,
+                                                            0,
+                                                            1.215
+                                                        ],
+                                                        [
+                                                            0.81,
+                                                            0.34,
+                                                            1.21
+                                                        ],
+                                                        [
+                                                            0.80,
+                                                            0.65,
+                                                            1.185
+                                                        ]
+                                                    ]
+                                     },
+                      "id":  "REAR_GLASS_bottom",
+                      "dependencies":  [
+
+                                       ]
+                  },
+                  {
+                      "op":  "chord_hermite",
+                      "parameters":  {
+                                         "points":  [
+                                                        [
+                                                            1.70,
+                                                            0,
+                                                            0.86
+                                                        ],
+                                                        [
+                                                            1.70,
+                                                            0.43,
+                                                            0.85
+                                                        ],
+                                                        [
+                                                            1.70,
+                                                            0.81,
+                                                            0.81
+                                                        ]
+                                                    ]
+                                     },
+                      "id":  "REAR_GLASS_top",
+                      "dependencies":  [
+
+                                       ]
+                  },
+                  {
+                      "op":  "coons",
+                      "parameters":  {
+                                         "top":  "REAR_GLASS_top",
+                                         "bottom":  "REAR_GLASS_bottom"
+                                     },
+                      "id":  "REAR_GLASS_surface",
+                      "dependencies":  [
+                                           "REAR_GLASS_bottom",
+                                           "REAR_GLASS_top"
+                                       ]
+                  },
+                  {
+                      "op":  "chord_hermite",
+                      "parameters":  {
+                                         "points":  [
+                                                        [
+                                                            1.70,
+                                                            0,
+                                                            0.86
+                                                        ],
+                                                        [
+                                                            1.97,
+                                                            0,
+                                                            0.845
+                                                        ],
+                                                        [
+                                                            2.29,
+                                                            0,
+                                                            0.81
+                                                        ]
+                                                    ]
+                                     },
+                      "id":  "TRUNK_bottom",
+                      "dependencies":  [
+
+                                       ]
+                  },
+                  {
+                      "op":  "chord_hermite",
+                      "parameters":  {
+                                         "points":  [
+                                                        [
+                                                            1.70,
+                                                            0.81,
+                                                            0.81
+                                                        ],
+                                                        [
+                                                            1.98,
+                                                            0.87,
+                                                            0.80
+                                                        ],
+                                                        [
+                                                            2.27,
+                                                            0.88,
+                                                            0.78
+                                                        ]
+                                                    ]
+                                     },
+                      "id":  "TRUNK_top",
+                      "dependencies":  [
+
+                                       ]
+                  },
+                  {
+                      "op":  "coons",
+                      "parameters":  {
+                                         "top":  "TRUNK_top",
+                                         "bottom":  "TRUNK_bottom"
+                                     },
+                      "id":  "TRUNK_surface",
+                      "dependencies":  [
+                                           "TRUNK_bottom",
+                                           "TRUNK_top"
+                                       ]
+                  },
+                  {
+                      "op":  "chord_hermite",
+                      "parameters":  {
+                                         "points":  [
+                                                        [
+                                                            -0.73,
+                                                            0.848,
+                                                            0.80
+                                                        ],
+                                                        [
+                                                            -0.24,
+                                                            0.865,
+                                                            0.795
+                                                        ],
+                                                        [
+                                                            0.28,
+                                                            0.867,
+                                                            0.797
+                                                        ]
+                                                    ]
+                                     },
+                      "id":  "GLASS_FRONT_DOOR_bottom",
+                      "dependencies":  [
+
+                                       ]
+                  },
+                  {
+                      "op":  "chord_hermite",
+                      "parameters":  {
+                                         "points":  [
+                                                        [
+                                                            -0.07,
+                                                            0.684,
+                                                            1.18
+                                                        ],
+                                                        [
+                                                            0.11,
+                                                            0.709,
+                                                            1.198
+                                                        ],
+                                                        [
+                                                            0.28,
+                                                            0.71,
+                                                            1.197
+                                                        ]
+                                                    ]
+                                     },
+                      "id":  "GLASS_FRONT_DOOR_top",
+                      "dependencies":  [
+
+                                       ]
+                  },
+                  {
+                      "op":  "coons",
+                      "parameters":  {
+                                         "top":  "GLASS_FRONT_DOOR_top",
+                                         "bottom":  "GLASS_FRONT_DOOR_bottom"
+                                     },
+                      "id":  "GLASS_FRONT_DOOR_surface",
+                      "dependencies":  [
+                                           "GLASS_FRONT_DOOR_bottom",
+                                           "GLASS_FRONT_DOOR_top"
+                                       ]
+                  },
+                  {
+                      "op":  "chord_hermite",
+                      "parameters":  {
+                                         "points":  [
+                                                        [
+                                                            0.36,
+                                                            0.867,
+                                                            0.797
+                                                        ],
+                                                        [
+                                                            0.85,
+                                                            0.865,
+                                                            0.80
+                                                        ],
+                                                        [
+                                                            1.23,
+                                                            0.85,
+                                                            0.805
+                                                        ]
+                                                    ]
+                                     },
+                      "id":  "GLASS_REAR_DOOR_bottom",
+                      "dependencies":  [
+
+                                       ]
+                  },
+                  {
+                      "op":  "chord_hermite",
+                      "parameters":  {
+                                         "points":  [
+                                                        [
+                                                            0.36,
+                                                            0.71,
+                                                            1.197
+                                                        ],
+                                                        [
+                                                            0.63,
+                                                            0.70,
+                                                            1.19
+                                                        ],
+                                                        [
+                                                            0.79,
+                                                            0.684,
+                                                            1.17
+                                                        ]
+                                                    ]
+                                     },
+                      "id":  "GLASS_REAR_DOOR_top",
+                      "dependencies":  [
+
+                                       ]
+                  },
+                  {
+                      "op":  "coons",
+                      "parameters":  {
+                                         "top":  "GLASS_REAR_DOOR_top",
+                                         "bottom":  "GLASS_REAR_DOOR_bottom"
+                                     },
+                      "id":  "GLASS_REAR_DOOR_surface",
+                      "dependencies":  [
+                                           "GLASS_REAR_DOOR_bottom",
+                                           "GLASS_REAR_DOOR_top"
+                                       ]
+                  },
+                  {
+                      "op":  "chord_hermite",
+                      "parameters":  {
+                                         "points":  [
+                                                        [
+                                                            -0.75,
+                                                            0.82,
+                                                            0.79
+                                                        ],
+                                                        [
+                                                            -0.45,
+                                                            0.74,
+                                                            1.00
+                                                        ],
+                                                        [
+                                                            -0.10,
+                                                            0.65,
+                                                            1.19
+                                                        ]
+                                                    ]
+                                     },
+                      "id":  "A_PILLAR_bottom",
+                      "dependencies":  [
+
+                                       ]
+                  },
+                  {
+                      "op":  "chord_hermite",
+                      "parameters":  {
+                                         "points":  [
+                                                        [
+                                                            -0.79,
+                                                            0.86,
+                                                            0.78
+                                                        ],
+                                                        [
+                                                            -0.49,
+                                                            0.78,
+                                                            1.00
+                                                        ],
+                                                        [
+                                                            -0.12,
+                                                            0.69,
+                                                            1.20
+                                                        ]
+                                                    ]
+                                     },
+                      "id":  "A_PILLAR_top",
+                      "dependencies":  [
+
+                                       ]
+                  },
+                  {
+                      "op":  "coons",
+                      "parameters":  {
+                                         "top":  "A_PILLAR_top",
+                                         "bottom":  "A_PILLAR_bottom"
+                                     },
+                      "id":  "A_PILLAR_surface",
+                      "dependencies":  [
+                                           "A_PILLAR_bottom",
+                                           "A_PILLAR_top"
+                                       ]
+                  },
+                  {
+                      "op":  "chord_hermite",
+                      "parameters":  {
+                                         "points":  [
+                                                        [
+                                                            0.28,
+                                                            0.867,
+                                                            0.797
+                                                        ],
+                                                        [
+                                                            0.36,
+                                                            0.867,
+                                                            0.797
+                                                        ]
+                                                    ]
+                                     },
+                      "id":  "B_PILLAR_bottom",
+                      "dependencies":  [
+
+                                       ]
+                  },
+                  {
+                      "op":  "chord_hermite",
+                      "parameters":  {
+                                         "points":  [
+                                                        [
+                                                            0.28,
+                                                            0.71,
+                                                            1.197
+                                                        ],
+                                                        [
+                                                            0.36,
+                                                            0.71,
+                                                            1.197
+                                                        ]
+                                                    ]
+                                     },
+                      "id":  "B_PILLAR_top",
+                      "dependencies":  [
+
+                                       ]
+                  },
+                  {
+                      "op":  "coons",
+                      "parameters":  {
+                                         "top":  "B_PILLAR_top",
+                                         "bottom":  "B_PILLAR_bottom"
+                                     },
+                      "id":  "B_PILLAR_surface",
+                      "dependencies":  [
+                                           "B_PILLAR_bottom",
+                                           "B_PILLAR_top"
+                                       ]
+                  },
+                  {
+                      "op":  "chord_hermite",
+                      "parameters":  {
+                                         "points":  [
+                                                        [
+                                                            0.80,
+                                                            0.65,
+                                                            1.185
+                                                        ],
+                                                        [
+                                                            1.25,
+                                                            0.74,
+                                                            1.00
+                                                        ],
+                                                        [
+                                                            1.70,
+                                                            0.81,
+                                                            0.81
+                                                        ]
+                                                    ]
+                                     },
+                      "id":  "C_PILLAR_bottom",
+                      "dependencies":  [
+
+                                       ]
+                  },
+                  {
+                      "op":  "chord_hermite",
+                      "parameters":  {
+                                         "points":  [
+                                                        [
+                                                            0.79,
+                                                            0.70,
+                                                            1.17
+                                                        ],
+                                                        [
+                                                            1.04,
+                                                            0.81,
+                                                            0.98
+                                                        ],
+                                                        [
+                                                            1.26,
+                                                            0.89,
+                                                            0.80
+                                                        ]
+                                                    ]
+                                     },
+                      "id":  "C_PILLAR_top",
+                      "dependencies":  [
+
+                                       ]
+                  },
+                  {
+                      "op":  "coons",
+                      "parameters":  {
+                                         "top":  "C_PILLAR_top",
+                                         "bottom":  "C_PILLAR_bottom"
+                                     },
+                      "id":  "C_PILLAR_surface",
+                      "dependencies":  [
+                                           "C_PILLAR_bottom",
+                                           "C_PILLAR_top"
+                                       ]
+                  },
+                  {
+                      "op":  "chord_hermite",
+                      "parameters":  {
+                                         "points":  [
+                                                        [
+                                                            -0.95,
+                                                            0.92,
+                                                            0.18
+                                                        ],
+                                                        [
+                                                            -0.35,
+                                                            0.925,
+                                                            0.18
+                                                        ],
+                                                        [
+                                                            0.27,
+                                                            0.92,
+                                                            0.18
+                                                        ]
+                                                    ]
+                                     },
+                      "id":  "DOOR_FRONT_bottom",
+                      "dependencies":  [
+
+                                       ]
+                  },
+                  {
+                      "op":  "chord_hermite",
+                      "parameters":  {
+                                         "points":  [
+                                                        [
+                                                            -0.79,
+                                                            0.89,
+                                                            0.78
+                                                        ],
+                                                        [
+                                                            -0.24,
+                                                            0.90,
+                                                            0.78
+                                                        ],
+                                                        [
+                                                            0.30,
+                                                            0.89,
+                                                            0.78
+                                                        ]
+                                                    ]
+                                     },
+                      "id":  "DOOR_FRONT_top",
+                      "dependencies":  [
+
+                                       ]
+                  },
+                  {
+                      "op":  "coons",
+                      "parameters":  {
+                                         "top":  "DOOR_FRONT_top",
+                                         "bottom":  "DOOR_FRONT_bottom"
+                                     },
+                      "id":  "DOOR_FRONT_surface",
+                      "dependencies":  [
+                                           "DOOR_FRONT_bottom",
+                                           "DOOR_FRONT_top"
+                                       ]
+                  },
+                  {
+                      "op":  "chord_hermite",
+                      "parameters":  {
+                                         "points":  [
+                                                        [
+                                                            0.27,
+                                                            0.92,
+                                                            0.18
+                                                        ],
+                                                        [
+                                                            0.64,
+                                                            0.925,
+                                                            0.18
+                                                        ],
+                                                        [
+                                                            0.96,
+                                                            0.92,
+                                                            0.18
+                                                        ]
+                                                    ]
+                                     },
+                      "id":  "DOOR_REAR_bottom",
+                      "dependencies":  [
+
+                                       ]
+                  },
+                  {
+                      "op":  "chord_hermite",
+                      "parameters":  {
+                                         "points":  [
+                                                        [
+                                                            0.30,
+                                                            0.89,
+                                                            0.78
+                                                        ],
+                                                        [
+                                                            0.85,
+                                                            0.895,
+                                                            0.79
+                                                        ],
+                                                        [
+                                                            1.26,
+                                                            0.89,
+                                                            0.80
+                                                        ]
+                                                    ]
+                                     },
+                      "id":  "DOOR_REAR_top",
+                      "dependencies":  [
+
+                                       ]
+                  },
+                  {
+                      "op":  "coons",
+                      "parameters":  {
+                                         "top":  "DOOR_REAR_top",
+                                         "bottom":  "DOOR_REAR_bottom"
+                                     },
+                      "id":  "DOOR_REAR_surface",
+                      "dependencies":  [
+                                           "DOOR_REAR_bottom",
+                                           "DOOR_REAR_top"
+                                       ]
+                  },
+                  {
+                      "op":  "chord_hermite",
+                      "parameters":  {
+                                         "points":  [
+                                                        [
+                                                            -2.14,
+                                                            0.955,
+                                                            0.13
+                                                        ],
+                                                        [
+                                                            -1.756,
+                                                            0.92,
+                                                            0.20
+                                                        ]
+                                                    ]
+                                     },
+                      "id":  "NOSE_CHEEK_bottom",
+                      "dependencies":  [
+
+                                       ]
+                  },
+                  {
+                      "op":  "chord_hermite",
+                      "parameters":  {
+                                         "points":  [
+                                                        [
+                                                            -2.065,
+                                                            0.78,
+                                                            0.625
+                                                        ],
+                                                        [
+                                                            -1.756,
+                                                            0.89,
+                                                            0.705
+                                                        ]
+                                                    ]
+                                     },
+                      "id":  "NOSE_CHEEK_top",
+                      "dependencies":  [
+
+                                       ]
+                  },
+                  {
+                      "op":  "coons",
+                      "parameters":  {
+                                         "top":  "NOSE_CHEEK_top",
+                                         "bottom":  "NOSE_CHEEK_bottom"
+                                     },
+                      "id":  "NOSE_CHEEK_surface",
+                      "dependencies":  [
+                                           "NOSE_CHEEK_bottom",
+                                           "NOSE_CHEEK_top"
+                                       ]
+                  },
+                  {
+                      "op":  "chord_hermite",
+                      "parameters":  {
+                                         "points":  [
+                                                        [
+                                                            -0.974,
+                                                            0.92,
+                                                            0.20
+                                                        ],
+                                                        [
+                                                            -0.95,
+                                                            0.92,
+                                                            0.18
+                                                        ]
+                                                    ]
+                                     },
+                      "id":  "FENDER_RETURN_bottom",
+                      "dependencies":  [
+
+                                       ]
+                  },
+                  {
+                      "op":  "chord_hermite",
+                      "parameters":  {
+                                         "points":  [
+                                                        [
+                                                            -0.974,
+                                                            0.89,
+                                                            0.78
+                                                        ],
+                                                        [
+                                                            -0.79,
+                                                            0.89,
+                                                            0.78
+                                                        ]
+                                                    ]
+                                     },
+                      "id":  "FENDER_RETURN_top",
+                      "dependencies":  [
+
+                                       ]
+                  },
+                  {
+                      "op":  "coons",
+                      "parameters":  {
+                                         "top":  "FENDER_RETURN_top",
+                                         "bottom":  "FENDER_RETURN_bottom"
+                                     },
+                      "id":  "FENDER_RETURN_surface",
+                      "dependencies":  [
+                                           "FENDER_RETURN_bottom",
+                                           "FENDER_RETURN_top"
+                                       ]
+                  },
+                  {
+                      "op":  "chord_hermite",
+                      "parameters":  {
+                                         "points":  [
+                                                        [
+                                                            1.756,
+                                                            0.92,
+                                                            0.20
+                                                        ],
+                                                        [
+                                                            2.29,
+                                                            0.94,
+                                                            0.13
+                                                        ]
+                                                    ]
+                                     },
+                      "id":  "QUARTER_TAIL_bottom",
+                      "dependencies":  [
+
+                                       ]
+                  },
+                  {
+                      "op":  "chord_hermite",
+                      "parameters":  {
+                                         "points":  [
+                                                        [
+                                                            1.756,
+                                                            0.89,
+                                                            0.80
+                                                        ],
+                                                        [
+                                                            2.27,
+                                                            0.88,
+                                                            0.78
+                                                        ]
+                                                    ]
+                                     },
+                      "id":  "QUARTER_TAIL_top",
+                      "dependencies":  [
+
+                                       ]
+                  },
+                  {
+                      "op":  "coons",
+                      "parameters":  {
+                                         "top":  "QUARTER_TAIL_top",
+                                         "bottom":  "QUARTER_TAIL_bottom"
+                                     },
+                      "id":  "QUARTER_TAIL_surface",
+                      "dependencies":  [
+                                           "QUARTER_TAIL_bottom",
+                                           "QUARTER_TAIL_top"
+                                       ]
+                  },
+                  {
+                      "op":  "chord_hermite",
+                      "parameters":  {
+                                         "points":  [
+                                                        [
+                                                            -0.99,
+                                                            0.98,
+                                                            0.04
+                                                        ],
+                                                        [
+                                                            0,
+                                                            0.99,
+                                                            0.04
+                                                        ],
+                                                        [
+                                                            0.99,
+                                                            0.98,
+                                                            0.04
+                                                        ]
+                                                    ]
+                                     },
+                      "id":  "SIDE_SKIRT_bottom",
+                      "dependencies":  [
+
+                                       ]
+                  },
+                  {
+                      "op":  "chord_hermite",
+                      "parameters":  {
+                                         "points":  [
+                                                        [
+                                                            -0.95,
+                                                            0.92,
+                                                            0.18
+                                                        ],
+                                                        [
+                                                            0,
+                                                            0.93,
+                                                            0.19
+                                                        ],
+                                                        [
+                                                            0.96,
+                                                            0.92,
+                                                            0.18
+                                                        ]
+                                                    ]
+                                     },
+                      "id":  "SIDE_SKIRT_top",
+                      "dependencies":  [
+
+                                       ]
+                  },
+                  {
+                      "op":  "coons",
+                      "parameters":  {
+                                         "top":  "SIDE_SKIRT_top",
+                                         "bottom":  "SIDE_SKIRT_bottom"
+                                     },
+                      "id":  "SIDE_SKIRT_surface",
+                      "dependencies":  [
+                                           "SIDE_SKIRT_bottom",
+                                           "SIDE_SKIRT_top"
+                                       ]
+                  },
+                  {
+                      "op":  "chord_hermite",
+                      "parameters":  {
+                                         "points":  [
+                                                        [
+                                                            -2.18,
+                                                            0,
+                                                            0.13
+                                                        ],
+                                                        [
+                                                            -2.17,
+                                                            0.55,
+                                                            0.13
+                                                        ],
+                                                        [
+                                                            -2.14,
+                                                            0.955,
+                                                            0.13
+                                                        ]
+                                                    ]
+                                     },
+                      "id":  "BUMPER_FRONT_bottom",
+                      "dependencies":  [
+
+                                       ]
+                  },
+                  {
+                      "op":  "chord_hermite",
+                      "parameters":  {
+                                         "points":  [
+                                                        [
+                                                            -2.10,
+                                                            0,
+                                                            0.53
+                                                        ],
+                                                        [
+                                                            -2.09,
+                                                            0.55,
+                                                            0.53
+                                                        ],
+                                                        [
+                                                            -2.065,
+                                                            0.90,
+                                                            0.55
+                                                        ]
+                                                    ]
+                                     },
+                      "id":  "BUMPER_FRONT_top",
+                      "dependencies":  [
+
+                                       ]
+                  },
+                  {
+                      "op":  "coons",
+                      "parameters":  {
+                                         "top":  "BUMPER_FRONT_top",
+                                         "bottom":  "BUMPER_FRONT_bottom"
+                                     },
+                      "id":  "BUMPER_FRONT_surface",
+                      "dependencies":  [
+                                           "BUMPER_FRONT_bottom",
+                                           "BUMPER_FRONT_top"
+                                       ]
+                  },
+                  {
+                      "op":  "chord_hermite",
+                      "parameters":  {
+                                         "points":  [
+                                                        [
+                                                            -2.10,
+                                                            0,
+                                                            0.53
+                                                        ],
+                                                        [
+                                                            -2.09,
+                                                            0.55,
+                                                            0.53
+                                                        ],
+                                                        [
+                                                            -2.065,
+                                                            0.90,
+                                                            0.55
+                                                        ]
+                                                    ]
+                                     },
+                      "id":  "FRONT_FASCIA_bottom",
+                      "dependencies":  [
+
+                                       ]
+                  },
+                  {
+                      "op":  "chord_hermite",
+                      "parameters":  {
+                                         "points":  [
+                                                        [
+                                                            -2.10,
+                                                            0,
+                                                            0.655
+                                                        ],
+                                                        [
+                                                            -2.09,
+                                                            0.55,
+                                                            0.65
+                                                        ],
+                                                        [
+                                                            -2.065,
+                                                            0.78,
+                                                            0.625
+                                                        ]
+                                                    ]
+                                     },
+                      "id":  "FRONT_FASCIA_top",
+                      "dependencies":  [
+
+                                       ]
+                  },
+                  {
+                      "op":  "coons",
+                      "parameters":  {
+                                         "top":  "FRONT_FASCIA_top",
+                                         "bottom":  "FRONT_FASCIA_bottom"
+                                     },
+                      "id":  "FRONT_FASCIA_surface",
+                      "dependencies":  [
+                                           "FRONT_FASCIA_bottom",
+                                           "FRONT_FASCIA_top"
+                                       ]
+                  },
+                  {
+                      "op":  "chord_hermite",
+                      "parameters":  {
+                                         "points":  [
+                                                        [
+                                                            -2.183,
+                                                            0,
+                                                            0.035
+                                                        ],
+                                                        [
+                                                            -2.18,
+                                                            0.60,
+                                                            0.035
+                                                        ],
+                                                        [
+                                                            -2.10,
+                                                            0.995,
+                                                            0.05
+                                                        ]
+                                                    ]
+                                     },
+                      "id":  "FRONT_LIP_bottom",
+                      "dependencies":  [
+
+                                       ]
+                  },
+                  {
+                      "op":  "chord_hermite",
+                      "parameters":  {
+                                         "points":  [
+                                                        [
+                                                            -2.18,
+                                                            0,
+                                                            0.13
+                                                        ],
+                                                        [
+                                                            -2.17,
+                                                            0.55,
+                                                            0.13
+                                                        ],
+                                                        [
+                                                            -2.14,
+                                                            0.955,
+                                                            0.13
+                                                        ]
+                                                    ]
+                                     },
+                      "id":  "FRONT_LIP_top",
+                      "dependencies":  [
+
+                                       ]
+                  },
+                  {
+                      "op":  "coons",
+                      "parameters":  {
+                                         "top":  "FRONT_LIP_top",
+                                         "bottom":  "FRONT_LIP_bottom"
+                                     },
+                      "id":  "FRONT_LIP_surface",
+                      "dependencies":  [
+                                           "FRONT_LIP_bottom",
+                                           "FRONT_LIP_top"
+                                       ]
+                  },
+                  {
+                      "op":  "chord_hermite",
+                      "parameters":  {
+                                         "points":  [
+                                                        [
+                                                            2.35,
+                                                            0,
+                                                            0.11
+                                                        ],
+                                                        [
+                                                            2.35,
+                                                            0.55,
+                                                            0.11
+                                                        ],
+                                                        [
+                                                            2.29,
+                                                            0.94,
+                                                            0.13
+                                                        ]
+                                                    ]
+                                     },
+                      "id":  "BUMPER_REAR_bottom",
+                      "dependencies":  [
+
+                                       ]
+                  },
+                  {
+                      "op":  "chord_hermite",
+                      "parameters":  {
+                                         "points":  [
+                                                        [
+                                                            2.32,
+                                                            0,
+                                                            0.63
+                                                        ],
+                                                        [
+                                                            2.31,
+                                                            0.55,
+                                                            0.63
+                                                        ],
+                                                        [
+                                                            2.28,
+                                                            0.89,
+                                                            0.62
+                                                        ]
+                                                    ]
+                                     },
+                      "id":  "BUMPER_REAR_top",
+                      "dependencies":  [
+
+                                       ]
+                  },
+                  {
+                      "op":  "coons",
+                      "parameters":  {
+                                         "top":  "BUMPER_REAR_top",
+                                         "bottom":  "BUMPER_REAR_bottom"
+                                     },
+                      "id":  "BUMPER_REAR_surface",
+                      "dependencies":  [
+                                           "BUMPER_REAR_bottom",
+                                           "BUMPER_REAR_top"
+                                       ]
+                  },
+                  {
+                      "op":  "chord_hermite",
+                      "parameters":  {
+                                         "points":  [
+                                                        [
+                                                            2.32,
+                                                            0,
+                                                            0.63
+                                                        ],
+                                                        [
+                                                            2.31,
+                                                            0.55,
+                                                            0.63
+                                                        ],
+                                                        [
+                                                            2.28,
+                                                            0.89,
+                                                            0.62
+                                                        ]
+                                                    ]
+                                     },
+                      "id":  "REAR_FASCIA_bottom",
+                      "dependencies":  [
+
+                                       ]
+                  },
+                  {
+                      "op":  "chord_hermite",
+                      "parameters":  {
+                                         "points":  [
+                                                        [
+                                                            2.29,
+                                                            0,
+                                                            0.81
+                                                        ],
+                                                        [
+                                                            2.28,
+                                                            0.55,
+                                                            0.80
+                                                        ],
+                                                        [
+                                                            2.27,
+                                                            0.88,
+                                                            0.78
+                                                        ]
+                                                    ]
+                                     },
+                      "id":  "REAR_FASCIA_top",
+                      "dependencies":  [
+
+                                       ]
+                  },
+                  {
+                      "op":  "coons",
+                      "parameters":  {
+                                         "top":  "REAR_FASCIA_top",
+                                         "bottom":  "REAR_FASCIA_bottom"
+                                     },
+                      "id":  "REAR_FASCIA_surface",
+                      "dependencies":  [
+                                           "REAR_FASCIA_bottom",
+                                           "REAR_FASCIA_top"
+                                       ]
+                  },
+                  {
+                      "op":  "chord_hermite",
+                      "parameters":  {
+                                         "points":  [
+                                                        [
+                                                            2.356,
+                                                            0,
+                                                            0.04
+                                                        ],
+                                                        [
+                                                            2.35,
+                                                            0.60,
+                                                            0.04
+                                                        ],
+                                                        [
+                                                            2.29,
+                                                            0.98,
+                                                            0.05
+                                                        ]
+                                                    ]
+                                     },
+                      "id":  "REAR_LIP_bottom",
+                      "dependencies":  [
+
+                                       ]
+                  },
+                  {
+                      "op":  "chord_hermite",
+                      "parameters":  {
+                                         "points":  [
+                                                        [
+                                                            2.35,
+                                                            0,
+                                                            0.11
+                                                        ],
+                                                        [
+                                                            2.35,
+                                                            0.55,
+                                                            0.11
+                                                        ],
+                                                        [
+                                                            2.29,
+                                                            0.94,
+                                                            0.13
+                                                        ]
+                                                    ]
+                                     },
+                      "id":  "REAR_LIP_top",
+                      "dependencies":  [
+
+                                       ]
+                  },
+                  {
+                      "op":  "coons",
+                      "parameters":  {
+                                         "top":  "REAR_LIP_top",
+                                         "bottom":  "REAR_LIP_bottom"
+                                     },
+                      "id":  "REAR_LIP_surface",
+                      "dependencies":  [
+                                           "REAR_LIP_bottom",
+                                           "REAR_LIP_top"
+                                       ]
+                  },
+                  {
+                      "op":  "chord_hermite",
+                      "parameters":  {
+                                         "points":  [
+                                                        [
+                                                            2.24,
+                                                            0,
+                                                            0.82
+                                                        ],
+                                                        [
+                                                            2.24,
+                                                            0.88,
+                                                            0.79
+                                                        ]
+                                                    ]
+                                     },
+                      "id":  "TRUNK_LIP_bottom",
+                      "dependencies":  [
+
+                                       ]
+                  },
+                  {
+                      "op":  "chord_hermite",
+                      "parameters":  {
+                                         "points":  [
+                                                        [
+                                                            2.31,
+                                                            0,
+                                                            0.875
+                                                        ],
+                                                        [
+                                                            2.31,
+                                                            0.89,
+                                                            0.85
+                                                        ]
+                                                    ]
+                                     },
+                      "id":  "TRUNK_LIP_top",
+                      "dependencies":  [
+
+                                       ]
+                  },
+                  {
+                      "op":  "coons",
+                      "parameters":  {
+                                         "top":  "TRUNK_LIP_top",
+                                         "bottom":  "TRUNK_LIP_bottom"
+                                     },
+                      "id":  "TRUNK_LIP_surface",
+                      "dependencies":  [
+                                           "TRUNK_LIP_bottom",
+                                           "TRUNK_LIP_top"
+                                       ]
+                  },
+                  {
+                      "op":  "chord_hermite",
+                      "parameters":  {
+                                         "points":  [
+                                                        [
+                                                            -0.72,
+                                                            0.89,
+                                                            0.83
+                                                        ],
+                                                        [
+                                                            -0.53,
+                                                            0.91,
+                                                            0.83
+                                                        ]
+                                                    ]
+                                     },
+                      "id":  "MIRROR_bottom",
+                      "dependencies":  [
+
+                                       ]
+                  },
+                  {
+                      "op":  "chord_hermite",
+                      "parameters":  {
+                                         "points":  [
+                                                        [
+                                                            -0.70,
+                                                            1.00,
+                                                            0.91
+                                                        ],
+                                                        [
+                                                            -0.54,
+                                                            1.00,
+                                                            0.92
+                                                        ]
+                                                    ]
+                                     },
+                      "id":  "MIRROR_top",
+                      "dependencies":  [
+
+                                       ]
+                  },
+                  {
+                      "op":  "coons",
+                      "parameters":  {
+                                         "top":  "MIRROR_top",
+                                         "bottom":  "MIRROR_bottom"
+                                     },
+                      "id":  "MIRROR_surface",
+                      "dependencies":  [
+                                           "MIRROR_bottom",
+                                           "MIRROR_top"
+                                       ]
+                  },
+                  {
+                      "op":  "arch_annulus",
+                      "parameters":  {
+                                         "slopes":  [
+                                                        0,
+                                                        0,
+                                                        0,
+                                                        0,
+                                                        0,
+                                                        0,
+                                                        0,
+                                                        0,
+                                                        0
+                                                    ],
+                                         "outer_points":  [
+                                                              [
+                                                                  -1.756199959647073,
+                                                                  0.92,
+                                                                  0.2042348905070639
+                                                              ],
+                                                              [
+                                                                  -1.770,
+                                                                  0.92,
+                                                                  0.3090566037735849495965573298
+                                                              ],
+                                                              [
+                                                                  -1.715740288532698,
+                                                                  0.92,
+                                                                  0.5115566037735849
+                                                              ],
+                                                              [
+                                                                  -1.5675,
+                                                                  0.92,
+                                                                  0.6597968923062829
+                                                              ],
+                                                              [
+                                                                  -1.3649999999999999752017213351,
+                                                                  0.92,
+                                                                  0.7140566037735849
+                                                              ],
+                                                              [
+                                                                  -1.1625,
+                                                                  0.92,
+                                                                  0.6597968923062829
+                                                              ],
+                                                              [
+                                                                  -1.014259711467302,
+                                                                  0.92,
+                                                                  0.5115566037735849
+                                                              ],
+                                                              [
+                                                                  -0.960,
+                                                                  0.92,
+                                                                  0.3090566037735849
+                                                              ],
+                                                              [
+                                                                  -0.973800040352927,
+                                                                  0.92,
+                                                                  0.2042348905070639
+                                                              ]
+                                                          ],
+                                         "second_scale":  0.2,
+                                         "inner_points":  [
+                                                              [
+                                                                  -1.679891819370236,
+                                                                  1.019,
+                                                                  0.2246815950701633
+                                                              ],
+                                                              [
+                                                                  -1.691,
+                                                                  1.019,
+                                                                  0.3090566037735849399221671346
+                                                              ],
+                                                              [
+                                                                  -1.647324281633727,
+                                                                  1.019,
+                                                                  0.4720566037735849
+                                                              ],
+                                                              [
+                                                                  -1.528,
+                                                                  1.019,
+                                                                  0.5913808854073119
+                                                              ],
+                                                              [
+                                                                  -1.3649999999999999800389164327,
+                                                                  1.019,
+                                                                  0.6350566037735849
+                                                              ],
+                                                              [
+                                                                  -1.202,
+                                                                  1.019,
+                                                                  0.5913808854073119
+                                                              ],
+                                                              [
+                                                                  -1.082675718366273,
+                                                                  1.019,
+                                                                  0.4720566037735849
+                                                              ],
+                                                              [
+                                                                  -1.039,
+                                                                  1.019,
+                                                                  0.3090566037735849
+                                                              ],
+                                                              [
+                                                                  -1.050108180629764,
+                                                                  1.019,
+                                                                  0.2246815950701631
+                                                              ]
+                                                          ],
+                                         "first_control_scale":  [
+                                                                     0.2,
+                                                                     0.2,
+                                                                     0.2
+                                                                 ]
+                                     },
+                      "id":  "OVERFENDER_FRONT_surface",
+                      "dependencies":  [
+
+                                       ]
+                  },
+                  {
+                      "op":  "chord_hermite",
+                      "parameters":  {
+                                         "points":  [
+                                                        [
+                                                            -1.756199959647073,
+                                                            0.92,
+                                                            0.2042348905070639
+                                                        ],
+                                                        [
+                                                            -1.770,
+                                                            0.92,
+                                                            0.3090566037735849495965573298
+                                                        ],
+                                                        [
+                                                            -1.715740288532698,
+                                                            0.92,
+                                                            0.5115566037735849
+                                                        ],
+                                                        [
+                                                            -1.5675,
+                                                            0.92,
+                                                            0.6597968923062829
+                                                        ],
+                                                        [
+                                                            -1.3649999999999999752017213351,
+                                                            0.92,
+                                                            0.7140566037735849
+                                                        ],
+                                                        [
+                                                            -1.1625,
+                                                            0.92,
+                                                            0.6597968923062829
+                                                        ],
+                                                        [
+                                                            -1.014259711467302,
+                                                            0.92,
+                                                            0.5115566037735849
+                                                        ],
+                                                        [
+                                                            -0.960,
+                                                            0.92,
+                                                            0.3090566037735849
+                                                        ],
+                                                        [
+                                                            -0.973800040352927,
+                                                            0.92,
+                                                            0.2042348905070639
+                                                        ]
+                                                    ]
+                                     },
+                      "id":  "FENDER_FRONT_UPPER_arch",
+                      "dependencies":  [
+
+                                       ]
+                  },
+                  {
+                      "op":  "chord_hermite",
+                      "parameters":  {
+                                         "points":  [
+                                                        [
+                                                            -1.756,
+                                                            0.89,
+                                                            0.76
+                                                        ],
+                                                        [
+                                                            -1.365,
+                                                            0.88,
+                                                            0.78
+                                                        ],
+                                                        [
+                                                            -0.974,
+                                                            0.89,
+                                                            0.78
+                                                        ]
+                                                    ]
+                                     },
+                      "id":  "FENDER_FRONT_UPPER_belt",
+                      "dependencies":  [
+
+                                       ]
+                  },
+                  {
+                      "op":  "coons",
+                      "parameters":  {
+                                         "top":  "FENDER_FRONT_UPPER_belt",
+                                         "bottom":  "FENDER_FRONT_UPPER_arch"
+                                     },
+                      "id":  "FENDER_FRONT_UPPER_surface",
+                      "dependencies":  [
+                                           "FENDER_FRONT_UPPER_arch",
+                                           "FENDER_FRONT_UPPER_belt"
+                                       ]
+                  },
+                  {
+                      "op":  "arch_annulus",
+                      "parameters":  {
+                                         "slopes":  [
+                                                        0,
+                                                        0,
+                                                        0,
+                                                        0,
+                                                        0,
+                                                        0,
+                                                        0,
+                                                        0,
+                                                        0
+                                                    ],
+                                         "outer_points":  [
+                                                              [
+                                                                  0.973800040352927,
+                                                                  0.92,
+                                                                  0.2042348905070639
+                                                              ],
+                                                              [
+                                                                  0.960,
+                                                                  0.92,
+                                                                  0.3090566037735849495965573298
+                                                              ],
+                                                              [
+                                                                  1.014259711467302,
+                                                                  0.92,
+                                                                  0.5115566037735849
+                                                              ],
+                                                              [
+                                                                  1.1625,
+                                                                  0.92,
+                                                                  0.6597968923062829
+                                                              ],
+                                                              [
+                                                                  1.3650000000000000247982786649,
+                                                                  0.92,
+                                                                  0.7140566037735849
+                                                              ],
+                                                              [
+                                                                  1.5675,
+                                                                  0.92,
+                                                                  0.6597968923062829
+                                                              ],
+                                                              [
+                                                                  1.715740288532698,
+                                                                  0.92,
+                                                                  0.5115566037735849
+                                                              ],
+                                                              [
+                                                                  1.770,
+                                                                  0.92,
+                                                                  0.3090566037735849
+                                                              ],
+                                                              [
+                                                                  1.756199959647073,
+                                                                  0.92,
+                                                                  0.2042348905070639
+                                                              ]
+                                                          ],
+                                         "second_scale":  0.2,
+                                         "inner_points":  [
+                                                              [
+                                                                  1.050108180629764,
+                                                                  1.019,
+                                                                  0.2246815950701633
+                                                              ],
+                                                              [
+                                                                  1.039,
+                                                                  1.019,
+                                                                  0.3090566037735849399221671346
+                                                              ],
+                                                              [
+                                                                  1.082675718366273,
+                                                                  1.019,
+                                                                  0.4720566037735849
+                                                              ],
+                                                              [
+                                                                  1.202,
+                                                                  1.019,
+                                                                  0.5913808854073119
+                                                              ],
+                                                              [
+                                                                  1.3650000000000000199610835673,
+                                                                  1.019,
+                                                                  0.6350566037735849
+                                                              ],
+                                                              [
+                                                                  1.528,
+                                                                  1.019,
+                                                                  0.5913808854073119
+                                                              ],
+                                                              [
+                                                                  1.647324281633727,
+                                                                  1.019,
+                                                                  0.4720566037735849
+                                                              ],
+                                                              [
+                                                                  1.691,
+                                                                  1.019,
+                                                                  0.3090566037735849
+                                                              ],
+                                                              [
+                                                                  1.679891819370236,
+                                                                  1.019,
+                                                                  0.2246815950701631
+                                                              ]
+                                                          ],
+                                         "first_control_scale":  [
+                                                                     0.2,
+                                                                     0.2,
+                                                                     0.2
+                                                                 ]
+                                     },
+                      "id":  "OVERFENDER_REAR_surface",
+                      "dependencies":  [
+
+                                       ]
+                  },
+                  {
+                      "op":  "chord_hermite",
+                      "parameters":  {
+                                         "points":  [
+                                                        [
+                                                            0.973800040352927,
+                                                            0.92,
+                                                            0.2042348905070639
+                                                        ],
+                                                        [
+                                                            0.960,
+                                                            0.92,
+                                                            0.3090566037735849495965573298
+                                                        ],
+                                                        [
+                                                            1.014259711467302,
+                                                            0.92,
+                                                            0.5115566037735849
+                                                        ],
+                                                        [
+                                                            1.1625,
+                                                            0.92,
+                                                            0.6597968923062829
+                                                        ],
+                                                        [
+                                                            1.3650000000000000247982786649,
+                                                            0.92,
+                                                            0.7140566037735849
+                                                        ],
+                                                        [
+                                                            1.5675,
+                                                            0.92,
+                                                            0.6597968923062829
+                                                        ],
+                                                        [
+                                                            1.715740288532698,
+                                                            0.92,
+                                                            0.5115566037735849
+                                                        ],
+                                                        [
+                                                            1.770,
+                                                            0.92,
+                                                            0.3090566037735849
+                                                        ],
+                                                        [
+                                                            1.756199959647073,
+                                                            0.92,
+                                                            0.2042348905070639
+                                                        ]
+                                                    ]
+                                     },
+                      "id":  "QUARTER_REAR_UPPER_arch",
+                      "dependencies":  [
+
+                                       ]
+                  },
+                  {
+                      "op":  "chord_hermite",
+                      "parameters":  {
+                                         "points":  [
+                                                        [
+                                                            0.974,
+                                                            0.89,
+                                                            0.785
+                                                        ],
+                                                        [
+                                                            1.365,
+                                                            0.88,
+                                                            0.805
+                                                        ],
+                                                        [
+                                                            1.756,
+                                                            0.89,
+                                                            0.805
+                                                        ]
+                                                    ]
+                                     },
+                      "id":  "QUARTER_REAR_UPPER_belt",
+                      "dependencies":  [
+
+                                       ]
+                  },
+                  {
+                      "op":  "coons",
+                      "parameters":  {
+                                         "top":  "QUARTER_REAR_UPPER_belt",
+                                         "bottom":  "QUARTER_REAR_UPPER_arch"
+                                     },
+                      "id":  "QUARTER_REAR_UPPER_surface",
+                      "dependencies":  [
+                                           "QUARTER_REAR_UPPER_arch",
+                                           "QUARTER_REAR_UPPER_belt"
+                                       ]
+                  }
+              ],
+    "schema_version":  1,
+    "materials":  [
+
+                  ],
+    "legacy_corner_observations":  [
+
+                                   ],
+    "patches":  [
+                    {
+                        "id":  "HOOD",
+                        "settings":  {
+                                         "normal":  [
+                                                        0,
+                                                        0,
+                                                        1
+                                                    ]
+                                     },
+                        "resolution":  [
+                                           10,
+                                           6
+                                       ],
+                        "sample":  "HOOD_surface",
+                        "material":  "PAINT",
+                        "collection":  "02_BODY"
+                    },
+                    {
+                        "id":  "ROOF",
+                        "settings":  {
+                                         "normal":  [
+                                                        0,
+                                                        0,
+                                                        1
+                                                    ]
+                                     },
+                        "resolution":  [
+                                           10,
+                                           6
+                                       ],
+                        "sample":  "ROOF_surface",
+                        "material":  "PAINT",
+                        "collection":  "02_BODY"
+                    },
+                    {
+                        "id":  "WINDSHIELD",
+                        "settings":  {
+                                         "normal":  [
+                                                        -0.5,
+                                                        0,
+                                                        1
+                                                    ]
+                                     },
+                        "resolution":  [
+                                           10,
+                                           6
+                                       ],
+                        "sample":  "WINDSHIELD_surface",
+                        "material":  "GLASS",
+                        "collection":  "03_GLASS"
+                    },
+                    {
+                        "id":  "REAR_GLASS",
+                        "settings":  {
+                                         "normal":  [
+                                                        0.5,
+                                                        0,
+                                                        1
+                                                    ]
+                                     },
+                        "resolution":  [
+                                           10,
+                                           6
+                                       ],
+                        "sample":  "REAR_GLASS_surface",
+                        "material":  "GLASS",
+                        "collection":  "03_GLASS"
+                    },
+                    {
+                        "id":  "TRUNK",
+                        "settings":  {
+                                         "normal":  [
+                                                        0,
+                                                        0,
+                                                        1
+                                                    ]
+                                     },
+                        "resolution":  [
+                                           10,
+                                           6
+                                       ],
+                        "sample":  "TRUNK_surface",
+                        "material":  "PAINT",
+                        "collection":  "02_BODY"
+                    },
+                    {
+                        "id":  "GLASS_FRONT_DOOR",
+                        "settings":  {
+                                         "normal":  [
+                                                        0,
+                                                        1,
+                                                        0
+                                                    ]
+                                     },
+                        "resolution":  [
+                                           10,
+                                           6
+                                       ],
+                        "sample":  "GLASS_FRONT_DOOR_surface",
+                        "material":  "GLASS",
+                        "collection":  "03_GLASS"
+                    },
+                    {
+                        "id":  "GLASS_REAR_DOOR",
+                        "settings":  {
+                                         "normal":  [
+                                                        0,
+                                                        1,
+                                                        0
+                                                    ]
+                                     },
+                        "resolution":  [
+                                           10,
+                                           6
+                                       ],
+                        "sample":  "GLASS_REAR_DOOR_surface",
+                        "material":  "GLASS",
+                        "collection":  "03_GLASS"
+                    },
+                    {
+                        "id":  "A_PILLAR",
+                        "settings":  {
+                                         "normal":  [
+                                                        0,
+                                                        1,
+                                                        1
+                                                    ]
+                                     },
+                        "resolution":  [
+                                           10,
+                                           6
+                                       ],
+                        "sample":  "A_PILLAR_surface",
+                        "material":  "PAINT",
+                        "collection":  "02_BODY"
+                    },
+                    {
+                        "id":  "B_PILLAR",
+                        "settings":  {
+                                         "normal":  [
+                                                        0,
+                                                        1,
+                                                        0
+                                                    ]
+                                     },
+                        "resolution":  [
+                                           10,
+                                           6
+                                       ],
+                        "sample":  "B_PILLAR_surface",
+                        "material":  "TRIM",
+                        "collection":  "04_DETAILS"
+                    },
+                    {
+                        "id":  "C_PILLAR",
+                        "settings":  {
+                                         "normal":  [
+                                                        0,
+                                                        1,
+                                                        1
+                                                    ]
+                                     },
+                        "resolution":  [
+                                           10,
+                                           6
+                                       ],
+                        "sample":  "C_PILLAR_surface",
+                        "material":  "PAINT",
+                        "collection":  "02_BODY"
+                    },
+                    {
+                        "id":  "DOOR_FRONT",
+                        "settings":  {
+                                         "normal":  [
+                                                        0,
+                                                        1,
+                                                        0
+                                                    ]
+                                     },
+                        "resolution":  [
+                                           10,
+                                           6
+                                       ],
+                        "sample":  "DOOR_FRONT_surface",
+                        "material":  "PAINT",
+                        "collection":  "02_BODY"
+                    },
+                    {
+                        "id":  "DOOR_REAR",
+                        "settings":  {
+                                         "normal":  [
+                                                        0,
+                                                        1,
+                                                        0
+                                                    ]
+                                     },
+                        "resolution":  [
+                                           10,
+                                           6
+                                       ],
+                        "sample":  "DOOR_REAR_surface",
+                        "material":  "PAINT",
+                        "collection":  "02_BODY"
+                    },
+                    {
+                        "id":  "NOSE_CHEEK",
+                        "settings":  {
+                                         "normal":  [
+                                                        0,
+                                                        1,
+                                                        0
+                                                    ]
+                                     },
+                        "resolution":  [
+                                           10,
+                                           6
+                                       ],
+                        "sample":  "NOSE_CHEEK_surface",
+                        "material":  "PAINT",
+                        "collection":  "02_BODY"
+                    },
+                    {
+                        "id":  "FENDER_RETURN",
+                        "settings":  {
+                                         "normal":  [
+                                                        0,
+                                                        1,
+                                                        0
+                                                    ]
+                                     },
+                        "resolution":  [
+                                           10,
+                                           6
+                                       ],
+                        "sample":  "FENDER_RETURN_surface",
+                        "material":  "PAINT",
+                        "collection":  "02_BODY"
+                    },
+                    {
+                        "id":  "QUARTER_TAIL",
+                        "settings":  {
+                                         "normal":  [
+                                                        0,
+                                                        1,
+                                                        0
+                                                    ]
+                                     },
+                        "resolution":  [
+                                           10,
+                                           6
+                                       ],
+                        "sample":  "QUARTER_TAIL_surface",
+                        "material":  "PAINT",
+                        "collection":  "02_BODY"
+                    },
+                    {
+                        "id":  "SIDE_SKIRT",
+                        "settings":  {
+                                         "normal":  [
+                                                        0,
+                                                        1,
+                                                        0
+                                                    ]
+                                     },
+                        "resolution":  [
+                                           10,
+                                           6
+                                       ],
+                        "sample":  "SIDE_SKIRT_surface",
+                        "material":  "PAINT",
+                        "collection":  "02_BODY"
+                    },
+                    {
+                        "id":  "BUMPER_FRONT",
+                        "settings":  {
+                                         "normal":  [
+                                                        -1,
+                                                        0,
+                                                        0
+                                                    ]
+                                     },
+                        "resolution":  [
+                                           10,
+                                           6
+                                       ],
+                        "sample":  "BUMPER_FRONT_surface",
+                        "material":  "PAINT",
+                        "collection":  "02_BODY"
+                    },
+                    {
+                        "id":  "FRONT_FASCIA",
+                        "settings":  {
+                                         "normal":  [
+                                                        -1,
+                                                        0,
+                                                        0
+                                                    ]
+                                     },
+                        "resolution":  [
+                                           10,
+                                           6
+                                       ],
+                        "sample":  "FRONT_FASCIA_surface",
+                        "material":  "PAINT",
+                        "collection":  "02_BODY"
+                    },
+                    {
+                        "id":  "FRONT_LIP",
+                        "settings":  {
+                                         "normal":  [
+                                                        -1,
+                                                        0,
+                                                        0.3
+                                                    ]
+                                     },
+                        "resolution":  [
+                                           10,
+                                           6
+                                       ],
+                        "sample":  "FRONT_LIP_surface",
+                        "material":  "PAINT",
+                        "collection":  "02_BODY"
+                    },
+                    {
+                        "id":  "BUMPER_REAR",
+                        "settings":  {
+                                         "normal":  [
+                                                        1,
+                                                        0,
+                                                        0
+                                                    ]
+                                     },
+                        "resolution":  [
+                                           10,
+                                           6
+                                       ],
+                        "sample":  "BUMPER_REAR_surface",
+                        "material":  "PAINT",
+                        "collection":  "02_BODY"
+                    },
+                    {
+                        "id":  "REAR_FASCIA",
+                        "settings":  {
+                                         "normal":  [
+                                                        1,
+                                                        0,
+                                                        0
+                                                    ]
+                                     },
+                        "resolution":  [
+                                           10,
+                                           6
+                                       ],
+                        "sample":  "REAR_FASCIA_surface",
+                        "material":  "PAINT",
+                        "collection":  "02_BODY"
+                    },
+                    {
+                        "id":  "REAR_LIP",
+                        "settings":  {
+                                         "normal":  [
+                                                        1,
+                                                        0,
+                                                        0.3
+                                                    ]
+                                     },
+                        "resolution":  [
+                                           10,
+                                           6
+                                       ],
+                        "sample":  "REAR_LIP_surface",
+                        "material":  "PAINT",
+                        "collection":  "02_BODY"
+                    },
+                    {
+                        "id":  "TRUNK_LIP",
+                        "settings":  {
+                                         "normal":  [
+                                                        0,
+                                                        0,
+                                                        1
+                                                    ]
+                                     },
+                        "resolution":  [
+                                           10,
+                                           6
+                                       ],
+                        "sample":  "TRUNK_LIP_surface",
+                        "material":  "PAINT",
+                        "collection":  "04_DETAILS"
+                    },
+                    {
+                        "id":  "MIRROR",
+                        "settings":  {
+                                         "normal":  [
+                                                        0,
+                                                        1,
+                                                        0
+                                                    ]
+                                     },
+                        "resolution":  [
+                                           10,
+                                           6
+                                       ],
+                        "sample":  "MIRROR_surface",
+                        "material":  "PAINT",
+                        "collection":  "04_DETAILS"
+                    },
+                    {
+                        "id":  "OVERFENDER_FRONT",
+                        "settings":  {
+                                         "normal":  [
+                                                        0,
+                                                        1,
+                                                        0
+                                                    ]
+                                     },
+                        "resolution":  [
+                                           32,
+                                           5
+                                       ],
+                        "sample":  "OVERFENDER_FRONT_surface",
+                        "material":  "PAINT",
+                        "collection":  "02_BODY"
+                    },
+                    {
+                        "id":  "FENDER_FRONT_UPPER",
+                        "settings":  {
+                                         "normal":  [
+                                                        0,
+                                                        1,
+                                                        0
+                                                    ]
+                                     },
+                        "resolution":  [
+                                           24,
+                                           6
+                                       ],
+                        "sample":  "FENDER_FRONT_UPPER_surface",
+                        "material":  "PAINT",
+                        "collection":  "02_BODY"
+                    },
+                    {
+                        "id":  "OVERFENDER_REAR",
+                        "settings":  {
+                                         "normal":  [
+                                                        0,
+                                                        1,
+                                                        0
+                                                    ]
+                                     },
+                        "resolution":  [
+                                           32,
+                                           5
+                                       ],
+                        "sample":  "OVERFENDER_REAR_surface",
+                        "material":  "PAINT",
+                        "collection":  "02_BODY"
+                    },
+                    {
+                        "id":  "QUARTER_REAR_UPPER",
+                        "settings":  {
+                                         "normal":  [
+                                                        0,
+                                                        1,
+                                                        0
+                                                    ]
+                                     },
+                        "resolution":  [
+                                           24,
+                                           6
+                                       ],
+                        "sample":  "QUARTER_REAR_UPPER_surface",
+                        "material":  "PAINT",
+                        "collection":  "02_BODY"
+                    }
+                ],
+    "settings":  {
+                     "merge_threshold":  0.0001,
+                     "subdivision":  2,
+                     "thickness":  0.002,
+                     "mirror":  true,
+                     "support":  [
+                                     0.025,
+                                     0.975
+                                 ],
+                     "normal":  [
+                                    0,
+                                    1,
+                                    0
+                                ]
+                 },
+    "blockout":  {
+                     "tire":  {
+                                  "name":  "TIRE_{label}",
+                                  "segments":  96,
+                                  "profile":  [
+                                                  [
+                                                      0.77,
+                                                      -0.115
+                                                  ],
+                                                  [
+                                                      0.92,
+                                                      -0.12
+                                                  ],
+                                                  [
+                                                      1,
+                                                      -0.095
+                                                  ],
+                                                  [
+                                                      1,
+                                                      0.095
+                                                  ],
+                                                  [
+                                                      0.92,
+                                                      0.12
+                                                  ],
+                                                  [
+                                                      0.77,
+                                                      0.115
+                                                  ]
+                                              ],
+                                  "profile_units":  "radius_ratio",
+                                  "material":  "RUBBER",
+                                  "collection":  "05_WHEELS"
+                              },
+                     "wheels":  [
+                                    {
+                                        "label":  "FL",
+                                        "axle":  "front",
+                                        "side":  -1
+                                    },
+                                    {
+                                        "label":  "FR",
+                                        "axle":  "front",
+                                        "side":  1
+                                    },
+                                    {
+                                        "label":  "RL",
+                                        "axle":  "rear",
+                                        "side":  -1
+                                    },
+                                    {
+                                        "label":  "RR",
+                                        "axle":  "rear",
+                                        "side":  1
+                                    }
+                                ],
+                     "disc":  {
+                                  "radius":  0.245,
+                                  "material":  "RIM",
+                                  "name":  "DISC_{label}",
+                                  "depth":  0.115,
+                                  "segments":  64
+                              },
+                     "liner":  {
+                                   "start_angle":  -15,
+                                   "collection":  "04_DETAILS",
+                                   "depth":  0.77,
+                                   "center_height":  0.3090566037735849,
+                                   "span":  210,
+                                   "segments":  64,
+                                   "material":  "TRIM",
+                                   "name":  "WHEEL_WELL_{axle}",
+                                   "radius":  0.33,
+                                   "settings":  {
+                                                    "merge_threshold":  0.0001,
+                                                    "subdivision":  0,
+                                                    "thickness":  0.002,
+                                                    "mirror":  true,
+                                                    "support":  [
+                                                                    0.025,
+                                                                    0.975
+                                                                ],
+                                                    "normal":  [
+                                                                   0,
+                                                                   1,
+                                                                   0
+                                                               ]
+                                                }
+                               }
+                 },
+    "stitches":  [
+
+                 ]
+}

@@ -1,0 +1,23 @@
+{
+  "source": "input/multiview.png",
+  "source_sha256": "5c9a5bfaff9414ef3c8e835fdea43f21741d54d5836d4d4e01e5ca599accd09a",
+  "method": "Manual observations from original pixels, aided by gridded inspection crops. End-view wheel centers are approximate tread centerlines because hubs are occluded. TOP tire ellipses are also partly occluded. Original uncertainties are retained: SIDE/end 5 px; TOP 10 px.",
+  "observations": [
+    {"semantic_id":"front_axle_L","view":"side","axle":"front","side":-1,"reference_pixel":[494,625],"uncertainty_px":5},
+    {"semantic_id":"rear_axle_L","view":"side","axle":"rear","side":-1,"reference_pixel":[918,625],"uncertainty_px":5},
+    {"semantic_id":"front_axle_L","view":"front","axle":"front","side":-1,"reference_pixel":[310,623],"uncertainty_px":5},
+    {"semantic_id":"front_axle_R","view":"front","axle":"front","side":1,"reference_pixel":[35,623],"uncertainty_px":5},
+    {"semantic_id":"rear_axle_L","view":"rear","axle":"rear","side":-1,"reference_pixel":[1133,623],"uncertainty_px":5},
+    {"semantic_id":"rear_axle_R","view":"rear","axle":"rear","side":1,"reference_pixel":[1412,623],"uncertainty_px":5},
+    {"semantic_id":"front_axle_L","view":"top","axle":"front","side":-1,"reference_pixel":[455,1010],"uncertainty_px":10},
+    {"semantic_id":"front_axle_R","view":"top","axle":"front","side":1,"reference_pixel":[460,725],"uncertainty_px":10},
+    {"semantic_id":"rear_axle_L","view":"top","axle":"rear","side":-1,"reference_pixel":[925,1026],"uncertainty_px":10},
+    {"semantic_id":"rear_axle_R","view":"top","axle":"rear","side":1,"reference_pixel":[926,725],"uncertainty_px":10}
+  ],
+  "ground_observations": [
+    {"semantic_id":"front_contact_L","view":"side","axle":"front","side":-1,"reference_pixel":[494,673],"uncertainty_px":5},
+    {"semantic_id":"rear_contact_L","view":"side","axle":"rear","side":-1,"reference_pixel":[918,673],"uncertainty_px":5},
+    {"semantic_id":"front_contact_L","view":"front","axle":"front","side":-1,"reference_pixel":[310,669],"uncertainty_px":5},
+    {"semantic_id":"rear_contact_L","view":"rear","axle":"rear","side":-1,"reference_pixel":[1133,669],"uncertainty_px":5}
+  ]
+}

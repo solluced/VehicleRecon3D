@@ -1,0 +1,149 @@
+{
+    "schema_version":  1,
+    "state":  "AUTHORING_OBSERVATIONS_WITH_EXPLICIT_SCALE_ASSUMPTION",
+    "source":  "input/multiview.png",
+    "source_size":  [
+                        1448,
+                        1086
+                    ],
+    "source_sha256":  "5c9a5bfaff9414ef3c8e835fdea43f21741d54d5836d4d4e01e5ca599accd09a",
+    "method":  "Manual visual observations in original source pixels; exterior excludes mirrors unless noted. Approximate ranges reflect antialiasing, shadows, perspective and illustrative geometry. Not a fitted mesh or CAD measurement.",
+    "views":  {
+                  "side":  {
+                               "crop_px":  [
+                                               350,
+                                               466,
+                                               1085,
+                                               681
+                                           ],
+                               "approximate_body_bbox_px":  [
+                                                                367,
+                                                                480,
+                                                                1072,
+                                                                673
+                                                            ],
+                               "front_wheel_center_px":  [
+                                                             494,
+                                                             625
+                                                         ],
+                               "rear_wheel_center_px":  [
+                                                            918,
+                                                            625
+                                                        ],
+                               "ground_y_px_range":  [
+                                                         669,
+                                                         674
+                                                     ],
+                               "wheel_outer_radius_px_range":  [
+                                                                   44,
+                                                                   49
+                                                               ],
+                               "landmark_uncertainty_px":  5,
+                               "dimensionless_ratios":  {
+                                                            "wheelbase_over_length_approx":  0.6014,
+                                                            "height_over_length_approx":  0.2738,
+                                                            "front_overhang_over_length_approx":  0.1801,
+                                                            "rear_overhang_over_length_approx":  0.2184
+                                                        }
+                           },
+                  "front":  {
+                                "crop_px":  [
+                                                7,
+                                                469,
+                                                337,
+                                                680
+                                            ],
+                                "approximate_body_bbox_px":  [
+                                                                 18,
+                                                                 480,
+                                                                 328,
+                                                                 669
+                                                             ],
+                                "centerline_u_px_range":  [
+                                                              170,
+                                                              176
+                                                          ],
+                                "ground_y_px_range":  [
+                                                          665,
+                                                          671
+                                                      ],
+                                "landmark_uncertainty_px":  5
+                            },
+                  "rear":  {
+                               "crop_px":  [
+                                               1105,
+                                               469,
+                                               1437,
+                                               681
+                                           ],
+                               "approximate_body_bbox_px":  [
+                                                                1117,
+                                                                480,
+                                                                1427,
+                                                                669
+                                                            ],
+                               "centerline_u_px_range":  [
+                                                             1268,
+                                                             1275
+                                                         ],
+                               "ground_y_px_range":  [
+                                                         665,
+                                                         671
+                                                     ],
+                               "landmark_uncertainty_px":  5
+                           },
+                  "top":  {
+                              "crop_px":  [
+                                              309,
+                                              705,
+                                              1131,
+                                              1049
+                                          ],
+                              "approximate_body_bbox_px":  [
+                                                               326,
+                                                               721,
+                                                               1117,
+                                                               1034
+                                                           ],
+                              "front_axle_u_px_range":  [
+                                                            450,
+                                                            470
+                                                        ],
+                              "rear_axle_u_px_range":  [
+                                                           915,
+                                                           937
+                                                       ],
+                              "centerline_v_px_range":  [
+                                                            870,
+                                                            881
+                                                        ],
+                              "landmark_uncertainty_px":  10,
+                              "warning":  "Visible side faces, protruding wheels and unequal upper/lower outlines indicate this view is not a strict engineering orthographic projection. No rectification has been approved or applied."
+                          }
+              },
+    "semantic_evidence":  [
+                              "Long hood and separate trunk/deck; three-box four-door sedan greenhouse.",
+                              "Bolt-on wide overfenders around actual wheel apertures.",
+                              "Low front bumper with central intercooler opening and paired corner apertures.",
+                              "Extended side skirts and rear bumper, small trunk lip, dark deep-dish wheels.",
+                              "Dense control overlay supplies feature-placement proposals; surface target supplies topology/finish guidance only."
+                          ],
+    "metric_dimensions":  {
+                              "length_m":  4.5392688679245285,
+                              "provenance":  "Scale anchor: Toyota official E-JZX100 wheelbase 2730 mm; assumes depicted X100-inspired build retains stock axle spacing. Length/height from SIDE pixels; width from FRONT/REAR with common height. All bodykit dimensions are inference estimates, not OEM measurements. See validation/dimension_sources.json and calibration uncertainty.",
+                              "height_m":  1.2426650943396227,
+                              "wheelbase_m":  2.73,
+                              "width_m":  2.0382337526205454
+                          },
+    "metric_scale_anchor":  {
+                                "applicability":  "Depicted build is X100 inspired; stock wheelbase preservation is assumed, not measured.",
+                                "source":  "validation/dimension_sources.json",
+                                "wheelbase_m":  2.73,
+                                "kind":  "OEM_WHEELBASE_ASSUMPTION"
+                            },
+    "not_yet_validated":  [
+                              "Four-view semantic cage fit: FAIL",
+                              "Surface reconstruction: NOT RUN",
+                              "Final geometry/export/browser acceptance: NOT RUN"
+                          ]
+}

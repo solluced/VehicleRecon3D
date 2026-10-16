@@ -1,0 +1,845 @@
+{
+  "source": "input/multiview.png",
+  "source_sha256": "5c9a5bfaff9414ef3c8e835fdea43f21741d54d5836d4d4e01e5ca599accd09a",
+  "method": "Independent manual feature observations on gridded crops of the unchanged primary image. Coordinates are original 1448 x 1086 pixels. Paired TOP points identify the same near/far roof/window corners, not vehicle silhouette extrema. SIDE/end uncertainties remain 5 px; TOP remains 10 px. Occluded points are omitted rather than fabricated.",
+  "landmarks": [
+    {
+      "semantic_id": "hood_front_center",
+      "phase": "envelope",
+      "centerline": true,
+      "fit_views": [
+        "top",
+        "front"
+      ],
+      "bindings": [
+        [
+          "HOOD_bottom",
+          0
+        ],
+        [
+          "FRONT_FASCIA_top",
+          0
+        ]
+      ],
+      "observations": [
+        {
+          "view": "top",
+          "side": 0,
+          "reference_pixel": [
+            350,
+            875
+          ],
+          "uncertainty_px": 10
+        },
+        {
+          "view": "front",
+          "side": 0,
+          "reference_pixel": [
+            173,
+            572
+          ],
+          "uncertainty_px": 5
+        }
+      ]
+    },
+    {
+      "semantic_id": "roof_apex",
+      "phase": "envelope",
+      "centerline": true,
+      "fit_views": [
+        "side",
+        "front",
+        "rear"
+      ],
+      "bindings": [
+        [
+          "ROOF_bottom",
+          1
+        ],
+        [
+          "ROOF_CROWN_SECTION",
+          0
+        ]
+      ],
+      "observations": [
+        {
+          "view": "side",
+          "side": 0,
+          "reference_pixel": [
+            733,
+            480
+          ],
+          "uncertainty_px": 5
+        },
+        {
+          "view": "front",
+          "side": 0,
+          "reference_pixel": [
+            173,
+            482
+          ],
+          "uncertainty_px": 5
+        },
+        {
+          "view": "rear",
+          "side": 0,
+          "reference_pixel": [
+            1272,
+            480
+          ],
+          "uncertainty_px": 5
+        }
+      ]
+    },
+    {
+      "semantic_id": "trunk_rear_edge",
+      "phase": "envelope",
+      "centerline": true,
+      "fit_views": [
+        "top",
+        "rear"
+      ],
+      "bindings": [
+        [
+          "TRUNK_bottom",
+          -1
+        ],
+        [
+          "REAR_FASCIA_top",
+          0
+        ]
+      ],
+      "observations": [
+        {
+          "view": "top",
+          "side": 0,
+          "reference_pixel": [
+            1101,
+            875
+          ],
+          "uncertainty_px": 10
+        },
+        {
+          "view": "rear",
+          "side": 0,
+          "reference_pixel": [
+            1272,
+            549
+          ],
+          "uncertainty_px": 5
+        }
+      ]
+    },
+    {
+      "semantic_id": "windshield_lower_corner",
+      "phase": "greenhouse",
+      "fit_views": [
+        "side",
+        "front"
+      ],
+      "bindings": [
+        [
+          "WINDSHIELD_bottom",
+          -1
+        ],
+        [
+          "GLASS_FRONT_DOOR_bottom",
+          0
+        ],
+        [
+          "A_PILLAR_bottom",
+          0
+        ]
+      ],
+      "observations": [
+        {
+          "view": "side",
+          "side": -1,
+          "reference_pixel": [
+            591,
+            543
+          ],
+          "uncertainty_px": 5
+        },
+        {
+          "view": "front",
+          "side": -1,
+          "reference_pixel": [
+            276,
+            540
+          ],
+          "uncertainty_px": 5
+        },
+        {
+          "view": "front",
+          "side": 1,
+          "reference_pixel": [
+            69,
+            540
+          ],
+          "uncertainty_px": 5
+        },
+        {
+          "view": "top",
+          "side": -1,
+          "reference_pixel": [
+            571,
+            978
+          ],
+          "uncertainty_px": 10
+        },
+        {
+          "view": "top",
+          "side": 1,
+          "reference_pixel": [
+            569,
+            745
+          ],
+          "uncertainty_px": 10
+        }
+      ]
+    },
+    {
+      "semantic_id": "a_pillar_roof",
+      "phase": "greenhouse",
+      "fit_views": [
+        "side",
+        "front"
+      ],
+      "bindings": [
+        [
+          "A_PILLAR_bottom",
+          -1
+        ],
+        [
+          "WINDSHIELD_top",
+          -1
+        ],
+        [
+          "ROOF_top",
+          0
+        ],
+        [
+          "GLASS_FRONT_DOOR_top",
+          0
+        ]
+      ],
+      "observations": [
+        {
+          "view": "side",
+          "side": -1,
+          "reference_pixel": [
+            692,
+            491
+          ],
+          "uncertainty_px": 5
+        },
+        {
+          "view": "front",
+          "side": -1,
+          "reference_pixel": [
+            244,
+            491
+          ],
+          "uncertainty_px": 5
+        },
+        {
+          "view": "front",
+          "side": 1,
+          "reference_pixel": [
+            104,
+            491
+          ],
+          "uncertainty_px": 5
+        },
+        {
+          "view": "top",
+          "side": -1,
+          "reference_pixel": [
+            640,
+            944
+          ],
+          "uncertainty_px": 10
+        },
+        {
+          "view": "top",
+          "side": 1,
+          "reference_pixel": [
+            640,
+            765
+          ],
+          "uncertainty_px": 10
+        }
+      ]
+    },
+    {
+      "semantic_id": "b_pillar_roof",
+      "phase": "greenhouse",
+      "fit_views": [
+        "side"
+      ],
+      "width_from_top_pair": true,
+      "observations": [
+        {
+          "view": "side",
+          "side": -1,
+          "reference_pixel": [
+            765,
+            489
+          ],
+          "uncertainty_px": 5
+        },
+        {
+          "view": "top",
+          "side": -1,
+          "reference_pixel": [
+            777,
+            947
+          ],
+          "uncertainty_px": 10
+        },
+        {
+          "view": "top",
+          "side": 1,
+          "reference_pixel": [
+            774,
+            756
+          ],
+          "uncertainty_px": 10
+        }
+      ]
+    },
+    {
+      "semantic_id": "c_pillar_side_roof",
+      "phase": "greenhouse",
+      "fit_views": [
+        "side"
+      ],
+      "width_from_top_pair": true,
+      "bindings": [
+        [
+          "GLASS_REAR_DOOR_top",
+          -1
+        ],
+        [
+          "C_PILLAR_top",
+          0
+        ]
+      ],
+      "observations": [
+        {
+          "view": "side",
+          "side": -1,
+          "reference_pixel": [
+            835,
+            492
+          ],
+          "uncertainty_px": 5
+        },
+        {
+          "view": "top",
+          "side": -1,
+          "reference_pixel": [
+            874,
+            947
+          ],
+          "uncertainty_px": 10
+        },
+        {
+          "view": "top",
+          "side": 1,
+          "reference_pixel": [
+            871,
+            757
+          ],
+          "uncertainty_px": 10
+        }
+      ]
+    },
+    {
+      "semantic_id": "c_pillar_rear_roof",
+      "phase": "greenhouse",
+      "fit_views": [
+        "side",
+        "rear"
+      ],
+      "bindings": [
+        [
+          "C_PILLAR_bottom",
+          0
+        ],
+        [
+          "ROOF_top",
+          -1
+        ],
+        [
+          "REAR_GLASS_bottom",
+          -1
+        ]
+      ],
+      "observations": [
+        {
+          "view": "side",
+          "side": -1,
+          "reference_pixel": [
+            868,
+            494
+          ],
+          "uncertainty_px": 5
+        },
+        {
+          "view": "rear",
+          "side": -1,
+          "reference_pixel": [
+            1202,
+            491
+          ],
+          "uncertainty_px": 5
+        },
+        {
+          "view": "rear",
+          "side": 1,
+          "reference_pixel": [
+            1344,
+            491
+          ],
+          "uncertainty_px": 5
+        },
+        {
+          "view": "top",
+          "side": -1,
+          "reference_pixel": [
+            884,
+            938
+          ],
+          "uncertainty_px": 10
+        },
+        {
+          "view": "top",
+          "side": 1,
+          "reference_pixel": [
+            884,
+            764
+          ],
+          "uncertainty_px": 10
+        }
+      ]
+    },
+    {
+      "semantic_id": "b_pillar_window_intersection",
+      "phase": "greenhouse",
+      "fit_views": [
+        "side"
+      ],
+      "width_from_top_pair": true,
+      "observations": [
+        {
+          "view": "side",
+          "side": -1,
+          "reference_pixel": [
+            759,
+            545
+          ],
+          "uncertainty_px": 5
+        },
+        {
+          "view": "top",
+          "side": -1,
+          "reference_pixel": [
+            765,
+            983
+          ],
+          "uncertainty_px": 10
+        },
+        {
+          "view": "top",
+          "side": 1,
+          "reference_pixel": [
+            762,
+            744
+          ],
+          "uncertainty_px": 10
+        }
+      ]
+    },
+    {
+      "semantic_id": "c_pillar_window_intersection",
+      "phase": "greenhouse",
+      "fit_views": [
+        "side"
+      ],
+      "width_from_top_pair": true,
+      "bindings": [
+        [
+          "GLASS_REAR_DOOR_bottom",
+          -1
+        ],
+        [
+          "C_PILLAR_top",
+          -1
+        ]
+      ],
+      "observations": [
+        {
+          "view": "side",
+          "side": -1,
+          "reference_pixel": [
+            891,
+            543
+          ],
+          "uncertainty_px": 5
+        },
+        {
+          "view": "top",
+          "side": -1,
+          "reference_pixel": [
+            914,
+            983
+          ],
+          "uncertainty_px": 10
+        },
+        {
+          "view": "top",
+          "side": 1,
+          "reference_pixel": [
+            911,
+            744
+          ],
+          "uncertainty_px": 10
+        }
+      ]
+    },
+    {
+      "semantic_id": "rear_glass_lower_corner",
+      "phase": "greenhouse",
+      "fit_views": [
+        "side",
+        "rear"
+      ],
+      "bindings": [
+        [
+          "REAR_GLASS_top",
+          -1
+        ],
+        [
+          "C_PILLAR_bottom",
+          -1
+        ],
+        [
+          "TRUNK_top",
+          0
+        ]
+      ],
+      "observations": [
+        {
+          "view": "side",
+          "side": -1,
+          "reference_pixel": [
+            960,
+            534
+          ],
+          "uncertainty_px": 5
+        },
+        {
+          "view": "rear",
+          "side": -1,
+          "reference_pixel": [
+            1181,
+            525
+          ],
+          "uncertainty_px": 5
+        },
+        {
+          "view": "rear",
+          "side": 1,
+          "reference_pixel": [
+            1362,
+            525
+          ],
+          "uncertainty_px": 5
+        },
+        {
+          "view": "top",
+          "side": -1,
+          "reference_pixel": [
+            981,
+            961
+          ],
+          "uncertainty_px": 10
+        },
+        {
+          "view": "top",
+          "side": 1,
+          "reference_pixel": [
+            983,
+            754
+          ],
+          "uncertainty_px": 10
+        }
+      ]
+    },
+    {
+      "semantic_id": "front_door_leading_edge",
+      "phase": "door_cuts",
+      "deferred": true,
+      "bindings": [
+        [
+          "DOOR_FRONT_bottom",
+          0
+        ]
+      ],
+      "observations": [
+        {
+          "view": "side",
+          "side": -1,
+          "reference_pixel": [
+            591,
+            648
+          ],
+          "uncertainty_px": 5
+        }
+      ]
+    },
+    {
+      "semantic_id": "front_door_upper_leading_edge",
+      "phase": "door_cuts",
+      "deferred": true,
+      "bindings": [
+        [
+          "DOOR_FRONT_top",
+          0
+        ]
+      ],
+      "observations": [
+        {
+          "view": "side",
+          "side": -1,
+          "reference_pixel": [
+            591,
+            550
+          ],
+          "uncertainty_px": 5
+        }
+      ]
+    },
+    {
+      "semantic_id": "b_pillar_lower_attachment_door_separator",
+      "phase": "door_cuts",
+      "deferred": true,
+      "bindings": [
+        [
+          "DOOR_FRONT_bottom",
+          -1
+        ],
+        [
+          "DOOR_REAR_bottom",
+          0
+        ]
+      ],
+      "observations": [
+        {
+          "view": "side",
+          "side": -1,
+          "reference_pixel": [
+            770,
+            639
+          ],
+          "uncertainty_px": 5
+        }
+      ]
+    },
+    {
+      "semantic_id": "rear_door_trailing_edge",
+      "phase": "door_cuts",
+      "deferred": true,
+      "bindings": [
+        [
+          "DOOR_REAR_bottom",
+          -1
+        ]
+      ],
+      "observations": [
+        {
+          "view": "side",
+          "side": -1,
+          "reference_pixel": [
+            878,
+            642
+          ],
+          "uncertainty_px": 5
+        }
+      ]
+    },
+    {
+      "semantic_id": "body_lower_line",
+      "phase": "envelope",
+      "bindings": [
+        [
+          "SIDE_SKIRT_bottom",
+          1
+        ]
+      ],
+      "observations": [
+        {
+          "view": "side",
+          "side": -1,
+          "reference_pixel": [
+            706,
+            659
+          ],
+          "uncertainty_px": 5
+        }
+      ]
+    },
+    {
+      "semantic_id": "windshield_lower_center",
+      "phase": "greenhouse",
+      "centerline": true,
+      "bindings": [
+        [
+          "WINDSHIELD_bottom",
+          0
+        ],
+        [
+          "COWL_SECTION",
+          0
+        ]
+      ],
+      "observations": [
+        {
+          "view": "front",
+          "side": 0,
+          "reference_pixel": [
+            173,
+            539
+          ],
+          "uncertainty_px": 5
+        },
+        {
+          "view": "top",
+          "side": 0,
+          "reference_pixel": [
+            534,
+            858
+          ],
+          "uncertainty_px": 10
+        }
+      ]
+    },
+    {
+      "semantic_id": "windshield_upper_center",
+      "phase": "greenhouse",
+      "centerline": true,
+      "bindings": [
+        [
+          "WINDSHIELD_top",
+          0
+        ],
+        [
+          "ROOF_bottom",
+          0
+        ]
+      ],
+      "observations": [
+        {
+          "view": "front",
+          "side": 0,
+          "reference_pixel": [
+            173,
+            489
+          ],
+          "uncertainty_px": 5
+        },
+        {
+          "view": "top",
+          "side": 0,
+          "reference_pixel": [
+            632,
+            858
+          ],
+          "uncertainty_px": 10
+        }
+      ]
+    },
+    {
+      "semantic_id": "rear_glass_upper_center",
+      "phase": "greenhouse",
+      "centerline": true,
+      "bindings": [
+        [
+          "REAR_GLASS_bottom",
+          0
+        ],
+        [
+          "ROOF_bottom",
+          -1
+        ]
+      ],
+      "observations": [
+        {
+          "view": "rear",
+          "side": 0,
+          "reference_pixel": [
+            1272,
+            485
+          ],
+          "uncertainty_px": 5
+        },
+        {
+          "view": "top",
+          "side": 0,
+          "reference_pixel": [
+            880,
+            855
+          ],
+          "uncertainty_px": 10
+        }
+      ]
+    },
+    {
+      "semantic_id": "rear_glass_lower_center",
+      "phase": "greenhouse",
+      "centerline": true,
+      "bindings": [
+        [
+          "REAR_GLASS_top",
+          0
+        ],
+        [
+          "TRUNK_bottom",
+          0
+        ],
+        [
+          "DECK_SECTION",
+          0
+        ]
+      ],
+      "observations": [
+        {
+          "view": "rear",
+          "side": 0,
+          "reference_pixel": [
+            1272,
+            525
+          ],
+          "uncertainty_px": 5
+        },
+        {
+          "view": "top",
+          "side": 0,
+          "reference_pixel": [
+            1000,
+            859
+          ],
+          "uncertainty_px": 10
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "SIDE camera looks from negative Y: near side is L. FRONT projects L to the right; REAR projects L to the left. TOP near side is the lower image edge.",
+    "C-pillar side-window roof junction and rear-windshield roof junction are different physical corners and are measured separately.",
+    "B-pillar and door-foot landmarks are not observable in end views; no fictitious reference pixels are assigned.",
+    "Deferred door-cut records remain unchanged until the preceding greenhouse and pillar checks pass."
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "authoritative_stock_dimensions_m": {
+    "length": 4.76,
+    "width": 1.755,
+    "height": 1.4,
+    "wheelbase": 2.73
+  },
+  "structural_body_half_width_m": 0.8775,
+  "image_visual_envelope_m": {
+    "length_m": 4.5392688679245285,
+    "provenance": "Official E-JZX100 stock body is 4.760 x 1.755 x 1.400 m, wheelbase 2.730 m. The 2.730 m wheelbase is authoritative for this build. Numeric dimensions here retain the separately inferred illustrative outer envelope, including tires; they are not structural stock body dimensions. See calibration.datums.stock_body_dimensions_m, validation/physical_scale.json and recorded uncertainty.",
+    "height_m": 1.2426650943396227,
+    "wheelbase_m": 2.73,
+    "width_m": 2.0382337526205454
+  },
+  "warning": "Visible outline width includes tires. Stock body, inferred aero envelope and tire envelope are different quantities. Do not force the visual envelope to OEM dimensions.",
+  "stock_vs_inference_length_discrepancy_m": 0.22073113207547124,
+  "source": "validation/dimension_sources.json",
+  "authority": "User handoff dated 2026-10-16 makes official 2.730 m wheelbase authoritative unless modified axles are proven. No such evidence was found. Historical source-applicability wording is not permission to change this wheelbase.",
+  "inferred_body_kit_envelope_m": {
+    "length_approx": 4.54,
+    "width_estimate_range": [
+      1.82,
+      1.9
+    ],
+    "height_approx": 1.24,
+    "accepted": false,
+    "provenance": "Rough visible white aero-body bounds, excluding protruding tires/mirrors. Illustrative geometry, not a measured custom-build specification. The current raw visual calibration width 2.038 m includes tires. These range estimates are not used to enlarge pixel tolerances."
+  }
+}

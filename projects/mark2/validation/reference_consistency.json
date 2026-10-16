@@ -1,0 +1,23 @@
+{
+  "status": "INCONSISTENT_WITH_AXLE_LOCKED_AFFINE_X",
+  "feature": "Near-side A-roof to B-roof distance divided by same-view wheelbase",
+  "side_ratio": 0.1721698113207547,
+  "side_ratio_interval": [
+    0.14516129032258066,
+    0.20048309178743962
+  ],
+  "top_ratio": 0.29148936170212764,
+  "top_ratio_interval": [
+    0.23877551020408164,
+    0.3488888888888889
+  ],
+  "intervals_overlap": false,
+  "minimum_separation_in_wheelbase_units": 0.03829241841664202,
+  "source_uncertainties_px": {
+    "side_feature": 5,
+    "side_axle": 5,
+    "top_feature": 10,
+    "top_axle": 10
+  },
+  "interpretation": "The intervals do not overlap even after allowing both feature and axle endpoints their full declared uncertainties. A common longitudinal affine calibration cannot fit these correspondences. Translation, cage resampling and a mean error cannot fix this ratio. This is not proof that all possible perspective calibration models are impossible; source correspondence/projection needs review. No nonlinear source warp or different geometry per view is used."
+}

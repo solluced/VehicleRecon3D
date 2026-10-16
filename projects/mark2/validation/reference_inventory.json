@@ -1,0 +1,26 @@
+{
+  "surface_target": {
+    "path": "input/surface_target.png",
+    "size": [
+      1448,
+      1086
+    ],
+    "sha256": "50a153cf66a12b462b15b4dfc1fe6c47ea769e3eb57c7facf79e02d092c1fc06"
+  },
+  "control_overlay": {
+    "path": "input/control_overlay.png",
+    "size": [
+      1448,
+      1086
+    ],
+    "sha256": "571a4f9e4a431974239f11c1df859f57c5e3727fcee53497e9a725a879a0e9d2"
+  },
+  "multiview": {
+    "path": "input/multiview.png",
+    "size": [
+      1448,
+      1086
+    ],
+    "sha256": "5c9a5bfaff9414ef3c8e835fdea43f21741d54d5836d4d4e01e5ca599accd09a"
+  }
+}

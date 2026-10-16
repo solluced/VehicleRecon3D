@@ -1,0 +1,105 @@
+{
+  "control_bounds_status": "PASS",
+  "overall_acceptance": "NOT_ACCEPTED",
+  "views": [
+    {
+      "view": "top",
+      "reference_bbox_px": [
+        326,
+        721,
+        1117,
+        1034
+      ],
+      "projected_control_bbox_px": [
+        316.49878079306336,
+        715.141715282775,
+        1107.45193462077,
+        1032.858284717227
+      ],
+      "delta_px": [
+        -9.50121920693664,
+        -5.858284717225047,
+        -9.54806537922991,
+        -1.1417152827730206
+      ],
+      "uncertainty_px": 10,
+      "pass": true
+    },
+    {
+      "view": "side",
+      "reference_bbox_px": [
+        367,
+        480,
+        1072,
+        673
+      ],
+      "projected_control_bbox_px": [
+        371.4552976727049,
+        481.01047545212975,
+        1076.4135447631388,
+        673.0
+      ],
+      "delta_px": [
+        4.455297672704887,
+        1.0104754521297536,
+        4.413544763138816,
+        0.0
+      ],
+      "uncertainty_px": 5,
+      "pass": true
+    },
+    {
+      "view": "front",
+      "reference_bbox_px": [
+        18,
+        480,
+        328,
+        669
+      ],
+      "projected_control_bbox_px": [
+        18.017767883762996,
+        480.98953295571255,
+        327.98223211623707,
+        669.0000000000001
+      ],
+      "delta_px": [
+        0.017767883762996206,
+        0.9895329557125478,
+        -0.017767883762928705,
+        1.1368683772161603e-13
+      ],
+      "uncertainty_px": 5,
+      "pass": true
+    },
+    {
+      "view": "rear",
+      "reference_bbox_px": [
+        1117,
+        480,
+        1427,
+        669
+      ],
+      "projected_control_bbox_px": [
+        1117.017767883763,
+        480.98953295571255,
+        1426.9822321162371,
+        669.0000000000001
+      ],
+      "delta_px": [
+        0.017767883763099235,
+        0.9895329557125478,
+        -0.01776788376287186,
+        1.1368683772161603e-13
+      ],
+      "uncertainty_px": 5,
+      "pass": true
+    }
+  ],
+  "structural_body_width_m": 1.755,
+  "inferred_aero_width_range_m": [
+    1.82,
+    1.9
+  ],
+  "visible_envelope_width_including_tires_m": 2.0382337526205454,
+  "warning": "Whole-cage control bounds include wheel guides and mirrors. Bounds alone do not validate body-kit feature shape or make the greenhouse pass. Stock structural width is not a flare width. Arch/bumper secondary fit remains deferred."
+}

@@ -1,0 +1,16 @@
+{
+  "status": "CHECKPOINTS_ONLY_NOT_DELIVERY",
+  "files": [
+    {
+      "path": "output/mark2_calibrated.blend",
+      "sha256": "d071972ac664286e32ad49a5bbd8edc8aa2b43c31140eda1c1a804d09f7fc80d",
+      "status": "UNACCEPTED_CAGE_CORRECTION_CHECKPOINT"
+    },
+    {
+      "path": "output/mark2_cage_corrected.blend",
+      "sha256": "907148c0d8e8136dc7f45611df6c1f1d7ddb6df8a2c974f79f682bdb7439b856",
+      "status": "UNACCEPTED_CAGE_CORRECTION_CHECKPOINT"
+    }
+  ],
+  "historical_checkpoint": "output/mark2_cage_review.blend is the previous, uncorrected pass."
+}

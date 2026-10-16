@@ -1,0 +1,106 @@
+{
+  "policy": "One canonical positive-Y point per semantic ID, mirrored for L. SIDE/end-view measurements constrain greenhouse; all TOP measurements remain independent validation. Failed observations are retained individually. Door cuts deferred because preceding greenhouse is not accepted.",
+  "points": {
+    "hood_front_center": [
+      -1.9617709002778652,
+      0.0,
+      0.6383520080538327
+    ],
+    "roof_apex": [
+      0.1738443396226415,
+      0.0,
+      1.236158994369259
+    ],
+    "trunk_rear_edge": [
+      2.347901040128533,
+      0.0,
+      0.796912429311267
+    ],
+    "windshield_lower_corner": [
+      -0.740448113207547,
+      0.6805070754716981,
+      0.8430145475491682
+    ],
+    "a_pillar_roof": [
+      -0.09014150943396225,
+      0.4602463312368972,
+      1.170340670944388
+    ],
+    "b_pillar_roof": [
+      0.37988207547169806,
+      0.6165245398885797,
+      1.1847169811320764
+    ],
+    "c_pillar_side_roof": [
+      0.8305896226415094,
+      0.6132966627163882,
+      1.1654009433962274
+    ],
+    "c_pillar_rear_roof": [
+      1.0430660377358487,
+      0.46682127882599656,
+      1.1625252065331266
+    ],
+    "b_pillar_window_intersection": [
+      0.34124999999999994,
+      0.7714626441537726,
+      0.8241509433962275
+    ],
+    "c_pillar_window_intersection": [
+      1.1911556603773583,
+      0.7714626441537726,
+      0.8370283018867932
+    ],
+    "rear_glass_lower_corner": [
+      1.6354245283018864,
+      0.5950327568134182,
+      0.9207152672563457
+    ],
+    "front_door_leading_edge": [
+      -0.95,
+      0.92,
+      0.18
+    ],
+    "front_door_upper_leading_edge": [
+      -0.79,
+      0.89,
+      0.78
+    ],
+    "b_pillar_lower_attachment_door_separator": [
+      0.27,
+      0.92,
+      0.18
+    ],
+    "rear_door_trailing_edge": [
+      0.96,
+      0.92,
+      0.18
+    ],
+    "body_lower_line": [
+      0,
+      0.99,
+      0.09014150943396226
+    ],
+    "windshield_lower_center": [
+      -0.790448113207547,
+      0,
+      0.8547431865828092
+    ],
+    "windshield_upper_center": [
+      -0.12014150943396225,
+      0,
+      1.1834905660377357
+    ],
+    "rear_glass_upper_center": [
+      1.0130660377358487,
+      0,
+      1.20979035639413
+    ],
+    "rear_glass_lower_center": [
+      1.7154245283018865,
+      0,
+      0.9467924528301886
+    ]
+  },
+  "input_calibration_sha256": "f5c807bb0071b1573b0436a238f00adb060ad5d6fc79aa3efaaebfb83ef61bea"
+}

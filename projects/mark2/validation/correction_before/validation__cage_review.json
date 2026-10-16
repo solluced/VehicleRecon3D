@@ -1,0 +1,45 @@
+{
+  "reviewer": "Codex explicit Mark II four-view cage inspection",
+  "scope": "Cage feature placement, not final surface review",
+  "decision": "FAIL",
+  "source_checkpoint_sha256": "9cdc16c85e6f12de2511e385f68828b9dba04a3c9a30f981533f50c07cb52e41",
+  "input_hashes": {
+    "input/multiview.png": "5c9a5bfaff9414ef3c8e835fdea43f21741d54d5836d4d4e01e5ca599accd09a",
+    "input/control_overlay.png": "571a4f9e4a431974239f11c1df859f57c5e3727fcee53497e9a725a879a0e9d2",
+    "generated/calibration.json": "cdece2badbf3886dcf13bba58a7e6ee3235eb0414f2ba497b4c95b14e7d5109d",
+    "generated/cage.json": "6b6d0d37d06a6d17439801e4ca4f06403419300001223f4eacd89d1bcd4e3c6a",
+    "validation/cage_review_landmarks.json": "feed2539c1db69b2b87f032f6a517aad8717e3a874be35e98460bb161aa805de"
+  },
+  "proof_hashes": {
+    "validation/cage_overlay_front.png": "5f0818a413baa0a6e0f4a4368876d8738ec20dd731036b3bdee666f6abc1f258",
+    "validation/cage_overlay_side.png": "e3fbdf4edec7b551bf43db69ac1073d9de6e267d9210f73e720663db3fef112d",
+    "validation/cage_overlay_rear.png": "83137143ca7bc02b6825c008de926fad7bb9d1f10d1f1f4d2bd967fc3ccd8900",
+    "validation/cage_overlay_top.png": "308b09e023940a236ae4d88692a4aba1e01bb6504148ea407fe8bc64f13cde97",
+    "validation/cage_perspective.png": "c2429d43afb050246dc7e3b9462b84fd94da14cb3fa1c5c7bc7082d1573c1a09"
+  },
+  "landmark_checks": [
+    {
+      "id": "front_door_lower_front_seam",
+      "view": "side",
+      "curve_record": "DOOR_FRONT_bottom",
+      "control_index": 0,
+      "observed_pixel": [
+        591,
+        648
+      ],
+      "uncertainty_px": 5,
+      "observation": "Lower front door seam meets the top of the skirt near original u=591. The authored cage puts that feature further forward, inside the overfender transition.",
+      "projected_pixel": [
+        558.4542124542123,
+        645.0439560439562
+      ],
+      "error_px": 32.679756468578695
+    }
+  ],
+  "findings": [
+    "SIDE front-door lower leading seam is displaced beyond recorded source uncertainty.",
+    "FRONT/REAR greenhouse and pillar widths do not match the reference.",
+    "TOP roof/window boundaries have not been reconciled with other views."
+  ],
+  "continuation": "STOP before dense surfaces and details; no final review decision or export acceptance has been generated."
+}

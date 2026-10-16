@@ -1,0 +1,1848 @@
+{
+  "status": "FAIL",
+  "method": "One world-space cage, original reference pixels and existing CalibrationTransform.world_to_pixel. Individual Euclidean residual tests; means never determine acceptance. Unchanged 5 px SIDE/end and 10 px TOP uncertainties. Inspect source correspondences and reference_consistency.json before further authoring.",
+  "source_sha256": "5c9a5bfaff9414ef3c8e835fdea43f21741d54d5836d4d4e01e5ca599accd09a",
+  "calibration_sha256": "f5c807bb0071b1573b0436a238f00adb060ad5d6fc79aa3efaaebfb83ef61bea",
+  "cage_sha256": "1bbf514cd9bd55381b2e3b934543500afad5fb6579b6b0cfa479473d9990216a",
+  "reference_observations_sha256": "00b83c84cc84a31fb2c1b3b7f687fa21e96eb01c9a82045532691db8bdb0e78a",
+  "summary": {
+    "maximum_critical_residual_px": 52.27267757996422,
+    "mean_critical_residual_px": 10.397444901101448,
+    "critical_observations": 66,
+    "passed_observations": 44,
+    "failed_observations": 22,
+    "front_door_leading_edge_residual_px": 32.67975472519686,
+    "a_pillar_roof": {
+      "side": 0.23280634897595917,
+      "front": 1.0000010186737582,
+      "top": 52.27267757996422
+    },
+    "b_pillar_roof": {
+      "side": 6.520128186315035e-06,
+      "top": 29.242675922832287
+    },
+    "c_pillar_side_roof": {
+      "side": 7.5262913300466545e-06,
+      "top": 43.14946615817108
+    },
+    "c_pillar_rear_roof": {
+      "side": 1.5533608237478191,
+      "rear": 1.5533692659306038,
+      "top": 38.49074138577816
+    },
+    "greenhouse_by_view": {
+      "front": 1.0000010186737582,
+      "rear": 3.997535333190343,
+      "side": 3.9975368164431173,
+      "top": 52.27267757996422
+    },
+    "pillar_group_maxima": {
+      "A": {
+        "side": 32.67975472519686,
+        "front": 1.0000010186737582,
+        "top": 52.27267757996422
+      },
+      "B": {
+        "side": 22.878696726385254,
+        "top": 29.242675922832287
+      },
+      "C": {
+        "side": 23.102513827587778,
+        "rear": 3.997535333190343,
+        "top": 43.14946615817108
+      }
+    }
+  },
+  "pillar_attachment_map": {
+    "A": {
+      "lower_attachment": "front_door_leading_edge",
+      "window_intersection": "windshield_lower_corner",
+      "roof_intersection": "a_pillar_roof"
+    },
+    "B": {
+      "lower_attachment": "b_pillar_lower_attachment_door_separator",
+      "window_intersection": "b_pillar_window_intersection",
+      "roof_intersection": "b_pillar_roof"
+    },
+    "C": {
+      "lower_attachment": "rear_door_trailing_edge",
+      "window_intersection": "c_pillar_window_intersection",
+      "roof_intersection": "c_pillar_side_roof",
+      "rear_roof_intersection": "c_pillar_rear_roof"
+    }
+  },
+  "rows": [
+    {
+      "semantic_id": "front_axle_L",
+      "landmark": "front_axle_L",
+      "phase": "axle_ground",
+      "view": "side",
+      "reference_pixel": [
+        494,
+        625
+      ],
+      "projected_pixel": [
+        493.9999996759952,
+        625.0000000070652
+      ],
+      "dx": -3.2400481586591923e-07,
+      "dy": 7.06518221704755e-09,
+      "residual_px": 3.240818376646064e-07,
+      "uncertainty_px": 5,
+      "pass": true,
+      "critical": true,
+      "world": [
+        -1.3650000020861626,
+        -0.9275000095367432,
+        0.30905660372809507
+      ],
+      "row_id": 1
+    },
+    {
+      "semantic_id": "rear_axle_L",
+      "landmark": "rear_axle_L",
+      "phase": "axle_ground",
+      "view": "side",
+      "reference_pixel": [
+        918,
+        625
+      ],
+      "projected_pixel": [
+        918.0000003240046,
+        625.0000000070652
+      ],
+      "dx": 3.2400464533566264e-07,
+      "dy": 7.06518221704755e-09,
+      "residual_px": 3.2408166717487836e-07,
+      "uncertainty_px": 5,
+      "pass": true,
+      "critical": true,
+      "world": [
+        1.3650000020861626,
+        -0.9399999976158142,
+        0.30905660372809507
+      ],
+      "row_id": 2
+    },
+    {
+      "semantic_id": "front_axle_L",
+      "landmark": "front_axle_L",
+      "phase": "axle_ground",
+      "view": "front",
+      "reference_pixel": [
+        310,
+        623
+      ],
+      "projected_pixel": [
+        314.06576470275854,
+        621.9948186597685
+      ],
+      "dx": 4.065764702758543,
+      "dy": -1.005181340231502,
+      "residual_px": 4.188177663966377,
+      "uncertainty_px": 5,
+      "pass": true,
+      "critical": true,
+      "world": [
+        -1.3650000020861626,
+        -0.9275000095367432,
+        0.30905660372809507
+      ],
+      "row_id": 3
+    },
+    {
+      "semantic_id": "front_axle_R",
+      "landmark": "front_axle_R",
+      "phase": "axle_ground",
+      "view": "front",
+      "reference_pixel": [
+        35,
+        623
+      ],
+      "projected_pixel": [
+        31.934235297241468,
+        621.9948186597685
+      ],
+      "dx": -3.065764702758532,
+      "dy": -1.005181340231502,
+      "residual_px": 3.226345105445124,
+      "uncertainty_px": 5,
+      "pass": true,
+      "critical": true,
+      "world": [
+        -1.3650000020861626,
+        0.9275000095367432,
+        0.30905660372809507
+      ],
+      "row_id": 4
+    },
+    {
+      "semantic_id": "rear_axle_L",
+      "landmark": "rear_axle_L",
+      "phase": "axle_ground",
+      "view": "rear",
+      "reference_pixel": [
+        1133,
+        623
+      ],
+      "projected_pixel": [
+        1129.0330812713453,
+        621.9948186597685
+      ],
+      "dx": -3.9669187286547185,
+      "dy": -1.005181340231502,
+      "residual_px": 4.092289545780108,
+      "uncertainty_px": 5,
+      "pass": true,
+      "critical": true,
+      "world": [
+        1.3650000020861626,
+        -0.9399999976158142,
+        0.30905660372809507
+      ],
+      "row_id": 5
+    },
+    {
+      "semantic_id": "rear_axle_R",
+      "landmark": "rear_axle_R",
+      "phase": "axle_ground",
+      "view": "rear",
+      "reference_pixel": [
+        1412,
+        623
+      ],
+      "projected_pixel": [
+        1414.9669187286547,
+        621.9948186597685
+      ],
+      "dx": 2.9669187286547185,
+      "dy": -1.005181340231502,
+      "residual_px": 3.1325702337205037,
+      "uncertainty_px": 5,
+      "pass": true,
+      "critical": true,
+      "world": [
+        1.3650000020861626,
+        0.9399999976158142,
+        0.30905660372809507
+      ],
+      "row_id": 6
+    },
+    {
+      "semantic_id": "front_axle_L",
+      "landmark": "front_axle_L",
+      "phase": "axle_ground",
+      "view": "top",
+      "reference_pixel": [
+        455,
+        1010
+      ],
+      "projected_pixel": [
+        453.9921982180316,
+        1018.4892761702544
+      ],
+      "dx": -1.0078017819683964,
+      "dy": 8.489276170254357,
+      "residual_px": 8.5488873151181,
+      "uncertainty_px": 10,
+      "pass": true,
+      "critical": true,
+      "world": [
+        -1.3650000020861626,
+        -0.9275000095367432,
+        0.30905660372809507
+      ],
+      "row_id": 7
+    },
+    {
+      "semantic_id": "front_axle_R",
+      "landmark": "front_axle_R",
+      "phase": "axle_ground",
+      "view": "top",
+      "reference_pixel": [
+        460,
+        725
+      ],
+      "projected_pixel": [
+        453.9921982180317,
+        731.1487238322511
+      ],
+      "dx": -6.007801781968283,
+      "dy": 6.1487238322511075,
+      "residual_px": 8.59653924650577,
+      "uncertainty_px": 10,
+      "pass": true,
+      "critical": true,
+      "world": [
+        -1.3650000020861626,
+        0.9275000095367432,
+        0.30905660372809507
+      ],
+      "row_id": 8
+    },
+    {
+      "semantic_id": "rear_axle_L",
+      "landmark": "rear_axle_L",
+      "phase": "axle_ground",
+      "view": "top",
+      "reference_pixel": [
+        925,
+        1026
+      ],
+      "projected_pixel": [
+        929.7141847606918,
+        1018.7875313925097
+      ],
+      "dx": 4.714184760691751,
+      "dy": -7.212468607490337,
+      "residual_px": 8.6164517855073,
+      "uncertainty_px": 10,
+      "pass": true,
+      "critical": true,
+      "world": [
+        1.3650000020861626,
+        -0.9399999976158142,
+        0.30905660372809507
+      ],
+      "row_id": 9
+    },
+    {
+      "semantic_id": "rear_axle_R",
+      "landmark": "rear_axle_R",
+      "phase": "axle_ground",
+      "view": "top",
+      "reference_pixel": [
+        926,
+        725
+      ],
+      "projected_pixel": [
+        929.7141847606918,
+        727.5744686049889
+      ],
+      "dx": 3.714184760691751,
+      "dy": 2.5744686049888514,
+      "residual_px": 4.519187652070677,
+      "uncertainty_px": 10,
+      "pass": true,
+      "critical": true,
+      "world": [
+        1.3650000020861626,
+        0.9399999976158142,
+        0.30905660372809507
+      ],
+      "row_id": 10
+    },
+    {
+      "semantic_id": "front_contact_L",
+      "landmark": "front_contact_L",
+      "phase": "axle_ground",
+      "view": "side",
+      "reference_pixel": [
+        494,
+        673
+      ],
+      "projected_pixel": [
+        493.9999996759952,
+        673.0
+      ],
+      "dx": -3.2400481586591923e-07,
+      "dy": 0.0,
+      "residual_px": 3.2400481586591923e-07,
+      "uncertainty_px": 5,
+      "pass": true,
+      "critical": true,
+      "world": [
+        -1.3650000020861626,
+        -0.9275000095367432,
+        0.0
+      ],
+      "row_id": 11
+    },
+    {
+      "semantic_id": "rear_contact_L",
+      "landmark": "rear_contact_L",
+      "phase": "axle_ground",
+      "view": "side",
+      "reference_pixel": [
+        918,
+        673
+      ],
+      "projected_pixel": [
+        918.0000003240046,
+        673.0
+      ],
+      "dx": 3.2400464533566264e-07,
+      "dy": 0.0,
+      "residual_px": 3.2400464533566264e-07,
+      "uncertainty_px": 5,
+      "pass": true,
+      "critical": true,
+      "world": [
+        1.3650000020861626,
+        -0.9399999976158142,
+        0.0
+      ],
+      "row_id": 12
+    },
+    {
+      "semantic_id": "front_contact_L",
+      "landmark": "front_contact_L",
+      "phase": "axle_ground",
+      "view": "front",
+      "reference_pixel": [
+        310,
+        669
+      ],
+      "projected_pixel": [
+        314.06576470275854,
+        669.0000000000001
+      ],
+      "dx": 4.065764702758543,
+      "dy": 1.1368683772161603e-13,
+      "residual_px": 4.065764702758543,
+      "uncertainty_px": 5,
+      "pass": true,
+      "critical": true,
+      "world": [
+        -1.3650000020861626,
+        -0.9275000095367432,
+        0.0
+      ],
+      "row_id": 13
+    },
+    {
+      "semantic_id": "rear_contact_L",
+      "landmark": "rear_contact_L",
+      "phase": "axle_ground",
+      "view": "rear",
+      "reference_pixel": [
+        1133,
+        669
+      ],
+      "projected_pixel": [
+        1129.0330812713453,
+        669.0000000000001
+      ],
+      "dx": -3.9669187286547185,
+      "dy": 1.1368683772161603e-13,
+      "residual_px": 3.9669187286547185,
+      "uncertainty_px": 5,
+      "pass": true,
+      "critical": true,
+      "world": [
+        1.3650000020861626,
+        -0.9399999976158142,
+        0.0
+      ],
+      "row_id": 14
+    },
+    {
+      "semantic_id": "hood_front_center_CENTER",
+      "landmark": "hood_front_center",
+      "phase": "envelope",
+      "view": "top",
+      "reference_pixel": [
+        350,
+        875
+      ],
+      "projected_pixel": [
+        350.0006110770418,
+        875.177062535287
+      ],
+      "dx": 0.0006110770418104039,
+      "dy": 0.17706253528695015,
+      "residual_px": 0.17706358975631747,
+      "uncertainty_px": 10,
+      "pass": true,
+      "critical": true,
+      "world": [
+        -1.9617708921432495,
+        0.0,
+        0.6383520364761353
+      ],
+      "deferred": false,
+      "row_id": 15
+    },
+    {
+      "semantic_id": "hood_front_center_CENTER",
+      "landmark": "hood_front_center",
+      "phase": "envelope",
+      "view": "front",
+      "reference_pixel": [
+        173,
+        572
+      ],
+      "projected_pixel": [
+        173.00000000000003,
+        571.9114638823065
+      ],
+      "dx": 2.842170943040401e-14,
+      "dy": -0.08853611769347935,
+      "residual_px": 0.08853611769347935,
+      "uncertainty_px": 5,
+      "pass": true,
+      "critical": true,
+      "world": [
+        -1.9617708921432495,
+        0.0,
+        0.6383520364761353
+      ],
+      "deferred": false,
+      "row_id": 16
+    },
+    {
+      "semantic_id": "roof_apex_CENTER",
+      "landmark": "roof_apex",
+      "phase": "envelope",
+      "view": "side",
+      "reference_pixel": [
+        733,
+        480
+      ],
+      "projected_pixel": [
+        732.999999664642,
+        481.01047545212975
+      ],
+      "dx": -3.3535798138473183e-07,
+      "dy": 1.0104754521297536,
+      "residual_px": 1.0104754521298092,
+      "uncertainty_px": 5,
+      "pass": true,
+      "critical": true,
+      "world": [
+        0.1738443374633789,
+        0.0,
+        1.2361589670181274
+      ],
+      "deferred": false,
+      "row_id": 17
+    },
+    {
+      "semantic_id": "roof_apex_CENTER",
+      "landmark": "roof_apex",
+      "phase": "envelope",
+      "view": "front",
+      "reference_pixel": [
+        173,
+        482
+      ],
+      "projected_pixel": [
+        173.00000000000003,
+        480.98953295571255
+      ],
+      "dx": 2.842170943040401e-14,
+      "dy": -1.0104670442874522,
+      "residual_px": 1.0104670442874522,
+      "uncertainty_px": 5,
+      "pass": true,
+      "critical": true,
+      "world": [
+        0.1738443374633789,
+        0.0,
+        1.2361589670181274
+      ],
+      "deferred": false,
+      "row_id": 18
+    },
+    {
+      "semantic_id": "roof_apex_CENTER",
+      "landmark": "roof_apex",
+      "phase": "envelope",
+      "view": "rear",
+      "reference_pixel": [
+        1272,
+        480
+      ],
+      "projected_pixel": [
+        1272.0000000000002,
+        480.98953295571255
+      ],
+      "dx": 2.2737367544323206e-13,
+      "dy": 0.9895329557125478,
+      "residual_px": 0.9895329557125478,
+      "uncertainty_px": 5,
+      "pass": true,
+      "critical": true,
+      "world": [
+        0.1738443374633789,
+        0.0,
+        1.2361589670181274
+      ],
+      "deferred": false,
+      "row_id": 19
+    },
+    {
+      "semantic_id": "trunk_rear_edge_CENTER",
+      "landmark": "trunk_rear_edge",
+      "phase": "envelope",
+      "view": "top",
+      "reference_pixel": [
+        1101,
+        875
+      ],
+      "projected_pixel": [
+        1100.9917177121583,
+        872.5912593364726
+      ],
+      "dx": -0.008282287841666403,
+      "dy": -2.4087406635273965,
+      "residual_px": 2.408754902521694,
+      "uncertainty_px": 10,
+      "pass": true,
+      "critical": true,
+      "world": [
+        2.3479011058807373,
+        0.0,
+        0.796912431716919
+      ],
+      "deferred": false,
+      "row_id": 20
+    },
+    {
+      "semantic_id": "trunk_rear_edge_CENTER",
+      "landmark": "trunk_rear_edge",
+      "phase": "envelope",
+      "view": "rear",
+      "reference_pixel": [
+        1272,
+        549
+      ],
+      "projected_pixel": [
+        1272.0000000000002,
+        547.7956221828713
+      ],
+      "dx": 2.2737367544323206e-13,
+      "dy": -1.2043778171287158,
+      "residual_px": 1.2043778171287158,
+      "uncertainty_px": 5,
+      "pass": true,
+      "critical": true,
+      "world": [
+        2.3479011058807373,
+        0.0,
+        0.796912431716919
+      ],
+      "deferred": false,
+      "row_id": 21
+    },
+    {
+      "semantic_id": "windshield_lower_corner_L",
+      "landmark": "windshield_lower_corner",
+      "phase": "greenhouse",
+      "view": "side",
+      "reference_pixel": [
+        591,
+        543
+      ],
+      "projected_pixel": [
+        590.9999993712038,
+        542.0702695112963
+      ],
+      "dx": -6.287962150963722e-07,
+      "dy": -0.9297304887037399,
+      "residual_px": 0.9297304887039525,
+      "uncertainty_px": 5,
+      "pass": true,
+      "critical": true,
+      "world": [
+        -0.7404481172561646,
+        -0.6805070638656616,
+        0.8430145382881165
+      ],
+      "deferred": false,
+      "row_id": 22
+    },
+    {
+      "semantic_id": "windshield_lower_corner_L",
+      "landmark": "windshield_lower_corner",
+      "phase": "greenhouse",
+      "view": "front",
+      "reference_pixel": [
+        276,
+        540
+      ],
+      "projected_pixel": [
+        276.4999982348093,
+        540.7838390551036
+      ],
+      "dx": 0.49999823480931127,
+      "dy": 0.7838390551036127,
+      "residual_px": 0.929732165259518,
+      "uncertainty_px": 5,
+      "pass": true,
+      "critical": true,
+      "world": [
+        -0.7404481172561646,
+        -0.6805070638656616,
+        0.8430145382881165
+      ],
+      "deferred": false,
+      "row_id": 23
+    },
+    {
+      "semantic_id": "windshield_lower_corner_R",
+      "landmark": "windshield_lower_corner",
+      "phase": "greenhouse",
+      "view": "front",
+      "reference_pixel": [
+        69,
+        540
+      ],
+      "projected_pixel": [
+        69.50000176519075,
+        540.7838390551036
+      ],
+      "dx": 0.5000017651907456,
+      "dy": 0.7838390551036127,
+      "residual_px": 0.9297340638589005,
+      "uncertainty_px": 5,
+      "pass": true,
+      "critical": true,
+      "world": [
+        -0.7404481172561646,
+        0.6805070638656616,
+        0.8430145382881165
+      ],
+      "deferred": false,
+      "row_id": 24
+    },
+    {
+      "semantic_id": "windshield_lower_corner_L",
+      "landmark": "windshield_lower_corner",
+      "phase": "greenhouse",
+      "view": "top",
+      "reference_pixel": [
+        571,
+        978
+      ],
+      "projected_pixel": [
+        562.824821989535,
+        979.8551980296636
+      ],
+      "dx": -8.175178010464947,
+      "dy": 1.8551980296635975,
+      "residual_px": 8.383036158341278,
+      "uncertainty_px": 10,
+      "pass": true,
+      "critical": true,
+      "world": [
+        -0.7404481172561646,
+        -0.6805070638656616,
+        0.8430145382881165
+      ],
+      "deferred": false,
+      "row_id": 25
+    },
+    {
+      "semantic_id": "windshield_lower_corner_R",
+      "landmark": "windshield_lower_corner",
+      "phase": "greenhouse",
+      "view": "top",
+      "reference_pixel": [
+        569,
+        745
+      ],
+      "projected_pixel": [
+        562.8248219895352,
+        769.0333397110456
+      ],
+      "dx": -6.175178010464833,
+      "dy": 24.03333971104564,
+      "residual_px": 24.813992849347155,
+      "uncertainty_px": 10,
+      "pass": false,
+      "critical": true,
+      "world": [
+        -0.7404481172561646,
+        0.6805070638656616,
+        0.8430145382881165
+      ],
+      "deferred": false,
+      "row_id": 26
+    },
+    {
+      "semantic_id": "a_pillar_roof_L",
+      "landmark": "a_pillar_roof",
+      "phase": "greenhouse",
+      "view": "side",
+      "reference_pixel": [
+        692,
+        491
+      ],
+      "projected_pixel": [
+        691.9999995310227,
+        491.2328063489755
+      ],
+      "dx": -4.6897730499040335e-07,
+      "dy": 0.2328063489754868,
+      "residual_px": 0.23280634897595917,
+      "uncertainty_px": 5,
+      "pass": true,
+      "critical": true,
+      "world": [
+        -0.09014151245355606,
+        -0.46024632453918457,
+        1.170340657234192
+      ],
+      "deferred": false,
+      "row_id": 27
+    },
+    {
+      "semantic_id": "a_pillar_roof_L",
+      "landmark": "a_pillar_roof",
+      "phase": "greenhouse",
+      "view": "front",
+      "reference_pixel": [
+        244,
+        491
+      ],
+      "projected_pixel": [
+        242.9999989813284,
+        491.00000207231267
+      ],
+      "dx": -1.000001018671611,
+      "dy": 2.072312668133236e-06,
+      "residual_px": 1.0000010186737582,
+      "uncertainty_px": 5,
+      "pass": true,
+      "critical": true,
+      "world": [
+        -0.09014151245355606,
+        -0.46024632453918457,
+        1.170340657234192
+      ],
+      "deferred": false,
+      "row_id": 28
+    },
+    {
+      "semantic_id": "a_pillar_roof_R",
+      "landmark": "a_pillar_roof",
+      "phase": "greenhouse",
+      "view": "front",
+      "reference_pixel": [
+        104,
+        491
+      ],
+      "projected_pixel": [
+        103.00000101867168,
+        491.00000207231267
+      ],
+      "dx": -0.9999989813283179,
+      "dy": 2.072312668133236e-06,
+      "residual_px": 0.9999989813304652,
+      "uncertainty_px": 5,
+      "pass": true,
+      "critical": true,
+      "world": [
+        -0.09014151245355606,
+        0.46024632453918457,
+        1.170340657234192
+      ],
+      "deferred": false,
+      "row_id": 29
+    },
+    {
+      "semantic_id": "a_pillar_roof_L",
+      "landmark": "a_pillar_roof",
+      "phase": "greenhouse",
+      "view": "top",
+      "reference_pixel": [
+        640,
+        944
+      ],
+      "projected_pixel": [
+        676.1453895447362,
+        945.3465009424219
+      ],
+      "dx": 36.14538954473619,
+      "dy": 1.346500942421926,
+      "residual_px": 36.170461016258386,
+      "uncertainty_px": 10,
+      "pass": false,
+      "critical": true,
+      "world": [
+        -0.09014151245355606,
+        -0.46024632453918457,
+        1.170340657234192
+      ],
+      "deferred": false,
+      "row_id": 30
+    },
+    {
+      "semantic_id": "a_pillar_roof_R",
+      "landmark": "a_pillar_roof",
+      "phase": "greenhouse",
+      "view": "top",
+      "reference_pixel": [
+        640,
+        765
+      ],
+      "projected_pixel": [
+        676.1453895447363,
+        802.7616688725242
+      ],
+      "dx": 36.145389544736304,
+      "dy": 37.76166887252418,
+      "residual_px": 52.27267757996422,
+      "uncertainty_px": 10,
+      "pass": false,
+      "critical": true,
+      "world": [
+        -0.09014151245355606,
+        0.46024632453918457,
+        1.170340657234192
+      ],
+      "deferred": false,
+      "row_id": 31
+    },
+    {
+      "semantic_id": "b_pillar_roof_L",
+      "landmark": "b_pillar_roof",
+      "phase": "greenhouse",
+      "view": "side",
+      "reference_pixel": [
+        765,
+        489
+      ],
+      "projected_pixel": [
+        764.9999987528876,
+        489.0000063997486
+      ],
+      "dx": -1.2471124364310526e-06,
+      "dy": 6.399748599505983e-06,
+      "residual_px": 6.520128186315035e-06,
+      "uncertainty_px": 5,
+      "pass": true,
+      "critical": true,
+      "world": [
+        0.3798820674419403,
+        -0.6165245175361633,
+        1.1847169399261475
+      ],
+      "deferred": false,
+      "row_id": 32
+    },
+    {
+      "semantic_id": "b_pillar_roof_L",
+      "landmark": "b_pillar_roof",
+      "phase": "greenhouse",
+      "view": "top",
+      "reference_pixel": [
+        777,
+        947
+      ],
+      "projected_pixel": [
+        758.0503532106866,
+        969.2720672971338
+      ],
+      "dx": -18.94964678931342,
+      "dy": 22.272067297133844,
+      "residual_px": 29.242675922832287,
+      "uncertainty_px": 10,
+      "pass": false,
+      "critical": true,
+      "world": [
+        0.3798820674419403,
+        -0.6165245175361633,
+        1.1847169399261475
+      ],
+      "deferred": false,
+      "row_id": 33
+    },
+    {
+      "semantic_id": "b_pillar_roof_R",
+      "landmark": "b_pillar_roof",
+      "phase": "greenhouse",
+      "view": "top",
+      "reference_pixel": [
+        774,
+        756
+      ],
+      "projected_pixel": [
+        758.0503532106865,
+        778.2720742219377
+      ],
+      "dx": -15.949646789313533,
+      "dy": 22.272074221937714,
+      "residual_px": 27.394096496350485,
+      "uncertainty_px": 10,
+      "pass": false,
+      "critical": true,
+      "world": [
+        0.3798820674419403,
+        0.6165245175361633,
+        1.1847169399261475
+      ],
+      "deferred": false,
+      "row_id": 34
+    },
+    {
+      "semantic_id": "c_pillar_side_roof_L",
+      "landmark": "c_pillar_side_roof",
+      "phase": "greenhouse",
+      "view": "side",
+      "reference_pixel": [
+        835,
+        492
+      ],
+      "projected_pixel": [
+        835.0000045692528,
+        491.99999401944905
+      ],
+      "dx": 4.569252837427484e-06,
+      "dy": -5.980550952244812e-06,
+      "residual_px": 7.5262913300466545e-06,
+      "uncertainty_px": 5,
+      "pass": true,
+      "critical": true,
+      "world": [
+        0.8305896520614624,
+        -0.6132966876029968,
+        1.1654009819030762
+      ],
+      "deferred": false,
+      "row_id": 35
+    },
+    {
+      "semantic_id": "c_pillar_side_roof_L",
+      "landmark": "c_pillar_side_roof",
+      "phase": "greenhouse",
+      "view": "top",
+      "reference_pixel": [
+        874,
+        947
+      ],
+      "projected_pixel": [
+        836.5893668287645,
+        968.5016500637138
+      ],
+      "dx": -37.41063317123553,
+      "dy": 21.501650063713782,
+      "residual_px": 43.14946615817108,
+      "uncertainty_px": 10,
+      "pass": false,
+      "critical": true,
+      "world": [
+        0.8305896520614624,
+        -0.6132966876029968,
+        1.1654009819030762
+      ],
+      "deferred": false,
+      "row_id": 36
+    },
+    {
+      "semantic_id": "c_pillar_side_roof_R",
+      "landmark": "c_pillar_side_roof",
+      "phase": "greenhouse",
+      "view": "top",
+      "reference_pixel": [
+        871,
+        757
+      ],
+      "projected_pixel": [
+        836.5893668287645,
+        778.5016423538143
+      ],
+      "dx": -34.41063317123553,
+      "dy": 21.501642353814304,
+      "residual_px": 40.576006446626515,
+      "uncertainty_px": 10,
+      "pass": false,
+      "critical": true,
+      "world": [
+        0.8305896520614624,
+        0.6132966876029968,
+        1.1654009819030762
+      ],
+      "deferred": false,
+      "row_id": 37
+    },
+    {
+      "semantic_id": "c_pillar_rear_roof_L",
+      "landmark": "c_pillar_rear_roof",
+      "phase": "greenhouse",
+      "view": "side",
+      "reference_pixel": [
+        868,
+        494
+      ],
+      "projected_pixel": [
+        867.999997987852,
+        492.4466391762535
+      ],
+      "dx": -2.0121480019952287e-06,
+      "dy": -1.553360823746516,
+      "residual_px": 1.5533608237478191,
+      "uncertainty_px": 5,
+      "pass": true,
+      "critical": true,
+      "world": [
+        1.0430660247802734,
+        -0.4668212831020355,
+        1.1625251770019531
+      ],
+      "deferred": false,
+      "row_id": 38
+    },
+    {
+      "semantic_id": "c_pillar_rear_roof_L",
+      "landmark": "c_pillar_rear_roof",
+      "phase": "greenhouse",
+      "view": "rear",
+      "reference_pixel": [
+        1202,
+        491
+      ],
+      "projected_pixel": [
+        1200.9999993496467,
+        492.18867774254875
+      ],
+      "dx": -1.000000650353286,
+      "dy": 1.188677742548748,
+      "residual_px": 1.5533692659306038,
+      "uncertainty_px": 5,
+      "pass": true,
+      "critical": true,
+      "world": [
+        1.0430660247802734,
+        -0.4668212831020355,
+        1.1625251770019531
+      ],
+      "deferred": false,
+      "row_id": 39
+    },
+    {
+      "semantic_id": "c_pillar_rear_roof_R",
+      "landmark": "c_pillar_rear_roof",
+      "phase": "greenhouse",
+      "view": "rear",
+      "reference_pixel": [
+        1344,
+        491
+      ],
+      "projected_pixel": [
+        1343.0000006503535,
+        492.18867774254875
+      ],
+      "dx": -0.9999993496464867,
+      "dy": 1.188677742548748,
+      "residual_px": 1.553368428584856,
+      "uncertainty_px": 5,
+      "pass": true,
+      "critical": true,
+      "world": [
+        1.0430660247802734,
+        0.4668212831020355,
+        1.1625251770019531
+      ],
+      "deferred": false,
+      "row_id": 40
+    },
+    {
+      "semantic_id": "c_pillar_rear_roof_L",
+      "landmark": "c_pillar_rear_roof",
+      "phase": "greenhouse",
+      "view": "top",
+      "reference_pixel": [
+        884,
+        938
+      ],
+      "projected_pixel": [
+        873.6148913594199,
+        945.6850412209569
+      ],
+      "dx": -10.385108640580142,
+      "dy": 7.6850412209569186,
+      "residual_px": 12.919378469743014,
+      "uncertainty_px": 10,
+      "pass": false,
+      "critical": true,
+      "world": [
+        1.0430660247802734,
+        -0.4668212831020355,
+        1.1625251770019531
+      ],
+      "deferred": false,
+      "row_id": 41
+    },
+    {
+      "semantic_id": "c_pillar_rear_roof_R",
+      "landmark": "c_pillar_rear_roof",
+      "phase": "greenhouse",
+      "view": "top",
+      "reference_pixel": [
+        884,
+        764
+      ],
+      "projected_pixel": [
+        873.6148913594196,
+        801.0632795493086
+      ],
+      "dx": -10.38510864058037,
+      "dy": 37.06327954930862,
+      "residual_px": 38.49074138577816,
+      "uncertainty_px": 10,
+      "pass": false,
+      "critical": true,
+      "world": [
+        1.0430660247802734,
+        0.4668212831020355,
+        1.1625251770019531
+      ],
+      "deferred": false,
+      "row_id": 42
+    },
+    {
+      "semantic_id": "b_pillar_window_intersection_L",
+      "landmark": "b_pillar_window_intersection",
+      "phase": "greenhouse",
+      "view": "side",
+      "reference_pixel": [
+        759,
+        545
+      ],
+      "projected_pixel": [
+        759.0000003702911,
+        545.0000036470183
+      ],
+      "dx": 3.702911044456414e-07,
+      "dy": 3.647018274932634e-06,
+      "residual_px": 3.6657683778062382e-06,
+      "uncertainty_px": 5,
+      "pass": true,
+      "critical": true,
+      "world": [
+        0.3412500023841858,
+        -0.771462619304657,
+        0.8241509199142456
+      ],
+      "deferred": false,
+      "row_id": 43
+    },
+    {
+      "semantic_id": "b_pillar_window_intersection_L",
+      "landmark": "b_pillar_window_intersection",
+      "phase": "greenhouse",
+      "view": "top",
+      "reference_pixel": [
+        765,
+        983
+      ],
+      "projected_pixel": [
+        751.3184401317734,
+        993.2952461494284
+      ],
+      "dx": -13.6815598682266,
+      "dy": 10.295246149428408,
+      "residual_px": 17.12241728568689,
+      "uncertainty_px": 10,
+      "pass": false,
+      "critical": true,
+      "world": [
+        0.3412500023841858,
+        -0.771462619304657,
+        0.8241509199142456
+      ],
+      "deferred": false,
+      "row_id": 44
+    },
+    {
+      "semantic_id": "b_pillar_window_intersection_R",
+      "landmark": "b_pillar_window_intersection",
+      "phase": "greenhouse",
+      "view": "top",
+      "reference_pixel": [
+        762,
+        744
+      ],
+      "projected_pixel": [
+        751.3184401317734,
+        754.2952538477125
+      ],
+      "dx": -10.6815598682266,
+      "dy": 10.295253847712502,
+      "residual_px": 14.835362247257333,
+      "uncertainty_px": 10,
+      "pass": false,
+      "critical": true,
+      "world": [
+        0.3412500023841858,
+        0.771462619304657,
+        0.8241509199142456
+      ],
+      "deferred": false,
+      "row_id": 45
+    },
+    {
+      "semantic_id": "c_pillar_window_intersection_L",
+      "landmark": "c_pillar_window_intersection",
+      "phase": "greenhouse",
+      "view": "side",
+      "reference_pixel": [
+        891,
+        543
+      ],
+      "projected_pixel": [
+        891.0000018165225,
+        542.9999964717543
+      ],
+      "dx": 1.8165225128541351e-06,
+      "dy": -3.5282456565255416e-06,
+      "residual_px": 3.9684091841060505e-06,
+      "uncertainty_px": 5,
+      "pass": true,
+      "critical": true,
+      "world": [
+        1.1911556720733643,
+        -0.771462619304657,
+        0.8370283246040344
+      ],
+      "deferred": false,
+      "row_id": 46
+    },
+    {
+      "semantic_id": "c_pillar_window_intersection_L",
+      "landmark": "c_pillar_window_intersection",
+      "phase": "greenhouse",
+      "view": "top",
+      "reference_pixel": [
+        914,
+        983
+      ],
+      "projected_pixel": [
+        899.420569413999,
+        992.785302747615
+      ],
+      "dx": -14.579430586000967,
+      "dy": 9.785302747614992,
+      "residual_px": 17.55881391422843,
+      "uncertainty_px": 10,
+      "pass": false,
+      "critical": true,
+      "world": [
+        1.1911556720733643,
+        -0.771462619304657,
+        0.8370283246040344
+      ],
+      "deferred": false,
+      "row_id": 47
+    },
+    {
+      "semantic_id": "c_pillar_window_intersection_R",
+      "landmark": "c_pillar_window_intersection",
+      "phase": "greenhouse",
+      "view": "top",
+      "reference_pixel": [
+        911,
+        744
+      ],
+      "projected_pixel": [
+        899.420569413999,
+        753.7853104458989
+      ],
+      "dx": -11.579430586000967,
+      "dy": 9.785310445898858,
+      "residual_px": 15.160326949595513,
+      "uncertainty_px": 10,
+      "pass": false,
+      "critical": true,
+      "world": [
+        1.1911556720733643,
+        0.771462619304657,
+        0.8370283246040344
+      ],
+      "deferred": false,
+      "row_id": 48
+    },
+    {
+      "semantic_id": "rear_glass_lower_corner_L",
+      "landmark": "rear_glass_lower_corner",
+      "phase": "greenhouse",
+      "view": "side",
+      "reference_pixel": [
+        960,
+        534
+      ],
+      "projected_pixel": [
+        959.9999947879777,
+        530.0024631835603
+      ],
+      "dx": -5.21202230174822e-06,
+      "dy": -3.9975368164397196,
+      "residual_px": 3.9975368164431173,
+      "uncertainty_px": 5,
+      "pass": true,
+      "critical": true,
+      "world": [
+        1.6354244947433472,
+        -0.5950327515602112,
+        0.9207152724266052
+      ],
+      "deferred": false,
+      "row_id": 49
+    },
+    {
+      "semantic_id": "rear_glass_lower_corner_L",
+      "landmark": "rear_glass_lower_corner",
+      "phase": "greenhouse",
+      "view": "rear",
+      "reference_pixel": [
+        1181,
+        525
+      ],
+      "projected_pixel": [
+        1181.5000007989731,
+        528.966142703072
+      ],
+      "dx": 0.500000798973133,
+      "dy": 3.9661427030720233,
+      "residual_px": 3.997535333190343,
+      "uncertainty_px": 5,
+      "pass": true,
+      "critical": true,
+      "world": [
+        1.6354244947433472,
+        -0.5950327515602112,
+        0.9207152724266052
+      ],
+      "deferred": false,
+      "row_id": 50
+    },
+    {
+      "semantic_id": "rear_glass_lower_corner_R",
+      "landmark": "rear_glass_lower_corner",
+      "phase": "greenhouse",
+      "view": "rear",
+      "reference_pixel": [
+        1362,
+        525
+      ],
+      "projected_pixel": [
+        1362.499999201027,
+        528.966142703072
+      ],
+      "dx": 0.4999992010270944,
+      "dy": 3.9661427030720233,
+      "residual_px": 3.997535133323932,
+      "uncertainty_px": 5,
+      "pass": true,
+      "critical": true,
+      "world": [
+        1.6354244947433472,
+        0.5950327515602112,
+        0.9207152724266052
+      ],
+      "deferred": false,
+      "row_id": 51
+    },
+    {
+      "semantic_id": "rear_glass_lower_corner_L",
+      "landmark": "rear_glass_lower_corner",
+      "phase": "greenhouse",
+      "view": "top",
+      "reference_pixel": [
+        981,
+        961
+      ],
+      "projected_pixel": [
+        976.8375828046674,
+        965.1896551330699
+      ],
+      "dx": -4.162417195332637,
+      "dy": 4.189655133069891,
+      "residual_px": 5.905838386043061,
+      "uncertainty_px": 10,
+      "pass": true,
+      "critical": true,
+      "world": [
+        1.6354244947433472,
+        -0.5950327515602112,
+        0.9207152724266052
+      ],
+      "deferred": false,
+      "row_id": 52
+    },
+    {
+      "semantic_id": "rear_glass_lower_corner_R",
+      "landmark": "rear_glass_lower_corner",
+      "phase": "greenhouse",
+      "view": "top",
+      "reference_pixel": [
+        983,
+        754
+      ],
+      "projected_pixel": [
+        976.8375828046674,
+        780.8478354732398
+      ],
+      "dx": -6.162417195332637,
+      "dy": 26.847835473239797,
+      "residual_px": 27.545991637395893,
+      "uncertainty_px": 10,
+      "pass": false,
+      "critical": true,
+      "world": [
+        1.6354244947433472,
+        0.5950327515602112,
+        0.9207152724266052
+      ],
+      "deferred": false,
+      "row_id": 53
+    },
+    {
+      "semantic_id": "front_door_leading_edge_L",
+      "landmark": "front_door_leading_edge",
+      "phase": "door_cuts",
+      "view": "side",
+      "reference_pixel": [
+        591,
+        648
+      ],
+      "projected_pixel": [
+        558.4542143056681,
+        645.0439549330828
+      ],
+      "dx": -32.545785694331926,
+      "dy": -2.956045066917227,
+      "residual_px": 32.67975472519686,
+      "uncertainty_px": 5,
+      "pass": false,
+      "critical": true,
+      "world": [
+        -0.949999988079071,
+        -0.9200000166893005,
+        0.18000000715255737
+      ],
+      "deferred": true,
+      "row_id": 54
+    },
+    {
+      "semantic_id": "front_door_upper_leading_edge_L",
+      "landmark": "front_door_upper_leading_edge",
+      "phase": "door_cuts",
+      "view": "side",
+      "reference_pixel": [
+        591,
+        550
+      ],
+      "projected_pixel": [
+        583.3040259714091,
+        551.8571473006365
+      ],
+      "dx": -7.695974028590854,
+      "dy": 1.857147300636484,
+      "residual_px": 7.916881478524629,
+      "uncertainty_px": 5,
+      "pass": false,
+      "critical": true,
+      "world": [
+        -0.7900000214576721,
+        -0.8899999856948853,
+        0.7799999713897705
+      ],
+      "deferred": true,
+      "row_id": 55
+    },
+    {
+      "semantic_id": "b_pillar_lower_attachment_door_separator_L",
+      "landmark": "b_pillar_lower_attachment_door_separator",
+      "phase": "door_cuts",
+      "view": "side",
+      "reference_pixel": [
+        770,
+        639
+      ],
+      "projected_pixel": [
+        747.934067600376,
+        645.0439549330828
+      ],
+      "dx": -22.06593239962399,
+      "dy": 6.043954933082773,
+      "residual_px": 22.878696726385254,
+      "uncertainty_px": 5,
+      "pass": false,
+      "critical": true,
+      "world": [
+        0.27000001072883606,
+        -0.9200000166893005,
+        0.18000000715255737
+      ],
+      "deferred": true,
+      "row_id": 56
+    },
+    {
+      "semantic_id": "rear_door_trailing_edge_L",
+      "landmark": "rear_door_trailing_edge",
+      "phase": "door_cuts",
+      "view": "side",
+      "reference_pixel": [
+        878,
+        642
+      ],
+      "projected_pixel": [
+        855.0988977662811,
+        645.0439549330828
+      ],
+      "dx": -22.901102233718916,
+      "dy": 3.043954933082773,
+      "residual_px": 23.102513827587778,
+      "uncertainty_px": 5,
+      "pass": false,
+      "critical": true,
+      "world": [
+        0.9599999785423279,
+        -0.9200000166893005,
+        0.18000000715255737
+      ],
+      "deferred": true,
+      "row_id": 57
+    },
+    {
+      "semantic_id": "body_lower_line_L",
+      "landmark": "body_lower_line",
+      "phase": "envelope",
+      "view": "side",
+      "reference_pixel": [
+        706,
+        659
+      ],
+      "projected_pixel": [
+        706.0,
+        658.9999995310228
+      ],
+      "dx": 0.0,
+      "dy": -4.6897719130356563e-07,
+      "residual_px": 4.6897719130356563e-07,
+      "uncertainty_px": 5,
+      "pass": true,
+      "critical": true,
+      "world": [
+        0.0,
+        -0.9900000095367432,
+        0.09014151245355606
+      ],
+      "deferred": false,
+      "row_id": 58
+    },
+    {
+      "semantic_id": "windshield_lower_center_CENTER",
+      "landmark": "windshield_lower_center",
+      "phase": "greenhouse",
+      "view": "front",
+      "reference_pixel": [
+        173,
+        539
+      ],
+      "projected_pixel": [
+        173.00000000000003,
+        539.0000005967592
+      ],
+      "dx": 2.842170943040401e-14,
+      "dy": 5.967591505395831e-07,
+      "residual_px": 5.967591505395837e-07,
+      "uncertainty_px": 5,
+      "pass": true,
+      "critical": true,
+      "world": [
+        -0.7904481291770935,
+        0.0,
+        0.8547431826591492
+      ],
+      "deferred": false,
+      "row_id": 59
+    },
+    {
+      "semantic_id": "windshield_lower_center_CENTER",
+      "landmark": "windshield_lower_center",
+      "phase": "greenhouse",
+      "view": "top",
+      "reference_pixel": [
+        534,
+        858
+      ],
+      "projected_pixel": [
+        554.1119630291583,
+        874.4742688775073
+      ],
+      "dx": 20.111963029158346,
+      "dy": 16.474268877507257,
+      "residual_px": 25.99793437822775,
+      "uncertainty_px": 10,
+      "pass": false,
+      "critical": true,
+      "world": [
+        -0.7904481291770935,
+        0.0,
+        0.8547431826591492
+      ],
+      "deferred": false,
+      "row_id": 60
+    },
+    {
+      "semantic_id": "windshield_upper_center_CENTER",
+      "landmark": "windshield_upper_center",
+      "phase": "greenhouse",
+      "view": "front",
+      "reference_pixel": [
+        173,
+        489
+      ],
+      "projected_pixel": [
+        173.00000000000003,
+        489.00000779967996
+      ],
+      "dx": 2.842170943040401e-14,
+      "dy": 7.79967996322739e-06,
+      "residual_px": 7.79967996322739e-06,
+      "uncertainty_px": 5,
+      "pass": true,
+      "critical": true,
+      "world": [
+        -0.12014150619506836,
+        0.0,
+        1.183490514755249
+      ],
+      "deferred": false,
+      "row_id": 61
+    },
+    {
+      "semantic_id": "windshield_upper_center_CENTER",
+      "landmark": "windshield_upper_center",
+      "phase": "greenhouse",
+      "view": "top",
+      "reference_pixel": [
+        632,
+        858
+      ],
+      "projected_pixel": [
+        670.9176765054806,
+        874.0720849037181
+      ],
+      "dx": 38.917676505480586,
+      "dy": 16.072084903718064,
+      "residual_px": 42.10578888629873,
+      "uncertainty_px": 10,
+      "pass": false,
+      "critical": true,
+      "world": [
+        -0.12014150619506836,
+        0.0,
+        1.183490514755249
+      ],
+      "deferred": false,
+      "row_id": 62
+    },
+    {
+      "semantic_id": "rear_glass_upper_center_CENTER",
+      "landmark": "rear_glass_upper_center",
+      "phase": "greenhouse",
+      "view": "rear",
+      "reference_pixel": [
+        1272,
+        485
+      ],
+      "projected_pixel": [
+        1272.0000000000002,
+        485.0000011235797
+      ],
+      "dx": 2.2737367544323206e-13,
+      "dy": 1.1235796932851372e-06,
+      "residual_px": 1.1235796932851603e-06,
+      "uncertainty_px": 5,
+      "pass": true,
+      "critical": true,
+      "world": [
+        1.013066053390503,
+        0.0,
+        1.2097903490066528
+      ],
+      "deferred": false,
+      "row_id": 63
+    },
+    {
+      "semantic_id": "rear_glass_upper_center_CENTER",
+      "landmark": "rear_glass_upper_center",
+      "phase": "greenhouse",
+      "view": "top",
+      "reference_pixel": [
+        880,
+        855
+      ],
+      "projected_pixel": [
+        868.3871822151146,
+        873.3921603679667
+      ],
+      "dx": -11.612817784885351,
+      "dy": 18.392160367966653,
+      "residual_px": 21.75153097843811,
+      "uncertainty_px": 10,
+      "pass": false,
+      "critical": true,
+      "world": [
+        1.013066053390503,
+        0.0,
+        1.2097903490066528
+      ],
+      "deferred": false,
+      "row_id": 64
+    },
+    {
+      "semantic_id": "rear_glass_lower_center_CENTER",
+      "landmark": "rear_glass_lower_center",
+      "phase": "greenhouse",
+      "view": "rear",
+      "reference_pixel": [
+        1272,
+        525
+      ],
+      "projected_pixel": [
+        1272.0000000000002,
+        525.0000044266606
+      ],
+      "dx": 2.2737367544323206e-13,
+      "dy": 4.426660552780959e-06,
+      "residual_px": 4.426660552780965e-06,
+      "uncertainty_px": 5,
+      "pass": true,
+      "critical": true,
+      "world": [
+        1.7154245376586914,
+        0.0,
+        0.9467924237251282
+      ],
+      "deferred": false,
+      "row_id": 65
+    },
+    {
+      "semantic_id": "rear_glass_lower_center_CENTER",
+      "landmark": "rear_glass_lower_center",
+      "phase": "greenhouse",
+      "view": "top",
+      "reference_pixel": [
+        1000,
+        859
+      ],
+      "projected_pixel": [
+        990.7781612958838,
+        872.9707452774059
+      ],
+      "dx": -9.22183870411618,
+      "dy": 13.970745277405854,
+      "residual_px": 16.73989344920968,
+      "uncertainty_px": 10,
+      "pass": false,
+      "critical": true,
+      "world": [
+        1.7154245376586914,
+        0.0,
+        0.9467924237251282
+      ],
+      "deferred": false,
+      "row_id": 66
+    }
+  ],
+  "unobserved_policy": "Occluded end-view B-pillar/door-foot and TOP roof-apex reference pixels are not fabricated.",
+  "projection_source": "Actual world-space Blender Bezier controls exported by read-only inspection; B-pillar values are midpoints of its two trim boundaries. JSON-to-Blender control error is independently checked.",
+  "maximum_json_to_blender_control_delta_m": 1.066854755738907e-07,
+  "source_checkpoint_sha256": "fd144b554945c936bdd7e7c9c1d40f2bc08e1bd0fc17f68cf736a58aa7757117"
+}

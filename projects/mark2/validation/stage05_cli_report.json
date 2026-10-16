@@ -1,0 +1,65 @@
+{
+  "status": "PASS",
+  "stages": [
+    {
+      "stage": "preflight",
+      "status": "PASS",
+      "message": "",
+      "outputs": [
+        "validation/runtime.json"
+      ]
+    },
+    {
+      "stage": "references",
+      "status": "SKIP",
+      "message": "Verified cache outputs",
+      "outputs": [
+        "validation/reference_inventory.json"
+      ]
+    },
+    {
+      "stage": "calibration",
+      "status": "PASS",
+      "message": "",
+      "outputs": [
+        ".cache/calibration.blend",
+        "validation/reference_alignment.png",
+        "validation/calibration_migration_report.json",
+        "validation/alignment_top.png",
+        "validation/alignment_side.png",
+        "validation/alignment_front.png",
+        "validation/alignment_rear.png",
+        "generated/crop_top.png",
+        "generated/crop_side.png",
+        "generated/crop_front.png",
+        "generated/crop_rear.png"
+      ]
+    },
+    {
+      "stage": "overlay",
+      "status": "SKIP",
+      "message": "Verified cache outputs",
+      "outputs": [
+        "generated/overlay_raw.json"
+      ]
+    },
+    {
+      "stage": "cage",
+      "status": "PASS",
+      "message": "",
+      "outputs": [
+        ".cache/cage.blend",
+        "validation/cage_inventory.json",
+        "validation/cage_front.png",
+        "validation/cage_side.png",
+        "validation/cage_rear.png",
+        "validation/cage_top.png",
+        "validation/cage_perspective.png",
+        "validation/cage_overlay_front.png",
+        "validation/cage_overlay_side.png",
+        "validation/cage_overlay_rear.png",
+        "validation/cage_overlay_top.png"
+      ]
+    }
+  ]
+}

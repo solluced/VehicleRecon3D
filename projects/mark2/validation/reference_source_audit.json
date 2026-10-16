@@ -1,0 +1,34 @@
+{
+  "status": "PASS",
+  "base_commit": "060309de6014a760339ab100e4d61ecece102b72",
+  "profile": "sedan",
+  "source_policy": "Images and reference documents only; no source-package Python read or executed.",
+  "references": [
+    {
+      "role": "multiview",
+      "path": "input/multiview.png",
+      "sha256": "5c9a5bfaff9414ef3c8e835fdea43f21741d54d5836d4d4e01e5ca599accd09a",
+      "width_px": 1448,
+      "height_px": 1086
+    },
+    {
+      "role": "control_overlay",
+      "path": "input/control_overlay.png",
+      "sha256": "571a4f9e4a431974239f11c1df859f57c5e3727fcee53497e9a725a879a0e9d2",
+      "width_px": 1448,
+      "height_px": 1086
+    },
+    {
+      "role": "surface_target",
+      "path": "input/surface_target.png",
+      "sha256": "50a153cf66a12b462b15b4dfc1fe6c47ea769e3eb57c7facf79e02d092c1fc06",
+      "width_px": 1448,
+      "height_px": 1086
+    }
+  ],
+  "source_files_modified": false,
+  "framework_core_modified": false,
+  "project_specific_python_files": 0,
+  "metric_scale_status": "AUTHORITATIVE_WHEELBASE_USER_HANDOFF_2026_10_16",
+  "metric_scale_reason": "Official stock E-JZX100 dimensions are recorded separately; the current handoff fixes 2.730 m wheelbase for the build unless modified axles are evidenced. No axle modification was found."
+}

@@ -1,0 +1,649 @@
+{
+  "objects": [
+    {
+      "name": "HOOD_bottom_L",
+      "curve_sha256": "ec61a14dc1f8e0351ee440110c108d86185265244c90c2bba9074cadd05b0a80"
+    },
+    {
+      "name": "HOOD_bottom_R",
+      "curve_sha256": "33c3a7b159369333f4f3778244926e18a8e06c27841854e6cecde40156fd5605"
+    },
+    {
+      "name": "HOOD_top_L",
+      "curve_sha256": "15ffef55b72aa31ab32760f519493e2650679dfebe5e264255dac5a18a0192e8"
+    },
+    {
+      "name": "HOOD_top_R",
+      "curve_sha256": "963f5c232c222bf38e87c871d36133dd7052d9222823fbd2f2461d3bb88cc6cd"
+    },
+    {
+      "name": "ROOF_bottom_L",
+      "curve_sha256": "74fc9f9c3ca092c2069dde23923006e6343a331edd94b7ec5344a93e3bc8e222"
+    },
+    {
+      "name": "ROOF_bottom_R",
+      "curve_sha256": "d1cbfab0185583d82d1d80783c9ece386d0dafdd74a02208f65cf83047bb0cc3"
+    },
+    {
+      "name": "ROOF_top_L",
+      "curve_sha256": "0ee4db9e38967b6a36bd0abd994bce9c01a20d76499b1d6e05abf90b99ec4568"
+    },
+    {
+      "name": "ROOF_top_R",
+      "curve_sha256": "c36eaf2ea4f3cf20c73188e36d3065b211e87a8bb5cdd2ea1a449a4f099a4450"
+    },
+    {
+      "name": "WINDSHIELD_bottom_L",
+      "curve_sha256": "85509e5f225717df2b1bd5414774214edd99879972a2d24306b7d422eb0f6bac"
+    },
+    {
+      "name": "WINDSHIELD_bottom_R",
+      "curve_sha256": "7d77630955bf4eeda32658b2b5e67428b2f339378f2257979a7a91078fe188dc"
+    },
+    {
+      "name": "WINDSHIELD_top_L",
+      "curve_sha256": "05d2694971723eb196a7243a8d12de00c1e7c8b6497c79a831ee64a0787a04c2"
+    },
+    {
+      "name": "WINDSHIELD_top_R",
+      "curve_sha256": "fea538c10bd13c476b56ea19b8e9cffdf0e84feec2ecbeb5e0ed92487346e569"
+    },
+    {
+      "name": "REAR_GLASS_bottom_L",
+      "curve_sha256": "b15ad805d0fde0610d1e26e021ff17bb7e1ccf4f49f5c2570a63782c52a5a7c1"
+    },
+    {
+      "name": "REAR_GLASS_bottom_R",
+      "curve_sha256": "ad76840c73a4eb7a246c19c6eb6c7cd5e70312973a846c2a38da060c37bec455"
+    },
+    {
+      "name": "REAR_GLASS_top_L",
+      "curve_sha256": "81a06c7763cc03abb37db6ed46b9c63de8beb9bc758e537bbfa7eae23b7b5b79"
+    },
+    {
+      "name": "REAR_GLASS_top_R",
+      "curve_sha256": "25d68d34d98b28714cb426349457554b055bdb29fc4fa86f28d3f8b60dbf3919"
+    },
+    {
+      "name": "TRUNK_bottom_L",
+      "curve_sha256": "27c9ea6b56e1ed2a246d8e6adf3d85e6722929ced9f78fda8f71e72255315457"
+    },
+    {
+      "name": "TRUNK_bottom_R",
+      "curve_sha256": "815d60ec90a8ec3159c0a00b7fe6081c5ece15345eba34783e3a8aefc1aa8555"
+    },
+    {
+      "name": "TRUNK_top_L",
+      "curve_sha256": "d306c84d2f1f31fab1216c46fda73f5a49d1e1762d6566ba99a7adf4e148c827"
+    },
+    {
+      "name": "TRUNK_top_R",
+      "curve_sha256": "1e665c2564d672d96254b879955d7cef87ec4e6dbb915d786778f66b67f1a8e5"
+    },
+    {
+      "name": "GLASS_FRONT_DOOR_bottom_L",
+      "curve_sha256": "2e9bfc67c473f0047795fe6973d4431e975a9f41a7999b3f0fa182a171175bc9"
+    },
+    {
+      "name": "GLASS_FRONT_DOOR_bottom_R",
+      "curve_sha256": "99abf9437ce343f21b37339508bc3f139c03d44f39aab600666ebd549378dac7"
+    },
+    {
+      "name": "GLASS_FRONT_DOOR_top_L",
+      "curve_sha256": "70743b9c5feccbea3ba720f9b48d9ee5a29fb5401c4b710087404265d454df5d"
+    },
+    {
+      "name": "GLASS_FRONT_DOOR_top_R",
+      "curve_sha256": "18cb7f8fbf1d6511369afdcd15a7a391b428d43d85792c5da7ce86cbae0052b9"
+    },
+    {
+      "name": "GLASS_REAR_DOOR_bottom_L",
+      "curve_sha256": "92f0534d9e2a99a641a0391a99d3c76972c458e48667c4e78e0ee0aee3470bf5"
+    },
+    {
+      "name": "GLASS_REAR_DOOR_bottom_R",
+      "curve_sha256": "1748234cd35654470222b622b6c3ebdaba1fcf3f7d4a931114611614936428d7"
+    },
+    {
+      "name": "GLASS_REAR_DOOR_top_L",
+      "curve_sha256": "9bc1efbbd3925f594ef4cd15dcace342705daa963530147db84890806268d88c"
+    },
+    {
+      "name": "GLASS_REAR_DOOR_top_R",
+      "curve_sha256": "47b1be2dfc4e0cdf49adf07a82482d943b7302a5ee7abeb645bea5b56fcf7d24"
+    },
+    {
+      "name": "A_PILLAR_bottom_L",
+      "curve_sha256": "86cd1dce64d4f2349023bd713e55418fbbcd26a3192a83e3fde5229fb9109eca"
+    },
+    {
+      "name": "A_PILLAR_bottom_R",
+      "curve_sha256": "a3febcfa7625ec5af182656d8eb972cec556a51bfb54889b26905ce39d7ed100"
+    },
+    {
+      "name": "A_PILLAR_top_L",
+      "curve_sha256": "c25703c0724232159391e3e9ef6041398346366f9baf4b29a18d7a40c8fa8778"
+    },
+    {
+      "name": "A_PILLAR_top_R",
+      "curve_sha256": "0fb9721589230b54262ef0ca4d773d37650e50f666ed9215b3a98ea51d2f8605"
+    },
+    {
+      "name": "B_PILLAR_bottom_L",
+      "curve_sha256": "ad6ac5f675db2a44e6d7217f248251f1622affd334c668910e19e373674d7d26"
+    },
+    {
+      "name": "B_PILLAR_bottom_R",
+      "curve_sha256": "cfd6479eef7e001b3cd16ff6ef28b462ae4c5b174810cb918a05441e4a32c5e3"
+    },
+    {
+      "name": "B_PILLAR_top_L",
+      "curve_sha256": "b7df217e9cb4ea33a8126d47db1d0cdf0665e17910bf94ff058d2a9d4bb52c56"
+    },
+    {
+      "name": "B_PILLAR_top_R",
+      "curve_sha256": "04b453d79d85bd0d67c598f5be2c53c05ff5c5c62466def0d604f327d0f47b82"
+    },
+    {
+      "name": "C_PILLAR_bottom_L",
+      "curve_sha256": "66bdc86df3c2aa62d0f1b24cca9a303589dcee80823847572da8a154c9478baf"
+    },
+    {
+      "name": "C_PILLAR_bottom_R",
+      "curve_sha256": "1f32171a9f701afc79bb4ff2777aaa020ee80a87b1cb94f66e63322e54df84ff"
+    },
+    {
+      "name": "C_PILLAR_top_L",
+      "curve_sha256": "14c995f21ffb0877b618461dbe3d93bd62dd746758661e13f0bfb9e4b8f30b56"
+    },
+    {
+      "name": "C_PILLAR_top_R",
+      "curve_sha256": "31570ecae09c5f8477e86634cb8fce2b1c732ef6b902e7f3cce733345070843f"
+    },
+    {
+      "name": "DOOR_FRONT_bottom_L",
+      "curve_sha256": "9df19d95a3a2e4d548420545bef08dda7516631f2e17d9b68979c66d43eb4b72"
+    },
+    {
+      "name": "DOOR_FRONT_bottom_R",
+      "curve_sha256": "c1b4a6e39c36f600b4e986f607afb2faf6c6b8d7cfa024597687b05e3119dbff"
+    },
+    {
+      "name": "DOOR_FRONT_top_L",
+      "curve_sha256": "8329f5edfa02f9e9074b9df3fd3a1b09397f3603be0ec42cec90e2e69e902bd8"
+    },
+    {
+      "name": "DOOR_FRONT_top_R",
+      "curve_sha256": "34960b0f12a13664f220fb5dac868dd99ac570db10aba543c23f83d68c5b164d"
+    },
+    {
+      "name": "DOOR_REAR_bottom_L",
+      "curve_sha256": "62e9b5c0e60e6925842532dae1c994105e4d6dab4c38903905b598a4540972e8"
+    },
+    {
+      "name": "DOOR_REAR_bottom_R",
+      "curve_sha256": "62f08a6b1a325cba828aae157a7bbb57f5e54661548eee726bfce662f0b60f31"
+    },
+    {
+      "name": "DOOR_REAR_top_L",
+      "curve_sha256": "f120811744fce8aab529f72f37e1210df4b9731afaa40b3e99fc68fdd538e743"
+    },
+    {
+      "name": "DOOR_REAR_top_R",
+      "curve_sha256": "a9c45544d466104f1216c2a126dbc23183c25f7cc24412b76c7ec7122367a926"
+    },
+    {
+      "name": "NOSE_CHEEK_bottom_L",
+      "curve_sha256": "c796d3307678821cfe6c0fb57d4abd071af53b495479eebc02047cb314af79d3"
+    },
+    {
+      "name": "NOSE_CHEEK_bottom_R",
+      "curve_sha256": "9092cc2288e164d9b21e68a7861d72f6a51e011e0a917afb92b86ed3e2d91b3c"
+    },
+    {
+      "name": "NOSE_CHEEK_top_L",
+      "curve_sha256": "36c6477418d993d7ed046f3d7dcf625701ebf4ccc06c3d51e2ba8b408a362512"
+    },
+    {
+      "name": "NOSE_CHEEK_top_R",
+      "curve_sha256": "6a7d3a478ea5b84be70e87f0c63c46995dd14bf4aeabf4039560b8e5139ad061"
+    },
+    {
+      "name": "FENDER_RETURN_bottom_L",
+      "curve_sha256": "2ca89e465e375d8950a0b86b8b7917eda421c8c53638d44342ffab3db96b6dd2"
+    },
+    {
+      "name": "FENDER_RETURN_bottom_R",
+      "curve_sha256": "2458b84b7dae6f011f8b160c255d1a929190f27748c54404dcf51ae168d74ada"
+    },
+    {
+      "name": "FENDER_RETURN_top_L",
+      "curve_sha256": "35f917026d088b3a5728246973b0899b64c6ac779ea3d2d152c8189f5a336202"
+    },
+    {
+      "name": "FENDER_RETURN_top_R",
+      "curve_sha256": "dd69977940d388efde9f1a46d74e4c781000f7b5f4c3805ade3b9803f4123c33"
+    },
+    {
+      "name": "QUARTER_TAIL_bottom_L",
+      "curve_sha256": "9076d9f4236cf8d0b0edf41228fd5f4ecce7fcdd732ddeff61248115f376a87d"
+    },
+    {
+      "name": "QUARTER_TAIL_bottom_R",
+      "curve_sha256": "6b9d4ee81f1700bcbb2afdb83e1e8cd8e72fe48b2c7317ab82c8c117e324a5e3"
+    },
+    {
+      "name": "QUARTER_TAIL_top_L",
+      "curve_sha256": "57261f522e2a900a864bb3c5a1e4758d8986978d6af87e29609991b938c0ae13"
+    },
+    {
+      "name": "QUARTER_TAIL_top_R",
+      "curve_sha256": "ce62e076b3f59143f937378757a8668daa21499239c6b59fbb3ab2b877328092"
+    },
+    {
+      "name": "SIDE_SKIRT_bottom_L",
+      "curve_sha256": "400005d2f2d03a8ef2320ed27b31759390d1a32a8f3d5205fea3ab3938998be4"
+    },
+    {
+      "name": "SIDE_SKIRT_bottom_R",
+      "curve_sha256": "e8d118661434ae54136e92e2c1493a19e363b4047281b548957ee82fbf3a1e5d"
+    },
+    {
+      "name": "SIDE_SKIRT_top_L",
+      "curve_sha256": "bfe2cbeecaf93f7bc272ce7341d50ef37f20a90271270717414fbc8883fa380c"
+    },
+    {
+      "name": "SIDE_SKIRT_top_R",
+      "curve_sha256": "893b1f6cd7131b3829a85a285ee145bfca6eca5f60f0463cda225243a51c2be3"
+    },
+    {
+      "name": "BUMPER_FRONT_bottom_L",
+      "curve_sha256": "798892c623ca6821e8e5042959ec175eb6ede3f565b93047982bfdba2d707617"
+    },
+    {
+      "name": "BUMPER_FRONT_bottom_R",
+      "curve_sha256": "0059763e5acb104abd17ca1ebe999648ebbacc9101ec6bfbbf245c18ecf8d0e1"
+    },
+    {
+      "name": "BUMPER_FRONT_top_L",
+      "curve_sha256": "5db9f2ab689d241110d9efec9f230ec332c89653fdcafecad24f52a03acd97ae"
+    },
+    {
+      "name": "BUMPER_FRONT_top_R",
+      "curve_sha256": "bccab1ac1d252eeea5a23f54159b7bf0c8a6a824c54f685e5d3f260927ab7c41"
+    },
+    {
+      "name": "FRONT_FASCIA_bottom_L",
+      "curve_sha256": "5db9f2ab689d241110d9efec9f230ec332c89653fdcafecad24f52a03acd97ae"
+    },
+    {
+      "name": "FRONT_FASCIA_bottom_R",
+      "curve_sha256": "bccab1ac1d252eeea5a23f54159b7bf0c8a6a824c54f685e5d3f260927ab7c41"
+    },
+    {
+      "name": "FRONT_FASCIA_top_L",
+      "curve_sha256": "03f0b9b372f390d3e65941a41e4324730e819843b8afa9f497c2e5c6025a2caa"
+    },
+    {
+      "name": "FRONT_FASCIA_top_R",
+      "curve_sha256": "21aeb4bebbe43a2f6c25688c789e4c6f5ca10bce46962f0fd1cd71e65ba1649b"
+    },
+    {
+      "name": "FRONT_LIP_bottom_L",
+      "curve_sha256": "db9f433b36db17bc32faa91594d98518987e9cb7f589f2930fcfde20cd7c3cd1"
+    },
+    {
+      "name": "FRONT_LIP_bottom_R",
+      "curve_sha256": "75c51038a933aeb2e27521bd36bafd8f1004e20507de341930d1a7c71f15e4fb"
+    },
+    {
+      "name": "FRONT_LIP_top_L",
+      "curve_sha256": "798892c623ca6821e8e5042959ec175eb6ede3f565b93047982bfdba2d707617"
+    },
+    {
+      "name": "FRONT_LIP_top_R",
+      "curve_sha256": "0059763e5acb104abd17ca1ebe999648ebbacc9101ec6bfbbf245c18ecf8d0e1"
+    },
+    {
+      "name": "BUMPER_REAR_bottom_L",
+      "curve_sha256": "bce7a2d14991f4bc00b8da984ac66cbda2dbc0b4cbb87b02cac288745336cc1a"
+    },
+    {
+      "name": "BUMPER_REAR_bottom_R",
+      "curve_sha256": "479fbd94c305d9169027ccad2edb864ec3955bc65628d882764d67b2c2284362"
+    },
+    {
+      "name": "BUMPER_REAR_top_L",
+      "curve_sha256": "0cabb7820d83a67a88c6d365b7cb9ccac21d2ae96f54e1b306b297ac391a6199"
+    },
+    {
+      "name": "BUMPER_REAR_top_R",
+      "curve_sha256": "a1f5c1d11c1bec92b3be1b97acb7121be09eb57cfcc376482012d7038d61457c"
+    },
+    {
+      "name": "REAR_FASCIA_bottom_L",
+      "curve_sha256": "0cabb7820d83a67a88c6d365b7cb9ccac21d2ae96f54e1b306b297ac391a6199"
+    },
+    {
+      "name": "REAR_FASCIA_bottom_R",
+      "curve_sha256": "a1f5c1d11c1bec92b3be1b97acb7121be09eb57cfcc376482012d7038d61457c"
+    },
+    {
+      "name": "REAR_FASCIA_top_L",
+      "curve_sha256": "c49f8647b08d16034686388ca9f085f0e469b7b191883de97eddd28fb9b88d41"
+    },
+    {
+      "name": "REAR_FASCIA_top_R",
+      "curve_sha256": "4a8b76753f2070efdcf2d9903c7947030f468e86b25df8c605447b68251b7002"
+    },
+    {
+      "name": "REAR_LIP_bottom_L",
+      "curve_sha256": "cc8f3f769d65144042a52d126886c9fe07add302114fcfadcd8c9107ac4a9c74"
+    },
+    {
+      "name": "REAR_LIP_bottom_R",
+      "curve_sha256": "f5672a34d37507c4acb00979bcbd469d48ed74cbfd52fc8e2e35b16341a6881d"
+    },
+    {
+      "name": "REAR_LIP_top_L",
+      "curve_sha256": "bce7a2d14991f4bc00b8da984ac66cbda2dbc0b4cbb87b02cac288745336cc1a"
+    },
+    {
+      "name": "REAR_LIP_top_R",
+      "curve_sha256": "479fbd94c305d9169027ccad2edb864ec3955bc65628d882764d67b2c2284362"
+    },
+    {
+      "name": "TRUNK_LIP_bottom_L",
+      "curve_sha256": "7e2fc325bde53450d0da7bc1cc27bed809207bd3011572a8b1dc848ae0ad27b3"
+    },
+    {
+      "name": "TRUNK_LIP_bottom_R",
+      "curve_sha256": "c67dfdba01693ef7c3290cca633c1da1dbaeff0627d1604e11c6cea455b119be"
+    },
+    {
+      "name": "TRUNK_LIP_top_L",
+      "curve_sha256": "54c7cd4ef06622af771569751a7b9494e39ed0b4818197f85789a6ec6954da76"
+    },
+    {
+      "name": "TRUNK_LIP_top_R",
+      "curve_sha256": "898b644dfa6cb481a42a65120a7ba70a53913551a52c30354cfd59dba2ce4ed8"
+    },
+    {
+      "name": "MIRROR_bottom_L",
+      "curve_sha256": "e3097b115b419b8b2ff3b650a000f869368623d08d2a489ff93718a6d3a93461"
+    },
+    {
+      "name": "MIRROR_bottom_R",
+      "curve_sha256": "bee64af4dbd786c40acbbdd2373590ace5df195844e860709fcffb8e8d46cdad"
+    },
+    {
+      "name": "MIRROR_top_L",
+      "curve_sha256": "dbb39d0c92ae5173b06af26330f616337fce37aec2ff93088f6a526e600af778"
+    },
+    {
+      "name": "MIRROR_top_R",
+      "curve_sha256": "51f3d50ae0a4db5a207018270d6a51a92250c27b788905681d5ac3a876dab976"
+    },
+    {
+      "name": "OVERFENDER_FRONT_lip_L",
+      "curve_sha256": "e73bed3b88f47c9bcc707ec755a4ec339c55e7225def4f4aea75f3442fb82b9b"
+    },
+    {
+      "name": "OVERFENDER_FRONT_lip_R",
+      "curve_sha256": "ea3d37f958e11b40f7173666de74b55ab01ea63395535f70eba9dea06759401b"
+    },
+    {
+      "name": "OVERFENDER_FRONT_body_join_L",
+      "curve_sha256": "594a3cee9c69842f23779a547ef0f934b1c5b3c315dd2d6c1698636eee2b958b"
+    },
+    {
+      "name": "OVERFENDER_FRONT_body_join_R",
+      "curve_sha256": "7dae40e098e8c9f5db13a9dffc28dba1f06ec066e2e200ba16b8a0d01b81fc53"
+    },
+    {
+      "name": "OVERFENDER_REAR_lip_L",
+      "curve_sha256": "836bf074de81beadc41d95d2c20da1085e37d535deaeae55735debf97722f169"
+    },
+    {
+      "name": "OVERFENDER_REAR_lip_R",
+      "curve_sha256": "ff97eb55e927e9a5bf3beed724a49deaa5b7d0f5c1131d6c12fca4bcb0146fe8"
+    },
+    {
+      "name": "OVERFENDER_REAR_body_join_L",
+      "curve_sha256": "e41bd44c2213be1d4793a4a71663c5936585a66e5d86df54dfe678b2c75427df"
+    },
+    {
+      "name": "OVERFENDER_REAR_body_join_R",
+      "curve_sha256": "2d44ec5677be90cd448f596c0b85f84002e6c876916172c55b0bb6d52fa80dd1"
+    },
+    {
+      "name": "GRILLE_SECTION_L",
+      "curve_sha256": "5db9f2ab689d241110d9efec9f230ec332c89653fdcafecad24f52a03acd97ae"
+    },
+    {
+      "name": "GRILLE_SECTION_R",
+      "curve_sha256": "bccab1ac1d252eeea5a23f54159b7bf0c8a6a824c54f685e5d3f260927ab7c41"
+    },
+    {
+      "name": "COWL_SECTION_L",
+      "curve_sha256": "e6933e946359b5abbbc00f3fba3e72a98e456ad73bde6d0df888639979bb4f6d"
+    },
+    {
+      "name": "COWL_SECTION_R",
+      "curve_sha256": "4774bf28ce146bec7ee2704fb8b82bf5bc563c9edc8ca593a3d90c16218ce545"
+    },
+    {
+      "name": "ROOF_CROWN_SECTION_L",
+      "curve_sha256": "7ad2f42b33f1c8598baabeca245aed11d4af1c5652ae54fd28121580066a2ec8"
+    },
+    {
+      "name": "ROOF_CROWN_SECTION_R",
+      "curve_sha256": "faceb92151fb5cb694e09db6ebbc1e6f5a1914b773555f60ba8a77c2035fe458"
+    },
+    {
+      "name": "DECK_SECTION_L",
+      "curve_sha256": "3ab3151552759f6ccbaebe7ce143506911f97937bd7b98806d53e61185d00aef"
+    },
+    {
+      "name": "DECK_SECTION_R",
+      "curve_sha256": "8a876a9e254099e85fb5f5ac2c4660b2b1b8d0d122b20311f32b7d2d7b601714"
+    },
+    {
+      "name": "DOOR_LEADING_CUT_L",
+      "curve_sha256": "d619ef30fb22066a43d44c02b40140db76bcb4540e09a48c526ae21bb9e74442"
+    },
+    {
+      "name": "DOOR_LEADING_CUT_R",
+      "curve_sha256": "8d082a8bf0ddbcba71100d5a51e1ea0bbf89e3c6d41fff1872bedef1ddbb8837"
+    },
+    {
+      "name": "DOOR_SEPARATOR_CUT_L",
+      "curve_sha256": "5828c119a301d4b02ba5f84c8b90f7c8d9e951530f41b02e77233478d95a1c54"
+    },
+    {
+      "name": "DOOR_SEPARATOR_CUT_R",
+      "curve_sha256": "a622c1eee90c1ac94fef5a998796f329f0aa11ad64bb632187c365bdbd29a86e"
+    },
+    {
+      "name": "DOOR_TRAILING_CUT_L",
+      "curve_sha256": "2ae3e161c35c283b56202bec3b58a9b6e10b6b72a959bbec3e391058b7a7b3ee"
+    },
+    {
+      "name": "DOOR_TRAILING_CUT_R",
+      "curve_sha256": "7ae4129cf939f15b27840f5b3ff8c893fba92392534cd19746b64102c91ead97"
+    },
+    {
+      "name": "CONTROL_hood_front_center",
+      "curve_sha256": "d5c0a740e27fba04b3233e226b9618471e9f0e4bb5a407f587045c2f9d1d0025"
+    },
+    {
+      "name": "CONTROL_roof_apex",
+      "curve_sha256": "712d3dd1b44979167cae61dcd9891ecb61b984e67924be3fce34ea15a3ee1d7a"
+    },
+    {
+      "name": "CONTROL_trunk_rear_edge",
+      "curve_sha256": "3c744677108f13ec9fd998fe9f73682220c71b61569fa0ccd38737dbeb0742ca"
+    },
+    {
+      "name": "CONTROL_windshield_lower_corner_L",
+      "curve_sha256": "6339759717725c991ae23042301e9e56ab3730d65b6e9222ec35cfea9ec8ae7e"
+    },
+    {
+      "name": "CONTROL_windshield_lower_corner_R",
+      "curve_sha256": "83dabfff134720be5fa3da45e134f7c70908e6355e0c2df78d93d5251bd4e2b7"
+    },
+    {
+      "name": "CONTROL_a_pillar_roof_L",
+      "curve_sha256": "9b5ab6504ae4ae611c71b186bac7d5c29068b2bebf884ce00c83105f2fa34352"
+    },
+    {
+      "name": "CONTROL_a_pillar_roof_R",
+      "curve_sha256": "09589ac6f67a690e6b8ea3121a63d2b50ad69761d60d87bb037471668f90178d"
+    },
+    {
+      "name": "CONTROL_b_pillar_roof_L",
+      "curve_sha256": "709894cc7905c2d9f8f945f0bbba3872d1bcabf4ae7c64846447123c56bb80f4"
+    },
+    {
+      "name": "CONTROL_b_pillar_roof_R",
+      "curve_sha256": "be472dd838fed673803594f80981738c8a9687a9e5b4e34a9dea20cfe488a778"
+    },
+    {
+      "name": "CONTROL_c_pillar_side_roof_L",
+      "curve_sha256": "842102ea2d2f1acf98df8696f4e530f293dbcab3986e3a95da481d87773f3dcf"
+    },
+    {
+      "name": "CONTROL_c_pillar_side_roof_R",
+      "curve_sha256": "4fdd26047733132c8001f291b733fd82ecb296d3a90b7acc3c0c43e3e7a6fcd3"
+    },
+    {
+      "name": "CONTROL_c_pillar_rear_roof_L",
+      "curve_sha256": "b138e24b4a868b596504822d5395124947222b062a44ad882f3ca3060543e76b"
+    },
+    {
+      "name": "CONTROL_c_pillar_rear_roof_R",
+      "curve_sha256": "b5e8e90c22666c15cb349703948f782c2856d54733b3dddcf199110a0a08c56f"
+    },
+    {
+      "name": "CONTROL_b_pillar_window_intersection_L",
+      "curve_sha256": "8c7d142587ed7e59c4e291b314ec9265ff7165328e8f2b3c460125661b7fdd91"
+    },
+    {
+      "name": "CONTROL_b_pillar_window_intersection_R",
+      "curve_sha256": "d997259acf9ad672c3c6ec94e7b6263ae1029a5fe18d2556a105b201d3b94c62"
+    },
+    {
+      "name": "CONTROL_c_pillar_window_intersection_L",
+      "curve_sha256": "cea11b8294d0d8dbac0149d86a4abfee7c319e830495c6aa726ae423880ce3de"
+    },
+    {
+      "name": "CONTROL_c_pillar_window_intersection_R",
+      "curve_sha256": "e23bff7352dafb2d4c86dd0ccdc7603caef22a51cad1adf554602926c58aca62"
+    },
+    {
+      "name": "CONTROL_rear_glass_lower_corner_L",
+      "curve_sha256": "ab9d392f33d638bfd4688dec0892bca8ac39a70d304c9b374e6ef42d83c9cfb9"
+    },
+    {
+      "name": "CONTROL_rear_glass_lower_corner_R",
+      "curve_sha256": "4a27776ce12481c3ad4116e8645e9a56df4f008b36549b23560813dc4736abd9"
+    },
+    {
+      "name": "CONTROL_front_door_leading_edge_L",
+      "curve_sha256": "b7897f57c101a58763b77ef5d478c7102190e725344af29063473a2e101cb7ea"
+    },
+    {
+      "name": "CONTROL_front_door_leading_edge_R",
+      "curve_sha256": "20378cfbb83f768f93c3c0f7dbb0e15b7df31641d5b00c6b76a58202c74928eb"
+    },
+    {
+      "name": "CONTROL_front_door_upper_leading_edge_L",
+      "curve_sha256": "2d2cf42c0ae3d8d84b29234a63765aee7af6540f4110d7b6ca1c3f62682997a4"
+    },
+    {
+      "name": "CONTROL_front_door_upper_leading_edge_R",
+      "curve_sha256": "c1743ccf8e023db8e5fccd74088f5d1f106f71d3d37f3660be04009e48a30e71"
+    },
+    {
+      "name": "CONTROL_b_pillar_lower_attachment_door_separator_L",
+      "curve_sha256": "637e6f0007eb60e2a4f9a31633d35ca3923ef193d66f070601ef9272b7e7dbea"
+    },
+    {
+      "name": "CONTROL_b_pillar_lower_attachment_door_separator_R",
+      "curve_sha256": "fb1f77a79ad2c818cb0571b1454a78847568062683f8e21dbd69e7670025bf88"
+    },
+    {
+      "name": "CONTROL_rear_door_trailing_edge_L",
+      "curve_sha256": "9889a9d509f2a8793459a8d3dda3572825138f07e8cb7e0464afa52243292f45"
+    },
+    {
+      "name": "CONTROL_rear_door_trailing_edge_R",
+      "curve_sha256": "3980445772241d153cb3f16e3024b5091231c873acb34d2455ed1e50efab5645"
+    },
+    {
+      "name": "PILLAR_A_ATTACHMENTS_L",
+      "curve_sha256": "ea678c2343a84af9a47006cf576cb07b525ae7b3817664b4dec8681bd89c2a66"
+    },
+    {
+      "name": "PILLAR_A_ATTACHMENTS_R",
+      "curve_sha256": "61a94406ba475cd64046283fff131b27ad0772640b4d98392de15bddd6a408f8"
+    },
+    {
+      "name": "PILLAR_B_ATTACHMENTS_L",
+      "curve_sha256": "dba0a5daddce8e1268f284abc865745d8f8b2caf8e0623bd09285f73f66cfa6f"
+    },
+    {
+      "name": "PILLAR_B_ATTACHMENTS_R",
+      "curve_sha256": "9e0fffc9716f0a10d1e421b92af794173de90604ba7f563f142be557160bdbbf"
+    },
+    {
+      "name": "PILLAR_C_ATTACHMENTS_L",
+      "curve_sha256": "43a50c2cce145827a8cf98f0c4b19429a98eafd35fd770b129fcebc8c3a0cfd4"
+    },
+    {
+      "name": "PILLAR_C_ATTACHMENTS_R",
+      "curve_sha256": "62468312ac1d91f3c7ad22714a48d20ab40b14f6d070791cbc9602d04c447dab"
+    },
+    {
+      "name": "CONTROL_body_lower_line_L",
+      "curve_sha256": "30f9d5654a3e53f4d367139a7b1cfa0e0e9246c47a43ecae6eaaa413777a15b1"
+    },
+    {
+      "name": "CONTROL_body_lower_line_R",
+      "curve_sha256": "843297fd1785f25855a1b2e747ffd1c4dee2874e536dfd0b5e76d7d568408f18"
+    },
+    {
+      "name": "CONTROL_windshield_lower_center",
+      "curve_sha256": "e28f6276172b09bd8dc98950ebed31b858d305d39eb4f0cca62c9b99f1a960c4"
+    },
+    {
+      "name": "CONTROL_windshield_upper_center",
+      "curve_sha256": "1bd28c079f597ddea694e637a2a0edd1bed3d3b4dc75d3d1129fa6de53c0cb8d"
+    },
+    {
+      "name": "CONTROL_rear_glass_upper_center",
+      "curve_sha256": "9b5f56eed6ea0e0f341361504df534aff5197c2094b87115c17c5ff71d8a961a"
+    },
+    {
+      "name": "CONTROL_rear_glass_lower_center",
+      "curve_sha256": "afb0c34cd59cec72984f2d3a4ae9e54e4957fb6a43076e909b384b509c8e7d96"
+    },
+    {
+      "name": "WHEEL_GUIDE_FRONT_L",
+      "curve_sha256": "07dee3098ee84b6cca25c9d0780c9552e176a5073f25dd08bd3c6185397bf632"
+    },
+    {
+      "name": "WHEEL_GUIDE_FRONT_R",
+      "curve_sha256": "a1b7ffa26a48832a5bb25b42bdda8d88859faedc2727d47a4829561d5d8d0295"
+    },
+    {
+      "name": "WHEEL_GUIDE_REAR_L",
+      "curve_sha256": "2492efd00ac298901c8e79f82bc0833b35bb4672e56359d6e7e9177903f89bab"
+    },
+    {
+      "name": "WHEEL_GUIDE_REAR_R",
+      "curve_sha256": "92904ff7415efc3c750e7ef9381397b57e4aead6bae99efb45419be2d3a530b7"
+    }
+  ],
+  "count": 161
+}

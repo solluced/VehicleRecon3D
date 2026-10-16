@@ -1,0 +1,934 @@
+{
+  "front": [
+    {
+      "id": 3,
+      "semantic_id": "front_axle_L",
+      "pass": true,
+      "reference_screen": [
+        520.5962007444487,
+        317.7679373636247
+      ],
+      "projected_screen": [
+        527.142857142857,
+        316.14940315748964
+      ],
+      "residual_px": 4.188176257554587
+    },
+    {
+      "id": 4,
+      "semantic_id": "front_axle_R",
+      "pass": true,
+      "reference_screen": [
+        77.79360800924141,
+        317.7679373636247
+      ],
+      "projected_screen": [
+        72.85714285714306,
+        316.14940315748964
+      ],
+      "residual_px": 3.226343729325849
+    },
+    {
+      "id": 13,
+      "semantic_id": "front_contact_L",
+      "pass": true,
+      "reference_screen": [
+        520.5962007444487,
+        391.8367346938776
+      ],
+      "projected_screen": [
+        527.142857142857,
+        391.8367346938776
+      ],
+      "residual_px": 4.065763252291674
+    },
+    {
+      "id": 16,
+      "semantic_id": "hood_front_center_CENTER",
+      "pass": true,
+      "reference_screen": [
+        300.0,
+        235.64818380182257
+      ],
+      "projected_screen": [
+        300.0,
+        235.50563068069428
+      ],
+      "residual_px": 0.08853179487527996
+    },
+    {
+      "id": 18,
+      "semantic_id": "roof_apex_CENTER",
+      "pass": true,
+      "reference_screen": [
+        300.0,
+        90.73097163393658
+      ],
+      "projected_screen": [
+        300.0,
+        89.10391974630392
+      ],
+      "residual_px": 1.0104712041885477
+    },
+    {
+      "id": 23,
+      "semantic_id": "windshield_lower_corner_L",
+      "pass": true,
+      "reference_screen": [
+        465.849698369914,
+        184.12206391990753
+      ],
+      "projected_screen": [
+        466.6547939930689,
+        185.38419243693858
+      ],
+      "residual_px": 0.9297319270501679
+    },
+    {
+      "id": 24,
+      "semantic_id": "windshield_lower_corner_R",
+      "pass": true,
+      "reference_screen": [
+        132.54011038377615,
+        184.12206391990753
+      ],
+      "projected_screen": [
+        133.34520600693108,
+        185.38419243693858
+      ],
+      "residual_px": 0.9297319270501755
+    },
+    {
+      "id": 28,
+      "semantic_id": "a_pillar_roof_L",
+      "pass": true,
+      "reference_screen": [
+        414.32357848799893,
+        105.22269285072514
+      ],
+      "projected_screen": [
+        412.71338724168913,
+        105.22269282994591
+      ],
+      "residual_px": 0.9999999999999717
+    },
+    {
+      "id": 29,
+      "semantic_id": "a_pillar_roof_R",
+      "pass": true,
+      "reference_screen": [
+        188.89680400462072,
+        105.22269285072514
+      ],
+      "projected_screen": [
+        187.2866127583109,
+        105.22269282994591
+      ],
+      "residual_px": 0.9999999999999717
+    },
+    {
+      "id": 59,
+      "semantic_id": "windshield_lower_center_CENTER",
+      "pass": true,
+      "reference_screen": [
+        300.0,
+        182.51187267359762
+      ],
+      "projected_screen": [
+        300.0,
+        182.51187267359785
+      ],
+      "residual_px": 1.1718571004216928e-13
+    },
+    {
+      "id": 61,
+      "semantic_id": "windshield_upper_center_CENTER",
+      "pass": true,
+      "reference_screen": [
+        300.0,
+        102.00231035810543
+      ],
+      "projected_screen": [
+        300.0,
+        102.00231035810555
+      ],
+      "residual_px": 6.355287432313019e-14
+    }
+  ],
+  "side": [
+    {
+      "id": 1,
+      "semantic_id": "front_axle_L",
+      "pass": true,
+      "reference_screen": [
+        224.2424242424243,
+        252.8168477225081
+      ],
+      "projected_screen": [
+        224.2424242424242,
+        252.81684772250827
+      ],
+      "residual_px": 1.2710574864626038e-13
+    },
+    {
+      "id": 2,
+      "semantic_id": "rear_axle_L",
+      "pass": true,
+      "reference_screen": [
+        775.7575757575758,
+        252.8168477225081
+      ],
+      "projected_screen": [
+        775.7575757575758,
+        252.81684772250827
+      ],
+      "residual_px": 1.1368683772161603e-13
+    },
+    {
+      "id": 11,
+      "semantic_id": "front_contact_L",
+      "pass": true,
+      "reference_screen": [
+        224.2424242424243,
+        315.25252525252523
+      ],
+      "projected_screen": [
+        224.2424242424242,
+        315.25252525252523
+      ],
+      "residual_px": 5.684341886080802e-14
+    },
+    {
+      "id": 12,
+      "semantic_id": "rear_contact_L",
+      "pass": true,
+      "reference_screen": [
+        775.7575757575758,
+        315.25252525252523
+      ],
+      "projected_screen": [
+        775.7575757575758,
+        315.25252525252523
+      ],
+      "residual_px": 0.0
+    },
+    {
+      "id": 17,
+      "semantic_id": "roof_apex_CENTER",
+      "pass": true,
+      "reference_screen": [
+        535.1200686106347,
+        64.20907185058122
+      ],
+      "projected_screen": [
+        535.1200686106347,
+        65.52343548095786
+      ],
+      "residual_px": 1.010471204188434
+    },
+    {
+      "id": 22,
+      "semantic_id": "windshield_lower_corner_L",
+      "pass": true,
+      "reference_screen": [
+        350.414522584334,
+        146.15589860872876
+      ],
+      "projected_screen": [
+        350.414522584334,
+        144.94655605067322
+      ],
+      "residual_px": 0.9297319270501703
+    },
+    {
+      "id": 27,
+      "semantic_id": "a_pillar_roof_L",
+      "pass": true,
+      "reference_screen": [
+        481.78959405374513,
+        78.51724795121015
+      ],
+      "projected_screen": [
+        481.7895940537449,
+        78.82006647588122
+      ],
+      "residual_px": 0.23280421962624587
+    },
+    {
+      "id": 32,
+      "semantic_id": "b_pillar_roof_L",
+      "pass": true,
+      "reference_screen": [
+        576.7438536306462,
+        75.91576138745941
+      ],
+      "projected_screen": [
+        576.743853630646,
+        75.91576138745941
+      ],
+      "residual_px": 1.2710574864626038e-13
+    },
+    {
+      "id": 35,
+      "semantic_id": "c_pillar_side_roof_L",
+      "pass": true,
+      "reference_screen": [
+        667.7958833619211,
+        79.81799123308548
+      ],
+      "projected_screen": [
+        667.7958833619211,
+        79.81799123308548
+      ],
+      "residual_px": 5.684341886080802e-14
+    },
+    {
+      "id": 38,
+      "semantic_id": "c_pillar_rear_roof_L",
+      "pass": true,
+      "reference_screen": [
+        710.720411663808,
+        82.4194777968362
+      ],
+      "projected_screen": [
+        710.720411663808,
+        80.39894817512594
+      ],
+      "residual_px": 1.553365410273102
+    },
+    {
+      "id": 43,
+      "semantic_id": "b_pillar_window_intersection_L",
+      "pass": true,
+      "reference_screen": [
+        568.939393939394,
+        148.75738517247942
+      ],
+      "projected_screen": [
+        568.9393939393939,
+        148.75738517247942
+      ],
+      "residual_px": 1.1368683772161603e-13
+    },
+    {
+      "id": 46,
+      "semantic_id": "c_pillar_window_intersection_L",
+      "pass": true,
+      "reference_screen": [
+        740.6375071469413,
+        146.15589860872876
+      ],
+      "projected_screen": [
+        740.6375071469411,
+        146.15589860872876
+      ],
+      "residual_px": 1.1368683772161603e-13
+    },
+    {
+      "id": 49,
+      "semantic_id": "rear_glass_lower_corner_L",
+      "pass": true,
+      "reference_screen": [
+        830.3887935963407,
+        134.4492090718505
+      ],
+      "projected_screen": [
+        830.3887935963407,
+        129.24944095831424
+      ],
+      "residual_px": 3.9975360134395714
+    },
+    {
+      "id": 54,
+      "semantic_id": "front_door_leading_edge_L",
+      "pass": false,
+      "reference_screen": [
+        350.414522584334,
+        282.73394320564137
+      ],
+      "projected_screen": [
+        308.08080808080797,
+        278.88888888888914
+      ],
+      "residual_px": 32.679756468578695
+    },
+    {
+      "id": 55,
+      "semantic_id": "front_door_upper_leading_edge_L",
+      "pass": false,
+      "reference_screen": [
+        350.414522584334,
+        155.26110158185622
+      ],
+      "projected_screen": [
+        340.4040404040405,
+        157.6767676767676
+      ],
+      "residual_px": 7.916877196538821
+    },
+    {
+      "id": 56,
+      "semantic_id": "b_pillar_lower_attachment_door_separator_L",
+      "pass": false,
+      "reference_screen": [
+        583.2475700400229,
+        271.027253668763
+      ],
+      "projected_screen": [
+        554.5454545454546,
+        278.88888888888914
+      ],
+      "residual_px": 22.87869862696351
+    },
+    {
+      "id": 57,
+      "semantic_id": "rear_door_trailing_edge_L",
+      "pass": false,
+      "reference_screen": [
+        723.7278444825616,
+        274.92948351438906
+      ],
+      "projected_screen": [
+        693.9393939393941,
+        278.88888888888914
+      ],
+      "residual_px": 23.102510670389247
+    },
+    {
+      "id": 58,
+      "semantic_id": "body_lower_line_L",
+      "pass": true,
+      "reference_screen": [
+        500.0,
+        297.0421193062702
+      ],
+      "projected_screen": [
+        500.0,
+        297.0421193062702
+      ],
+      "residual_px": 0.0
+    }
+  ],
+  "rear": [
+    {
+      "id": 5,
+      "semantic_id": "rear_axle_L",
+      "pass": true,
+      "reference_screen": [
+        76.18341676293161,
+        317.7679373636247
+      ],
+      "projected_screen": [
+        69.79591836734772,
+        316.14940315748964
+      ],
+      "residual_px": 4.092289898986682
+    },
+    {
+      "id": 6,
+      "semantic_id": "rear_axle_R",
+      "pass": true,
+      "reference_screen": [
+        525.4267744833783,
+        317.7679373636247
+      ],
+      "projected_screen": [
+        530.2040816326534,
+        316.14940315748964
+      ],
+      "residual_px": 3.1325705793821457
+    },
+    {
+      "id": 14,
+      "semantic_id": "rear_contact_L",
+      "pass": true,
+      "reference_screen": [
+        76.18341676293161,
+        391.8367346938776
+      ],
+      "projected_screen": [
+        69.79591836734772,
+        391.8367346938776
+      ],
+      "residual_px": 3.9669190912709382
+    },
+    {
+      "id": 19,
+      "semantic_id": "roof_apex_CENTER",
+      "pass": true,
+      "reference_screen": [
+        300.0,
+        87.51058914131684
+      ],
+      "projected_screen": [
+        300.00000000000045,
+        89.10391974630392
+      ],
+      "residual_px": 0.9895287958114523
+    },
+    {
+      "id": 21,
+      "semantic_id": "trunk_rear_edge_CENTER",
+      "pass": true,
+      "reference_screen": [
+        300.0,
+        198.61378513669615
+      ],
+      "projected_screen": [
+        300.00000000000045,
+        196.67450710744475
+      ],
+      "residual_px": 1.2043774512472964
+    },
+    {
+      "id": 39,
+      "semantic_id": "c_pillar_rear_roof_L",
+      "pass": true,
+      "reference_screen": [
+        187.2866127583109,
+        105.22269285072514
+      ],
+      "projected_screen": [
+        185.67642151200107,
+        107.13668411433645
+      ],
+      "residual_px": 1.5533654102729766
+    },
+    {
+      "id": 40,
+      "semantic_id": "c_pillar_rear_roof_R",
+      "pass": true,
+      "reference_screen": [
+        415.9337697343087,
+        105.22269285072514
+      ],
+      "projected_screen": [
+        414.32357848799955,
+        107.13668411433645
+      ],
+      "residual_px": 1.5533654102726837
+    },
+    {
+      "id": 50,
+      "semantic_id": "rear_glass_lower_corner_L",
+      "pass": true,
+      "reference_screen": [
+        153.47259658580407,
+        159.9691952252598
+      ],
+      "projected_screen": [
+        154.27769220895908,
+        166.35544475354828
+      ],
+      "residual_px": 3.9975360134394475
+    },
+    {
+      "id": 51,
+      "semantic_id": "rear_glass_lower_corner_R",
+      "pass": true,
+      "reference_screen": [
+        444.9172121678861,
+        159.9691952252598
+      ],
+      "projected_screen": [
+        445.72230779104177,
+        166.35544475354828
+      ],
+      "residual_px": 3.9975360134395044
+    },
+    {
+      "id": 63,
+      "semantic_id": "rear_glass_upper_center_CENTER",
+      "pass": true,
+      "reference_screen": [
+        300.0,
+        95.5615453728661
+      ],
+      "projected_screen": [
+        300.00000000000045,
+        95.56154537286619
+      ],
+      "residual_px": 2.5421149729252077e-13
+    },
+    {
+      "id": 65,
+      "semantic_id": "rear_glass_lower_center_CENTER",
+      "pass": true,
+      "reference_screen": [
+        300.0,
+        159.9691952252598
+      ],
+      "projected_screen": [
+        300.00000000000045,
+        159.96919522526002
+      ],
+      "residual_px": 2.5421149729252077e-13
+    }
+  ],
+  "top": [
+    {
+      "id": 7,
+      "semantic_id": "front_axle_L",
+      "pass": true,
+      "reference_screen": [
+        225.41079099561313,
+        416.30661208355616
+      ],
+      "projected_screen": [
+        224.2424242424243,
+        427.37373737373724
+      ],
+      "residual_px": 8.548885804073668
+    },
+    {
+      "id": 8,
+      "semantic_id": "front_axle_R",
+      "pass": true,
+      "reference_screen": [
+        231.2074029660438,
+        44.63411788446126
+      ],
+      "projected_screen": [
+        224.2424242424243,
+        52.62626262626276
+      ],
+      "residual_px": 8.596540048163227
+    },
+    {
+      "id": 9,
+      "semantic_id": "rear_axle_L",
+      "pass": true,
+      "reference_screen": [
+        770.2923162160932,
+        439.2842695972467
+      ],
+      "projected_screen": [
+        775.7575757575758,
+        429.8989898989896
+      ],
+      "residual_px": 8.616451276432702
+    },
+    {
+      "id": 10,
+      "semantic_id": "rear_axle_R",
+      "pass": true,
+      "reference_screen": [
+        771.4516386101792,
+        46.72672832723384
+      ],
+      "projected_screen": [
+        775.7575757575758,
+        50.10101010101073
+      ],
+      "residual_px": 4.519187143622982
+    },
+    {
+      "id": 15,
+      "semantic_id": "hood_front_center_CENTER",
+      "pass": true,
+      "reference_screen": [
+        103.68193961656976,
+        239.7690735727972
+      ],
+      "projected_screen": [
+        103.68264640851208,
+        240.0
+      ],
+      "residual_px": 0.17706358975056352
+    },
+    {
+      "id": 20,
+      "semantic_id": "trunk_rear_edge_CENTER",
+      "pass": true,
+      "reference_screen": [
+        974.3330575752516,
+        243.1414994151194
+      ],
+      "projected_screen": [
+        974.323442450209,
+        240.00000000000017
+      ],
+      "residual_px": 2.408754902494386
+    },
+    {
+      "id": 25,
+      "semantic_id": "windshield_lower_corner_L",
+      "pass": true,
+      "reference_screen": [
+        359.89218870960394,
+        375.09334990503294
+      ],
+      "projected_screen": [
+        350.41452258433384,
+        377.4761768629694
+      ],
+      "residual_px": 8.383035867652458
+    },
+    {
+      "id": 26,
+      "semantic_id": "windshield_lower_corner_R",
+      "pass": false,
+      "reference_screen": [
+        357.5735439214317,
+        71.20744707943581
+      ],
+      "projected_screen": [
+        350.414522584334,
+        102.52382313703094
+      ],
+      "residual_px": 24.813990930201513
+    },
+    {
+      "id": 30,
+      "semantic_id": "a_pillar_roof_L",
+      "pass": false,
+      "reference_screen": [
+        439.8854339015467,
+        331.0606448564024
+      ],
+      "projected_screen": [
+        481.7895940537452,
+        332.97905681553493
+      ],
+      "residual_px": 36.170461580634
+    },
+    {
+      "id": 31,
+      "semantic_id": "a_pillar_roof_R",
+      "pass": false,
+      "reference_screen": [
+        439.8854339015467,
+        97.6101342211372
+      ],
+      "projected_screen": [
+        481.7895940537452,
+        147.0209431844654
+      ],
+      "residual_px": 52.272677193028244
+    },
+    {
+      "id": 33,
+      "semantic_id": "b_pillar_roof_L",
+      "pass": false,
+      "reference_screen": [
+        598.7126018913463,
+        335.58843275479126
+      ],
+      "projected_screen": [
+        576.7438536306463,
+        364.5504120987031
+      ],
+      "residual_px": 29.242677649500372
+    },
+    {
+      "id": 34,
+      "semantic_id": "b_pillar_roof_R",
+      "pass": false,
+      "reference_screen": [
+        595.2346347090878,
+        86.47413681633736
+      ],
+      "projected_screen": [
+        576.7438536306462,
+        115.44958790129712
+      ],
+      "residual_px": 27.394092862735356
+    },
+    {
+      "id": 36,
+      "semantic_id": "c_pillar_side_roof_L",
+      "pass": false,
+      "reference_screen": [
+        711.1668741177007,
+        336.02401904867304
+      ],
+      "projected_screen": [
+        667.7958833619214,
+        363.8983157002805
+      ],
+      "residual_px": 43.14946869082126
+    },
+    {
+      "id": 37,
+      "semantic_id": "c_pillar_side_roof_R",
+      "pass": false,
+      "reference_screen": [
+        707.6889069354422,
+        88.21391590706426
+      ],
+      "projected_screen": [
+        667.7958833619211,
+        116.10168429971931
+      ],
+      "residual_px": 40.57601284642125
+    },
+    {
+      "id": 41,
+      "semantic_id": "c_pillar_rear_roof_L",
+      "pass": false,
+      "reference_screen": [
+        722.7600980585619,
+        324.3311896805605
+      ],
+      "projected_screen": [
+        710.7204116638078,
+        334.30732905575684
+      ],
+      "residual_px": 12.919376256366913
+    },
+    {
+      "id": 42,
+      "semantic_id": "c_pillar_rear_roof_R",
+      "pass": false,
+      "reference_screen": [
+        722.7600980585619,
+        97.40164302952047
+      ],
+      "projected_screen": [
+        710.7204116638078,
+        145.69267094424296
+      ],
+      "residual_px": 38.490741406970834
+    },
+    {
+      "id": 44,
+      "semantic_id": "b_pillar_window_intersection_L",
+      "pass": false,
+      "reference_screen": [
+        584.8007331623128,
+        382.48548647702165
+      ],
+      "projected_screen": [
+        568.9393939393937,
+        395.8510392229847
+      ],
+      "residual_px": 17.122419932904204
+    },
+    {
+      "id": 45,
+      "semantic_id": "b_pillar_window_intersection_R",
+      "pass": false,
+      "reference_screen": [
+        581.3227659800543,
+        70.76993629000512
+      ],
+      "projected_screen": [
+        568.939393939394,
+        84.14896077701562
+      ],
+      "residual_px": 14.835359876207152
+    },
+    {
+      "id": 47,
+      "semantic_id": "c_pillar_window_intersection_L",
+      "pass": false,
+      "reference_screen": [
+        757.5397698811457,
+        383.15458294906705
+      ],
+      "projected_screen": [
+        740.6375071469413,
+        395.8510392229847
+      ],
+      "residual_px": 17.558817755502165
+    },
+    {
+      "id": 48,
+      "semantic_id": "c_pillar_window_intersection_R",
+      "pass": false,
+      "reference_screen": [
+        754.0618026988874,
+        71.43903276205035
+      ],
+      "projected_screen": [
+        740.6375071469413,
+        84.14896077701582
+      ],
+      "residual_px": 15.160326026383922
+    },
+    {
+      "id": 52,
+      "semantic_id": "rear_glass_lower_corner_L",
+      "pass": true,
+      "reference_screen": [
+        835.2143702849164,
+        354.76321030187864
+      ],
+      "projected_screen": [
+        830.3887935963407,
+        360.2086377400846
+      ],
+      "residual_px": 5.905834827502228
+    },
+    {
+      "id": 53,
+      "semantic_id": "rear_glass_lower_corner_R",
+      "pass": false,
+      "reference_screen": [
+        837.5330150730886,
+        84.80428251565039
+      ],
+      "projected_screen": [
+        830.3887935963407,
+        119.79136225991574
+      ],
+      "residual_px": 27.54598951643433
+    },
+    {
+      "id": 60,
+      "semantic_id": "windshield_lower_center_CENTER",
+      "pass": false,
+      "reference_screen": [
+        316.9972601284172,
+        218.424062810702
+      ],
+      "projected_screen": [
+        340.31351248332385,
+        240.00000000000017
+      ],
+      "residual_px": 25.99793652493182
+    },
+    {
+      "id": 62,
+      "semantic_id": "windshield_upper_center_CENTER",
+      "pass": false,
+      "reference_screen": [
+        430.6108547488577,
+        218.86413968493312
+      ],
+      "projected_screen": [
+        475.7289879931389,
+        240.00000000000017
+      ],
+      "residual_px": 42.10578836537468
+    },
+    {
+      "id": 64,
+      "semantic_id": "rear_glass_upper_center_CENTER",
+      "pass": false,
+      "reference_screen": [
+        718.1228084822174,
+        216.06522522102364
+      ],
+      "projected_screen": [
+        704.6598056032019,
+        240.0
+      ],
+      "residual_px": 21.75153244278423
+    },
+    {
+      "id": 66,
+      "semantic_id": "rear_glass_lower_center_CENTER",
+      "pass": false,
+      "reference_screen": [
+        857.2414957725528,
+        221.82086605031952
+      ],
+      "projected_screen": [
+        846.550409757957,
+        240.00000000000017
+      ],
+      "residual_px": 16.739894352115567
+    }
+  ]
+}

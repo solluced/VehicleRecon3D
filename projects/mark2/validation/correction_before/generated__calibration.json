@@ -1,0 +1,509 @@
+{
+    "source":  "input/multiview.png",
+    "schema_version":  1,
+    "source_size":  [
+                        1448,
+                        1086
+                    ],
+    "perspective_camera":  {
+                               "position":  [
+                                                -6,
+                                                -7,
+                                                3.2
+                                            ],
+                               "name":  "CAM_3Q",
+                               "type":  "ORTHO",
+                               "scale":  5.7,
+                               "target":  [
+                                              0,
+                                              0,
+                                              0.6
+                                          ],
+                               "size":  [
+                                            1200,
+                                            760
+                                        ]
+                           },
+    "uncertainty":  {
+                        "wheelbase_applicability_m":  0.05,
+                        "side_landmarks_px":  5,
+                        "length_m":  0.09,
+                        "rectification":  "Front/rear share vertical scale inferred from SIDE height; width follows their common extent. TOP transverse axis is anisotropically rectified to that width; original view is visibly oblique, not strict orthographic. No gate floor is reduced.",
+                        "scale_anchor":  "OEM E-JZX100 wheelbase 2.730 m; applicability to depicted modified chassis is an inference",
+                        "height_m":  0.04,
+                        "illustrative_source":  true,
+                        "top_transverse_rectification_ratio":  1.1347500946213929,
+                        "width_m":  0.13,
+                        "top_landmarks_px":  10
+                    },
+    "views":  {
+                  "top":  {
+                              "landmarks":  {
+                                                "body_bbox":  [
+                                                                  326,
+                                                                  721,
+                                                                  1117,
+                                                                  1034
+                                                              ],
+                                                "centerline_v":  877.5,
+                                                "front_axle_u_range":  [
+                                                                           450,
+                                                                           470
+                                                                       ],
+                                                "rear_axle_u_range":  [
+                                                                          915,
+                                                                          937
+                                                                      ]
+                                            },
+                              "plane_offset":  [
+                                                   0,
+                                                   0,
+                                                   0
+                                               ],
+                              "camera":  {
+                                             "position":  [
+                                                              0,
+                                                              0,
+                                                              10
+                                                          ],
+                                             "name":  "CAM_TOP",
+                                             "type":  "ORTHO",
+                                             "scale":  4.95,
+                                             "target":  [
+                                                            0,
+                                                            0,
+                                                            0
+                                                        ],
+                                             "size":  [
+                                                          900,
+                                                          440
+                                                      ]
+                                         },
+                              "v_basis":  [
+                                              0,
+                                              -0.0065119289221103691,
+                                              0
+                                          ],
+                              "crop":  [
+                                           309,
+                                           705,
+                                           1131,
+                                           1049
+                                       ],
+                              "u_basis":  [
+                                              0.0057386458507263319,
+                                              0,
+                                              0
+                                          ],
+                              "origin":  [
+                                             -4.0535108114877278,
+                                             5.7142176291518485,
+                                             0
+                                         ]
+                          },
+                  "side":  {
+                               "landmarks":  {
+                                                 "body_bbox":  [
+                                                                   367,
+                                                                   480,
+                                                                   1072,
+                                                                   673
+                                                               ],
+                                                 "rear_wheel":  [
+                                                                    918,
+                                                                    625
+                                                                ],
+                                                 "front_wheel":  [
+                                                                     494,
+                                                                     625
+                                                                 ],
+                                                 "ground_y":  673
+                                             },
+                               "plane_offset":  [
+                                                    0,
+                                                    0,
+                                                    0
+                                                ],
+                               "camera":  {
+                                              "position":  [
+                                                               0,
+                                                               -10,
+                                                               0.62
+                                                           ],
+                                              "name":  "CAM_SIDE",
+                                              "type":  "ORTHO",
+                                              "scale":  4.95,
+                                              "target":  [
+                                                             0,
+                                                             0,
+                                                             0.62
+                                                         ],
+                                              "size":  [
+                                                           900,
+                                                           320
+                                                       ]
+                                          },
+                               "v_basis":  [
+                                               0,
+                                               0,
+                                               -0.0064386792452830188
+                                           ],
+                               "crop":  [
+                                            350,
+                                            466,
+                                            1085,
+                                            681
+                                        ],
+                               "u_basis":  [
+                                               0.0064386792452830188,
+                                               0,
+                                               0
+                                           ],
+                               "origin":  [
+                                              -4.545707547169811,
+                                              0,
+                                              4.3332311320754719
+                                          ]
+                           },
+                  "front":  {
+                                "landmarks":  {
+                                                  "body_bbox":  [
+                                                                    18,
+                                                                    480,
+                                                                    328,
+                                                                    669
+                                                                ],
+                                                  "ground_y":  669,
+                                                  "centerline_u":  173
+                                              },
+                                "plane_offset":  [
+                                                     0,
+                                                     0,
+                                                     0
+                                                 ],
+                                "camera":  {
+                                               "position":  [
+                                                                -10,
+                                                                0,
+                                                                0.62
+                                                            ],
+                                               "name":  "CAM_FRONT",
+                                               "type":  "ORTHO",
+                                               "scale":  2.45,
+                                               "target":  [
+                                                              0,
+                                                              0,
+                                                              0.62
+                                                          ],
+                                               "size":  [
+                                                            400,
+                                                            320
+                                                        ]
+                                           },
+                                "v_basis":  [
+                                                0,
+                                                0,
+                                                -0.0065749475890985324
+                                            ],
+                                "crop":  [
+                                             7,
+                                             469,
+                                             337,
+                                             680
+                                         ],
+                                "u_basis":  [
+                                                0,
+                                                -0.0065749475890985324,
+                                                0
+                                            ],
+                                "origin":  [
+                                               0,
+                                               1.1374659329140462,
+                                               4.3986399371069185
+                                           ]
+                            },
+                  "rear":  {
+                               "landmarks":  {
+                                                 "body_bbox":  [
+                                                                   1117,
+                                                                   480,
+                                                                   1427,
+                                                                   669
+                                                               ],
+                                                 "ground_y":  669,
+                                                 "centerline_u":  1272
+                                             },
+                               "plane_offset":  [
+                                                    0,
+                                                    0,
+                                                    0
+                                                ],
+                               "camera":  {
+                                              "position":  [
+                                                               10,
+                                                               0,
+                                                               0.62
+                                                           ],
+                                              "name":  "CAM_REAR",
+                                              "type":  "ORTHO",
+                                              "scale":  2.45,
+                                              "target":  [
+                                                             0,
+                                                             0,
+                                                             0.62
+                                                         ],
+                                              "size":  [
+                                                           400,
+                                                           320
+                                                       ]
+                                          },
+                               "v_basis":  [
+                                               0,
+                                               0,
+                                               -0.0065749475890985324
+                                           ],
+                               "crop":  [
+                                            1105,
+                                            469,
+                                            1437,
+                                            681
+                                        ],
+                               "u_basis":  [
+                                               0,
+                                               0.0065749475890985324,
+                                               0
+                                           ],
+                               "origin":  [
+                                              0,
+                                              -8.3633333333333333,
+                                              4.3986399371069185
+                                          ]
+                           }
+              },
+    "datums":  {
+                   "views":  {
+                                 "top":  [
+                                             {
+                                                 "radius":  0.003,
+                                                 "points":  [
+                                                                [
+                                                                    -2.5,
+                                                                    0,
+                                                                    0.02
+                                                                ],
+                                                                [
+                                                                    2.5,
+                                                                    0,
+                                                                    0.02
+                                                                ]
+                                                            ]
+                                             },
+                                             {
+                                                 "radius":  0.003,
+                                                 "points":  [
+                                                                [
+                                                                    -1.365,
+                                                                    -1.2,
+                                                                    0.02
+                                                                ],
+                                                                [
+                                                                    -1.365,
+                                                                    1.2,
+                                                                    0.02
+                                                                ]
+                                                            ]
+                                             },
+                                             {
+                                                 "radius":  0.003,
+                                                 "points":  [
+                                                                [
+                                                                    1.365,
+                                                                    -1.2,
+                                                                    0.02
+                                                                ],
+                                                                [
+                                                                    1.365,
+                                                                    1.2,
+                                                                    0.02
+                                                                ]
+                                                            ]
+                                             }
+                                         ],
+                                 "front":  [
+                                               {
+                                                   "radius":  0.004,
+                                                   "points":  [
+                                                                  [
+                                                                      -0.02,
+                                                                      -1.2,
+                                                                      0
+                                                                  ],
+                                                                  [
+                                                                      -0.02,
+                                                                      1.2,
+                                                                      0
+                                                                  ]
+                                                              ]
+                                               },
+                                               {
+                                                   "radius":  0.003,
+                                                   "points":  [
+                                                                  [
+                                                                      -0.02,
+                                                                      0,
+                                                                      0
+                                                                  ],
+                                                                  [
+                                                                      -0.02,
+                                                                      0,
+                                                                      1.4
+                                                                  ]
+                                                              ]
+                                               }
+                                           ],
+                                 "side":  [
+                                              {
+                                                  "radius":  0.004,
+                                                  "points":  [
+                                                                 [
+                                                                     -2.5,
+                                                                     -0.02,
+                                                                     0
+                                                                 ],
+                                                                 [
+                                                                     2.5,
+                                                                     -0.02,
+                                                                     0
+                                                                 ]
+                                                             ]
+                                              },
+                                              {
+                                                  "radius":  0.003,
+                                                  "points":  [
+                                                                 [
+                                                                     -1.365,
+                                                                     -0.02,
+                                                                     0
+                                                                 ],
+                                                                 [
+                                                                     -1.365,
+                                                                     -0.02,
+                                                                     1.4
+                                                                 ]
+                                                             ]
+                                              },
+                                              {
+                                                  "radius":  0.003,
+                                                  "points":  [
+                                                                 [
+                                                                     1.365,
+                                                                     -0.02,
+                                                                     0
+                                                                 ],
+                                                                 [
+                                                                     1.365,
+                                                                     -0.02,
+                                                                     1.4
+                                                                 ]
+                                                             ]
+                                              }
+                                          ],
+                                 "rear":  [
+                                              {
+                                                  "radius":  0.004,
+                                                  "points":  [
+                                                                 [
+                                                                     0.02,
+                                                                     -1.2,
+                                                                     0
+                                                                 ],
+                                                                 [
+                                                                     0.02,
+                                                                     1.2,
+                                                                     0
+                                                                 ]
+                                                             ]
+                                              },
+                                              {
+                                                  "radius":  0.003,
+                                                  "points":  [
+                                                                 [
+                                                                     0.02,
+                                                                     0,
+                                                                     0
+                                                                 ],
+                                                                 [
+                                                                     0.02,
+                                                                     0,
+                                                                     1.4
+                                                                 ]
+                                                             ]
+                                              }
+                                          ]
+                             },
+                   "style":  {
+                                 "color":  [
+                                               0.02,
+                                               0.5,
+                                               0.09
+                                           ],
+                                 "name":  "DATUM_GREEN",
+                                 "strength":  1,
+                                 "kind":  "emission"
+                             }
+               },
+    "proof_layout":  {
+                         "panels":  [
+                                        {
+                                            "view":  "side",
+                                            "position":  [
+                                                             0,
+                                                             0
+                                                         ]
+                                        },
+                                        {
+                                            "view":  "front",
+                                            "position":  [
+                                                             900,
+                                                             0
+                                                         ]
+                                        },
+                                        {
+                                            "view":  "rear",
+                                            "position":  [
+                                                             900,
+                                                             320
+                                                         ]
+                                        },
+                                        {
+                                            "view":  "top",
+                                            "position":  [
+                                                             0,
+                                                             380
+                                                         ]
+                                        }
+                                    ],
+                         "size":  [
+                                      1300,
+                                      1000
+                                  ]
+                     },
+    "wheel_geometry":  {
+                           "radius_m":  0.3090566037735849,
+                           "axles":  [
+                                         {
+                                             "z":  0.3090566037735849,
+                                             "id":  "front",
+                                             "track_m":  1.75,
+                                             "x":  -1.365
+                                         },
+                                         {
+                                             "z":  0.3090566037735849,
+                                             "id":  "rear",
+                                             "track_m":  1.77,
+                                             "x":  1.365
+                                         }
+                                     ]
+                       },
+    "source_sha256":  "5c9a5bfaff9414ef3c8e835fdea43f21741d54d5836d4d4e01e5ca599accd09a"
+}

@@ -1,0 +1,3 @@
+# Preserve exact checkpoint inputs and evidence bytes used by SHA256 reports.
+*.json -text whitespace=cr-at-eol
+*.txt -text whitespace=cr-at-eol

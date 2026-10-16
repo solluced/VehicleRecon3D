@@ -1,0 +1,16 @@
+{
+  "source": "input/multiview.png",
+  "source_sha256": "5c9a5bfaff9414ef3c8e835fdea43f21741d54d5836d4d4e01e5ca599accd09a",
+  "method": "Independent manual feature observation from the original SIDE panel and the unwarped side_measurement_crop.png. Not obtained from the reconstructed curve.",
+  "samples": [
+    {
+      "id": "front_door_lower_front_seam",
+      "view": "side",
+      "curve_record": "DOOR_FRONT_bottom",
+      "control_index": 0,
+      "observed_pixel": [591, 648],
+      "uncertainty_px": 5,
+      "observation": "Lower front door seam meets the top of the skirt near original u=591. The authored cage puts that feature further forward, inside the overfender transition."
+    }
+  ]
+}
