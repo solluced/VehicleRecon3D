@@ -9,14 +9,23 @@ def main(argv=None):
     commands = parser.add_subparsers(dest='command', required=True)
     inspect = commands.add_parser('inspect')
     inspect.add_argument('project')
-    init=commands.add_parser('init');init.add_argument('project');init.add_argument('--profile',default='sedan')
+    init=commands.add_parser('init');init.add_argument('project');init.add_argument('--profile',default='sedan');init.add_argument('--schema-version',type=int,choices=[1,2],default=1)
+    migration=commands.add_parser('migrate');migration.add_argument('project');migration.add_argument('--to',type=int,required=True);migration.add_argument('--dry-run',action='store_true');migration.add_argument('--expected-revision')
     run=commands.add_parser('run');run.add_argument('project');run.add_argument('--blender');run.add_argument('--no-cache',action='store_true');run.add_argument('--until',choices=['preflight','references','calibration','overlay','cage','surfaces','silhouette','details','geometry','presentation','export','glb_verify','viewer','delivery'])
     review=commands.add_parser('review');review.add_argument('project');review.add_argument('--reviewer',required=True);review.add_argument('--decision',choices=['PASS','FAIL'],required=True);review.add_argument('--note',action='append',required=True);review.add_argument('--limitation',action='append',default=[])
     args = parser.parse_args(argv)
     try:
         if args.command=='init':
+            if args.schema_version == 2:
+                from .authoring.versions import create_draft
+                print(json.dumps(create_draft(args.project,profile=args.profile),indent=2));return 0
             from .core.initialize import initialize
             print(json.dumps(initialize(args.project,args.profile),indent=2));return 0
+        if args.command=='migrate':
+            from .authoring.versions import preview_migration, execute_migration
+            plan=preview_migration(args.project,target=args.to)
+            result=plan if args.dry_run else execute_migration(args.project,target=args.to,expected_revision=args.expected_revision or plan['source_revision'])
+            print(json.dumps({k:v for k,v in result.items() if k!='documents'},indent=2));return 0
         project = Project(args.project)
         if args.command=='run':
             from .core.pipeline import Pipeline
