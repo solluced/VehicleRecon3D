@@ -1,7 +1,7 @@
 """Calibrated image geometry and proof renders, driven by project records."""
 import bpy
 import numpy as np
-from ..reference.transforms import CalibrationTransform
+from ..reference.transforms import CalibrationTransform, reference_grid
 from ..reference.panels import select_panel, inventory
 from ..core.manifest import write_json
 from .geometry import mesh, curve
@@ -41,12 +41,19 @@ def build(project):
         emission = nodes.new('ShaderNodeEmission');out = nodes.new('ShaderNodeOutputMaterial')
         mat.node_tree.links.new(tex.outputs['Color'],emission.inputs['Color'])
         mat.node_tree.links.new(emission.outputs[0],out.inputs[0])
-        vertices = [[a+d for a,d in zip(transform.pixel_to_world(view,u,v),data['plane_offset'])]
-                    for u,v in [(l,b),(r,b),(r,t),(l,t)]]
-        obj = mesh('REF_'+view.upper(),vertices,[(0,1,2,3)],mat,'00_REFERENCE')
-        uv = obj.data.uv_layers.new()
-        for loop,point in zip(uv.data,[(0,0),(1,0),(1,1),(0,1)]):
-            loop.uv=point
+        if view in transform.rectifications:
+            vertices, faces, coordinates = reference_grid(transform,view)
+            obj = mesh('REF_'+view.upper(),vertices,faces,mat,'00_REFERENCE')
+            uv = obj.data.uv_layers.new()
+            for loop in obj.data.loops:
+                uv.data[loop.index].uv = coordinates[loop.vertex_index]
+        else:
+            vertices = [[a+d for a,d in zip(transform.pixel_to_world(view,u,v),data['plane_offset'])]
+                        for u,v in [(l,b),(r,b),(r,t),(l,t)]]
+            obj = mesh('REF_'+view.upper(),vertices,[(0,1,2,3)],mat,'00_REFERENCE')
+            uv = obj.data.uv_layers.new()
+            for loop,point in zip(uv.data,[(0,0),(1,0),(1,1),(0,1)]):
+                loop.uv=point
         obj['source']=str(path)
         obj['source_crop_px']=data['crop']
         obj.hide_render=True

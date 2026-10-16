@@ -1,0 +1,67 @@
+{
+  "status": "REJECTED_NOT_ACTIVE",
+  "affected_view": "top",
+  "reference_gauge": "side",
+  "base_calibration_path": "generated/calibration.json",
+  "base_calibration_sha256": "f5c807bb0071b1573b0436a238f00adb060ad5d6fc79aa3efaaebfb83ef61bea",
+  "source_sha256": "5c9a5bfaff9414ef3c8e835fdea43f21741d54d5836d4d4e01e5ca599accd09a",
+  "rectification": {
+    "type": "piecewise_monotonic",
+    "axis": "u",
+    "image_domain_px": [
+      455,
+      925
+    ],
+    "affine_domain_px": [
+      453.99219858156033,
+      929.7141843971632
+    ],
+    "anchors": [
+      {
+        "image": 0.0,
+        "world_normalized": 0.0,
+        "semantic": "front_axle"
+      },
+      {
+        "image": 0.39361702127659576,
+        "world_normalized": 0.4669811320754717,
+        "semantic": "a_pillar_roof"
+      },
+      {
+        "image": 0.6851063829787234,
+        "world_normalized": 0.6391509433962265,
+        "semantic": "b_pillar_roof"
+      },
+      {
+        "image": 0.8914893617021277,
+        "world_normalized": 0.8042452830188679,
+        "semantic": "c_pillar_roof"
+      },
+      {
+        "image": 1.0,
+        "world_normalized": 1.0,
+        "semantic": "rear_axle"
+      }
+    ],
+    "max_scale_change": 0.1
+  },
+  "fit_landmarks": [
+    "front_axle",
+    "a_pillar_roof",
+    "b_pillar_roof",
+    "c_pillar_roof",
+    "rear_axle"
+  ],
+  "held_out_landmarks": [
+    "front_bumper",
+    "a_pillar_base",
+    "b_pillar_window",
+    "c_pillar_window",
+    "rear_glass_roof_transition",
+    "rear_glass_lower_transition",
+    "rear_bumper"
+  ],
+  "fit_policy": "Exactly lock both axle datums; interpolate three independent high-confidence near-side A/B/C roof junctions. Do not fit cage controls, door cuts, reflections or widebody edges.",
+  "rejection": "Rectification local scale 0.518262..2.150012 exceeds declared +/-10.0% limit",
+  "application": "Do not merge this candidate into generated/calibration.json. No active calibration, geometry or tolerance changed."
+}

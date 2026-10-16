@@ -129,10 +129,15 @@
     "viewer_desktop": "NOT RUN",
     "viewer_mobile": "NOT RUN"
   },
-  "framework_gaps": [],
-  "framework_gap_assessment": "No missing bounded operation or reusable automotive capability has been demonstrated. The unresolved failure is candidate feature placement and cross-view fit; later pipeline stages remain untested.",
+  "framework_gaps": [
+    "nonlinear illustrative-view rectification"
+  ],
+  "framework_gap_assessment": "Generic PiecewiseMonotonicAxisWarp calibration extension implemented and tested; Tesla cold regression PASS with exact IoU. Mark II candidate rejected for extreme local distortion; active geometry/calibration unchanged.",
   "blockers": [
-    "Cage correction review FAIL: unresolved TOP greenhouse/pillar correspondence; no thresholds lowered."
+    "Measured SIDE/TOP correspondences cannot satisfy an axle-locked affine map.",
+    "Sparse monotonic TOP-to-SIDE hypothesis needs local scale 0.518262..2.150012; +/-10% limit fails.",
+    "Full endpoint uncertainties still require at least 16.04% A-to-B compression.",
+    "New consistent references or independently justified correspondence/projection are needed; current source warp is not accepted."
   ],
   "outputs_generated": [
     "output/mark2_calibrated.blend",
@@ -142,5 +147,6 @@
   "outputs_status": "Editable checkpoints only; no accepted surface model, GLB, viewer or final delivery manifest.",
   "gate_thresholds_changed": false,
   "tesla_geometry_reused": false,
-  "current_correction_report": "validation/cage_correction_report.json"
+  "current_correction_report": "validation/cage_correction_report.json",
+  "current_reconciliation_report": "validation/reference_reconciliation_report.json"
 }

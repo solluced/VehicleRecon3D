@@ -1,5 +1,10 @@
 # Mark II cage correction — unresolved reference correspondence
 
+Historical cage-correction evidence. The current phase is recorded in
+[reference_reconciliation_report.md](reference_reconciliation_report.md): a
+generic rectification capability now exists, but the Mark II candidate was
+rejected for extreme source distortion. The measurements below are unchanged.
+
 Date: 2026-10-16. Primary source: unchanged `input/multiview.png`.
 
 The axle/ground lock passes using the authoritative 2.730 m wheelbase, the

@@ -1,0 +1,118 @@
+{
+  "status": "PASS",
+  "method": "Isolated cold reconstruction of unchanged Tesla input/generated/project data, all 14 real CLI stages, existing explicit review verified against fresh proof hashes, then read-only frozen Blender regression. Published Tesla project and frozen fixtures untouched.",
+  "command": ".venv/Scripts/python.exe -m vehiclerecon run projects/tesla/.cache/rectification_regression_cold --no-cache",
+  "implementation_sha256": "049272e64fe22d5786ffeadfc909545675f4bfaac3a85a34e7226274407969fd",
+  "pipeline_all_14_pass": true,
+  "expected_iou": {
+    "side": 0.95723,
+    "top": 0.936083,
+    "front": 0.931202,
+    "rear": 0.944724
+  },
+  "observed_iou": {
+    "side": 0.95723,
+    "top": 0.936083,
+    "front": 0.931202,
+    "rear": 0.944724
+  },
+  "metrics_exact": true,
+  "proof_files": {
+    "validation/surface_reflections.png": {
+      "original_sha256": "9640f922f29a5e0920b8d0e9a084b0e556fedccae0bd6f08b75348b8fffbc76c",
+      "fresh_sha256": "9640f922f29a5e0920b8d0e9a084b0e556fedccae0bd6f08b75348b8fffbc76c"
+    },
+    "validation/surface_matcap.png": {
+      "original_sha256": "cc5582ee6c541c57c6f8305215a2112405c3727c00e36fbc3efb5a4df8c4c098",
+      "fresh_sha256": "cc5582ee6c541c57c6f8305215a2112405c3727c00e36fbc3efb5a4df8c4c098"
+    },
+    "validation/perspective_surface.png": {
+      "original_sha256": "28155431638938e5cc436826137908da07116cfc0baf7eb26b64b894e31cce7c",
+      "fresh_sha256": "28155431638938e5cc436826137908da07116cfc0baf7eb26b64b894e31cce7c"
+    },
+    "validation/front.png": {
+      "original_sha256": "59b85a07e3dfeb296edb98c455a9d801fed203a7f7f6cbe6efd2ec1b309ce5c4",
+      "fresh_sha256": "59b85a07e3dfeb296edb98c455a9d801fed203a7f7f6cbe6efd2ec1b309ce5c4"
+    },
+    "validation/side.png": {
+      "original_sha256": "330602a390c6b5e46a9a8e05122a6ec5f34d002a92d6bae65f2e3a12a2a08fc0",
+      "fresh_sha256": "330602a390c6b5e46a9a8e05122a6ec5f34d002a92d6bae65f2e3a12a2a08fc0"
+    },
+    "validation/rear.png": {
+      "original_sha256": "ac37bddaa87a0d0fe7ae5cc87b48481e6657ec3ab91aa0285985004677e2c5df",
+      "fresh_sha256": "ac37bddaa87a0d0fe7ae5cc87b48481e6657ec3ab91aa0285985004677e2c5df"
+    },
+    "validation/top.png": {
+      "original_sha256": "36f2db2128d1446b2cd68c242251451ddae1554f8a339d3bfb65735c766c0fc5",
+      "fresh_sha256": "36f2db2128d1446b2cd68c242251451ddae1554f8a339d3bfb65735c766c0fc5"
+    },
+    "validation/perspective.png": {
+      "original_sha256": "823d906d4177bf6db3a45c95eaf1973089a2b1037b7266aaaf3f04a75ea5c0a7",
+      "fresh_sha256": "823d906d4177bf6db3a45c95eaf1973089a2b1037b7266aaaf3f04a75ea5c0a7"
+    }
+  },
+  "frozen_control_regression_status": "PASS",
+  "frozen_control_max_delta_m": 1.1920928955078125e-07,
+  "frozen_control_tolerance_m": 1e-05,
+  "cage_handles_exact": true,
+  "current_evaluated_geometry_status": "PASS",
+  "glb_json_identical": true,
+  "glb_accessor_max_absolute_delta": {
+    "POSITION": 0,
+    "NORMAL": 0,
+    "INDICES": 0,
+    "TEXCOORD_0": 5.960464477539063e-08
+  },
+  "glb_changed_accessors": [
+    {
+      "mesh": "Cube.007",
+      "attribute": "TEXCOORD_0",
+      "maximum_absolute_delta": 5.960464477539063e-08
+    },
+    {
+      "mesh": "Cube",
+      "attribute": "TEXCOORD_0",
+      "maximum_absolute_delta": 5.960464477539063e-08
+    },
+    {
+      "mesh": "Cube.015",
+      "attribute": "TEXCOORD_0",
+      "maximum_absolute_delta": 2.9802322387695312e-08
+    },
+    {
+      "mesh": "Cube.018",
+      "attribute": "TEXCOORD_0",
+      "maximum_absolute_delta": 5.960464477539063e-08
+    },
+    {
+      "mesh": "Cube.014",
+      "attribute": "TEXCOORD_0",
+      "maximum_absolute_delta": 5.960464477539063e-08
+    },
+    {
+      "mesh": "Cube.017",
+      "attribute": "TEXCOORD_0",
+      "maximum_absolute_delta": 2.9802322387695312e-08
+    },
+    {
+      "mesh": "Cube.020",
+      "attribute": "TEXCOORD_0",
+      "maximum_absolute_delta": 2.9802322387695312e-08
+    }
+  ],
+  "binary_policy": "Fresh GLB/viewer are not byte-identical due to seven UV accessors differing by at most one float32 ULP (5.96e-8). Exported positions, normals, triangle indices, JSON structure and all explicit-review renders are identical. Existing frozen-control tolerance is unchanged. No larger UV allowance or metric tolerance was introduced.",
+  "full_tests": {
+    "status": "PASS",
+    "tests": 149,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "elapsed_s": 35.011,
+    "python": "3.12.10",
+    "command": ".venv/Scripts/python.exe -m pytest -q -p no:cacheprovider --basetemp=F:/T/build/rectification-tests-20261016 --junitxml=projects/mark2/.cache/rectification_tests.xml --tb=short",
+    "junit_sha256": "124e3042caf6af25143731974ac30f1efecf31191dac79716891a95cd0dd526f",
+    "scope": "Complete suite, including Blender nonlinear texture-grid build, installed-wheel packaging, frozen Tesla artifacts, identity/no-warp, numerical interpolation/inverse, schema and cache tests."
+  },
+  "delivery_manifest_verified": true,
+  "reports_scope": "Fresh Tesla regression artifacts only; this is not a Mark II delivery."
+}

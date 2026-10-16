@@ -46,11 +46,20 @@ def validate(project,label='surface'):
             def project_pixel(u,v):
                 q=world_to_camera_view(scene,camera,Vector(transform.pixel_to_world(view,u,v)))
                 return (q.x*width,(1-q.y)*height)
-            reference=polygon_mask([project_pixel(*p) for p in traces[view]['body']],width,height)
+            def projected_boundary(points):
+                if view not in transform.rectifications:
+                    return [project_pixel(*p) for p in points]
+                result=[]
+                for point in transform.pixel_polyline_to_world(view,points,closed=True):
+                    q=world_to_camera_view(scene,camera,Vector(point))
+                    result.append((q.x*width,(1-q.y)*height))
+                return result
+            reference=polygon_mask(projected_boundary(traces[view]['body']),width,height)
             for component in traces[view].get('components',[]):
-                reference|=polygon_mask([project_pixel(*p) for p in component],width,height)
+                reference|=polygon_mask(projected_boundary(component),width,height)
             for u,v,radius in traces[view].get('tires',[]):
-                reference|=polygon_mask([project_pixel(u+radius*math.cos(a),v+radius*math.sin(a)) for a in [i*math.tau/128 for i in range(128)]],width,height)
+                points=[(u+radius*math.cos(a),v+radius*math.sin(a)) for a in [i*math.tau/128 for i in range(128)]]
+                reference|=polygon_mask(projected_boundary(points),width,height)
             path=out/f'model_{view}.png'
             render(path,camera.name,width,height)
             image=bpy.data.images.load(str(path),check_existing=True)

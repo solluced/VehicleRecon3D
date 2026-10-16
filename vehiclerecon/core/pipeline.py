@@ -87,7 +87,7 @@ class Pipeline:
             config,transform=load(p);self.blender_run('calibration')
             width,height=config['source_size']
             error=max(abs(a-b) for view in config['views'] for q in [(0,0),(width/2,height/2),(width,height)] for a,b in zip(q,transform.world_to_pixel(view,*transform.pixel_to_world(view,*q))))
-            if error>1e-9:raise GateError('Affine roundtrip failed')
+            if error>1e-9:raise GateError('Calibration roundtrip failed')
             write_json(p.path('validation/calibration_migration_report.json'),{'status':'PASS','max_pixel_roundtrip_error':error,'source_hash':config['source_sha256'],'uncertainty_preserved':config['uncertainty'],'fresh_scene':True,'reference_proof':'reference_alignment.png'})
             return ['.cache/calibration.blend','validation/reference_alignment.png','validation/calibration_migration_report.json',*[f'validation/alignment_{v}.png' for v in config['views']],*[f'generated/crop_{v}.png' for v in config['views']]]
         if stage=='overlay':

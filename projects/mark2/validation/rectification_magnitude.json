@@ -1,0 +1,187 @@
+{
+  "status": "REJECTED_EXTREME_SOURCE_DISTORTION",
+  "acceptance_limit_scale_change": 0.1,
+  "relative_view_identification": "Data establish relative SIDE/TOP non-affinity for these correspondences. Choosing SIDE as the gauge and TOP as distorted is an explicit hypothesis; no independent metrology identifies an undistorted source.",
+  "side": {
+    "model": "identity retained",
+    "maximum_correction_px": 0,
+    "maximum_correction_mm": 0,
+    "rms_landmark_correction_px": 0,
+    "local_scale_range": [
+      1,
+      1
+    ]
+  },
+  "top": {
+    "model": "rejected PCHIP candidate, five trusted anchors",
+    "between_axles": {
+      "source_normalized": 0.8621490276321,
+      "correction_normalized": -0.08943969218949799,
+      "maximum_absolute_normalized": 0.08943969218949799,
+      "maximum_correction_source_px": 42.036655329064054,
+      "maximum_correction_mm": 244.17035967732951,
+      "audit_interval_normalized": [
+        0,
+        1
+      ]
+    },
+    "whole_crop": {
+      "source_normalized": 1.4382978723404256,
+      "correction_normalized": 0.5040478059751663,
+      "maximum_absolute_normalized": 0.5040478059751663,
+      "maximum_correction_source_px": 236.90246880832817,
+      "maximum_correction_mm": 1376.050510312204,
+      "audit_interval_normalized": [
+        -0.31063829787234043,
+        1.4382978723404256
+      ]
+    },
+    "rms_landmark_correction_px": 73.16333292770031,
+    "rms_definition": "All 12 unique observed longitudinal landmarks, including held-out overhang observations and both exact axle anchors; excludes duplicate cowl/A-base alias.",
+    "rms_between_axles_landmark_correction_px": 27.24922646861985,
+    "rms_fit_anchor_correction_px": 25.833522911449304,
+    "local_normalized_scale_range": [
+      0.518261865847764,
+      2.150011984506447
+    ],
+    "maximum_scale_change_percent": 115.00119845064472,
+    "derivative_policy": "Analytic exact extrema of each quadratic derivative, including endpoint slopes; strictly positive, C1, no foldovers. Normalized scale is relative to the unique axle-locked affine baseline.",
+    "correction_definition": "(f(r)-r) times source TOP wheelbase, 470 px, or authoritative 2730 mm. Not residual-to-model error. Additional raw-to-affine-domain scaling is explicit in candidate data.",
+    "extrapolation_policy": "Outside [front axle,rear axle], positive linear endpoint tails are numerical extrapolations, not measured accepted distortion. Whole-crop extrema include these untrusted tails.",
+    "corrections": [
+      {
+        "semantic": "front_bumper",
+        "fit_anchor": false,
+        "source_normalized": -0.274468085106383,
+        "rectified_normalized": -0.4195659470963657,
+        "correction_source_px": -68.19599513529187,
+        "correction_mm": -396.1171632326528,
+        "longitudinal_error_to_side_after_warp_px": -56.41769324849941,
+        "extrapolated": true
+      },
+      {
+        "semantic": "front_axle",
+        "fit_anchor": true,
+        "source_normalized": 0.0,
+        "rectified_normalized": 0.0,
+        "correction_source_px": 0.0,
+        "correction_mm": 0.0,
+        "longitudinal_error_to_side_after_warp_px": 0.0,
+        "extrapolated": false
+      },
+      {
+        "semantic": "a_pillar_base",
+        "fit_anchor": false,
+        "source_normalized": 0.24680851063829787,
+        "rectified_normalized": 0.32826301162833904,
+        "correction_source_px": 38.28361546531935,
+        "correction_mm": 222.3707877028124,
+        "longitudinal_error_to_side_after_warp_px": 46.76003055965897,
+        "extrapolated": false
+      },
+      {
+        "semantic": "a_pillar_roof",
+        "fit_anchor": true,
+        "source_normalized": 0.39361702127659576,
+        "rectified_normalized": 0.4669811320754717,
+        "correction_source_px": 34.4811320754717,
+        "correction_mm": 200.28402248093133,
+        "longitudinal_error_to_side_after_warp_px": 0.0,
+        "extrapolated": false
+      },
+      {
+        "semantic": "b_pillar_roof",
+        "fit_anchor": true,
+        "source_normalized": 0.6851063829787234,
+        "rectified_normalized": 0.6391509433962265,
+        "correction_source_px": -21.599056603773555,
+        "correction_mm": -125.4583500602166,
+        "longitudinal_error_to_side_after_warp_px": 0.0,
+        "extrapolated": false
+      },
+      {
+        "semantic": "b_pillar_window",
+        "fit_anchor": false,
+        "source_normalized": 0.6595744680851063,
+        "rectified_normalized": 0.622433657623836,
+        "correction_source_px": -17.456180916797077,
+        "correction_mm": -101.39441255926813,
+        "longitudinal_error_to_side_after_warp_px": -1.2061809167971005,
+        "extrapolated": false
+      },
+      {
+        "semantic": "c_pillar_roof",
+        "fit_anchor": true,
+        "source_normalized": 0.8914893617021277,
+        "rectified_normalized": 0.8042452830188679,
+        "correction_source_px": -41.0047169811321,
+        "correction_mm": -238.1763348052992,
+        "longitudinal_error_to_side_after_warp_px": 0.0,
+        "extrapolated": false
+      },
+      {
+        "semantic": "c_pillar_window",
+        "fit_anchor": false,
+        "source_normalized": 0.9765957446808511,
+        "rectified_normalized": 0.950225547142346,
+        "correction_source_px": -12.393992843097404,
+        "correction_mm": -71.99063928011896,
+        "longitudinal_error_to_side_after_warp_px": 6.5352524399214555,
+        "extrapolated": false
+      },
+      {
+        "semantic": "rear_glass_roof_transition",
+        "fit_anchor": false,
+        "source_normalized": 0.9127659574468086,
+        "rectified_normalized": 0.8325369948552045,
+        "correction_source_px": -37.707612418053905,
+        "correction_mm": -219.0250678750791,
+        "longitudinal_error_to_side_after_warp_px": -23.283084116167082,
+        "extrapolated": false
+      },
+      {
+        "semantic": "rear_axle",
+        "fit_anchor": true,
+        "source_normalized": 1.0,
+        "rectified_normalized": 1.0,
+        "correction_source_px": 0.0,
+        "correction_mm": 0.0,
+        "longitudinal_error_to_side_after_warp_px": 0.0,
+        "extrapolated": false
+      },
+      {
+        "semantic": "rear_glass_lower_transition",
+        "fit_anchor": false,
+        "source_normalized": 1.1191489361702127,
+        "rectified_normalized": 1.256171640707151,
+        "correction_source_px": 64.40067113236101,
+        "correction_mm": 374.07198338584163,
+        "longitudinal_error_to_side_after_warp_px": 73.84406735877607,
+        "extrapolated": true
+      },
+      {
+        "semantic": "rear_bumper",
+        "fit_anchor": false,
+        "source_normalized": 1.4085106382978723,
+        "rectified_normalized": 1.8783027681388038,
+        "correction_source_px": 220.80230102523782,
+        "correction_mm": 1282.5325144657431,
+        "longitudinal_error_to_side_after_warp_px": 242.0947538554265,
+        "extrapolated": true
+      }
+    ]
+  },
+  "uncertainty_certificate": {
+    "minimum_required_average_top_compression_fraction": 0.1603699574714067,
+    "full_side_span_interval": [
+      0.14516129032258066,
+      0.20048309178743962
+    ],
+    "full_top_span_interval": [
+      0.23877551020408164,
+      0.3488888888888889
+    ],
+    "interpretation": "Even the most favorable endpoints require >10% compression over A-to-B, so the rejection is not merely a PCHIP tuning artifact. Any smooth rectification with derivative everywhere >=0.9 relative to the axle-locked affine map cannot satisfy these correspondences at full uncertainty."
+  },
+  "decision": "REFERENCE SOURCE: INCONSISTENT under declared correspondences and a modest one-axis nonlinear-rectification model. Stop before activating calibration or reprojecting/editing the cage. This does not exclude all physical perspective models; new consistent references or independently justified correspondences/projection are required."
+}

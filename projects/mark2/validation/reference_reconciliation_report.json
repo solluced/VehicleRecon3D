@@ -1,0 +1,119 @@
+{
+  "phase": "REFERENCE RECONCILIATION / NONLINEAR VIEW RECTIFICATION",
+  "status": "REFERENCE_SOURCE_INCONSISTENT",
+  "affine_rectification": "FAIL",
+  "nonlinear_rectification_required": true,
+  "candidate_affected_views": [
+    "top"
+  ],
+  "reference_gauge": "side (explicit hypothesis, not independently known optical truth)",
+  "source_rectification": "REJECTED_EXTREME",
+  "rectification_magnitude": "validation/rectification_magnitude.json",
+  "ratios": "validation/view_longitudinal_ratios.json",
+  "candidate": "validation/rectification_candidate.json",
+  "generic_gap_found": true,
+  "gap": "nonlinear illustrative-view rectification",
+  "core_modified": true,
+  "generic_capability": "PiecewiseMonotonicAxisWarp, optional per-view calibration rectification, inverse, texture grid and nonlinear trace sampling",
+  "project_specific_python": 0,
+  "authoritative_datums": {
+    "wheelbase_m": 2.73,
+    "front_axle_x_m": -1.365,
+    "rear_axle_x_m": 1.365,
+    "ground_z_m": 0,
+    "stock_dimensions_m": {
+      "length": 4.76,
+      "width": 1.755,
+      "height": 1.4
+    }
+  },
+  "stock_dimensions_policy": "Provenance, not replacement drift-kit dimensions. Outer envelope remains inferred.",
+  "protected_artifacts_unchanged_from_commit": "b51b372f520e57878795650231f044432b10cc23",
+  "protected_artifact_sha256": {
+    "project.json": "6d711561682fba27ed4caa002cc81f5fff5b3b2d180471e1be3174fb9dc29a0e",
+    "generated/calibration.json": "f5c807bb0071b1573b0436a238f00adb060ad5d6fc79aa3efaaebfb83ef61bea",
+    "generated/cage.json": "1bbf514cd9bd55381b2e3b934543500afad5fb6579b6b0cfa479473d9990216a",
+    "generated/surface_graph.json": "835d8cd0d40b70658a882d7bbb5343f71b11d669c06a8c7d4e03e70f0401b86b",
+    "generated/details.json": "27691fab7606c58c8cce0158699ad3e8581dc2131b142d96cca7ece76a1da5d6",
+    "output/mark2_cage_corrected.blend": "907148c0d8e8136dc7f45611df6c1f1d7ddb6df8a2c974f79f682bdb7439b856",
+    "input/multiview.png": "5c9a5bfaff9414ef3c8e835fdea43f21741d54d5836d4d4e01e5ca599accd09a",
+    "input/control_overlay.png": "571a4f9e4a431974239f11c1df859f57c5e3727fcee53497e9a725a879a0e9d2",
+    "input/surface_target.png": "50a153cf66a12b462b15b4dfc1fe6c47ea769e3eb57c7facf79e02d092c1fc06"
+  },
+  "profiles_unchanged": true,
+  "tesla_inputs_and_published_outputs_unchanged": true,
+  "tesla_regression": "validation/tesla_rectification_regression/summary.json",
+  "tests_passed": 149,
+  "rectification_accepted": false,
+  "current_cage_reprojection": {
+    "status": "NOT_RUN",
+    "reason": "Handoff steps 12/13 require accepted rectification. Candidate was rejected by the excessive-distortion stop rule (14B). No rectified proof is passed off as accepted.",
+    "66_checks_after_rectification": null
+  },
+  "pre_rectification_cage_baseline": {
+    "maximum_critical_residual_px": 52.27267757996422,
+    "mean_critical_residual_px": 10.397444901101448,
+    "critical_observations": 66,
+    "passed_observations": 44,
+    "failed_observations": 22,
+    "front_door_leading_edge_residual_px": 32.67975472519686,
+    "a_pillar_roof": {
+      "side": 0.23280634897595917,
+      "front": 1.0000010186737582,
+      "top": 52.27267757996422
+    },
+    "b_pillar_roof": {
+      "side": 6.520128186315035e-06,
+      "top": 29.242675922832287
+    },
+    "c_pillar_side_roof": {
+      "side": 7.5262913300466545e-06,
+      "top": 43.14946615817108
+    },
+    "c_pillar_rear_roof": {
+      "side": 1.5533608237478191,
+      "rear": 1.5533692659306038,
+      "top": 38.49074138577816
+    },
+    "greenhouse_by_view": {
+      "front": 1.0000010186737582,
+      "rear": 3.997535333190343,
+      "side": 3.9975368164431173,
+      "top": 52.27267757996422
+    },
+    "pillar_group_maxima": {
+      "A": {
+        "side": 32.67975472519686,
+        "front": 1.0000010186737582,
+        "top": 52.27267757996422
+      },
+      "B": {
+        "side": 22.878696726385254,
+        "top": 29.242675922832287
+      },
+      "C": {
+        "side": 23.102513827587778,
+        "rear": 3.997535333190343,
+        "top": 43.14946615817108
+      }
+    }
+  },
+  "cage": "FAIL",
+  "cage_edited": false,
+  "surfaces": "STILL NOT STARTED",
+  "details": "STILL NOT STARTED",
+  "portability": "BLOCKED",
+  "blockers": [
+    "Measured SIDE/TOP correspondences cannot satisfy an axle-locked affine map.",
+    "Sparse monotonic TOP-to-SIDE hypothesis needs local scale 0.518262..2.150012; +/-10% limit fails.",
+    "Full endpoint uncertainties still require at least 16.04% A-to-B compression.",
+    "New consistent references or independently justified correspondence/projection are needed; current source warp is not accepted."
+  ],
+  "not_created": [
+    "cage_side_rectified.png",
+    "cage_top_rectified.png",
+    "cage_front_rectified.png",
+    "cage_rear_rectified.png"
+  ],
+  "not_created_reason": "Explicit stop after rejected source rectification; accepted-reprojection stage not reached."
+}

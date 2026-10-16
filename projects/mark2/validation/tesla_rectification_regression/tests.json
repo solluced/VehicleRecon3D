@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "tests": 149,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "elapsed_s": 35.011,
+  "python": "3.12.10",
+  "command": ".venv/Scripts/python.exe -m pytest -q -p no:cacheprovider --basetemp=F:/T/build/rectification-tests-20261016 --junitxml=projects/mark2/.cache/rectification_tests.xml --tb=short",
+  "junit_sha256": "124e3042caf6af25143731974ac30f1efecf31191dac79716891a95cd0dd526f",
+  "scope": "Complete suite, including Blender nonlinear texture-grid build, installed-wheel packaging, frozen Tesla artifacts, identity/no-warp, numerical interpolation/inverse, schema and cache tests."
+}

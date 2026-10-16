@@ -121,6 +121,9 @@
                 "scale"
               ],
               "additionalProperties": false
+            },
+            "rectification": {
+              "$ref": "#/$defs/axis_rectification"
             }
           },
           "required": [
@@ -229,6 +232,9 @@
                 "scale"
               ],
               "additionalProperties": false
+            },
+            "rectification": {
+              "$ref": "#/$defs/axis_rectification"
             }
           },
           "required": [
@@ -337,6 +343,9 @@
                 "scale"
               ],
               "additionalProperties": false
+            },
+            "rectification": {
+              "$ref": "#/$defs/axis_rectification"
             }
           },
           "required": [
@@ -445,6 +454,9 @@
                 "scale"
               ],
               "additionalProperties": false
+            },
+            "rectification": {
+              "$ref": "#/$defs/axis_rectification"
             }
           },
           "required": [
@@ -583,5 +595,75 @@
     "proof_layout",
     "wheel_geometry"
   ],
-  "additionalProperties": false
+  "additionalProperties": false,
+  "$defs": {
+    "axis_rectification": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "piecewise_monotonic"
+        },
+        "axis": {
+          "enum": [
+            "u",
+            "v"
+          ]
+        },
+        "image_domain_px": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "affine_domain_px": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "anchors": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "object",
+            "properties": {
+              "image": {
+                "type": "number"
+              },
+              "world_normalized": {
+                "type": "number"
+              },
+              "semantic": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "image",
+              "world_normalized",
+              "semantic"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "max_scale_change": {
+          "type": "number",
+          "minimum": 0,
+          "exclusiveMaximum": 1
+        }
+      },
+      "required": [
+        "type",
+        "axis",
+        "image_domain_px",
+        "affine_domain_px",
+        "anchors"
+      ],
+      "additionalProperties": false
+    }
+  }
 }

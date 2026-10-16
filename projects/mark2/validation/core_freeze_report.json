@@ -1,12 +1,23 @@
 {
-  "status": "PASS",
-  "base_commit": "060309de6014a760339ab100e4d61ecece102b72",
-  "frozen_paths": [
-    "vehiclerecon/",
-    "schemas/",
-    "profiles/"
-  ],
-  "working_tree_diff": "EMPTY",
+  "status": "SUPERSEDED_BY_AUTHORIZED_GENERIC_EXTENSION",
+  "historical_cage_correction_report": {
+    "status": "PASS",
+    "base_commit": "060309de6014a760339ab100e4d61ecece102b72",
+    "frozen_paths": [
+      "vehiclerecon/",
+      "schemas/",
+      "profiles/"
+    ],
+    "working_tree_diff": "EMPTY",
+    "project_python_file_count": 0,
+    "body_mesh_count": 0,
+    "surface_details_stages_invoked": false
+  },
+  "authorization": "Reference reconciliation handoff, sections 7-10: document generic affine-only gap, then extend reusable calibration and rerun Tesla.",
+  "current_phase_report": "validation/reference_reconciliation_report.json",
+  "current_implementation_sha256": "049272e64fe22d5786ffeadfc909545675f4bfaac3a85a34e7226274407969fd",
+  "profiles_unchanged": true,
+  "mark2_geometry_calibration_and_validation_policy_unchanged": true,
   "project_python_file_count": 0,
   "body_mesh_count": 0,
   "surface_details_stages_invoked": false

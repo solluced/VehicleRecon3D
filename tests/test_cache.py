@@ -70,6 +70,24 @@ def test_calibration_changes_invalidate_cage(project):
     assert pipeline.run()==0
     assert counts['calibration']==2 and counts['cage']==2 and counts['surfaces']==2
 
+def test_rectification_changes_invalidate_projection_and_downstream(project):
+    pipeline,counts=fake_pipeline(project);assert pipeline.run()==0
+    path=project.path(project.data['generated']['calibration']);data=read_json(path)
+    data['views']['top']['rectification']={
+        'type':'piecewise_monotonic','axis':'u',
+        'image_domain_px':[0,1000],'affine_domain_px':[0,1000],
+        'anchors':[{'image':x,'world_normalized':y,'semantic':name}
+                   for x,y,name in [(0,0,'start'),(.5,.51,'feature'),(1,1,'end')]]}
+    write_json(path,data)
+    assert pipeline.run()==0
+    assert counts['references']==1 and counts['overlay']==1
+    assert all(counts[k]==2 for k in ['calibration','cage','surfaces','silhouette','details',
+                                    'geometry','presentation','export','glb_verify','viewer','delivery'])
+    data['views']['top']['rectification']['anchors'][1]['world_normalized']=.515
+    write_json(path,data)
+    assert pipeline.run()==0
+    assert counts['calibration']==3 and counts['cage']==3
+
 def test_corrupt_and_missing_outputs_are_not_hits(project):
     cache=StageCache(project,'unit');key=cache.key('surfaces',{'x':1},{'cage':'parent'})
     path=project.path('.cache/proof.txt');path.write_text('good')

@@ -1,0 +1,1390 @@
+{
+  "status": "PASS",
+  "source_blend_sha256": "d984b0b3ba067b3f8020e62e80e4aa245dce288cc90c983a6d707de48522df11",
+  "baseline_blend_sha256": "1c94cceac6a785576ee0c9ef014d5893051f3d5f84eef7ed4ea0ca8b796d86df",
+  "physical_object_names_match": true,
+  "cage_count": 53,
+  "cage_controls_handles_exact": true,
+  "units_match": true,
+  "max_control_coordinate_error_m": 1.1920928955078125e-07,
+  "control_coordinate_tolerance_m": 1e-05,
+  "objects": [
+    {
+      "object": "COWL_TRANSITION",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "NOSE_HOOD_BRIDGE",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "NOSE_CHEEK",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "BUMPER_FRONT",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "LIP_FRONT",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "FENDER_FRONT",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 1.1920928955078125e-07,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "ARCH_RETURN_FRONT",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "WHEELHOUSE_FRONT",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "FENDER_REAR",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "ARCH_RETURN_REAR",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "WHEELHOUSE_REAR",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "BELTLINE_LEDGE",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "FRAME_TOP_GLASS_FRONT",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "FRAME_BOTTOM_GLASS_FRONT",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "FRAME_FRONT_GLASS_FRONT",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "FRAME_TOP_GLASS_REAR_SIDE",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "FRAME_BOTTOM_GLASS_REAR_SIDE",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "FRAME_BACK_GLASS_REAR_SIDE",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "ROOF_RAIL",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "PILLAR_C_QUARTER",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "BUMPER_REAR",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "ROCKER",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "PILLAR_B",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "BODY_MASTER",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "PILLAR_A_FOOT",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "HOOD",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "DOOR_FR",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "DOOR_RR",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "REAR_HATCH_TOP",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "REAR_HATCH",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "DOOR_FL",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "INNER_DOOR_FL",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "INNER_DOOR_FR",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "DOOR_RL",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "INNER_DOOR_RL",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "INNER_DOOR_RR",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "HANDLE_FL",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "HANDLE_FR",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "HANDLE_RL",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "HANDLE_RR",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "MIRROR_STEM_L",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "MIRROR_L",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "MIRROR_STEM_R",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "MIRROR_R",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "GLASS_WINDSHIELD",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "GLASS_ROOF",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "GLASS_REAR",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "GLASS_FRONT_RIGHT",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "GLASS_REAR_RIGHT",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "GLASS_FRONT_LEFT",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "GLASS_REAR_LEFT",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "MIRROR_GLASS_L",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "MIRROR_GLASS_R",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "LIGHT_HEAD_R",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "LIGHT_HEAD_L",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "LED_HEAD_L",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "LED_HEAD_R",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "INTAKE_CENTER",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "INTAKE_SIDE_R",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "INTAKE_SIDE_L",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "GRILLE_SLAT",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "GRILLE_SLAT.001",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "GRILLE_SLAT.002",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "LIGHT_TAIL_R",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "LIGHT_TAIL_L",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "DIFFUSER_REAR",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "DIFFUSER_FIN",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "DIFFUSER_FIN.001",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "DIFFUSER_FIN.002",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "DIFFUSER_FIN.003",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "DIFFUSER_FIN.004",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "TAIL_RETURN_HOUSING_L",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "TAIL_RETURN_LENS_L",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "TAIL_RETURN_HOUSING_R",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "TAIL_RETURN_LENS_R",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "TIRE_FL",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "BRAKE_DISC_FL",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "TIRE_FR",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "BRAKE_DISC_FR",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "TIRE_RL",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "BRAKE_DISC_RL",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "TIRE_RR",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "BRAKE_DISC_RR",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "WHEEL_FL",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "RIM_FL",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "AERO_SPOKE_FL_1",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "AERO_SPOKE_FL_2",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "AERO_SPOKE_FL_3",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "AERO_SPOKE_FL_4",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "AERO_SPOKE_FL_5",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "AERO_SPOKE_FL_6",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "AERO_SPOKE_FL_7",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "AERO_SPOKE_FL_8",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "AERO_SPOKE_FL_9",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "AERO_SPOKE_FL_10",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "HUB_FL",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "CENTER_CAP_FL",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "LUG_FL",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "LUG_FL.001",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "LUG_FL.002",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "LUG_FL.003",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "LUG_FL.004",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "WHEEL_FR",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "RIM_FR",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "AERO_SPOKE_FR_1",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "AERO_SPOKE_FR_2",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "AERO_SPOKE_FR_3",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "AERO_SPOKE_FR_4",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "AERO_SPOKE_FR_5",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "AERO_SPOKE_FR_6",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "AERO_SPOKE_FR_7",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "AERO_SPOKE_FR_8",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "AERO_SPOKE_FR_9",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "AERO_SPOKE_FR_10",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "HUB_FR",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "CENTER_CAP_FR",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "LUG_FR",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "LUG_FR.001",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "LUG_FR.002",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "LUG_FR.003",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "LUG_FR.004",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "WHEEL_RL",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "RIM_RL",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "AERO_SPOKE_RL_1",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "AERO_SPOKE_RL_2",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "AERO_SPOKE_RL_3",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "AERO_SPOKE_RL_4",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "AERO_SPOKE_RL_5",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "AERO_SPOKE_RL_6",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "AERO_SPOKE_RL_7",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "AERO_SPOKE_RL_8",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "AERO_SPOKE_RL_9",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "AERO_SPOKE_RL_10",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "HUB_RL",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "CENTER_CAP_RL",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "LUG_RL",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "LUG_RL.001",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "LUG_RL.002",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "LUG_RL.003",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "LUG_RL.004",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "WHEEL_RR",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "RIM_RR",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "AERO_SPOKE_RR_1",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "AERO_SPOKE_RR_2",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "AERO_SPOKE_RR_3",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "AERO_SPOKE_RR_4",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "AERO_SPOKE_RR_5",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "AERO_SPOKE_RR_6",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "AERO_SPOKE_RR_7",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "AERO_SPOKE_RR_8",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "AERO_SPOKE_RR_9",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "AERO_SPOKE_RR_10",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "HUB_RR",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "CENTER_CAP_RR",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "LUG_RR",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "LUG_RR.001",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "LUG_RR.002",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "LUG_RR.003",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "LUG_RR.004",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "FRONT_SEAT_BASE",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "FRONT_SEAT_BACK",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "FRONT_HEADREST",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "FRONT_SEAT_BASE.001",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "FRONT_SEAT_BACK.001",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "FRONT_HEADREST.001",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "REAR_BENCH",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "REAR_BACKREST",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "DASHBOARD",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "CENTER_CONSOLE",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "CENTER_DISPLAY",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "STEERING_WHEEL",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    },
+    {
+      "object": "CABIN_FLOOR",
+      "pass": true,
+      "same_control_topology": true,
+      "max_control_coordinate_error_m": 0.0,
+      "max_matrix_error": 0.0,
+      "same_structure": true
+    }
+  ],
+  "method": "Read-only local control vertices, connectivity, transforms, parents and Bezier handles; diagnostic topology overlays excluded."
+}

@@ -32,7 +32,8 @@ projects/<id>/
 | silhouette_traces.json | Manual observations in the source-image coordinate system; not a generic automobile silhouette. |
 | review.json | Explicit reviewer decision, geometry/input hashes, proof hashes, notes and limitations. |
 
-Calibration is an affine map from image `(u,v)` to a declared world plane.
+Calibration is an affine map from image `(u,v)` to a declared world plane,
+optionally preceded by a [monotonic source-axis rectification](reference_rectification.md).
 `world_to_pixel` intentionally discards invisible depth. SIDE/TOP/end-view
 envelopes must agree with project dimensions and shared axle wheelbase.
 End-view anisotropic rectification is retained explicitly, not hidden by fitting
