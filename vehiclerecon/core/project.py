@@ -78,7 +78,7 @@ def validate(value, schema_name, *, full=False):
     global _structural_bytes
     from jsonschema import Draft202012Validator
     schema_root = RESOURCE_ROOT / "schemas"
-    if schema_name in ('project','calibration','cage') and value.get('schema_version') == 2:
+    if schema_name in ('project','calibration','cage','surface_graph') and value.get('schema_version') == 2:
         schema_name += '_v2'
     try:schemas,registry,identity=_schema_bundle(tuple((p.name,p.read_bytes()) for p in sorted(schema_root.glob('*.schema.json'))))
     except (OSError,ValueError) as exc:raise SchemaError('Invalid local schema bundle') from exc

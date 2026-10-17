@@ -1,0 +1,257 @@
+{
+  "schema_version": 2,
+  "nodes": [
+    {
+      "id": "bottom.a",
+      "op": "polyline",
+      "parameters": {
+        "points": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0
+          ]
+        ]
+      },
+      "dependencies": [],
+      "draft": false,
+      "reversed": []
+    },
+    {
+      "id": "bottom.b",
+      "op": "polyline",
+      "parameters": {
+        "points": [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            2,
+            0,
+            0
+          ]
+        ]
+      },
+      "dependencies": [],
+      "draft": false,
+      "reversed": []
+    },
+    {
+      "id": "top.a",
+      "op": "polyline",
+      "parameters": {
+        "points": [
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            1,
+            0
+          ]
+        ]
+      },
+      "dependencies": [],
+      "draft": false,
+      "reversed": []
+    },
+    {
+      "id": "top.b",
+      "op": "polyline",
+      "parameters": {
+        "points": [
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            2,
+            1,
+            0
+          ]
+        ]
+      },
+      "dependencies": [],
+      "draft": false,
+      "reversed": []
+    },
+    {
+      "id": "left",
+      "op": "polyline",
+      "parameters": {
+        "points": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ]
+        ]
+      },
+      "dependencies": [],
+      "draft": false,
+      "reversed": []
+    },
+    {
+      "id": "shared",
+      "op": "polyline",
+      "parameters": {
+        "points": [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            1,
+            1,
+            0
+          ]
+        ]
+      },
+      "dependencies": [],
+      "draft": false,
+      "reversed": []
+    },
+    {
+      "id": "right",
+      "op": "polyline",
+      "parameters": {
+        "points": [
+          [
+            2,
+            0,
+            0
+          ],
+          [
+            2,
+            1,
+            0
+          ]
+        ]
+      },
+      "dependencies": [],
+      "draft": false,
+      "reversed": []
+    },
+    {
+      "id": "sample.a",
+      "op": "coons",
+      "parameters": {
+        "bottom": "bottom.a",
+        "top": "top.a",
+        "left": "left",
+        "right": "shared"
+      },
+      "dependencies": [
+        "bottom.a",
+        "left",
+        "shared",
+        "top.a"
+      ],
+      "draft": false,
+      "reversed": []
+    },
+    {
+      "id": "sample.b",
+      "op": "coons",
+      "parameters": {
+        "bottom": "bottom.b",
+        "top": "top.b",
+        "left": "shared",
+        "right": "right"
+      },
+      "dependencies": [
+        "bottom.b",
+        "right",
+        "shared",
+        "top.b"
+      ],
+      "draft": false,
+      "reversed": []
+    }
+  ],
+  "patches": [
+    {
+      "id": "panel.a",
+      "sample": "sample.a",
+      "name": "Analytical plane a",
+      "semantic_role": "panel",
+      "resolution": [
+        8,
+        8
+      ],
+      "material": "SURFACE",
+      "material_role": "generic",
+      "collection": "02_SURFACES",
+      "settings": {}
+    },
+    {
+      "id": "panel.b",
+      "sample": "sample.b",
+      "name": "Analytical plane b",
+      "semantic_role": "panel",
+      "resolution": [
+        8,
+        8
+      ],
+      "material": "SURFACE",
+      "material_role": "generic",
+      "collection": "02_SURFACES",
+      "settings": {}
+    }
+  ],
+  "stitches": [],
+  "adjacency": [
+    {
+      "a": "panel.a",
+      "b": "panel.b",
+      "edge_a": "right",
+      "edge_b": "left",
+      "reverse": false,
+      "tolerance_m": 0.0001
+    }
+  ],
+  "settings": {
+    "support": [
+      0.012,
+      0.988
+    ],
+    "normal": [
+      0,
+      0,
+      1
+    ],
+    "mirror": false,
+    "merge_threshold": 0.001,
+    "subdivision": 1,
+    "thickness": 0.002
+  },
+  "materials": [
+    {
+      "name": "SURFACE",
+      "kind": "principled",
+      "color": [
+        0.3,
+        0.45,
+        0.6
+      ],
+      "metallic": 0,
+      "roughness": 0.4
+    }
+  ]
+}

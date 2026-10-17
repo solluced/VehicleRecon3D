@@ -1,5 +1,12 @@
 # Studio implementation roadmap and architecture exit
 
+v0.4: **SHIPPED**. Advanced reference reconciliation is delivered; see
+[release evidence](../validation/studio_v0.4/README.md).
+
+v0.5: **CURRENT NEXT PHASE**. Bounded surface authoring is the active
+implementation phase. Core operation semantics and source/cage acceptance gates
+remain authoritative; Blender owns final production geometry.
+
 v0.3 implements optional local annotation assistance: a discoverable CVProvider
 registry, CPU OpenCV edges/Smart Edge/GrabCut/circle candidates, noncanonical
 source-pinned proposals, explicit partial acceptance and core undo. See the

@@ -1,0 +1,25 @@
+{
+  "schema_version": 2,
+  "project_id": "consistent_fixture",
+  "category": "automobile",
+  "vehicle_profile": "sedan",
+  "asset_name": "Surface_Study",
+  "authoring_state": "DRAFT",
+  "references": {
+    "multiview": "input/reference.png",
+    "control_overlay": "input/reference.png",
+    "surface_target": "input/reference.png"
+  },
+  "dimensions": {
+    "length_m": 4,
+    "width_m": 2,
+    "height_m": 1,
+    "wheelbase_m": 2,
+    "provenance": "Synthetic analytical fixture, not an automobile measurement."
+  },
+  "generated": {
+    "calibration": "generated/calibration.json",
+    "cage": "generated/cage.json",
+    "surface_graph": "generated/surface_graph.json"
+  }
+}

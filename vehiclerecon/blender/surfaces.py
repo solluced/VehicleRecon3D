@@ -25,7 +25,12 @@ def finish(obj,config):
 def build(project):
     config=project.generated('surface_graph',check=False)
     for entry in config['materials']:material(entry)
-    graph=Graph(config,cage_curves(),Vector)
+    from ..authoring.workspace import Workspace
+    workspace=Workspace(project.root) if project.data['schema_version']==2 else None
+    if workspace is not None:
+        from ..authoring.reviews import require_acceptance
+        require_acceptance(workspace)
+    graph=Graph(config,cage_curves(),Vector,workspace=workspace)
     for patch in config['patches']:
         sample=graph.get(patch['sample']);settings={**config['settings'],**patch.get('settings',{})}
         us=patch.get('us') or parameters(patch['resolution'][0],settings['support'])
@@ -55,7 +60,7 @@ def build(project):
             previous=row
         bm.to_mesh(obj.data);bm.free();obj.data.update()
     from .primitives import build_blockout
-    build_blockout(project,config['blockout'])
+    if 'blockout' in config:build_blockout(project,config['blockout'])
     lighting(project)
     save(project.path('.cache/surfaces.blend'))
 

@@ -1,0 +1,12 @@
+{
+  "schema_version": 2,
+  "review_type": "cage",
+  "decision": "ACCEPTED",
+  "reviewer": "Analytical fixture author",
+  "notes": [
+    "Synthetic planes; analytical source/cage evidence inspected."
+  ],
+  "subject_hash": "6d26cb339526ef6cbc136e52eff4dde62abda2a5f20d9bb97d7c27536ff898c7",
+  "proof_hashes": {},
+  "residual_evidence_hash": "15940e6d2217f5309466e42444ef3692072254e0138318903ed7f180e5a0141c"
+}

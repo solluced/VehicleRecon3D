@@ -52,6 +52,7 @@ def readiness(root, *, workspace=None):
     for component in ('references','calibration','cage','source_review','cage_review'):
         if result[component]['state']!='READY':reasons.extend(result[component]['reasons'])
     if 'surface_graph' not in data:reasons.append('Bounded surface graph missing')
+    elif data['surface_graph'].get('schema_version')==2 and any(n.get('draft') for n in data['surface_graph']['nodes']):reasons.append('DRAFT / INCOMPLETE surface graph cannot execute')
     result['surfaces'] = _state(reasons)
     result['unknown_dimensions'] = [k for k,v in project.data['dimensions'].items() if k.endswith('_m') and v is None]
     return result

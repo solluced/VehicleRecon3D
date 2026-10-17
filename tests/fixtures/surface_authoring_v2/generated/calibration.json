@@ -1,0 +1,467 @@
+{
+  "schema_version": 2,
+  "source": "input/reference.png",
+  "source_size": [
+    256,
+    256
+  ],
+  "source_sha256": "35dbdd71438a2c8ade7be27e8469926582458dc29055585f2bcce59238b9b0e7",
+  "views": {
+    "side": {
+      "origin": [
+        -2.56,
+        0,
+        2.56
+      ],
+      "u_basis": [
+        0.02,
+        0,
+        0
+      ],
+      "v_basis": [
+        0,
+        0,
+        -0.02
+      ],
+      "crop": [
+        0,
+        0,
+        256,
+        256
+      ],
+      "plane_offset": [
+        0,
+        0,
+        0
+      ],
+      "camera": {
+        "name": "CAM_SIDE",
+        "position": [
+          0,
+          -10,
+          0.5
+        ],
+        "target": [
+          0,
+          0,
+          0.5
+        ],
+        "scale": 5,
+        "type": "ORTHO",
+        "size": [
+          256,
+          256
+        ]
+      },
+      "landmarks": {
+        "body_bbox": [
+          28,
+          78,
+          228,
+          128
+        ],
+        "observations": [
+          {
+            "id": "obs_roof_side",
+            "view": "side",
+            "kind": "point",
+            "semantic_role": "roof",
+            "reference_id": "multiview",
+            "source_sha256": "35dbdd71438a2c8ade7be27e8469926582458dc29055585f2bcce59238b9b0e7",
+            "crop_id": "9a2636dfefbb99172006ce7d8b83008f8d2a970973a29d2b30c39e4f010e1eff",
+            "revision": 1,
+            "provenance": {
+              "type": "measured",
+              "method": "synthetic analytical fixture"
+            },
+            "uncertainty_px": 0,
+            "visibility": "observed",
+            "measured": true,
+            "pixel": [
+              128,
+              78
+            ]
+          }
+        ],
+        "source_curves": []
+      }
+    },
+    "top": {
+      "origin": [
+        -2.56,
+        2.56,
+        0
+      ],
+      "u_basis": [
+        0.02,
+        0,
+        0
+      ],
+      "v_basis": [
+        0,
+        -0.02,
+        0
+      ],
+      "crop": [
+        0,
+        0,
+        256,
+        256
+      ],
+      "plane_offset": [
+        0,
+        0,
+        0
+      ],
+      "camera": {
+        "name": "CAM_TOP",
+        "position": [
+          0,
+          0,
+          10
+        ],
+        "target": [
+          0,
+          0,
+          0
+        ],
+        "scale": 5,
+        "type": "ORTHO",
+        "size": [
+          256,
+          256
+        ]
+      },
+      "landmarks": {
+        "body_bbox": [
+          28,
+          78,
+          228,
+          178
+        ],
+        "observations": [
+          {
+            "id": "obs_roof_top",
+            "view": "top",
+            "kind": "point",
+            "semantic_role": "roof",
+            "reference_id": "multiview",
+            "source_sha256": "35dbdd71438a2c8ade7be27e8469926582458dc29055585f2bcce59238b9b0e7",
+            "crop_id": "9a2636dfefbb99172006ce7d8b83008f8d2a970973a29d2b30c39e4f010e1eff",
+            "revision": 1,
+            "provenance": {
+              "type": "measured",
+              "method": "synthetic analytical fixture"
+            },
+            "uncertainty_px": 0,
+            "visibility": "observed",
+            "measured": true,
+            "pixel": [
+              128,
+              103
+            ]
+          }
+        ],
+        "source_curves": []
+      }
+    },
+    "front": {
+      "origin": [
+        0,
+        2.56,
+        2.56
+      ],
+      "u_basis": [
+        0,
+        -0.02,
+        0
+      ],
+      "v_basis": [
+        0,
+        0,
+        -0.02
+      ],
+      "crop": [
+        0,
+        0,
+        256,
+        256
+      ],
+      "plane_offset": [
+        0,
+        0,
+        0
+      ],
+      "camera": {
+        "name": "CAM_FRONT",
+        "position": [
+          -10,
+          0,
+          0.5
+        ],
+        "target": [
+          0,
+          0,
+          0.5
+        ],
+        "scale": 5,
+        "type": "ORTHO",
+        "size": [
+          256,
+          256
+        ]
+      },
+      "landmarks": {
+        "body_bbox": [
+          78,
+          78,
+          178,
+          128
+        ],
+        "observations": [
+          {
+            "id": "obs_roof_front",
+            "view": "front",
+            "kind": "point",
+            "semantic_role": "roof",
+            "reference_id": "multiview",
+            "source_sha256": "35dbdd71438a2c8ade7be27e8469926582458dc29055585f2bcce59238b9b0e7",
+            "crop_id": "9a2636dfefbb99172006ce7d8b83008f8d2a970973a29d2b30c39e4f010e1eff",
+            "revision": 1,
+            "provenance": {
+              "type": "measured",
+              "method": "synthetic analytical fixture"
+            },
+            "uncertainty_px": 0,
+            "visibility": "observed",
+            "measured": true,
+            "pixel": [
+              103,
+              78
+            ]
+          }
+        ],
+        "source_curves": []
+      }
+    },
+    "rear": {
+      "origin": [
+        0,
+        -2.56,
+        2.56
+      ],
+      "u_basis": [
+        0,
+        0.02,
+        0
+      ],
+      "v_basis": [
+        0,
+        0,
+        -0.02
+      ],
+      "crop": [
+        0,
+        0,
+        256,
+        256
+      ],
+      "plane_offset": [
+        0,
+        0,
+        0
+      ],
+      "camera": {
+        "name": "CAM_REAR",
+        "position": [
+          10,
+          0,
+          0.5
+        ],
+        "target": [
+          0,
+          0,
+          0.5
+        ],
+        "scale": 5,
+        "type": "ORTHO",
+        "size": [
+          256,
+          256
+        ]
+      },
+      "landmarks": {
+        "body_bbox": [
+          78,
+          78,
+          178,
+          128
+        ],
+        "observations": [
+          {
+            "id": "obs_roof_rear",
+            "view": "rear",
+            "kind": "point",
+            "semantic_role": "roof",
+            "reference_id": "multiview",
+            "source_sha256": "35dbdd71438a2c8ade7be27e8469926582458dc29055585f2bcce59238b9b0e7",
+            "crop_id": "9a2636dfefbb99172006ce7d8b83008f8d2a970973a29d2b30c39e4f010e1eff",
+            "revision": 1,
+            "provenance": {
+              "type": "measured",
+              "method": "synthetic analytical fixture"
+            },
+            "uncertainty_px": 0,
+            "visibility": "observed",
+            "measured": true,
+            "pixel": [
+              153,
+              78
+            ]
+          }
+        ],
+        "source_curves": []
+      }
+    }
+  },
+  "perspective_camera": {
+    "name": "CAM_3Q",
+    "position": [
+      -6,
+      -7,
+      3
+    ],
+    "target": [
+      0,
+      0,
+      0.5
+    ],
+    "scale": 5
+  },
+  "uncertainty": {
+    "synthetic": true
+  },
+  "datums": {
+    "measurements": [
+      {
+        "id": "measure_wheelbase",
+        "value": 2,
+        "unit": "m",
+        "meaning": "wheelbase",
+        "provenance": {
+          "type": "measured",
+          "method": "synthetic analytical fixture"
+        },
+        "uncertainty": 0
+      }
+    ]
+  },
+  "proof_layout": {},
+  "wheel_geometry": {
+    "radius_m": 0.25,
+    "axles": [
+      {
+        "id": "front",
+        "x": -1,
+        "track_m": 1.5,
+        "z": 0.25
+      },
+      {
+        "id": "rear",
+        "x": 1,
+        "track_m": 1.5,
+        "z": 0.25
+      }
+    ]
+  },
+  "correspondences": [
+    {
+      "id": "link_roof_side",
+      "observation_id": "obs_roof_side",
+      "observation_revision": 1,
+      "world_entity_id": "roof_corner",
+      "binding_type": "landmark",
+      "side": 1,
+      "required": true,
+      "tolerance_policy": {
+        "metric": "euclidean_px",
+        "allowed_px": 2
+      },
+      "semantic_role": "roof",
+      "provenance": {
+        "type": "measured",
+        "method": "synthetic analytical fixture"
+      }
+    },
+    {
+      "id": "link_roof_top",
+      "observation_id": "obs_roof_top",
+      "observation_revision": 1,
+      "world_entity_id": "roof_corner",
+      "binding_type": "landmark",
+      "side": 1,
+      "required": true,
+      "tolerance_policy": {
+        "metric": "euclidean_px",
+        "allowed_px": 2
+      },
+      "semantic_role": "roof",
+      "provenance": {
+        "type": "measured",
+        "method": "synthetic analytical fixture"
+      }
+    },
+    {
+      "id": "link_roof_front",
+      "observation_id": "obs_roof_front",
+      "observation_revision": 1,
+      "world_entity_id": "roof_corner",
+      "binding_type": "landmark",
+      "side": 1,
+      "required": true,
+      "tolerance_policy": {
+        "metric": "euclidean_px",
+        "allowed_px": 2
+      },
+      "semantic_role": "roof",
+      "provenance": {
+        "type": "measured",
+        "method": "synthetic analytical fixture"
+      }
+    },
+    {
+      "id": "link_roof_rear",
+      "observation_id": "obs_roof_rear",
+      "observation_revision": 1,
+      "world_entity_id": "roof_corner",
+      "binding_type": "landmark",
+      "side": 1,
+      "required": true,
+      "tolerance_policy": {
+        "metric": "euclidean_px",
+        "allowed_px": 2
+      },
+      "semantic_role": "roof",
+      "provenance": {
+        "type": "measured",
+        "method": "synthetic analytical fixture"
+      }
+    }
+  ],
+  "authoring_policy": {
+    "coverage_confirmed": true,
+    "critical_correspondence_ids": [
+      "link_roof_side",
+      "link_roof_top",
+      "link_roof_front",
+      "link_roof_rear"
+    ],
+    "required_views": [
+      "front",
+      "side",
+      "rear",
+      "top"
+    ],
+    "required_proofs": []
+  }
+}

@@ -145,6 +145,8 @@ class AuthoringSession:
 
     def _apply(self, w, c):
         op = c['type']
+        from ..surfaces.authoring import COMMANDS, mutate
+        if op in COMMANDS:return mutate(w,c)
         if op in ('SetSourceDisposition','SetCageReview'):
             kind = 'source' if op=='SetSourceDisposition' else 'cage'
             record = make_review(w,kind,decision=c['decision'],reviewer=c['reviewer'],notes=c['notes'],expected_subject=c.get('expected_subject'))

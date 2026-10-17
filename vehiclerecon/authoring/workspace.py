@@ -84,6 +84,9 @@ class Workspace:
             if cal['correspondences']:
                 raise SchemaError('Correspondence requires a cage')
             semantic_check(p, cal, {'curves': [], 'landmarks': {}})
+        if documents.get('surface_graph',{}).get('schema_version')==2:
+            from ..surfaces.authoring import graph_contract
+            graph_contract(documents['surface_graph'],documents.get('cage'))
         for path in REVIEWS:
             if path in files:
                 record = json.loads(files[path].decode('utf-8-sig'))

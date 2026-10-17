@@ -831,6 +831,501 @@
         "confirm_replacement"
       ],
       "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "AddSurfacePatch"
+        },
+        "patch_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "node_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "semantic_role": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "op": {
+          "enum": [
+            "polyline",
+            "chord_hermite",
+            "shape_preserving_hermite",
+            "bezier_rail_range",
+            "curve_sample",
+            "lerp",
+            "offset",
+            "coons",
+            "cubic_boundary_roll",
+            "ribbon",
+            "bilinear_patch",
+            "arch_annulus",
+            "boundary_stitch"
+          ]
+        }
+      },
+      "required": [
+        "type",
+        "patch_id",
+        "node_id",
+        "name",
+        "semantic_role",
+        "op"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "AddSurfaceNode"
+        },
+        "node_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "op": {
+          "enum": [
+            "polyline",
+            "chord_hermite",
+            "shape_preserving_hermite",
+            "bezier_rail_range",
+            "curve_sample",
+            "lerp",
+            "offset",
+            "coons",
+            "cubic_boundary_roll",
+            "ribbon",
+            "bilinear_patch",
+            "arch_annulus",
+            "boundary_stitch"
+          ]
+        }
+      },
+      "required": [
+        "type",
+        "node_id",
+        "op"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "DeleteSurfacePatch"
+        },
+        "patch_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        }
+      },
+      "required": [
+        "type",
+        "patch_id"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "DeleteSurfaceNode"
+        },
+        "node_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        }
+      },
+      "required": [
+        "type",
+        "node_id"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "SetSurfaceOperation"
+        },
+        "node_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "op": {
+          "enum": [
+            "polyline",
+            "chord_hermite",
+            "shape_preserving_hermite",
+            "bezier_rail_range",
+            "curve_sample",
+            "lerp",
+            "offset",
+            "coons",
+            "cubic_boundary_roll",
+            "ribbon",
+            "bilinear_patch",
+            "arch_annulus",
+            "boundary_stitch"
+          ]
+        }
+      },
+      "required": [
+        "type",
+        "node_id",
+        "op"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "SetSurfaceParameter"
+        },
+        "node_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "parameter": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "value": {}
+      },
+      "required": [
+        "type",
+        "node_id",
+        "parameter",
+        "value"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "SetSurfaceBoundary"
+        },
+        "node_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "boundary": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "source": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        }
+      },
+      "required": [
+        "type",
+        "node_id",
+        "boundary",
+        "source"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "ReverseSurfaceBoundary"
+        },
+        "node_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "boundary": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        }
+      },
+      "required": [
+        "type",
+        "node_id",
+        "boundary"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "SetSurfaceDraft"
+        },
+        "node_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "draft": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "type",
+        "node_id",
+        "draft"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "SetSurfaceResolution"
+        },
+        "patch_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "resolution": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 64
+          },
+          "minItems": 2,
+          "maxItems": 2
+        }
+      },
+      "required": [
+        "type",
+        "patch_id",
+        "resolution"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "SetSurfaceMaterialRole"
+        },
+        "patch_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "material_role": {
+          "enum": [
+            "body_paint",
+            "glass",
+            "trim",
+            "tire",
+            "light",
+            "interior",
+            "generic"
+          ]
+        }
+      },
+      "required": [
+        "type",
+        "patch_id",
+        "material_role"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "SetSurfaceMirror"
+        },
+        "patch_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "enabled": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "type",
+        "patch_id",
+        "enabled"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "SetSurfaceNormal"
+        },
+        "patch_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "normal": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 3,
+          "maxItems": 3
+        }
+      },
+      "required": [
+        "type",
+        "patch_id",
+        "normal"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "AddSurfaceSupport"
+        },
+        "patch_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "axis": {
+          "enum": [
+            "u",
+            "v"
+          ]
+        },
+        "position": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "exclusiveMaximum": 1
+        }
+      },
+      "required": [
+        "type",
+        "patch_id",
+        "axis",
+        "position"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "RemoveSurfaceSupport"
+        },
+        "patch_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "axis": {
+          "enum": [
+            "u",
+            "v"
+          ]
+        },
+        "position": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "exclusiveMaximum": 1
+        }
+      },
+      "required": [
+        "type",
+        "patch_id",
+        "axis",
+        "position"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "SetSurfaceAdjacency"
+        },
+        "adjacency": {
+          "type": "array",
+          "maxItems": 2000,
+          "items": {
+            "type": "object",
+            "properties": {
+              "a": {
+                "type": "string"
+              },
+              "b": {
+                "type": "string"
+              },
+              "edge_a": {
+                "enum": [
+                  "bottom",
+                  "top",
+                  "left",
+                  "right"
+                ]
+              },
+              "edge_b": {
+                "enum": [
+                  "bottom",
+                  "top",
+                  "left",
+                  "right"
+                ]
+              },
+              "reverse": {
+                "type": "boolean"
+              },
+              "tolerance_m": {
+                "type": "number",
+                "exclusiveMinimum": 0,
+                "maximum": 0.1
+              }
+            },
+            "required": [
+              "a",
+              "b",
+              "edge_a",
+              "edge_b",
+              "reverse",
+              "tolerance_m"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "type",
+        "adjacency"
+      ],
+      "additionalProperties": false
     }
   ]
 }

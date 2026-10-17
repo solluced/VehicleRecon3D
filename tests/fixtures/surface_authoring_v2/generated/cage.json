@@ -1,0 +1,67 @@
+{
+  "schema_version": 2,
+  "collection": "01_CAGE",
+  "curves": [
+    {
+      "id": "roof_edge",
+      "role": "roof",
+      "kind": "rail",
+      "points": [
+        [
+          -0.5,
+          0.5,
+          1
+        ],
+        {
+          "landmark": "roof_corner"
+        },
+        [
+          0.5,
+          0.5,
+          1
+        ]
+      ],
+      "point_ids": [
+        "roof.start",
+        "roof.middle",
+        "roof.end"
+      ],
+      "visibility": "visible",
+      "symmetry": false,
+      "cyclic": false,
+      "material": "CAGE",
+      "radius": 0.005,
+      "handles": "VECTOR"
+    }
+  ],
+  "landmarks": {
+    "roof_corner": [
+      0,
+      0.5,
+      1
+    ]
+  },
+  "sides": [
+    [
+      "L",
+      -1
+    ],
+    [
+      "R",
+      1
+    ]
+  ],
+  "materials": [
+    {
+      "name": "CAGE",
+      "kind": "emission",
+      "color": [
+        0,
+        0,
+        1
+      ]
+    }
+  ],
+  "guides": [],
+  "renders": []
+}
