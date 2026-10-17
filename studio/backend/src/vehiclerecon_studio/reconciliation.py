@@ -89,7 +89,9 @@ class Reconciliation:
             active=cal['views'][p['view']].get('rectification')==model(p['request'])
         fresh=same or (active and rev==p.get('activation_revision'))
         status='REJECTED' if p['status']=='REJECTED' else 'STALE' if not fresh else 'ACTIVE' if active else report['status']
-        return {**p,'status':status,'active':active,'freshness':'current' if fresh else 'STALE','report':copy.deepcopy(report)}
+        display=copy.deepcopy(report)
+        if p['status']=='REJECTED':display.update(eligible=False,status='REJECTED',reasons=[*display['reasons'],'Rejected: '+p['reason']])
+        return {**p,'status':status,'active':active,'freshness':'current' if fresh else 'STALE','report':display}
     def create(self,ident,body):
         if set(body)-{'expected_revision','request','creator','confirm_datums'}:raise SchemaError('Unknown candidate generation field')
         if not isinstance(body.get('creator'),str) or not 1<=len(body['creator'].strip())<=300:raise SchemaError('Candidate creator required')

@@ -40,6 +40,7 @@ def test_noncanonical_candidate_generation_preview_reject_and_comparison(study):
         with Image.open(io.BytesIO(r.content)) as image:image.verify()
     r=c.post(base+f'/reconciliation/{p["id"]}/reject',json={'candidate_revision':p['revision'],'reason':'Independent inspection rejection'},headers=h)
     assert r.status_code==200 and r.json()['status']=='REJECTED'
+    assert not r.json()['report']['eligible'] and 'Rejected: Independent inspection rejection' in r.json()['report']['reasons']
     assert snapshot(root)==before
 
 def test_activation_stales_reviews_never_autoaccepts_and_exact_undo(study):

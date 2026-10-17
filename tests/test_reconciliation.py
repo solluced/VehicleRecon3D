@@ -42,7 +42,7 @@ def test_invalid_candidates_never_activate(tmp_path,mutation):
     with pytest.raises(ReconError):session.apply([{'type':'ActivateRectification','candidate':payload(p)}],expected_revision=session.revision)
     assert snapshot(session.root)==before
 
-def test_exact_scale_boundary_and_analytic_extrema():
+def test_exact_scale_boundary_and_analytic_extrema(tmp_path):
     for y,valid in [(.525-1e-8,True),(.525,True),(.525+1e-8,False)]:
         config={'type':'piecewise_monotonic','axis':'u','image_domain_px':[0,1],'affine_domain_px':[0,1],
             'anchors':[{'image':x,'world_normalized':v,'semantic':str(x)} for x,v in [(0,0),(.5,y),(1,1)]],'max_scale_change':.1}
@@ -51,6 +51,9 @@ def test_exact_scale_boundary_and_analytic_extrema():
             with pytest.raises(ReconError):AxisRectification(config)
         warp=PiecewiseMonotonicAxisWarp([0,.5,1],[0,y,1]);ext=warp.derivative_extrema()
         assert (ext['minimum']['derivative'],ext['maximum']['derivative'])==pytest.approx(warp.derivative_range())
+        root=tmp_path/str(y);request=prepare(root,source=(0,.5,1),target=(0,y,1))
+        candidate=make_candidate(Workspace(root),request,ident='boundary',creator='Boundary fixture')
+        assert evaluate(candidate)['eligible'] is valid
 
 def test_stale_source_crop_and_calibration_cannot_activate(tmp_path):
     req=prepare(tmp_path/'study');w=Workspace(tmp_path/'study');p=make_candidate(w,req,ident='stale',creator='Tester')
