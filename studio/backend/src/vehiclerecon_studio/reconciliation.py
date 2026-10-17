@@ -76,6 +76,10 @@ class Reconciliation:
             return {'read_only':False,'view':view,'revision':w.revision,'default_request':request,'evidence':rows,
                 'calibration':d,'views':cal['views'],'references':self.registry.snapshot(ident)['references'],'candidates':candidates}
     def inspect(self,ident,candidate_id,*,w=None):
+        root=self.registry.resolve(ident)
+        with self.registry.lock,ProjectLock(root,'reconciliation-read'):
+            return self._inspect(ident,candidate_id,w=w)
+    def _inspect(self,ident,candidate_id,*,w=None):
         p=self.load(ident,candidate_id);root=self.registry.resolve(ident);rev=revision(root)
         key=(ident,candidate_id,digest_data(p));report=self.cache.get(key)
         if report is None:report=evaluate(p);self.cache.put(key,report)
@@ -121,6 +125,10 @@ class Reconciliation:
         if p.get('activation_revision')!=revision_value:
             p.update(status='ACTIVE',activation_revision=revision_value,revision=p['revision']+1);self.store(ident,p)
     def preview(self,ident,candidate_id,kind):
+        root=self.registry.resolve(ident)
+        with self.registry.lock,ProjectLock(root,'reconciliation-preview'):
+            return self._preview(ident,candidate_id,kind)
+    def _preview(self,ident,candidate_id,kind):
         if kind not in ('raw','rectified','difference'):raise ReferenceError('Unknown preview kind')
         root=self.registry.resolve(ident);project=Project(root)
         if candidate_id=='legacy_mark2':

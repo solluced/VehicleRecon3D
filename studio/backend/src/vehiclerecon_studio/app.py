@@ -110,8 +110,9 @@ def create_app(config):
     def reconciliation_activate(ident:str,request:Request,body:dict):
         precondition(request,body)
         if set(body)-{'expected_revision','lease_id','candidate_id','candidate_revision','confirm_activation','response_format'}:raise APIError(422,'FIELDS','Unknown activation field')
-        result=registry.mutate(ident,tab(request),body,request.headers.get('idempotency-key'),'activate-rectification')
-        registry.reconciliation.mark_active(ident,body['candidate_id'],result['revision'])
+        with registry.lock,ProjectLock(registry.resolve(ident),'studio-rectification-activation'):
+            result=registry.mutate(ident,tab(request),body,request.headers.get('idempotency-key'),'activate-rectification')
+            registry.reconciliation.mark_active(ident,body['candidate_id'],result['revision'])
         return JSONResponse(result)
 
     @app.get('/api/v1/projects/{ident}/reconciliation/{candidate_id}/preview/{kind}')

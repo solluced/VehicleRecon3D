@@ -1,6 +1,9 @@
 import copy,json,sys,uuid
 from pathlib import Path
 import pytest
+from concurrent.futures import ThreadPoolExecutor
+import io
+from PIL import Image
 from fastapi.testclient import TestClient
 from vehiclerecon.core.project import REPOSITORY
 from vehiclerecon.core.revisions import revision,snapshot
@@ -30,9 +33,11 @@ def test_noncanonical_candidate_generation_preview_reject_and_comparison(study):
         p=r.json();assert p['report']['eligible'] and p['status']=='ELIGIBLE_FOR_ACTIVATION'
     assert snapshot(root)==before
     context=c.get(base+'/reconciliation?view=top',headers=h).json();assert len(context['candidates'])==2
-    for kind in ('raw','rectified','difference'):
-        r=c.get(base+f'/reconciliation/{p["id"]}/preview/{kind}',headers=h)
+    def fetch(kind):return c.get(base+f'/reconciliation/{p["id"]}/preview/{kind}',headers=h)
+    with ThreadPoolExecutor(max_workers=3) as pool:previews=list(pool.map(fetch,('raw','rectified','difference')))
+    for r in previews:
         assert r.status_code==200 and r.content.startswith(b'\x89PNG')
+        with Image.open(io.BytesIO(r.content)) as image:image.verify()
     r=c.post(base+f'/reconciliation/{p["id"]}/reject',json={'candidate_revision':p['revision'],'reason':'Independent inspection rejection'},headers=h)
     assert r.status_code==200 and r.json()['status']=='REJECTED'
     assert snapshot(root)==before

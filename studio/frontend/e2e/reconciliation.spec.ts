@@ -39,6 +39,13 @@ async function fit(page: any) {
     "ELIGIBLE_FOR_ACTIVATION",
   );
 }
+async function previewsReady(page: any) {
+  await page.evaluate(async()=>{
+    const sources=Array.from(document.querySelectorAll('.rect-preview image')).map(i=>i.getAttribute('href')!);
+    await Promise.all(sources.map(async src=>{const response=await fetch(src);if(!response.ok)throw new Error(`Preview ${src}: ${response.status} ${await response.text()}`);await new Promise<void>((resolve,reject)=>{const image=new Image();image.onload=()=>resolve();image.onerror=()=>reject(new Error(`Candidate preview image failed to decode: ${src}`));image.src=src;});}));
+    await new Promise<void>(resolve=>requestAnimationFrame(()=>requestAnimationFrame(()=>resolve())));
+  });
+}
 test("positive manual candidate, graphs, independent evidence, explicit activation and exact undo", async ({
   page,
 }) => {
@@ -50,7 +57,7 @@ test("positive manual candidate, graphs, independent evidence, explicit activati
     const before = readFileSync(
       resolve(root, "positive/generated/calibration.json"),
     );
-    await page.getByLabel('Semantic 0',{exact:true}).waitFor();
+    await page.getByLabel("Semantic 0", { exact: true }).waitFor();
     const count = await page.getByLabel(/^Semantic \d+$/).count();
     await page.getByRole("button", { name: "Add anchor", exact: true }).click();
     const handle = page.getByTestId(`anchor-handle-${count}`);
@@ -88,6 +95,7 @@ test("positive manual candidate, graphs, independent evidence, explicit activati
       await expect(checkbox).toBeChecked();
     }
     await expect(page.getByLabel("Candidate comparison")).toBeVisible();
+    await previewsReady(page);
     await page
       .getByRole("img", { name: "Mapping graph", exact: true })
       .scrollIntoViewIfNeeded();
@@ -155,6 +163,7 @@ test("Mark II rejected candidate is visibly excessive, immutable and cannot acti
     await page
       .getByRole("img", { name: "Derivative / local-scale graph" })
       .scrollIntoViewIfNeeded();
+    await previewsReady(page);
     await page.screenshot({
       path: resolve(repo, "build/studio04-mark2-rejected.png"),
     });
