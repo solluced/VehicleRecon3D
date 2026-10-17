@@ -1,0 +1,220 @@
+"""FastAPI transports intent; shared core owns canonical validation and writes."""
+import asyncio
+import json
+import re
+import secrets
+import time
+import uuid
+from pathlib import Path
+from fastapi import FastAPI, Request
+from fastapi.responses import JSONResponse, Response, FileResponse, StreamingResponse
+from starlette.concurrency import run_in_threadpool
+from vehiclerecon.core.errors import ReconError, ConflictError, LockError
+from vehiclerecon.core.project import Project, RESOURCE_ROOT, read_json
+from vehiclerecon.core.revisions import revision
+from vehiclerecon.core.manifest import digest_file
+from vehiclerecon.core.locking import ProjectLock
+from vehiclerecon.authoring.service import AuthoringSession
+from vehiclerecon.authoring.versions import create_draft
+from .security import Security
+from .workspace import Registry, APIError, guard
+
+
+def create_app(config):
+    registry=Registry(config);sessions={};streams={}
+    app=FastAPI(docs_url=None,redoc_url=None,openapi_url=None,debug=False)
+    app.state.registry=registry;app.state.config=config
+    app.add_middleware(Security,config=config,sessions=sessions)
+
+    @app.exception_handler(APIError)
+    async def api_error(request,exc):return JSONResponse({'code':exc.code,'message':exc.message,'issues':[]},status_code=exc.status)
+
+    @app.exception_handler(ReconError)
+    async def core_error(request,exc):
+        status=423 if isinstance(exc,LockError) else 409 if isinstance(exc,ConflictError) else 422
+        # Technical core messages may contain local paths; primary feedback is bounded.
+        message=str(exc)
+        for root in config.roots:message=message.replace(str(root),'<project root>')
+        return JSONResponse({'code':'LOCKED' if status==423 else 'STALE_REVISION' if status==409 else 'VALIDATION',
+            'message':message[:1200],'issues':[{'message':message[:1200]}],'retryable':status in (409,423)},status_code=status)
+
+    @app.exception_handler(Exception)
+    async def internal_error(request,exc):
+        return JSONResponse({'code':'INTERNAL','message':'Operation could not complete. Reload the project or restart Studio.',
+                             'diagnostic_id':uuid.uuid4().hex,'issues':[]},status_code=500)
+
+    def tab(request):
+        ident=request.headers.get('x-studio-tab','')
+        if not re.fullmatch('[0-9a-f-]{32,36}',ident):raise APIError(400,'TAB','Valid tab identity required')
+        return request.scope['studio_session']['id']+':'+ident
+
+    def precondition(request,body):
+        expected=body.get('expected_revision')
+        if not expected or request.headers.get('if-match','').strip('"')!=expected:
+            raise APIError(428,'REVISION','Matching If-Match and expected_revision required')
+
+    @app.post('/api/v1/session/bootstrap')
+    async def bootstrap(request:Request):
+        if request.headers.get('content-type','').split(';')[0]!='application/json':raise APIError(415,'TYPE','JSON required')
+        body=await request.json()
+        if not config.bootstrap or time.monotonic()-config.created>300 or not secrets.compare_digest(str(body.get('secret','')),config.bootstrap):
+            raise APIError(401,'BOOTSTRAP','Bootstrap is invalid, expired or already used. Restart Studio for a new launch.')
+        config.bootstrap='';token=secrets.token_urlsafe(32);csrf=secrets.token_urlsafe(32)
+        sessions[token]={'id':uuid.uuid4().hex,'csrf':csrf,'created':time.monotonic()}
+        response=JSONResponse({'csrf':csrf,'epoch':registry.bus.epoch})
+        response.set_cookie('vr_session',token,httponly=True,samesite='strict',path='/api/v1',max_age=12*3600)
+        return response
+
+    @app.get('/api/v1/session')
+    def session_info(request:Request):return {'csrf':request.scope['studio_session']['csrf'],'epoch':registry.bus.epoch}
+
+    @app.get('/api/v1/roots')
+    def roots():return [{'id':k,'label':p.name,'revision':registry.root_revision(k)} for k,p in registry.roots.items()]
+
+    @app.get('/api/v1/capabilities')
+    def capabilities():return {'version':'0.1B','document_versions':[1,2],'writable_versions':[2],'image_formats':['PNG','JPEG'],
+        'max_upload_bytes':config.max_upload,'max_pixels':config.max_pixels,'pipeline':False,'CV':False,'epoch':registry.bus.epoch,'idempotency_survives_restart':False}
+
+    @app.get('/api/v1/schemas')
+    def schemas():
+        return {'schemas':{p.stem.removesuffix('.schema'):read_json(p) for p in (RESOURCE_ROOT/'schemas').glob('*.schema.json')},
+                'profiles':{p.stem:read_json(p) for p in (RESOURCE_ROOT/'profiles').glob('*.json')}}
+
+    @app.get('/api/v1/projects')
+    def projects():
+        registry.scan();result=[]
+        for ident in list(registry.projects):
+            try:
+                snap=registry.snapshot(ident)
+                result.append({k:snap.get(k) for k in ('id','revision','version','read_only','project','readiness','issues')})
+            except (ReconError,APIError,OSError,ValueError):
+                result.append({'id':ident,'read_only':True,'issues':['Project unavailable or invalid; inspect files outside Studio.']})
+        return result
+
+    @app.post('/api/v1/projects')
+    def create_project(request:Request,body:dict):
+        precondition(request,body);root_id=body.get('root_id')
+        if root_id not in registry.roots:raise APIError(404,'ROOT','Unknown allowed root')
+        name=body.get('name','')
+        if not re.fullmatch('[A-Za-z][A-Za-z0-9_-]{0,63}',name) or re.fullmatch('(con|prn|aux|nul|com[1-9]|lpt[1-9])',name,re.I):
+            raise APIError(422,'NAME','Use letters, numbers, underscores or hyphens; reserved device names are unavailable')
+        profile=body.get('profile','sedan')
+        if not re.fullmatch('[a-z_]+',profile) or not (RESOURCE_ROOT/'profiles'/f'{profile}.json').is_file():raise APIError(422,'PROFILE','Unknown core profile')
+        dims=body.get('dimensions',{})
+        if not isinstance(dims,dict) or set(dims)-{'length_m','width_m','height_m','wheelbase_m'}:raise APIError(422,'DIMENSIONS','Unknown dimension')
+        for value in dims.values():
+            if value is not None and (isinstance(value,bool) or not isinstance(value,(int,float)) or value<=0):raise APIError(422,'DIMENSIONS','Dimensions must be positive or unknown')
+        root=registry.roots[root_id]
+        with registry.lock:
+            if registry.root_revision(root_id)!=body['expected_revision']:raise ConflictError('Project root changed; refresh project list')
+            path=guard(root,root/name.lower())
+            if path.exists():raise ConflictError('Project already exists')
+            create_draft(path,profile=profile);author=AuthoringSession(path)
+            commands=[{'type':'SetProjectMetadata','values':{'asset_name':name}}]
+            for dimension,value in dims.items():
+                if value is not None:commands.append({'type':'SetMeasurement','dimension':dimension,'measurement':{'id':'measure_'+dimension,'value':value,'unit':'m','meaning':dimension,
+                    'provenance':{'type':'approximate','method':'User entered at project creation; authority not independently verified'}}})
+            author.apply(commands,expected_revision=author.revision)
+            registry.scan();ident=next(k for k,v in registry.projects.items() if v==path)
+            registry.bus.emit('project_changed',project_id=ident,revision=revision(path))
+            return registry.snapshot(ident)
+
+    @app.get('/api/v1/projects/{ident}')
+    def inspect_project(ident:str,request:Request):
+        snap=registry.snapshot(ident,tab(request));return JSONResponse(snap,headers={'ETag':'"'+snap['revision']+'"'})
+
+    @app.get('/api/v1/projects/{ident}/revision')
+    def current_revision(ident:str):return {'revision':revision(registry.resolve(ident))}
+
+    @app.get('/api/v1/projects/{ident}/readiness')
+    def project_readiness(ident:str):return registry.snapshot(ident)['readiness']
+
+    @app.get('/api/v1/projects/{ident}/observations')
+    def project_observations(ident:str):return registry.snapshot(ident)['observations']
+
+    @app.post('/api/v1/projects/{ident}/leases')
+    def lease(ident:str,request:Request,body:dict):
+        precondition(request,body);return registry.acquire(ident,tab(request),body['expected_revision'])
+
+    @app.post('/api/v1/projects/{ident}/release')
+    def release(ident:str,request:Request,body:dict):
+        precondition(request,body)
+        with registry.lock:
+            active=registry.leases.get(ident)
+            if active and active['tab']==tab(request) and active['id']==body.get('lease_id'):registry.leases.pop(ident)
+        return {'revision':body['expected_revision']}
+
+    @app.post('/api/v1/projects/{ident}/transactions')
+    @app.post('/api/v1/projects/{ident}/undo')
+    @app.post('/api/v1/projects/{ident}/redo')
+    @app.post('/api/v1/projects/{ident}/reload')
+    @app.post('/api/v1/projects/{ident}/preferences')
+    def mutate(ident:str,request:Request,body:dict):
+        if request.headers.get('content-type','').split(';')[0]!='application/json':raise APIError(415,'TYPE','JSON required')
+        precondition(request,body)
+        return registry.mutate(ident,tab(request),body,request.headers.get('idempotency-key'),request.url.path.split('/')[-1])
+
+    @app.post('/api/v1/projects/{ident}/reference-imports')
+    async def import_image(ident:str,request:Request):
+        raw=await request.body();await run_in_threadpool(registry.decode_image,raw)
+        body={'expected_revision':request.headers.get('x-expected-revision'),'lease_id':request.headers.get('x-editor-lease'),
+              'reference_id':request.headers.get('x-reference-role','multiview'),'_raw':raw}
+        precondition(request,body)
+        root=registry.resolve(ident)
+        size=sum(p.stat().st_size for p in guard(root,root/'input').glob('*') if p.is_file())
+        if size+len(raw)>config.workspace_quota:raise APIError(413,'QUOTA','Reference workspace quota exceeded')
+        return await run_in_threadpool(registry.mutate,ident,tab(request),body,request.headers.get('idempotency-key'),'reference-imports')
+
+    @app.get('/api/v1/projects/{ident}/references/{ref_id}/image')
+    def image(ident:str,ref_id:str):
+        root=registry.resolve(ident)
+        with ProjectLock(root,'studio-reference-read'):
+            snap=registry.snapshot(ident);ref=next((r for r in snap['references'] if r['id']==ref_id),None)
+            if ref is None:raise APIError(404,'REFERENCE','Unknown reference')
+            p=Project(root);path=guard(root,root/p.data['references'][ref['role']]);raw=path.read_bytes()
+            import hashlib
+            if hashlib.sha256(raw).hexdigest()!=ref['sha256']:raise ConflictError('Reference changed; reload project')
+            return Response(raw,media_type='image/png' if raw.startswith(b'\x89PNG') else 'image/jpeg',headers={'ETag':'"'+ref['sha256']+'"'})
+
+    @app.get('/api/v1/events')
+    async def events(request:Request,tab_id:str):
+        if not re.fullmatch('[0-9a-f-]{32,36}',tab_id):raise APIError(400,'TAB','Valid tab identity required')
+        key=request.scope['studio_session']['id']+':'+tab_id;owner=uuid.uuid4().hex;streams[key]=owner
+        async def stream():
+            cursor=request.headers.get('last-event-id')
+            try:
+                while streams.get(key)==owner and not await request.is_disconnected():
+                    for ident in list(registry.projects):
+                        try:
+                            def probe():
+                                root=registry.resolve(ident)
+                                with ProjectLock(root,'studio-revision-watch'):return revision(root)
+                            rev=await run_in_threadpool(probe)
+                            if ident in registry.seen and registry.seen[ident]!=rev:
+                                registry.bus.emit('conflict',project_id=ident,revision=rev,reason='External canonical change')
+                                registry.bus.emit('revision_changed',project_id=ident,revision=rev)
+                            registry.seen[ident]=rev
+                        except (ReconError,APIError,OSError,ValueError):pass
+                    records=registry.bus.replay(cursor)
+                    for event in records:
+                        cursor=event['id'];yield 'id: '+cursor+'\nevent: '+event['kind']+'\ndata: '+json.dumps(event)+'\n\n'
+                    if not records:yield ': keepalive\n\n'
+                    await asyncio.sleep(.75)
+            finally:
+                if streams.get(key)==owner:streams.pop(key,None)
+        return StreamingResponse(stream(),media_type='text/event-stream',headers={'X-Accel-Buffering':'no'})
+
+    @app.get('/')
+    def index():
+        path=config.static/'index.html'
+        if not path.is_file():raise APIError(503,'FRONTEND','Build the Studio frontend before launch; see studio_development.md')
+        return FileResponse(path)
+
+    @app.get('/assets/{name}')
+    def asset(name:str):
+        if not re.fullmatch('[A-Za-z0-9_.-]+',name):raise APIError(404,'ASSET','Unknown application asset')
+        path=guard(config.static,config.static/'assets'/name)
+        if not path.is_file():raise APIError(404,'ASSET','Unknown application asset')
+        return FileResponse(path)
+
+    return app

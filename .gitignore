@@ -13,3 +13,8 @@ projects/*/validation/execution/
 .pytest_cache/
 /build/
 /dist/
+studio/frontend/node_modules/
+studio/frontend/test-results/
+studio/frontend/playwright-report/
+studio/frontend/coverage/
+projects/*/.studio/

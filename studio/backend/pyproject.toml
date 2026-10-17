@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "vehiclerecon-studio"
+version = "0.1.1"
+requires-python = ">=3.11"
+dependencies = ["vehiclerecon>=0.1.0", "fastapi==0.143.3", "uvicorn==0.54.0", "pillow==12.3.0"]
+
+[project.optional-dependencies]
+test = ["httpx==0.28.1", "pytest>=8"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+vehiclerecon_studio = ["static/*", "static/assets/*"]
