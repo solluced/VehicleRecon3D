@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vehiclerecon.local/schemas/landmark_fit.schema.json",
+  "type": "object",
+  "properties": {
+    "world_entity_id": {"$ref":"https://vehiclerecon.local/schemas/authoring.schema.json#/$defs/id"},
+    "observation_ids": {"type":"array","items":{"$ref":"https://vehiclerecon.local/schemas/authoring.schema.json#/$defs/id"},"minItems":1,"maxItems":256,"uniqueItems":true},
+    "excluded_ids": {"type":"array","items":{"type":"string"},"maxItems":256,"uniqueItems":true},
+    "weights": {"type":"object","maxProperties":256,"additionalProperties":{"type":"number","exclusiveMinimum":0,"maximum":1000000}},
+    "tolerance_px": {"type":"number","exclusiveMinimum":0,"maximum":10000},
+    "constraints": {"type":"array","maxItems":3,"items":{"oneOf":[
+      {"type":"object","properties":{"axis":{"enum":["X","Y","Z"]},"value":{"type":"number"}},"required":["axis","value"],"additionalProperties":false},
+      {"type":"object","properties":{"normal":{"type":"array","items":{"type":"number"},"minItems":3,"maxItems":3},"offset":{"type":"number"}},"required":["normal","offset"],"additionalProperties":false}
+    ]}},
+    "placement": {"type":"object","properties":{"view":{"enum":["side","top","front","rear"]},"pixel":{"type":"array","items":{"type":"number"},"minItems":2,"maxItems":2},"normal":{"type":"array","items":{"type":"number"},"minItems":3,"maxItems":3},"offset":{"type":"number"}},"required":["view","pixel","normal","offset"],"additionalProperties":false}
+  },
+  "required":["world_entity_id"],
+  "oneOf":[{"required":["observation_ids"],"not":{"required":["placement"]}},{"required":["placement"],"not":{"required":["observation_ids"]}}],
+  "additionalProperties":false
+}

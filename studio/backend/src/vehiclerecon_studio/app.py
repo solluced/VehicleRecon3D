@@ -75,7 +75,7 @@ def create_app(config):
     def roots():return [{'id':k,'label':p.name,'revision':registry.root_revision(k)} for k,p in registry.roots.items()]
 
     @app.get('/api/v1/capabilities')
-    def capabilities():return {'version':'0.1B','document_versions':[1,2],'writable_versions':[2],'image_formats':['PNG','JPEG'],
+    def capabilities():return {'version':'0.2','document_versions':[1,2],'writable_versions':[2],'image_formats':['PNG','JPEG'],
         'max_upload_bytes':config.max_upload,'max_pixels':config.max_pixels,'pipeline':False,'CV':False,'epoch':registry.bus.epoch,'idempotency_survives_restart':False}
 
     @app.get('/api/v1/schemas')
@@ -146,6 +146,26 @@ def create_app(config):
     @app.get('/api/v1/projects/{ident}/observations')
     def project_observations(ident:str):return registry.snapshot(ident)['observations']
 
+    @app.get('/api/v1/projects/{ident}/analysis')
+    def analysis(ident:str,expected_revision:str|None=None):return JSONResponse(registry.analysis(ident,expected_revision))
+
+    @app.get('/api/v1/projects/{ident}/residuals')
+    def residuals(ident:str):return JSONResponse(registry.analysis(ident)['residuals'])
+
+    @app.get('/api/v1/projects/{ident}/cage-preview')
+    def cage_preview(ident:str):return JSONResponse(registry.analysis(ident)['scene'])
+
+    @app.get('/api/v1/projects/{ident}/correspondences')
+    def correspondences(ident:str):return JSONResponse(registry.analysis(ident)['correspondences'])
+
+    @app.get('/api/v1/projects/{ident}/world-landmarks')
+    def world_landmarks(ident:str):return JSONResponse(registry.analysis(ident)['world_landmarks'])
+
+    @app.post('/api/v1/projects/{ident}/fit-proposals')
+    def fit_proposals(ident:str,request:Request,body:dict):
+        precondition(request,body)
+        return JSONResponse(registry.propose(ident,tab(request),body))
+
     @app.post('/api/v1/projects/{ident}/leases')
     def lease(ident:str,request:Request,body:dict):
         precondition(request,body);return registry.acquire(ident,tab(request),body['expected_revision'])
@@ -164,10 +184,13 @@ def create_app(config):
     @app.post('/api/v1/projects/{ident}/redo')
     @app.post('/api/v1/projects/{ident}/reload')
     @app.post('/api/v1/projects/{ident}/preferences')
+    @app.post('/api/v1/projects/{ident}/apply-fit')
+    @app.post('/api/v1/projects/{ident}/source-review')
+    @app.post('/api/v1/projects/{ident}/cage-review')
     def mutate(ident:str,request:Request,body:dict):
         if request.headers.get('content-type','').split(';')[0]!='application/json':raise APIError(415,'TYPE','JSON required')
         precondition(request,body)
-        return registry.mutate(ident,tab(request),body,request.headers.get('idempotency-key'),request.url.path.split('/')[-1])
+        return JSONResponse(registry.mutate(ident,tab(request),body,request.headers.get('idempotency-key'),request.url.path.split('/')[-1]))
 
     @app.post('/api/v1/projects/{ident}/reference-imports')
     async def import_image(ident:str,request:Request):

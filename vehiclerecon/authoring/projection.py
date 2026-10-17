@@ -70,10 +70,14 @@ def sample_cage(calibration, cage, *, count=64):
     if type(count) is not int or not 2 <= count <= 4096:
         raise SchemaError('Preview sample count must be 2..4096')
     result = []
+    identities={c['id']:c['id'] for c in cage['curves']}
+    identities.update({c['id']+'_'+side:c['id'] for c in cage['curves'] if c['symmetry'] for side,_ in cage['sides']})
     for curve in expand(resolved_cage(cage),calibration['wheel_geometry']):
         points = curve['points'];approximate = curve['handles']=='AUTO'
         samples = points if approximate else [polyline(points)(i/(count-1)) for i in range(count)]
         result.append({'entity_id':curve['id'],'semantic_role':curve['role'],'world_samples':[list(p) for p in samples],
+                       'source_entity_id':identities.get(curve['id']),
+                       'cyclic':curve.get('cyclic',False),'kind':curve.get('kind','rail'),
                        'control_ids':curve.get('point_ids',[]),'control_points':[list(p) for p in points],
                        'visibility':curve.get('visibility','inferred'),'approximate':approximate,
                        'sample_kind':'control_polygon' if approximate else 'piecewise_linear',

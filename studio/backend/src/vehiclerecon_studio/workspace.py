@@ -24,6 +24,7 @@ from vehiclerecon.core.transactions import atomic_write
 from vehiclerecon.core.errors import ConflictError, LockError, ReferenceError, SchemaError
 from vehiclerecon.reference.panels import inventory
 from .events import EventBus
+from .retention import Responses
 
 
 class APIError(Exception):
@@ -48,7 +49,7 @@ def guard(root, path):
 class Registry:
     def __init__(self,config):
         self.config=config;self.projects={};self.roots={uuid.uuid4().hex:p for p in config.roots}
-        self.lock=threading.RLock();self.sessions={};self.leases={};self.seen={};self.requests={};self.snapshots={};self.bus=EventBus();self.decode_slots=threading.BoundedSemaphore(2)
+        self.lock=threading.RLock();self.sessions={};self.leases={};self.seen={};self.requests=Responses();self.snapshots={};self.analyses={};self.proposals={};self.bus=EventBus();self.decode_slots=threading.BoundedSemaphore(2)
         self.scan()
 
     def scan(self):
@@ -91,7 +92,46 @@ class Registry:
         def observer(event):
             self.bus.emit(event['kind'],project_id=ident,revision=event.get('revision'),
                           stale=event.get('stale'),actor_tab=tab.rsplit(':',1)[-1])
-        return AuthoringSession(self.resolve(ident),observer=observer)
+        return AuthoringSession(self.resolve(ident),observer=observer,history_limit=100,history_byte_limit=32*1024*1024)
+
+    def analysis(self,ident,expected=None):
+        from .analysis import v2_analysis,legacy_analysis
+        root=self.resolve(ident)
+        with self.lock,ProjectLock(root,'studio-analysis'):
+            snap=self.snapshot(ident);rev=snap['revision']
+            if expected is not None and rev!=expected:raise ConflictError('Evidence revision changed; reload project')
+            cache_key=self.snapshots.get(ident,(rev,))[0]
+            cached=self.analyses.get(ident)
+            if cached and cached[0]==cache_key:return cached[1]
+            if snap['version']==2:result=v2_analysis(Workspace(root))
+            else:result=legacy_analysis(Project(root),guard)
+            result['revision']=rev
+            self.analyses[ident]=(cache_key,result);return result
+
+    def propose(self,ident,tab,body):
+        from vehiclerecon.core.project import validate
+        from vehiclerecon.authoring.fitting import fit_landmark,place_on_plane
+        root=self.resolve(ident)
+        with self.lock,ProjectLock(root,'studio-fit-proposal'):
+            expected=body.get('expected_revision');lease=self.leases.get(ident)
+            if revision(root)!=expected:raise ConflictError('Proposal evidence revision changed')
+            if not lease or lease['tab']!=tab or lease['id']!=body.get('lease_id') or lease['expires']<=time.monotonic():raise LockError('Active editor lease required')
+            request=body.get('request',{});validate(request,'landmark_fit');w=Workspace(root)
+            cage=w.documents.get('cage',{});cal=w.documents.get('calibration',{});name=request['world_entity_id']
+            initial=cage.get('landmarks',{}).get(name)
+            links={l['observation_id']:l for l in cal.get('correspondences',[]) if l['world_entity_id']==name and l['binding_type']=='landmark'}
+            if 'placement' in request:
+                p=request['placement'];xyz=place_on_plane(cal,p['view'],p['pixel'],p['normal'],p['offset'])
+                result={'status':'PASS','proposed_xyz':xyz,'proposal_only':True,'constraints':[{'normal':p['normal'],'offset':p['offset']}],
+                        'rows':[],'observations_used':[],'observations_excluded':[],'conditioning':{'placement':'Explicit plane intersection'},'method':'Calibrated pixel ray / explicit plane'}
+            else:
+                result=fit_landmark(cal,request['observation_ids'],constraints=request.get('constraints'),excluded_ids=request.get('excluded_ids',()),
+                    weights=request.get('weights'),tolerance_px=request.get('tolerance_px',2),initial=initial,links=links)
+            result={**result,'revision':expected,'world_entity_id':name,'old_xyz':initial,'proposal_id':uuid.uuid4().hex}
+            self.proposals={k:v for k,v in self.proposals.items() if v['expires']>time.monotonic()}
+            if len(self.proposals)>=32:self.proposals.pop(next(iter(self.proposals)))
+            self.proposals[result['proposal_id']]={'result':result,'ident':ident,'tab':tab,'expires':time.monotonic()+300}
+            return result
 
     def snapshot(self,ident,tab=None):
         root=self.resolve(ident)
@@ -167,12 +207,28 @@ class Registry:
                 session=self.session(ident,tab)
                 if operation=='transactions':
                     commands=body.get('commands',[])
-                    allowed={'AddObservation','MoveObservation','DeleteObservation','SetObservationProperties','AddSplinePoint','MoveSplinePoint','DeleteSplinePoint','SplitSpline','MergeSpline','SetMeasurement','SetProjectMetadata','SetProjectSettings','SetViewerLabel'}
+                    allowed={'AddObservation','MoveObservation','DeleteObservation','SetObservationProperties','AddSplinePoint','MoveSplinePoint','DeleteSplinePoint','SplitSpline','MergeSpline','SetMeasurement','SetProjectMetadata','SetProjectSettings','SetViewerLabel',
+                             'AddWorldLandmark','MoveWorldLandmark','DeleteWorldLandmark','BindObservation','UnbindObservation','SetTolerance','SetCoveragePolicy'}
                     if not isinstance(commands,list) or not 1<=len(commands)<=100:raise SchemaError('1..100 commands required')
                     for command in commands:
-                        if command.get('type') not in allowed or command.get('target','observation')!='observation':raise SchemaError('Operation unavailable in manual source authoring')
+                        if command.get('type') not in allowed or (command.get('target','observation')!='observation' and command.get('type')!='MoveSplinePoint'):raise SchemaError('Operation unavailable in this authoring workspace')
                         if command.get('type')=='SetProjectSettings' and command.get('section') not in ('validation','authoring_state'):raise SchemaError('Settings section unavailable in manual authoring')
                     result=session.apply(commands,expected_revision=expected)
+                elif operation=='apply-fit':
+                    proposal=self.proposals.get(body.get('proposal_id'))
+                    if not proposal or proposal['ident']!=ident or proposal['tab']!=tab or proposal['expires']<=time.monotonic():raise ConflictError('Proposal expired or belongs to another workspace')
+                    fit=proposal['result']
+                    if fit['revision']!=expected:raise ConflictError('Proposal was computed from another revision')
+                    if fit['proposed_xyz'] is None:raise SchemaError('Underdetermined proposal cannot be applied')
+                    result=session.apply([{'type':'MoveWorldLandmark' if fit['old_xyz'] is not None else 'AddWorldLandmark','world_entity_id':fit['world_entity_id'],'point':fit['proposed_xyz']}],expected_revision=expected)
+                elif operation in ('source-review','cage-review'):
+                    from vehiclerecon.authoring.reviews import subject
+                    kind=operation.split('-')[0];w=Workspace(root)
+                    if body.get('expected_subject')!=subject(w,kind):raise ConflictError('Inspected review evidence changed')
+                    reviewer=body.get('reviewer','');note=body.get('note','')
+                    if not isinstance(reviewer,str) or not reviewer.strip() or not isinstance(note,str) or not note.strip():raise SchemaError('Reviewer and a nonempty note are required')
+                    result=session.apply([{'type':'SetSourceDisposition' if kind=='source' else 'SetCageReview','decision':body.get('decision'),
+                                          'reviewer':reviewer.strip(),'notes':[note.strip()],'expected_subject':body['expected_subject']}],expected_revision=expected)
                 elif operation in ('undo','redo'):result=getattr(session,operation)(expected_revision=expected)
                 elif operation=='reload':
                     self.sessions[(ident,tab)]=self.new_session(ident,tab);result={'revision':expected}
@@ -195,6 +251,9 @@ class Registry:
                 if len(self.requests)>512:self.requests.pop(next(iter(self.requests)))
                 for kind in (('session_changed',) if operation in ('preferences','reload') else ('validation_changed','revision_changed')):
                     self.bus.emit(kind,project_id=ident,revision=result['revision'],actor_tab=tab.rsplit(':',1)[-1])
+                if operation not in ('preferences','reload'):
+                    for kind in ('residuals_changed','source_review_changed','cage_review_changed'):
+                        self.bus.emit(kind,project_id=ident,revision=result['revision'],actor_tab=tab.rsplit(':',1)[-1])
                 return result
 
     @staticmethod
@@ -203,6 +262,9 @@ class Registry:
         state={'type':'object','properties':{'visible':{'type':'boolean'},'locked':{'type':'boolean'},'opacity':{'type':'number','minimum':0,'maximum':1},'name':{'type':'string','maxLength':80},'category':{'enum':['image','observations','curves','datums']}},'additionalProperties':False}
         schema={'type':'object','properties':{'active_view':{'enum':['front','side','rear','top']},'reference_id':{'type':'string','maxLength':40},
                 'viewport':{'type':'object','properties':{k:{'type':'number','minimum':-1e7,'maximum':1e7} for k in ('x','y','scale')},'additionalProperties':False},
+                'viewports':{'type':'object','maxProperties':4,'propertyNames':{'enum':['front','side','rear','top']},'additionalProperties':{'type':'object','required':['x','y','scale'],'properties':{k:{'type':'number','minimum':-1e7,'maximum':1e7} for k in ('x','y','scale')},'additionalProperties':False}},
+                'layout':{'enum':['single','two','four','split','all']},
+                **{k:{'type':'boolean'} for k in ('sync_selection','sync_semantic','residual_vectors','residual_labels','heatmap')},
                 'layers':{'type':'object','maxProperties':32,'additionalProperties':state},
                 'assignments':{'type':'object','maxProperties':20000,'additionalProperties':{'type':'string','maxLength':80}}},'additionalProperties':False}
         try:validate(prefs,schema)

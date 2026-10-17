@@ -29,10 +29,24 @@ def _empty_cage():
 
 
 class AuthoringSession:
-    def __init__(self, root, *, observer=None):
+    def __init__(self, root, *, observer=None, history_limit=None, history_byte_limit=None):
         self.root = Workspace(root).root
         from ..core.events import Events
         self.undo_stack = [];self.redo_stack = [];self.events = Events([observer] if observer else [])
+        self.history_limit=history_limit;self.history_byte_limit=history_byte_limit
+        if any(v is not None and (type(v) is not int or v<1) for v in (history_limit,history_byte_limit)):
+            raise SchemaError('History retention limits must be positive integers')
+
+    @property
+    def history_retained_bytes(self):
+        # Shared immutable byte objects are counted once, not once per edge.
+        values={id(raw):raw for e in self.undo_stack+self.redo_stack for state in ('before','after') for raw in e[state].values() if raw is not None}
+        return sum(len(raw) for raw in values.values())
+
+    def _prune_history(self):
+        while self.undo_stack and ((self.history_limit is not None and len(self.undo_stack)+len(self.redo_stack)>self.history_limit) or
+                (self.history_byte_limit is not None and self.history_retained_bytes>self.history_byte_limit)):
+            self.undo_stack.pop(0)
 
     @property
     def revision(self):
@@ -54,10 +68,17 @@ class AuthoringSession:
             result = commit(self.root,changes,expected_revision=expected_revision,validator=w.validate)
             result['stale'] = invalidation(scopes)
             if result['changed_files']:
-                self.undo_stack.append({'before':before,'after':copy.deepcopy(w.files),
+                old={p:before.get(p) for p in changes};new={p:w.files.get(p) for p in changes}
+                # Adjacent edges share exact immutable bytes; no second document copy.
+                if self.undo_stack:
+                    previous=self.undo_stack[-1]
+                    for path,raw in old.items():
+                        if path in previous['after'] and raw==previous['after'][path]:old[path]=previous['after'][path]
+                self.undo_stack.append({'before':old,'after':new,
                                         'before_revision':expected_revision,'after_revision':result['revision'],
                                         'scopes':scopes})
                 self.redo_stack.clear()
+                self._prune_history()
             self._notify(result)
             return result
 
@@ -68,7 +89,7 @@ class AuthoringSession:
         w = Workspace(self.root)
         if w.revision != expected_revision:raise ConflictError('CONFLICT: history branch changed externally')
         files = entry[target]
-        changes = {p:files.get(p) for p in set(w.files)|set(files) if w.files.get(p)!=files.get(p)}
+        changes = {p:raw for p,raw in files.items() if w.files.get(p)!=raw}
         result = commit(self.root,changes,expected_revision=expected_revision,validator=w.validate,operation=target)
         result['stale'] = invalidation(entry['scopes']);self._notify(result)
         return result
