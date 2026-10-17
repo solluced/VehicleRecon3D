@@ -1,0 +1,16 @@
+{
+  "status": "PASS",
+  "builds": 2,
+  "identical_asset_bytes": true,
+  "assets_sha256": {
+    "index.html": "c838b8a6af9cbde7a41d313c89b3dc6cb42dcd514a5f530529951a52a78f0faa",
+    "assets/CVPanel-ByzFR0O2.css": "06dcd0c7d27e0b59aa4f0c7d18525fc196a71a62bc9f950a00a5887d42a2f514",
+    "assets/CVPanel-CScpu5g9.js": "e05aa08d646f04a145fc82f02c7574944ac57fba6f2c4c0546cfdc35be4741ff",
+    "assets/index-B_Iowi4f.js": "6e972fa7e482c088525a8b8f0704fde2904772d651579700d4d11e26113df2c7",
+    "assets/index-C8fLmVeB.css": "6a7ac15ab6eb31b4ecb524bbc5bf8ce80408d276b88979ccb3110715be91ff2f",
+    "assets/MultiWorkspace-BaOU3bRZ.js": "a6212720e73af28c095a71413bf70e99598118ec9cf92b6f2c591989538b98a8",
+    "assets/Preview3D-CGDaL4hf.js": "a7a0c23fdac42f175c5dbc134b0fd1054357ba63049bb0040e2c9a153e4243c5",
+    "assets/RectificationWorkspace-Bxc2WtHI.css": "bcf708a4ca21e412ce456610ff51f3d981f1bda2651553e9082379469097595e",
+    "assets/RectificationWorkspace-BxNXx8OT.js": "5f7f14cb6c3c6c8a20f63fa47dbcbf0520c2632088018d6e025197da0ef0acbf"
+  }
+}

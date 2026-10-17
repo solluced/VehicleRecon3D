@@ -1,0 +1,75 @@
+{
+  "status": "PASS",
+  "scale_epsilon": 1e-12,
+  "cases": [
+    {
+      "target_midpoint": 0.52499999,
+      "expected_eligible": true,
+      "actual_eligible": true,
+      "scale": [
+        0.9000000400000001,
+        1.0999999599999999
+      ],
+      "held_out_before": {
+        "max_critical_px": 4.499998200000022,
+        "mean_critical_px": 2.6616226860240704,
+        "failed_critical": 5,
+        "held_out_rms_px": 3.663250741619232
+      },
+      "held_out_after": {
+        "max_critical_px": 2.842170943040401e-14,
+        "mean_critical_px": 1.0150610510858574e-14,
+        "failed_critical": 0,
+        "held_out_rms_px": 1.5888218580782548e-14
+      },
+      "reasons": []
+    },
+    {
+      "target_midpoint": 0.525,
+      "expected_eligible": true,
+      "actual_eligible": true,
+      "scale": [
+        0.8999999999999998,
+        1.1
+      ],
+      "held_out_before": {
+        "max_critical_px": 4.5,
+        "mean_critical_px": 2.661623750708082,
+        "failed_critical": 5,
+        "held_out_rms_px": 3.6632522071038194
+      },
+      "held_out_after": {
+        "max_critical_px": 5.684341886080802e-14,
+        "mean_critical_px": 1.4210854715202004e-14,
+        "failed_critical": 0,
+        "held_out_rms_px": 2.929642751054232e-14
+      },
+      "reasons": []
+    },
+    {
+      "target_midpoint": 0.5250000100000001,
+      "expected_eligible": false,
+      "actual_eligible": false,
+      "scale": [
+        0.8999999599999997,
+        1.1000000400000003
+      ],
+      "held_out_before": {
+        "max_critical_px": 4.500001800000007,
+        "mean_critical_px": 2.6616248153920776,
+        "failed_critical": 5,
+        "held_out_rms_px": 3.6632536725883718
+      },
+      "held_out_after": {
+        "max_critical_px": 5.684341886080802e-14,
+        "mean_critical_px": 1.6240976817373718e-14,
+        "failed_critical": 0,
+        "held_out_rms_px": 3.014577520672848e-14
+      },
+      "reasons": [
+        "OUTSIDE SCALE LIMIT",
+        "Rectification local scale 0.900000..1.100000 exceeds declared +/-10.0% limit"
+      ]
+    }
+  ]
+}

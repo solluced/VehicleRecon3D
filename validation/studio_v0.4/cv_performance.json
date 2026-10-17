@@ -1,0 +1,457 @@
+{
+  "status": "PASS",
+  "source": [
+    3840,
+    2160
+  ],
+  "dpr": 2,
+  "preview_samples": [
+    291.20000000018626,
+    199.79999999981374,
+    245.5,
+    238.70000000018626,
+    229.09999999962747,
+    241.5,
+    233.29999999981374,
+    245.59999999962747
+  ],
+  "preview_phase_samples": [
+    {
+      "debounce_coalescing_ms": 74.79999999981374,
+      "request_to_proposal_ms": 213.70000000018626,
+      "provider_result_ms": 100.3577999999834,
+      "transport_validation_polling_ms": 113.34220000020287,
+      "react_konva_two_frames_ms": 2.7000000001862645,
+      "total_ms": 291.20000000018626
+    },
+    {
+      "debounce_coalescing_ms": 83.29999999981374,
+      "request_to_proposal_ms": 112.80000000074506,
+      "provider_result_ms": 6.530900000143447,
+      "transport_validation_polling_ms": 106.26910000060161,
+      "react_konva_two_frames_ms": 3.699999999254942,
+      "total_ms": 199.79999999981374
+    },
+    {
+      "debounce_coalescing_ms": 83.1000000005588,
+      "request_to_proposal_ms": 158.69999999925494,
+      "provider_result_ms": 8.380500000384927,
+      "transport_validation_polling_ms": 150.31949999887001,
+      "react_konva_two_frames_ms": 3.7000000001862645,
+      "total_ms": 245.5
+    },
+    {
+      "debounce_coalescing_ms": 78.5,
+      "request_to_proposal_ms": 154.20000000018626,
+      "provider_result_ms": 10.705700000471552,
+      "transport_validation_polling_ms": 143.4942999997147,
+      "react_konva_two_frames_ms": 6,
+      "total_ms": 238.70000000018626
+    },
+    {
+      "debounce_coalescing_ms": 75,
+      "request_to_proposal_ms": 150.69999999925494,
+      "provider_result_ms": 12.942600000314997,
+      "transport_validation_polling_ms": 137.75739999893995,
+      "react_konva_two_frames_ms": 3.400000000372529,
+      "total_ms": 229.09999999962747
+    },
+    {
+      "debounce_coalescing_ms": 82.40000000037253,
+      "request_to_proposal_ms": 154.79999999981374,
+      "provider_result_ms": 17.94530000006489,
+      "transport_validation_polling_ms": 136.85469999974885,
+      "react_konva_two_frames_ms": 4.2999999998137355,
+      "total_ms": 241.5
+    },
+    {
+      "debounce_coalescing_ms": 74.8999999994412,
+      "request_to_proposal_ms": 154.1000000005588,
+      "provider_result_ms": 20.95370000006369,
+      "transport_validation_polling_ms": 133.1463000004951,
+      "react_konva_two_frames_ms": 4.2999999998137355,
+      "total_ms": 233.29999999981374
+    },
+    {
+      "debounce_coalescing_ms": 78.8999999994412,
+      "request_to_proposal_ms": 163.70000000018626,
+      "provider_result_ms": 26.17169999939506,
+      "transport_validation_polling_ms": 137.5283000007912,
+      "react_konva_two_frames_ms": 3,
+      "total_ms": 245.59999999962747
+    }
+  ],
+  "smart_http_resource_timings": [
+    {
+      "path": "/api/v1/projects/c19a0352132a44a2a9b82fb673c46c1d/cv-jobs",
+      "duration_ms": 65.29999999981374,
+      "ttfb_ms": 62.59999999962747,
+      "body_transfer_ms": 0.5,
+      "bytes": 282
+    },
+    {
+      "path": "/api/v1/projects/c19a0352132a44a2a9b82fb673c46c1d/cv-jobs/e17877a99d014b9d88ca143355bdc9f3",
+      "duration_ms": 8.200000000186265,
+      "ttfb_ms": 5.7000000001862645,
+      "body_transfer_ms": 0.40000000037252903,
+      "bytes": 282
+    },
+    {
+      "path": "/api/v1/projects/c19a0352132a44a2a9b82fb673c46c1d/cv-jobs/e17877a99d014b9d88ca143355bdc9f3",
+      "duration_ms": 5.300000000745058,
+      "ttfb_ms": 3.099999999627471,
+      "body_transfer_ms": 0.40000000037252903,
+      "bytes": 282
+    },
+    {
+      "path": "/api/v1/projects/c19a0352132a44a2a9b82fb673c46c1d/cv-jobs/e17877a99d014b9d88ca143355bdc9f3",
+      "duration_ms": 12.099999999627471,
+      "ttfb_ms": 8,
+      "body_transfer_ms": 0.2999999998137355,
+      "bytes": 282
+    },
+    {
+      "path": "/api/v1/projects/c19a0352132a44a2a9b82fb673c46c1d/cv-jobs/e17877a99d014b9d88ca143355bdc9f3",
+      "duration_ms": 7.2000000001862645,
+      "ttfb_ms": 4.900000000372529,
+      "body_transfer_ms": 0.2999999998137355,
+      "bytes": 318
+    },
+    {
+      "path": "/api/v1/projects/c19a0352132a44a2a9b82fb673c46c1d/cv-proposals/918f6859a1854e939475a31f16934175",
+      "duration_ms": 25.59999999962747,
+      "ttfb_ms": 23.200000000186265,
+      "body_transfer_ms": 0.2999999998137355,
+      "bytes": 2790
+    },
+    {
+      "path": "/api/v1/projects/c19a0352132a44a2a9b82fb673c46c1d/cv-jobs",
+      "duration_ms": 56.700000000186265,
+      "ttfb_ms": 53.90000000037253,
+      "body_transfer_ms": 0.7000000001862645,
+      "bytes": 279
+    },
+    {
+      "path": "/api/v1/projects/c19a0352132a44a2a9b82fb673c46c1d/cv-jobs/241a620f40db4d8db6c8ffcdda3305eb",
+      "duration_ms": 7,
+      "ttfb_ms": 4.7999999998137355,
+      "body_transfer_ms": 0.2999999998137355,
+      "bytes": 318
+    },
+    {
+      "path": "/api/v1/projects/c19a0352132a44a2a9b82fb673c46c1d/cv-proposals/e16fa34f23f140179e1ec5c614ca4008",
+      "duration_ms": 25.299999999813735,
+      "ttfb_ms": 23.199999999254942,
+      "body_transfer_ms": 0.40000000037252903,
+      "bytes": 3480
+    },
+    {
+      "path": "/api/v1/projects/c19a0352132a44a2a9b82fb673c46c1d/cv-jobs",
+      "duration_ms": 67.90000000037253,
+      "ttfb_ms": 65.1000000005588,
+      "body_transfer_ms": 0.5,
+      "bytes": 279
+    },
+    {
+      "path": "/api/v1/projects/c19a0352132a44a2a9b82fb673c46c1d/cv-jobs/073bcb46e3614c36a38f421b0206b47d",
+      "duration_ms": 7.5,
+      "ttfb_ms": 4.7999999998137355,
+      "body_transfer_ms": 0.39999999944120646,
+      "bytes": 282
+    },
+    {
+      "path": "/api/v1/projects/c19a0352132a44a2a9b82fb673c46c1d/cv-jobs/073bcb46e3614c36a38f421b0206b47d",
+      "duration_ms": 7.3999999994412065,
+      "ttfb_ms": 5,
+      "body_transfer_ms": 0.39999999944120646,
+      "bytes": 318
+    },
+    {
+      "path": "/api/v1/projects/c19a0352132a44a2a9b82fb673c46c1d/cv-proposals/ea9e402b75bf4df7ac8f6cd7cd7dbcda",
+      "duration_ms": 29.5,
+      "ttfb_ms": 27.200000000186265,
+      "body_transfer_ms": 0.40000000037252903,
+      "bytes": 4170
+    },
+    {
+      "path": "/api/v1/projects/c19a0352132a44a2a9b82fb673c46c1d/cv-jobs",
+      "duration_ms": 63.5,
+      "ttfb_ms": 60.799999999813735,
+      "body_transfer_ms": 0.39999999944120646,
+      "bytes": 279
+    },
+    {
+      "path": "/api/v1/projects/c19a0352132a44a2a9b82fb673c46c1d/cv-jobs/ad724905bd404d2b80f8bf4b77d73408",
+      "duration_ms": 11.700000000186265,
+      "ttfb_ms": 8.700000000186265,
+      "body_transfer_ms": 0.40000000037252903,
+      "bytes": 319
+    },
+    {
+      "path": "/api/v1/projects/c19a0352132a44a2a9b82fb673c46c1d/cv-jobs/ad724905bd404d2b80f8bf4b77d73408",
+      "duration_ms": 7.7000000001862645,
+      "ttfb_ms": 5.1000000005587935,
+      "body_transfer_ms": 0.39999999944120646,
+      "bytes": 318
+    },
+    {
+      "path": "/api/v1/projects/c19a0352132a44a2a9b82fb673c46c1d/cv-proposals/d125c1afd9ea4f7a8e69374fd96c1772",
+      "duration_ms": 26.700000000186265,
+      "ttfb_ms": 24.399999999441206,
+      "body_transfer_ms": 0.40000000037252903,
+      "bytes": 4802
+    },
+    {
+      "path": "/api/v1/projects/c19a0352132a44a2a9b82fb673c46c1d/cv-jobs",
+      "duration_ms": 65.20000000018626,
+      "ttfb_ms": 62.5,
+      "body_transfer_ms": 0.6000000005587935,
+      "bytes": 279
+    },
+    {
+      "path": "/api/v1/projects/c19a0352132a44a2a9b82fb673c46c1d/cv-jobs/490e2cea18c24be2a22ebb99648285e7",
+      "duration_ms": 7,
+      "ttfb_ms": 4.8999999994412065,
+      "body_transfer_ms": 0.20000000018626451,
+      "bytes": 282
+    },
+    {
+      "path": "/api/v1/projects/c19a0352132a44a2a9b82fb673c46c1d/cv-jobs/490e2cea18c24be2a22ebb99648285e7",
+      "duration_ms": 7.2999999998137355,
+      "ttfb_ms": 4.7999999998137355,
+      "body_transfer_ms": 0.40000000037252903,
+      "bytes": 318
+    },
+    {
+      "path": "/api/v1/projects/c19a0352132a44a2a9b82fb673c46c1d/cv-proposals/0abffaa94aea4928ab3d06251aa140d0",
+      "duration_ms": 26.5,
+      "ttfb_ms": 24,
+      "body_transfer_ms": 0.2999999998137355,
+      "bytes": 5434
+    },
+    {
+      "path": "/api/v1/projects/c19a0352132a44a2a9b82fb673c46c1d/cv-jobs",
+      "duration_ms": 69.5,
+      "ttfb_ms": 66.70000000018626,
+      "body_transfer_ms": 0.5,
+      "bytes": 279
+    },
+    {
+      "path": "/api/v1/projects/c19a0352132a44a2a9b82fb673c46c1d/cv-jobs/37d570b01bad499db19a925e083cb17c",
+      "duration_ms": 7.5,
+      "ttfb_ms": 5,
+      "body_transfer_ms": 0.39999999944120646,
+      "bytes": 282
+    },
+    {
+      "path": "/api/v1/projects/c19a0352132a44a2a9b82fb673c46c1d/cv-jobs/37d570b01bad499db19a925e083cb17c",
+      "duration_ms": 7.2000000001862645,
+      "ttfb_ms": 5,
+      "body_transfer_ms": 0.20000000018626451,
+      "bytes": 318
+    },
+    {
+      "path": "/api/v1/projects/c19a0352132a44a2a9b82fb673c46c1d/cv-proposals/82e18c0050af439bb73b988d554427d9",
+      "duration_ms": 25.40000000037253,
+      "ttfb_ms": 23.299999999813735,
+      "body_transfer_ms": 0.40000000037252903,
+      "bytes": 6121
+    },
+    {
+      "path": "/api/v1/projects/c19a0352132a44a2a9b82fb673c46c1d/cv-jobs",
+      "duration_ms": 66.09999999962747,
+      "ttfb_ms": 63.40000000037253,
+      "body_transfer_ms": 0.2999999998137355,
+      "bytes": 279
+    },
+    {
+      "path": "/api/v1/projects/c19a0352132a44a2a9b82fb673c46c1d/cv-jobs/96458447539145f4b06e923ffbd7db0d",
+      "duration_ms": 7.300000000745058,
+      "ttfb_ms": 4.900000000372529,
+      "body_transfer_ms": 0.40000000037252903,
+      "bytes": 282
+    },
+    {
+      "path": "/api/v1/projects/c19a0352132a44a2a9b82fb673c46c1d/cv-jobs/96458447539145f4b06e923ffbd7db0d",
+      "duration_ms": 7.599999999627471,
+      "ttfb_ms": 5.099999999627471,
+      "body_transfer_ms": 0.2999999998137355,
+      "bytes": 318
+    },
+    {
+      "path": "/api/v1/projects/c19a0352132a44a2a9b82fb673c46c1d/cv-proposals/61748bf3d2b44bfda4e7162e561aea4f",
+      "duration_ms": 27.200000000186265,
+      "ttfb_ms": 24.5,
+      "body_transfer_ms": 0.5,
+      "bytes": 6864
+    },
+    {
+      "path": "/api/v1/projects/c19a0352132a44a2a9b82fb673c46c1d/cv-jobs",
+      "duration_ms": 75.5,
+      "ttfb_ms": 72.79999999981374,
+      "body_transfer_ms": 0.5,
+      "bytes": 279
+    },
+    {
+      "path": "/api/v1/projects/c19a0352132a44a2a9b82fb673c46c1d/cv-jobs/f4ef27b003864c16aaff9259bf82cc33",
+      "duration_ms": 7.900000000372529,
+      "ttfb_ms": 5.3999999994412065,
+      "body_transfer_ms": 0.40000000037252903,
+      "bytes": 282
+    },
+    {
+      "path": "/api/v1/projects/c19a0352132a44a2a9b82fb673c46c1d/cv-jobs/f4ef27b003864c16aaff9259bf82cc33",
+      "duration_ms": 7.2999999998137355,
+      "ttfb_ms": 4.8999999994412065,
+      "body_transfer_ms": 0.2999999998137355,
+      "bytes": 318
+    },
+    {
+      "path": "/api/v1/projects/c19a0352132a44a2a9b82fb673c46c1d/cv-proposals/1634a0c5eb374e3a965a53113b4954cb",
+      "duration_ms": 27.700000000186265,
+      "ttfb_ms": 25,
+      "body_transfer_ms": 0.40000000037252903,
+      "bytes": 7494
+    },
+    {
+      "path": "/api/v1/projects/c19a0352132a44a2a9b82fb673c46c1d/cv-jobs",
+      "duration_ms": 75.79999999981374,
+      "ttfb_ms": 64.40000000037253,
+      "body_transfer_ms": 0.39999999944120646,
+      "bytes": 279
+    },
+    {
+      "path": "/api/v1/projects/c19a0352132a44a2a9b82fb673c46c1d/cv-jobs/6e6d4efb68dc447b914cbdb84c516cd5",
+      "duration_ms": 17.09999999962747,
+      "ttfb_ms": 14.299999999813735,
+      "body_transfer_ms": 0.39999999944120646,
+      "bytes": 282
+    },
+    {
+      "path": "/api/v1/projects/c19a0352132a44a2a9b82fb673c46c1d/cv-jobs/6e6d4efb68dc447b914cbdb84c516cd5",
+      "duration_ms": 8.399999999441206,
+      "ttfb_ms": 6.2000000001862645,
+      "body_transfer_ms": 0.2999999998137355,
+      "bytes": 319
+    },
+    {
+      "path": "/api/v1/projects/c19a0352132a44a2a9b82fb673c46c1d/cv-jobs/6e6d4efb68dc447b914cbdb84c516cd5",
+      "duration_ms": 7.5,
+      "ttfb_ms": 5,
+      "body_transfer_ms": 0.40000000037252903,
+      "bytes": 318
+    },
+    {
+      "path": "/api/v1/projects/c19a0352132a44a2a9b82fb673c46c1d/cv-proposals/6e02dd3d9fc0475bae6b5d02b2aeffc0",
+      "duration_ms": 26.200000000186265,
+      "ttfb_ms": 23.899999999441206,
+      "body_transfer_ms": 0.5,
+      "bytes": 9161
+    },
+    {
+      "path": "/api/v1/projects/c19a0352132a44a2a9b82fb673c46c1d/cv-jobs",
+      "duration_ms": 67,
+      "ttfb_ms": 62.299999999813735,
+      "body_transfer_ms": 0.40000000037252903,
+      "bytes": 279
+    },
+    {
+      "path": "/api/v1/projects/c19a0352132a44a2a9b82fb673c46c1d/cv-jobs/28637e832ffb4bb19c3078b2e3bd269d",
+      "duration_ms": 7,
+      "ttfb_ms": 4.7000000001862645,
+      "body_transfer_ms": 0.40000000037252903,
+      "bytes": 318
+    },
+    {
+      "path": "/api/v1/projects/c19a0352132a44a2a9b82fb673c46c1d/cv-proposals/8d876e18e4fc4555931cc6d446e1c571",
+      "duration_ms": 25.59999999962747,
+      "ttfb_ms": 23.800000000745058,
+      "body_transfer_ms": 0.39999999944120646,
+      "bytes": 3710
+    },
+    {
+      "path": "/api/v1/projects/c19a0352132a44a2a9b82fb673c46c1d/cv-jobs",
+      "duration_ms": 68.90000000037253,
+      "ttfb_ms": 62.700000000186265,
+      "body_transfer_ms": 0.599999999627471,
+      "bytes": 279
+    },
+    {
+      "path": "/api/v1/projects/c19a0352132a44a2a9b82fb673c46c1d/cv-jobs/eaffb5148e5a4ba4a8795a558d6f0f45",
+      "duration_ms": 7,
+      "ttfb_ms": 4.7000000001862645,
+      "body_transfer_ms": 0.40000000037252903,
+      "bytes": 318
+    },
+    {
+      "path": "/api/v1/projects/c19a0352132a44a2a9b82fb673c46c1d/cv-proposals/799d83388ea844f3a57280e9ac4d20e7",
+      "duration_ms": 27.100000000558794,
+      "ttfb_ms": 24.800000000745058,
+      "body_transfer_ms": 0.2999999998137355,
+      "bytes": 3711
+    },
+    {
+      "path": "/api/v1/projects/c19a0352132a44a2a9b82fb673c46c1d/cv-jobs",
+      "duration_ms": 66.80000000074506,
+      "ttfb_ms": 61.700000000186265,
+      "body_transfer_ms": 0.7000000001862645,
+      "bytes": 279
+    },
+    {
+      "path": "/api/v1/projects/c19a0352132a44a2a9b82fb673c46c1d/cv-jobs/2b9fa8bddd9f44649a0272b7c745864e",
+      "duration_ms": 7.400000000372529,
+      "ttfb_ms": 5.099999999627471,
+      "body_transfer_ms": 0.40000000037252903,
+      "bytes": 318
+    },
+    {
+      "path": "/api/v1/projects/c19a0352132a44a2a9b82fb673c46c1d/cv-proposals/f8984ab587014570b7abbc49c2c88a3c",
+      "duration_ms": 25,
+      "ttfb_ms": 23,
+      "body_transfer_ms": 0.39999999944120646,
+      "bytes": 3695
+    },
+    {
+      "path": "/api/v1/projects/c19a0352132a44a2a9b82fb673c46c1d/cv-proposals/9af01310e7924617856b0f28a9c4ffc4",
+      "duration_ms": 25.700000000186265,
+      "ttfb_ms": 23.59999999962747,
+      "body_transfer_ms": 0.5,
+      "bytes": 16473
+    }
+  ],
+  "commit_samples": [
+    209.40000000037253,
+    196.1000000005588,
+    203.20000000018626,
+    206.3999999994412
+  ],
+  "preview_p50_ms": 241.5,
+  "preview_p95_ms": 291.20000000018626,
+  "commit_p50_ms": 206.3999999994412,
+  "commit_p95_ms": 209.40000000037253,
+  "mask_first_display_ms": 2903,
+  "mask_provider_ms": 2152.9129000000466,
+  "refinement_display_ms": [
+    2919,
+    2931
+  ],
+  "fit": {
+    "max_deviation_px": 0.8290295487468454,
+    "rms_deviation_px": 0.16615156405622125,
+    "certified_max_deviation_px": 0.8290295487468454,
+    "measurement_flatten_error_px": 0,
+    "tolerance_px": 2,
+    "control_point_count": 14,
+    "original_sample_count": 812,
+    "preserve_corners": false,
+    "method": "RDP intervals / continuous chord bound"
+  },
+  "mask_components": 1,
+  "canonical_revision_unchanged": true,
+  "backend_rss_bytes": 123998208,
+  "offline": {
+    "external_attempts_blocked": 1,
+    "source_image_egress": 0
+  },
+  "note": "Preview includes coalescing/debounce, local HTTP and two animation frames; mask display includes pointer ROI gesture. Synthetic analytical 4K source, no real-time claim."
+}

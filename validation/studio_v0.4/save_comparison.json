@@ -1,0 +1,70 @@
+{
+  "status": "PASS",
+  "scenario": "Existing 4K / 5000 source observations / 20 layers / eight visible UI property edits with canonical verification",
+  "p95_ms": {
+    "v0.1B": 3389,
+    "v0.2": 6279,
+    "v0.3": 9442,
+    "v0.4": 2340
+  },
+  "phases": {
+    "schema_validation": {
+      "calls": 21,
+      "self_seconds": 0.004959600000000001,
+      "cumulative_seconds": 1.3265787
+    },
+    "semantic_validation": {
+      "calls": 4,
+      "self_seconds": 0.058078700000000004,
+      "cumulative_seconds": 0.23855540000000003
+    },
+    "json_serialization": {
+      "calls": 75138,
+      "self_seconds": 0.2234279,
+      "cumulative_seconds": 1.6652097000000001
+    },
+    "revision_hashing": {
+      "calls": 11,
+      "self_seconds": 0.0014933000000000001,
+      "cumulative_seconds": 0.0829342
+    },
+    "transaction_commit": {
+      "calls": 1,
+      "self_seconds": 0.0042301000000000005,
+      "cumulative_seconds": 0.41143300000000005
+    },
+    "workspace_loads": {
+      "calls": 2,
+      "self_seconds": 4.44e-05,
+      "cumulative_seconds": 0.6055854
+    },
+    "residual_recomputation": {
+      "calls": 0,
+      "self_seconds": 0,
+      "cumulative_seconds": 0
+    },
+    "transaction_writes": {
+      "calls": 4,
+      "self_seconds": 0.0001275,
+      "cumulative_seconds": 0.031826600000000003
+    },
+    "api_response_construction": {
+      "calls": 1,
+      "self_seconds": 6.7e-06,
+      "cumulative_seconds": 0.0010297000000000001
+    },
+    "snapshot_refresh": {
+      "calls": 1,
+      "self_seconds": 0.0019375000000000002,
+      "cumulative_seconds": 0.3067319
+    },
+    "fsync": {
+      "calls": 4,
+      "self_seconds": 0.0091114,
+      "cumulative_seconds": 0.0091114
+    }
+  },
+  "source_only_residual_calls": 0,
+  "calibrated_residual_profile": "calibrated_edit_profile.json",
+  "note": "Profile and browser latency are separate; cumulative phases overlap. Full structural audit mode and semantic checks remain available."
+}

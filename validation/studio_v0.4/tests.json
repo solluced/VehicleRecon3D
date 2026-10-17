@@ -1,0 +1,20 @@
+{
+  "status": "PASS",
+  "provenance": "Observed local tool command completions; browser/frontend raw JSON retained separately.",
+  "python": {
+    "total_passed": 320,
+    "nonheavy_passed": 315,
+    "heavy_passed": 5,
+    "core_only_passed": 254,
+    "backend_count": 61,
+    "commands": [
+      "python -m pytest tests studio/backend/tests -m \"not blender and not integration\" -q",
+      "build/studio-v01b-core-only-env/Scripts/python.exe -m pytest tests -m \"not blender and not integration\" -q",
+      "python -m pytest tests -m \"blender or integration\" -q"
+    ],
+    "final_concurrent_preview_api_passed": 4,
+    "note": "Full nonheavy matrix plus separate five heavy tests; latest concurrency fix also tested against four reconciliation API cases and complete CI backend job."
+  },
+  "frontend_passed": 48,
+  "e2e_passed": 17
+}

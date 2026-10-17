@@ -1,8 +1,8 @@
-# Studio development — v0.3
+# Studio development — v0.4
 
 Studio is a separate optional Python distribution and React/TypeScript/Konva/Three.js
 workspace. Mandatory core dependencies remain unchanged. Human release name is
-v0.3; the optional distribution/frontend package version is 0.3.0. Canonical
+v0.4; the optional distribution/frontend package version is 0.4.0. Canonical
 document version 2 and transport `/api/v1` are independent versions.
 
 ## Install and run
@@ -365,3 +365,135 @@ deselected), 41 frontend and 13 browser tests. The new cold Tesla run passes
 protected Mark II hashes remain unchanged. Full reports, test XML/JSON,
 performance limitations and CI identity are in
 [validation/studio_v0.3](../validation/studio_v0.3/README.md).
+
+## v0.4 reconciliation and validation scope
+
+Read the [v0.4 manual](studio_user_manual_v0.4.md) and
+[reconciliation contract](reference_reconciliation.md). Core owns every mapping,
+inverse, derivative, analytic extremum and activation rule. Studio adds noncanonical
+archived candidates and bounded server-generated previews. Actual image decoding,
+parallel RAW/RECTIFIED requests and explicit activation/undo are covered by browser
+and backend tests. New read routes serialize project inspection under the registry
+and core project locks; simultaneous previews must not fail with transient 423.
+
+The positive structural memo is keyed by the **complete exact local schema bundle**,
+schema name and canonical JSON encoding of the current whole document. Finite
+numbers and exact JSON-compatible Python types are checked on every call. Successes
+only are cached, with a 16 MiB / 128-entry limit and 8 MiB maximum document. Schema
+files are still read on every validation, including referenced schemas. No semantic
+or source-identity validation is skipped. Record-level oneOf memoization also rejects
+non-JSON type aliases such as tuples. The full audit path bypasses both caches and
+uses the standard complete Draft202012 oneOf validator:
+
+```python
+from vehiclerecon.core.project import full_validation
+from vehiclerecon.authoring.workspace import Workspace
+with full_validation():
+    workspace = Workspace(project_root)
+    workspace.validate(workspace.files)
+```
+
+Equivalence tests exercise valid/invalid structures, tuple/list aliasing,
+nonfinite values, exact schema-byte changes, cross-document semantics and
+byte-identical transactions in fast/audit modes. Studio reuses only the workspace
+just validated and committed by its own command, under the same revision fence.
+The reference is released in a finally block after snapshot construction. Explicit
+full GET/reload remains available; delta replies retain existing client merge fences.
+
+### Dense save: directly comparable source-editor probe
+
+All browser measurements use the existing 3840×2160 source, 5000 canonical
+observations, 20 layers, 1500×1000 viewport, DPR 1, Ryzen 7 5800X / 16 logical CPUs
+and eight visible UI property edits with canonical readback. Final v0.4 p95 is
+**2340 ms**, against v0.1B **3389**, v0.2 **6279**, v0.3 **9442 ms**. Earlier
+v0.4 checkpoints measured 2320 and 2738 ms; the final frozen-build result is used here. Browser/cache/OS variance
+is included; eight edits do not establish a universal latency bound.
+
+The representative source-edit profile is separate from browser latency:
+
+| Phase | v0.3 calls | v0.4 calls | v0.4 cumulative seconds |
+| --- | ---: | ---: | ---: |
+| Workspace loads | 3 | 2 | 0.606 |
+| Schema validation | 26 | 21 | 1.327 |
+| Semantic validation | 5 | 4 | 0.239 |
+| Snapshot construction | 1 | 1 | 0.307 |
+| Revision hashing | 12 | 11 | 0.083 |
+| JSON encoding layers | 150075 | 75138 | 1.665 |
+| Transaction commit | 1 | 1 | 0.411 |
+| Atomic writes | 4 | 4 | 0.032 |
+| fsync | 4 | 4 | 0.009 |
+| Residual recomputation | — | 0 | 0 |
+| API response render | — | 1 | 0.001 |
+
+Phases overlap; JSON self time is 0.223 s and total instrumented time is 3.325 s.
+The zero residual count is intentional for this uncalibrated source-only fixture,
+not removal of validation. The additional calibrated 5000-entity probe has 68
+bound rows: mutation performs two residual report computations (0.176 s), and the
+requested full analysis performs four (0.303 s). Its mutation / analysis profiles
+take 2.132 / 0.855 s. Every cross-document check and the four durable writes/fsyncs
+remain active. Exact full/audit equivalence is required when changing these paths.
+
+The unchanged source-edit delta remains about **175847 bytes** versus v0.3's
+2211338-byte full response. After ten additional CV accepts in the 100-edit probe,
+the final delta is 208702 bytes because it includes the expanded current state.
+Calibrated world-edit delta / explicit analysis are 69454 / 175441 bytes. These
+different payloads must not be presented as the same workload.
+
+### Smart Edge phases
+
+Hoisting the eight constant direction/smoothness costs out of A*'s inner loop
+preserves exact output. The trusted installed v0.3 module and current module produce
+identical structured results on seven identical directed 300 px segments. Warm
+native p50 changes **69.6 → 21.8 ms** (p95 **93.4 → 23.6 ms**). The profiled warm
+search including contour fitting changes 77.8 → 25.7 ms. Direction dot calls fall
+25853 → 13; core fitting itself stays about 1 ms. Cold image decoding is approximately
+58 ms once, zero calls warm; cached edge lookup is about 0.009 ms. Result JSON
+serialization is around 0.14 ms. Profiled cold totals are not normal latency samples.
+
+The final same-scenario browser probe, including debounce, HTTP, publication,
+polling and display, changes v0.3 p50/p95 **742/2808 → 242/291 ms**. Prior warm
+samples were 487–754 ms; current samples are recorded individually. The debounce
+remains 80 ms and smart polling 20 ms. Median observed coalescing is 79 ms, request
+through proposal about 155 ms, provider result about 15 ms and the remaining
+transport/revision/validation/polling overhead about 137 ms. The React/Konva update
+through two animation frames is about 3.7 ms on this run. These phase medians are
+not additive; the overhead is not a claim of isolated network time. Resource timing
+and per-request phase samples are retained in the evidence. Current segment commit
+p50/p95 is 206/209 ms. Magic Select is preserved: first display 2.903 s, refinements
+2.919/2.931 s; this remains a classical CPU method with no realtime claim.
+
+### Retention and packaging
+
+The final mixed run performs **100 canonical dense edits plus 100 candidate
+create/reject cycles**, all three image previews, mapping reports, 10 CV accepts,
+30 CV rejections and 60 stale proposals. The first rejected CV proposal is evicted;
+one active result remains. RSS is **88.1 → 355.3 process peak → 310.2 MiB post-GC**;
+samples plateau near 310–311 MiB from edit 70 onward. RSS is higher than v0.3's
+different run without rectification previews and whole-document memoization. This
+finite probe does not attribute all native/allocator RSS or prove unlimited leak
+freedom. It is separate from the explicitly bounded retained data:
+
+| Retained data | Observed | Limit |
+| --- | ---: | ---: |
+| CV image/edge fields | 42.12 MiB | 64 MiB |
+| CV proposals / results | 1.37 / 0.66 MiB | 24 / 16 MiB |
+| Candidate reports | 1.23 MiB | 16 MiB / 24 records |
+| Preview PNG cache | 39.2 KiB | 16 MiB / 16 records |
+| Whole-document positive memo | 14.32 MiB | 16 MiB / 128 records |
+| Undo history | 30.75 MiB / 8 entries | 32 MiB / 100 entries |
+| Replay/idempotency | 7.89 MiB / 46 entries | 8 MiB |
+| Candidate archive on disk | 213.7 KiB / 100 records | 256 records × 256 KiB per project |
+
+The existing record-level structural memo separately remains bounded to 8 MiB /
+8192 records. Byte budgets measure payload data, not complete Python object or
+native allocator overhead. Candidate archive/list limits fail explicitly rather
+than silently deleting historical decisions.
+
+Reproduce with `profile_reconciliation_retention.py`, `profile_calibrated_edit.py`
+and `profile_smart_edge.py` under `studio/backend/tests`; the last takes a trusted
+previous installed module path beneath build/. These probes write private fixtures
+only. Installed wheels contain nine exact final static files, the core request and
+candidate schemas, and optional Studio remains absent from the core-only environment.
+Two final frontend builds are byte-identical. The only nonfailing build warning is
+the existing lazy Three.js chunk size; TestClient also reports its existing httpx
+deprecation. See [v0.4 evidence](../validation/studio_v0.4/README.md).

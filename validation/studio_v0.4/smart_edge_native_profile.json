@@ -1,0 +1,122 @@
+{
+  "status": "PASS",
+  "source": [
+    3840,
+    2160
+  ],
+  "baseline_module_sha256": "a0f1f8054554a51006fa44ceab1b29672677a42f3da8b0b0cc883b22df856dcc",
+  "exact_result_equivalence": true,
+  "timings": {
+    "v03": {
+      "cold_profiled_ms": 178.06850000033592,
+      "warm_ms": [
+        56.58039999980247,
+        58.11439999979484,
+        63.00250000003871,
+        93.35080000073503,
+        76.94290000017645,
+        69.61640000008629
+      ],
+      "warm_p50_ms": 69.61640000008629,
+      "warm_p95_ms": 93.35080000073503,
+      "result_json_serialization_ms": [
+        0.12449999940145062,
+        0.20200000017212005,
+        0.1399000002493267,
+        0.1447000004191068,
+        0.19119999979011482,
+        0.23090000013326062,
+        0.14340000052470714
+      ]
+    },
+    "v04": {
+      "cold_profiled_ms": 85.67700000003242,
+      "warm_ms": [
+        19.317200000841694,
+        19.528200000422657,
+        20.58969999961846,
+        23.612499999217107,
+        22.366600000168546,
+        21.818899999743735
+      ],
+      "warm_p50_ms": 21.818899999743735,
+      "warm_p95_ms": 23.612499999217107,
+      "result_json_serialization_ms": [
+        0.13619999936054228,
+        0.1368000002912595,
+        0.13500000022759195,
+        0.13490000037563732,
+        0.17219999972439837,
+        0.1441000003978843,
+        0.13589999980467837
+      ]
+    }
+  },
+  "profile_phases": {
+    "v03": {
+      "image_decode": {
+        "calls": 0,
+        "self_seconds": 0,
+        "cumulative_seconds": 0
+      },
+      "edge_lookup": {
+        "calls": 1,
+        "self_seconds": 2.7e-06,
+        "cumulative_seconds": 6.5000000000000004e-06
+      },
+      "path_search_inclusive_fit": {
+        "calls": 1,
+        "self_seconds": 0.0665415,
+        "cumulative_seconds": 0.07782990000000001
+      },
+      "core_contour_fit": {
+        "calls": 1,
+        "self_seconds": 1.29e-05,
+        "cumulative_seconds": 0.0009562
+      },
+      "constant_direction_dot": {
+        "calls": 25853,
+        "self_seconds": 0.0020527,
+        "cumulative_seconds": 0.0020527
+      },
+      "cold_image_decode": {
+        "calls": 1,
+        "cumulative_seconds": 0.058111300000000005
+      }
+    },
+    "v04": {
+      "image_decode": {
+        "calls": 0,
+        "self_seconds": 0,
+        "cumulative_seconds": 0
+      },
+      "edge_lookup": {
+        "calls": 1,
+        "self_seconds": 3.2000000000000003e-06,
+        "cumulative_seconds": 9.4e-06
+      },
+      "path_search_inclusive_fit": {
+        "calls": 1,
+        "self_seconds": 0.0201017,
+        "cumulative_seconds": 0.0257065
+      },
+      "core_contour_fit": {
+        "calls": 1,
+        "self_seconds": 1.41e-05,
+        "cumulative_seconds": 0.0013104
+      },
+      "constant_direction_dot": {
+        "calls": 13,
+        "self_seconds": 1.0500000000000001e-05,
+        "cumulative_seconds": 1.0500000000000001e-05
+      },
+      "cold_image_decode": {
+        "calls": 1,
+        "cumulative_seconds": 0.057657700000000006
+      }
+    }
+  },
+  "debounce_ms": 80,
+  "poll_interval_ms": 20,
+  "note": "Identical directed 300px segment; cold includes decode. Warm profile excludes decode, includes cached edge lookup, path search and pure-core contour fitting. Browser benchmark separately includes HTTP/poll and two animation frames."
+}

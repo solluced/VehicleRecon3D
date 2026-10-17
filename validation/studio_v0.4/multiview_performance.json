@@ -1,0 +1,94 @@
+{
+  "status": "PASS",
+  "image": [
+    3840,
+    2160
+  ],
+  "entities": 5000,
+  "viewports_2d": 4,
+  "viewports_3d": 1,
+  "world_landmarks": 17,
+  "cage_curves": 9,
+  "first_display_ms": 1452,
+  "viewport": {
+    "width": 1500,
+    "height": 1000
+  },
+  "device_pixel_ratio": 1,
+  "browser": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+  "cpu": "AMD Ryzen 7 5800X 8-Core Processor             ",
+  "system_memory_bytes": 34277924864,
+  "two_d": {
+    "side_pan": {
+      "frame_p95_ms": 4.7999999998137355,
+      "draw_p95_ms": 0.599999999627471,
+      "fps": 240.4809619238477,
+      "samples": 60
+    },
+    "side_zoom": {
+      "frame_p95_ms": 8,
+      "draw_p95_ms": 0.5,
+      "fps": 182.03883495166204,
+      "samples": 60
+    },
+    "top_pan": {
+      "frame_p95_ms": 4.7000000001862645,
+      "draw_p95_ms": 0.5,
+      "fps": 239.80815347793234,
+      "samples": 60
+    },
+    "top_zoom": {
+      "frame_p95_ms": 8.099999999627471,
+      "draw_p95_ms": 0.40000000037252903,
+      "fps": 208.55057351394217,
+      "samples": 60
+    },
+    "front_pan": {
+      "frame_p95_ms": 4.5,
+      "draw_p95_ms": 0.5,
+      "fps": 240.09603841500825,
+      "samples": 60
+    },
+    "front_zoom": {
+      "frame_p95_ms": 9,
+      "draw_p95_ms": 0.39999999944120646,
+      "fps": 197.10906701684155,
+      "samples": 60
+    },
+    "rear_pan": {
+      "frame_p95_ms": 4.7000000001862645,
+      "draw_p95_ms": 0.5,
+      "fps": 239.80815347703972,
+      "samples": 60
+    },
+    "rear_zoom": {
+      "frame_p95_ms": 7.7000000001862645,
+      "draw_p95_ms": 0.39999999944120646,
+      "fps": 200.66889632107024,
+      "samples": 60
+    }
+  },
+  "three_d_orbit": {
+    "frame_p95_ms": 4.2999999998137355,
+    "draw_p95_ms": 0.7000000001862645,
+    "fps": 240.20589076402334,
+    "samples": 84
+  },
+  "three_d_drag_preview": {
+    "frame_p95_ms": 4.2999999998137355,
+    "draw_p95_ms": 0.5,
+    "fps": 240.06859102639083,
+    "samples": 84
+  },
+  "selection_visible_p95_ms": 38,
+  "canonical_edits": 8,
+  "persistence_p95_ms": 640,
+  "projection_and_residual_refresh_p95_ms": 856,
+  "commit_and_refresh_p95_ms": 1488,
+  "browser_heap_before_bytes": 10238380,
+  "browser_heap_after_gc_bytes": 12788024,
+  "backend_rss_before_bytes": 96661504,
+  "backend_rss_after_bytes": 109613056,
+  "browser_errors": [],
+  "input": "Browser pointer and wheel events through production Konva/Three.js handlers; typed world edits through visible UI. 100-edit backend retention is profiled separately."
+}

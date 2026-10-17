@@ -1,0 +1,110 @@
+{
+  "status": "PASS",
+  "entities": 5000,
+  "bound_residual_rows": 68,
+  "edit_delta_bytes": 69454,
+  "analysis_response_bytes": 175441,
+  "profiles": {
+    "mutate": {
+      "total_profiled_seconds": 2.1315798000000017,
+      "phases": {
+        "workspace_loads": {
+          "calls": 2,
+          "self_seconds": 4.02e-05,
+          "cumulative_seconds": 0.6653598000000001
+        },
+        "schema_validation": {
+          "calls": 36,
+          "self_seconds": 0.007407500000000001,
+          "cumulative_seconds": 0.8522031000000001
+        },
+        "semantic_validation": {
+          "calls": 4,
+          "self_seconds": 0.0604676,
+          "cumulative_seconds": 0.24916210000000003
+        },
+        "snapshot_generation": {
+          "calls": 1,
+          "self_seconds": 0.0059154,
+          "cumulative_seconds": 0.46737700000000004
+        },
+        "revision_hashing": {
+          "calls": 11,
+          "self_seconds": 0.0014139,
+          "cumulative_seconds": 0.10348080000000001
+        },
+        "serialization": {
+          "calls": 60231,
+          "self_seconds": 0.1494819,
+          "cumulative_seconds": 0.4130458
+        },
+        "writes": {
+          "calls": 4,
+          "self_seconds": 0.0001077,
+          "cumulative_seconds": 0.018510500000000003
+        },
+        "fsync": {
+          "calls": 4,
+          "self_seconds": 0.0042562,
+          "cumulative_seconds": 0.0042562
+        },
+        "residual_recomputation": {
+          "calls": 2,
+          "self_seconds": 0.00023940000000000002,
+          "cumulative_seconds": 0.175685
+        }
+      }
+    },
+    "analysis": {
+      "total_profiled_seconds": 0.8546674999999998,
+      "phases": {
+        "workspace_loads": {
+          "calls": 1,
+          "self_seconds": 1.98e-05,
+          "cumulative_seconds": 0.29389550000000003
+        },
+        "schema_validation": {
+          "calls": 11,
+          "self_seconds": 0.0017180000000000001,
+          "cumulative_seconds": 0.19136360000000002
+        },
+        "semantic_validation": {
+          "calls": 1,
+          "self_seconds": 0.0129365,
+          "cumulative_seconds": 0.054381700000000005
+        },
+        "snapshot_generation": {
+          "calls": 1,
+          "self_seconds": 0.0028209000000000003,
+          "cumulative_seconds": 0.12158930000000001
+        },
+        "revision_hashing": {
+          "calls": 3,
+          "self_seconds": 0.0003668,
+          "cumulative_seconds": 0.026038400000000003
+        },
+        "serialization": {
+          "calls": 15084,
+          "self_seconds": 0.0336436,
+          "cumulative_seconds": 0.09199120000000001
+        },
+        "writes": {
+          "calls": 0,
+          "self_seconds": 0,
+          "cumulative_seconds": 0
+        },
+        "fsync": {
+          "calls": 0,
+          "self_seconds": 0,
+          "cumulative_seconds": 0
+        },
+        "residual_recomputation": {
+          "calls": 4,
+          "self_seconds": 0.000492,
+          "cumulative_seconds": 0.303394
+        }
+      }
+    }
+  },
+  "note": "Cumulative phase times overlap. Mutation and requested analysis are separately instrumented; HTTP response construction is measured in the source-edit retention profile."
+}

@@ -1,0 +1,655 @@
+{
+  "status": "PASS",
+  "label": "release",
+  "canonical_edits": 100,
+  "entities_initial": 5000,
+  "response_format": "delta",
+  "timings_seconds": [
+    3.4061985000007553,
+    1.1647138999996969,
+    1.1614222999996855,
+    1.2025166000003082,
+    1.1016637000002447,
+    1.2931201999999757,
+    1.200874200000726,
+    1.0491541000001234,
+    1.1651318999993237,
+    1.589279699999679,
+    1.0877307000000656,
+    1.1311760999997205,
+    1.1685723000000507,
+    1.1994153999994523,
+    1.2477686000001995,
+    1.19802079999954,
+    1.0998737999998411,
+    1.228109100000438,
+    1.394442899999376,
+    1.2102906000000075,
+    1.13161510000009,
+    1.2805811999996877,
+    1.0847045999998954,
+    1.1656748000004882,
+    1.3239134000004924,
+    1.47270429999935,
+    1.3558569999995598,
+    1.0739198000001124,
+    1.0732027000003654,
+    1.1265717999995104,
+    1.143022000000201,
+    1.1193607999994128,
+    1.1709425000008196,
+    1.2334800999997242,
+    1.1526908999994703,
+    1.2977664000000004,
+    1.6457818000008047,
+    1.1234048999995139,
+    1.1979692000004434,
+    1.4692291999999725,
+    1.4754182999995464,
+    1.3519407000003412,
+    1.737347100000079,
+    1.2532404000003226,
+    1.35432370000035,
+    1.2564319000002797,
+    1.2503475000003164,
+    1.3199526000007609,
+    1.1347512000002098,
+    1.2829930000007153,
+    1.139173700000356,
+    1.1632056000007651,
+    1.2303967000007106,
+    1.142857499999991,
+    1.151296299999558,
+    1.1680472000007285,
+    1.1566130999999586,
+    1.1417679999995016,
+    1.1126560000002428,
+    1.183379099999911,
+    1.3185401999999158,
+    1.431803299999956,
+    1.3258759999998802,
+    1.2630126000003656,
+    1.1762616999994862,
+    1.2801808000003803,
+    1.2162367000000813,
+    1.126007199999549,
+    1.1397483999999167,
+    1.1669594000004508,
+    1.1401108999998542,
+    1.1651590999999826,
+    1.2832483000001957,
+    1.1358813999995618,
+    1.314556999999695,
+    1.1941673999999693,
+    1.3165137000005416,
+    1.3509748999995281,
+    1.2877587000002677,
+    1.5641615000004094,
+    1.2850440000001981,
+    1.4077048999997714,
+    1.233701099999962,
+    1.4291678999998112,
+    1.2733807999993587,
+    1.2283640999994532,
+    1.3470838000002914,
+    1.3138278000005812,
+    1.5382823999998436,
+    1.475226599999587,
+    1.4231105999997453,
+    1.5256751999995686,
+    1.3265058999995745,
+    1.5906027000000904,
+    1.2585159999998723,
+    1.4142222999998921,
+    1.4641136999998707,
+    1.2394080000003669,
+    1.2891611999993984,
+    1.4110227999999552
+  ],
+  "p95_seconds": 1.589279699999679,
+  "rss_baseline_bytes": 92413952,
+  "rss_peak_sampled_bytes": 325947392,
+  "rss_peak_process_bytes": 372547584,
+  "rss_after_gc_bytes": 325304320,
+  "rss_samples": [
+    {
+      "edits": 10,
+      "rss_bytes": 226512896
+    },
+    {
+      "edits": 20,
+      "rss_bytes": 261873664
+    },
+    {
+      "edits": 30,
+      "rss_bytes": 293691392
+    },
+    {
+      "edits": 40,
+      "rss_bytes": 309620736
+    },
+    {
+      "edits": 50,
+      "rss_bytes": 318939136
+    },
+    {
+      "edits": 60,
+      "rss_bytes": 323772416
+    },
+    {
+      "edits": 70,
+      "rss_bytes": 325877760
+    },
+    {
+      "edits": 80,
+      "rss_bytes": 325918720
+    },
+    {
+      "edits": 90,
+      "rss_bytes": 325947392
+    },
+    {
+      "edits": 100,
+      "rss_bytes": 325296128
+    }
+  ],
+  "idle_seconds": 1,
+  "history_bytes": 32238721,
+  "undo_entries": 8,
+  "idempotency_bytes": 8276178,
+  "idempotency_entries": 46,
+  "last_response_payload_bytes": 208702,
+  "cv": {
+    "active_jobs": 0,
+    "pending_source_bytes": 0,
+    "proposal_bytes": 1437284,
+    "proposal_limit_bytes": 25165824,
+    "proposal_count": 64,
+    "result_cache_bytes": 688480,
+    "result_cache_limit_bytes": 16777216,
+    "image_edge_cache_bytes": 44161956,
+    "image_edge_cache_limit_bytes": 67108864
+  },
+  "rectification": {
+    "candidate_report_bytes": 1290120,
+    "candidate_report_limit_bytes": 16777216,
+    "preview_bytes": 40171,
+    "preview_limit_bytes": 16777216,
+    "archive_record_limit": 256
+  },
+  "candidate_records": 100,
+  "candidate_archive_bytes": 218800,
+  "structural_cache": {
+    "entries": 43,
+    "bytes": 15020059,
+    "limit_bytes": 16777216
+  },
+  "proposal_states_exercised": {
+    "accepted": 10,
+    "rejected": 30,
+    "left_active_then_stale": 60
+  },
+  "active_at_end": true,
+  "first_rejected_evicted": true,
+  "profile_total_seconds": 3.325208900000001,
+  "profile_phases": {
+    "schema_validation": {
+      "calls": 21,
+      "self_seconds": 0.004959600000000001,
+      "cumulative_seconds": 1.3265787
+    },
+    "semantic_validation": {
+      "calls": 4,
+      "self_seconds": 0.058078700000000004,
+      "cumulative_seconds": 0.23855540000000003
+    },
+    "json_serialization": {
+      "calls": 75138,
+      "self_seconds": 0.2234279,
+      "cumulative_seconds": 1.6652097000000001
+    },
+    "revision_hashing": {
+      "calls": 11,
+      "self_seconds": 0.0014933000000000001,
+      "cumulative_seconds": 0.0829342
+    },
+    "transaction_commit": {
+      "calls": 1,
+      "self_seconds": 0.0042301000000000005,
+      "cumulative_seconds": 0.41143300000000005
+    },
+    "workspace_loads": {
+      "calls": 2,
+      "self_seconds": 4.44e-05,
+      "cumulative_seconds": 0.6055854
+    },
+    "residual_recomputation": {
+      "calls": 0,
+      "self_seconds": 0,
+      "cumulative_seconds": 0
+    },
+    "transaction_writes": {
+      "calls": 4,
+      "self_seconds": 0.0001275,
+      "cumulative_seconds": 0.031826600000000003
+    },
+    "api_response_construction": {
+      "calls": 1,
+      "self_seconds": 6.7e-06,
+      "cumulative_seconds": 0.0010297000000000001
+    },
+    "snapshot_refresh": {
+      "calls": 1,
+      "self_seconds": 0.0019375000000000002,
+      "cumulative_seconds": 0.3067319
+    },
+    "fsync": {
+      "calls": 4,
+      "self_seconds": 0.0091114,
+      "cumulative_seconds": 0.0091114
+    }
+  },
+  "profile": [
+    {
+      "file": "workspace.py",
+      "line": 196,
+      "function": "mutate",
+      "calls": 1,
+      "self_seconds": 0.0016138,
+      "cumulative_seconds": 3.3287484000000003
+    },
+    {
+      "file": "service.py",
+      "line": 57,
+      "function": "apply",
+      "calls": 1,
+      "self_seconds": 0.0030333,
+      "cumulative_seconds": 2.673346
+    },
+    {
+      "file": "workspace.py",
+      "line": 47,
+      "function": "validate",
+      "calls": 4,
+      "self_seconds": 0.0007599000000000001,
+      "cumulative_seconds": 1.6250117000000002
+    },
+    {
+      "file": "project.py",
+      "line": 77,
+      "function": "validate",
+      "calls": 21,
+      "self_seconds": 0.004959600000000001,
+      "cumulative_seconds": 1.3265787
+    },
+    {
+      "file": "service.py",
+      "line": 125,
+      "function": "_flush",
+      "calls": 1,
+      "self_seconds": 0.0015775000000000001,
+      "cumulative_seconds": 0.8128199
+    },
+    {
+      "file": "__init__.py",
+      "line": 183,
+      "function": "dumps",
+      "calls": 25046,
+      "self_seconds": 0.031675,
+      "cumulative_seconds": 0.787436
+    },
+    {
+      "file": "encoder.py",
+      "line": 183,
+      "function": "encode",
+      "calls": 25046,
+      "self_seconds": 0.062931,
+      "cumulative_seconds": 0.7489343
+    },
+    {
+      "file": "validators.py",
+      "line": 349,
+      "function": "iter_errors",
+      "calls": 4,
+      "self_seconds": 2.0600000000000003e-05,
+      "cumulative_seconds": 0.6720028
+    },
+    {
+      "file": "validators.py",
+      "line": 396,
+      "function": "descend",
+      "calls": 15863,
+      "self_seconds": 0.0348158,
+      "cumulative_seconds": 0.6718345
+    },
+    {
+      "file": "_keywords.py",
+      "line": 290,
+      "function": "properties",
+      "calls": 301,
+      "self_seconds": 0.0004774,
+      "cumulative_seconds": 0.6712953
+    },
+    {
+      "file": "workspace.py",
+      "line": 13,
+      "function": "__init__",
+      "calls": 2,
+      "self_seconds": 4.44e-05,
+      "cumulative_seconds": 0.6055854
+    },
+    {
+      "file": "workspace.py",
+      "line": 18,
+      "function": "_load",
+      "calls": 2,
+      "self_seconds": 0.0052156,
+      "cumulative_seconds": 0.6050208
+    },
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<built-in method builtins.sorted>",
+      "calls": 41,
+      "self_seconds": 0.0002454,
+      "cumulative_seconds": 0.5885359
+    },
+    {
+      "file": "_keywords.py",
+      "line": 59,
+      "function": "items",
+      "calls": 25,
+      "self_seconds": 0.003745,
+      "cumulative_seconds": 0.5792642
+    },
+    {
+      "file": "service.py",
+      "line": 16,
+      "function": "_bytes",
+      "calls": 1,
+      "self_seconds": 0.0008806,
+      "cumulative_seconds": 0.563659
+    },
+    {
+      "file": "_keywords.py",
+      "line": 274,
+      "function": "ref",
+      "calls": 5264,
+      "self_seconds": 0.006272600000000001,
+      "cumulative_seconds": 0.5452541000000001
+    },
+    {
+      "file": "encoder.py",
+      "line": 414,
+      "function": "_iterencode",
+      "calls": 345285,
+      "self_seconds": 0.056432500000000003,
+      "cumulative_seconds": 0.5413147
+    },
+    {
+      "file": "copy.py",
+      "line": 118,
+      "function": "deepcopy",
+      "calls": 330287,
+      "self_seconds": 0.282191,
+      "cumulative_seconds": 0.5330309000000001
+    },
+    {
+      "file": "copy.py",
+      "line": 217,
+      "function": "_deepcopy_dict",
+      "calls": 20037,
+      "self_seconds": 0.0795753,
+      "cumulative_seconds": 0.5329849
+    },
+    {
+      "file": "copy.py",
+      "line": 191,
+      "function": "_deepcopy_list",
+      "calls": 10039,
+      "self_seconds": 0.014807500000000001,
+      "cumulative_seconds": 0.5325365000000001
+    },
+    {
+      "file": "encoder.py",
+      "line": 334,
+      "function": "_iterencode_dict",
+      "calls": 1785645,
+      "self_seconds": 0.33471,
+      "cumulative_seconds": 0.4848791
+    },
+    {
+      "file": "project.py",
+      "line": 38,
+      "function": "finite",
+      "calls": 546205,
+      "self_seconds": 0.2893948,
+      "cumulative_seconds": 0.4399274
+    },
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<built-in method builtins.all>",
+      "calls": 80239,
+      "self_seconds": 0.07119310000000001,
+      "cumulative_seconds": 0.4390851
+    },
+    {
+      "file": "project.py",
+      "line": 32,
+      "function": "_json_types",
+      "calls": 450599,
+      "self_seconds": 0.2066561,
+      "cumulative_seconds": 0.4299719
+    },
+    {
+      "file": "project.py",
+      "line": 33,
+      "function": "<genexpr>",
+      "calls": 425450,
+      "self_seconds": 0.1311738,
+      "cumulative_seconds": 0.41596570000000005
+    },
+    {
+      "file": "transactions.py",
+      "line": 101,
+      "function": "commit",
+      "calls": 1,
+      "self_seconds": 0.0042301000000000005,
+      "cumulative_seconds": 0.41143300000000005
+    },
+    {
+      "file": "project.py",
+      "line": 34,
+      "function": "<genexpr>",
+      "calls": 95314,
+      "self_seconds": 0.0199801,
+      "cumulative_seconds": 0.34376510000000005
+    },
+    {
+      "file": "workspace.py",
+      "line": 140,
+      "function": "snapshot",
+      "calls": 1,
+      "self_seconds": 0.0019375000000000002,
+      "cumulative_seconds": 0.3067319
+    },
+    {
+      "file": "workspace.py",
+      "line": 89,
+      "function": "session",
+      "calls": 1,
+      "self_seconds": 4.7e-06,
+      "cumulative_seconds": 0.3055879
+    },
+    {
+      "file": "workspace.py",
+      "line": 95,
+      "function": "new_session",
+      "calls": 1,
+      "self_seconds": 1e-05,
+      "cumulative_seconds": 0.3055832
+    },
+    {
+      "file": "service.py",
+      "line": 32,
+      "function": "__init__",
+      "calls": 1,
+      "self_seconds": 0.0036387000000000004,
+      "cumulative_seconds": 0.2980544
+    },
+    {
+      "file": "encoder.py",
+      "line": 278,
+      "function": "_iterencode_list",
+      "calls": 370119,
+      "self_seconds": 0.07761080000000001,
+      "cumulative_seconds": 0.2554447
+    },
+    {
+      "file": "validators.py",
+      "line": 459,
+      "function": "_validate_reference",
+      "calls": 5296,
+      "self_seconds": 0.0036797,
+      "cumulative_seconds": 0.24717090000000003
+    },
+    {
+      "file": "schema_dispatch.py",
+      "line": 58,
+      "function": "one_of",
+      "calls": 5001,
+      "self_seconds": 0.044568800000000006,
+      "cumulative_seconds": 0.2470623
+    },
+    {
+      "file": "_core.py",
+      "line": 653,
+      "function": "lookup",
+      "calls": 5296,
+      "self_seconds": 0.013059800000000002,
+      "cumulative_seconds": 0.24349120000000002
+    },
+    {
+      "file": "contracts.py",
+      "line": 76,
+      "function": "semantic_check",
+      "calls": 4,
+      "self_seconds": 0.058078700000000004,
+      "cumulative_seconds": 0.23855540000000003
+    },
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<built-in method builtins.isinstance>",
+      "calls": 2113408,
+      "self_seconds": 0.19845680000000002,
+      "cumulative_seconds": 0.2038184
+    },
+    {
+      "file": "schema_dispatch.py",
+      "line": 26,
+      "function": "cache_key",
+      "calls": 5000,
+      "self_seconds": 0.0181657,
+      "cumulative_seconds": 0.1620196
+    },
+    {
+      "file": "contracts.py",
+      "line": 10,
+      "function": "crop_identity",
+      "calls": 20004,
+      "self_seconds": 0.0070682,
+      "cumulative_seconds": 0.1424621
+    },
+    {
+      "file": "manifest.py",
+      "line": 19,
+      "function": "digest_data",
+      "calls": 20018,
+      "self_seconds": 0.012959700000000001,
+      "cumulative_seconds": 0.1359486
+    },
+    {
+      "file": "encoder.py",
+      "line": 205,
+      "function": "iterencode",
+      "calls": 25046,
+      "self_seconds": 0.12882190000000002,
+      "cumulative_seconds": 0.12883940000000002
+    },
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<method 'get' of 'dict' objects>",
+      "calls": 894565,
+      "self_seconds": 0.1143244,
+      "cumulative_seconds": 0.1143244
+    },
+    {
+      "file": "__init__.py",
+      "line": 299,
+      "function": "loads",
+      "calls": 46,
+      "self_seconds": 0.00022160000000000002,
+      "cumulative_seconds": 0.1067265
+    },
+    {
+      "file": "decoder.py",
+      "line": 333,
+      "function": "decode",
+      "calls": 46,
+      "self_seconds": 0.00018010000000000001,
+      "cumulative_seconds": 0.10637940000000001
+    },
+    {
+      "file": "decoder.py",
+      "line": 344,
+      "function": "raw_decode",
+      "calls": 46,
+      "self_seconds": 0.1060214,
+      "cumulative_seconds": 0.1060214
+    },
+    {
+      "file": "manifest.py",
+      "line": 12,
+      "function": "canonical",
+      "calls": 20018,
+      "self_seconds": 0.0108886,
+      "cumulative_seconds": 0.10318000000000001
+    },
+    {
+      "file": "pathlib.py",
+      "line": 1228,
+      "function": "resolve",
+      "calls": 399,
+      "self_seconds": 0.0011498,
+      "cumulative_seconds": 0.1005057
+    },
+    {
+      "file": "project.py",
+      "line": 49,
+      "function": "read_json",
+      "calls": 18,
+      "self_seconds": 0.00030030000000000004,
+      "cumulative_seconds": 0.09853010000000001
+    },
+    {
+      "file": "workspace.py",
+      "line": 177,
+      "function": "presentation",
+      "calls": 1,
+      "self_seconds": 3.3e-05,
+      "cumulative_seconds": 0.0985164
+    },
+    {
+      "file": "workspace.py",
+      "line": 38,
+      "function": "decode",
+      "calls": 6,
+      "self_seconds": 0.0007757,
+      "cumulative_seconds": 0.0983454
+    }
+  ],
+  "note": "First canonical edit instrumented; cumulative phases overlap. Later timings include API readback of STALE state when exercised; browser benchmark is separate."
+}

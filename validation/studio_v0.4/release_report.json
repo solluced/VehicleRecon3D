@@ -1,0 +1,269 @@
+{
+  "status": "PASS",
+  "version": "0.4",
+  "runtime_commit": "21e66376810098314e718d0cbeb628ebba4fec6b",
+  "base_commit": "4ad04d0076aa28c72ae0a7ad396b9b56e0d714bd",
+  "definition_of_done": [
+    {
+      "item": "rectification workspace exists",
+      "status": "PASS",
+      "evidence": [
+        "positive_fixture.png",
+        "browser_tests.json"
+      ]
+    },
+    {
+      "item": "anchor editor works",
+      "status": "PASS",
+      "evidence": [
+        "frontend_tests.json",
+        "browser_tests.json"
+      ]
+    },
+    {
+      "item": "fit/held-out separation works",
+      "status": "PASS",
+      "evidence": [
+        "positive_fixture.json",
+        "tests.json"
+      ]
+    },
+    {
+      "item": "candidate generation works",
+      "status": "PASS",
+      "evidence": [
+        "positive_fixture.json",
+        "browser_tests.json"
+      ]
+    },
+    {
+      "item": "manual candidate editing works",
+      "status": "PASS",
+      "evidence": [
+        "frontend_tests.json",
+        "browser_tests.json"
+      ]
+    },
+    {
+      "item": "mapping graph works",
+      "status": "PASS",
+      "evidence": [
+        "positive_fixture.png",
+        "frontend_tests.json"
+      ]
+    },
+    {
+      "item": "correction graph works",
+      "status": "PASS",
+      "evidence": [
+        "positive_fixture.png",
+        "frontend_tests.json"
+      ]
+    },
+    {
+      "item": "derivative/local-scale graph works",
+      "status": "PASS",
+      "evidence": [
+        "mark2_rejected.png",
+        "frontend_tests.json"
+      ]
+    },
+    {
+      "item": "extrapolation shown separately",
+      "status": "PASS",
+      "evidence": [
+        "mark2.json",
+        "mark2_rejected.png"
+      ]
+    },
+    {
+      "item": "raw/rectified preview works",
+      "status": "PASS",
+      "evidence": [
+        "browser_tests.json",
+        "positive_fixture.png"
+      ]
+    },
+    {
+      "item": "held-out report works",
+      "status": "PASS",
+      "evidence": [
+        "positive_fixture.json",
+        "frontend_tests.json"
+      ]
+    },
+    {
+      "item": "candidate comparison works",
+      "status": "PASS",
+      "evidence": [
+        "browser_tests.json",
+        "frontend_tests.json"
+      ]
+    },
+    {
+      "item": "stale candidate detection works",
+      "status": "PASS",
+      "evidence": [
+        "browser_tests.json",
+        "frontend_tests.json"
+      ]
+    },
+    {
+      "item": "rejection works",
+      "status": "PASS",
+      "evidence": [
+        "tests.json",
+        "frontend_tests.json"
+      ]
+    },
+    {
+      "item": "activation eligibility enforced",
+      "status": "PASS",
+      "evidence": [
+        "tests.json",
+        "mark2.json"
+      ]
+    },
+    {
+      "item": "explicit activation works",
+      "status": "PASS",
+      "evidence": [
+        "browser_tests.json",
+        "tests.json"
+      ]
+    },
+    {
+      "item": "activation invalidates reviews",
+      "status": "PASS",
+      "evidence": [
+        "tests.json",
+        "browser_tests.json"
+      ]
+    },
+    {
+      "item": "activation does NOT auto-accept source",
+      "status": "PASS",
+      "evidence": [
+        "tests.json"
+      ]
+    },
+    {
+      "item": "activation undo works",
+      "status": "PASS",
+      "evidence": [
+        "browser_tests.json",
+        "tests.json"
+      ]
+    },
+    {
+      "item": "positive fixture passes",
+      "status": "PASS",
+      "evidence": [
+        "positive_fixture.json"
+      ]
+    },
+    {
+      "item": "invalid fixtures reject",
+      "status": "PASS",
+      "evidence": [
+        "tests.json"
+      ]
+    },
+    {
+      "item": "Mark II candidate visibly rejects",
+      "status": "PASS",
+      "evidence": [
+        "mark2_rejected.png",
+        "browser_tests.json"
+      ]
+    },
+    {
+      "item": "Mark II remains unchanged",
+      "status": "PASS",
+      "evidence": [
+        "protected.json"
+      ]
+    },
+    {
+      "item": "source replacement works",
+      "status": "PASS",
+      "evidence": [
+        "source_replacement.json"
+      ]
+    },
+    {
+      "item": "no automatic observation/world transfer occurs",
+      "status": "PASS",
+      "evidence": [
+        "source_replacement.json",
+        "tests.json"
+      ]
+    },
+    {
+      "item": "dense-save call graph produced",
+      "status": "PASS",
+      "evidence": [
+        "retention_100_edits.json",
+        "calibrated_edit_profile.json"
+      ]
+    },
+    {
+      "item": "no unexplained save regression beyond v0.3",
+      "status": "PASS",
+      "evidence": [
+        "save_comparison.json"
+      ]
+    },
+    {
+      "item": "Smart Edge latency profiled",
+      "status": "PASS",
+      "evidence": [
+        "smart_edge_native_profile.json",
+        "cv_performance.json"
+      ]
+    },
+    {
+      "item": "memory retention measured",
+      "status": "PASS",
+      "evidence": [
+        "retention_100_edits.json"
+      ]
+    },
+    {
+      "item": "E2E passes",
+      "status": "PASS",
+      "evidence": [
+        "browser_tests.json"
+      ]
+    },
+    {
+      "item": "Tesla unchanged",
+      "status": "PASS",
+      "evidence": [
+        "protected.json",
+        "glb_comparison.json",
+        "tesla/pipeline_report.json",
+        "tesla/viewer_qa.json"
+      ]
+    }
+  ],
+  "tests": {
+    "python": 320,
+    "isolated_core": 254,
+    "frontend": 48,
+    "browser": 17,
+    "ci_jobs": 4
+  },
+  "dense_save_p95_ms": 2340,
+  "smart_edge_p50_p95_ms": [
+    241.5,
+    291.20000000018626
+  ],
+  "blockers": [],
+  "limitations": [
+    "Optional ONNX not implemented; source replacement recalibration uses the existing core SetCalibrationView operation.",
+    "Equivalent correction is image-domain equivalent, not a physical geometry change.",
+    "Finite retention test reports payload budgets separately from native/allocator RSS and is not proof of unlimited leak freedom.",
+    "Surface graph authoring, topology editing, Render orchestration and final export/Cyberpunk workflows remain deferred."
+  ]
+}

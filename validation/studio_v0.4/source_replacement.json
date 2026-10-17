@@ -1,0 +1,16 @@
+{
+  "status": "PASS",
+  "checked_by": [
+    "test_source_replacement_preserves_bytes_and_world_and_stales_candidates",
+    "replacement preserves old source and world and displays unmeasured transfer proposals"
+  ],
+  "old_bytes_preserved": true,
+  "new_bytes_hashed_and_retained": true,
+  "old_observations_unchanged": true,
+  "framing": "CALIBRATION_REQUIRED",
+  "candidates": "STALE",
+  "coverage_confirmed": false,
+  "world_geometry_byte_identical": true,
+  "automatic_measured_transfer": false,
+  "undo_canonical_bytes_exact": true
+}
