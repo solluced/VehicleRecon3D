@@ -36,7 +36,7 @@ export function RectificationWorkspace({
   latest.current = snapshot;
   const base = `/projects/${snapshot.id}`,
     url = `/api/v1${base}`;
-  async function refresh(keep = true) {
+  async function refresh(keep = true, candidateId = selected?.id) {
     const token = ++seq.current;
     try {
       const c = await client.api.call<ReconciliationContext>(
@@ -50,9 +50,9 @@ export function RectificationWorkspace({
         setDirty(false);
       }
       if (c.read_only) setSelected((c.candidates[0] as Candidate) || null);
-      else if (selected) {
+      else if (keep && candidateId) {
         const p = await client.api.call<Candidate>(
-          `${base}/reconciliation/${selected.id}`,
+          `${base}/reconciliation/${candidateId}`,
         );
         if (token === seq.current) setSelected(p);
       }
@@ -127,7 +127,7 @@ export function RectificationWorkspace({
       setSelected(p);
       setDirty(false);
       setConfirm(false);
-      await refresh();
+      await refresh(true, p.id);
     });
   }
   const p = selected,

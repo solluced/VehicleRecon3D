@@ -77,7 +77,7 @@ class Reconciliation:
                 'calibration':d,'views':cal['views'],'references':self.registry.snapshot(ident)['references'],'candidates':candidates}
     def inspect(self,ident,candidate_id,*,w=None):
         p=self.load(ident,candidate_id);root=self.registry.resolve(ident);rev=revision(root)
-        key=(ident,candidate_id,p['revision']);report=self.cache.get(key)
+        key=(ident,candidate_id,digest_data(p));report=self.cache.get(key)
         if report is None:report=evaluate(p);self.cache.put(key,report)
         same=rev==p['source_revision'];active=False
         if p['status']=='ACTIVE':

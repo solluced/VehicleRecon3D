@@ -50,14 +50,25 @@ test("positive manual candidate, graphs, independent evidence, explicit activati
     const before = readFileSync(
       resolve(root, "positive/generated/calibration.json"),
     );
+    await page.getByLabel('Semantic 0',{exact:true}).waitFor();
     const count = await page.getByLabel(/^Semantic \d+$/).count();
-    await page.getByRole('button',{name:'Add anchor',exact:true}).click();
-    const handle=page.getByTestId(`anchor-handle-${count}`);
-    const box=(await handle.boundingBox())!;
-    const value=await page.getByLabel(`Source normalized ${count}`,{exact:true}).inputValue();
-    await page.mouse.move(box.x+box.width/2,box.y+box.height/2);await page.mouse.down();await page.mouse.move(box.x+box.width/2+20,box.y+box.height/2,{steps:4});await page.mouse.up();
-    await expect(page.getByLabel(`Source normalized ${count}`,{exact:true})).not.toHaveValue(value);
-    await page.getByLabel(`Remove anchor ${count}`,{exact:true}).click();
+    await page.getByRole("button", { name: "Add anchor", exact: true }).click();
+    const handle = page.getByTestId(`anchor-handle-${count}`);
+    await handle.scrollIntoViewIfNeeded();
+    const box = (await handle.boundingBox())!;
+    const value = await page
+      .getByLabel(`Source normalized ${count}`, { exact: true })
+      .inputValue();
+    await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
+    await page.mouse.down();
+    await page.mouse.move(box.x + box.width / 2 + 20, box.y + box.height / 2, {
+      steps: 4,
+    });
+    await page.mouse.up();
+    await expect(
+      page.getByLabel(`Source normalized ${count}`, { exact: true }),
+    ).not.toHaveValue(value);
+    await page.getByLabel(`Remove anchor ${count}`, { exact: true }).click();
     await fit(page);
     await expect(
       page.getByRole("img", { name: "Mapping graph", exact: true }),
@@ -68,12 +79,21 @@ test("positive manual candidate, graphs, independent evidence, explicit activati
     await expect(page.getByLabel("Held-out residual report")).toContainText(
       "PASS",
     );
-    await page.getByRole('button',{name:'Generate Candidate',exact:true}).click();
+    await page
+      .getByRole("button", { name: "Generate Candidate", exact: true })
+      .click();
     await expect(page.getByLabel(/^Compare /)).toHaveCount(2);
-    for(const checkbox of await page.getByLabel(/^Compare /).all())await checkbox.check();
-    await expect(page.getByLabel('Candidate comparison')).toBeVisible();
-    await page.getByRole('img',{name:'Mapping graph',exact:true}).scrollIntoViewIfNeeded();
-    await page.screenshot({path:resolve(repo,'build/studio04-rectification-positive.png')});
+    for (const checkbox of await page.getByLabel(/^Compare /).all()) {
+      await checkbox.click();
+      await expect(checkbox).toBeChecked();
+    }
+    await expect(page.getByLabel("Candidate comparison")).toBeVisible();
+    await page
+      .getByRole("img", { name: "Mapping graph", exact: true })
+      .scrollIntoViewIfNeeded();
+    await page.screenshot({
+      path: resolve(repo, "build/studio04-rectification-positive.png"),
+    });
     await expect(
       page.getByRole("button", { name: "ACTIVATE RECTIFICATION", exact: true }),
     ).toBeDisabled();
@@ -132,8 +152,12 @@ test("Mark II rejected candidate is visibly excessive, immutable and cannot acti
     await expect(
       page.getByRole("button", { name: "ACTIVATE RECTIFICATION", exact: true }),
     ).toBeDisabled();
-    await page.getByRole('img',{name:'Derivative / local-scale graph'}).scrollIntoViewIfNeeded();
-    await page.screenshot({path:resolve(repo,'build/studio04-mark2-rejected.png')});
+    await page
+      .getByRole("img", { name: "Derivative / local-scale graph" })
+      .scrollIntoViewIfNeeded();
+    await page.screenshot({
+      path: resolve(repo, "build/studio04-mark2-rejected.png"),
+    });
     files.forEach((f, i) =>
       expect(readFileSync(resolve(root, "mark2", f)).equals(before[i])).toBe(
         true,
