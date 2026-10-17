@@ -1,0 +1,17 @@
+{
+  "status": "PASS",
+  "installed_core_and_studio_imports": true,
+  "resource_root_from_installed_core": true,
+  "installed_app_index_assets_bootstrap_schema_project": true,
+  "static_files_in_wheel": [
+    "vehiclerecon_studio/static/index.html",
+    "vehiclerecon_studio/static/assets/index-PfGzg2xg.js",
+    "vehiclerecon_studio/static/assets/index-cVUOrDFD.css"
+  ],
+  "static_bytes_match_final_build": true,
+  "runtime_node_or_blender_invoked": false,
+  "wheel_sha256": {
+    "vehiclerecon-0.1.0-py3-none-any.whl": "b2641e04a9fd9a99a7a494162ea11a73e6182bbfc46059c735faeb120363e133",
+    "vehiclerecon_studio-0.1.1-py3-none-any.whl": "bd1810f882665f0d1f7eb7976b189a2cc19105ad99e43cce6ce3bb2b5cac07e2"
+  }
+}

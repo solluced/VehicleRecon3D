@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "optional_modules_present": {
+    "fastapi": false,
+    "uvicorn": false,
+    "PIL": false,
+    "vehiclerecon_studio": false
+  },
+  "core_inspect_exit": 0,
+  "missing_studio_exit": 1
+}

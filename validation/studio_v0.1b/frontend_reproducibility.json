@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "method": "Two clean Vite builds from pinned lockfile produce identical compiled bytes",
+  "assets_sha256": {
+    "assets\\index-cVUOrDFD.css": "d5abc765eea7304adafd3f8b25b7a16158090acb7dffc4b651b9a5dd0cc5e1ab",
+    "index.html": "9e2ad6dd6c26fba19e98faf77699d531164c26f47b6a3784bb2bc55a7fffb619",
+    "assets\\index-PfGzg2xg.js": "d853ffda168887a4fe070f5e0c7f3e0efa0d91b33ac4c98f3da5ac77b64466ea"
+  }
+}

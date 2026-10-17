@@ -1,0 +1,22 @@
+{
+  "status": "PASS",
+  "image": [
+    3840,
+    2160
+  ],
+  "points": 2,
+  "curves": 2,
+  "stable_entities": [
+    "obs_e627763caa264e38a4db6247cfc69250",
+    "obs_b09966bfbf774a90a0a954b697a1c932",
+    "obs_3dcd092d3d4741ac91f19f8a12afd910",
+    "obs_6a1bd3ba878d47d486149033906005e1"
+  ],
+  "revision": "b1f56a89b69059d2cfa59dc6099fb6fa76f50852b344727f09d0266b30ca6dee",
+  "source_sha256": "1d9e8c623391a787b1e2eb1d326b2c2cf82b1fc1d699273728649605af5dbcec",
+  "refresh": true,
+  "backend_restart": true,
+  "external_conflict": true,
+  "drag_commands": 1,
+  "browser_errors": []
+}

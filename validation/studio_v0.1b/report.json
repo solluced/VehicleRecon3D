@@ -1,0 +1,277 @@
+{
+  "status": "PASS",
+  "phase": "VehicleRecon Studio v0.1B Manual Authoring Vertical Slice",
+  "date": "2026-10-17",
+  "base_commit": "c7156cb9aafcc9e696197a183ad6bcaed513a91a",
+  "implementation_commit": "489d0c88b7d3aa347966ee90a6fce559e796ee33",
+  "implementation_tree_sha256": "3d8b82b9aad7d53fa80a59c8d4a4fa60227c4a55d90cacc0846da326eec99076",
+  "version": {
+    "human": "0.1B",
+    "studio_distribution": "0.1.1",
+    "core_distribution": "0.1.0",
+    "canonical_schema": 2,
+    "transport": "/api/v1"
+  },
+  "launch": "vehicle-recon studio --root F:/T/projects",
+  "stack": {
+    "backend": "FastAPI + Uvicorn",
+    "frontend": "React + TypeScript + Vite",
+    "renderer": "Konva"
+  },
+  "security": {
+    "loopback_only": "PASS",
+    "exact_host": "PASS",
+    "exact_origin": "PASS",
+    "session_csrf": "PASS",
+    "bootstrap_single_use_expiring": "PASS",
+    "traversal_junction_case_tests": "PASS",
+    "streamed_upload_budgets": "PASS",
+    "shared_core_lock_transactions_revision": "PASS",
+    "arbitrary_shell_endpoint": false,
+    "arbitrary_file_write_endpoint": false
+  },
+  "authoring": {
+    "CLI launch": "PASS",
+    "Local browser UI": "PASS",
+    "Security baseline": "PASS",
+    "Project browser": "PASS",
+    "v2 create/open": "PASS",
+    "v1 read only": "PASS",
+    "Original image bytes": "PASS",
+    "4K image": "PASS",
+    "Pan": "PASS",
+    "Pointer centered zoom": "PASS",
+    "Fit and actual pixels": "PASS",
+    "Layers": "PASS",
+    "Point add/select/move/delete": "PASS",
+    "Polyline and spline controls": "PASS",
+    "Semantic role editing": "PASS",
+    "Properties": "PASS",
+    "Schema settings": "PASS",
+    "Typed dimension provenance": "PASS",
+    "Core undo/redo": "PASS",
+    "Revision conflicts": "PASS",
+    "External conflict": "PASS",
+    "Readiness and stale state": "PASS",
+    "Canonical roundtrip": "PASS",
+    "Close and reopen": "PASS",
+    "Browser E2E": "PASS",
+    "One canonical geometry model": "PASS",
+    "No raw file write endpoint": "PASS",
+    "No CV required": "PASS",
+    "No LLM required": "PASS",
+    "No Blender build for authoring": "PASS",
+    "Independent core install": "PASS",
+    "Tesla unchanged": "PASS",
+    "Mark II untouched": "PASS"
+  },
+  "roundtrip": {
+    "status": "PASS",
+    "image": [
+      3840,
+      2160
+    ],
+    "points": 2,
+    "curves": 2,
+    "stable_entities": [
+      "obs_e627763caa264e38a4db6247cfc69250",
+      "obs_b09966bfbf774a90a0a954b697a1c932",
+      "obs_3dcd092d3d4741ac91f19f8a12afd910",
+      "obs_6a1bd3ba878d47d486149033906005e1"
+    ],
+    "revision": "b1f56a89b69059d2cfa59dc6099fb6fa76f50852b344727f09d0266b30ca6dee",
+    "source_sha256": "1d9e8c623391a787b1e2eb1d326b2c2cf82b1fc1d699273728649605af5dbcec",
+    "refresh": true,
+    "backend_restart": true,
+    "external_conflict": true,
+    "drag_commands": 1,
+    "browser_errors": []
+  },
+  "ci": {
+    "conclusion": "success",
+    "headSha": "489d0c88b7d3aa347966ee90a6fce559e796ee33",
+    "jobs": [
+      {
+        "conclusion": "success",
+        "name": "browser"
+      },
+      {
+        "conclusion": "success",
+        "name": "frontend"
+      },
+      {
+        "conclusion": "success",
+        "name": "backend"
+      },
+      {
+        "conclusion": "success",
+        "name": "core"
+      }
+    ],
+    "status": "completed",
+    "url": "https://github.com/solluced/VehicleRecon3D/actions/runs/39015012197"
+  },
+  "tests": {
+    "python": {
+      "tests": 259,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "passed": 259
+    },
+    "isolated_core_only": {
+      "tests": 222,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "passed": 222
+    },
+    "isolated_deselected_heavy_tests": 5,
+    "frontend": {
+      "passed": 22,
+      "failed": 0
+    },
+    "browser": {
+      "startTime": "2026-10-17T07:47:29.624Z",
+      "duration": 55910.78,
+      "expected": 3,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "total_failures": 0,
+    "warning": "Starlette test-client httpx deprecation, nonfailing"
+  },
+  "performance": {
+    "status": "PASS",
+    "image": [
+      3840,
+      2160
+    ],
+    "canonical_entities": 5000,
+    "display_layers": 20,
+    "device_pixel_ratio": 1,
+    "viewport": {
+      "width": 1500,
+      "height": 1000
+    },
+    "browser": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+    "cpu": "AMD Ryzen 7 5800X 8-Core Processor             ",
+    "logical_cpus": 16,
+    "system_memory_bytes": 34277924864,
+    "input": "Scripted browser pointer/wheel events through production Konva handlers; canonical property edits via visible UI",
+    "first_editor_display_ms": 876,
+    "pan": {
+      "samples": 114,
+      "frame_p50_ms": 8,
+      "frame_p95_ms": 10.699999999254942,
+      "draw_p95_ms": 1.900000000372529,
+      "fps": 123.87265022265315
+    },
+    "zoom": {
+      "samples": 114,
+      "frame_p50_ms": 8.300000000745058,
+      "frame_p95_ms": 13.5,
+      "draw_p95_ms": 1.800000000745058,
+      "fps": 111.72089376710936
+    },
+    "drag_frame_p95_ms": 8.800000000745058,
+    "picking_p95_ms": 0.10000000149011612,
+    "selection_visible_p95_ms": 13.800000000745058,
+    "repeated_real_edits": 8,
+    "commit_with_verification_p95_ms": 3389,
+    "browser_heap_before_bytes": 6750772,
+    "browser_heap_after_gc_bytes": 11712716,
+    "browser_heap_growth_bytes": 4961944,
+    "backend_rss_before_bytes": 82800640,
+    "backend_rss_after_bytes": 223285248,
+    "browser_errors": []
+  },
+  "performance_interpretation": {
+    "local_manipulation": "PASS on the recorded Windows/Edge/Ryzen workload; not a cross-hardware guarantee",
+    "commit_and_verification": "Synchronous canonical validation and HTTP readback are separate from local gesture timing; p95 3.389 s at 5000 entities",
+    "memory": "Eight edits; JS post-GC and backend RSS measured. Includes lazy inspector, undo/history and retained idempotency snapshots; not a long-session leak certification"
+  },
+  "tesla": {
+    "cold_14_stages": "PASS",
+    "iou": {
+      "side": 0.95723,
+      "top": 0.936083,
+      "front": 0.931202,
+      "rear": 0.944724
+    },
+    "GLB": "PASS",
+    "viewer_desktop": "PASS",
+    "viewer_mobile": "PASS",
+    "control_topology": "PASS",
+    "geometry_exact": true,
+    "UV_max_difference": 5.960464477539063e-08,
+    "proofs_byte_identical": true,
+    "manifest_valid": true,
+    "cold_run": "python -m vehiclerecon run build/studio-v01b-tesla-cold --no-cache",
+    "cold_run_seed": "Published v1 project.json, input/, generated/, existing explicit review only; no cache, outputs or proofs copied",
+    "subsequent_changes": "v2 authoring / optional Studio only; final full Python suite uses final code"
+  },
+  "mark2": {
+    "unchanged": true,
+    "source": "INCONSISTENT_SOURCE",
+    "cage": "FAIL (existing blocked source)",
+    "surfaces": "NOT STARTED",
+    "details": "NOT STARTED",
+    "candidate_activated": false,
+    "protected_sha256_checks": {
+      "project.json": true,
+      "generated/calibration.json": true,
+      "generated/cage.json": true,
+      "generated/surface_graph.json": true,
+      "generated/details.json": true,
+      "output/mark2_cage_corrected.blend": true,
+      "input/multiview.png": true,
+      "input/control_overlay.png": true,
+      "input/surface_target.png": true
+    }
+  },
+  "not_implemented_yet": [
+    "Three.js 3D authoring",
+    "CV",
+    "Smart Edge",
+    "Magic Select",
+    "Rectification editor UI",
+    "Surface graph editor",
+    "Full Blender Render button"
+  ],
+  "limitations": [
+    "Core live undo and transport idempotency do not survive backend restart; canonical documents do.",
+    "Independent Bezier tangent editing is deferred; source curve knot edits are implemented.",
+    "Presentation preferences are best effort and never authoritative geometry.",
+    "The 5000-entity commit latency and eight-edit retained memory growth are recorded, not hidden."
+  ],
+  "blockers": [],
+  "evidence_sha256": {
+    "browser_tests.json": "c3fb7b8fd728ae9de35c58fcd18bc957bdf2d3453ee93166b15f7da0b59e87ec",
+    "ci.json": "61a5b5e4d12e75b5f48e9a19eae077f7066b1b6c751020af28b281ce1fb4b602",
+    "core_isolation.json": "ea3d0be9119dc1e020a0d412d76934f0c7c96aaf638c2c08e740dc60835c7a4f",
+    "core_only.xml": "5c95005970596cc9c21c507b27d3b7aa54f8087cff8e11781624737d34089f42",
+    "desktop.png": "62daad6b021a7a2f6fbf7eb142a199f7a2ecd23344661cb7c95ab38d42a1b69a",
+    "frontend_reproducibility.json": "3a9f97101cebc4922264bf51d9f61fa7e13a9730ecda4516f36eaf4286a22d83",
+    "frontend_tests.json": "eb69f556aad80b5c82b46f5b5e0d0d8520919f63426b673cc9084a11973932e8",
+    "glb_comparison.json": "4e5fe44aa4efbbcff53fd2a2930c97ecc4e7a9790727b8c02629d801d7efe650",
+    "laptop_dpr2.png": "c9afe3e8c45cd077516b2259ba77e759235bcd317fab0b48091a4f083399a36a",
+    "packaging.json": "989f98844050089ce025e49ecdfaeda7d18970c10d7d57bb77ca92a3345b8d04",
+    "performance.json": "5dd86edfbb4155b2a45c7fad1d38661257ad17bed508ce548d0d1305b253109a",
+    "performance.png": "81ea78c2288a40af4a084a06b124333ced2d273296852399ce2950f2c35cc45f",
+    "protected.json": "5d54823341fb1d165da002d5bec7a13c6a1ee6e977ef8f34bb709fb046bddcde",
+    "python.xml": "80216b032daf68de0312f051eaa9e2fe110afa9507dbed09f90ab4e91d136976",
+    "README.md": "ebb329ee7c2e95ceabb685a3249e356e48c9e75dc31561fedae6e264a03e9dca",
+    "roundtrip.json": "215239221069e2f4981190f0736be9978699be6f360bc1e0cdd622f239b779a8",
+    "tesla/calibration_migration_report.json": "149c6db413db9425f5d606a5d25e84a10dabc0d1dcbb48aac7e23ce6fec06372",
+    "tesla/control_regression.json": "3c002af2b8efe5dc109625ab3dcac9d2fe2c573b3cc2fb60c73554394d92b1af",
+    "tesla/delivery_report.json": "37801c86374efd84de8e160657083a893cb1157334c6d0bf0b86d5cf4fc12bfc",
+    "tesla/final_migration_report.json": "ca9354f7cb476aaf92dc0bf512a131f5e29f221e27aa24f7f5785da4751f9f59",
+    "tesla/geometry_audit.json": "349a865843118f8704b5dbf0a056b3c5168094acb06258c2a648d469b08f3e9d",
+    "tesla/glb_geometry_report.json": "35c4ed99d461ab6f8bc63ea561fa86e436ccbe50abac933556037f1445cdefd2",
+    "tesla/pipeline_report.json": "b7f5b1b399e478d9ec439ae4e22cc5f6a2caaac0fa1d04b00f3f7512e0cf0cae",
+    "tesla/viewer_qa.json": "45b217bdb98e4f5d60319f310bd7e9c597114c391f775e50bb90443fe9d74e97",
+    "validation_optimization.json": "0ab11cec58c2a8633b4ef99fe4bb1f40e49a1fe5cb53eca50f3d88adf3710e49"
+  }
+}

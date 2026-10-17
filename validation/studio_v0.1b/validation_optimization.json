@@ -1,0 +1,10 @@
+{
+  "before_seconds": 1.4740947999998752,
+  "after_cold_seconds": 0.9268443000000843,
+  "after_warm_seconds": [
+    0.272877200000039,
+    0.2710194999999658
+  ],
+  "entities": 5000,
+  "method": "Unique required const discriminator dispatch; bounded structural cache tied to exact data and all referenced schemas. Semantic source/ID/review checks always rerun."
+}
