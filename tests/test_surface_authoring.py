@@ -161,3 +161,15 @@ def test_direct_graph_rejects_a_stale_workspace(root):
     w=Workspace(root);s=AuthoringSession(root)
     apply(s,dict(type='MoveWorldLandmark',world_entity_id='roof_corner',point=[.001,.5,1]))
     with pytest.raises(ConflictError):Graph(graph(root),workspace=w)
+
+
+def test_point_lerp_requires_its_conditional_parameter_and_preview_has_total_budget(root):
+    w=Workspace(root);g=graph(root)
+    for name,t in [('p',0),('q',1)]:g['nodes'].append(dict(id=name,op='curve_sample',parameters={'curve':'left','t':t},dependencies=['left'],draft=False))
+    g['nodes'].append(dict(id='blend',op='lerp',parameters={'a':'p','b':'q'},dependencies=['p','q'],draft=False))
+    with pytest.raises(ReconError,match='Point lerp'):graph_contract(g,w.documents['cage'])
+    g['nodes'][-1]['parameters']['t']=.5;assert evaluate(w,config=g)['status']=='PASS'
+    g=graph(root)
+    for i in range(16):
+        p=copy.deepcopy(g['patches'][0]);p['id']='heavy.'+str(i);p['us']=p['vs']=[j/64 for j in range(65)];g['patches'].append(p)
+    with pytest.raises(ReconError,match='total vertex budget'):evaluate(w,config=g)

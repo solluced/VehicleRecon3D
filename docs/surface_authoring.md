@@ -111,6 +111,10 @@ Core function LRU is bounded to 256 entries; sampled mesh LRU to 64 entries/16 M
 of serialized payload. Python object overhead is measured separately as process
 RSS. Studio history retains at most 100 edges/32 MiB of canonical byte payload.
 Existing CV and transport replay limits remain in force.
+An entire coarse request is limited to 65,536 operation control points and 65,536
+sampled vertices including mirrors, in addition to per-node/patch/schema limits.
+Oversized requests fail before allocating mesh geometry. Point-valued `lerp`
+requires its conditional `t` parameter; curve-valued `lerp` uses the surface domain.
 
 Typed routes inspect the graph, registry, validation and preview. Existing
 `transactions` carries surface commands, not arbitrary patches or code. Events are

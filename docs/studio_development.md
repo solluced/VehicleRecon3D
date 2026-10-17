@@ -19,6 +19,10 @@ repository root; its private projects and JSON evidence live under `build/`.
 The full browser suite retains the same 4K/5,000-point/20-layer source-save scenario
 for comparison against the v0.4 p95 baseline of 2340 ms. Lightweight CI remains four
 jobs and does not invoke Blender; the complete cold Tesla gate is release-only.
+For the separate 100-edit browser retention gate, run
+`npx playwright test --config=release.config.ts` from `studio/frontend`.
+It measures browser GC and backend RSS through real UI commits/preview updates;
+it is separate from lightweight CI and from the combined core/CV retention workload.
 
 ## Install and run
 

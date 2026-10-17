@@ -84,6 +84,7 @@ def graph_contract(config, cage=None):
         if op in ('coons','cubic_boundary_roll','ribbon','curve_sample') and any(v!='curve' for v in inputs.values()):raise SchemaError('Operation requires curve inputs: '+n['id'])
         if op=='lerp':
             if len(set(inputs.values()))>1 or any(v not in ('curve','point') for v in inputs.values()):raise SchemaError('lerp requires two curves or two points')
+            if not n.get('draft') and set(inputs.values())=={'point'} and 't' not in params:raise SchemaError('Point lerp requires parameter t')
             kinds[n['id']]='surface' if 'curve' in inputs.values() else 'point'
         elif op=='offset':
             if any(v not in ('curve','point') for v in inputs.values()):raise SchemaError('offset requires curve or point')

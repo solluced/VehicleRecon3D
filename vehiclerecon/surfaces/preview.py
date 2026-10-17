@@ -116,6 +116,13 @@ def evaluate(workspace, *, config=None, expected_revision=None, quality='low', c
     if not g['patches']:raise BlockedError('No surface patches authored')
     if g.get('stitches') or any(n['op']=='boundary_stitch' for n in g['nodes']):raise BlockedError('Discrete boundary_stitch preview is unsupported; use Blender for this graph')
     if len(g['patches'])>256 or len(g['nodes'])>2048:raise SchemaError('Coarse preview budget exceeded')
+    control_count=sum(len(n['parameters'].get(key,[])) for n in g['nodes'] for key in ('points','inner_points','outer_points','bottom','top') if isinstance(n['parameters'].get(key),list))
+    if control_count>65536:raise SchemaError('Coarse preview control-point budget exceeded')
+    limit=8 if quality=='low' else 16
+    vertex_count=sum((len(p['us']) if p.get('us') else min(limit,p['resolution'][0])+1)*
+                     (len(p['vs']) if p.get('vs') else min(limit,p['resolution'][1])+1)*
+                     (2 if p['settings'].get('mirror',g['settings']['mirror']) else 1) for p in g['patches'])
+    if vertex_count>65536:raise SchemaError('Coarse preview total vertex budget exceeded')
     identity=digest_data([implementation_identity(),workspace.documents.get('cage'),workspace.documents.get('calibration')])
     result={'revision':workspace.revision,'graph_hash':digest_data(g),'identity':identity,'quality':quality,
         'label':'COARSE AUTHORING PREVIEW','topology_label':'preview topology','authority':'Blender owns final geometry; no Class-A or game-ready certification.',
