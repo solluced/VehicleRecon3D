@@ -1,5 +1,11 @@
 # VehicleRecon Studio architecture baseline
 
+v0.2 implementation: coordinated four-view authoring, core fit proposals,
+correspondences/residuals, explicit source/cage reviews and a lazy Three.js cage
+preview now ship. [Current manual](studio_user_manual_v0.2.md),
+[solver math](multiview_fitting.md) and [release evidence](../validation/studio_v0.2/README.md)
+define availability. Older design/phase descriptions below remain historical.
+
 v0.1B update: the optional localhost backend and manual React/Konva source editor
 are implemented. See [development](studio_development.md) and the
 [user manual](studio_user_manual_v0.1b.md) for the shipped subset. The original

@@ -1,5 +1,11 @@
 # Studio local security and trust boundaries
 
+v0.2 preserves these controls for source/world/correspondence commands and
+project-scoped preview APIs. Fit proposals are typed, time/count bounded and
+fenced to project/tab/revision; reviews require inspected subject identity.
+Three.js receives core JSON samples, with no unrestricted model/URL/file loading.
+Bounded history/replay retention is documented in [development](studio_development.md).
+
 v0.1B implementation: the manual editor implements and tests loopback binding,
 exact Host/Origin, bootstrap/session/CSRF, safe opaque registries, bounded image
 imports, core locks/revisions/transactions, leases and SSE replay. The original

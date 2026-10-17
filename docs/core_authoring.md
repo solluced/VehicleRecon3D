@@ -71,6 +71,13 @@ visual-review/export gates remain unchanged.
 
 ## Commands, history and migration
 
+v0.2 adds the pure [constrained landmark fitter](multiview_fitting.md) and shared
+consistency/coverage/automotive diagnostic DTOs. History retains changed-file
+edges, sharing immutable adjacent document bytes; optional count/byte limits are
+explicit constructor settings, while CLI defaults stay unlimited. Projections
+and critical coverage block observations from an image without declared
+registration to the calibrated source identity. Studio does not own this math.
+
 ```python
 from vehiclerecon.authoring.service import AuthoringSession
 

@@ -1,5 +1,11 @@
 # Studio implementation roadmap and architecture exit
 
+v0.2 implementation now includes multi-view consistency, individual residuals,
+coverage, proposals, source/cage review and live Three.js cage interaction.
+[Current manual](studio_user_manual_v0.2.md) and
+[measured release evidence](../validation/studio_v0.2/README.md) define the shipped
+scope. CV, rectification editing, surfaces, Render and Cyberpunk remain deferred.
+
 v0.1B update: the manual 2D vertical slice now ships as the optional Studio
 distribution. Launch, original image import, source tools, schema properties,
 core history, conflict/reopen and browser/performance tests are implemented.

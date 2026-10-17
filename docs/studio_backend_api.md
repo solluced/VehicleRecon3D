@@ -1,5 +1,11 @@
 # Studio local backend contract
 
+v0.2 implements the additional project-scoped analysis/residual/cage DTOs,
+typed fit proposals/apply and explicit source/cage review adapters listed in
+[development](studio_development.md#implemented-adapters). Shared core services
+own projection, geometry and acceptance. No generic compute/file/URL loader,
+shell, CV or surface/build endpoint is exposed.
+
 v0.1B implements the manual-authoring subset listed in
 [Studio development](studio_development.md#implemented-adapters). Those routes
 adapt the accepted core services, including typed source metadata/import commands

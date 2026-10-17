@@ -48,8 +48,9 @@ The local visual editor is documented in the
 [implementation roadmap](docs/studio_roadmap.md). The
 [v0.1A core authoring foundation](docs/core_authoring.md) implements v2 contracts,
 typed editing, atomic recovery, acceptance gates and managed jobs.
-**Studio v0.1B** adds the optional authenticated loopback FastAPI service and
-React/TypeScript/Konva manual source editor:
+**Studio v0.2** adds coordinated views, correspondences, explicit world landmarks,
+fit proposals, residual heatmaps/reviews and a live Three.js cage preview to the
+optional authenticated FastAPI + React/TypeScript/Konva source editor:
 
 ```powershell
 python -m pip install -e studio/backend
@@ -61,8 +62,9 @@ undo/redo and reopen canonical files. V1 stays read-only in Studio and runs
 unchanged through the CLI. Node and Blender are not needed for normal manual
 authoring; prebuilt assets ship with the optional distribution. See
 [installation/development](docs/studio_development.md) and the
-[v0.1B user manual](docs/studio_user_manual_v0.1b.md). 3D authoring, CV, surface
-editing and Studio Blender build orchestration remain deferred.
+[v0.2 user manual](docs/studio_user_manual_v0.2.md). Core-computed geometry stays
+authoritative; proposals require explicit apply. CV, surface editing and Studio
+Blender build orchestration remain deferred.
 
 The accepted baseline remains frozen in `tests/fixtures/tesla/baseline/`.
 The original 91-file Tesla project, including its coupled Python scripts, is
