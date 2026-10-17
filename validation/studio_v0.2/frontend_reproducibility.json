@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "npm_lockfile_pinned": true,
+  "builds": 2,
+  "identical_asset_bytes": true,
+  "assets_sha256": {
+    "index.html": "a9cdb7c5a149134028123457e72a2b5d5603d19227e4289a55775770c1e33d46",
+    "assets/index-DUH3_gr6.css": "39c0bfa58b7b50a984815defa524f4ff3335e6c76d5f82c34102ad236da819d4",
+    "assets/index-YK1kTpK-.js": "72cc15f8d49d03fc5d67378c3acd504f2894a38023ff88a2cb15d6ef72283d89",
+    "assets/MultiWorkspace-BK3AWV-t.js": "a9679151dce2364efece4c34ee844cf54fd568e0cd53b5c6b863016f5c827f16",
+    "assets/Preview3D-BfrRBxTO.js": "49301fbd867f7be24db7266404ae656d05c052ff6022aee442650f1338139436"
+  },
+  "three_preview_lazy_chunk_bytes": 589102,
+  "warning": "Vite reports the lazy Three.js chunk exceeds 500 kB; the existing 2D editor does not load it until 3D is opened."
+}

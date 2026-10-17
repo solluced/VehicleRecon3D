@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "max_pixel_roundtrip_error": 2.2737367544323206e-13,
+  "source_hash": "52ef4d29e730999f7d080a8328a1a625435fab7bd239fd0b96ef3e1db0cfef72",
+  "uncertainty_preserved": {
+    "landmark_px": 3,
+    "side_tire_size_difference_percent": 6.45,
+    "front_width_height_ratio": 1.407725322,
+    "side_top_reconciled_width_height_ratio": 1.233679,
+    "front_horizontal_rectification_factor": 0.8763,
+    "policy": "Preserve side longitudinal/vertical ratios and top width/length ratio. Rectify each end view width to the same body envelope; retain original images and document anisotropic correction. Mirrors excluded from body width. Do not claim original sheet is an exact engineering drawing."
+  },
+  "fresh_scene": true,
+  "reference_proof": "reference_alignment.png"
+}

@@ -1,0 +1,430 @@
+{
+  "label": "baseline",
+  "canonical_edits": 3,
+  "entities": 5000,
+  "timing_seconds": [
+    5.24907340000027,
+    1.5793412999992142,
+    1.639022900000782
+  ],
+  "p95_seconds": 5.24907340000027,
+  "rss_baseline_bytes": 79765504,
+  "rss_peak_sampled_bytes": 127954944,
+  "rss_after_gc_bytes": 125747200,
+  "rss_samples": [
+    {
+      "edits": 3,
+      "rss_bytes": 127954944
+    }
+  ],
+  "undo_entries": 3,
+  "idempotency_entries": 3,
+  "profile": [
+    {
+      "file": "workspace.py",
+      "line": 150,
+      "function": "mutate",
+      "calls": 1,
+      "self_seconds": 0.006188000000000001,
+      "cumulative_seconds": 5.109975100000001
+    },
+    {
+      "file": "workspace.py",
+      "line": 47,
+      "function": "validate",
+      "calls": 5,
+      "self_seconds": 0.0023084,
+      "cumulative_seconds": 3.7045167
+    },
+    {
+      "file": "project.py",
+      "line": 36,
+      "function": "validate",
+      "calls": 26,
+      "self_seconds": 0.0009787,
+      "cumulative_seconds": 3.4400655
+    },
+    {
+      "file": "service.py",
+      "line": 41,
+      "function": "apply",
+      "calls": 1,
+      "self_seconds": 0.0026036,
+      "cumulative_seconds": 3.1388192000000004
+    },
+    {
+      "file": "validators.py",
+      "line": 349,
+      "function": "iter_errors",
+      "calls": 50,
+      "self_seconds": 0.0001315,
+      "cumulative_seconds": 2.8429931
+    },
+    {
+      "file": "validators.py",
+      "line": 396,
+      "function": "descend",
+      "calls": 56282,
+      "self_seconds": 0.1329056,
+      "cumulative_seconds": 2.8420994000000004
+    },
+    {
+      "file": "_keywords.py",
+      "line": 290,
+      "function": "properties",
+      "calls": 321,
+      "self_seconds": 0.0008393000000000001,
+      "cumulative_seconds": 2.8416371000000002
+    },
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<built-in method builtins.sorted>",
+      "calls": 71,
+      "self_seconds": 0.00037170000000000004,
+      "cumulative_seconds": 2.7752992
+    },
+    {
+      "file": "_keywords.py",
+      "line": 59,
+      "function": "items",
+      "calls": 111,
+      "self_seconds": 0.020578000000000003,
+      "cumulative_seconds": 2.7552952000000004
+    },
+    {
+      "file": "_keywords.py",
+      "line": 274,
+      "function": "ref",
+      "calls": 25158,
+      "self_seconds": 0.0344066,
+      "cumulative_seconds": 2.4579575
+    },
+    {
+      "file": "workspace.py",
+      "line": 13,
+      "function": "__init__",
+      "calls": 3,
+      "self_seconds": 3.52e-05,
+      "cumulative_seconds": 2.3508637
+    },
+    {
+      "file": "workspace.py",
+      "line": 18,
+      "function": "_load",
+      "calls": 3,
+      "self_seconds": 0.005630700000000001,
+      "cumulative_seconds": 2.3499819
+    },
+    {
+      "file": "validators.py",
+      "line": 459,
+      "function": "_validate_reference",
+      "calls": 25176,
+      "self_seconds": 0.0200463,
+      "cumulative_seconds": 1.3793851000000001
+    },
+    {
+      "file": "_core.py",
+      "line": 653,
+      "function": "lookup",
+      "calls": 25176,
+      "self_seconds": 0.0694932,
+      "cumulative_seconds": 1.3593388000000002
+    },
+    {
+      "file": "__init__.py",
+      "line": 183,
+      "function": "dumps",
+      "calls": 50036,
+      "self_seconds": 0.0730267,
+      "cumulative_seconds": 1.0932052
+    },
+    {
+      "file": "workspace.py",
+      "line": 96,
+      "function": "snapshot",
+      "calls": 1,
+      "self_seconds": 0.0033315000000000003,
+      "cumulative_seconds": 1.0692639000000002
+    },
+    {
+      "file": "encoder.py",
+      "line": 183,
+      "function": "encode",
+      "calls": 50036,
+      "self_seconds": 0.10526990000000001,
+      "cumulative_seconds": 1.0034422
+    },
+    {
+      "file": "transactions.py",
+      "line": 101,
+      "function": "commit",
+      "calls": 1,
+      "self_seconds": 0.0026844,
+      "cumulative_seconds": 0.9487824
+    },
+    {
+      "file": "workspace.py",
+      "line": 84,
+      "function": "session",
+      "calls": 1,
+      "self_seconds": 3.6000000000000003e-06,
+      "cumulative_seconds": 0.8562034000000001
+    },
+    {
+      "file": "workspace.py",
+      "line": 90,
+      "function": "new_session",
+      "calls": 1,
+      "self_seconds": 6.7e-06,
+      "cumulative_seconds": 0.8561998000000001
+    },
+    {
+      "file": "service.py",
+      "line": 32,
+      "function": "__init__",
+      "calls": 1,
+      "self_seconds": 0.003445,
+      "cumulative_seconds": 0.8493784000000001
+    },
+    {
+      "file": "schema_dispatch.py",
+      "line": 56,
+      "function": "one_of",
+      "calls": 25001,
+      "self_seconds": 0.2530616,
+      "cumulative_seconds": 0.8352936000000001
+    },
+    {
+      "file": "project.py",
+      "line": 15,
+      "function": "finite",
+      "calls": 794754,
+      "self_seconds": 0.4599807,
+      "cumulative_seconds": 0.6931502
+    },
+    {
+      "file": "service.py",
+      "line": 99,
+      "function": "_flush",
+      "calls": 1,
+      "self_seconds": 1.29e-05,
+      "cumulative_seconds": 0.6661382
+    },
+    {
+      "file": "service.py",
+      "line": 16,
+      "function": "_bytes",
+      "calls": 2,
+      "self_seconds": 0.0009245000000000001,
+      "cumulative_seconds": 0.6660717
+    },
+    {
+      "file": "encoder.py",
+      "line": 414,
+      "function": "_iterencode",
+      "calls": 345359,
+      "self_seconds": 0.0652848,
+      "cumulative_seconds": 0.6375817
+    },
+    {
+      "file": "encoder.py",
+      "line": 334,
+      "function": "_iterencode_dict",
+      "calls": 1785759,
+      "self_seconds": 0.39236590000000005,
+      "cumulative_seconds": 0.5722936000000001
+    },
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<built-in method builtins.isinstance>",
+      "calls": 3675428,
+      "self_seconds": 0.382992,
+      "cumulative_seconds": 0.4134627
+    },
+    {
+      "file": "_core.py",
+      "line": 254,
+      "function": "pointer",
+      "calls": 25025,
+      "self_seconds": 0.1336804,
+      "cumulative_seconds": 0.40685020000000005
+    },
+    {
+      "file": "parse.py",
+      "line": 559,
+      "function": "urljoin",
+      "calls": 25157,
+      "self_seconds": 0.0559884,
+      "cumulative_seconds": 0.3918363
+    },
+    {
+      "file": "schema_dispatch.py",
+      "line": 26,
+      "function": "cache_key",
+      "calls": 25000,
+      "self_seconds": 0.059979700000000004,
+      "cumulative_seconds": 0.3595029
+    },
+    {
+      "file": "project.py",
+      "line": 26,
+      "function": "read_json",
+      "calls": 411,
+      "self_seconds": 0.0028392,
+      "cumulative_seconds": 0.3584623
+    },
+    {
+      "file": "encoder.py",
+      "line": 278,
+      "function": "_iterencode_list",
+      "calls": 370119,
+      "self_seconds": 0.0922767,
+      "cumulative_seconds": 0.3108687
+    },
+    {
+      "file": "validators.py",
+      "line": 339,
+      "function": "evolve",
+      "calls": 56274,
+      "self_seconds": 0.1373145,
+      "cumulative_seconds": 0.3029776
+    },
+    {
+      "file": "contracts.py",
+      "line": 76,
+      "function": "semantic_check",
+      "calls": 5,
+      "self_seconds": 0.0712083,
+      "cumulative_seconds": 0.3014894
+    },
+    {
+      "file": "parse.py",
+      "line": 628,
+      "function": "urldefrag",
+      "calls": 25139,
+      "self_seconds": 0.046329100000000005,
+      "cumulative_seconds": 0.2547514
+    },
+    {
+      "file": "parse.py",
+      "line": 374,
+      "function": "urlparse",
+      "calls": 75320,
+      "self_seconds": 0.14073080000000002,
+      "cumulative_seconds": 0.2407603
+    },
+    {
+      "file": "parse.py",
+      "line": 525,
+      "function": "urlunparse",
+      "calls": 50163,
+      "self_seconds": 0.0492048,
+      "cumulative_seconds": 0.24028270000000002
+    },
+    {
+      "file": "encoder.py",
+      "line": 205,
+      "function": "iterencode",
+      "calls": 50036,
+      "self_seconds": 0.2306734,
+      "cumulative_seconds": 0.2306909
+    },
+    {
+      "file": "parse.py",
+      "line": 119,
+      "function": "_coerce_args",
+      "calls": 226249,
+      "self_seconds": 0.1699846,
+      "cumulative_seconds": 0.2172029
+    },
+    {
+      "file": "__init__.py",
+      "line": 299,
+      "function": "loads",
+      "calls": 445,
+      "self_seconds": 0.0014432000000000002,
+      "cumulative_seconds": 0.1914295
+    },
+    {
+      "file": "decoder.py",
+      "line": 333,
+      "function": "decode",
+      "calls": 445,
+      "self_seconds": 0.0009387000000000001,
+      "cumulative_seconds": 0.1885202
+    },
+    {
+      "file": "decoder.py",
+      "line": 344,
+      "function": "raw_decode",
+      "calls": 445,
+      "self_seconds": 0.18653260000000002,
+      "cumulative_seconds": 0.18653260000000002
+    },
+    {
+      "file": "contracts.py",
+      "line": 10,
+      "function": "crop_identity",
+      "calls": 25004,
+      "self_seconds": 0.0089003,
+      "cumulative_seconds": 0.1840457
+    },
+    {
+      "file": "manifest.py",
+      "line": 19,
+      "function": "digest_data",
+      "calls": 25019,
+      "self_seconds": 0.016736900000000002,
+      "cumulative_seconds": 0.1755931
+    }
+  ],
+  "profile_total_seconds": 5.075759099999996,
+  "history_bytes": null,
+  "idempotency_bytes": null,
+  "rss_peak_process_bytes": 163024896,
+  "idle_seconds": 1,
+  "profile_phases": {
+    "json_serialization": {
+      "calls": 150108,
+      "self_seconds": 0.40897,
+      "cumulative_seconds": 2.3273383
+    },
+    "schema_validation": {
+      "calls": 26,
+      "self_seconds": 0.0009787,
+      "cumulative_seconds": 3.4400655
+    },
+    "semantic_validation": {
+      "calls": 5,
+      "self_seconds": 0.0712083,
+      "cumulative_seconds": 0.3014894
+    },
+    "revision_hashing": {
+      "calls": 12,
+      "self_seconds": 0.00127,
+      "cumulative_seconds": 0.0865597
+    },
+    "transaction_commit": {
+      "calls": 1,
+      "self_seconds": 0.0026844,
+      "cumulative_seconds": 0.9487824
+    },
+    "fsync": {
+      "calls": 4,
+      "self_seconds": 0.0085617,
+      "cumulative_seconds": 0.0085617
+    },
+    "snapshot_refresh": {
+      "calls": 1,
+      "self_seconds": 0.0033315000000000003,
+      "cumulative_seconds": 1.0692639000000002
+    }
+  },
+  "last_response_payload_bytes": 2211338,
+  "schema_cache_entries": 5007,
+  "schema_cache_bytes": 2092919,
+  "phase_note": "First request cProfile timings overlap and include instrumentation; subsequent timing samples are unprofiled. JSON includes canonical snapshot; no image decode/cache in this edit window."
+}

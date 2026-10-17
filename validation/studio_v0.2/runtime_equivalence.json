@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "local_runtime_checkpoint": "554d099cafd4a652acb67e777333e65f13460217",
+  "final_ci_checkpoint": "02d80b638aaa11e6ddab5c9cf17427a47f362d09",
+  "production_paths": [
+    "vehiclerecon",
+    "schemas",
+    "profiles",
+    "studio/backend/src",
+    "studio/backend/pyproject.toml",
+    "studio/frontend/src",
+    "studio/frontend/package.json",
+    "studio/frontend/package-lock.json",
+    "studio/shared",
+    ".github/workflows/studio.yml"
+  ],
+  "tree_sha256": "fbee3a73da6d59880f2e2e2dde139d44c30a3ce72beac239a341accada0b9b28",
+  "note": "Only docs and E2E synchronization changed after the full local runtime matrix; exact production blob lists match."
+}

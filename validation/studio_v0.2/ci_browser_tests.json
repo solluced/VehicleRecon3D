@@ -1,0 +1,450 @@
+{
+  "config": {
+    "argv": [
+      "/opt/hostedtoolcache/node/24.21.0/x64/bin/node",
+      "/home/runner/work/VehicleRecon3D/VehicleRecon3D/studio/frontend/node_modules/.bin/playwright",
+      "test"
+    ],
+    "configFile": "/home/runner/work/VehicleRecon3D/VehicleRecon3D/studio/frontend/playwright.config.ts",
+    "rootDir": "/home/runner/work/VehicleRecon3D/VehicleRecon3D/studio/frontend/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "ci": {
+        "commitHref": "https://github.com/solluced/VehicleRecon3D/commit/02d80b638aaa11e6ddab5c9cf17427a47f362d09",
+        "commitHash": "02d80b638aaa11e6ddab5c9cf17427a47f362d09",
+        "buildHref": "https://github.com/solluced/VehicleRecon3D/actions/runs/39031601626"
+      },
+      "gitCommit": {
+        "shortHash": "02d80b6",
+        "hash": "02d80b638aaa11e6ddab5c9cf17427a47f362d09",
+        "subject": "studio-v0.2-fence-dense-probe-input-to-current-form-subject",
+        "body": "studio-v0.2-fence-dense-probe-input-to-current-form-subject\n",
+        "author": {
+          "name": "Codex",
+          "email": "codex@local.invalid",
+          "time": 1792239131000
+        },
+        "committer": {
+          "name": "Codex",
+          "email": "codex@local.invalid",
+          "time": 1792239131000
+        },
+        "branch": "main"
+      },
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/home/runner/work/VehicleRecon3D/VehicleRecon3D/studio/frontend/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "ci": {
+            "commitHref": "https://github.com/solluced/VehicleRecon3D/commit/02d80b638aaa11e6ddab5c9cf17427a47f362d09",
+            "commitHash": "02d80b638aaa11e6ddab5c9cf17427a47f362d09",
+            "buildHref": "https://github.com/solluced/VehicleRecon3D/actions/runs/39031601626"
+          },
+          "gitCommit": {
+            "shortHash": "02d80b6",
+            "hash": "02d80b638aaa11e6ddab5c9cf17427a47f362d09",
+            "subject": "studio-v0.2-fence-dense-probe-input-to-current-form-subject",
+            "body": "studio-v0.2-fence-dense-probe-input-to-current-form-subject\n",
+            "author": {
+              "name": "Codex",
+              "email": "codex@local.invalid",
+              "time": 1792239131000
+            },
+            "committer": {
+              "name": "Codex",
+              "email": "codex@local.invalid",
+              "time": 1792239131000
+            },
+            "branch": "main"
+          },
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "/home/runner/work/VehicleRecon3D/VehicleRecon3D/studio/frontend/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 120000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/home/runner/work/VehicleRecon3D/VehicleRecon3D/studio/frontend/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "ci": {
+            "commitHref": "https://github.com/solluced/VehicleRecon3D/commit/02d80b638aaa11e6ddab5c9cf17427a47f362d09",
+            "commitHash": "02d80b638aaa11e6ddab5c9cf17427a47f362d09",
+            "buildHref": "https://github.com/solluced/VehicleRecon3D/actions/runs/39031601626"
+          },
+          "gitCommit": {
+            "shortHash": "02d80b6",
+            "hash": "02d80b638aaa11e6ddab5c9cf17427a47f362d09",
+            "subject": "studio-v0.2-fence-dense-probe-input-to-current-form-subject",
+            "body": "studio-v0.2-fence-dense-probe-input-to-current-form-subject\n",
+            "author": {
+              "name": "Codex",
+              "email": "codex@local.invalid",
+              "time": 1792239131000
+            },
+            "committer": {
+              "name": "Codex",
+              "email": "codex@local.invalid",
+              "time": 1792239131000
+            },
+            "branch": "main"
+          },
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "/home/runner/work/VehicleRecon3D/VehicleRecon3D/studio/frontend/e2e",
+        "snapshotDir": "/home/runner/work/VehicleRecon3D/VehicleRecon3D/studio/frontend/e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 120000,
+        "use": {
+          "headless": true,
+          "viewport": {
+            "width": 1500,
+            "height": 1000
+          },
+          "launchOptions": {
+            "args": [
+              "--no-first-run",
+              "--js-flags=--expose-gc",
+              "--use-gl=angle",
+              "--use-angle=swiftshader"
+            ]
+          },
+          "screenshot": "only-on-failure"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "../../build/studio02-e2e-results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "authoring.spec.ts",
+      "file": "authoring.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "manual authoring survives refresh and backend restart, with conflicts fenced",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 24658,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T12:12:57.042Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ffbac78a90ea7b98869d-63598a601d6ffd465bfb",
+          "file": "authoring.spec.ts",
+          "line": 20,
+          "column": 1
+        },
+        {
+          "title": "laptop canvas, high-DPI 1:1 and stale review state",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3166,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T12:13:22.080Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ffbac78a90ea7b98869d-bb8c569a24d84c1ad2fc",
+          "file": "authoring.spec.ts",
+          "line": 318,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "multiview-performance.spec.ts",
+      "file": "multiview-performance.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "measure four 2D views plus Three.js with 5000 controls and live projections",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 106058,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T12:13:25.262Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "effc2364baf5927842e3-7b8884b0ea535ccd6ff6",
+          "file": "multiview-performance.spec.ts",
+          "line": 20,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "multiview.spec.ts",
+      "file": "multiview.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "multi-view binding, distinct moves, fit proposal, 3D selection, reviews and roundtrip",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 21233,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T12:15:12.228Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8d23bba7fd23579de33f-f54aecfeb9f4386ccd13",
+          "file": "multiview.spec.ts",
+          "line": 64,
+          "column": 1
+        },
+        {
+          "title": "known Mark II conflict is visible without editing canonical data",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6906,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T12:15:33.579Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8d23bba7fd23579de33f-441ed7c9f8e0ad56f670",
+          "file": "multiview.spec.ts",
+          "line": 257,
+          "column": 1
+        },
+        {
+          "title": "native Three.js X and XZ gizmos preview locally and commit once at release",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8437,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T12:15:40.508Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8d23bba7fd23579de33f-ca10e9bd94115c40648d",
+          "file": "multiview.spec.ts",
+          "line": 295,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "performance.spec.ts",
+      "file": "performance.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "measure 4K, 5000 canonical controls and 20 display layers",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 104713,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T12:15:48.971Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b15d6361b2fc38288977-c8efc7a014aec9d19c40",
+          "file": "performance.spec.ts",
+          "line": 21,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-17T12:12:56.605Z",
+    "duration": 278158.371,
+    "expected": 7,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

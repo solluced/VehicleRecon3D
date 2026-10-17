@@ -1,0 +1,1317 @@
+{
+  "status": "PASS",
+  "finite_and_nonzero_faces": true,
+  "geometry_hash": "6fa8c5a8174917222d9b7b8641dc28afbc55dbc388e67313362924ec43f2e96d",
+  "audit_mutated_geometry": false,
+  "semantic_roles_pass": true,
+  "semantic_bindings": {
+    "pass": true,
+    "missing_roles": [],
+    "missing_objects": [],
+    "empty_roles": []
+  },
+  "metric_units": true,
+  "source_blend_sha256": "2b850842982c73093e5a9119d081b81f60540776acad9efb74a0e32c48336705",
+  "surface_control_mesh": {
+    "vertices": 4563,
+    "faces": 3693,
+    "quads": 3686,
+    "quad_percent": 99.81045220687788
+  },
+  "evaluated_body_envelope": {
+    "min": [
+      -2.399505376815796,
+      -0.9409999847412109,
+      0.14306223392486572
+    ],
+    "max": [
+      2.4078965187072754,
+      0.9409999847412109,
+      1.5239678621292114
+    ],
+    "size": [
+      4.807401657104492,
+      1.8819999694824219,
+      1.3809056282043457
+    ]
+  },
+  "wheel_root_centers_m": {
+    "WHEEL_FL": [
+      -1.5814461708068848,
+      -0.8050000071525574,
+      0.4059999883174896
+    ],
+    "WHEEL_FR": [
+      -1.5814461708068848,
+      0.8050000071525574,
+      0.4059999883174896
+    ],
+    "WHEEL_RL": [
+      1.4963165521621704,
+      -0.8199999928474426,
+      0.4059999883174896
+    ],
+    "WHEEL_RR": [
+      1.4963165521621704,
+      0.8199999928474426,
+      0.4059999883174896
+    ]
+  },
+  "wheel_pivot_errors_m": {
+    "WHEEL_FL": 0.0,
+    "WHEEL_FR": 0.0,
+    "WHEEL_RL": 0.0,
+    "WHEEL_RR": 0.0
+  },
+  "wheel_pivots_pass": true,
+  "objects": [
+    {
+      "name": "COWL_TRANSITION",
+      "vertices": 66,
+      "faces": 52,
+      "quads": 48,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "PILLAR_A_FOOT",
+      "vertices": 49,
+      "faces": 36,
+      "quads": 36,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "NOSE_HOOD_BRIDGE",
+      "vertices": 98,
+      "faces": 78,
+      "quads": 78,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "NOSE_CHEEK",
+      "vertices": 72,
+      "faces": 44,
+      "quads": 44,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "BUMPER_FRONT",
+      "vertices": 153,
+      "faces": 112,
+      "quads": 112,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "LIP_FRONT",
+      "vertices": 96,
+      "faces": 75,
+      "quads": 75,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "FENDER_FRONT",
+      "vertices": 313,
+      "faces": 272,
+      "quads": 272,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "ARCH_RETURN_FRONT",
+      "vertices": 135,
+      "faces": 104,
+      "quads": 104,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "FENDER_REAR",
+      "vertices": 297,
+      "faces": 260,
+      "quads": 260,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "ARCH_RETURN_REAR",
+      "vertices": 135,
+      "faces": 104,
+      "quads": 104,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "BELTLINE_LEDGE",
+      "vertices": 138,
+      "faces": 110,
+      "quads": 110,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "FRAME_TOP_GLASS_FRONT",
+      "vertices": 75,
+      "faces": 56,
+      "quads": 56,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "FRAME_BOTTOM_GLASS_FRONT",
+      "vertices": 75,
+      "faces": 56,
+      "quads": 56,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "FRAME_FRONT_GLASS_FRONT",
+      "vertices": 45,
+      "faces": 32,
+      "quads": 32,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "FRAME_TOP_GLASS_REAR_SIDE",
+      "vertices": 75,
+      "faces": 56,
+      "quads": 56,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "FRAME_BOTTOM_GLASS_REAR_SIDE",
+      "vertices": 75,
+      "faces": 56,
+      "quads": 56,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "FRAME_BACK_GLASS_REAR_SIDE",
+      "vertices": 40,
+      "faces": 32,
+      "quads": 29,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "ROOF_RAIL",
+      "vertices": 135,
+      "faces": 104,
+      "quads": 104,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "PILLAR_C_QUARTER",
+      "vertices": 136,
+      "faces": 112,
+      "quads": 112,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "BUMPER_REAR",
+      "vertices": 104,
+      "faces": 79,
+      "quads": 79,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "ROCKER",
+      "vertices": 138,
+      "faces": 110,
+      "quads": 110,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "WHEELHOUSE_FRONT",
+      "vertices": 50,
+      "faces": 48,
+      "quads": 0,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "WHEELHOUSE_REAR",
+      "vertices": 50,
+      "faces": 48,
+      "quads": 0,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "PILLAR_B",
+      "vertices": 4,
+      "faces": 1,
+      "quads": 1,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "HOOD",
+      "vertices": 153,
+      "faces": 128,
+      "quads": 128,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "DOOR_FR",
+      "vertices": 180,
+      "faces": 154,
+      "quads": 154,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "DOOR_RR",
+      "vertices": 180,
+      "faces": 154,
+      "quads": 154,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "REAR_HATCH_TOP",
+      "vertices": 98,
+      "faces": 78,
+      "quads": 78,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "REAR_HATCH",
+      "vertices": 176,
+      "faces": 136,
+      "quads": 136,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "DOOR_FL",
+      "vertices": 180,
+      "faces": 154,
+      "quads": 154,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "INNER_DOOR_FL",
+      "vertices": 180,
+      "faces": 154,
+      "quads": 154,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "INNER_DOOR_FR",
+      "vertices": 180,
+      "faces": 154,
+      "quads": 154,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "DOOR_RL",
+      "vertices": 180,
+      "faces": 154,
+      "quads": 154,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "INNER_DOOR_RL",
+      "vertices": 180,
+      "faces": 154,
+      "quads": 154,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "INNER_DOOR_RR",
+      "vertices": 180,
+      "faces": 154,
+      "quads": 154,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "HANDLE_FL",
+      "vertices": 8,
+      "faces": 6,
+      "quads": 6,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "HANDLE_FR",
+      "vertices": 8,
+      "faces": 6,
+      "quads": 6,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "HANDLE_RL",
+      "vertices": 8,
+      "faces": 6,
+      "quads": 6,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "HANDLE_RR",
+      "vertices": 8,
+      "faces": 6,
+      "quads": 6,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "MIRROR_L",
+      "vertices": 8,
+      "faces": 6,
+      "quads": 6,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "MIRROR_R",
+      "vertices": 8,
+      "faces": 6,
+      "quads": 6,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "GLASS_WINDSHIELD",
+      "vertices": 150,
+      "faces": 126,
+      "quads": 126,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "GLASS_ROOF",
+      "vertices": 150,
+      "faces": 126,
+      "quads": 126,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "GLASS_REAR",
+      "vertices": 150,
+      "faces": 126,
+      "quads": 126,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "GLASS_FRONT_RIGHT",
+      "vertices": 120,
+      "faces": 98,
+      "quads": 98,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "GLASS_REAR_RIGHT",
+      "vertices": 120,
+      "faces": 98,
+      "quads": 98,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "GLASS_FRONT_LEFT",
+      "vertices": 120,
+      "faces": 98,
+      "quads": 98,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "GLASS_REAR_LEFT",
+      "vertices": 120,
+      "faces": 98,
+      "quads": 98,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "MIRROR_GLASS_L",
+      "vertices": 8,
+      "faces": 6,
+      "quads": 6,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "MIRROR_GLASS_R",
+      "vertices": 8,
+      "faces": 6,
+      "quads": 6,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "LIGHT_HEAD_R",
+      "vertices": 40,
+      "faces": 28,
+      "quads": 28,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "LIGHT_HEAD_L",
+      "vertices": 40,
+      "faces": 28,
+      "quads": 28,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "INTAKE_CENTER",
+      "vertices": 44,
+      "faces": 30,
+      "quads": 30,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "INTAKE_SIDE_R",
+      "vertices": 15,
+      "faces": 8,
+      "quads": 8,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "INTAKE_SIDE_L",
+      "vertices": 15,
+      "faces": 8,
+      "quads": 8,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "LIGHT_TAIL_R",
+      "vertices": 30,
+      "faces": 14,
+      "quads": 14,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "LIGHT_TAIL_L",
+      "vertices": 30,
+      "faces": 14,
+      "quads": 14,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "DIFFUSER_REAR",
+      "vertices": 75,
+      "faces": 56,
+      "quads": 56,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "DIFFUSER_FIN",
+      "vertices": 8,
+      "faces": 6,
+      "quads": 6,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "DIFFUSER_FIN.001",
+      "vertices": 8,
+      "faces": 6,
+      "quads": 6,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "DIFFUSER_FIN.002",
+      "vertices": 8,
+      "faces": 6,
+      "quads": 6,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "DIFFUSER_FIN.003",
+      "vertices": 8,
+      "faces": 6,
+      "quads": 6,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "DIFFUSER_FIN.004",
+      "vertices": 8,
+      "faces": 6,
+      "quads": 6,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "TIRE_FL",
+      "vertices": 512,
+      "faces": 512,
+      "quads": 512,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "BRAKE_DISC_FL",
+      "vertices": 65,
+      "faces": 64,
+      "quads": 0,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "TIRE_FR",
+      "vertices": 512,
+      "faces": 512,
+      "quads": 512,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "BRAKE_DISC_FR",
+      "vertices": 65,
+      "faces": 64,
+      "quads": 0,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "TIRE_RL",
+      "vertices": 512,
+      "faces": 512,
+      "quads": 512,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "BRAKE_DISC_RL",
+      "vertices": 65,
+      "faces": 64,
+      "quads": 0,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "TIRE_RR",
+      "vertices": 512,
+      "faces": 512,
+      "quads": 512,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "BRAKE_DISC_RR",
+      "vertices": 65,
+      "faces": 64,
+      "quads": 0,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "RIM_FL",
+      "vertices": 384,
+      "faces": 384,
+      "quads": 384,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "AERO_SPOKE_FL_1",
+      "vertices": 4,
+      "faces": 1,
+      "quads": 1,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "AERO_SPOKE_FL_2",
+      "vertices": 4,
+      "faces": 1,
+      "quads": 1,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "AERO_SPOKE_FL_3",
+      "vertices": 4,
+      "faces": 1,
+      "quads": 1,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "AERO_SPOKE_FL_4",
+      "vertices": 4,
+      "faces": 1,
+      "quads": 1,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "AERO_SPOKE_FL_5",
+      "vertices": 4,
+      "faces": 1,
+      "quads": 1,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "AERO_SPOKE_FL_6",
+      "vertices": 4,
+      "faces": 1,
+      "quads": 1,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "AERO_SPOKE_FL_7",
+      "vertices": 4,
+      "faces": 1,
+      "quads": 1,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "AERO_SPOKE_FL_8",
+      "vertices": 4,
+      "faces": 1,
+      "quads": 1,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "AERO_SPOKE_FL_9",
+      "vertices": 4,
+      "faces": 1,
+      "quads": 1,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "AERO_SPOKE_FL_10",
+      "vertices": 4,
+      "faces": 1,
+      "quads": 1,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "HUB_FL",
+      "vertices": 64,
+      "faces": 34,
+      "quads": 32,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "CENTER_CAP_FL",
+      "vertices": 64,
+      "faces": 34,
+      "quads": 32,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "LUG_FL",
+      "vertices": 64,
+      "faces": 34,
+      "quads": 32,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "LUG_FL.001",
+      "vertices": 64,
+      "faces": 34,
+      "quads": 32,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "LUG_FL.002",
+      "vertices": 64,
+      "faces": 34,
+      "quads": 32,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "LUG_FL.003",
+      "vertices": 64,
+      "faces": 34,
+      "quads": 32,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "LUG_FL.004",
+      "vertices": 64,
+      "faces": 34,
+      "quads": 32,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "RIM_FR",
+      "vertices": 384,
+      "faces": 384,
+      "quads": 384,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "AERO_SPOKE_FR_1",
+      "vertices": 4,
+      "faces": 1,
+      "quads": 1,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "AERO_SPOKE_FR_2",
+      "vertices": 4,
+      "faces": 1,
+      "quads": 1,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "AERO_SPOKE_FR_3",
+      "vertices": 4,
+      "faces": 1,
+      "quads": 1,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "AERO_SPOKE_FR_4",
+      "vertices": 4,
+      "faces": 1,
+      "quads": 1,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "AERO_SPOKE_FR_5",
+      "vertices": 4,
+      "faces": 1,
+      "quads": 1,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "AERO_SPOKE_FR_6",
+      "vertices": 4,
+      "faces": 1,
+      "quads": 1,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "AERO_SPOKE_FR_7",
+      "vertices": 4,
+      "faces": 1,
+      "quads": 1,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "AERO_SPOKE_FR_8",
+      "vertices": 4,
+      "faces": 1,
+      "quads": 1,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "AERO_SPOKE_FR_9",
+      "vertices": 4,
+      "faces": 1,
+      "quads": 1,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "AERO_SPOKE_FR_10",
+      "vertices": 4,
+      "faces": 1,
+      "quads": 1,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "HUB_FR",
+      "vertices": 64,
+      "faces": 34,
+      "quads": 32,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "CENTER_CAP_FR",
+      "vertices": 64,
+      "faces": 34,
+      "quads": 32,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "LUG_FR",
+      "vertices": 64,
+      "faces": 34,
+      "quads": 32,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "LUG_FR.001",
+      "vertices": 64,
+      "faces": 34,
+      "quads": 32,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "LUG_FR.002",
+      "vertices": 64,
+      "faces": 34,
+      "quads": 32,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "LUG_FR.003",
+      "vertices": 64,
+      "faces": 34,
+      "quads": 32,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "LUG_FR.004",
+      "vertices": 64,
+      "faces": 34,
+      "quads": 32,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "RIM_RL",
+      "vertices": 384,
+      "faces": 384,
+      "quads": 384,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "AERO_SPOKE_RL_1",
+      "vertices": 4,
+      "faces": 1,
+      "quads": 1,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "AERO_SPOKE_RL_2",
+      "vertices": 4,
+      "faces": 1,
+      "quads": 1,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "AERO_SPOKE_RL_3",
+      "vertices": 4,
+      "faces": 1,
+      "quads": 1,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "AERO_SPOKE_RL_4",
+      "vertices": 4,
+      "faces": 1,
+      "quads": 1,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "AERO_SPOKE_RL_5",
+      "vertices": 4,
+      "faces": 1,
+      "quads": 1,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "AERO_SPOKE_RL_6",
+      "vertices": 4,
+      "faces": 1,
+      "quads": 1,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "AERO_SPOKE_RL_7",
+      "vertices": 4,
+      "faces": 1,
+      "quads": 1,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "AERO_SPOKE_RL_8",
+      "vertices": 4,
+      "faces": 1,
+      "quads": 1,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "AERO_SPOKE_RL_9",
+      "vertices": 4,
+      "faces": 1,
+      "quads": 1,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "AERO_SPOKE_RL_10",
+      "vertices": 4,
+      "faces": 1,
+      "quads": 1,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "HUB_RL",
+      "vertices": 64,
+      "faces": 34,
+      "quads": 32,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "CENTER_CAP_RL",
+      "vertices": 64,
+      "faces": 34,
+      "quads": 32,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "LUG_RL",
+      "vertices": 64,
+      "faces": 34,
+      "quads": 32,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "LUG_RL.001",
+      "vertices": 64,
+      "faces": 34,
+      "quads": 32,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "LUG_RL.002",
+      "vertices": 64,
+      "faces": 34,
+      "quads": 32,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "LUG_RL.003",
+      "vertices": 64,
+      "faces": 34,
+      "quads": 32,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "LUG_RL.004",
+      "vertices": 64,
+      "faces": 34,
+      "quads": 32,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "RIM_RR",
+      "vertices": 384,
+      "faces": 384,
+      "quads": 384,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "AERO_SPOKE_RR_1",
+      "vertices": 4,
+      "faces": 1,
+      "quads": 1,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "AERO_SPOKE_RR_2",
+      "vertices": 4,
+      "faces": 1,
+      "quads": 1,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "AERO_SPOKE_RR_3",
+      "vertices": 4,
+      "faces": 1,
+      "quads": 1,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "AERO_SPOKE_RR_4",
+      "vertices": 4,
+      "faces": 1,
+      "quads": 1,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "AERO_SPOKE_RR_5",
+      "vertices": 4,
+      "faces": 1,
+      "quads": 1,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "AERO_SPOKE_RR_6",
+      "vertices": 4,
+      "faces": 1,
+      "quads": 1,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "AERO_SPOKE_RR_7",
+      "vertices": 4,
+      "faces": 1,
+      "quads": 1,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "AERO_SPOKE_RR_8",
+      "vertices": 4,
+      "faces": 1,
+      "quads": 1,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "AERO_SPOKE_RR_9",
+      "vertices": 4,
+      "faces": 1,
+      "quads": 1,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "AERO_SPOKE_RR_10",
+      "vertices": 4,
+      "faces": 1,
+      "quads": 1,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "HUB_RR",
+      "vertices": 64,
+      "faces": 34,
+      "quads": 32,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "CENTER_CAP_RR",
+      "vertices": 64,
+      "faces": 34,
+      "quads": 32,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "LUG_RR",
+      "vertices": 64,
+      "faces": 34,
+      "quads": 32,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "LUG_RR.001",
+      "vertices": 64,
+      "faces": 34,
+      "quads": 32,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "LUG_RR.002",
+      "vertices": 64,
+      "faces": 34,
+      "quads": 32,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "LUG_RR.003",
+      "vertices": 64,
+      "faces": 34,
+      "quads": 32,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "LUG_RR.004",
+      "vertices": 64,
+      "faces": 34,
+      "quads": 32,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "FRONT_SEAT_BASE",
+      "vertices": 8,
+      "faces": 6,
+      "quads": 6,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "FRONT_SEAT_BACK",
+      "vertices": 8,
+      "faces": 6,
+      "quads": 6,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "FRONT_HEADREST",
+      "vertices": 8,
+      "faces": 6,
+      "quads": 6,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "FRONT_SEAT_BASE.001",
+      "vertices": 8,
+      "faces": 6,
+      "quads": 6,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "FRONT_SEAT_BACK.001",
+      "vertices": 8,
+      "faces": 6,
+      "quads": 6,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "FRONT_HEADREST.001",
+      "vertices": 8,
+      "faces": 6,
+      "quads": 6,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "REAR_BENCH",
+      "vertices": 8,
+      "faces": 6,
+      "quads": 6,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "REAR_BACKREST",
+      "vertices": 8,
+      "faces": 6,
+      "quads": 6,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "DASHBOARD",
+      "vertices": 8,
+      "faces": 6,
+      "quads": 6,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "CENTER_CONSOLE",
+      "vertices": 8,
+      "faces": 6,
+      "quads": 6,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "CENTER_DISPLAY",
+      "vertices": 8,
+      "faces": 6,
+      "quads": 6,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "STEERING_WHEEL",
+      "vertices": 576,
+      "faces": 576,
+      "quads": 576,
+      "finite": true,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "CABIN_FLOOR",
+      "vertices": 8,
+      "faces": 6,
+      "quads": 6,
+      "finite": true,
+      "zero_area_faces": 0
+    }
+  ]
+}

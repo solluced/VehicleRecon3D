@@ -1,0 +1,132 @@
+{
+  "status": "PASS",
+  "source_blend_sha256": "9f6933b819852ca280f2ee78beb0d9951978046ff5b0edc7963b6c2ae84abf22",
+  "views": {
+    "side": {
+      "status": "PASS",
+      "iou": 0.95723,
+      "threshold": 0.94,
+      "pixel_mismatch_percent_of_frame": 1.5582,
+      "pixel_mismatch_percent_of_union": 4.277,
+      "reference_bbox_px": [
+        76,
+        114,
+        1124,
+        449
+      ],
+      "model_bbox_px": [
+        76,
+        114,
+        1125,
+        446
+      ],
+      "bbox_difference_px": [
+        0,
+        0,
+        1,
+        -3
+      ],
+      "render_size": [
+        1200,
+        560
+      ]
+    },
+    "top": {
+      "status": "PASS",
+      "iou": 0.936083,
+      "threshold": 0.92,
+      "pixel_mismatch_percent_of_frame": 3.6761,
+      "pixel_mismatch_percent_of_union": 6.3917,
+      "reference_bbox_px": [
+        76,
+        84,
+        1124,
+        517
+      ],
+      "model_bbox_px": [
+        76,
+        92,
+        1125,
+        508
+      ],
+      "bbox_difference_px": [
+        0,
+        8,
+        1,
+        -9
+      ],
+      "render_size": [
+        1200,
+        600
+      ]
+    },
+    "front": {
+      "status": "PASS",
+      "iou": 0.931202,
+      "threshold": 0.92,
+      "pixel_mismatch_percent_of_frame": 1.6385,
+      "pixel_mismatch_percent_of_union": 6.8798,
+      "reference_bbox_px": [
+        191,
+        150,
+        609,
+        490
+      ],
+      "model_bbox_px": [
+        188,
+        151,
+        612,
+        490
+      ],
+      "bbox_difference_px": [
+        -3,
+        1,
+        3,
+        0
+      ],
+      "render_size": [
+        800,
+        640
+      ]
+    },
+    "rear": {
+      "status": "PASS",
+      "iou": 0.944724,
+      "threshold": 0.9,
+      "pixel_mismatch_percent_of_frame": 1.3064,
+      "pixel_mismatch_percent_of_union": 5.5276,
+      "reference_bbox_px": [
+        191,
+        150,
+        609,
+        490
+      ],
+      "model_bbox_px": [
+        188,
+        151,
+        612,
+        490
+      ],
+      "bbox_difference_px": [
+        -3,
+        1,
+        3,
+        0
+      ],
+      "render_size": [
+        800,
+        640
+      ]
+    }
+  },
+  "baseline_delta": {
+    "side": 0.0,
+    "top": 0.0,
+    "front": 0.0,
+    "rear": 0.0
+  },
+  "method": "Actual opaque geometry renders from calibrated fixed cameras, no per-view fitting",
+  "source_mask_method": "Manual exterior landmark traces from reference_multiview.png; pixel coordinates in the original full sheet. Shadows excluded. Approximate illustrative source, not ground-truth CAD masks.",
+  "label": "final",
+  "input_state_hash": "eac1e635a6e981ebd322c901119f7e9673b36627ad299aaf53819beed688ff0e"
+}

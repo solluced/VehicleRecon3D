@@ -1,0 +1,871 @@
+{
+  "status": "PASS",
+  "phase": "VehicleRecon Studio v0.2 Multi-view consistency + live 3D cage",
+  "date": "2026-10-17",
+  "base_commit": "6f0a992dd2ddfed1418b7a2c3052fefd99135a2d",
+  "implementation_commit": "02d80b638aaa11e6ddab5c9cf17427a47f362d09",
+  "implementation_tree_sha256": "071a25dda0fb4ee201dee5376ce7fb545df88d500c329b420e1a3fd5aa2a3633",
+  "version": {
+    "studio": "0.2.0",
+    "core": "0.1.0",
+    "canonical_schema": 2,
+    "transport": "/api/v1"
+  },
+  "launch": "vehicle-recon studio --root F:/T/projects",
+  "definition_of_done": {
+    "Four-view workspace": "PASS",
+    "Explicit observation/world distinction": "PASS",
+    "Correspondence binding": "PASS",
+    "Safe world-landmark edits": "PASS",
+    "Multi-view XYZ proposal": "PASS",
+    "No automatic proposal application": "PASS",
+    "Per-view residuals": "PASS",
+    "Individual critical failures": "PASS",
+    "Heatmap": "PASS",
+    "Consistency panel": "PASS",
+    "Coverage display": "PASS",
+    "Source review UI": "PASS",
+    "Cage review UI": "PASS",
+    "Source rejection blocks surfaces": "PASS",
+    "Three.js cage preview": "PASS",
+    "2D/3D selection sync": "PASS",
+    "Constrained 3D landmark move": "PASS",
+    "Core-sampled curves": "PASS",
+    "Axle/wheelbase diagnostic": "PASS",
+    "SIDE/TOP ratio diagnostic": "PASS",
+    "Rectification state": "PASS",
+    "Canonical roundtrip": "PASS",
+    "Undo/redo": "PASS",
+    "Revision conflicts": "PASS",
+    "E2E passes": "PASS",
+    "Performance measured": "PASS",
+    "Save latency profiled": "PASS",
+    "Memory retention profiled": "PASS",
+    "Tesla unchanged": "PASS",
+    "Mark II untouched": "PASS"
+  },
+  "tests": {
+    "python": {
+      "tests": 277,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "passed": 277
+    },
+    "isolated_core": {
+      "tests": 232,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "passed": 232
+    },
+    "isolated_heavy_deselected": 5,
+    "frontend_passed": 32,
+    "browser": {
+      "startTime": "2026-10-17T11:43:16.582Z",
+      "duration": 172735.738,
+      "expected": 7,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "software_renderer_targeted": {
+      "startTime": "2026-10-17T11:55:55.690Z",
+      "duration": 116136.569,
+      "expected": 2,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "software_renderer_dense": {
+      "startTime": "2026-10-17T12:09:32.111Z",
+      "duration": 297156.463,
+      "expected": 2,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "final_ci_browser": {
+      "startTime": "2026-10-17T12:12:56.605Z",
+      "duration": 278158.371,
+      "expected": 7,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "local_matrix_runtime_commit": "554d099cafd4a652acb67e777333e65f13460217",
+    "final_ci_note": "Final checkpoint changes E2E synchronization/docs only; production bytes match the local full-matrix checkpoint. Remote CI runs the complete final harness.",
+    "warning": "Nonfailing Starlette TestClient/httpx deprecation; Vite lazy Three.js chunk >500 kB"
+  },
+  "ci": {
+    "conclusion": "success",
+    "databaseId": 39031601626,
+    "headSha": "02d80b638aaa11e6ddab5c9cf17427a47f362d09",
+    "jobs": [
+      {
+        "completedAt": "2026-10-17T12:12:56Z",
+        "conclusion": "success",
+        "databaseId": 117392991657,
+        "name": "backend",
+        "startedAt": "2026-10-17T12:12:19Z",
+        "status": "completed",
+        "steps": [
+          {
+            "completedAt": "2026-10-17T12:12:20Z",
+            "conclusion": "success",
+            "name": "Set up job",
+            "number": 1,
+            "startedAt": "2026-10-17T12:12:20Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T12:12:26Z",
+            "conclusion": "success",
+            "name": "Run actions/checkout@v4",
+            "number": 2,
+            "startedAt": "2026-10-17T12:12:20Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T12:12:26Z",
+            "conclusion": "success",
+            "name": "Run actions/setup-python@v5",
+            "number": 3,
+            "startedAt": "2026-10-17T12:12:26Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T12:12:39Z",
+            "conclusion": "success",
+            "name": "Run python -m pip install -e '.[test]' -e 'studio/backend[test]'",
+            "number": 4,
+            "startedAt": "2026-10-17T12:12:26Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T12:12:54Z",
+            "conclusion": "success",
+            "name": "Run python -m pytest studio/backend/tests -q",
+            "number": 5,
+            "startedAt": "2026-10-17T12:12:39Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T12:12:54Z",
+            "conclusion": "success",
+            "name": "Post Run actions/setup-python@v5",
+            "number": 9,
+            "startedAt": "2026-10-17T12:12:54Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T12:12:54Z",
+            "conclusion": "success",
+            "name": "Post Run actions/checkout@v4",
+            "number": 10,
+            "startedAt": "2026-10-17T12:12:54Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T12:12:54Z",
+            "conclusion": "success",
+            "name": "Complete job",
+            "number": 11,
+            "startedAt": "2026-10-17T12:12:54Z",
+            "status": "completed"
+          }
+        ],
+        "url": "https://github.com/solluced/VehicleRecon3D/actions/runs/39031601626/job/117392991657"
+      },
+      {
+        "completedAt": "2026-10-17T12:13:03Z",
+        "conclusion": "success",
+        "databaseId": 117392991787,
+        "name": "core",
+        "startedAt": "2026-10-17T12:12:20Z",
+        "status": "completed",
+        "steps": [
+          {
+            "completedAt": "2026-10-17T12:12:21Z",
+            "conclusion": "success",
+            "name": "Set up job",
+            "number": 1,
+            "startedAt": "2026-10-17T12:12:20Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T12:12:27Z",
+            "conclusion": "success",
+            "name": "Run actions/checkout@v4",
+            "number": 2,
+            "startedAt": "2026-10-17T12:12:21Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T12:12:27Z",
+            "conclusion": "success",
+            "name": "Run actions/setup-python@v5",
+            "number": 3,
+            "startedAt": "2026-10-17T12:12:27Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T12:12:36Z",
+            "conclusion": "success",
+            "name": "Run python -m pip install -e '.[test]'",
+            "number": 4,
+            "startedAt": "2026-10-17T12:12:27Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T12:12:59Z",
+            "conclusion": "success",
+            "name": "Run python -m pytest -m 'not blender and not integration' -q",
+            "number": 5,
+            "startedAt": "2026-10-17T12:12:36Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T12:12:59Z",
+            "conclusion": "success",
+            "name": "Run python -c \"import importlib.util; assert importlib.util.find_spec('fastapi') is None; assert importlib.util.find_spec('vehiclerecon_studio') is None\"",
+            "number": 6,
+            "startedAt": "2026-10-17T12:12:59Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T12:12:59Z",
+            "conclusion": "success",
+            "name": "Post Run actions/setup-python@v5",
+            "number": 11,
+            "startedAt": "2026-10-17T12:12:59Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T12:13:00Z",
+            "conclusion": "success",
+            "name": "Post Run actions/checkout@v4",
+            "number": 12,
+            "startedAt": "2026-10-17T12:12:59Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T12:13:00Z",
+            "conclusion": "success",
+            "name": "Complete job",
+            "number": 13,
+            "startedAt": "2026-10-17T12:13:00Z",
+            "status": "completed"
+          }
+        ],
+        "url": "https://github.com/solluced/VehicleRecon3D/actions/runs/39031601626/job/117392991787"
+      },
+      {
+        "completedAt": "2026-10-17T12:17:38Z",
+        "conclusion": "success",
+        "databaseId": 117392991791,
+        "name": "browser",
+        "startedAt": "2026-10-17T12:12:19Z",
+        "status": "completed",
+        "steps": [
+          {
+            "completedAt": "2026-10-17T12:12:20Z",
+            "conclusion": "success",
+            "name": "Set up job",
+            "number": 1,
+            "startedAt": "2026-10-17T12:12:20Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T12:12:27Z",
+            "conclusion": "success",
+            "name": "Run actions/checkout@v4",
+            "number": 2,
+            "startedAt": "2026-10-17T12:12:20Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T12:12:27Z",
+            "conclusion": "success",
+            "name": "Run actions/setup-python@v5",
+            "number": 3,
+            "startedAt": "2026-10-17T12:12:27Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T12:12:28Z",
+            "conclusion": "success",
+            "name": "Run actions/setup-node@v4",
+            "number": 4,
+            "startedAt": "2026-10-17T12:12:27Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T12:12:37Z",
+            "conclusion": "success",
+            "name": "Run python -m pip install -e '.[test]' -e 'studio/backend[test]'",
+            "number": 5,
+            "startedAt": "2026-10-17T12:12:28Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T12:12:56Z",
+            "conclusion": "success",
+            "name": "Run npm ci && npm run build && npx playwright install --with-deps chromium",
+            "number": 6,
+            "startedAt": "2026-10-17T12:12:37Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T12:17:34Z",
+            "conclusion": "success",
+            "name": "Run npm run e2e",
+            "number": 7,
+            "startedAt": "2026-10-17T12:12:56Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T12:17:35Z",
+            "conclusion": "success",
+            "name": "Run actions/upload-artifact@v4",
+            "number": 8,
+            "startedAt": "2026-10-17T12:17:34Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T12:17:35Z",
+            "conclusion": "success",
+            "name": "Post Run actions/setup-node@v4",
+            "number": 14,
+            "startedAt": "2026-10-17T12:17:35Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T12:17:36Z",
+            "conclusion": "success",
+            "name": "Post Run actions/setup-python@v5",
+            "number": 15,
+            "startedAt": "2026-10-17T12:17:35Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T12:17:36Z",
+            "conclusion": "success",
+            "name": "Post Run actions/checkout@v4",
+            "number": 16,
+            "startedAt": "2026-10-17T12:17:36Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T12:17:36Z",
+            "conclusion": "success",
+            "name": "Complete job",
+            "number": 17,
+            "startedAt": "2026-10-17T12:17:36Z",
+            "status": "completed"
+          }
+        ],
+        "url": "https://github.com/solluced/VehicleRecon3D/actions/runs/39031601626/job/117392991791"
+      },
+      {
+        "completedAt": "2026-10-17T12:12:36Z",
+        "conclusion": "success",
+        "databaseId": 117392991804,
+        "name": "frontend",
+        "startedAt": "2026-10-17T12:12:19Z",
+        "status": "completed",
+        "steps": [
+          {
+            "completedAt": "2026-10-17T12:12:21Z",
+            "conclusion": "success",
+            "name": "Set up job",
+            "number": 1,
+            "startedAt": "2026-10-17T12:12:20Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T12:12:28Z",
+            "conclusion": "success",
+            "name": "Run actions/checkout@v4",
+            "number": 2,
+            "startedAt": "2026-10-17T12:12:21Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T12:12:28Z",
+            "conclusion": "success",
+            "name": "Run actions/setup-python@v5",
+            "number": 3,
+            "startedAt": "2026-10-17T12:12:28Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T12:12:29Z",
+            "conclusion": "success",
+            "name": "Run actions/setup-node@v4",
+            "number": 4,
+            "startedAt": "2026-10-17T12:12:28Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T12:12:32Z",
+            "conclusion": "success",
+            "name": "Run npm ci",
+            "number": 5,
+            "startedAt": "2026-10-17T12:12:29Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T12:12:33Z",
+            "conclusion": "success",
+            "name": "Run npm test",
+            "number": 6,
+            "startedAt": "2026-10-17T12:12:32Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T12:12:34Z",
+            "conclusion": "success",
+            "name": "Run npm run build",
+            "number": 7,
+            "startedAt": "2026-10-17T12:12:33Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T12:12:35Z",
+            "conclusion": "success",
+            "name": "Post Run actions/setup-node@v4",
+            "number": 12,
+            "startedAt": "2026-10-17T12:12:34Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T12:12:35Z",
+            "conclusion": "success",
+            "name": "Post Run actions/setup-python@v5",
+            "number": 13,
+            "startedAt": "2026-10-17T12:12:35Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T12:12:35Z",
+            "conclusion": "success",
+            "name": "Post Run actions/checkout@v4",
+            "number": 14,
+            "startedAt": "2026-10-17T12:12:35Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T12:12:35Z",
+            "conclusion": "success",
+            "name": "Complete job",
+            "number": 15,
+            "startedAt": "2026-10-17T12:12:35Z",
+            "status": "completed"
+          }
+        ],
+        "url": "https://github.com/solluced/VehicleRecon3D/actions/runs/39031601626/job/117392991804"
+      }
+    ],
+    "status": "completed",
+    "url": "https://github.com/solluced/VehicleRecon3D/actions/runs/39031601626"
+  },
+  "multi_view": {
+    "layouts": [
+      "single",
+      "arbitrary two-up",
+      "four",
+      "2D+3D",
+      "four+3D"
+    ],
+    "independent_viewports": true,
+    "linked_selection_optional": true,
+    "semantic_focus_optional": true,
+    "exact_calibrated_source_hash": true,
+    "projection_authority": "Python core CalibrationTransform, no TypeScript reconstruction math",
+    "three": "0.186.1",
+    "samples": "Core curves/sections/wheels; AUTO approximation explicitly labelled",
+    "symmetry": "Core-provided mirror display only; no invented mirror edit semantics",
+    "gizmo": "X/Y/Z/XY/XZ/YZ; local preview; one typed command at release"
+  },
+  "correspondence": {
+    "source_world_modes_explicit": true,
+    "points_and_stable_knots": true,
+    "tolerance_and_policy_explicit": true,
+    "solver": "Deterministic Huber IRLS constrained least squares; SVD nullspace/rank/condition checks",
+    "proposal_only": true,
+    "server_revision_tab_ttl_fence": true,
+    "individual_failures_visible": true,
+    "coverage": "Per world entity and stable cage point",
+    "heat_policy": "Core residual/declared tolerance: NEAR >=0.8, FAIL >1, UNKNOWN unavailable"
+  },
+  "reviews": {
+    "source": [
+      "ACCEPTED",
+      "NEEDS_CORRECTION",
+      "INCONSISTENT_SOURCE"
+    ],
+    "cage": [
+      "ACCEPTED",
+      "NEEDS_CORRECTION"
+    ],
+    "explicit_reviewer_note_current_subject_revision": true,
+    "existing_core_services": true,
+    "reject_blocks_surface_gate": true,
+    "consistent_fixture_acceptance": "PASS",
+    "roundtrip": {
+      "status": "PASS",
+      "revision": "f98f972135c19a3c95d2db5f50288ad6652b00bba1c4e5a93b98273fa620e5a3",
+      "stable_ids": [
+        "obs_roof_side",
+        "obs_roof_top",
+        "obs_roof_front",
+        "obs_roof_rear"
+      ],
+      "world_landmarks": {
+        "roof_corner": [
+          0,
+          0.49999999999999994,
+          1.0000000000000002
+        ]
+      },
+      "source_review": "INCONSISTENT_SOURCE",
+      "source_cage_acceptance": true,
+      "refresh": true,
+      "restart": true,
+      "external_world_conflict": true,
+      "browser_errors": []
+    }
+  },
+  "performance": {
+    "status": "PASS",
+    "image": [
+      3840,
+      2160
+    ],
+    "entities": 5000,
+    "viewports_2d": 4,
+    "viewports_3d": 1,
+    "world_landmarks": 17,
+    "cage_curves": 9,
+    "first_display_ms": 1509,
+    "viewport": {
+      "width": 1500,
+      "height": 1000
+    },
+    "device_pixel_ratio": 1,
+    "browser": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+    "cpu": "AMD Ryzen 7 5800X 8-Core Processor             ",
+    "system_memory_bytes": 34277924864,
+    "two_d": {
+      "side_pan": {
+        "frame_p95_ms": 5,
+        "draw_p95_ms": 0.5999999977648258,
+        "fps": 236.5930599389938,
+        "samples": 60
+      },
+      "side_zoom": {
+        "frame_p95_ms": 7,
+        "draw_p95_ms": 0.3999999985098839,
+        "fps": 189.5135818080341,
+        "samples": 60
+      },
+      "top_pan": {
+        "frame_p95_ms": 4.399999998509884,
+        "draw_p95_ms": 0.5,
+        "fps": 239.9040383867902,
+        "samples": 60
+      },
+      "top_zoom": {
+        "frame_p95_ms": 6,
+        "draw_p95_ms": 0.4000000022351742,
+        "fps": 219.21812202903428,
+        "samples": 60
+      },
+      "front_pan": {
+        "frame_p95_ms": 4.5,
+        "draw_p95_ms": 0.5,
+        "fps": 241.54589371763328,
+        "samples": 60
+      },
+      "front_zoom": {
+        "frame_p95_ms": 6.300000000745058,
+        "draw_p95_ms": 0.3999999985098839,
+        "fps": 212.53985122434793,
+        "samples": 60
+      },
+      "rear_pan": {
+        "frame_p95_ms": 4.5,
+        "draw_p95_ms": 0.4000000022351742,
+        "fps": 239.80815347793234,
+        "samples": 60
+      },
+      "rear_zoom": {
+        "frame_p95_ms": 7.199999999254942,
+        "draw_p95_ms": 0.3999999985098839,
+        "fps": 210.97046413612648,
+        "samples": 60
+      }
+    },
+    "three_d_orbit": {
+      "frame_p95_ms": 4.5,
+      "draw_p95_ms": 0.6999999992549419,
+      "fps": 240.20589076402334,
+      "samples": 84
+    },
+    "three_d_drag_preview": {
+      "frame_p95_ms": 4.399999998509884,
+      "draw_p95_ms": 0.5999999977648258,
+      "fps": 240.13722126878525,
+      "samples": 84
+    },
+    "selection_visible_p95_ms": 45,
+    "canonical_edits": 8,
+    "persistence_p95_ms": 2679,
+    "projection_and_residual_refresh_p95_ms": 1491,
+    "commit_and_refresh_p95_ms": 4170,
+    "browser_heap_before_bytes": 10153260,
+    "browser_heap_after_gc_bytes": 16055356,
+    "backend_rss_before_bytes": 84656128,
+    "backend_rss_after_bytes": 101044224,
+    "browser_errors": [],
+    "input": "Browser pointer and wheel events through production Konva/Three.js handlers; typed world edits through visible UI. 100-edit backend retention is profiled separately."
+  },
+  "source_editor": {
+    "status": "PASS",
+    "image": [
+      3840,
+      2160
+    ],
+    "canonical_entities": 5000,
+    "display_layers": 20,
+    "device_pixel_ratio": 1,
+    "viewport": {
+      "width": 1500,
+      "height": 1000
+    },
+    "browser": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+    "cpu": "AMD Ryzen 7 5800X 8-Core Processor             ",
+    "logical_cpus": 16,
+    "system_memory_bytes": 34277924864,
+    "input": "Scripted browser pointer/wheel events through production Konva handlers; canonical property edits via visible UI",
+    "first_editor_display_ms": 909,
+    "pan": {
+      "samples": 114,
+      "frame_p50_ms": 12.699999999254942,
+      "frame_p95_ms": 16.300000000745058,
+      "draw_p95_ms": 3.900000002235174,
+      "fps": 77.86353391153881
+    },
+    "zoom": {
+      "samples": 114,
+      "frame_p50_ms": 13.899999998509884,
+      "frame_p95_ms": 22.600000001490116,
+      "draw_p95_ms": 3.5,
+      "fps": 65.88072122058378
+    },
+    "drag_frame_p95_ms": 23.599999997764826,
+    "picking_p95_ms": 0.30000000074505806,
+    "selection_visible_p95_ms": 32.400000002235174,
+    "repeated_real_edits": 8,
+    "commit_with_verification_p95_ms": 6279,
+    "browser_heap_before_bytes": 6788036,
+    "browser_heap_after_gc_bytes": 11749556,
+    "browser_heap_growth_bytes": 4961520,
+    "backend_rss_before_bytes": 80654336,
+    "backend_rss_after_bytes": 86536192,
+    "browser_errors": []
+  },
+  "save_comparison": {
+    "baseline_commit": "6f0a992dd2ddfed1418b7a2c3052fefd99135a2d",
+    "baseline_p95_ms": 3389,
+    "final_p95_ms": 6279,
+    "samples_each": 8,
+    "status": "REGRESSION",
+    "interpretation": "Same nominal source-editor workload; final p95 is slower. No speedup claim. Eight samples do not isolate OS/cache variance. Backend-only and multi-view world-edit timings are separate workloads."
+  },
+  "retention": {
+    "profile": "retention_100_edits.json",
+    "baseline_rss_bytes": 79855616,
+    "sampled_peak_rss_bytes": 157274112,
+    "process_peak_rss_bytes": 202928128,
+    "idle_gc_rss_bytes": 148963328,
+    "idle_seconds": 1,
+    "history_edges": 8,
+    "history_unique_bytes": 32006371,
+    "history_limit": "100 edges / 32 MiB per live session",
+    "replay_entries": 3,
+    "replay_serialized_bytes": 6634231,
+    "replay_limit": "128 entries / 8 MiB",
+    "schema_entries": 5104,
+    "schema_bytes": 2133071,
+    "schema_limit": "8192 entries / 8 MiB",
+    "other": "Latest snapshot/analysis per project, allocator/request objects; no backend decoded image cache",
+    "interpretation": "Sampled RSS plateaus during this finite 100-edit window; not an unlimited-session leak certification",
+    "core_defaults": "CLI history remains unlimited unless limits are explicitly configured"
+  },
+  "profiling": {
+    "unprofiled_backend_p95_seconds": 1.7069188000004942,
+    "response_bytes": 2211342,
+    "phases": {
+      "json_serialization": {
+        "calls": 150111,
+        "self_seconds": 0.36800790000000005,
+        "cumulative_seconds": 2.1441286
+      },
+      "schema_validation": {
+        "calls": 26,
+        "self_seconds": 0.0008734000000000001,
+        "cumulative_seconds": 3.0010749000000003
+      },
+      "semantic_validation": {
+        "calls": 5,
+        "self_seconds": 0.0680066,
+        "cumulative_seconds": 0.285521
+      },
+      "revision_hashing": {
+        "calls": 12,
+        "self_seconds": 0.001152,
+        "cumulative_seconds": 0.0858812
+      },
+      "transaction_commit": {
+        "calls": 1,
+        "self_seconds": 0.0026865,
+        "cumulative_seconds": 0.7298099
+      },
+      "fsync": {
+        "calls": 4,
+        "self_seconds": 0.0082822,
+        "cumulative_seconds": 0.0082822
+      },
+      "snapshot_refresh": {
+        "calls": 1,
+        "self_seconds": 0.0008147,
+        "cumulative_seconds": 0.9747333
+      }
+    },
+    "note": "First request cProfile timings overlap and include instrumentation; subsequent timing samples are unprofiled. JSON includes canonical snapshot; no image decode/cache in this edit window.",
+    "safe_changes": "Validated JSONResponse avoids duplicate framework conversion; shared delta history and bounded replay retention; all schema/semantic/revision/transaction/fsync checks preserved",
+    "remaining_bottleneck": "Canonical validation and full snapshot payload; final browser save/readback regression recorded"
+  },
+  "tesla": {
+    "stages": {
+      "preflight": "PASS",
+      "references": "PASS",
+      "calibration": "PASS",
+      "overlay": "PASS",
+      "cage": "PASS",
+      "surfaces": "PASS",
+      "silhouette": "PASS",
+      "details": "PASS",
+      "geometry": "PASS",
+      "presentation": "PASS",
+      "export": "PASS",
+      "glb_verify": "PASS",
+      "viewer": "PASS",
+      "delivery": "PASS"
+    },
+    "iou": {
+      "side": 0.95723,
+      "top": 0.936083,
+      "front": 0.931202,
+      "rear": 0.944724
+    },
+    "GLB": "PASS",
+    "viewer_desktop": "PASS",
+    "viewer_mobile": "PASS",
+    "control_regression": "PASS",
+    "positions_normals_indices_nodes_exact": true,
+    "UV_max_difference": 5.960464477539063e-08,
+    "proofs_byte_identical": true,
+    "manifest_valid": true,
+    "cold_run": "python -m vehiclerecon run build/studio02-tesla-cold --no-cache",
+    "seed": "Published v1 project.json/input/generated plus existing explicit review only; no outputs/cache/proofs seeded",
+    "later_changes": "v2 authoring/optional Studio only; final full Python run uses final production code"
+  },
+  "mark2": {
+    "unchanged": true,
+    "source": "INCONSISTENT_SOURCE",
+    "portability": "BLOCKED",
+    "cage": "FAIL (existing)",
+    "known_conflict_visible_in_studio": true,
+    "surfaces": "NOT STARTED",
+    "details": "NOT STARTED",
+    "rejected_rectification_active": false,
+    "sha256_checks": {
+      "project.json": true,
+      "generated/calibration.json": true,
+      "generated/cage.json": true,
+      "generated/surface_graph.json": true,
+      "generated/details.json": true,
+      "output/mark2_cage_corrected.blend": true,
+      "input/multiview.png": true,
+      "input/control_overlay.png": true,
+      "input/surface_target.png": true
+    }
+  },
+  "deferred": [
+    "CV",
+    "SAM",
+    "ONNX",
+    "Smart Edge",
+    "Magic Select",
+    "Automatic wheel detection",
+    "Full rectification editor",
+    "Surface graph editor",
+    "Blender Render button",
+    "Cyberpunk adapter"
+  ],
+  "limitations": [
+    "Measured source-editor save/readback regression remains; validation/durability are preserved.",
+    "History/replay byte budgets count serialized retained bytes, not total Python RSS.",
+    "Live undo, leases and idempotency do not survive restart; canonical documents and reviews do.",
+    "AUTO cage sampling is approximate and labelled; symmetry counterpart editing is display only.",
+    "Independent Bezier tangent editing and unrestricted cage construction remain outside this phase.",
+    "Mark II remains blocked; Studio completion does not mean a finished vehicle asset."
+  ],
+  "blockers": [],
+  "evidence_sha256": {
+    "baseline_profile_3_edits.json": "db243696001941e0e03d8b97e5248d2792959b28ff997c345205390acd6bf942",
+    "baseline_source_editor_performance.json": "5dd86edfbb4155b2a45c7fad1d38661257ad17bed508ce548d0d1305b253109a",
+    "browser_software_dense.json": "6dd535158f8f1e740fde130d1567244974b3fd5fe73befc878d60ca2bef2043c",
+    "browser_software_targeted.json": "00d882f87a93ccd881979cd830927c4df7f118a0ed832563f4262fddc9f433ee",
+    "browser_tests.json": "edd89ae9c5da9204dcc75c321f7bcac85ad306ad852f8f86530e5fbe10afe23c",
+    "ci.json": "c13cd8ef697b29f9cb5280fe9c0e5e7b893c8b2ecedd96959c5eb133de9d15be",
+    "ci_browser_tests.json": "523a7b7188b779e6c9fd25593a606ab1f0ecf2d717c29cdc456462633c96cf8f",
+    "ci_multiview_performance.json": "42e32c38778550731186eee6da3c53f804145a2d8c6bf2881c2b21d34d93a243",
+    "ci_source_editor_performance.json": "c1b96ad7512c3af684f8d9eab64dd6cbc1976751bb7a9889d310451f64b50c44",
+    "core_isolation.json": "ea3d0be9119dc1e020a0d412d76934f0c7c96aaf638c2c08e740dc60835c7a4f",
+    "core_only.xml": "293b4ceb3bf3429b779a37de719e063db407543ace6afc139a2db79ab93c8fe8",
+    "frontend_reproducibility.json": "36cb893cf53f59acff25c5e1a66f22d688faf6e2c8a25218a3fa63a18a080a36",
+    "frontend_tests.json": "ef2b74375c2ca650ae340fe0a4023a0fae5c486d94d145a74a8f9d59feb7242b",
+    "gizmo.png": "53be5ae4cd1542099640f3665de57f8253da785b373aa53744e2f4fd232cc75e",
+    "glb_comparison.json": "4e5fe44aa4efbbcff53fd2a2930c97ecc4e7a9790727b8c02629d801d7efe650",
+    "local_software_multiview_performance.json": "9a956098945c491259ef27cd1f13196033ae6af9854c015703ed48149df297d8",
+    "local_software_source_editor_performance.json": "dcd7e4c822cec758aa550ffe42edad27818a4bd9989c161946ab10b7e718fe38",
+    "mark2_readonly.png": "dcd7887b4a8f6e9610e3cac862758bed3ddf2f6a9407e62ea5d446fde0b375d7",
+    "multiview.png": "dc4eb7c57b7465cfee9723df16056fe3016404c77f3a1e84a427a2cd2212dac8",
+    "multiview_performance.json": "a24b02af66ef23af754e6d6ae8c3959eaf5860728b1d00b4c8ab8fa80e2c8669",
+    "multiview_performance.png": "2539746f71aea6b4eba357207b86c161ffaaa9b0e1dae103ca8b49bbd85befcc",
+    "packaging.json": "a3761a035ab38a3d9d703117b5870c3b38b41b2bf6f2eb7a4cfba9d90ec762d9",
+    "protected.json": "96b360b57ffb203de3ab14d055e4c365a5e76644127833f16bfe4115173f65d0",
+    "python.xml": "226b42544fd3e159acf95c16a376bf88298059df4eaac6691994b3a681725434",
+    "README.md": "51ba53111efb456558fc4f56f014c6b762947978dae769aef88a43eab70ecb91",
+    "retention_100_edits.json": "ce3906592fc8f1cae9280fa07bfce5b917fafe50887a3f9839b175bd9a9e3719",
+    "roundtrip.json": "9c09a3f3a44fe1dc2ca6809eacace5e12a99b8becf58eed230aa1d19da389c9f",
+    "runtime_equivalence.json": "930c5e20e1a962b2254f1a74dfc833141b6c4a05d684d45e0d2f41cd53ca19de",
+    "save_comparison.json": "7e6cb0eb715948905e64b1f9231a9f451acdb0584f396021411d5cba83e0c0b2",
+    "source_editor_desktop.png": "77b40f540ef8b03e2d1389d8c4884b98f85d565ce985946fb35741e3e92f61aa",
+    "source_editor_laptop_dpr2.png": "0468e766f4b1775d18a82fd598a24d3a83c61bbf68bd4f164a12b4fb26536fce",
+    "source_editor_performance.json": "5f5c24cef987c2008d9ef847056d1bc6840309c6ba1893d5583c334af4a371e8",
+    "source_editor_performance.png": "f8b2e899da81726d79d2249331273c0dcc32e34677e144d909c94a63af242ad5",
+    "tesla/calibration_migration_report.json": "149c6db413db9425f5d606a5d25e84a10dabc0d1dcbb48aac7e23ce6fec06372",
+    "tesla/control_regression.json": "839bf3eb347bc37e7682f3b792f05154a1dd0759c6c48ebfb6893d84f7c8186c",
+    "tesla/delivery_report.json": "53635d2e84b69e46a4a0267557930a9ac039654fcf79866be16c04be4e5a056d",
+    "tesla/final_migration_report.json": "cc2112ae33915a14b1b624ee31cb0a4ac8c29f951fd991c3d0fa6a88a090f583",
+    "tesla/geometry_audit.json": "dd0c0218f54be85f7288c4a2a6381374106a1c0e8af2c5bf5e181158d309b0fe",
+    "tesla/glb_geometry_report.json": "220b94f79be87df36b783f72536e0aec295a5d9d43a354b89b52f070433c52e9",
+    "tesla/pipeline_report.json": "b7f5b1b399e478d9ec439ae4e22cc5f6a2caaac0fa1d04b00f3f7512e0cf0cae",
+    "tesla/viewer_qa.json": "81dbb8031a16b7a615fb2af4bba7db7da625d72f417248a0c29274e86f34f006"
+  }
+}

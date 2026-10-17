@@ -1,0 +1,23 @@
+{
+  "status": "PASS",
+  "revision": "f98f972135c19a3c95d2db5f50288ad6652b00bba1c4e5a93b98273fa620e5a3",
+  "stable_ids": [
+    "obs_roof_side",
+    "obs_roof_top",
+    "obs_roof_front",
+    "obs_roof_rear"
+  ],
+  "world_landmarks": {
+    "roof_corner": [
+      0,
+      0.49999999999999994,
+      1.0000000000000002
+    ]
+  },
+  "source_review": "INCONSISTENT_SOURCE",
+  "source_cage_acceptance": true,
+  "refresh": true,
+  "restart": true,
+  "external_world_conflict": true,
+  "browser_errors": []
+}

@@ -1,0 +1,563 @@
+{
+  "label": "final",
+  "canonical_edits": 100,
+  "entities": 5000,
+  "timing_seconds": [
+    4.633450499999526,
+    1.463659799999732,
+    1.6396270000004733,
+    1.554510999998456,
+    1.5593590999997105,
+    1.7930488000001787,
+    1.6829355000008945,
+    1.5363593000001856,
+    1.5242522000007739,
+    1.5379648999987694,
+    1.685069699999076,
+    1.5959720000009838,
+    1.5154726000000664,
+    1.6840452999986155,
+    1.6023301999994146,
+    1.7944194000010611,
+    1.527314099999785,
+    1.5652138000004925,
+    1.5101563000007445,
+    1.5288822000002256,
+    1.5424977999991825,
+    1.5179487000004883,
+    1.6791611000007833,
+    1.5000752000014472,
+    1.5882928999999422,
+    1.5371746000000712,
+    1.5693659000007756,
+    1.6328653000000486,
+    1.5654520999996748,
+    1.5336387000006653,
+    1.5246827999999368,
+    1.5611354000011488,
+    1.604711199999656,
+    1.6579594000013458,
+    1.5677775000003749,
+    1.594700699999521,
+    1.5670246999998199,
+    1.4975291999999172,
+    1.5216476999994484,
+    1.6162576999995508,
+    1.5751135000009526,
+    1.5252289000000019,
+    1.513169800000469,
+    1.5051999999996042,
+    1.5687885000006645,
+    1.5322691000001214,
+    1.5796915999999328,
+    1.5532712999993237,
+    1.5487678999998025,
+    1.5401906999995845,
+    1.5084769999994023,
+    1.642150199999378,
+    1.6805652999992162,
+    1.6468437999992602,
+    1.5237249999991036,
+    1.531110699999772,
+    1.601714799999172,
+    1.5226246999991417,
+    1.7069188000004942,
+    1.5286495000000286,
+    1.5771819000001415,
+    1.6308791000010388,
+    1.5158767999982956,
+    1.5394068000005063,
+    1.580447300000742,
+    1.6259253999996872,
+    1.6865911000004417,
+    1.6421645000009448,
+    1.5926958000000013,
+    1.6659801000005245,
+    1.7262499000007665,
+    1.6244447999997647,
+    1.537034400000266,
+    1.701429200000348,
+    1.5696747999991203,
+    1.583333999999013,
+    1.5265073999999004,
+    1.5333969999992405,
+    1.5852117000013095,
+    1.5150937999987946,
+    1.6043179999996937,
+    1.5672704000007798,
+    1.69645490000039,
+    1.6119269999999233,
+    1.6176424999994197,
+    1.5867949000003136,
+    1.517339500000162,
+    1.5562902000001486,
+    1.5584195999999793,
+    1.5368025000007037,
+    1.5715860000000248,
+    1.5898668999998335,
+    1.652415900000051,
+    1.5951999000008072,
+    1.5669653999993898,
+    1.628688400000101,
+    1.5347476000006282,
+    1.5964583000004495,
+    1.5371725000004517,
+    1.568907599999875
+  ],
+  "p95_seconds": 1.7069188000004942,
+  "rss_baseline_bytes": 79855616,
+  "rss_peak_sampled_bytes": 157274112,
+  "rss_after_gc_bytes": 148963328,
+  "rss_samples": [
+    {
+      "edits": 10,
+      "rss_bytes": 155283456
+    },
+    {
+      "edits": 20,
+      "rss_bytes": 156303360
+    },
+    {
+      "edits": 30,
+      "rss_bytes": 152539136
+    },
+    {
+      "edits": 40,
+      "rss_bytes": 154439680
+    },
+    {
+      "edits": 50,
+      "rss_bytes": 151420928
+    },
+    {
+      "edits": 60,
+      "rss_bytes": 155463680
+    },
+    {
+      "edits": 70,
+      "rss_bytes": 153686016
+    },
+    {
+      "edits": 80,
+      "rss_bytes": 155574272
+    },
+    {
+      "edits": 90,
+      "rss_bytes": 157274112
+    },
+    {
+      "edits": 100,
+      "rss_bytes": 151175168
+    }
+  ],
+  "undo_entries": 8,
+  "idempotency_entries": 3,
+  "profile": [
+    {
+      "file": "workspace.py",
+      "line": 190,
+      "function": "mutate",
+      "calls": 1,
+      "self_seconds": 0.0046642,
+      "cumulative_seconds": 4.602348200000001
+    },
+    {
+      "file": "workspace.py",
+      "line": 47,
+      "function": "validate",
+      "calls": 5,
+      "self_seconds": 0.0022691,
+      "cumulative_seconds": 3.2447443000000002
+    },
+    {
+      "file": "project.py",
+      "line": 36,
+      "function": "validate",
+      "calls": 26,
+      "self_seconds": 0.0008734000000000001,
+      "cumulative_seconds": 3.0010749000000003
+    },
+    {
+      "file": "service.py",
+      "line": 55,
+      "function": "apply",
+      "calls": 1,
+      "self_seconds": 0.0025036000000000004,
+      "cumulative_seconds": 2.8078371
+    },
+    {
+      "file": "validators.py",
+      "line": 349,
+      "function": "iter_errors",
+      "calls": 50,
+      "self_seconds": 0.0001388,
+      "cumulative_seconds": 2.4791723
+    },
+    {
+      "file": "validators.py",
+      "line": 396,
+      "function": "descend",
+      "calls": 56545,
+      "self_seconds": 0.1171465,
+      "cumulative_seconds": 2.4782932
+    },
+    {
+      "file": "_keywords.py",
+      "line": 290,
+      "function": "properties",
+      "calls": 425,
+      "self_seconds": 0.0009242,
+      "cumulative_seconds": 2.4777344
+    },
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<built-in method builtins.sorted>",
+      "calls": 72,
+      "self_seconds": 0.000375,
+      "cumulative_seconds": 2.4008224
+    },
+    {
+      "file": "_keywords.py",
+      "line": 59,
+      "function": "items",
+      "calls": 114,
+      "self_seconds": 0.017477200000000002,
+      "cumulative_seconds": 2.3816355000000002
+    },
+    {
+      "file": "workspace.py",
+      "line": 13,
+      "function": "__init__",
+      "calls": 3,
+      "self_seconds": 3.77e-05,
+      "cumulative_seconds": 2.2278882
+    },
+    {
+      "file": "workspace.py",
+      "line": 18,
+      "function": "_load",
+      "calls": 3,
+      "self_seconds": 0.0060917,
+      "cumulative_seconds": 2.2269691000000003
+    },
+    {
+      "file": "_keywords.py",
+      "line": 274,
+      "function": "ref",
+      "calls": 25261,
+      "self_seconds": 0.028035200000000003,
+      "cumulative_seconds": 2.1346626
+    },
+    {
+      "file": "validators.py",
+      "line": 459,
+      "function": "_validate_reference",
+      "calls": 25292,
+      "self_seconds": 0.0176534,
+      "cumulative_seconds": 1.1999474
+    },
+    {
+      "file": "_core.py",
+      "line": 653,
+      "function": "lookup",
+      "calls": 25292,
+      "self_seconds": 0.061316100000000005,
+      "cumulative_seconds": 1.1822940000000002
+    },
+    {
+      "file": "__init__.py",
+      "line": 183,
+      "function": "dumps",
+      "calls": 50037,
+      "self_seconds": 0.0632945,
+      "cumulative_seconds": 1.0065961
+    },
+    {
+      "file": "workspace.py",
+      "line": 136,
+      "function": "snapshot",
+      "calls": 1,
+      "self_seconds": 0.0008147,
+      "cumulative_seconds": 0.9747333
+    },
+    {
+      "file": "encoder.py",
+      "line": 183,
+      "function": "encode",
+      "calls": 50037,
+      "self_seconds": 0.0951334,
+      "cumulative_seconds": 0.9279361
+    },
+    {
+      "file": "workspace.py",
+      "line": 85,
+      "function": "session",
+      "calls": 1,
+      "self_seconds": 4.000000000000001e-06,
+      "cumulative_seconds": 0.7576533000000001
+    },
+    {
+      "file": "workspace.py",
+      "line": 91,
+      "function": "new_session",
+      "calls": 1,
+      "self_seconds": 9.100000000000001e-06,
+      "cumulative_seconds": 0.7576493000000001
+    },
+    {
+      "file": "service.py",
+      "line": 32,
+      "function": "__init__",
+      "calls": 1,
+      "self_seconds": 0.0023267,
+      "cumulative_seconds": 0.7495205
+    },
+    {
+      "file": "transactions.py",
+      "line": 101,
+      "function": "commit",
+      "calls": 1,
+      "self_seconds": 0.0026865,
+      "cumulative_seconds": 0.7298099
+    },
+    {
+      "file": "schema_dispatch.py",
+      "line": 56,
+      "function": "one_of",
+      "calls": 25001,
+      "self_seconds": 0.2222059,
+      "cumulative_seconds": 0.7243463
+    },
+    {
+      "file": "project.py",
+      "line": 15,
+      "function": "finite",
+      "calls": 797614,
+      "self_seconds": 0.4125225,
+      "cumulative_seconds": 0.6269941
+    },
+    {
+      "file": "service.py",
+      "line": 120,
+      "function": "_flush",
+      "calls": 1,
+      "self_seconds": 2.1000000000000002e-05,
+      "cumulative_seconds": 0.6248417
+    },
+    {
+      "file": "service.py",
+      "line": 16,
+      "function": "_bytes",
+      "calls": 2,
+      "self_seconds": 0.0008252,
+      "cumulative_seconds": 0.6247698
+    },
+    {
+      "file": "encoder.py",
+      "line": 414,
+      "function": "_iterencode",
+      "calls": 345359,
+      "self_seconds": 0.0627536,
+      "cumulative_seconds": 0.5972418
+    },
+    {
+      "file": "encoder.py",
+      "line": 334,
+      "function": "_iterencode_dict",
+      "calls": 1785759,
+      "self_seconds": 0.3722944,
+      "cumulative_seconds": 0.5344849
+    },
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<built-in method builtins.isinstance>",
+      "calls": 3685911,
+      "self_seconds": 0.34670110000000004,
+      "cumulative_seconds": 0.3725259
+    },
+    {
+      "file": "_core.py",
+      "line": 254,
+      "function": "pointer",
+      "calls": 25037,
+      "self_seconds": 0.1150227,
+      "cumulative_seconds": 0.3524895
+    },
+    {
+      "file": "parse.py",
+      "line": 559,
+      "function": "urljoin",
+      "calls": 25261,
+      "self_seconds": 0.0506298,
+      "cumulative_seconds": 0.34385560000000004
+    },
+    {
+      "file": "project.py",
+      "line": 26,
+      "function": "read_json",
+      "calls": 437,
+      "self_seconds": 0.0029735,
+      "cumulative_seconds": 0.3335417
+    },
+    {
+      "file": "schema_dispatch.py",
+      "line": 26,
+      "function": "cache_key",
+      "calls": 25000,
+      "self_seconds": 0.0522661,
+      "cumulative_seconds": 0.3045581
+    },
+    {
+      "file": "contracts.py",
+      "line": 76,
+      "function": "semantic_check",
+      "calls": 5,
+      "self_seconds": 0.0680066,
+      "cumulative_seconds": 0.285521
+    },
+    {
+      "file": "encoder.py",
+      "line": 278,
+      "function": "_iterencode_list",
+      "calls": 370119,
+      "self_seconds": 0.0855583,
+      "cumulative_seconds": 0.28072410000000003
+    },
+    {
+      "file": "validators.py",
+      "line": 339,
+      "function": "evolve",
+      "calls": 56528,
+      "self_seconds": 0.12229670000000001,
+      "cumulative_seconds": 0.26545620000000003
+    },
+    {
+      "file": "parse.py",
+      "line": 628,
+      "function": "urldefrag",
+      "calls": 25230,
+      "self_seconds": 0.040491400000000004,
+      "cumulative_seconds": 0.22454870000000002
+    },
+    {
+      "file": "parse.py",
+      "line": 525,
+      "function": "urlunparse",
+      "calls": 50267,
+      "self_seconds": 0.0434985,
+      "cumulative_seconds": 0.21301550000000002
+    },
+    {
+      "file": "encoder.py",
+      "line": 205,
+      "function": "iterencode",
+      "calls": 50037,
+      "self_seconds": 0.20958000000000002,
+      "cumulative_seconds": 0.20959640000000002
+    },
+    {
+      "file": "parse.py",
+      "line": 374,
+      "function": "urlparse",
+      "calls": 75528,
+      "self_seconds": 0.11854750000000001,
+      "cumulative_seconds": 0.2080516
+    },
+    {
+      "file": "parse.py",
+      "line": 119,
+      "function": "_coerce_args",
+      "calls": 227068,
+      "self_seconds": 0.1508983,
+      "cumulative_seconds": 0.1933146
+    },
+    {
+      "file": "__init__.py",
+      "line": 299,
+      "function": "loads",
+      "calls": 471,
+      "self_seconds": 0.0014482000000000002,
+      "cumulative_seconds": 0.1785643
+    },
+    {
+      "file": "decoder.py",
+      "line": 333,
+      "function": "decode",
+      "calls": 471,
+      "self_seconds": 0.0009493,
+      "cumulative_seconds": 0.1756308
+    },
+    {
+      "file": "decoder.py",
+      "line": 344,
+      "function": "raw_decode",
+      "calls": 471,
+      "self_seconds": 0.1736694,
+      "cumulative_seconds": 0.1736694
+    },
+    {
+      "file": "contracts.py",
+      "line": 10,
+      "function": "crop_identity",
+      "calls": 25004,
+      "self_seconds": 0.008392100000000001,
+      "cumulative_seconds": 0.1736599
+    },
+    {
+      "file": "manifest.py",
+      "line": 19,
+      "function": "digest_data",
+      "calls": 25019,
+      "self_seconds": 0.0156659,
+      "cumulative_seconds": 0.16565760000000002
+    }
+  ],
+  "profile_total_seconds": 4.572179,
+  "history_bytes": 32006371,
+  "idempotency_bytes": 6634231,
+  "rss_peak_process_bytes": 202928128,
+  "idle_seconds": 1,
+  "profile_phases": {
+    "json_serialization": {
+      "calls": 150111,
+      "self_seconds": 0.36800790000000005,
+      "cumulative_seconds": 2.1441286
+    },
+    "schema_validation": {
+      "calls": 26,
+      "self_seconds": 0.0008734000000000001,
+      "cumulative_seconds": 3.0010749000000003
+    },
+    "semantic_validation": {
+      "calls": 5,
+      "self_seconds": 0.0680066,
+      "cumulative_seconds": 0.285521
+    },
+    "revision_hashing": {
+      "calls": 12,
+      "self_seconds": 0.001152,
+      "cumulative_seconds": 0.0858812
+    },
+    "transaction_commit": {
+      "calls": 1,
+      "self_seconds": 0.0026865,
+      "cumulative_seconds": 0.7298099
+    },
+    "fsync": {
+      "calls": 4,
+      "self_seconds": 0.0082822,
+      "cumulative_seconds": 0.0082822
+    },
+    "snapshot_refresh": {
+      "calls": 1,
+      "self_seconds": 0.0008147,
+      "cumulative_seconds": 0.9747333
+    }
+  },
+  "last_response_payload_bytes": 2211342,
+  "schema_cache_entries": 5104,
+  "schema_cache_bytes": 2133071,
+  "phase_note": "First request cProfile timings overlap and include instrumentation; subsequent timing samples are unprofiled. JSON includes canonical snapshot; no image decode/cache in this edit window."
+}

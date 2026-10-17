@@ -1,0 +1,8 @@
+{
+  "baseline_commit": "6f0a992dd2ddfed1418b7a2c3052fefd99135a2d",
+  "baseline_p95_ms": 3389,
+  "final_p95_ms": 6279,
+  "samples_each": 8,
+  "status": "REGRESSION",
+  "interpretation": "Same nominal source-editor workload; final p95 is slower. No speedup claim. Eight samples do not isolate OS/cache variance. Backend-only and multi-view world-edit timings are separate workloads."
+}
