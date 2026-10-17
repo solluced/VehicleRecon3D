@@ -140,7 +140,9 @@ test("measure four 2D views plus Three.js with 5000 controls and live projection
           .getByRole("button", { name: "Move World Landmark", exact: true })
           .click();
         await page.getByLabel("World drag constraint").selectOption("X");
+        const previousCamera = await three.getAttribute("data-camera");
         await page.getByRole("button", { name: "TOP", exact: true }).click();
+        await expect(three).not.toHaveAttribute("data-camera", previousCamera!);
         await expect
           .poll(
             async () =>

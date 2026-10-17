@@ -119,33 +119,39 @@ test("measure 4K, 5000 canonical controls and 20 display layers", async ({
     await page.evaluate(() => {
       const state = window as unknown as {
         selectionTimes: number[];
-        selectionHandler: EventListener;
       };
       state.selectionTimes = [];
-      state.selectionHandler = () => {
-        const prior = document.querySelector<HTMLInputElement>(
-            '[aria-label="Stable ID"]',
-          )?.value,
-          start = performance.now();
-        let frames = 0;
-        const check = () => {
-          const current = document.querySelector<HTMLInputElement>(
-            '[aria-label="Stable ID"]',
-          )?.value;
-          if (current && current !== prior)
-            state.selectionTimes.push(performance.now() - start);
-          else if (frames++ < 10) requestAnimationFrame(check);
-        };
-        requestAnimationFrame(check);
-      };
-      document
-        .querySelector('[data-testid="canvas"]')!
-        .addEventListener("mousedown", state.selectionHandler, true);
     });
     for (const i of [1020, 2030, 3040, 4050, 1060, 2070, 3080, 4090]) {
       const o = s.observations[i],
         v = await camera(page),
         box = (await canvas.boundingBox())!;
+      await expect(
+        page.getByLabel("Stable ID", { exact: true }),
+      ).not.toHaveValue(o.id);
+      await page.evaluate((expected) => {
+        document.querySelector('[data-testid="canvas"]')!.addEventListener(
+          "mousedown",
+          () => {
+            const began = performance.now();
+            const visible = () => {
+              if (
+                document.querySelector<HTMLInputElement>(
+                  '[aria-label="Stable ID"]',
+                )?.value === expected
+              ) {
+                (
+                  window as unknown as { selectionTimes: number[] }
+                ).selectionTimes.push(performance.now() - began);
+              } else if (performance.now() - began < 30000) {
+                requestAnimationFrame(visible);
+              }
+            };
+            requestAnimationFrame(visible);
+          },
+          { once: true, capture: true },
+        );
+      }, o.id);
       await page.mouse.click(
         box.x + v.x + o.pixel[0] * v.scale,
         box.y + v.y + o.pixel[1] * v.scale,
@@ -157,12 +163,14 @@ test("measure 4K, 5000 canonical controls and 20 display layers", async ({
         o.id,
       );
       await expect
-        .poll(() =>
-          page.evaluate(
-            () =>
-              (window as unknown as { selectionTimes: number[] }).selectionTimes
-                .length,
-          ),
+        .poll(
+          () =>
+            page.evaluate(
+              () =>
+                (window as unknown as { selectionTimes: number[] })
+                  .selectionTimes.length,
+            ),
+          { timeout: 30000 },
         )
         .toBe(picking.length);
     }
@@ -175,16 +183,9 @@ test("measure 4K, 5000 canonical controls and 20 display layers", async ({
         ),
       )
       .toBe(8);
-    const selectionTimes = await page.evaluate(() => {
-      const state = window as unknown as {
-        selectionTimes: number[];
-        selectionHandler: EventListener;
-      };
-      document
-        .querySelector('[data-testid="canvas"]')!
-        .removeEventListener("mousedown", state.selectionHandler, true);
-      return state.selectionTimes;
-    });
+    const selectionTimes = await page.evaluate(
+      () => (window as unknown as { selectionTimes: number[] }).selectionTimes,
+    );
     const chosen = await page
       .getByLabel("Stable ID", { exact: true })
       .inputValue();
