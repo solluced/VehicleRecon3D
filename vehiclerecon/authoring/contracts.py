@@ -4,6 +4,7 @@ from ..core.errors import SchemaError, ReferenceError
 from ..core.manifest import digest_data, digest_file
 
 VIEWS = ('front', 'side', 'rear', 'top')
+HELPER_ROLES = ('axis', 'datum', 'measurement')
 
 
 def crop_identity(reference_id, crop):
@@ -82,7 +83,7 @@ def semantic_check(project, calibration, cage):
     names = [m['id'] for m in measurements]
     if len(names) != len(set(names)):
         raise SchemaError('Duplicate measurement ID')
-    roles = set(project.profile['roles']+project.profile['optional_roles']) | {'axis', 'datum', 'measurement'}
+    roles = set(project.profile['roles']+project.profile['optional_roles']) | set(HELPER_ROLES)
     knots = {}
     identities = {}
     for o in obs.values():

@@ -43,7 +43,16 @@ def validate(value, schema_name):
     registry = Registry().with_resources((s["$id"], Resource.from_contents(s)) for s in schemas)
     schema = read_json(schema_root / f"{schema_name}.schema.json")
     finite(value)
-    errors = sorted(Draft202012Validator(schema, registry=registry).iter_errors(value),
+    validator = Draft202012Validator
+    if schema_name in ('calibration_v2','authoring_command','authoring'):
+        from .schema_dispatch import authoring_validator, validation_namespace
+        validator = authoring_validator()
+        context=validation_namespace(schemas)
+    else:
+        from contextlib import nullcontext
+        context=nullcontext()
+    with context:
+        errors = sorted(validator(schema, registry=registry).iter_errors(value),
                     key=lambda e: str(list(e.path)))
     if errors:
         raise SchemaError("; ".join(f"{'/'.join(map(str,e.path))}: {e.message}" for e in errors))

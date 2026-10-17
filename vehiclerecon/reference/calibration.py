@@ -5,6 +5,11 @@ from ..core.manifest import digest_file
 
 def load(project):
     config = project.generated('calibration')
+    return check_config(project,config)
+
+
+def check_config(project, config):
+    """Check calibration mathematics on an already schema-validated snapshot."""
     transform = CalibrationTransform(config)
     source = project.path(config['source'], exists=True)
     if png_size(source) != config['source_size'] or digest_file(source) != config['source_sha256']:

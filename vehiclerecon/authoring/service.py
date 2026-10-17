@@ -277,7 +277,7 @@ class AuthoringSession:
                 cage['curves'].append(other)
             else:
                 other['revision'] = 1
-                cal['views'][entity['view']]['landmarks']['observations'].append(other)
+                cal['views'][entity['view']]['landmarks'].setdefault('observations',[]).append(other)
             moved = set(ids(other)[1:])
             for link in cal['correspondences']:
                 key = 'world_entity_id' if world else 'observation_id'

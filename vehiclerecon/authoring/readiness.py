@@ -12,12 +12,20 @@ def _state(reasons):
     return {'state':'BLOCKED' if reasons else 'READY','reasons':reasons}
 
 
-def readiness(root):
-    project = Project(root)
+def readiness(root, *, workspace=None):
+    """Reuse a current validated Workspace for derived feedback, without reloading."""
+    if workspace is not None:
+        from pathlib import Path
+        from ..core.revisions import revision
+        from ..core.errors import ConflictError
+        if Path(root).resolve()!=workspace.root or revision(root)!=workspace.revision:
+            raise ConflictError('Readiness snapshot changed; reload workspace')
+    project = workspace.project if workspace is not None else Project(root)
     if project.data['schema_version']==1:
         return {'schema_version':1,'read_only_authoring':True,'legacy_behavior_unchanged':True,
                 'source_review':{'state':'BLOCKED','required':False,'reasons':['v1 has no v2 authoring acceptance guarantee']}}
-    w = Workspace(root);data = w.documents;result = {'schema_version':2,'revision':w.revision,'read_only_authoring':False}
+    w = workspace if workspace is not None else Workspace(root)
+    data = w.documents;result = {'schema_version':2,'revision':w.revision,'read_only_authoring':False}
     reasons = []
     if not project.data['references']:reasons.append('No imported references')
     for path in project.data['references'].values():
@@ -27,7 +35,9 @@ def readiness(root):
     reasons = []
     if 'calibration' not in data:reasons.append('Calibration authoring missing')
     else:
-        try:load(project)
+        try:
+            from ..reference.calibration import check_config
+            check_config(project,data['calibration'])
         except (ReconError,OSError,KeyError,TypeError,ValueError) as exc:reasons.append('Incomplete/inconsistent calibration: '+str(exc))
     result['calibration'] = _state(reasons)
     reasons = []

@@ -38,3 +38,12 @@ def test_changed_profile_validates_against_actual_profile(tmp_path):
     create_draft(tmp_path);s=AuthoringSession(tmp_path);before=s.revision
     with pytest.raises(SchemaError):s.apply([{'type':'SetProjectMetadata','values':{'vehicle_profile':'not_available'}}],expected_revision=before)
     assert s.revision==before
+
+
+def test_reused_readiness_matches_fresh_and_rejects_stale_workspace(tmp_path):
+    from vehiclerecon.authoring.readiness import readiness
+    shutil.copytree(REPOSITORY/'tests/fixtures/authoring_v2',tmp_path,dirs_exist_ok=True)
+    w=Workspace(tmp_path)
+    assert readiness(tmp_path,workspace=w)==readiness(tmp_path)
+    path=tmp_path/'project.json';path.write_bytes(path.read_bytes()+b'\n')
+    with pytest.raises(ConflictError):readiness(tmp_path,workspace=w)
