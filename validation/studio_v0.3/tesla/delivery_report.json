@@ -1,0 +1,16 @@
+{
+  "status": "PASS",
+  "project_id": "tesla_reference",
+  "source_blend_sha256": "2128ff915c5e4d317908a9facb84e7796ca6c4bf31c8516b22d7c067eb2b03f4",
+  "glb_sha256": "da7d30682f3816336bc275aeacf45125f9d010f533e19592972ff390486a262e",
+  "geometry_hash": "6fa8c5a8174917222d9b7b8641dc28afbc55dbc388e67313362924ec43f2e96d",
+  "exact_embedded_glb": true,
+  "viewer_desktop": "PASS",
+  "viewer_mobile": "PASS",
+  "iou": {
+    "side": 0.95723,
+    "top": 0.936083,
+    "front": 0.931202,
+    "rear": 0.944724
+  }
+}

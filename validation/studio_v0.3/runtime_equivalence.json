@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "tested_runtime_commit": "394a9d648bc2df30a76ff9e53ba86c72fa33e26d",
+  "production_paths": [
+    "vehiclerecon",
+    "schemas",
+    "profiles",
+    "studio",
+    ".github/workflows/studio.yml"
+  ],
+  "git_blob_list_sha256": "2f4a29ef48b0f23f4556b715f0eb5a87ad0fb1e4a8dfb6fe2f69c66616120457",
+  "note": "All final local browser/static/wheel gates and final CI certify this runtime; the release commit adds documentation/evidence only."
+}

@@ -1,0 +1,21 @@
+{
+  "status": "PASS",
+  "installed_core_and_studio_imports": true,
+  "resource_root_from_installed_core": true,
+  "installed_app_index_assets_bootstrap_schema_project": true,
+  "static_files_in_wheel": [
+    "vehiclerecon_studio/static/index.html",
+    "vehiclerecon_studio/static/assets/CVPanel-ByzFR0O2.css",
+    "vehiclerecon_studio/static/assets/CVPanel-Cu2bUEam.js",
+    "vehiclerecon_studio/static/assets/MultiWorkspace-BGu3WLy5.js",
+    "vehiclerecon_studio/static/assets/Preview3D-D7o-rERR.js",
+    "vehiclerecon_studio/static/assets/index-BQ8IVovA.js",
+    "vehiclerecon_studio/static/assets/index-C8fLmVeB.css"
+  ],
+  "static_bytes_match_final_build": true,
+  "runtime_node_or_blender_invoked": false,
+  "wheel_sha256": {
+    "vehiclerecon-0.1.0-py3-none-any.whl": "c8d0eac5ce4e574e210d5d13ecc2367f1e0d526a97aade071aa54153c0513308",
+    "vehiclerecon_studio-0.3.0-py3-none-any.whl": "fc7f813ac263f8f5c22f750d6ab889084ecd3d56ff117c5c5e1ac3af2c005c14"
+  }
+}

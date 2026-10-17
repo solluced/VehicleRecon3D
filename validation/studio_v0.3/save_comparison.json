@@ -1,0 +1,103 @@
+{
+  "status": "PASS",
+  "workload": "same nominal browser 4K / 5000 points / 20 layers; 8 edits with verification readback",
+  "v01b_p95_ms": 3389,
+  "v02_p95_ms": 6279,
+  "v03_p95_ms": 9442,
+  "change_from_v02_percent": 50.37426341774167,
+  "still_slower_than_v01b": true,
+  "payload_before_bytes": 2211338,
+  "payload_after_bytes": 175847,
+  "profile_before": {
+    "schema_validation": {
+      "calls": 26,
+      "self_seconds": 0.0032476000000000002,
+      "cumulative_seconds": 4.3195691
+    },
+    "semantic_validation": {
+      "calls": 5,
+      "self_seconds": 0.1437224,
+      "cumulative_seconds": 0.4809472
+    },
+    "json_serialization": {
+      "calls": 150111,
+      "self_seconds": 0.5850943000000001,
+      "cumulative_seconds": 3.0244254
+    },
+    "revision_hashing": {
+      "calls": 12,
+      "self_seconds": 0.005211,
+      "cumulative_seconds": 0.14285810000000002
+    },
+    "transaction_commit": {
+      "calls": 1,
+      "self_seconds": 0.0070416,
+      "cumulative_seconds": 1.254863
+    },
+    "snapshot_refresh": {
+      "calls": 1,
+      "self_seconds": 0.0107671,
+      "cumulative_seconds": 1.7464228000000002
+    },
+    "fsync": {
+      "calls": 4,
+      "self_seconds": 0.014180400000000001,
+      "cumulative_seconds": 0.014180400000000001
+    }
+  },
+  "profile_after": {
+    "schema_validation": {
+      "calls": 26,
+      "self_seconds": 0.0023875000000000003,
+      "cumulative_seconds": 3.3627568
+    },
+    "semantic_validation": {
+      "calls": 5,
+      "self_seconds": 0.0886731,
+      "cumulative_seconds": 0.36899200000000004
+    },
+    "json_serialization": {
+      "calls": 150075,
+      "self_seconds": 0.43773290000000004,
+      "cumulative_seconds": 2.3130684
+    },
+    "revision_hashing": {
+      "calls": 12,
+      "self_seconds": 0.0026469,
+      "cumulative_seconds": 0.11683080000000001
+    },
+    "transaction_commit": {
+      "calls": 1,
+      "self_seconds": 0.0039354,
+      "cumulative_seconds": 1.1600164000000002
+    },
+    "snapshot_refresh": {
+      "calls": 1,
+      "self_seconds": 0.0024922,
+      "cumulative_seconds": 1.3730546000000001
+    },
+    "fsync": {
+      "calls": 4,
+      "self_seconds": 0.094929,
+      "cumulative_seconds": 0.094929
+    }
+  },
+  "unprofiled_backend_before_seconds": [
+    2.4231114000031084,
+    2.628370599999471
+  ],
+  "unprofiled_backend_after_seconds": [
+    2.5469890000022133,
+    2.24150870000085
+  ],
+  "exact_duplicated_work": [
+    "Old schema validation reread/parsed all schema resources and serialized the full schema set for each validation namespace; exact-byte-keyed bundles now reuse parsed resources and identity.",
+    "Core flush serialized unchanged documents, changing raw formatting and review identity; changed-file-only serialization preserves exact unchanged bytes.",
+    "Preference writes created/reloaded a canonical AuthoringSession and returned an unused full snapshot; ack avoids those duplicate operations, retaining typed preference validation, revision/lease checks and fsync.",
+    "Canonical responses repeated all 5000 observations; opt-in deltas preserve full validated authority and exact ordering with fenced merge/full-reload fallback."
+  ],
+  "remaining_costs": "26 schema validations, 5 semantic passes, 3 workspace loads and one full authoritative snapshot remain in the profiled edit. Record-level schema cache keys still serialize current records. No validation/durability checks were removed.",
+  "limits": "First backend request is instrumented, cumulative phases overlap. Two subsequent backend timing samples are too few for robust speed claims; browser p95 is a separate 8-sample workload. OS/cache variance is not isolated. Mixed CV retention timings must not be compared directly with pure dense saves.",
+  "latency_result": "REGRESSION",
+  "note": "Earlier local full-matrix pass measured 5392 ms; final repeated 8-save measurement is 9442 ms and is reported without a speedup claim. OS/cache variance is not isolated."
+}

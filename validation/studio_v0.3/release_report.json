@@ -1,0 +1,1008 @@
+{
+  "status": "PASS",
+  "phase": "VehicleRecon Studio v0.3 annotation assistance",
+  "date": "2026-10-17",
+  "base_commit": "f152edd14802740ce27ff109cf4b8c6d3807856f",
+  "implementation_commit": "394a9d648bc2df30a76ff9e53ba86c72fa33e26d",
+  "implementation_tree_sha256": "2f4a29ef48b0f23f4556b715f0eb5a87ad0fb1e4a8dfb6fe2f69c66616120457",
+  "version": {
+    "studio": "0.3.0",
+    "core": "0.1.0",
+    "canonical": 2,
+    "transport": "/api/v1"
+  },
+  "definition_of_done": {
+    "CVProvider registry exists": "PASS",
+    "Studio works without providers": "PASS",
+    "OpenCV provider works locally": "PASS",
+    "Edge extraction works": "PASS",
+    "Smart Edge works": "PASS",
+    "Magic Select works": "PASS",
+    "Mask refinement works": "PASS",
+    "Contour extraction works": "PASS",
+    "Simplification works": "PASS",
+    "Spline fitting works": "PASS",
+    "Wheel proposals work": "PASS",
+    "Proposals are noncanonical": "PASS",
+    "Proposals are revision/source bound": "PASS",
+    "Stale proposals cannot be accepted": "PASS",
+    "Explicit accept works": "PASS",
+    "Explicit reject works": "PASS",
+    "Partial acceptance works": "PASS",
+    "Acceptance is undoable": "PASS",
+    "Rejected proposal changes no canonical state": "PASS",
+    "Source/world separation preserved": "PASS",
+    "Proposal cache is disposable": "PASS",
+    "CV jobs cancellable": "PASS",
+    "Provider failure harmless": "PASS",
+    "Manual workflow complete without CV": "PASS",
+    "Offline operation passes": "PASS",
+    "No external image transmission": "PASS",
+    "Performance measured": "PASS",
+    "Save regression profiled": "PASS",
+    "Memory retention profiled": "PASS",
+    "E2E passes": "PASS",
+    "Tesla unchanged": "PASS",
+    "Mark II untouched": "PASS"
+  },
+  "tests": {
+    "python": {
+      "tests": 301,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "passed": 301
+    },
+    "isolated_core": {
+      "tests": 239,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "passed": 239
+    },
+    "heavy_deselected": 5,
+    "frontend_passed": 41,
+    "browser": {
+      "startTime": "2026-10-17T14:02:35.745Z",
+      "duration": 312694.231,
+      "expected": 13,
+      "unexpected": 0,
+      "skipped": 0,
+      "flaky": 0
+    },
+    "final_ci_browser": {
+      "startTime": "2026-10-17T14:05:32.686Z",
+      "duration": 443966.076,
+      "expected": 13,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    }
+  },
+  "providers": {
+    "architecture": "Trusted optional generic registry; capability discovery; one bounded local thread worker",
+    "opencv_distribution": "4.14.0.94",
+    "opencv_runtime": "4.14.0",
+    "core_dependency": false,
+    "network": false,
+    "GPU_required": false,
+    "models": false,
+    "disabled_manual": "Real browser Point, Landmark, Measure plus existing Polyline/Spline manual flows; backend failure/cancellation fixtures remain harmless"
+  },
+  "smart_edge": {
+    "status": "PASS",
+    "source": [
+      3840,
+      2160
+    ],
+    "dpr": 2,
+    "preview_samples": [
+      2808.199999999255,
+      487,
+      742.4000000022352,
+      687.8999999985099,
+      753.5,
+      721.8000000007451,
+      742.3000000007451,
+      742.5
+    ],
+    "commit_samples": [
+      842.5,
+      437.3999999985099,
+      421.9000000022352,
+      464.30000000074506
+    ],
+    "preview_p50_ms": 742.4000000022352,
+    "preview_p95_ms": 2808.199999999255,
+    "commit_p50_ms": 464.30000000074506,
+    "commit_p95_ms": 842.5,
+    "mask_first_display_ms": 5168,
+    "mask_provider_ms": 4061.9311000009475,
+    "refinement_display_ms": [
+      5083,
+      5178
+    ],
+    "fit": {
+      "max_deviation_px": 0.8290295487468454,
+      "rms_deviation_px": 0.16615156405622125,
+      "certified_max_deviation_px": 0.8290295487468454,
+      "measurement_flatten_error_px": 0,
+      "tolerance_px": 2,
+      "control_point_count": 14,
+      "original_sample_count": 812,
+      "preserve_corners": false,
+      "method": "RDP intervals / continuous chord bound"
+    },
+    "mask_components": 1,
+    "canonical_revision_unchanged": true,
+    "backend_rss_bytes": 68694016,
+    "offline": {
+      "external_attempts_blocked": 1,
+      "source_image_egress": 0
+    },
+    "note": "Preview includes coalescing/debounce, local HTTP and two animation frames; mask display includes pointer ROI gesture. Synthetic analytical 4K source, no real-time claim."
+  },
+  "magic_select": {
+    "browser_first_display_ms": 5168,
+    "browser_refinement_display_ms": [
+      5083,
+      5178
+    ],
+    "native_first_ms": 3340.4967000024044,
+    "native_refinement_ms": [
+      10251.275100003113,
+      6455.872799997451
+    ],
+    "contour_extraction_plus_bounded_fit_ms": [
+      213.97109999816166,
+      1355.2925000003597,
+      951.1494999969727
+    ],
+    "analytic_4k_mask_pixel_iou": 1.0,
+    "quality_limit": "Synthetic analytic fixtures only, not accuracy on arbitrary vehicle photos. Classical colour/contrast segmentation; no real-time or semantic recognition claim."
+  },
+  "wheels": {
+    "UNKNOWN_initial": true,
+    "score": "Circularity, not wheel probability",
+    "explicit_candidate_confirmation": true,
+    "accepted_as": "source circle",
+    "world_landmarks_axles_unchanged": true
+  },
+  "proposals": {
+    "source_revision_sha_crop_provider_parameters_bound": true,
+    "stale_accept": "409",
+    "partial_accept": true,
+    "exact_undo": true,
+    "source_and_cage_review_rules_preserved": true,
+    "source_pixels_immutable": true,
+    "cache_disposable": true,
+    "fit": "Pure core RDP + optional bounded cubic; endpoint/corner preservation; original dense samples retained; max/RMS and continuous upper bound displayed",
+    "cancel": "Cooperative during search/between GrabCut iterations/before publication; native OpenCV call must return first"
+  },
+  "performance": {
+    "status": "PASS",
+    "workload": "same nominal browser 4K / 5000 points / 20 layers; 8 edits with verification readback",
+    "v01b_p95_ms": 3389,
+    "v02_p95_ms": 6279,
+    "v03_p95_ms": 9442,
+    "change_from_v02_percent": 50.37426341774167,
+    "still_slower_than_v01b": true,
+    "payload_before_bytes": 2211338,
+    "payload_after_bytes": 175847,
+    "profile_before": {
+      "schema_validation": {
+        "calls": 26,
+        "self_seconds": 0.0032476000000000002,
+        "cumulative_seconds": 4.3195691
+      },
+      "semantic_validation": {
+        "calls": 5,
+        "self_seconds": 0.1437224,
+        "cumulative_seconds": 0.4809472
+      },
+      "json_serialization": {
+        "calls": 150111,
+        "self_seconds": 0.5850943000000001,
+        "cumulative_seconds": 3.0244254
+      },
+      "revision_hashing": {
+        "calls": 12,
+        "self_seconds": 0.005211,
+        "cumulative_seconds": 0.14285810000000002
+      },
+      "transaction_commit": {
+        "calls": 1,
+        "self_seconds": 0.0070416,
+        "cumulative_seconds": 1.254863
+      },
+      "snapshot_refresh": {
+        "calls": 1,
+        "self_seconds": 0.0107671,
+        "cumulative_seconds": 1.7464228000000002
+      },
+      "fsync": {
+        "calls": 4,
+        "self_seconds": 0.014180400000000001,
+        "cumulative_seconds": 0.014180400000000001
+      }
+    },
+    "profile_after": {
+      "schema_validation": {
+        "calls": 26,
+        "self_seconds": 0.0023875000000000003,
+        "cumulative_seconds": 3.3627568
+      },
+      "semantic_validation": {
+        "calls": 5,
+        "self_seconds": 0.0886731,
+        "cumulative_seconds": 0.36899200000000004
+      },
+      "json_serialization": {
+        "calls": 150075,
+        "self_seconds": 0.43773290000000004,
+        "cumulative_seconds": 2.3130684
+      },
+      "revision_hashing": {
+        "calls": 12,
+        "self_seconds": 0.0026469,
+        "cumulative_seconds": 0.11683080000000001
+      },
+      "transaction_commit": {
+        "calls": 1,
+        "self_seconds": 0.0039354,
+        "cumulative_seconds": 1.1600164000000002
+      },
+      "snapshot_refresh": {
+        "calls": 1,
+        "self_seconds": 0.0024922,
+        "cumulative_seconds": 1.3730546000000001
+      },
+      "fsync": {
+        "calls": 4,
+        "self_seconds": 0.094929,
+        "cumulative_seconds": 0.094929
+      }
+    },
+    "unprofiled_backend_before_seconds": [
+      2.4231114000031084,
+      2.628370599999471
+    ],
+    "unprofiled_backend_after_seconds": [
+      2.5469890000022133,
+      2.24150870000085
+    ],
+    "exact_duplicated_work": [
+      "Old schema validation reread/parsed all schema resources and serialized the full schema set for each validation namespace; exact-byte-keyed bundles now reuse parsed resources and identity.",
+      "Core flush serialized unchanged documents, changing raw formatting and review identity; changed-file-only serialization preserves exact unchanged bytes.",
+      "Preference writes created/reloaded a canonical AuthoringSession and returned an unused full snapshot; ack avoids those duplicate operations, retaining typed preference validation, revision/lease checks and fsync.",
+      "Canonical responses repeated all 5000 observations; opt-in deltas preserve full validated authority and exact ordering with fenced merge/full-reload fallback."
+    ],
+    "remaining_costs": "26 schema validations, 5 semantic passes, 3 workspace loads and one full authoritative snapshot remain in the profiled edit. Record-level schema cache keys still serialize current records. No validation/durability checks were removed.",
+    "limits": "First backend request is instrumented, cumulative phases overlap. Two subsequent backend timing samples are too few for robust speed claims; browser p95 is a separate 8-sample workload. OS/cache variance is not isolated. Mixed CV retention timings must not be compared directly with pure dense saves.",
+    "latency_result": "REGRESSION",
+    "note": "Earlier local full-matrix pass measured 5392 ms; final repeated 8-save measurement is 9442 ms and is reported without a speedup claim. OS/cache variance is not isolated."
+  },
+  "retention": {
+    "status": "PASS",
+    "label": "final",
+    "canonical_edits": 100,
+    "entities_initial": 5000,
+    "response_format": "delta",
+    "timings_seconds": [
+      7.656807399998797,
+      2.350471599998855,
+      2.491968399997859,
+      2.522163499997987,
+      2.4267910000016855,
+      2.103316000000632,
+      1.8633894000013242,
+      1.9299680999974953,
+      1.9045891999994637,
+      1.573960999998235,
+      1.4309921999993094,
+      1.6433832999973674,
+      1.5515601999977662,
+      1.4405959999967308,
+      1.5772328000020934,
+      1.4831927999985055,
+      1.4430271000019275,
+      1.5835951000008208,
+      1.5026514000019233,
+      1.5657678999996278,
+      1.4919308999997156,
+      1.502341699997487,
+      1.791666899996926,
+      2.0337637000011455,
+      2.1347263999996358,
+      1.8525397999983397,
+      2.5662430000011227,
+      2.4555638000019826,
+      2.3713301999996474,
+      1.8013876999975764,
+      1.7346843000013905,
+      2.498557599999913,
+      4.331416500001069,
+      2.5706833000003826,
+      2.7909913000003144,
+      3.2669581999980437,
+      3.1317854000008083,
+      3.14201889999822,
+      3.1696607999983826,
+      3.244070799999463,
+      3.6659593999975186,
+      3.078651899999386,
+      3.0025564999996277,
+      3.343018399998982,
+      3.1542810999999347,
+      3.5564134000014747,
+      3.790606399998069,
+      2.9253430999997363,
+      3.0103589999998803,
+      3.0605379000007815,
+      3.0563015000007,
+      3.5403281999970204,
+      2.988826799999515,
+      3.3426480000016454,
+      3.215010700001585,
+      2.930935899999895,
+      3.7206785999987915,
+      3.146119799999724,
+      3.0258615000020654,
+      3.511542599997483,
+      6.449762800002645,
+      3.5134969000027922,
+      3.7654895999985456,
+      3.9356733999993594,
+      4.397710000001098,
+      3.101218100000551,
+      3.0436899999986053,
+      3.0954772000004596,
+      3.7235485000019253,
+      8.518773400002829,
+      3.184634699999151,
+      3.6658000000024913,
+      2.8731209999968996,
+      3.115563800001837,
+      3.2143603000004077,
+      7.776785199999722,
+      3.2294588000004296,
+      2.968529399997351,
+      2.802856000002066,
+      3.0139522999998007,
+      3.2882960999995703,
+      3.0321473000003607,
+      5.1719506999979785,
+      3.0290148000021873,
+      3.560497900001792,
+      3.07274039999902,
+      3.8294002000002365,
+      2.9495810999978858,
+      3.2934808999998495,
+      3.4346017999996548,
+      3.3128073000007134,
+      3.89091499999995,
+      3.957602800001041,
+      6.329949999999371,
+      8.708064999998896,
+      4.2779661000022315,
+      3.7110668000022997,
+      3.695576500002062,
+      3.5357089000026463,
+      4.08941219999906
+    ],
+    "p95_seconds": 6.449762800002645,
+    "rss_baseline_bytes": 87465984,
+    "rss_peak_sampled_bytes": 199921664,
+    "rss_peak_process_bytes": 250265600,
+    "rss_after_gc_bytes": 181841920,
+    "rss_samples": [
+      {
+        "edits": 10,
+        "rss_bytes": 162304000
+      },
+      {
+        "edits": 20,
+        "rss_bytes": 194113536
+      },
+      {
+        "edits": 30,
+        "rss_bytes": 199921664
+      },
+      {
+        "edits": 40,
+        "rss_bytes": 118972416
+      },
+      {
+        "edits": 50,
+        "rss_bytes": 193933312
+      },
+      {
+        "edits": 60,
+        "rss_bytes": 197025792
+      },
+      {
+        "edits": 70,
+        "rss_bytes": 111169536
+      },
+      {
+        "edits": 80,
+        "rss_bytes": 198365184
+      },
+      {
+        "edits": 90,
+        "rss_bytes": 181456896
+      },
+      {
+        "edits": 100,
+        "rss_bytes": 189845504
+      }
+    ],
+    "idle_seconds": 1,
+    "history_bytes": 32238721,
+    "undo_entries": 8,
+    "idempotency_bytes": 8266255,
+    "idempotency_entries": 46,
+    "last_response_payload_bytes": 208488,
+    "cv": {
+      "active_jobs": 0,
+      "pending_source_bytes": 0,
+      "proposal_bytes": 1437275,
+      "proposal_limit_bytes": 25165824,
+      "proposal_count": 64,
+      "result_cache_bytes": 688480,
+      "result_cache_limit_bytes": 16777216,
+      "image_edge_cache_bytes": 44161956,
+      "image_edge_cache_limit_bytes": 67108864
+    },
+    "proposal_states_exercised": {
+      "accepted": 10,
+      "rejected": 30,
+      "left_active_then_stale": 60
+    },
+    "active_at_end": true,
+    "first_rejected_evicted": true,
+    "profile_total_seconds": 7.3210436999999935,
+    "profile_phases": {
+      "schema_validation": {
+        "calls": 26,
+        "self_seconds": 0.0026086,
+        "cumulative_seconds": 4.2543258
+      },
+      "semantic_validation": {
+        "calls": 5,
+        "self_seconds": 0.1148369,
+        "cumulative_seconds": 0.4664632
+      },
+      "json_serialization": {
+        "calls": 150075,
+        "self_seconds": 0.5648145,
+        "cumulative_seconds": 3.0439921
+      },
+      "revision_hashing": {
+        "calls": 12,
+        "self_seconds": 0.0032700000000000003,
+        "cumulative_seconds": 0.1258245
+      },
+      "transaction_commit": {
+        "calls": 1,
+        "self_seconds": 0.0082614,
+        "cumulative_seconds": 1.2193646
+      },
+      "snapshot_refresh": {
+        "calls": 1,
+        "self_seconds": 0.0037861,
+        "cumulative_seconds": 1.4622014
+      },
+      "fsync": {
+        "calls": 4,
+        "self_seconds": 0.010655000000000001,
+        "cumulative_seconds": 0.010655000000000001
+      }
+    },
+    "profile": [
+      {
+        "file": "workspace.py",
+        "line": 192,
+        "function": "mutate",
+        "calls": 1,
+        "self_seconds": 0.0079777,
+        "cumulative_seconds": 7.362152900000001
+      },
+      {
+        "file": "workspace.py",
+        "line": 47,
+        "function": "validate",
+        "calls": 5,
+        "self_seconds": 0.0016476000000000001,
+        "cumulative_seconds": 4.8041939000000005
+      },
+      {
+        "file": "service.py",
+        "line": 55,
+        "function": "apply",
+        "calls": 1,
+        "self_seconds": 0.0045848,
+        "cumulative_seconds": 4.7626002000000005
+      },
+      {
+        "file": "project.py",
+        "line": 55,
+        "function": "validate",
+        "calls": 26,
+        "self_seconds": 0.0026086,
+        "cumulative_seconds": 4.2543258
+      },
+      {
+        "file": "validators.py",
+        "line": 349,
+        "function": "iter_errors",
+        "calls": 50,
+        "self_seconds": 0.0002012,
+        "cumulative_seconds": 3.7884328000000003
+      },
+      {
+        "file": "validators.py",
+        "line": 396,
+        "function": "descend",
+        "calls": 56566,
+        "self_seconds": 0.1779067,
+        "cumulative_seconds": 3.7871360000000003
+      },
+      {
+        "file": "_keywords.py",
+        "line": 290,
+        "function": "properties",
+        "calls": 433,
+        "self_seconds": 0.0014927,
+        "cumulative_seconds": 3.7859431000000003
+      },
+      {
+        "file": "~",
+        "line": 0,
+        "function": "<built-in method builtins.sorted>",
+        "calls": 72,
+        "self_seconds": 0.0005346,
+        "cumulative_seconds": 3.6488222
+      },
+      {
+        "file": "_keywords.py",
+        "line": 59,
+        "function": "items",
+        "calls": 115,
+        "self_seconds": 0.0287753,
+        "cumulative_seconds": 3.6210901000000004
+      },
+      {
+        "file": "_keywords.py",
+        "line": 274,
+        "function": "ref",
+        "calls": 25268,
+        "self_seconds": 0.048749600000000004,
+        "cumulative_seconds": 3.2536472
+      },
+      {
+        "file": "workspace.py",
+        "line": 13,
+        "function": "__init__",
+        "calls": 3,
+        "self_seconds": 5.1500000000000005e-05,
+        "cumulative_seconds": 3.0745888000000003
+      },
+      {
+        "file": "workspace.py",
+        "line": 18,
+        "function": "_load",
+        "calls": 3,
+        "self_seconds": 0.0106134,
+        "cumulative_seconds": 3.0733523000000003
+      },
+      {
+        "file": "validators.py",
+        "line": 459,
+        "function": "_validate_reference",
+        "calls": 25300,
+        "self_seconds": 0.0273981,
+        "cumulative_seconds": 1.8113685000000002
+      },
+      {
+        "file": "_core.py",
+        "line": 653,
+        "function": "lookup",
+        "calls": 25300,
+        "self_seconds": 0.09209460000000001,
+        "cumulative_seconds": 1.7839704
+      },
+      {
+        "file": "workspace.py",
+        "line": 138,
+        "function": "snapshot",
+        "calls": 1,
+        "self_seconds": 0.0037861,
+        "cumulative_seconds": 1.4622014
+      },
+      {
+        "file": "__init__.py",
+        "line": 183,
+        "function": "dumps",
+        "calls": 50025,
+        "self_seconds": 0.10349850000000001,
+        "cumulative_seconds": 1.4241744
+      },
+      {
+        "file": "encoder.py",
+        "line": 183,
+        "function": "encode",
+        "calls": 50025,
+        "self_seconds": 0.1384579,
+        "cumulative_seconds": 1.2969402
+      },
+      {
+        "file": "transactions.py",
+        "line": 101,
+        "function": "commit",
+        "calls": 1,
+        "self_seconds": 0.0082614,
+        "cumulative_seconds": 1.2193646
+      },
+      {
+        "file": "service.py",
+        "line": 121,
+        "function": "_flush",
+        "calls": 1,
+        "self_seconds": 0.0015855,
+        "cumulative_seconds": 1.1684640000000002
+      },
+      {
+        "file": "schema_dispatch.py",
+        "line": 56,
+        "function": "one_of",
+        "calls": 25001,
+        "self_seconds": 0.3281634,
+        "cumulative_seconds": 1.1138738000000001
+      },
+      {
+        "file": "workspace.py",
+        "line": 87,
+        "function": "session",
+        "calls": 1,
+        "self_seconds": 5.7000000000000005e-06,
+        "cumulative_seconds": 1.0543658
+      },
+      {
+        "file": "workspace.py",
+        "line": 93,
+        "function": "new_session",
+        "calls": 1,
+        "self_seconds": 1.4700000000000002e-05,
+        "cumulative_seconds": 1.0543601
+      },
+      {
+        "file": "service.py",
+        "line": 32,
+        "function": "__init__",
+        "calls": 1,
+        "self_seconds": 0.0041877,
+        "cumulative_seconds": 1.0411515
+      },
+      {
+        "file": "service.py",
+        "line": 16,
+        "function": "_bytes",
+        "calls": 1,
+        "self_seconds": 0.0015606,
+        "cumulative_seconds": 0.8080488
+      },
+      {
+        "file": "encoder.py",
+        "line": 414,
+        "function": "_iterencode",
+        "calls": 345285,
+        "self_seconds": 0.07751480000000001,
+        "cumulative_seconds": 0.7831636000000001
+      },
+      {
+        "file": "project.py",
+        "line": 16,
+        "function": "finite",
+        "calls": 636436,
+        "self_seconds": 0.5082556,
+        "cumulative_seconds": 0.7587551
+      },
+      {
+        "file": "copy.py",
+        "line": 118,
+        "function": "deepcopy",
+        "calls": 330287,
+        "self_seconds": 0.3515417,
+        "cumulative_seconds": 0.726611
+      },
+      {
+        "file": "copy.py",
+        "line": 217,
+        "function": "_deepcopy_dict",
+        "calls": 20037,
+        "self_seconds": 0.1257242,
+        "cumulative_seconds": 0.7265693000000001
+      },
+      {
+        "file": "copy.py",
+        "line": 191,
+        "function": "_deepcopy_list",
+        "calls": 10039,
+        "self_seconds": 0.0234635,
+        "cumulative_seconds": 0.7258742
+      },
+      {
+        "file": "encoder.py",
+        "line": 334,
+        "function": "_iterencode_dict",
+        "calls": 1785645,
+        "self_seconds": 0.4676292,
+        "cumulative_seconds": 0.7056448000000001
+      },
+      {
+        "file": "_core.py",
+        "line": 254,
+        "function": "pointer",
+        "calls": 25037,
+        "self_seconds": 0.1705487,
+        "cumulative_seconds": 0.5281759
+      },
+      {
+        "file": "parse.py",
+        "line": 559,
+        "function": "urljoin",
+        "calls": 25269,
+        "self_seconds": 0.0748158,
+        "cumulative_seconds": 0.5050345
+      },
+      {
+        "file": "schema_dispatch.py",
+        "line": 26,
+        "function": "cache_key",
+        "calls": 25000,
+        "self_seconds": 0.0827696,
+        "cumulative_seconds": 0.4960704
+      },
+      {
+        "file": "~",
+        "line": 0,
+        "function": "<built-in method builtins.isinstance>",
+        "calls": 3248927,
+        "self_seconds": 0.4504094,
+        "cumulative_seconds": 0.49007730000000005
+      },
+      {
+        "file": "contracts.py",
+        "line": 76,
+        "function": "semantic_check",
+        "calls": 5,
+        "self_seconds": 0.1148369,
+        "cumulative_seconds": 0.4664632
+      },
+      {
+        "file": "validators.py",
+        "line": 339,
+        "function": "evolve",
+        "calls": 56545,
+        "self_seconds": 0.18335970000000001,
+        "cumulative_seconds": 0.40411230000000004
+      },
+      {
+        "file": "encoder.py",
+        "line": 278,
+        "function": "_iterencode_list",
+        "calls": 370119,
+        "self_seconds": 0.11312480000000001,
+        "cumulative_seconds": 0.3993744
+      },
+      {
+        "file": "parse.py",
+        "line": 628,
+        "function": "urldefrag",
+        "calls": 25237,
+        "self_seconds": 0.0593455,
+        "cumulative_seconds": 0.32402790000000004
+      },
+      {
+        "file": "encoder.py",
+        "line": 205,
+        "function": "iterencode",
+        "calls": 50025,
+        "self_seconds": 0.32285810000000004,
+        "cumulative_seconds": 0.32287750000000004
+      },
+      {
+        "file": "parse.py",
+        "line": 374,
+        "function": "urlparse",
+        "calls": 75544,
+        "self_seconds": 0.1811194,
+        "cumulative_seconds": 0.30851850000000003
+      },
+      {
+        "file": "parse.py",
+        "line": 525,
+        "function": "urlunparse",
+        "calls": 50275,
+        "self_seconds": 0.0612706,
+        "cumulative_seconds": 0.30460760000000003
+      },
+      {
+        "file": "~",
+        "line": 0,
+        "function": "<method 'get' of 'dict' objects>",
+        "calls": 1512117,
+        "self_seconds": 0.29852680000000004,
+        "cumulative_seconds": 0.29852680000000004
+      },
+      {
+        "file": "contracts.py",
+        "line": 10,
+        "function": "crop_identity",
+        "calls": 25004,
+        "self_seconds": 0.0133901,
+        "cumulative_seconds": 0.2855335
+      },
+      {
+        "file": "parse.py",
+        "line": 119,
+        "function": "_coerce_args",
+        "calls": 227131,
+        "self_seconds": 0.21941680000000002,
+        "cumulative_seconds": 0.27869
+      },
+      {
+        "file": "manifest.py",
+        "line": 19,
+        "function": "digest_data",
+        "calls": 25019,
+        "self_seconds": 0.0240777,
+        "cumulative_seconds": 0.272762
+      },
+      {
+        "file": "manifest.py",
+        "line": 12,
+        "function": "canonical",
+        "calls": 25019,
+        "self_seconds": 0.0202056,
+        "cumulative_seconds": 0.20408610000000002
+      },
+      {
+        "file": "_core.py",
+        "line": 716,
+        "function": "_evolve",
+        "calls": 25300,
+        "self_seconds": 0.0503993,
+        "cumulative_seconds": 0.2009923
+      },
+      {
+        "file": "__init__.py",
+        "line": 299,
+        "function": "loads",
+        "calls": 55,
+        "self_seconds": 0.00023600000000000002,
+        "cumulative_seconds": 0.1881081
+      },
+      {
+        "file": "decoder.py",
+        "line": 333,
+        "function": "decode",
+        "calls": 55,
+        "self_seconds": 0.00024070000000000002,
+        "cumulative_seconds": 0.18768130000000002
+      },
+      {
+        "file": "decoder.py",
+        "line": 344,
+        "function": "raw_decode",
+        "calls": 55,
+        "self_seconds": 0.1871578,
+        "cumulative_seconds": 0.1871578
+      }
+    ],
+    "note": "First canonical edit instrumented; cumulative phases overlap. Later timings include API readback of STALE state when exercised; browser benchmark is separate.",
+    "runtime_note": "100-edit probe captured at 6b55aed; subsequent runtime changes fence/cancel obsolete UI jobs on tool activation, clear an obsolete displayed diagnostic on source change, and record the confirmed semantic label on decided proposal components. CV algorithms, canonical save/core, cache budgets and probe script are unchanged."
+  },
+  "offline": {
+    "provider_socket_denied_test": true,
+    "browser_off_origin_requests_aborted": true,
+    "source_image_egress": 0,
+    "environment_note": "Local Windows antivirus attempted one injected GET script request; the test route blocked it before transmission. Any other external attempt fails the test. CI has no such injection."
+  },
+  "tesla": {
+    "cold_run": "python -m vehiclerecon run build/studio03-tesla-cold --no-cache",
+    "seed": "project.json/input/generated plus existing explicit review only; no outputs/cache/proofs",
+    "stages": {
+      "preflight": "PASS",
+      "references": "PASS",
+      "calibration": "PASS",
+      "overlay": "PASS",
+      "cage": "PASS",
+      "surfaces": "PASS",
+      "silhouette": "PASS",
+      "details": "PASS",
+      "geometry": "PASS",
+      "presentation": "PASS",
+      "export": "PASS",
+      "glb_verify": "PASS",
+      "viewer": "PASS",
+      "delivery": "PASS"
+    },
+    "iou": {
+      "side": 0.95723,
+      "top": 0.936083,
+      "front": 0.931202,
+      "rear": 0.944724
+    },
+    "GLB": "PASS",
+    "viewer_desktop": "PASS",
+    "viewer_mobile": "PASS",
+    "positions_normals_indices_nodes_exact": true,
+    "uv_max_difference": 5.960464477539063e-08,
+    "proofs_byte_identical": true,
+    "delivery_manifest_valid": true
+  },
+  "mark2": {
+    "canonical_hashes_unchanged": true,
+    "source": "INCONSISTENT_SOURCE",
+    "portability": "BLOCKED",
+    "surfaces": "NOT STARTED",
+    "details": "NOT STARTED"
+  },
+  "limitations": [
+    "CPU Smart Edge preview measured 0.49вЂ“0.75 s after a 2.81 s cold preview in this finite 4K probe; p95 includes that cold sample. Mask/refinement takes seconds.",
+    "RSS byte budgets count retained data, not allocator/native/process overhead; finite 100-edit window does not prove unlimited-session leak freedom.",
+    "Vite warns about the >500 kB lazy Three.js chunk; Starlette TestClient emits a nonfailing httpx deprecation warning.",
+    "Final dense browser save p95 regressed to 9442 ms versus v0.2 6279 ms; reducing payload did not establish an end-to-end speedup."
+  ],
+  "deferred": [
+    "Neural/ONNX/SAM/model downloads",
+    "Full rectification/automatic source repair",
+    "Surface graph editor",
+    "Blender Render orchestration",
+    "Cyberpunk adapter"
+  ],
+  "blockers": [],
+  "ci": {
+    "conclusion": "success",
+    "databaseId": 39039204330,
+    "headSha": "394a9d648bc2df30a76ff9e53ba86c72fa33e26d",
+    "jobs": [
+      {
+        "name": "frontend",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/solluced/VehicleRecon3D/actions/runs/39039204330/job/117415064963",
+        "startedAt": "2026-10-17T14:04:38Z",
+        "completedAt": "2026-10-17T14:05:00Z"
+      },
+      {
+        "name": "browser",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/solluced/VehicleRecon3D/actions/runs/39039204330/job/117415065123",
+        "startedAt": "2026-10-17T14:04:38Z",
+        "completedAt": "2026-10-17T14:13:01Z"
+      },
+      {
+        "name": "backend",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/solluced/VehicleRecon3D/actions/runs/39039204330/job/117415065148",
+        "startedAt": "2026-10-17T14:04:38Z",
+        "completedAt": "2026-10-17T14:05:18Z"
+      },
+      {
+        "name": "core",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/solluced/VehicleRecon3D/actions/runs/39039204330/job/117415065188",
+        "startedAt": "2026-10-17T14:04:39Z",
+        "completedAt": "2026-10-17T14:05:13Z"
+      }
+    ],
+    "status": "completed",
+    "url": "https://github.com/solluced/VehicleRecon3D/actions/runs/39039204330"
+  }
+}

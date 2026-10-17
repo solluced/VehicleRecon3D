@@ -286,3 +286,82 @@ keep the browser's default renderer. See Chromium's
 [driver-mode switches](https://chromium.googlesource.com/chromium/src/+/main/docs/gpu/swiftshader.md).
 Real 3D gizmo tests verify locked coordinates and exactly one command on release.
 The heavy cold Tesla/Blender regression stays a separate release gate.
+
+## v0.3 CV jobs, save profiling and release measurements
+
+The trusted generic provider registry discovers metadata/capabilities without
+requiring OpenCV at core import time. One dedicated worker thread runs bounded
+local jobs, publishes source-pinned results and emits progress/cancellation
+events. Native OpenCV calls are cooperatively cancellable between calls, not
+forcibly interruptible inside a call. The event loop remains available for
+manual edits; failures cannot write canonical state. Source/crop/revision and
+provider-parameter changes invalidate proposals. ACCEPT alone invokes core
+commands. See [cv_provider.md](cv_provider.md) for contracts and budgets.
+
+The CV caches retain at most 64 proposals / 24 MiB, 32 deterministic results /
+16 MiB and 64 image/edge entries / 64 MiB. These are disposable data-byte budgets,
+not RSS limits. A result-cache hit gets a new current-context proposal envelope.
+Proposal rasters remain same-origin and session-owned. No user-supplied executable
+paths, URLs or Python imports are accepted.
+
+The dense-save investigation found repeated parsing/serialization of the full
+schema bundle, rewriting of unchanged canonical documents, an unused full
+snapshot after preference saves, and full observation arrays in edit responses.
+Exact-byte-keyed schema bundles now reuse parsed resources/namespace identity.
+Each current input still validates. Schema edits with identical size and mtime
+invalidate the bundle; semantic validation results are never reused. Changed-file
+flushes preserve raw unchanged bytes and review identities. Preferences use an
+explicit small acknowledgement; canonical edits can request a fenced observation
+delta, with validated full-snapshot fallback and explicit reload still available.
+Equivalence tests cover edits, world moves, adds/deletes, order, undo/redo, invalid
+data and history. Lease/revision checks, journalling, atomic commits and fsync stay
+active.
+
+On the same nominal 4K / 5000-point / 20-layer browser workload, eight canonical
+edits plus verification give v0.3 p95 **9442 ms**, versus v0.2 **6279 ms** and
+v0.1B **3389 ms**. This is a measured regression against both v0.2 and v0.1B.
+Finite samples do not isolate OS/cache variance. The separate pure backend probe
+reduces a representative response from **2,211,338 to 175,847 bytes**. Its first
+instrumented request still makes 26 schema validations, five semantic passes,
+three workspace loads and one authoritative snapshot. Overlapping cumulative
+times are 3.363 s schema, 0.369 s semantic, 1.160 s transaction commit and 1.373 s
+snapshot refresh. JSON serialization self time is 0.438 s; four fsync calls take
+0.095 s. These phases overlap and must not be added. Record-level structural
+cache keys and current canonical validation remain significant costs.
+
+The 100-edit mixed CV retention probe exercises 10 ACCEPT, 30 REJECT and 60 stale
+proposals, with another active proposal at the end. RSS is **83.4 MiB baseline,
+190.7 MiB sampled peak, 238.7 MiB process peak and 173.4 MiB after one second idle
+plus GC**. Retained data is 1.37 MiB proposals, 0.66 MiB result cache, 42.12 MiB
+decoded/edge cache, 30.75 MiB history and 7.88 MiB replay responses. The first
+rejected proposal is evicted. This establishes bounded retained data for a finite
+window, without claiming unrestricted-session leak freedom. Its mixed-workload
+latencies are not comparable to the pure source-save benchmark.
+
+At DPR 2 on the synthetic 3840×2160 source, browser Smart Edge preview p50/p95 is
+**742/2808 ms**, segment commit p50/p95 **464/843 ms**. The p95 includes the 2.808 s cold preview; the following seven samples range from 0.487 to 0.754 s. Preview includes debounce,
+local transport and display. First mask display is **5.168 s**, FG/BG refinements
+**5.083/5.178 s**. A separate native probe records first mask 3.340 s and different
+16 px brush refinements 10.251/6.456 s; contour extraction plus bounded fitting
+takes 0.214/1.355/0.951 s. This baseline is not real-time. Analytic first-mask pixel
+IoU is **1.0** on that fixture only; its contour reduces 4965 samples to 49 points
+with certified maximum deviation **0.883 px** at 2 px tolerance. These are not
+recognition-accuracy claims for arbitrary vehicle photographs.
+
+Reproduce the optional CV probes after installing `studio/backend[test,cv]`:
+
+```powershell
+python studio/backend/tests/profile_cv_retention.py --label final --edits 100 --cv --delta
+python studio/backend/tests/profile_cv_quality.py
+cd studio/frontend
+npm test
+npm run build
+npm run e2e
+```
+
+The complete final local matrix is 301 Python, 239 isolated core (+5 heavy
+deselected), 41 frontend and 13 browser tests. The new cold Tesla run passes
+14/14, frozen Blender control comparison, GLB and desktop/mobile viewers. All
+protected Mark II hashes remain unchanged. Full reports, test XML/JSON,
+performance limitations and CI identity are in
+[validation/studio_v0.3](../validation/studio_v0.3/README.md).

@@ -1,0 +1,53 @@
+{
+  "status": "PASS",
+  "source": [
+    3840,
+    2160
+  ],
+  "dpr": 2,
+  "preview_samples": [
+    383.69999999998254,
+    349.5999999999767,
+    284.0999999999767,
+    285.9000000000233,
+    282.3999999999942,
+    366.3999999999942,
+    349.6000000000058,
+    349.6000000000058
+  ],
+  "commit_samples": [
+    384.79999999998836,
+    260.3999999999942,
+    355.4000000000233,
+    294.79999999998836
+  ],
+  "preview_p50_ms": 349.6000000000058,
+  "preview_p95_ms": 383.69999999998254,
+  "commit_p50_ms": 355.4000000000233,
+  "commit_p95_ms": 384.79999999998836,
+  "mask_first_display_ms": 3559,
+  "mask_provider_ms": 2699.3104459999986,
+  "refinement_display_ms": [
+    3580,
+    4068
+  ],
+  "fit": {
+    "max_deviation_px": 0.826418058740938,
+    "rms_deviation_px": 0.16817190052579023,
+    "certified_max_deviation_px": 0.826418058740938,
+    "measurement_flatten_error_px": 0,
+    "tolerance_px": 2,
+    "control_point_count": 14,
+    "original_sample_count": 812,
+    "preserve_corners": false,
+    "method": "RDP intervals / continuous chord bound"
+  },
+  "mask_components": 1,
+  "canonical_revision_unchanged": true,
+  "backend_rss_bytes": 183111680,
+  "offline": {
+    "external_attempts_blocked": 0,
+    "source_image_egress": 0
+  },
+  "note": "Preview includes coalescing/debounce, local HTTP and two animation frames; mask display includes pointer ROI gesture. Synthetic analytical 4K source, no real-time claim."
+}

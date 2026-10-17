@@ -1,0 +1,62 @@
+{
+  "status": "PASS",
+  "source": [
+    3840,
+    2160
+  ],
+  "roi": [
+    1200,
+    600,
+    3330,
+    1680
+  ],
+  "provider": {
+    "provider_id": "opencv",
+    "name": "OpenCV local baseline",
+    "provider_version": "4.14.0.94",
+    "capabilities": [
+      "detect_edges",
+      "trace_contour",
+      "smart_edge",
+      "segment_object",
+      "detect_wheels"
+    ],
+    "available": true,
+    "runtime_requirements": [
+      "Optional Studio cv extra",
+      "CPU; no model or GPU"
+    ],
+    "classification": "local",
+    "deterministic": true,
+    "semantic_understanding": false
+  },
+  "opencv_runtime": "4.14.0",
+  "first_mask_ms": 3340.4967000024044,
+  "refinement_ms": [
+    10251.275100003113,
+    6455.872799997451
+  ],
+  "contour_extraction_and_bounded_fitting_ms": [
+    213.97109999816166,
+    1355.2925000003597,
+    951.1494999969727
+  ],
+  "mask_pixel_iou_against_analytic_foreground": 1.0,
+  "foreground_pixels": 1109879,
+  "contour_count": 1,
+  "fit_reports": [
+    {
+      "max_deviation_px": 0.8834522085987724,
+      "rms_deviation_px": 0.24540734021255392,
+      "certified_max_deviation_px": 0.8834522085987724,
+      "measurement_flatten_error_px": 0,
+      "tolerance_px": 2,
+      "control_point_count": 49,
+      "original_sample_count": 4965,
+      "preserve_corners": false,
+      "method": "RDP intervals / continuous chord bound"
+    }
+  ],
+  "retained_field_data_bytes": 24883200,
+  "note": "CPU-only synthetic analytic fixture. Timings include local decoding on first request; contour extraction includes pure-core bounded fitting. Pixel IoU is fixture-specific, not vehicle recognition accuracy."
+}

@@ -1,0 +1,16 @@
+{
+  "status": "PASS",
+  "builds": 2,
+  "identical_asset_bytes": true,
+  "assets_sha256": {
+    "index.html": "58f9a49f99964e2e7b8d39827f2fe1bdf27905c17ed73eef92b478975956d6e2",
+    "assets/CVPanel-ByzFR0O2.css": "06dcd0c7d27e0b59aa4f0c7d18525fc196a71a62bc9f950a00a5887d42a2f514",
+    "assets/CVPanel-Cu2bUEam.js": "e30a071a72e72834ecbc2a2a394d43ecdb90d5acc840515caad59ca8cebcee4a",
+    "assets/index-BQ8IVovA.js": "0f9a0efa966cef4df4a98eaa323373d8fd851224e7b9dbf79e2e55368434e2a6",
+    "assets/index-C8fLmVeB.css": "6a7ac15ab6eb31b4ecb524bbc5bf8ce80408d276b88979ccb3110715be91ff2f",
+    "assets/MultiWorkspace-BGu3WLy5.js": "a9af03ede2d820a6a208619d1e5c5fe31b6e42d0290322a5894952265cd8d827",
+    "assets/Preview3D-D7o-rERR.js": "531a29c4a17ee39635b382b002d99ef8a4c66025d0ed6b4e8d7af5a43cbc01de"
+  },
+  "lazy_cv_panel": true,
+  "lazy_three_chunk_warning": true
+}
