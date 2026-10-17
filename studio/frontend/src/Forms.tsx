@@ -178,9 +178,10 @@ export function Properties({
           visibility: values.visibility,
           measured: values.visibility === "inferred" ? false : values.measured,
           provenance: {
+            ...o.provenance,
             type: values.provenance,
             method: values.method,
-            ...(values.citation ? { citation: values.citation } : {}),
+            citation: values.citation || undefined,
           },
         },
       },

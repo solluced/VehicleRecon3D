@@ -66,7 +66,9 @@ export function SourceCanvas(props: Props) {
       adapter.current = null;
     };
   }, []);
-  useEffect(()=>{host.current?.focus({preventScroll:true});},[props.tool]);
+  useEffect(() => {
+    host.current?.focus({ preventScroll: true });
+  }, [props.tool]);
   useEffect(() => {
     setLoaded(false);
     adapter.current?.load(props.url, props.preferences.viewport, () =>
@@ -185,7 +187,7 @@ class Adapter {
   keyDown = (e: KeyboardEvent) => {
     if (
       e.code === "Space" &&
-        !(e.target as HTMLElement).matches("input,textarea,select,button")
+      !(e.target as HTMLElement).matches("input,textarea,select,button")
     ) {
       this.space = true;
       e.preventDefault();
@@ -240,8 +242,10 @@ class Adapter {
       this.image = image;
       this.imageGroup.destroyChildren();
       this.imageGroup.add(new Konva.Image({ image }));
-      if (viewport && viewport.scale > 0) this.camera = viewport;
-      else this.fit();
+      if (viewport && viewport.scale > 0) {
+        this.camera = viewport;
+        this.changed({ ...this.camera });
+      } else this.fit();
       this.update();
       done();
     };
@@ -287,7 +291,7 @@ class Adapter {
   }
   down(e: MouseEvent) {
     if (!this.image || e.button === 2) return;
-    this.container.focus({preventScroll:true});
+    this.container.focus({ preventScroll: true });
     const p = this.props(),
       screen = this.stage.getPointerPosition()!,
       source = this.source();

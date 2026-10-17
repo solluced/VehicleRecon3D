@@ -18,4 +18,5 @@ studio/frontend/test-results/
 studio/frontend/playwright-report/
 studio/frontend/coverage/
 studio/frontend/*.tsbuildinfo
+studio/backend/build/
 projects/*/.studio/

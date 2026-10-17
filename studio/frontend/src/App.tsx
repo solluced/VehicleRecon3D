@@ -362,6 +362,11 @@ export default function App() {
                           : "v2 · " + (p.project?.authoring_state || "DRAFT")}
                       </small>
                       <code>{p.revision?.slice(0, 12)}</code>
+                      <small>
+                        {p.version === 2
+                          ? `Surfaces: ${(p.readiness?.surfaces as Ready)?.state || "status unavailable"}`
+                          : "Legacy authoring · read only"}
+                      </small>
                     </span>
                     <span className="card-arrow">↗</span>
                   </button>
@@ -447,7 +452,12 @@ export default function App() {
                 <select
                   aria-label="Reference image"
                   value={reference?.role || ""}
-                  onChange={(e) => preference({ reference_id: e.target.value })}
+                  onChange={(e) => {
+                    preference({ reference_id: e.target.value });
+                    setDraft([]);
+                    setSelection(null);
+                    setTool("select");
+                  }}
                 >
                   {snapshot.references.map((r) => (
                     <option key={r.id} value={r.role}>

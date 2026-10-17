@@ -106,7 +106,8 @@ export const defaults: Record<string, LayerState> = {
   },
 };
 export function category(o: Observation): LayerState["category"] {
-  return ["axis", "measurement"].includes(o.semantic_role)
+  return ["axis", "datum", "measurement"].includes(o.semantic_role) ||
+    ["axis", "measurement", "circle"].includes(o.kind)
     ? "datums"
     : "points" in o
       ? "curves"

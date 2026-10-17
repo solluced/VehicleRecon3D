@@ -24,7 +24,7 @@ from .workspace import Registry, APIError, guard
 def create_app(config):
     registry=Registry(config);sessions={};streams={}
     app=FastAPI(docs_url=None,redoc_url=None,openapi_url=None,debug=False)
-    app.state.registry=registry;app.state.config=config
+    app.state.registry=registry;app.state.config=config;app.state.stopping=False
     app.add_middleware(Security,config=config,sessions=sessions)
 
     @app.exception_handler(APIError)
@@ -60,7 +60,7 @@ def create_app(config):
     async def bootstrap(request:Request):
         if request.headers.get('content-type','').split(';')[0]!='application/json':raise APIError(415,'TYPE','JSON required')
         body=await request.json()
-        if not config.bootstrap or time.monotonic()-config.created>300 or not secrets.compare_digest(str(body.get('secret','')),config.bootstrap):
+        if not config.bootstrap or time.monotonic()-config.created>300 or not secrets.compare_digest(str(body.get('secret','')).encode('utf-8'),config.bootstrap.encode('utf-8')):
             raise APIError(401,'BOOTSTRAP','Bootstrap is invalid, expired or already used. Restart Studio for a new launch.')
         config.bootstrap='';token=secrets.token_urlsafe(32);csrf=secrets.token_urlsafe(32)
         sessions[token]={'id':uuid.uuid4().hex,'csrf':csrf,'created':time.monotonic()}
@@ -198,7 +198,7 @@ def create_app(config):
         async def stream():
             cursor=request.headers.get('last-event-id')
             try:
-                while streams.get(key)==owner and time.monotonic()-request.scope['studio_session']['created']<12*3600 and not await request.is_disconnected():
+                while not app.state.stopping and streams.get(key)==owner and time.monotonic()-request.scope['studio_session']['created']<12*3600 and not await request.is_disconnected():
                     for ident in list(registry.projects):
                         try:
                             def probe():

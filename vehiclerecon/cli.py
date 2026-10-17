@@ -23,7 +23,7 @@ def main(argv=None):
             except ImportError:
                 print('Studio is optional. Install: python -m pip install -e . -e studio/backend');return 1
             try:launch(roots=args.root,port=args.port,host=args.host,browser=not args.no_browser)
-            except (ValueError,OSError) as exc:print(str(exc));return 1
+            except (ImportError,ValueError,OSError) as exc:print(str(exc));return 1
             return 0
         if args.command=='init':
             if args.schema_version == 2:

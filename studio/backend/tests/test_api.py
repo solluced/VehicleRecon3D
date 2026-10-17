@@ -221,3 +221,29 @@ def test_linked_project_is_not_indexed(env):
     assert all(p.get('project',{}).get('project_id')!='outside' for p in c.get('/api/v1/projects').json())
     from vehiclerecon_studio.workspace import guard,APIError
     with pytest.raises(APIError):guard(root,link)
+
+
+def test_write_content_type_is_enforced(env):
+    c,app,h,ident,lease,root,_=env;before=revision(root/'study')
+    response=c.post(f'/api/v1/projects/{ident}/undo',content=b'{}',headers={**h,'Content-Type':'text/plain'})
+    assert response.status_code==415 and revision(root/'study')==before
+
+
+def test_transport_forwards_core_authoring_events_and_stale_scope(env):
+    response=post(env,'transactions',commands=[{'type':'MoveObservation','observation_id':'obs_roof_side','pixel':[129,78]}])
+    assert response.status_code==200
+    records=[e for e in env[1].state.registry.bus.records if e['kind']=='project_changed']
+    assert records and 'source' in records[-1]['stale']['reviews']
+    assert records[-1]['revision']==response.json()['revision']
+
+
+def test_input_quota_rejects_valid_image_without_registering_it(env):
+    c,app,h,ident,lease,root,_=env;data=io.BytesIO();Image.new('RGB',(32,32),'blue').save(data,format='PNG')
+    app.state.config.workspace_quota=1;before=revision(root/'study')
+    response=c.post(f'/api/v1/projects/{ident}/reference-imports',content=data.getvalue(),headers={**h,'If-Match':before,'X-Expected-Revision':before,'X-Editor-Lease':lease,'X-Reference-Role':'hero'})
+    assert response.status_code==413 and revision(root/'study')==before
+
+
+def test_non_ascii_bootstrap_is_rejected_without_internal_error(env):
+    c,app,h,ident,lease,root,_=env;app.state.config.bootstrap='test_ascii_secret'
+    assert c.post('/api/v1/session/bootstrap',json={'secret':'неверный'},headers={'Origin':h['Origin']}).status_code==401

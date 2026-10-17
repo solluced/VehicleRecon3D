@@ -34,7 +34,7 @@ class Security:
 
     async def __call__(self, scope, receive, send):
         if scope['type']!='http':return await self.app(scope,receive,send)
-        headers={k.decode().lower():v.decode() for k,v in scope['headers']}
+        headers={k.decode('latin-1').lower():v.decode('latin-1') for k,v in scope['headers']}
         method=scope['method'];path=scope['path'];api=path.startswith('/api/')
         def error(code,message):return JSONResponse({'code':'SECURITY','message':message,'issues':[]},status_code=code)
         rejection=None
@@ -46,6 +46,10 @@ class Security:
             rejection=error(403,'Cross-site request rejected')
         elif method not in ('GET','HEAD') and headers.get('origin')!=self.config.origin:
             rejection=error(403,'Exact Origin required')
+        elif not api and method not in ('GET','HEAD'):
+            rejection=error(405,'Static application assets are read-only')
+        elif api and method not in ('GET','HEAD') and not path.endswith('/reference-imports') and headers.get('content-type','').split(';')[0]!='application/json':
+            rejection=error(415,'JSON content type required')
         from http.cookies import SimpleCookie
         cookies=SimpleCookie()
         try:cookies.load(headers.get('cookie',''))
@@ -53,7 +57,7 @@ class Security:
         token=cookies.get('vr_session');session=self.sessions.get(token.value if token else '')
         if rejection is None and api and path!='/api/v1/session/bootstrap':
             if session is None or time.monotonic()-session['created']>12*3600:rejection=error(401,'Local session required')
-            elif method not in ('GET','HEAD') and not secrets.compare_digest(headers.get('x-csrf-token',''),session['csrf']):
+            elif method not in ('GET','HEAD') and not secrets.compare_digest(headers.get('x-csrf-token','').encode('utf-8'),session['csrf'].encode('utf-8')):
                 rejection=error(403,'CSRF token required')
         scope['studio_session']=session
         if rejection:return await rejection(scope,receive,send)

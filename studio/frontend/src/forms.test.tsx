@@ -1,8 +1,53 @@
 // @vitest-environment jsdom
 import { afterEach, it, expect, vi } from "vitest";
 import { render, fireEvent, screen, cleanup } from "@testing-library/react";
-import { RolePicker, SchemaField } from "./Forms";
+import { RolePicker, SchemaField, Properties } from "./Forms";
+import type { Observation } from "./types";
+import type { EditorClient } from "./api";
 afterEach(cleanup);
+it("preserves unedited provenance metadata during a property edit", () => {
+  const commands = vi.fn().mockResolvedValue(true);
+  const observation: Observation = {
+    id: "one",
+    kind: "point",
+    view: "side",
+    semantic_role: "roof",
+    pixel: [10, 20],
+    reference_id: "multiview",
+    source_sha256: "a".repeat(64),
+    crop_id: "b".repeat(64),
+    revision: 1,
+    uncertainty_px: 1,
+    visibility: "observed",
+    measured: true,
+    provenance: {
+      type: "measured",
+      method: "manual",
+      confidence: 0.8,
+      provider: "human",
+      author: "Analyst",
+    },
+  };
+  render(
+    <Properties
+      observation={observation}
+      selection={{ entity: "one" }}
+      client={{ commands } as unknown as EditorClient}
+      roles={["roof"]}
+      onRoleChanged={() => {}}
+      canEdit
+    />,
+  );
+  fireEvent.change(screen.getByLabelText("Uncertainty (px)"), {
+    target: { value: "2" },
+  });
+  fireEvent.click(screen.getByRole("button", { name: "Apply properties" }));
+  expect(commands.mock.calls[0][0][0].values.provenance).toMatchObject({
+    confidence: 0.8,
+    provider: "human",
+    author: "Analyst",
+  });
+});
 it("filters actual profile roles and commits selection", () => {
   const changed = vi.fn();
   render(

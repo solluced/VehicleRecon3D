@@ -84,8 +84,14 @@ class Registry:
     def session(self,ident,tab):
         key=(ident,tab)
         if key not in self.sessions:
-            self.sessions[key]=AuthoringSession(self.resolve(ident))
+            self.sessions[key]=self.new_session(ident,tab)
         return self.sessions[key]
+
+    def new_session(self,ident,tab):
+        def observer(event):
+            self.bus.emit(event['kind'],project_id=ident,revision=event.get('revision'),
+                          stale=event.get('stale'),actor_tab=tab.rsplit(':',1)[-1])
+        return AuthoringSession(self.resolve(ident),observer=observer)
 
     def snapshot(self,ident,tab=None):
         root=self.resolve(ident)
@@ -169,7 +175,7 @@ class Registry:
                     result=session.apply(commands,expected_revision=expected)
                 elif operation in ('undo','redo'):result=getattr(session,operation)(expected_revision=expected)
                 elif operation=='reload':
-                    self.sessions[(ident,tab)]=AuthoringSession(root);result={'revision':expected}
+                    self.sessions[(ident,tab)]=self.new_session(ident,tab);result={'revision':expected}
                 elif operation=='preferences':
                     # Typed presentation-only allowlist, never a second geometry store.
                     prefs=body.get('preferences',{})
@@ -177,13 +183,17 @@ class Registry:
                     guard(root,root/'.studio/session.json')
                     atomic_write(root,'.studio/session.json',(json.dumps(prefs)+'\n').encode());result={'revision':expected}
                 elif operation=='reference-imports':
+                    directory=guard(root,root/'input')
+                    size=sum(p.stat().st_size for p in directory.glob('*') if p.is_file())
+                    if size+len(body['_raw'])>self.config.workspace_quota:
+                        raise APIError(413,'QUOTA','Reference workspace quota exceeded')
                     result=import_reference(session,body['_raw'],reference_id=body.get('reference_id','multiview'),expected_revision=expected)
                 else:raise APIError(404,'OPERATION','Unsupported operation')
                 self.seen[ident]=result['revision'];lease['expires']=time.monotonic()+45
                 snapshot=self.snapshot(ident,tab);result={**result,'snapshot':snapshot}
                 self.requests[key]=(fingerprint,result)
                 if len(self.requests)>512:self.requests.pop(next(iter(self.requests)))
-                for kind in ('project_changed','validation_changed','revision_changed'):
+                for kind in (('session_changed',) if operation in ('preferences','reload') else ('validation_changed','revision_changed')):
                     self.bus.emit(kind,project_id=ident,revision=result['revision'],actor_tab=tab.rsplit(':',1)[-1])
                 return result
 
@@ -216,4 +226,6 @@ class Registry:
                     if image.getexif().get(274,1)!=1:raise APIError(422,'ORIENTATION','Rotated EXIF images require an upright source; original bytes were not changed')
                     image.load()
             except APIError:raise
+            except (Image.DecompressionBombWarning,Image.DecompressionBombError) as exc:
+                raise APIError(413,'IMAGE','Decoded image exceeds pixel budget') from exc
             except Exception as exc:raise APIError(422,'IMAGE','Corrupt or unsupported reference image') from exc
