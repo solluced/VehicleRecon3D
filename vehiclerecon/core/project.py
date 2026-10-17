@@ -3,6 +3,7 @@ import json
 import math
 import re
 import sys
+from functools import lru_cache
 from pathlib import Path, PureWindowsPath
 from .errors import SchemaError, ReferenceError
 
@@ -33,21 +34,38 @@ def read_json(path):
         raise SchemaError(f"{path}: {exc}") from exc
 
 
-def validate(value, schema_name):
+@lru_cache(maxsize=4)
+def _schema_bundle(entries):
+    """Reuse parsed schemas and immutable registries, keyed to exact disk bytes.
+
+    The filesystem is still read on every validation; neither mtime nor a previous
+    semantic result establishes current validity. Each call gets its own validator.
+    """
     from jsonschema import Draft202012Validator
     from referencing import Registry, Resource
+    import hashlib
+    schemas={}
+    for name,raw in entries:
+        value=json.loads(raw.decode('utf-8-sig'));finite(value);schemas[name]=value
+    registry=Registry().with_resources((s['$id'],Resource.from_contents(s)) for s in schemas.values())
+    identity=hashlib.sha256(b'\0'.join(name.encode()+b'\0'+raw for name,raw in entries)).hexdigest()
+    return schemas,registry,identity
+
+
+def validate(value, schema_name):
+    from jsonschema import Draft202012Validator
     schema_root = RESOURCE_ROOT / "schemas"
     if schema_name in ('project','calibration','cage') and value.get('schema_version') == 2:
         schema_name += '_v2'
-    schemas = [read_json(p) for p in sorted(schema_root.glob("*.schema.json"))]
-    registry = Registry().with_resources((s["$id"], Resource.from_contents(s)) for s in schemas)
-    schema = read_json(schema_root / f"{schema_name}.schema.json")
+    try:schemas,registry,identity=_schema_bundle(tuple((p.name,p.read_bytes()) for p in sorted(schema_root.glob('*.schema.json'))))
+    except (OSError,ValueError) as exc:raise SchemaError('Invalid local schema bundle') from exc
+    schema = schemas[f'{schema_name}.schema.json']
     finite(value)
     validator = Draft202012Validator
     if schema_name in ('calibration_v2','authoring_command','authoring'):
         from .schema_dispatch import authoring_validator, validation_namespace
         validator = authoring_validator()
-        context=validation_namespace(schemas)
+        context=validation_namespace(None,identity=identity)
     else:
         from contextlib import nullcontext
         context=nullcontext()

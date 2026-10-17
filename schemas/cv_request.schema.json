@@ -1,0 +1,167 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vehiclerecon.local/schemas/cv_request.schema.json",
+  "type": "object",
+  "properties": {
+    "provider_id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_]{0,39}$"
+    },
+    "capability": {
+      "enum": [
+        "detect_edges",
+        "trace_contour",
+        "smart_edge",
+        "segment_object",
+        "detect_wheels"
+      ]
+    },
+    "reference_id": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{32}$"
+    },
+    "view": {
+      "enum": [
+        "front",
+        "side",
+        "rear",
+        "top"
+      ]
+    },
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "roi": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 65536
+          },
+          "minItems": 4,
+          "maxItems": 4
+        },
+        "preset": {
+          "enum": [
+            "Weak",
+            "Normal",
+            "Strong"
+          ]
+        },
+        "threshold": {
+          "type": "number",
+          "minimum": 1,
+          "maximum": 255
+        },
+        "minimum_contrast": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 255
+        },
+        "search_radius": {
+          "type": "integer",
+          "minimum": 4,
+          "maximum": 96
+        },
+        "edge_attraction": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 20
+        },
+        "smoothness": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 5
+        },
+        "tolerance": {
+          "type": "number",
+          "minimum": 0.05,
+          "maximum": 32
+        },
+        "trajectory": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "minItems": 2,
+          "maxItems": 256
+        },
+        "min_radius": {
+          "type": "number",
+          "minimum": 2,
+          "maximum": 2048
+        },
+        "max_radius": {
+          "type": "number",
+          "minimum": 2,
+          "maximum": 2048
+        },
+        "outer_only": {
+          "type": "boolean"
+        },
+        "strokes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "label": {
+                "enum": [
+                  "foreground",
+                  "background"
+                ]
+              },
+              "points": {
+                "type": "array",
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "type": "number"
+                  },
+                  "minItems": 2,
+                  "maxItems": 2
+                },
+                "minItems": 1,
+                "maxItems": 128
+              },
+              "radius": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 64
+              }
+            },
+            "required": [
+              "label",
+              "points"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 0,
+          "maxItems": 64
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    },
+    "supersedes": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{32}$"
+    },
+    "parent_proposal_id": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{32}$"
+    }
+  },
+  "required": [
+    "provider_id",
+    "capability",
+    "reference_id",
+    "view",
+    "parameters"
+  ],
+  "additionalProperties": false
+}

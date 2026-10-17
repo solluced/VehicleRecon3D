@@ -51,6 +51,8 @@ class Registry:
         self.config=config;self.projects={};self.roots={uuid.uuid4().hex:p for p in config.roots}
         self.lock=threading.RLock();self.sessions={};self.leases={};self.seen={};self.requests=Responses();self.snapshots={};self.analyses={};self.proposals={};self.bus=EventBus();self.decode_slots=threading.BoundedSemaphore(2)
         self.scan()
+        from .cv.service import CVService
+        self.cv=CVService(self)
 
     def scan(self):
         with self.lock:

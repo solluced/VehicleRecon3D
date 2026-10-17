@@ -6,6 +6,7 @@ import secrets
 import time
 import math
 import uuid
+from contextlib import asynccontextmanager
 from pathlib import Path
 from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse, Response, FileResponse, StreamingResponse
@@ -23,7 +24,13 @@ from .workspace import Registry, APIError, guard
 
 def create_app(config):
     registry=Registry(config);sessions={};streams={}
-    app=FastAPI(docs_url=None,redoc_url=None,openapi_url=None,debug=False)
+    @asynccontextmanager
+    async def lifespan(application):
+        try:yield
+        finally:
+            application.state.stopping=True
+            await run_in_threadpool(registry.cv.close)
+    app=FastAPI(docs_url=None,redoc_url=None,openapi_url=None,debug=False,lifespan=lifespan)
     app.state.registry=registry;app.state.config=config;app.state.stopping=False
     app.add_middleware(Security,config=config,sessions=sessions)
 
@@ -75,8 +82,59 @@ def create_app(config):
     def roots():return [{'id':k,'label':p.name,'revision':registry.root_revision(k)} for k,p in registry.roots.items()]
 
     @app.get('/api/v1/capabilities')
-    def capabilities():return {'version':'0.2','document_versions':[1,2],'writable_versions':[2],'image_formats':['PNG','JPEG'],
-        'max_upload_bytes':config.max_upload,'max_pixels':config.max_pixels,'pipeline':False,'CV':False,'epoch':registry.bus.epoch,'idempotency_survives_restart':False}
+    def capabilities():return {'version':'0.3','document_versions':[1,2],'writable_versions':[2],'image_formats':['PNG','JPEG'],
+        'max_upload_bytes':config.max_upload,'max_pixels':config.max_pixels,'pipeline':False,
+        'CV':any(p['available'] for p in registry.cv.catalog()),'epoch':registry.bus.epoch,'idempotency_survives_restart':False}
+
+    @app.get('/api/v1/cv/providers')
+    def cv_providers():return {'providers':registry.cv.catalog(),'limits':{'queue':4,'source_pixels':16777216,'local_search_pixels':262144,'mask_roi_pixels':4194304}}
+
+    @app.get('/api/v1/cv/retention')
+    def cv_retention():return registry.cv.metrics()
+
+    @app.get('/api/v1/projects/{ident}/cv-context')
+    def cv_context(ident:str,request:Request,reference_id:str,view:str,expected_revision:str):
+        if view not in ('front','side','rear','top'):raise APIError(422,'VIEW','Unknown source view')
+        _,source=registry.cv._source(ident,expected_revision,{'reference_id':reference_id,'view':view})
+        return source
+
+    @app.post('/api/v1/projects/{ident}/cv-traces')
+    def cv_trace(ident:str,request:Request,body:dict):
+        precondition(request,body);return JSONResponse(registry.cv.combine(ident,tab(request),body))
+
+    @app.post('/api/v1/projects/{ident}/cv-jobs')
+    def cv_submit(ident:str,request:Request,body:dict):
+        precondition(request,body);return JSONResponse(registry.cv.submit(ident,tab(request),body),status_code=202)
+
+    @app.get('/api/v1/projects/{ident}/cv-jobs/{job_id}')
+    def cv_job(ident:str,job_id:str,request:Request):return registry.cv.job(ident,tab(request),job_id)
+
+    @app.post('/api/v1/projects/{ident}/cv-jobs/{job_id}/cancel')
+    def cv_cancel(ident:str,job_id:str,request:Request,body:dict):return registry.cv.cancel(ident,tab(request),job_id)
+
+    @app.get('/api/v1/projects/{ident}/cv-proposals/{proposal_id}')
+    def cv_proposal(ident:str,proposal_id:str,request:Request):
+        return JSONResponse(registry.cv.get(ident,tab(request),proposal_id)['proposal'])
+
+    @app.post('/api/v1/projects/{ident}/cv-proposals/{proposal_id}/{action}')
+    def cv_decide(ident:str,proposal_id:str,action:str,request:Request,body:dict):
+        owner=tab(request)
+        if action=='accept':
+            precondition(request,body)
+            return JSONResponse(registry.cv.accept(ident,owner,proposal_id,body,request.headers.get('idempotency-key')))
+        if action=='reject':return JSONResponse(registry.cv.reject(ident,owner,proposal_id,body.get('component_ids')))
+        if action=='edit':return JSONResponse(registry.cv.edit(ident,owner,proposal_id,body.get('edit',{})))
+        if action=='stale':return JSONResponse(registry.cv.invalidate(ident,owner,proposal_id))
+        raise APIError(404,'CV_ACTION','Unknown proposal action')
+
+    @app.get('/api/v1/projects/{ident}/cv-proposals/{proposal_id}/rasters/{kind}')
+    def cv_raster(ident:str,proposal_id:str,kind:str,request:Request):
+        entry=registry.cv.proposals.get(proposal_id)
+        if entry is None or entry['project_id']!=ident or entry['owner'].split(':')[0]!=request.scope['studio_session']['id']:
+            raise APIError(404,'CV_RASTER','Unknown project-scoped diagnostic raster')
+        raw=entry['rasters'].get(kind)
+        if raw is None:raise APIError(404,'CV_RASTER','Unknown proposal raster')
+        return Response(raw,media_type='image/png')
 
     @app.get('/api/v1/schemas')
     def schemas():

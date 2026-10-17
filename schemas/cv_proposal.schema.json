@@ -1,0 +1,400 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vehiclerecon.local/schemas/cv_proposal.schema.json",
+  "type": "object",
+  "properties": {
+    "proposal_id": {
+      "type": "string"
+    },
+    "provider_id": {
+      "type": "string"
+    },
+    "provider_version": {
+      "type": "string"
+    },
+    "capability": {
+      "type": "string"
+    },
+    "source_revision": {
+      "type": "string"
+    },
+    "source_sha256": {
+      "type": "string"
+    },
+    "source_reference_id": {
+      "type": "string"
+    },
+    "source_role": {
+      "type": "string"
+    },
+    "source_size": {
+      "type": "array",
+      "items": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 65536
+      },
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "crop": {
+      "type": "array",
+      "items": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 65536
+      },
+      "minItems": 4,
+      "maxItems": 4
+    },
+    "crop_id": {
+      "type": "string"
+    },
+    "view": {
+      "enum": [
+        "front",
+        "side",
+        "rear",
+        "top"
+      ]
+    },
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "roi": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 65536
+          },
+          "minItems": 4,
+          "maxItems": 4
+        },
+        "preset": {
+          "enum": [
+            "Weak",
+            "Normal",
+            "Strong"
+          ]
+        },
+        "threshold": {
+          "type": "number",
+          "minimum": 1,
+          "maximum": 255
+        },
+        "minimum_contrast": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 255
+        },
+        "search_radius": {
+          "type": "integer",
+          "minimum": 4,
+          "maximum": 96
+        },
+        "edge_attraction": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 20
+        },
+        "smoothness": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 5
+        },
+        "tolerance": {
+          "type": "number",
+          "minimum": 0.05,
+          "maximum": 32
+        },
+        "trajectory": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "minItems": 2,
+          "maxItems": 256
+        },
+        "min_radius": {
+          "type": "number",
+          "minimum": 2,
+          "maximum": 2048
+        },
+        "max_radius": {
+          "type": "number",
+          "minimum": 2,
+          "maximum": 2048
+        },
+        "outer_only": {
+          "type": "boolean"
+        },
+        "strokes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "label": {
+                "enum": [
+                  "foreground",
+                  "background"
+                ]
+              },
+              "points": {
+                "type": "array",
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "type": "number"
+                  },
+                  "minItems": 2,
+                  "maxItems": 2
+                },
+                "minItems": 1,
+                "maxItems": 128
+              },
+              "radius": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 64
+              }
+            },
+            "required": [
+              "label",
+              "points"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 0,
+          "maxItems": 64
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    },
+    "created_input_hash": {
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "ACTIVE",
+        "ACCEPTED",
+        "REJECTED",
+        "STALE"
+      ]
+    },
+    "proposal_revision": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 100000
+    },
+    "components": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "kind": {
+            "enum": [
+              "polyline",
+              "spline",
+              "circle"
+            ]
+          },
+          "status": {
+            "enum": [
+              "ACTIVE",
+              "ACCEPTED",
+              "REJECTED",
+              "STALE"
+            ]
+          },
+          "semantic_role": {
+            "type": "string"
+          },
+          "score": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "score_meaning": {
+            "type": "string"
+          },
+          "points": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 2,
+              "maxItems": 2
+            },
+            "minItems": 2,
+            "maxItems": 32768
+          },
+          "original_points": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 2,
+              "maxItems": 2
+            },
+            "minItems": 2,
+            "maxItems": 32769
+          },
+          "working_points": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 2,
+              "maxItems": 2
+            },
+            "minItems": 2,
+            "maxItems": 32769
+          },
+          "preview_points": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 2,
+              "maxItems": 2
+            },
+            "minItems": 2,
+            "maxItems": 65536
+          },
+          "closed": {
+            "type": "boolean"
+          },
+          "knots": {
+            "type": [
+              "array",
+              "null"
+            ]
+          },
+          "fit": {
+            "type": "object"
+          },
+          "center": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "radius_px": {
+            "type": "number",
+            "minimum": 0.01,
+            "maximum": 65536
+          },
+          "user_edited": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "id",
+          "kind",
+          "status",
+          "semantic_role",
+          "score"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0,
+      "maxItems": 16
+    },
+    "provenance": {
+      "type": "object"
+    },
+    "warnings": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 0,
+      "maxItems": 64
+    },
+    "mask": {
+      "type": "object"
+    },
+    "raster_bounds": {
+      "type": "array",
+      "items": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 65536
+      },
+      "minItems": 4,
+      "maxItems": 4
+    },
+    "rasters": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "edges",
+          "mask"
+        ]
+      },
+      "minItems": 0,
+      "maxItems": 2
+    },
+    "search_pixels": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 262144
+    },
+    "expanded_nodes": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 80001
+    },
+    "elapsed_ms": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 600000
+    },
+    "cache_hit": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "proposal_id",
+    "provider_id",
+    "provider_version",
+    "capability",
+    "source_revision",
+    "source_sha256",
+    "source_reference_id",
+    "source_role",
+    "source_size",
+    "crop",
+    "crop_id",
+    "view",
+    "parameters",
+    "created_input_hash",
+    "status",
+    "proposal_revision",
+    "components",
+    "provenance",
+    "warnings"
+  ],
+  "additionalProperties": false
+}

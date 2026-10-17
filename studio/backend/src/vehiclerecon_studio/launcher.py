@@ -5,7 +5,7 @@ import webbrowser
 from pathlib import Path
 
 
-def launch(*, roots=(), port=0, host='127.0.0.1', browser=True):
+def launch(*, roots=(), port=0, host='127.0.0.1', browser=True, cv_enabled=True):
     if host!='127.0.0.1':raise ValueError('Studio binds only to 127.0.0.1')
     import uvicorn
     from .security import Config
@@ -14,7 +14,7 @@ def launch(*, roots=(), port=0, host='127.0.0.1', browser=True):
     sock=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
     try:
         sock.bind((host,port));sock.listen(128)
-        config=Config(roots=roots,port=sock.getsockname()[1]);app=create_app(config)
+        config=Config(roots=roots,port=sock.getsockname()[1],cv_enabled=cv_enabled);app=create_app(config)
         if not (config.static/'index.html').is_file():raise ValueError('Studio frontend is not built. See docs/studio_development.md')
         class LocalServer(uvicorn.Server):
             async def shutdown(self,sockets=None):

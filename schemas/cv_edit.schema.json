@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vehiclerecon.local/schemas/cv_edit.schema.json",
+  "type": "object",
+  "properties": {
+    "component_id": {
+      "type": "string",
+      "pattern": "^component_[0-9]+$"
+    },
+    "proposal_revision": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 100000
+    },
+    "action": {
+      "enum": [
+        "fit",
+        "reverse",
+        "trim",
+        "open",
+        "close",
+        "move_point",
+        "semantic"
+      ]
+    },
+    "tolerance": {
+      "type": "number",
+      "minimum": 0.05,
+      "maximum": 32
+    },
+    "max_points": {
+      "type": "integer",
+      "minimum": 2,
+      "maximum": 1024
+    },
+    "preserve_corners": {
+      "type": "boolean"
+    },
+    "spline": {
+      "type": "boolean"
+    },
+    "start": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 32768
+    },
+    "end": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 32768
+    },
+    "index": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 32768
+    },
+    "pixel": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      },
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "semantic_role": {
+      "type": "string",
+      "pattern": "^[A-Za-z_][A-Za-z0-9_.:-]{0,159}$"
+    }
+  },
+  "required": [
+    "component_id",
+    "proposal_revision",
+    "action"
+  ],
+  "additionalProperties": false
+}

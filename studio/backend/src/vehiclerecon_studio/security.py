@@ -17,6 +17,7 @@ class Config:
     max_upload: int = 64*1024*1024
     max_pixels: int = 64*1000*1000
     workspace_quota: int = 512*1024*1024
+    cv_enabled: bool = True
 
     def __post_init__(self):
         if self.host!='127.0.0.1':raise ValueError('Studio binds only to 127.0.0.1')

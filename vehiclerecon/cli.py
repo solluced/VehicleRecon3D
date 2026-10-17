@@ -10,6 +10,7 @@ def main(argv=None):
     inspect = commands.add_parser('inspect')
     inspect.add_argument('project')
     studio=commands.add_parser('studio');studio.add_argument('--root',action='append',default=[]);studio.add_argument('--port',type=int,default=0);studio.add_argument('--host',default='127.0.0.1');studio.add_argument('--no-browser',action='store_true')
+    studio.add_argument('--disable-cv',action='store_true')
     init=commands.add_parser('init');init.add_argument('project');init.add_argument('--profile',default='sedan');init.add_argument('--schema-version',type=int,choices=[1,2],default=1)
     migration=commands.add_parser('migrate');migration.add_argument('project');migration.add_argument('--to',type=int,required=True);migration.add_argument('--dry-run',action='store_true');migration.add_argument('--expected-revision')
     authoring=commands.add_parser('authoring-status');authoring.add_argument('project')
@@ -22,7 +23,7 @@ def main(argv=None):
                 from vehiclerecon_studio.launcher import launch
             except ImportError:
                 print('Studio is optional. Install: python -m pip install -e . -e studio/backend');return 1
-            try:launch(roots=args.root,port=args.port,host=args.host,browser=not args.no_browser)
+            try:launch(roots=args.root,port=args.port,host=args.host,browser=not args.no_browser,cv_enabled=not args.disable_cv)
             except (ImportError,ValueError,OSError) as exc:print(str(exc));return 1
             return 0
         if args.command=='init':

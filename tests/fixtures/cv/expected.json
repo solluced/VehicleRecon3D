@@ -1,0 +1,19 @@
+{
+  "size": [
+    256,
+    256
+  ],
+  "strong_edge_x": 128,
+  "wheel_centers": [
+    [
+      70,
+      145
+    ],
+    [
+      185,
+      145
+    ]
+  ],
+  "wheel_radius": 27,
+  "semantics": "Analytical fixtures, no claim of semantic vehicle understanding"
+}

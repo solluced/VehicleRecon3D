@@ -15,9 +15,9 @@ _bytes=0
 
 
 @contextmanager
-def validation_namespace(schemas):
+def validation_namespace(schemas,identity=None):
     """Bind structural memoization to every exact schema, including $refs."""
-    identity=hashlib.sha256(json.dumps(schemas,sort_keys=True,separators=(',',':')).encode()).hexdigest()
+    identity=identity or hashlib.sha256(json.dumps(schemas,sort_keys=True,separators=(',',':')).encode()).hexdigest()
     marker=_namespace.set(identity)
     try:yield
     finally:_namespace.reset(marker)

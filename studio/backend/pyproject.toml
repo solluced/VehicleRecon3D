@@ -4,11 +4,12 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "vehiclerecon-studio"
-version = "0.2.0"
+version = "0.3.0"
 requires-python = ">=3.11"
 dependencies = ["vehiclerecon>=0.1.0", "fastapi==0.143.3", "uvicorn==0.54.0", "pillow==12.3.0"]
 
 [project.optional-dependencies]
+cv = ["opencv-python-headless==4.14.0.94"]
 test = ["httpx==0.28.1", "pytest>=8"]
 
 [tool.setuptools.packages.find]

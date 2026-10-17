@@ -59,6 +59,7 @@ class AuthoringSession:
             w = Workspace(self.root)
             if w.revision != expected_revision:raise ConflictError('CONFLICT: authoring revision changed externally')
             before = copy.deepcopy(w.files);scopes = set()
+            w._flushed_documents=copy.deepcopy(w.documents)
             for command in commands:
                 validate(command,'authoring_command')
                 scopes.add(self._apply(w,command))
@@ -119,13 +120,16 @@ class AuthoringSession:
 
     @staticmethod
     def _flush(w):
-        data = w.documents['project'];w.files['project.json'] = _bytes(data)
+        data = w.documents['project'];prior=w._flushed_documents
+        if data!=prior.get('project'):w.files['project.json'] = _bytes(data)
         w.project.data = copy.deepcopy(data)
         if w.project.profile['id']!=data['vehicle_profile']:
             from ..core.project import read_json, RESOURCE_ROOT
             w.project.profile=read_json(RESOURCE_ROOT/'profiles'/f"{data['vehicle_profile']}.json")
         for kind in ('calibration','cage','surface_graph','details','silhouette_traces'):
-            if kind in w.documents:w.files[data['generated'][kind]] = _bytes(w.documents[kind])
+            if kind in w.documents and (w.documents[kind]!=prior.get(kind) or data['generated'][kind] not in w.files):
+                w.files[data['generated'][kind]] = _bytes(w.documents[kind])
+        w._flushed_documents=copy.deepcopy(w.documents)
 
     @staticmethod
     def _touch(cal, selected):
