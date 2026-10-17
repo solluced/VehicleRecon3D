@@ -311,14 +311,19 @@ test("native Three.js X and XZ gizmos preview locally and commit once at release
     page.on("request", (r) => {
       if (r.url().endsWith("/transactions")) requests.push(r.postData() || "");
     });
+    await expect(three).toHaveAttribute("data-camera", /^\[/);
     for (const mode of ["X", "XZ"]) {
       await page.getByLabel("World drag constraint").selectOption(mode);
+      const previousCamera = await three.getAttribute("data-camera");
       await page
         .getByRole("button", {
           name: mode === "X" ? "TOP" : "LEFT",
           exact: true,
         })
         .click();
+      // Handle screen coordinates belong to the last rendered camera. On a
+      // software renderer the preset click can precede that frame by >1 event.
+      await expect(three).not.toHaveAttribute("data-camera", previousCamera!);
       await expect
         .poll(
           async () =>
@@ -334,6 +339,7 @@ test("native Three.js X and XZ gizmos preview locally and commit once at release
         box = (await three.boundingBox())!,
         before = await evidence(page),
         count = requests.length;
+      const previousPreview = await three.getAttribute("data-drag-preview");
       await page.mouse.move(box.x + handle[0], box.y + handle[1]);
       await page.mouse.down();
       await page.mouse.move(
@@ -341,6 +347,11 @@ test("native Three.js X and XZ gizmos preview locally and commit once at release
         box.y + handle[1] - (mode === "XZ" ? 18 : 0),
         { steps: 12 },
       );
+      await expect(three).not.toHaveAttribute(
+        "data-drag-preview",
+        previousPreview || "",
+      );
+      expect(await three.getAttribute("data-drag-preview")).toBeTruthy();
       expect(requests.length).toBe(count);
       expect((await evidence(page)).world_landmarks).toEqual(
         before.world_landmarks,

@@ -151,6 +151,20 @@ test("measure 4K, 5000 canonical controls and 20 display layers", async ({
         box.y + v.y + o.pixel[1] * v.scale,
       );
       picking.push(Number(await canvas.getAttribute("data-pick-ms")));
+      // Measure every visible selection before dispatching the next click.
+      // Otherwise React can coalesce rapid CDP clicks on a slower CI renderer.
+      await expect(page.getByLabel("Stable ID", { exact: true })).toHaveValue(
+        o.id,
+      );
+      await expect
+        .poll(() =>
+          page.evaluate(
+            () =>
+              (window as unknown as { selectionTimes: number[] }).selectionTimes
+                .length,
+          ),
+        )
+        .toBe(picking.length);
     }
     await expect
       .poll(() =>

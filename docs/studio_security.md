@@ -13,9 +13,9 @@ threat model below remains the design input for later features; provider/build
 and artifact-serving controls are not claimed as new v0.1B endpoints. See
 [development/security details](studio_development.md) and the phase test evidence.
 
-Status: required design controls, not implemented protections. This threat model
-guides the future localhost service; it does not change the current CLI in this
-documentation phase. See [API](studio_backend_api.md) and
+Historical design baseline: the threat model below includes later provider/build
+controls. The implementation updates above identify the protections shipped in
+the current localhost service. See [API](studio_backend_api.md) and
 [transaction guarantees](studio_data_flow.md#revisioned-save-and-crash-consistency).
 
 ## Assets, actors and scope

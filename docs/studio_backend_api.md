@@ -12,9 +12,9 @@ adapt the accepted core services, including typed source metadata/import command
 and core event forwarding. Other prototypes below remain planned: there are no
 pipeline/CV/world/surface authoring or review-acceptance HTTP endpoints in v0.1B.
 
-Status: **proposed API v1, not implemented**. Document-schema versions are
-independent. FastAPI/OpenAPI and generated TypeScript clients are planned;
-the examples below are contract prototypes, not existing endpoints.
+Historical design baseline: the broader API catalogue and examples below are
+prototypes, not a list of shipped endpoints. The v0.2 implementation inventory
+linked above takes precedence. Document-schema versions are independent.
 
 v0.1A implementation mapping: future HTTP handlers can adapt
 `authoring.service.AuthoringSession`, `authoring.versions`, `authoring.readiness`,

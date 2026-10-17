@@ -12,9 +12,10 @@ core history, conflict/reopen and browser/performance tests are implemented.
 [Current manual](studio_user_manual_v0.1b.md) defines availability; later stages
 below remain planned.
 
-Status: architecture baseline for review. This phase delivers documentation only,
+Historical architecture phase: this baseline delivered documentation only,
 on core base `a3592f3`; no production Studio code or optional prototype is added.
-The command/API/packages described in these documents are planned capabilities.
+The current availability is defined by the v0.2 update above; remaining stages
+below are planned capabilities.
 
 v0.1A implementation update: the six core foundation dependencies below are now
 implemented and tested; see [core authoring](core_authoring.md) and phase evidence
