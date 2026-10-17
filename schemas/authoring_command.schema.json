@@ -593,6 +593,134 @@
         "semantic"
       ],
       "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "SetProjectMetadata"
+        },
+        "values": {
+          "type": "object",
+          "properties": {
+            "asset_name": {
+              "type": "string",
+              "pattern": "^[a-zA-Z0-9_-]+$"
+            },
+            "vehicle_profile": {
+              "type": "string",
+              "pattern": "^[a-z_]+$"
+            }
+          },
+          "minProperties": 1,
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "type",
+        "values"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "SetObservationProperties"
+        },
+        "observation_id": {
+          "$ref": "https://vehiclerecon.local/schemas/authoring.schema.json#/$defs/id"
+        },
+        "values": {
+          "type": "object",
+          "properties": {
+            "semantic_role": {
+              "type": "string",
+              "minLength": 1
+            },
+            "view": {
+              "enum": [
+                "front",
+                "side",
+                "rear",
+                "top"
+              ]
+            },
+            "uncertainty_px": {
+              "type": "number",
+              "minimum": 0
+            },
+            "provenance": {
+              "$ref": "https://vehiclerecon.local/schemas/authoring.schema.json#/$defs/provenance"
+            },
+            "visibility": {
+              "enum": [
+                "observed",
+                "inferred",
+                "occluded",
+                "unobserved"
+              ]
+            },
+            "measured": {
+              "type": "boolean"
+            }
+          },
+          "minProperties": 1,
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "type",
+        "observation_id",
+        "values"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "RegisterReference"
+        },
+        "reference_id": {
+          "enum": [
+            "multiview",
+            "front",
+            "side",
+            "rear",
+            "top",
+            "hero",
+            "control_overlay",
+            "surface_target",
+            "workflow",
+            "cage_overlay"
+          ]
+        },
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sha256": {
+          "$ref": "https://vehiclerecon.local/schemas/authoring.schema.json#/$defs/sha256"
+        },
+        "size": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "minItems": 2,
+          "maxItems": 2
+        }
+      },
+      "required": [
+        "type",
+        "reference_id",
+        "path",
+        "sha256",
+        "size"
+      ],
+      "additionalProperties": false
     }
   ]
 }

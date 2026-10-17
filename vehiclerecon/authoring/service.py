@@ -122,12 +122,42 @@ class AuthoringSession:
         if op == 'SetProjectSettings':
             w.documents['project'][c['section']] = copy.deepcopy(c['value'])
             return 'viewer' if c['section']=='viewer' else 'calibration'
+        if op == 'SetProjectMetadata':
+            w.documents['project'].update(copy.deepcopy(c['values']))
+            return 'calibration'
         cal = self._ensure(w,'calibration')
+        if op == 'RegisterReference':
+            from ..core.manifest import digest_file
+            from ..reference.panels import png_size
+            path = w.project.path(c['path'],exists=True)
+            if not c['path'].startswith('input/') or digest_file(path)!=c['sha256'] or png_size(path)!=c['size']:
+                raise ReferenceError('Imported reference identity does not match immutable source bytes')
+            refs = w.documents['project']['references'];old = refs.get(c['reference_id'])
+            if old is not None and old!=c['path']:raise ConflictError('Reference role already assigned; import a new identity explicitly')
+            refs[c['reference_id']] = c['path']
+            if 'source' not in cal:
+                cal.update(source=c['path'],source_size=c['size'],source_sha256=c['sha256'])
+            for view in ('front','side','rear','top'):
+                cal['views'].setdefault(view,{'crop':[0,0,*c['size']],
+                    'landmarks':{'observations':[],'source_curves':[]}})
+            return 'references'
         if op == 'AddObservation':
             if c['observation']['id'] in observations(cal):raise ConflictError('Observation ID already exists')
             data = cal['views'].setdefault(c['view'],{'landmarks':{}})
             data['landmarks'].setdefault('observations',[]).append(copy.deepcopy(c['observation']));return 'observations'
         obs = observations(cal)
+        if op == 'SetObservationProperties':
+            if c['observation_id'] not in obs:raise ReferenceError('Observation ID missing')
+            o = obs[c['observation_id']];values = copy.deepcopy(c['values'])
+            if values.get('view',o['view'])!=o['view']:
+                group = 'observations'
+                for field in ('observations','source_curves'):
+                    entries = cal['views'][o['view']]['landmarks'].get(field,[])
+                    if o in entries:entries.remove(o);group=field;break
+                dest = cal['views'].setdefault(values['view'],{'landmarks':{}})
+                dest['landmarks'].setdefault(group,[]).append(o)
+                o['crop_id'] = crop_identity(o['reference_id'],dest.get('crop'))
+            o.update(values);self._touch(cal,[o]);return 'observations'
         if op in ('MoveObservation','DeleteObservation'):
             if c['observation_id'] not in obs:raise ReferenceError('Observation ID missing')
             o = obs[c['observation_id']]

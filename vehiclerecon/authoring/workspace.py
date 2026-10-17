@@ -52,6 +52,9 @@ class Workspace:
             raise SchemaError('Authoring transactions require v2')
         p = copy.copy(self.project)
         p.data = data
+        from ..core.project import read_json, RESOURCE_ROOT
+        p.profile = read_json(RESOURCE_ROOT/'profiles'/f"{data['vehicle_profile']}.json")
+        validate(p.profile,'vehicle_profile')
         roles = set(p.profile['roles']+p.profile['optional_roles'])
         if set(data.get('roles', {}))-roles:
             raise SchemaError('Unknown profile role')
