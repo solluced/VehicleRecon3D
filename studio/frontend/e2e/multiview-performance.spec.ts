@@ -254,6 +254,12 @@ test("measure four 2D views plus Three.js with 5000 controls and live projection
     await page
       .getByLabel("World landmark selection")
       .selectOption("roof_corner");
+    // Selection populates the editable form in an effect. Wait for its actual
+    // subject before filling a numeric field; otherwise a stale form render can
+    // replace the selection between CDP's select-all and text insertion.
+    await expect(page.getByLabel("World ID", { exact: true })).toHaveValue(
+      "roof_corner",
+    );
     const total: number[] = [],
       persistence: number[] = [],
       refresh: number[] = [];
@@ -267,6 +273,9 @@ test("measure four 2D views plus Three.js with 5000 controls and live projection
       await page
         .getByLabel("World X", { exact: true })
         .fill(String(0.02 + i * 0.005));
+      await expect(page.getByLabel("World X", { exact: true })).toHaveValue(
+        String(0.02 + i * 0.005),
+      );
       began = Date.now();
       lastPersistence = 0;
       const previous = await workspace.getAttribute("data-analysis-revision"),
@@ -282,6 +291,14 @@ test("measure four 2D views plus Three.js with 5000 controls and live projection
         previous!,
       );
       await expect(workspace).toHaveAttribute("data-analysis-ready", "true");
+      // Include the passive form/scene effects and their visible draw in the
+      // refresh measurement before beginning another numeric edit.
+      await page.evaluate(
+        () =>
+          new Promise<void>((done) =>
+            requestAnimationFrame(() => requestAnimationFrame(() => done())),
+          ),
+      );
       await saved(page);
       await expect
         .poll(async () =>

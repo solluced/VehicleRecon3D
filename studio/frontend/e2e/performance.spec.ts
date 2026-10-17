@@ -126,9 +126,13 @@ test("measure 4K, 5000 canonical controls and 20 display layers", async ({
       const o = s.observations[i],
         v = await camera(page),
         box = (await canvas.boundingBox())!;
-      await expect(
-        page.getByLabel("Stable ID", { exact: true }),
-      ).not.toHaveValue(o.id);
+      expect(
+        await page.evaluate(
+          () =>
+            document.querySelector<HTMLInputElement>('[aria-label="Stable ID"]')
+              ?.value,
+        ),
+      ).not.toBe(o.id);
       await page.evaluate((expected) => {
         document.querySelector('[data-testid="canvas"]')!.addEventListener(
           "mousedown",
