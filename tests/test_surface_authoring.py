@@ -24,6 +24,7 @@ def graph(root):return copy.deepcopy(Workspace(root).documents['surface_graph'])
 
 def test_registry_matches_production_schema_and_positive_fixture(root):
     assert {r['id'] for r in registry()['operations']}==OPERATIONS
+    assert next(r for r in registry()['operations'] if r['id']=='lerp')['output_type']=='surface_or_point'
     w=Workspace(root);g=graph(root)
     with full_validation():graph_contract(g,w.documents['cage'])
     a=evaluate(w);b=evaluate(w)

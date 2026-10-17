@@ -37,7 +37,7 @@ def registry():
             'parameter_schema':params,'required_inputs':[x for x in inputs if x in params.get('required',[])],
             'optional_inputs':[x for x in inputs if x not in params.get('required',[])],
             'input_dimensions':{k:['curve','point'] if op in ('offset','lerp') else ['curve'] for k in inputs},
-            'output_type':'surface' if op in SURFACES or op=='lerp' else 'mesh' if op=='boundary_stitch' else 'point' if op=='curve_sample' else 'curve_or_point' if op=='offset' else 'curve',
+            'output_type':'surface_or_point' if op=='lerp' else 'surface' if op in SURFACES else 'mesh' if op=='boundary_stitch' else 'point' if op=='curve_sample' else 'curve_or_point' if op=='offset' else 'curve',
             'dimensional_expectations':'World coordinates and offsets in metres; normalized parameters in [0,1].',
             'preview_supported':op!='boundary_stitch','topology_supported':op in SURFACES or op=='lerp',
             'limitation':'Discrete boundary_stitch has no callable surface domain.' if op=='boundary_stitch' else None})
