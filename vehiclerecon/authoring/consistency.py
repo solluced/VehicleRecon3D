@@ -29,7 +29,8 @@ def summarize(rows):
     for name in ('AXLES','ENVELOPE','GREENHOUSE','PILLARS','DOORS','SECONDARY FEATURES'):
         selected=[r for r in rows if group(r['semantic_role'])==name]
         state='NOT ENOUGH DATA' if not selected or any(r['heat']=='UNKNOWN' for r in selected) else 'FAIL' if any(r['heat']=='FAIL' for r in selected) else 'WARNING' if any(r['heat']=='NEAR' for r in selected) else 'PASS'
-        result.append({'group':name,'state':state,'count':len(selected),'critical_failures':sum(r.get('critical',False) and r['heat']=='FAIL' for r in selected)})
+        result.append({'group':name,'state':state,'tolerance_status':'FAIL' if any(r['status']=='FAIL' for r in selected) else 'PASS' if selected and all(r['status']=='PASS' for r in selected) else 'UNKNOWN',
+                       'count':len(selected),'critical_failures':sum(r.get('critical',False) and r['heat']=='FAIL' for r in selected)})
     return result
 
 
@@ -66,17 +67,21 @@ def longitudinal_ratios(calibration,rows):
 
 
 def scene(calibration,cage):
-    controls=[]
+    controls=[];mirrors=[]
     for curve in cage.get('curves',[]):
         for ident,p in zip(curve.get('point_ids',[]),curve['points']):
             controls.append({'id':ident,'entity_id':curve['id'],'landmark':p.get('landmark') if isinstance(p,dict) else None,'xyz':list(point_value(cage,p)),'semantic_role':curve['role']})
+            if curve.get('symmetry'):
+                xyz=point_value(cage,p)
+                for side,sign in cage.get('sides',[]):
+                    if sign!=1:mirrors.append({'id':ident,'entity_id':curve['id'],'side':side,'xyz':[xyz[0],sign*xyz[1],xyz[2]],'display_only':True})
     wheels=[]
     geometry=calibration.get('wheel_geometry',{})
     for axle in geometry.get('axles',[]):
         for side,sign in cage.get('sides',[['L',-1],['R',1]]):
             xyz=[axle['x'],sign*axle['track_m']/2,axle['z']];radius=geometry['radius_m']
             wheels.append({'id':axle['id']+'_'+side,'xyz':xyz,'world_samples':[[xyz[0]+radius*math.cos(i*math.tau/64),xyz[1],xyz[2]+radius*math.sin(i*math.tau/64)] for i in range(65)]})
-    return {'landmarks':cage.get('landmarks',{}),'controls':controls,'wheels':wheels,
+    return {'landmarks':cage.get('landmarks',{}),'controls':controls,'mirrored_controls':mirrors,'wheels':wheels,
             'curves':sample_cage(calibration,cage) if calibration.get('wheel_geometry') else [],
             'wheel_geometry':calibration.get('wheel_geometry'),'symmetry':{'plane':'Y=0','declared':any(c.get('symmetry') for c in cage.get('curves',[])),
                 'sides':cage.get('sides',[]),'editing':'Display only; no implicit mirrored commands'},
@@ -90,9 +95,10 @@ def analyze(calibration,cage):
                 'side':links[r['id']].get('side',1),'binding_type':links[r['id']]['binding_type'],
                 'observation_point_id':links[r['id']].get('observation_point_id'),
                 'inferred':obs[r['observation_id']]['visibility']=='inferred' or not obs[r['observation_id']]['measured']}) for r in report['rows']]
-    for entity in sorted({r['world_entity_id'] for r in rows} | set(cage.get('landmarks',{}))):
-        matching=[r for r in rows if r['world_entity_id']==entity]
-        coverage.append({'entity_id':entity,'views':{v:sum(r['view']==v and r['observed_pixel'] is not None for r in matching) for v in VIEWS},
+    entities={(r['world_entity_id'],r.get('point_id') or '') for r in rows}|{(name,'') for name in cage.get('landmarks',{})}
+    for entity,point_id in sorted(entities):
+        matching=[r for r in rows if r['world_entity_id']==entity and (r.get('point_id') or '')==point_id]
+        coverage.append({'entity_id':entity,'point_id':point_id or None,'views':{v:sum(r['view']==v and r['observed_pixel'] is not None for r in matching) for v in VIEWS},
                          'semantic_roles':sorted({r['semantic_role'] for r in matching})})
     return {'residuals':{**report,'rows':rows},'heat_policy':HEAT_POLICY,'coverage':coverage,'groups':summarize(rows),
             'correspondences':calibration['correspondences'],'policy':calibration['authoring_policy'],

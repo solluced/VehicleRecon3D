@@ -9,7 +9,7 @@ export default defineConfig({
   fullyParallel: false,
   reporter: [
     ["list"],
-    ["json", { outputFile: "../../build/studio-v01b-e2e-results.json" }],
+    ["json", { outputFile: "../../build/studio02-e2e-results.json" }],
   ],
   use: {
     headless: true,
@@ -18,7 +18,13 @@ export default defineConfig({
       executablePath:
         process.env.VEHICLERECON_BROWSER ||
         (existsSync(windowsEdge) ? windowsEdge : undefined),
-      args: ["--no-first-run", "--js-flags=--expose-gc"],
+      args: [
+        "--no-first-run",
+        "--js-flags=--expose-gc",
+        ...(process.env.VEHICLERECON_SOFTWARE_GL === "1"
+          ? ["--use-gl=angle", "--use-angle=swiftshader"]
+          : []),
+      ],
     },
     screenshot: "only-on-failure",
   },

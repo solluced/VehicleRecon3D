@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import Konva from "konva";
+import { heatColors, type ResidualRow } from "./multiview-types";
 import {
   controls,
   fit,
@@ -37,6 +38,11 @@ type Props = {
   onMove: (s: NonNullable<Selection>, p: number[]) => Promise<unknown>;
   onCamera: (v: Camera) => void;
   onCancel: () => void;
+  overlays?: ResidualRow[];
+  focus?: { pixel: number[]; key: number };
+  crop?: number[];
+  active?: boolean;
+  onActivate?: () => void;
 };
 export function SourceCanvas(props: Props) {
   const host = useRef<HTMLDivElement>(null),
@@ -67,7 +73,7 @@ export function SourceCanvas(props: Props) {
     };
   }, []);
   useEffect(() => {
-    host.current?.focus({ preventScroll: true });
+    if (props.active !== false) host.current?.focus({ preventScroll: true });
   }, [props.tool]);
   useEffect(() => {
     setLoaded(false);
@@ -85,7 +91,14 @@ export function SourceCanvas(props: Props) {
     props.draft,
     props.view,
     props.writable,
+    props.overlays,
+    props.preferences.residual_vectors,
+    props.preferences.residual_labels,
+    props.preferences.heatmap,
   ]);
+  useEffect(() => {
+    if (props.focus) adapter.current?.focus(props.focus.pixel);
+  }, [props.focus?.key]);
   function nav(kind: string) {
     const a = adapter.current;
     if (!a) return;
@@ -99,6 +112,7 @@ export function SourceCanvas(props: Props) {
   }
   useEffect(() => {
     const key = (e: KeyboardEvent) => {
+      if (props.active === false) return;
       if ((e.target as HTMLElement).matches("input,textarea,select")) return;
       if (e.key === "f" || e.key === "F") nav("fit");
       if (e.key === "1") nav("one");
@@ -253,10 +267,15 @@ class Adapter {
   }
   fit() {
     if (this.image) {
+      const crop = this.props().crop;
       this.camera = fit(this.stage.width(), this.stage.height(), [
-        this.image.naturalWidth,
-        this.image.naturalHeight,
+        crop ? crop[2] - crop[0] : this.image.naturalWidth,
+        crop ? crop[3] - crop[1] : this.image.naturalHeight,
       ]);
+      if (crop) {
+        this.camera.x -= crop[0] * this.camera.scale;
+        this.camera.y -= crop[1] * this.camera.scale;
+      }
       this.changed({ ...this.camera });
       this.draw();
     }
@@ -264,6 +283,15 @@ class Adapter {
   one() {
     const center = { x: this.stage.width() / 2, y: this.stage.height() / 2 };
     this.zoom(center, 1 / (devicePixelRatio * this.camera.scale));
+  }
+  focus(pixel: number[]) {
+    this.camera = {
+      ...this.camera,
+      x: this.stage.width() / 2 - pixel[0] * this.camera.scale,
+      y: this.stage.height() / 2 - pixel[1] * this.camera.scale,
+    };
+    this.changed({ ...this.camera });
+    this.draw();
   }
   zoom(pointer: XY, factor: number) {
     this.camera = zoomAt(this.camera, pointer, factor);
@@ -292,6 +320,7 @@ class Adapter {
   down(e: MouseEvent) {
     if (!this.image || e.button === 2) return;
     this.container.focus({ preventScroll: true });
+    this.props().onActivate?.();
     const p = this.props(),
       screen = this.stage.getPointerPosition()!,
       source = this.source();
@@ -396,6 +425,47 @@ class Adapter {
     this.override = null;
     this.draw();
   }
+  paintResiduals(context: Konva.Context) {
+    const p = this.props(),
+      c = context._context,
+      s = this.camera.scale;
+    this.container.dataset.residuals = String((p.overlays || []).length);
+    if (!p.overlays) return;
+    for (const row of p.overlays) {
+      if (row.view !== p.view || !row.observed_pixel) continue;
+      const [x, y] = row.observed_pixel,
+        [px, py] = row.projected_pixel,
+        color =
+          p.preferences.heatmap === false ? "#b3c5d7" : heatColors[row.heat];
+      c.strokeStyle = color;
+      c.fillStyle = color;
+      c.lineWidth = 1.5 / s;
+      c.beginPath();
+      c.arc(x, y, 4 / s, 0, Math.PI * 2);
+      c.fill();
+      if (p.preferences.residual_vectors !== false) {
+        c.beginPath();
+        c.moveTo(x, y);
+        c.lineTo(px, py);
+        c.stroke();
+        c.beginPath();
+        c.arc(px, py, 6 / s, 0, Math.PI * 2);
+        c.moveTo(px - 8 / s, py);
+        c.lineTo(px + 8 / s, py);
+        c.moveTo(px, py - 8 / s);
+        c.lineTo(px, py + 8 / s);
+        c.stroke();
+      }
+      if (p.preferences.residual_labels) {
+        c.font = `${11 / s}px Segoe UI`;
+        c.fillText(
+          `${row.heat} ${row.residual_px?.toFixed(1)} px`,
+          px + 10 / s,
+          py - 8 / s,
+        );
+      }
+    }
+  }
   visible() {
     const p = this.props();
     return p.observations.filter(
@@ -476,6 +546,12 @@ class Adapter {
             c.fill();
           }
         },
+      }),
+    );
+    this.vectorGroup.add(
+      new Konva.Shape({
+        listening: false,
+        sceneFunc: (context) => this.paintResiduals(context),
       }),
     );
     this.draw();

@@ -16,8 +16,16 @@ export type LayerState = {
 };
 export type Preferences = {
   active_view?: View;
+  secondary_view?: View;
   reference_id?: string;
   viewport?: Camera;
+  viewports?: Partial<Record<View, Camera>>;
+  layout?: "single" | "two" | "four" | "split" | "all";
+  sync_selection?: boolean;
+  sync_semantic?: boolean;
+  residual_vectors?: boolean;
+  residual_labels?: boolean;
+  heatmap?: boolean;
   layers?: Record<string, LayerState>;
   assignments?: Record<string, string>;
 };

@@ -29,6 +29,8 @@ def batch_projection(calibration, cage):
         observation = obs[link['observation_id']];world = world_binding(cage,link)
         projected = transform.world_to_pixel(observation['view'],*world)
         measured = observed_pixel(observation,link)
+        if calibration.get('source_sha256') and observation['source_sha256']!=calibration['source_sha256']:
+            measured=None  # No declared registration from a different image to this calibration.
         rows.append({'id':link['id'],'observation_id':observation['id'],'world_entity_id':link['world_entity_id'],
                      'point_id':link.get('point_id'),'view':observation['view'],'semantic_role':link['semantic_role'],
                      'required':link['required'],'observed_pixel':measured,'projected_pixel':list(projected),
@@ -47,6 +49,8 @@ def coverage(calibration):
             reasons.append('Critical correspondence missing/not required: '+ident)
         elif obs[links[ident]['observation_id']]['visibility'] in ('occluded','unobserved'):
             reasons.append('Critical observation is unavailable: '+ident)
+        elif calibration.get('source_sha256') and obs[links[ident]['observation_id']]['source_sha256']!=calibration['source_sha256']:
+            reasons.append('Critical observation reference is not registered to this calibration: '+ident)
     available = {obs[links[i]['observation_id']]['view'] for i in required if i in links}
     for view in policy['required_views']:
         if view not in available:reasons.append('Critical view coverage missing: '+view)

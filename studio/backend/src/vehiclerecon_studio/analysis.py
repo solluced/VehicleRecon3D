@@ -32,8 +32,15 @@ def v2_analysis(w):
     candidates=[]
     for path,raw in w.files.items():
         if path.startswith('validation/rectification_candidates/'):
-            c=json.loads(raw);candidates.append({'id':c['id'],'status':c['status'],'view':c['view']})
-    return {**result,'views':framing(cal),'reviews':reviews,'rectification_candidates':candidates,'read_only':False,
+            from vehiclerecon.reference.rectification import PiecewiseMonotonicAxisWarp
+            c=json.loads(raw);r=c['rectification'];entry={'id':c['id'],'status':c['status'],'view':c['view']}
+            try:
+                warp=PiecewiseMonotonicAxisWarp([a['image'] for a in r['anchors']],[a['world_normalized'] for a in r['anchors']])
+                correction=warp.maximum_identity_correction()['maximum_absolute_normalized']*(r['image_domain_px'][1]-r['image_domain_px'][0])
+                entry.update(max_correction_px=correction,local_scale_range=warp.derivative_range())
+            except (ReconError,ValueError,TypeError,IndexError) as exc:entry['audit_issue']=str(exc)[:200]
+            candidates.append(entry)
+    return {**result,'views':framing(cal),'reviews':reviews,'rectification_candidates':candidates,'read_only':False,'calibration_source_sha256':cal.get('source_sha256'),
             'revision':w.revision,'dimensions':w.documents['project']['dimensions'],
             'measurements':cal.get('datums',{}).get('measurements',[]),
             'input_identities':{k:digest_file(w.project.path(p,exists=True)) for k,p in w.documents['project']['references'].items()}}
@@ -43,7 +50,7 @@ def legacy_analysis(project,guard):
     """Recognized historical reports only; never migrate v1 or activate candidates."""
     root=project.root;cal=read_json(project.path(project.data['generated']['calibration'],exists=True))
     cage=read_json(project.path(project.data['generated']['cage'],exists=True))
-    result={'read_only':True,'legacy':True,'views':framing(cal),'scene':scene(cal,cage),'residuals':{'rows':[],'status':'UNKNOWN','summary':{}},
+    result={'read_only':True,'legacy':True,'views':framing(cal),'calibration_source_sha256':cal.get('source_sha256'),'scene':scene(cal,cage),'residuals':{'rows':[],'status':'UNKNOWN','summary':{}},
             'coverage':[],'heat_policy':HEAT_POLICY,'groups':summarize([]),'correspondences':[],
             'world_landmarks':cage.get('landmarks',{}),'policy':None,'ratios':{'status':'NOT ENOUGH DATA','rows':[]},'reviews':{},
             'wheelbase':wheelbase(cal,[]),'rectification_candidates':[],'dimensions':project.data['dimensions'],
@@ -71,6 +78,7 @@ def legacy_analysis(project,guard):
             result['scene']['landmarks']={r['world_entity_id']:r['world'] for r in rows}
             result['world_landmarks']=result['scene']['landmarks']
             result['legacy_summary']=stored['summary']
+            result['coverage']=[{'entity_id':entity,'semantic_roles':[entity],'views':{v:sum(r['world_entity_id']==entity and r['view']==v for r in rows) for v in ('front','side','rear','top')}} for entity in sorted({r['world_entity_id'] for r in rows})]
             ratios=report('view_longitudinal_ratios.json')
             if ratios and ratios.get('source_sha256')==stored['source_sha256']:result['legacy_ratios']=ratios
     reconciliation=report('reference_reconciliation_report.json')
@@ -78,7 +86,10 @@ def legacy_analysis(project,guard):
         result['source_condition']='INCONSISTENT_SOURCE' if reconciliation.get('status')=='REFERENCE_SOURCE_INCONSISTENT' else reconciliation.get('status')
     candidate=report('rectification_candidate.json');magnitude=report('rectification_magnitude.json')
     if candidate:
-        result['rectification_candidates']=[{'status':candidate['status'],'view':candidate.get('affected_view'),'rejection':candidate.get('rejection'),'magnitude':magnitude}]
+        details=(magnitude or {}).get(candidate.get('affected_view'),{})
+        result['rectification_candidates']=[{'status':candidate['status'],'view':candidate.get('affected_view'),'rejection':candidate.get('rejection'),
+            'max_correction_px':details.get('between_axles',{}).get('maximum_correction_source_px'),
+            'local_scale_range':details.get('local_normalized_scale_range'),'magnitude':magnitude}]
     stock=cal.get('datums',{}).get('stock_body_dimensions_m',{}).get('wheelbase')
     if stock is not None:
         result['wheelbase'].update(authoritative_wheelbase_m=stock,difference_m=result['wheelbase']['world_wheelbase_m']-stock,

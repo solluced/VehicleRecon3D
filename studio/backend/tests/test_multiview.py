@@ -93,6 +93,13 @@ def test_responses_are_byte_bounded_and_keep_identical_replay_value():
     assert len(cache)<=3 and cache.retained_bytes<=1000 and cache.get('a') is None
 
 
+def test_json_response_preserves_validated_unicode_snapshot_and_events(env):
+    c,app,post,analysis,root=env
+    response=post('transactions',commands=[{'type':'SetObservationProperties','observation_id':'obs_roof_side','values':{'provenance':{'type':'measured','method':'Ручная проверка'}}}])
+    assert response.status_code==200 and response.json()['snapshot']['observations'][0]['provenance']['method']=='Ручная проверка'
+    assert {e['kind'] for e in app.state.registry.bus.records}>={'residuals_changed','source_review_changed','cage_review_changed'}
+
+
 def test_legacy_mark2_diagnostics_are_current_and_read_only():
     config=Config((REPOSITORY/'projects',),9173);app=create_app(config);registry=app.state.registry
     ident=next(k for k,p in registry.projects.items() if p.name=='mark2')

@@ -4,9 +4,14 @@ import {
   useRef,
   useState,
   useSyncExternalStore,
+  lazy,
+  Suspense,
 } from "react";
 import { API, EditorClient, type APIError } from "./api";
 import { SourceCanvas, type Tool } from "./Canvas";
+const MultiWorkspace = lazy(() =>
+  import("./MultiWorkspace").then((m) => ({ default: m.MultiWorkspace })),
+);
 import { Properties, RolePicker, SchemaField, Settings } from "./Forms";
 import {
   category,
@@ -53,7 +58,8 @@ export default function App() {
       "properties",
     );
   const [eventsStatus, setEventsStatus] = useState("Connecting"),
-    [showReady, setShowReady] = useState(true);
+    [showReady, setShowReady] = useState(true),
+    [multi, setMulti] = useState(false);
   const pendingPrefs = useRef<ReturnType<typeof setTimeout> | null>(null),
     prefsRef = useRef(prefs);
   prefsRef.current = prefs;
@@ -144,6 +150,7 @@ export default function App() {
   }
   const reference =
     snapshot?.references.find((r) => r.role === prefs.reference_id) ||
+    snapshot?.references.find((r) => r.role === "multiview") ||
     snapshot?.references[0];
   const selected = snapshot?.observations.find(
     (o) => o.id === selection?.entity,
@@ -259,7 +266,8 @@ export default function App() {
       if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "z") {
         e.preventDefault();
         void client.run(e.shiftKey ? "redo" : "undo");
-      } else if (e.key === "Enter") void finish();
+      } else if (multi) return;
+      else if (e.key === "Enter") void finish();
       else if (e.key === "Delete" || e.key === "Backspace") {
         e.preventDefault();
         void remove();
@@ -310,7 +318,7 @@ export default function App() {
           </span>
         </button>
         <span className="phase-label">
-          MANUAL AUTHORING <b>0.1B</b>
+          RECONSTRUCTION WORKSPACE <b>0.2</b>
         </span>
         <span className="connection">
           <i />
@@ -416,6 +424,16 @@ export default function App() {
                     : "Saved"}
             </span>
             <button onClick={() => void client.reload()}>Reload project</button>
+            <button
+              aria-pressed={multi}
+              onClick={() => {
+                setMulti(!multi);
+                setDraft([]);
+                setTool("select");
+              }}
+            >
+              {multi ? "Source editor" : "Multi-view / 3D"}
+            </button>
           </div>
           {state.error && (
             <div className="error-banner" role="alert">
@@ -430,494 +448,509 @@ export default function App() {
               </details>
             </div>
           )}
-          <div className="editor-grid">
-            <aside className="left-panel">
-              <div className="section-caption">SOURCE VIEW</div>
-              <div className="view-buttons">
-                {(["front", "side", "rear", "top"] as View[]).map((v) => (
-                  <button
-                    className={v === view ? "active" : ""}
-                    key={v}
-                    onClick={() => {
-                      preference({ active_view: v });
-                      setDraft([]);
-                    }}
-                  >
-                    {v.toUpperCase()}
-                  </button>
-                ))}
-              </div>
-              <label>
-                Reference
-                <select
-                  aria-label="Reference image"
-                  value={reference?.role || ""}
-                  onChange={(e) => {
-                    preference({ reference_id: e.target.value });
-                    setDraft([]);
-                    setSelection(null);
-                    setTool("select");
-                  }}
-                >
-                  {snapshot.references.map((r) => (
-                    <option key={r.id} value={r.role}>
-                      {r.role}
-                    </option>
-                  ))}
-                </select>
-              </label>
-              <ImportButton
-                disabled={
-                  !client.writable ||
-                  snapshot.references.some((r) => r.role === "multiview")
-                }
-                onFile={(file) => void client.import(file)}
+          {multi ? (
+            <Suspense fallback={<p>Opening multi-view workspace…</p>}>
+              <MultiWorkspace
+                snapshot={snapshot}
+                client={client}
+                preferences={prefs}
+                onPreference={preference}
               />
-              <div className="section-heading">
-                <h3>Layers</h3>
-                <button
-                  aria-label="Add display layer"
-                  disabled={Object.keys(prefs.layers || {}).length >= 32}
-                  onClick={() => {
-                    const key = id("layer");
-                    preference({
-                      layers: {
-                        ...prefs.layers,
-                        [key]: {
-                          name:
-                            "Display layer " +
-                            Object.keys(prefs.layers || {}).length,
-                          category: "observations",
-                          visible: true,
-                          locked: false,
-                          opacity: 1,
-                        },
-                      },
-                    });
-                  }}
-                >
-                  +
-                </button>
-              </div>
-              <div className="layers">
-                {Object.entries(prefs.layers || defaults).map(([key, l]) => (
-                  <div className="layer" key={key}>
-                    <div>
-                      <button
-                        aria-label={"Toggle " + l.name + " visibility"}
-                        aria-pressed={l.visible}
-                        onClick={() =>
-                          preference({
-                            layers: {
-                              ...prefs.layers,
-                              [key]: { ...l, visible: !l.visible },
-                            },
-                          })
-                        }
-                      >
-                        {l.visible ? "◉" : "○"}
-                      </button>
-                      <span>
-                        {l.name}
-                        <small>
-                          {counts[key] || (key === "image" ? "Immutable" : "0")}
-                        </small>
-                      </span>
-                      <button
-                        aria-label={"Toggle " + l.name + " lock"}
-                        aria-pressed={l.locked}
-                        disabled={key === "image"}
-                        onClick={() =>
-                          preference({
-                            layers: {
-                              ...prefs.layers,
-                              [key]: { ...l, locked: !l.locked },
-                            },
-                          })
-                        }
-                      >
-                        {l.locked ? "▣" : "▢"}
-                      </button>
-                    </div>
-                    <input
-                      type="range"
-                      min="0"
-                      max="1"
-                      step="0.05"
-                      aria-label={l.name + " opacity"}
-                      value={l.opacity}
-                      onChange={(e) =>
-                        preference({
-                          layers: {
-                            ...prefs.layers,
-                            [key]: { ...l, opacity: Number(e.target.value) },
-                          },
-                        })
-                      }
-                    />
-                  </div>
-                ))}
-              </div>
-              <div className="section-heading">
-                <h3>Entities</h3>
-                <small>{snapshot.observations.length}</small>
-              </div>
-              <div className="entity-list">
-                {snapshot.observations
-                  .filter(
-                    (o) =>
-                      o.view === view && o.reference_id === reference?.role,
-                  )
-                  .slice(0, 150)
-                  .map((o) => (
+            </Suspense>
+          ) : (
+            <div className="editor-grid">
+              <aside className="left-panel">
+                <div className="section-caption">SOURCE VIEW</div>
+                <div className="view-buttons">
+                  {(["front", "side", "rear", "top"] as View[]).map((v) => (
                     <button
-                      key={o.id}
-                      className={o.id === selection?.entity ? "active" : ""}
-                      onClick={() => choose({ entity: o.id })}
+                      className={v === view ? "active" : ""}
+                      key={v}
+                      onClick={() => {
+                        preference({ active_view: v });
+                        setDraft([]);
+                      }}
                     >
-                      <span>{o.kind === "point" ? "•" : "⌁"}</span>
-                      <span>
-                        {o.semantic_role}
-                        <small>{o.id.slice(0, 17)}</small>
-                      </span>
+                      {v.toUpperCase()}
                     </button>
                   ))}
-                {snapshot.observations.length > 150 && (
-                  <small>
-                    First 150 shown. Select any visible control on canvas.
-                  </small>
-                )}
-              </div>
-            </aside>
-            <main className="workspace">
-              <div className="tool-bar">
-                {(
-                  [
-                    "select",
-                    "pan",
-                    "point",
-                    "polyline",
-                    "spline",
-                    "insert",
-                  ] as Tool[]
-                ).map((t) => (
-                  <button
-                    key={t}
-                    className={tool === t ? "active" : ""}
-                    disabled={
-                      !["select", "pan"].includes(t) &&
-                      (!client.writable ||
-                        (t === "insert" && !(selected && "points" in selected)))
-                    }
-                    onClick={() => {
-                      setTool(t);
+                </div>
+                <label>
+                  Reference
+                  <select
+                    aria-label="Reference image"
+                    value={reference?.role || ""}
+                    onChange={(e) => {
+                      preference({ reference_id: e.target.value });
                       setDraft([]);
+                      setSelection(null);
+                      setTool("select");
                     }}
                   >
-                    {
-                      {
-                        select: "↖ Select",
-                        pan: "↔ Pan",
-                        point: "+ Point",
-                        polyline: "⌁ Polyline",
-                        spline: "∿ Spline",
-                        insert: "+ Knot",
-                      }[t]
-                    }
+                    {snapshot.references.map((r) => (
+                      <option key={r.id} value={r.role}>
+                        {r.role}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+                <ImportButton
+                  disabled={
+                    !client.writable ||
+                    snapshot.references.some((r) => r.role === "multiview")
+                  }
+                  onFile={(file) => void client.import(file)}
+                />
+                <div className="section-heading">
+                  <h3>Layers</h3>
+                  <button
+                    aria-label="Add display layer"
+                    disabled={Object.keys(prefs.layers || {}).length >= 32}
+                    onClick={() => {
+                      const key = id("layer");
+                      preference({
+                        layers: {
+                          ...prefs.layers,
+                          [key]: {
+                            name:
+                              "Display layer " +
+                              Object.keys(prefs.layers || {}).length,
+                            category: "observations",
+                            visible: true,
+                            locked: false,
+                            opacity: 1,
+                          },
+                        },
+                      });
+                    }}
+                  >
+                    +
                   </button>
-                ))}
-                <span className="tool-separator" />
-                <button
-                  aria-label="Undo"
-                  disabled={!snapshot.history.undo || !client.writable}
-                  onClick={() => void client.run("undo")}
-                >
-                  ↶
-                </button>
-                <button
-                  aria-label="Redo"
-                  disabled={!snapshot.history.redo || !client.writable}
-                  onClick={() => void client.run("redo")}
-                >
-                  ↷
-                </button>
-                <button
-                  disabled={!selected || !canEdit}
-                  onClick={() => void remove()}
-                >
-                  Delete {selection?.point ? "knot" : "entity"}
-                </button>
-              </div>
-              {["point", "polyline", "spline"].includes(tool) && (
-                <div className="creation-bar">
-                  <label>
-                    New object role
-                    <select
-                      aria-label="New object role"
-                      value={role}
-                      onChange={(e) => setRole(e.target.value)}
-                    >
-                      {snapshot.roles.map((r) => (
-                        <option key={r}>{r}</option>
-                      ))}
-                    </select>
-                  </label>
-                  {tool !== "point" && (
-                    <>
-                      <span>{draft.length} knots · Enter to finish</span>
+                </div>
+                <div className="layers">
+                  {Object.entries(prefs.layers || defaults).map(([key, l]) => (
+                    <div className="layer" key={key}>
+                      <div>
+                        <button
+                          aria-label={"Toggle " + l.name + " visibility"}
+                          aria-pressed={l.visible}
+                          onClick={() =>
+                            preference({
+                              layers: {
+                                ...prefs.layers,
+                                [key]: { ...l, visible: !l.visible },
+                              },
+                            })
+                          }
+                        >
+                          {l.visible ? "◉" : "○"}
+                        </button>
+                        <span>
+                          {l.name}
+                          <small>
+                            {counts[key] ||
+                              (key === "image" ? "Immutable" : "0")}
+                          </small>
+                        </span>
+                        <button
+                          aria-label={"Toggle " + l.name + " lock"}
+                          aria-pressed={l.locked}
+                          disabled={key === "image"}
+                          onClick={() =>
+                            preference({
+                              layers: {
+                                ...prefs.layers,
+                                [key]: { ...l, locked: !l.locked },
+                              },
+                            })
+                          }
+                        >
+                          {l.locked ? "▣" : "▢"}
+                        </button>
+                      </div>
+                      <input
+                        type="range"
+                        min="0"
+                        max="1"
+                        step="0.05"
+                        aria-label={l.name + " opacity"}
+                        value={l.opacity}
+                        onChange={(e) =>
+                          preference({
+                            layers: {
+                              ...prefs.layers,
+                              [key]: { ...l, opacity: Number(e.target.value) },
+                            },
+                          })
+                        }
+                      />
+                    </div>
+                  ))}
+                </div>
+                <div className="section-heading">
+                  <h3>Entities</h3>
+                  <small>{snapshot.observations.length}</small>
+                </div>
+                <div className="entity-list">
+                  {snapshot.observations
+                    .filter(
+                      (o) =>
+                        o.view === view && o.reference_id === reference?.role,
+                    )
+                    .slice(0, 150)
+                    .map((o) => (
                       <button
-                        disabled={draft.length < 2}
-                        onClick={() => void finish()}
+                        key={o.id}
+                        className={o.id === selection?.entity ? "active" : ""}
+                        onClick={() => choose({ entity: o.id })}
                       >
-                        Finish curve
+                        <span>{o.kind === "point" ? "•" : "⌁"}</span>
+                        <span>
+                          {o.semantic_role}
+                          <small>{o.id.slice(0, 17)}</small>
+                        </span>
                       </button>
-                    </>
+                    ))}
+                  {snapshot.observations.length > 150 && (
+                    <small>
+                      First 150 shown. Select any visible control on canvas.
+                    </small>
                   )}
                 </div>
-              )}
-              {selected && "points" in selected && (
-                <div className="curve-actions">
-                  <button
-                    disabled={
-                      !canEdit ||
-                      !selection?.point ||
-                      selected.points.findIndex(
-                        (p) => p.id === selection.point,
-                      ) <= 0 ||
-                      selected.points.at(-1)?.id === selection?.point
-                    }
-                    onClick={() =>
-                      void client.commands([
+              </aside>
+              <main className="workspace">
+                <div className="tool-bar">
+                  {(
+                    [
+                      "select",
+                      "pan",
+                      "point",
+                      "polyline",
+                      "spline",
+                      "insert",
+                    ] as Tool[]
+                  ).map((t) => (
+                    <button
+                      key={t}
+                      className={tool === t ? "active" : ""}
+                      disabled={
+                        !["select", "pan"].includes(t) &&
+                        (!client.writable ||
+                          (t === "insert" &&
+                            !(selected && "points" in selected)))
+                      }
+                      onClick={() => {
+                        setTool(t);
+                        setDraft([]);
+                      }}
+                    >
+                      {
                         {
-                          type: "SplitSpline",
-                          target: "observation",
-                          entity_id: selected.id,
-                          point_id: selection!.point!,
-                          new_entity_id: id("obs"),
-                        },
-                      ])
-                    }
+                          select: "↖ Select",
+                          pan: "↔ Pan",
+                          point: "+ Point",
+                          polyline: "⌁ Polyline",
+                          spline: "∿ Spline",
+                          insert: "+ Knot",
+                        }[t]
+                      }
+                    </button>
+                  ))}
+                  <span className="tool-separator" />
+                  <button
+                    aria-label="Undo"
+                    disabled={!snapshot.history.undo || !client.writable}
+                    onClick={() => void client.run("undo")}
                   >
-                    Split at knot
+                    ↶
                   </button>
-                  <select
-                    aria-label="Merge curve"
-                    disabled={!canEdit}
-                    value=""
-                    onChange={(e) =>
-                      void client.commands([
-                        {
-                          type: "MergeSpline",
-                          target: "observation",
-                          entity_id: selected.id,
-                          other_entity_id: e.target.value,
-                        },
-                      ])
-                    }
-                  >
-                    <option value="">Merge with shared endpoint…</option>
-                    {snapshot.observations
-                      .filter(
-                        (o) =>
-                          o.id !== selected.id &&
-                          "points" in o &&
-                          o.points[0].id === selected.points.at(-1)?.id,
-                      )
-                      .map((o) => (
-                        <option key={o.id} value={o.id}>
-                          {o.id.slice(0, 16)}
-                        </option>
-                      ))}
-                  </select>
                   <button
-                    disabled={!canEdit}
-                    onClick={() =>
-                      void client
-                        .commands([
-                          {
-                            type: "DeleteObservation",
-                            observation_id: selected.id,
-                          },
-                        ])
-                        .then((ok) => {
-                          if (ok) choose(null);
-                        })
-                    }
+                    aria-label="Redo"
+                    disabled={!snapshot.history.redo || !client.writable}
+                    onClick={() => void client.run("redo")}
                   >
-                    Delete curve
+                    ↷
+                  </button>
+                  <button
+                    disabled={!selected || !canEdit}
+                    onClick={() => void remove()}
+                  >
+                    Delete {selection?.point ? "knot" : "entity"}
                   </button>
                 </div>
-              )}
-              {reference ? (
-                <SourceCanvas
-                  observations={snapshot.observations}
-                  reference={reference}
-                  url={
-                    "/api/v1/projects/" +
-                    snapshot.id +
-                    "/references/" +
-                    reference.id +
-                    "/image"
-                  }
-                  preferences={prefs}
-                  selection={selection}
-                  tool={tool}
-                  draft={draft}
-                  writable={client.writable}
-                  view={view}
-                  onSelect={choose}
-                  onClick={(p) => void add(p)}
-                  onMove={move}
-                  onCamera={(viewport) => preference({ viewport })}
-                  onCancel={() => {
-                    setDraft([]);
-                    setTool("select");
-                  }}
-                />
-              ) : (
-                <div
-                  className="import-empty"
-                  onDragOver={(e) => e.preventDefault()}
-                  onDrop={(e) => {
-                    e.preventDefault();
-                    if (e.dataTransfer.files[0])
-                      void client.import(e.dataTransfer.files[0]);
-                  }}
-                >
-                  <div className="empty-glyph">▱</div>
-                  <h2>Your source goes here</h2>
-                  <p>
-                    Drop a PNG or JPEG reference image. Original bytes stay
-                    intact.
-                  </p>
-                  <ImportButton
-                    disabled={!client.writable}
-                    onFile={(file) => void client.import(file)}
-                  />
-                  <small>
-                    Up to 64 MiB · 64 megapixels · No dimensions are inferred.
-                  </small>
-                </div>
-              )}
-              <div className="readiness-panel">
-                <button
-                  className="readiness-heading"
-                  onClick={() => setShowReady(!showReady)}
-                >
-                  <span>READINESS</span>
-                  <small>
-                    Source observations · {showReady ? "Hide" : "Show"} checks
-                  </small>
-                </button>
-                {showReady && (
-                  <div className="readiness-grid">
-                    {[
-                      "references",
-                      "calibration",
-                      "source_review",
-                      "cage",
-                      "cage_review",
-                      "surfaces",
-                    ].map((key) => {
-                      const r = snapshot.readiness[key] as Ready | undefined;
-                      return (
-                        <details
-                          key={key}
-                          className={r?.state === "READY" ? "ready" : "blocked"}
+                {["point", "polyline", "spline"].includes(tool) && (
+                  <div className="creation-bar">
+                    <label>
+                      New object role
+                      <select
+                        aria-label="New object role"
+                        value={role}
+                        onChange={(e) => setRole(e.target.value)}
+                      >
+                        {snapshot.roles.map((r) => (
+                          <option key={r}>{r}</option>
+                        ))}
+                      </select>
+                    </label>
+                    {tool !== "point" && (
+                      <>
+                        <span>{draft.length} knots · Enter to finish</span>
+                        <button
+                          disabled={draft.length < 2}
+                          onClick={() => void finish()}
                         >
-                          <summary>
-                            {key.replaceAll("_", " ")}
-                            <b>{r?.state || "LEGACY"}</b>
-                          </summary>
-                          <p>
-                            {r?.reasons?.join(" · ") || "Current core status"}
-                          </p>
-                        </details>
-                      );
-                    })}
+                          Finish curve
+                        </button>
+                      </>
+                    )}
                   </div>
                 )}
-              </div>
-            </main>
-            <aside className="right-panel">
-              <div className="inspector-tabs">
-                <button
-                  className={inspector === "properties" ? "active" : ""}
-                  onClick={() => setInspector("properties")}
-                >
-                  Properties
-                </button>
-                <button
-                  className={inspector === "settings" ? "active" : ""}
-                  onClick={() => setInspector("settings")}
-                >
-                  Settings
-                </button>
-              </div>
-              {inspector === "settings" ? (
-                <Settings
-                  snapshot={snapshot}
-                  schemas={schemas}
-                  profiles={profiles}
-                  client={client}
-                  disabled={!client.writable}
-                />
-              ) : selected ? (
-                <>
-                  <Properties
-                    key={selected.id}
-                    observation={selected}
-                    selection={selection}
-                    client={client}
-                    roles={snapshot.roles}
-                    onRoleChanged={setRole}
-                    canEdit={canEdit}
-                  />
-                  <label className="layer-assignment">
-                    Display layer
-                    <select
-                      aria-label="Selected display layer"
-                      value={layerFor(selected, prefs)}
-                      onChange={(e) =>
-                        preference({
-                          assignments: {
-                            ...prefs.assignments,
-                            [selected.id]: e.target.value,
+                {selected && "points" in selected && (
+                  <div className="curve-actions">
+                    <button
+                      disabled={
+                        !canEdit ||
+                        !selection?.point ||
+                        selected.points.findIndex(
+                          (p) => p.id === selection.point,
+                        ) <= 0 ||
+                        selected.points.at(-1)?.id === selection?.point
+                      }
+                      onClick={() =>
+                        void client.commands([
+                          {
+                            type: "SplitSpline",
+                            target: "observation",
+                            entity_id: selected.id,
+                            point_id: selection!.point!,
+                            new_entity_id: id("obs"),
                           },
-                        })
+                        ])
                       }
                     >
-                      {Object.entries(prefs.layers || {})
-                        .filter(([, l]) => l.category !== "image")
-                        .map(([id, l]) => (
-                          <option key={id} value={id}>
-                            {l.name}
+                      Split at knot
+                    </button>
+                    <select
+                      aria-label="Merge curve"
+                      disabled={!canEdit}
+                      value=""
+                      onChange={(e) =>
+                        void client.commands([
+                          {
+                            type: "MergeSpline",
+                            target: "observation",
+                            entity_id: selected.id,
+                            other_entity_id: e.target.value,
+                          },
+                        ])
+                      }
+                    >
+                      <option value="">Merge with shared endpoint…</option>
+                      {snapshot.observations
+                        .filter(
+                          (o) =>
+                            o.id !== selected.id &&
+                            "points" in o &&
+                            o.points[0].id === selected.points.at(-1)?.id,
+                        )
+                        .map((o) => (
+                          <option key={o.id} value={o.id}>
+                            {o.id.slice(0, 16)}
                           </option>
                         ))}
                     </select>
-                  </label>
-                </>
-              ) : (
-                <div className="inspector-empty">
-                  <span>↖</span>
-                  <h3>Select an observation</h3>
-                  <p>
-                    Inspect source coordinates, semantic role and provenance
-                    here.
-                  </p>
-                  <small>
-                    Only source observations are edited in this workspace.
-                  </small>
+                    <button
+                      disabled={!canEdit}
+                      onClick={() =>
+                        void client
+                          .commands([
+                            {
+                              type: "DeleteObservation",
+                              observation_id: selected.id,
+                            },
+                          ])
+                          .then((ok) => {
+                            if (ok) choose(null);
+                          })
+                      }
+                    >
+                      Delete curve
+                    </button>
+                  </div>
+                )}
+                {reference ? (
+                  <SourceCanvas
+                    observations={snapshot.observations}
+                    reference={reference}
+                    url={
+                      "/api/v1/projects/" +
+                      snapshot.id +
+                      "/references/" +
+                      reference.id +
+                      "/image"
+                    }
+                    preferences={prefs}
+                    selection={selection}
+                    tool={tool}
+                    draft={draft}
+                    writable={client.writable}
+                    view={view}
+                    onSelect={choose}
+                    onClick={(p) => void add(p)}
+                    onMove={move}
+                    onCamera={(viewport) => preference({ viewport })}
+                    onCancel={() => {
+                      setDraft([]);
+                      setTool("select");
+                    }}
+                  />
+                ) : (
+                  <div
+                    className="import-empty"
+                    onDragOver={(e) => e.preventDefault()}
+                    onDrop={(e) => {
+                      e.preventDefault();
+                      if (e.dataTransfer.files[0])
+                        void client.import(e.dataTransfer.files[0]);
+                    }}
+                  >
+                    <div className="empty-glyph">▱</div>
+                    <h2>Your source goes here</h2>
+                    <p>
+                      Drop a PNG or JPEG reference image. Original bytes stay
+                      intact.
+                    </p>
+                    <ImportButton
+                      disabled={!client.writable}
+                      onFile={(file) => void client.import(file)}
+                    />
+                    <small>
+                      Up to 64 MiB · 64 megapixels · No dimensions are inferred.
+                    </small>
+                  </div>
+                )}
+                <div className="readiness-panel">
+                  <button
+                    className="readiness-heading"
+                    onClick={() => setShowReady(!showReady)}
+                  >
+                    <span>READINESS</span>
+                    <small>
+                      Source observations · {showReady ? "Hide" : "Show"} checks
+                    </small>
+                  </button>
+                  {showReady && (
+                    <div className="readiness-grid">
+                      {[
+                        "references",
+                        "calibration",
+                        "source_review",
+                        "cage",
+                        "cage_review",
+                        "surfaces",
+                      ].map((key) => {
+                        const r = snapshot.readiness[key] as Ready | undefined;
+                        return (
+                          <details
+                            key={key}
+                            className={
+                              r?.state === "READY" ? "ready" : "blocked"
+                            }
+                          >
+                            <summary>
+                              {key.replaceAll("_", " ")}
+                              <b>{r?.state || "LEGACY"}</b>
+                            </summary>
+                            <p>
+                              {r?.reasons?.join(" · ") || "Current core status"}
+                            </p>
+                          </details>
+                        );
+                      })}
+                    </div>
+                  )}
                 </div>
-              )}
-            </aside>
-          </div>
+              </main>
+              <aside className="right-panel">
+                <div className="inspector-tabs">
+                  <button
+                    className={inspector === "properties" ? "active" : ""}
+                    onClick={() => setInspector("properties")}
+                  >
+                    Properties
+                  </button>
+                  <button
+                    className={inspector === "settings" ? "active" : ""}
+                    onClick={() => setInspector("settings")}
+                  >
+                    Settings
+                  </button>
+                </div>
+                {inspector === "settings" ? (
+                  <Settings
+                    snapshot={snapshot}
+                    schemas={schemas}
+                    profiles={profiles}
+                    client={client}
+                    disabled={!client.writable}
+                  />
+                ) : selected ? (
+                  <>
+                    <Properties
+                      key={selected.id}
+                      observation={selected}
+                      selection={selection}
+                      client={client}
+                      roles={snapshot.roles}
+                      onRoleChanged={setRole}
+                      canEdit={canEdit}
+                    />
+                    <label className="layer-assignment">
+                      Display layer
+                      <select
+                        aria-label="Selected display layer"
+                        value={layerFor(selected, prefs)}
+                        onChange={(e) =>
+                          preference({
+                            assignments: {
+                              ...prefs.assignments,
+                              [selected.id]: e.target.value,
+                            },
+                          })
+                        }
+                      >
+                        {Object.entries(prefs.layers || {})
+                          .filter(([, l]) => l.category !== "image")
+                          .map(([id, l]) => (
+                            <option key={id} value={id}>
+                              {l.name}
+                            </option>
+                          ))}
+                      </select>
+                    </label>
+                  </>
+                ) : (
+                  <div className="inspector-empty">
+                    <span>↖</span>
+                    <h3>Select an observation</h3>
+                    <p>
+                      Inspect source coordinates, semantic role and provenance
+                      here.
+                    </p>
+                    <small>
+                      Only source observations are edited in this workspace.
+                    </small>
+                  </div>
+                )}
+              </aside>
+            </div>
+          )}
         </>
       )}
       <footer>
         <span>VehicleRecon Studio</span>
         <span>Local workspace · Original sources preserved</span>
-        <span>Manual authoring / 0.1B</span>
+        <span>Multi-view consistency / 0.2</span>
       </footer>
     </div>
   );

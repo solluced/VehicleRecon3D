@@ -19,8 +19,9 @@ if os.name=='nt':
     try:
         result=Counters();result.cb=ctypes.sizeof(result)
         if not api.GetProcessMemoryInfo(handle,ctypes.byref(result),result.cb):raise OSError('Memory query failed')
-        print(result.rss)
+        print(result.peak_rss if '--peak' in sys.argv else result.rss)
     finally:kernel.CloseHandle(handle)
 else:
     status=Path(f'/proc/{pid}/status').read_text()
-    print(int(next(line.split()[1] for line in status.splitlines() if line.startswith('VmRSS:')))*1024)
+    key='VmHWM:' if '--peak' in sys.argv else 'VmRSS:'
+    print(int(next(line.split()[1] for line in status.splitlines() if line.startswith(key)))*1024)

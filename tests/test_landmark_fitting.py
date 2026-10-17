@@ -68,3 +68,14 @@ def test_shared_analysis_heat_coverage_samples_and_axle_diagnostic(data):
     assert heat({'residual_px':1.8,'allowed_tolerance_px':2})['heat']=='NEAR'
     assert heat({'residual_px':2.1,'allowed_tolerance_px':2})['heat']=='FAIL'
     assert heat({'residual_px':None,'allowed_tolerance_px':2})['heat']=='UNKNOWN'
+
+
+def test_helper_reference_is_not_silently_projected_as_the_calibrated_source(data):
+    from vehiclerecon.authoring.projection import residual_report
+    cal,cage=data
+    cal['views']['top']['landmarks']['observations'][0]['source_sha256']='0'*64
+    result=fit_landmark(cal,['obs_roof_side','obs_roof_top'])
+    assert result['status']=='UNDERCONSTRAINED'
+    assert 'registration' in result['observations_excluded'][0]['reason']
+    report=residual_report(cal,cage)
+    assert report['status']=='BLOCKED' and report['coverage']['state']=='BLOCKED'

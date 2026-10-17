@@ -60,6 +60,7 @@ jobs:
         working-directory: studio/frontend
         env:
           VEHICLERECON_PYTHON: python
+          VEHICLERECON_SOFTWARE_GL: '1'
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -67,4 +68,6 @@ jobs:
           path: |
             build/studio-v01b-*.json
             build/studio-v01b-*.png
+            build/studio02-*.json
+            build/studio02-*.png
             studio/frontend/test-results/

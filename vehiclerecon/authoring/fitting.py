@@ -46,6 +46,7 @@ def fit_landmark(calibration, observation_ids, *, constraints=None, excluded_ids
         if ident not in available:raise SchemaError('Observation missing: '+ident)
         o=available[ident];link=links.get(ident,{'id':ident})
         reason='Excluded by user' if ident in excluded_ids else None
+        if calibration.get('source_sha256') and o['source_sha256']!=calibration['source_sha256']:reason='Reference has no declared registration to this calibration'
         if o['visibility'] in ('occluded','unobserved'):reason='Observation unavailable'
         elif o['visibility']=='inferred' or not o['measured']:reason='Inferred evidence is not an independent measurement'
         try:pixel=observed_pixel(o,link)

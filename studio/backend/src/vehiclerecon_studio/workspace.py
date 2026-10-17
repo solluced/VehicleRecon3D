@@ -264,6 +264,7 @@ class Registry:
                 'viewport':{'type':'object','properties':{k:{'type':'number','minimum':-1e7,'maximum':1e7} for k in ('x','y','scale')},'additionalProperties':False},
                 'viewports':{'type':'object','maxProperties':4,'propertyNames':{'enum':['front','side','rear','top']},'additionalProperties':{'type':'object','required':['x','y','scale'],'properties':{k:{'type':'number','minimum':-1e7,'maximum':1e7} for k in ('x','y','scale')},'additionalProperties':False}},
                 'layout':{'enum':['single','two','four','split','all']},
+                'secondary_view':{'enum':['front','side','rear','top']},
                 **{k:{'type':'boolean'} for k in ('sync_selection','sync_semantic','residual_vectors','residual_labels','heatmap')},
                 'layers':{'type':'object','maxProperties':32,'additionalProperties':state},
                 'assignments':{'type':'object','maxProperties':20000,'additionalProperties':{'type':'string','maxLength':80}}},'additionalProperties':False}
