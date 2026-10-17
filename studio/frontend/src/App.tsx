@@ -24,6 +24,7 @@ const RectificationWorkspace = lazy(() =>
 import { Properties, RolePicker, SchemaField, Settings } from "./Forms";
 import {
   category,
+  activeReference,
   defaults,
   editable,
   layerFor,
@@ -163,14 +164,7 @@ export default function App() {
     setPage("home");
     await list();
   }
-  const reference =
-    snapshot?.references.find(
-      (r) =>
-        r.role === snapshot.views[prefs.active_view || "side"]?.reference_role,
-    ) ||
-    snapshot?.references.find((r) => r.role === prefs.reference_id) ||
-    snapshot?.references.find((r) => r.role === "multiview") ||
-    snapshot?.references[0];
+  const reference = activeReference(snapshot, prefs);
   const selected = snapshot?.observations.find(
     (o) => o.id === selection?.entity,
   );

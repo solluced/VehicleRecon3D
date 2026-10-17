@@ -89,6 +89,21 @@ export type ProjectEntry = Pick<
   Snapshot,
   "id" | "revision" | "version" | "read_only" | "project" | "readiness"
 > & { issues?: string[] };
+export function activeReference(
+  snapshot: Snapshot | null,
+  preferences: Preferences,
+): Reference | undefined {
+  const role =
+    snapshot?.views[preferences.active_view || "side"]?.reference_role;
+  return (
+    (role && role !== "multiview"
+      ? snapshot?.references.find((r) => r.role === role)
+      : undefined) ||
+    snapshot?.references.find((r) => r.role === preferences.reference_id) ||
+    snapshot?.references.find((r) => r.role === "multiview") ||
+    snapshot?.references[0]
+  );
+}
 export type Selection = { entity: string; point?: string } | null;
 export const defaults: Record<string, LayerState> = {
   image: {
