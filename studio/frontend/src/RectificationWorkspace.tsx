@@ -57,7 +57,19 @@ export function RectificationWorkspace({
         if (token === seq.current) setSelected(p);
       }
     } catch (e) {
-      if (token === seq.current) setError((e as Error).message);
+      if (token === seq.current) {
+        setError((e as Error).message);
+        if (keep && candidateId) {
+          try {
+            const historical = await client.api.call<Candidate>(
+              `${base}/reconciliation/${candidateId}`,
+            );
+            if (token === seq.current) setSelected(historical);
+          } catch {
+            /* Preserve the last inspected evidence; writes remain fenced. */
+          }
+        }
+      }
     }
   }
   useEffect(() => {

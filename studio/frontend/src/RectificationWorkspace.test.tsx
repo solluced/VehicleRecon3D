@@ -153,7 +153,7 @@ function setup(state = "ELIGIBLE_FOR_ACTIVATION", readonly = false) {
     history: { undo: false },
   } as unknown as Snapshot;
   render(<RectificationWorkspace snapshot={snapshot} client={client} />);
-  return { p, post, run };
+  return { p, post, run, call };
 }
 it("edits manual anchors, respects exact locks and does not write canonical state on generation", async () => {
   const { post, run } = setup();
@@ -267,4 +267,34 @@ it("presents read-only Mark II rejection without an activation override", async 
   expect(
     screen.queryByRole("button", { name: "Generate Candidate" }),
   ).toBeNull();
+});
+it("refreshes historical freshness when current source validation fails", async () => {
+  const { p, call } = setup();
+  await screen.findByLabelText("Semantic 1");
+  fireEvent.click(
+    screen.getByRole("button", { name: `Inspect ${p.id.slice(0, 8)}` }),
+  );
+  await screen.findByLabelText("Candidate decision");
+  call.mockImplementation((url: string) =>
+    url.endsWith(p.id)
+      ? Promise.resolve({ ...p, status: "STALE", freshness: "STALE" })
+      : Promise.reject(new Error("Source identity changed")),
+  );
+  fireEvent.click(screen.getByRole("button", { name: "Refresh evidence" }));
+  await waitFor(() =>
+    expect(screen.getByLabelText("Candidate decision").textContent).toContain(
+      "STALE",
+    ),
+  );
+  expect(screen.getByRole("alert").textContent).toContain(
+    "Source identity changed",
+  );
+  fireEvent.click(screen.getByLabelText("Confirm rectification activation"));
+  expect(
+    (
+      screen.getByRole("button", {
+        name: "ACTIVATE RECTIFICATION",
+      }) as HTMLButtonElement
+    ).disabled,
+  ).toBe(true);
 });
