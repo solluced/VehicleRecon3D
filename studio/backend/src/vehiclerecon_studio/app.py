@@ -89,6 +89,35 @@ def create_app(config):
     @app.get('/api/v1/cv/providers')
     def cv_providers():return {'providers':registry.cv.catalog(),'limits':{'queue':4,'source_pixels':16777216,'local_search_pixels':262144,'mask_roi_pixels':4194304}}
 
+    @app.get('/api/v1/reconciliation/retention')
+    def reconciliation_retention():return registry.reconciliation.metrics()
+
+    @app.get('/api/v1/projects/{ident}/reconciliation')
+    def reconciliation_context(ident:str,view:str='top'):return JSONResponse(registry.reconciliation.context(ident,view))
+
+    @app.get('/api/v1/projects/{ident}/reconciliation/{candidate_id}')
+    def reconciliation_inspect(ident:str,candidate_id:str):return JSONResponse(registry.reconciliation.inspect(ident,candidate_id))
+
+    @app.post('/api/v1/projects/{ident}/reconciliation')
+    def reconciliation_create(ident:str,request:Request,body:dict):
+        precondition(request,body);return JSONResponse(registry.reconciliation.create(ident,body))
+
+    @app.post('/api/v1/projects/{ident}/reconciliation/{candidate_id}/reject')
+    def reconciliation_reject(ident:str,candidate_id:str,body:dict):
+        return JSONResponse(registry.reconciliation.reject(ident,candidate_id,body))
+
+    @app.post('/api/v1/projects/{ident}/activate-rectification')
+    def reconciliation_activate(ident:str,request:Request,body:dict):
+        precondition(request,body)
+        if set(body)-{'expected_revision','lease_id','candidate_id','candidate_revision','confirm_activation','response_format'}:raise APIError(422,'FIELDS','Unknown activation field')
+        result=registry.mutate(ident,tab(request),body,request.headers.get('idempotency-key'),'activate-rectification')
+        registry.reconciliation.mark_active(ident,body['candidate_id'],result['revision'])
+        return JSONResponse(result)
+
+    @app.get('/api/v1/projects/{ident}/reconciliation/{candidate_id}/preview/{kind}')
+    def reconciliation_preview(ident:str,candidate_id:str,kind:str):
+        return Response(registry.reconciliation.preview(ident,candidate_id,kind),media_type='image/png')
+
     @app.get('/api/v1/cv/retention')
     def cv_retention():return registry.cv.metrics()
 
@@ -255,11 +284,15 @@ def create_app(config):
         raw=await request.body();await run_in_threadpool(registry.decode_image,raw)
         body={'expected_revision':request.headers.get('x-expected-revision'),'lease_id':request.headers.get('x-editor-lease'),
               'reference_id':request.headers.get('x-reference-role','multiview'),'_raw':raw}
+        replacement=request.headers.get('x-replacement-view')
+        if replacement:
+            if request.headers.get('x-confirm-replacement')!='true' or replacement not in ('front','side','rear','top'):raise APIError(422,'REPLACEMENT','Explicit replacement view and confirmation required')
+            body['view']=replacement
         precondition(request,body)
         root=registry.resolve(ident)
         size=sum(p.stat().st_size for p in guard(root,root/'input').glob('*') if p.is_file())
         if size+len(raw)>config.workspace_quota:raise APIError(413,'QUOTA','Reference workspace quota exceeded')
-        return await run_in_threadpool(registry.mutate,ident,tab(request),body,request.headers.get('idempotency-key'),'reference-imports')
+        return await run_in_threadpool(registry.mutate,ident,tab(request),body,request.headers.get('idempotency-key'),'source-replacement' if replacement else 'reference-imports')
 
     @app.get('/api/v1/projects/{ident}/references/{ref_id}/image')
     def image(ident:str,ref_id:str):

@@ -4,6 +4,10 @@ import math
 import re
 import sys
 from functools import lru_cache
+from collections import OrderedDict
+from contextvars import ContextVar
+from contextlib import contextmanager
+import threading
 from pathlib import Path, PureWindowsPath
 from .errors import SchemaError, ReferenceError
 
@@ -11,6 +15,24 @@ REPOSITORY = Path(__file__).resolve().parents[2]
 RESOURCE_ROOT = next((root for root in [REPOSITORY,REPOSITORY/'share/vehiclerecon',
     *[p/'share/vehiclerecon' for p in list(REPOSITORY.parents)[:3]],Path(sys.prefix)/'share/vehiclerecon']
     if (root/'schemas/project.schema.json').is_file()),REPOSITORY)
+
+_structural_cache=OrderedDict();_structural_bytes=0
+_structural_lock=threading.RLock();_audit_validation=ContextVar('full_schema_audit',default=False)
+
+@contextmanager
+def full_validation():
+    """Bypass positive structural memoization; semantic validation always runs."""
+    token=_audit_validation.set(True)
+    try:yield
+    finally:_audit_validation.reset(token)
+
+def structural_cache_metrics():
+    with _structural_lock:return {'entries':len(_structural_cache),'bytes':_structural_bytes,'limit_bytes':16*1024*1024}
+
+def _json_types(value):
+    if type(value) is dict:return all(type(k) is str and _json_types(v) for k,v in value.items())
+    if type(value) is list:return all(_json_types(v) for v in value)
+    return type(value) in (str,int,float,bool,type(None))
 
 
 def finite(value):
@@ -52,7 +74,8 @@ def _schema_bundle(entries):
     return schemas,registry,identity
 
 
-def validate(value, schema_name):
+def validate(value, schema_name, *, full=False):
+    global _structural_bytes
     from jsonschema import Draft202012Validator
     schema_root = RESOURCE_ROOT / "schemas"
     if schema_name in ('project','calibration','cage') and value.get('schema_version') == 2:
@@ -61,8 +84,16 @@ def validate(value, schema_name):
     except (OSError,ValueError) as exc:raise SchemaError('Invalid local schema bundle') from exc
     schema = schemas[f'{schema_name}.schema.json']
     finite(value)
+    key=None
+    if not full and not _audit_validation.get() and _json_types(value):
+        raw=json.dumps(value,sort_keys=True,separators=(',',':'),allow_nan=False).encode()
+        if len(raw)<=8*1024*1024:
+            key=(identity,schema_name,raw)
+            with _structural_lock:
+                if key in _structural_cache:
+                    _structural_cache.move_to_end(key);return
     validator = Draft202012Validator
-    if schema_name in ('calibration_v2','authoring_command','authoring'):
+    if schema_name in ('calibration_v2','authoring_command','authoring') and not (full or _audit_validation.get()):
         from .schema_dispatch import authoring_validator, validation_namespace
         validator = authoring_validator()
         context=validation_namespace(None,identity=identity)
@@ -74,6 +105,11 @@ def validate(value, schema_name):
                     key=lambda e: str(list(e.path)))
     if errors:
         raise SchemaError("; ".join(f"{'/'.join(map(str,e.path))}: {e.message}" for e in errors))
+    if key is not None:
+        with _structural_lock:
+            if key not in _structural_cache:_structural_cache[key]=True;_structural_bytes+=len(key[2])
+            while len(_structural_cache)>128 or _structural_bytes>16*1024*1024:
+                old,_=_structural_cache.popitem(last=False);_structural_bytes-=len(old[2])
 
 
 class Project:

@@ -10,6 +10,12 @@ from .contracts import observations, world_binding, observed_pixel, resolved_cag
 def project_world(calibration, view, point):
     return CalibrationTransform(calibration).world_to_pixel(view, *point)
 
+def registered(calibration,observation):
+    view=calibration['views'][observation['view']]
+    if view.get('source_state')=='CALIBRATION_REQUIRED':return False
+    if 'reference_id' in view:return observation['reference_id']==view['reference_id']
+    return not calibration.get('source_sha256') or observation['source_sha256']==calibration['source_sha256']
+
 
 def residual(observed, projected, allowed_tolerance_px):
     if not math.isfinite(allowed_tolerance_px) or allowed_tolerance_px <= 0:
@@ -29,7 +35,7 @@ def batch_projection(calibration, cage):
         observation = obs[link['observation_id']];world = world_binding(cage,link)
         projected = transform.world_to_pixel(observation['view'],*world)
         measured = observed_pixel(observation,link)
-        if calibration.get('source_sha256') and observation['source_sha256']!=calibration['source_sha256']:
+        if not registered(calibration,observation):
             measured=None  # No declared registration from a different image to this calibration.
         rows.append({'id':link['id'],'observation_id':observation['id'],'world_entity_id':link['world_entity_id'],
                      'point_id':link.get('point_id'),'view':observation['view'],'semantic_role':link['semantic_role'],
@@ -49,7 +55,7 @@ def coverage(calibration):
             reasons.append('Critical correspondence missing/not required: '+ident)
         elif obs[links[ident]['observation_id']]['visibility'] in ('occluded','unobserved'):
             reasons.append('Critical observation is unavailable: '+ident)
-        elif calibration.get('source_sha256') and obs[links[ident]['observation_id']]['source_sha256']!=calibration['source_sha256']:
+        elif not registered(calibration,obs[links[ident]['observation_id']]):
             reasons.append('Critical observation reference is not registered to this calibration: '+ident)
     available = {obs[links[i]['observation_id']]['view'] for i in required if i in links}
     for view in policy['required_views']:

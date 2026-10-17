@@ -142,6 +142,48 @@
             },
             "rectification": {
               "$ref": "#/$defs/axis_rectification"
+            },
+            "reference_id": {
+              "type": "string",
+              "pattern": "^[A-Za-z_][A-Za-z0-9_.-]{0,159}$"
+            },
+            "source_state": {
+              "enum": [
+                "CURRENT",
+                "CALIBRATION_REQUIRED"
+              ]
+            },
+            "source_history": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "reference_id": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z_][A-Za-z0-9_.-]{0,159}$"
+                  },
+                  "source_sha256": {
+                    "type": "string",
+                    "pattern": "^[0-9a-f]{64}$"
+                  },
+                  "crop": {
+                    "type": "array",
+                    "items": {
+                      "type": "number"
+                    },
+                    "minItems": 4,
+                    "maxItems": 4
+                  }
+                },
+                "required": [
+                  "reference_id",
+                  "source_sha256",
+                  "crop"
+                ],
+                "additionalProperties": false
+              },
+              "minItems": 0,
+              "maxItems": 256
             }
           },
           "required": [
@@ -265,6 +307,48 @@
             },
             "rectification": {
               "$ref": "#/$defs/axis_rectification"
+            },
+            "reference_id": {
+              "type": "string",
+              "pattern": "^[A-Za-z_][A-Za-z0-9_.-]{0,159}$"
+            },
+            "source_state": {
+              "enum": [
+                "CURRENT",
+                "CALIBRATION_REQUIRED"
+              ]
+            },
+            "source_history": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "reference_id": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z_][A-Za-z0-9_.-]{0,159}$"
+                  },
+                  "source_sha256": {
+                    "type": "string",
+                    "pattern": "^[0-9a-f]{64}$"
+                  },
+                  "crop": {
+                    "type": "array",
+                    "items": {
+                      "type": "number"
+                    },
+                    "minItems": 4,
+                    "maxItems": 4
+                  }
+                },
+                "required": [
+                  "reference_id",
+                  "source_sha256",
+                  "crop"
+                ],
+                "additionalProperties": false
+              },
+              "minItems": 0,
+              "maxItems": 256
             }
           },
           "required": [
@@ -388,6 +472,48 @@
             },
             "rectification": {
               "$ref": "#/$defs/axis_rectification"
+            },
+            "reference_id": {
+              "type": "string",
+              "pattern": "^[A-Za-z_][A-Za-z0-9_.-]{0,159}$"
+            },
+            "source_state": {
+              "enum": [
+                "CURRENT",
+                "CALIBRATION_REQUIRED"
+              ]
+            },
+            "source_history": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "reference_id": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z_][A-Za-z0-9_.-]{0,159}$"
+                  },
+                  "source_sha256": {
+                    "type": "string",
+                    "pattern": "^[0-9a-f]{64}$"
+                  },
+                  "crop": {
+                    "type": "array",
+                    "items": {
+                      "type": "number"
+                    },
+                    "minItems": 4,
+                    "maxItems": 4
+                  }
+                },
+                "required": [
+                  "reference_id",
+                  "source_sha256",
+                  "crop"
+                ],
+                "additionalProperties": false
+              },
+              "minItems": 0,
+              "maxItems": 256
             }
           },
           "required": [
@@ -511,6 +637,48 @@
             },
             "rectification": {
               "$ref": "#/$defs/axis_rectification"
+            },
+            "reference_id": {
+              "type": "string",
+              "pattern": "^[A-Za-z_][A-Za-z0-9_.-]{0,159}$"
+            },
+            "source_state": {
+              "enum": [
+                "CURRENT",
+                "CALIBRATION_REQUIRED"
+              ]
+            },
+            "source_history": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "reference_id": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z_][A-Za-z0-9_.-]{0,159}$"
+                  },
+                  "source_sha256": {
+                    "type": "string",
+                    "pattern": "^[0-9a-f]{64}$"
+                  },
+                  "crop": {
+                    "type": "array",
+                    "items": {
+                      "type": "number"
+                    },
+                    "minItems": 4,
+                    "maxItems": 4
+                  }
+                },
+                "required": [
+                  "reference_id",
+                  "source_sha256",
+                  "crop"
+                ],
+                "additionalProperties": false
+              },
+              "minItems": 0,
+              "maxItems": 256
             }
           },
           "required": [

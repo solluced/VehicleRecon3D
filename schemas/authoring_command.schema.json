@@ -721,6 +721,116 @@
         "size"
       ],
       "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "ActivateRectification"
+        },
+        "candidate": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9_][A-Za-z0-9_.-]{0,159}$"
+            },
+            "status": {
+              "enum": [
+                "DRAFT",
+                "EVALUATED",
+                "ELIGIBLE_FOR_ACTIVATION",
+                "REJECTED",
+                "ACTIVE"
+              ]
+            },
+            "source_revision": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "base_calibration_hash": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "source_hashes": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              }
+            },
+            "creator": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 300
+            },
+            "request": {
+              "$ref": "https://vehiclerecon.local/schemas/reconciliation_request.schema.json"
+            }
+          },
+          "required": [
+            "id",
+            "status",
+            "source_revision",
+            "base_calibration_hash",
+            "source_hashes",
+            "creator",
+            "request"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "type",
+        "candidate"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "ReplaceSourceView"
+        },
+        "view": {
+          "enum": [
+            "front",
+            "side",
+            "rear",
+            "top"
+          ]
+        },
+        "path": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 300
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "size": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "confirm_replacement": {
+          "const": true
+        }
+      },
+      "required": [
+        "type",
+        "view",
+        "path",
+        "sha256",
+        "size",
+        "confirm_replacement"
+      ],
+      "additionalProperties": false
     }
   ]
 }

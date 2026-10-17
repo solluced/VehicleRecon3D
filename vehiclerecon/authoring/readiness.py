@@ -39,6 +39,8 @@ def readiness(root, *, workspace=None):
             from ..reference.calibration import check_config
             check_config(project,data['calibration'])
         except (ReconError,OSError,KeyError,TypeError,ValueError) as exc:reasons.append('Incomplete/inconsistent calibration: '+str(exc))
+        for view,entry in data['calibration']['views'].items():
+            if entry.get('source_state')=='CALIBRATION_REQUIRED':reasons.append(view+': replacement source framing requires explicit recalibration')
     result['calibration'] = _state(reasons)
     reasons = []
     if 'cage' not in data or not data['cage']['curves']:reasons.append('Shared cage curves not authored')

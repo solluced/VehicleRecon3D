@@ -26,6 +26,8 @@ def validation_namespace(schemas,identity=None):
 def cache_key(choices,instance):
     namespace=_namespace.get()
     if namespace is None:return None
+    from .project import _json_types
+    if not _json_types(instance):return None
     try:raw=json.dumps(instance,sort_keys=True,separators=(',',':'),allow_nan=False)
     except (TypeError,ValueError):return None
     if len(raw)>65536:return None

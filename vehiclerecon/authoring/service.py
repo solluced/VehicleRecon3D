@@ -29,11 +29,13 @@ def _empty_cage():
 
 
 class AuthoringSession:
-    def __init__(self, root, *, observer=None, history_limit=None, history_byte_limit=None):
+    def __init__(self, root, *, observer=None, history_limit=None, history_byte_limit=None, retain_committed_workspace=False):
         self.root = Workspace(root).root
         from ..core.events import Events
         self.undo_stack = [];self.redo_stack = [];self.events = Events([observer] if observer else [])
         self.history_limit=history_limit;self.history_byte_limit=history_byte_limit
+        self._committed_workspace=None
+        self.retain_committed_workspace=retain_committed_workspace
         if any(v is not None and (type(v) is not int or v<1) for v in (history_limit,history_byte_limit)):
             raise SchemaError('History retention limits must be positive integers')
 
@@ -67,6 +69,7 @@ class AuthoringSession:
                 w.validate(w.files)
             changes = {p:w.files.get(p) for p in set(before)|set(w.files) if before.get(p)!=w.files.get(p)}
             result = commit(self.root,changes,expected_revision=expected_revision,validator=w.validate)
+            w.revision=result['revision'];self._committed_workspace=w if self.retain_committed_workspace else None
             result['stale'] = invalidation(scopes)
             if result['changed_files']:
                 old={p:before.get(p) for p in changes};new={p:w.files.get(p) for p in changes}
@@ -87,6 +90,7 @@ class AuthoringSession:
         self.events.emit('project_changed',revision=result['revision'],stale=result['stale'])
 
     def _restore(self, entry, target, expected_revision):
+        self._committed_workspace=None
         w = Workspace(self.root)
         if w.revision != expected_revision:raise ConflictError('CONFLICT: history branch changed externally')
         files = entry[target]
@@ -155,6 +159,24 @@ class AuthoringSession:
             w.documents['project'].update(copy.deepcopy(c['values']))
             return 'calibration'
         cal = self._ensure(w,'calibration')
+        if op=='ActivateRectification':
+            from ..reference.reconciliation import activation
+            candidate=copy.deepcopy(c['candidate']);view=candidate['request']['view']
+            candidate.update(view=view,crop=cal['views'][view]['crop'])
+            cal['views'][view]['rectification']=activation(w,candidate)
+            return 'rectification'
+        if op=='ReplaceSourceView':
+            from ..core.manifest import digest_file
+            from ..reference.panels import png_size
+            path=w.project.path(c['path'],exists=True)
+            if not c['path'].startswith('input/') or digest_file(path)!=c['sha256'] or png_size(path)!=c['size']:
+                raise ReferenceError('Replacement source must match immutable imported bytes')
+            view=cal['views'][c['view']];refs=w.documents['project']['references'];old=view.get('reference_id','multiview')
+            view.setdefault('source_history',[]).append({'reference_id':old,'source_sha256':digest_file(w.project.path(refs[old],exists=True)),
+                'crop':copy.deepcopy(view['crop'])})
+            role='source_'+c['sha256'];refs[role]=c['path'];view.update(reference_id=role,source_state='CALIBRATION_REQUIRED')
+            view.pop('rectification',None);cal['authoring_policy']['coverage_confirmed']=False
+            return 'references'
         if op == 'RegisterReference':
             from ..core.manifest import digest_file
             from ..reference.panels import png_size

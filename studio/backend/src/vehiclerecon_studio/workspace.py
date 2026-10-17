@@ -53,6 +53,8 @@ class Registry:
         self.scan()
         from .cv.service import CVService
         self.cv=CVService(self)
+        from .reconciliation import Reconciliation
+        self.reconciliation=Reconciliation(self)
 
     def scan(self):
         with self.lock:
@@ -94,7 +96,7 @@ class Registry:
         def observer(event):
             self.bus.emit(event['kind'],project_id=ident,revision=event.get('revision'),
                           stale=event.get('stale'),actor_tab=tab.rsplit(':',1)[-1])
-        return AuthoringSession(self.resolve(ident),observer=observer,history_limit=100,history_byte_limit=32*1024*1024)
+        return AuthoringSession(self.resolve(ident),observer=observer,history_limit=100,history_byte_limit=32*1024*1024,retain_committed_workspace=True)
 
     def analysis(self,ident,expected=None):
         from .analysis import v2_analysis,legacy_analysis
@@ -135,7 +137,7 @@ class Registry:
             self.proposals[result['proposal_id']]={'result':result,'ident':ident,'tab':tab,'expires':time.monotonic()+300}
             return result
 
-    def snapshot(self,ident,tab=None):
+    def snapshot(self,ident,tab=None,*,validated_workspace=None):
         root=self.resolve(ident)
         with self.lock,ProjectLock(root,'studio-inspect'):
             current=revision(root);data=read_json(root/'project.json');proofs=set()
@@ -157,13 +159,15 @@ class Registry:
             if not info['supported']:return {'id':ident,'revision':info['revision'],'version':info['version'],'read_only':True,'issues':info['issues']}
             p=Project(root);v=p.data['schema_version'];cal={};obs=[]
             if v==2:
-                w=Workspace(root);cal=w.documents.get('calibration',{});obs=list(observations(cal).values())
+                w=validated_workspace if validated_workspace is not None and validated_workspace.root==root and validated_workspace.revision==current else Workspace(root)
+                cal=w.documents.get('calibration',{});obs=list(observations(cal).values())
             refs=inventory(p)
             for role,ref in refs.items():
                 ref['id']=digest_data([role,ref['sha256']])[:32];ref['role']=role;ref.pop('path')
             result={'id':ident,'revision':current,'version':v,'read_only':v!=2,'project':p.data,
                     'references':list(refs.values()),'observations':obs,
-                    'views':{name:{'crop_id':{role:crop_identity(role,data.get('crop')) for role in refs}} for name,data in cal.get('views',{}).items()},
+                    'views':{name:{'crop_id':{role:crop_identity(role,data.get('crop')) for role in refs},
+                        'reference_role':data.get('reference_id','multiview'),'source_state':data.get('source_state','CURRENT')} for name,data in cal.get('views',{}).items()},
                     'roles':p.profile['roles']+p.profile['optional_roles']+list(HELPER_ROLES),
                     'measurements':cal.get('datums',{}).get('measurements',[]),'readiness':readiness(root,workspace=w) if v==2 else readiness(root),
                     **self.presentation(root,ident,tab)}
@@ -237,6 +241,8 @@ class Registry:
                     result=session.apply([{'type':'SetSourceDisposition' if kind=='source' else 'SetCageReview','decision':body.get('decision'),
                                           'reviewer':reviewer.strip(),'notes':[note.strip()],'expected_subject':body['expected_subject']}],expected_revision=expected)
                 elif operation in ('undo','redo'):result=getattr(session,operation)(expected_revision=expected)
+                elif operation=='activate-rectification':
+                    result=session.apply([self.reconciliation.activation_command(ident,body)],expected_revision=expected)
                 elif operation=='reload':
                     self.sessions[(ident,tab)]=self.new_session(ident,tab);result={'revision':expected}
                 elif operation=='preferences':
@@ -245,17 +251,21 @@ class Registry:
                     self.validate_preferences(prefs)
                     guard(root,root/'.studio/session.json')
                     atomic_write(root,'.studio/session.json',(json.dumps(prefs)+'\n').encode());result={'revision':expected}
-                elif operation=='reference-imports':
+                elif operation in ('reference-imports','source-replacement'):
                     directory=guard(root,root/'input')
                     size=sum(p.stat().st_size for p in directory.glob('*') if p.is_file())
                     if size+len(body['_raw'])>self.config.workspace_quota:
                         raise APIError(413,'QUOTA','Reference workspace quota exceeded')
-                    result=import_reference(session,body['_raw'],reference_id=body.get('reference_id','multiview'),expected_revision=expected)
+                    if operation=='source-replacement':
+                        from vehiclerecon.authoring.imports import replace_source_view
+                        result=replace_source_view(session,body['_raw'],view=body.get('view'),expected_revision=expected)
+                    else:result=import_reference(session,body['_raw'],reference_id=body.get('reference_id','multiview'),expected_revision=expected)
                 else:raise APIError(404,'OPERATION','Unsupported operation')
                 self.seen[ident]=result['revision'];lease['expires']=time.monotonic()+45
                 if response_format=='ack':result={**result,'preferences_saved':True}
                 else:
-                    snapshot=self.snapshot(ident,tab)
+                    snapshot=self.snapshot(ident,tab,validated_workspace=session._committed_workspace if session else None)
+                    if session:session._committed_workspace=None
                     if response_format=='delta' and before is not None:
                         from .deltas import snapshot_delta
                         result={**result,'snapshot_delta':snapshot_delta(before,snapshot)}

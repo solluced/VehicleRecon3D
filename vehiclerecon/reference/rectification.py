@@ -85,6 +85,18 @@ class PiecewiseMonotonicAxisWarp:
                     values.append((3*a*t*t+2*b*t+c)/(self.x[i+1]-self.x[i]))
         return min(values), max(values)
 
+    def derivative_extrema(self, lower=None, upper=None):
+        """Analytic extrema positions, including boundaries and positive tails."""
+        lo=self.x[0] if lower is None else lower;hi=self.x[-1] if upper is None else upper
+        if not math.isfinite(lo) or not math.isfinite(hi) or lo>hi:raise SchemaError('Invalid derivative audit interval')
+        positions=[lo,hi,*[x for x in self.x if lo<=x<=hi]]
+        for i,(a,b,_,_) in enumerate(self.coefficients):
+            if a:
+                t=-b/(3*a);x=self.x[i]+t*(self.x[i+1]-self.x[i])
+                if 0<t<1 and lo<=x<=hi:positions.append(x)
+        rows=[{'source_normalized':x,'derivative':self.derivative(x)} for x in sorted(set(positions))]
+        return {'minimum':min(rows,key=lambda r:r['derivative']),'maximum':max(rows,key=lambda r:r['derivative']),'critical_points':rows}
+
     def inverse(self, value):
         value, = _numbers([value])
         if value <= self.y[0]:

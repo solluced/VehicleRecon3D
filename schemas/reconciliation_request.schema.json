@@ -1,0 +1,128 @@
+{
+  "type": "object",
+  "properties": {
+    "view": {
+      "enum": [
+        "front",
+        "side",
+        "rear",
+        "top"
+      ]
+    },
+    "gauge_view": {
+      "enum": [
+        "front",
+        "side",
+        "rear",
+        "top"
+      ]
+    },
+    "reference_role": {
+      "type": "string",
+      "pattern": "^[A-Za-z_][A-Za-z0-9_.-]{0,159}$"
+    },
+    "axis": {
+      "enum": [
+        "u",
+        "v"
+      ]
+    },
+    "image_domain_px": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      },
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "affine_domain_px": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      },
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "anchors": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Za-z_][A-Za-z0-9_.-]{0,159}$"
+          },
+          "semantic": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 300
+          },
+          "image": {
+            "type": "number"
+          },
+          "world_normalized": {
+            "type": "number"
+          },
+          "role": {
+            "enum": [
+              "FIT",
+              "HELD_OUT"
+            ]
+          },
+          "locked": {
+            "type": "boolean"
+          },
+          "confidence": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "provenance": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 300
+          },
+          "observation_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z_][A-Za-z0-9_.-]{0,159}$"
+          }
+        },
+        "required": [
+          "id",
+          "semantic",
+          "image",
+          "world_normalized",
+          "role",
+          "locked",
+          "confidence",
+          "provenance"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 2,
+      "maxItems": 64
+    },
+    "max_scale_change": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 0.1
+    },
+    "allow_extrapolation": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "view",
+    "gauge_view",
+    "reference_role",
+    "axis",
+    "image_domain_px",
+    "affine_domain_px",
+    "anchors",
+    "max_scale_change",
+    "allow_extrapolation"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vehiclerecon.local/schemas/reconciliation_request.schema.json"
+}

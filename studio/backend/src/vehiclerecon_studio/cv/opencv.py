@@ -71,7 +71,13 @@ def _smart(cv,image,box,p,ctx):
     if start==end:return {'components':[],'warnings':['Move farther from the start to define a feature segment']}
     direction=np.array(end)-start;direction=direction/max(np.linalg.norm(direction),1)
     distances=np.full((h,w),np.inf);distances[start[1],start[0]]=0;parents={};queue=[(0.,0.,start)];visited=0
-    steps=[(dx,dy,math.hypot(dx,dy)) for dy in (-1,0,1) for dx in (-1,0,1) if dx or dy]
+    steps=[]
+    for dy in (-1,0,1):
+        for dx in (-1,0,1):
+            if dx or dy:
+                length=math.hypot(dx,dy)
+                turn=p.get('smoothness',.3)*(1-float(np.dot(direction,[dx/length,dy/length])))
+                steps.append((dx,dy,length,turn))
     while queue:
         _,distance,at=heapq.heappop(queue)
         if distance!=distances[at[1],at[0]]:continue
@@ -79,10 +85,9 @@ def _smart(cv,image,box,p,ctx):
         visited+=1
         if visited%256==0:ctx['check']()
         if visited>80000:raise ValueError('Local path search budget exhausted; commit a shorter segment')
-        for dx,dy,length in steps:
+        for dx,dy,length,turn in steps:
             nx,ny=at[0]+dx,at[1]+dy
             if not 0<=nx<w or not 0<=ny<h:continue
-            turn=p.get('smoothness',.3)*(1-float(np.dot(direction,[dx/length,dy/length])))
             candidate=distance+length*(float(cost[ny,nx])+turn)
             if candidate<distances[ny,nx]:
                 distances[ny,nx]=candidate;parents[(nx,ny)]=at
