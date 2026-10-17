@@ -14,10 +14,13 @@ root=repo/f'build/studio04-smart-profile-{time.time_ns()}/projects';prepare(root
 source=root/'cv_performance/input/reference.png';raw=source.read_bytes();outputs={};profiles={};timings={}
 for label,module in [('v03',old),('v04',opencv)]:
     cache=ByteCache();ctx={'source_hash':digest_file(source),'crop':[0,0,3840,2160],'cache':cache,'check':lambda:None}
-    values=[];results=[]
+    values=[];results=[];cold_profile=cProfile.Profile();serialization=[]
     for i in range(7):
+        if i==0:cold_profile.enable()
         began=time.perf_counter();r=module.run('smart_edge',raw,{'trajectory':[[500,500],[500,600],[500,700],[500,800]],'search_radius':24},ctx)
         values.append((time.perf_counter()-began)*1000);results.append(r)
+        if i==0:cold_profile.disable()
+        began=time.perf_counter();json.dumps(r,allow_nan=False);serialization.append((time.perf_counter()-began)*1000)
     prof=cProfile.Profile();prof.enable();module.run('smart_edge',raw,{'trajectory':[[500,500],[500,600],[500,700],[500,800]],'search_radius':24},ctx);prof.disable()
     stats=pstats.Stats(prof);phases={}
     for name,predicate in {'image_decode':lambda n:'imdecode' in n,'edge_lookup':lambda n:n=='_field',
@@ -25,7 +28,10 @@ for label,module in [('v03',old),('v04',opencv)]:
         'constant_direction_dot':lambda n:'dot' in n}.items():
         entries=[v for (f,line,n),v in stats.stats.items() if predicate(n)]
         phases[name]={'calls':sum(v[1] for v in entries),'self_seconds':sum(v[2] for v in entries),'cumulative_seconds':sum(v[3] for v in entries)}
-    outputs[label]=results;timings[label]={'cold_ms':values[0],'warm_ms':values[1:],'warm_p50_ms':sorted(values[1:])[3],'warm_p95_ms':max(values[1:])};profiles[label]=phases
+    cold_stats=pstats.Stats(cold_profile)
+    decode=[v for (f,line,n),v in cold_stats.stats.items() if 'imdecode' in n]
+    phases['cold_image_decode']={'calls':sum(v[1] for v in decode),'cumulative_seconds':sum(v[3] for v in decode)}
+    outputs[label]=results;timings[label]={'cold_profiled_ms':values[0],'warm_ms':values[1:],'warm_p50_ms':sorted(values[1:])[3],'warm_p95_ms':max(values[1:]),'result_json_serialization_ms':serialization};profiles[label]=phases
 if outputs['v03']!=outputs['v04']:raise RuntimeError('Smart Edge result changed')
 report={'status':'PASS','source':[3840,2160],'baseline_module_sha256':digest_file(path),'exact_result_equivalence':True,
     'timings':timings,'profile_phases':profiles,'debounce_ms':80,'poll_interval_ms':20,

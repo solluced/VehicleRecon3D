@@ -82,6 +82,9 @@ export function CVPanel(props: Props) {
     [editXY, setEditXY] = useState(["0", "0"]);
   const [previewTimes, setPreviewTimes] = useState<number[]>([]),
     [commitTimes, setCommitTimes] = useState<number[]>([]);
+  const [previewPhases, setPreviewPhases] = useState<Record<string, number>[]>(
+    [],
+  );
   const mounted = useRef(true),
     jobs = useRef(new Set<string>()),
     generation = useRef(0),
@@ -354,7 +357,8 @@ export function CVPanel(props: Props) {
       if (s.trail.length < 2) return;
       previewRunning.current = true;
       const requestNumber = ++lastPreviewRequest.current,
-        began = pointerAt.current || performance.now();
+        began = pointerAt.current || performance.now(),
+        requestAt = performance.now();
       const endpoint = JSON.stringify(s.trail.at(-1));
       try {
         const directed = s.trail.map((v: number[]) => [...v]);
@@ -363,6 +367,7 @@ export function CVPanel(props: Props) {
           { ...s.parameters(), trajectory: directed },
           s.trace?.proposal_id,
         );
+        const responseAt = performance.now();
         if (
           epoch === generation.current &&
           requestNumber === lastPreviewRequest.current &&
@@ -373,11 +378,24 @@ export function CVPanel(props: Props) {
           );
           requestAnimationFrame(() =>
             requestAnimationFrame(() => {
-              if (mounted.current && epoch === generation.current)
-                setPreviewTimes((v) => [
+              if (mounted.current && epoch === generation.current) {
+                const displayAt = performance.now();
+                setPreviewTimes((v) => [...v.slice(-255), displayAt - began]);
+                setPreviewPhases((v) => [
                   ...v.slice(-255),
-                  performance.now() - began,
+                  {
+                    debounce_coalescing_ms: requestAt - began,
+                    request_to_proposal_ms: responseAt - requestAt,
+                    provider_result_ms: p.elapsed_ms,
+                    transport_validation_polling_ms: Math.max(
+                      0,
+                      responseAt - requestAt - p.elapsed_ms,
+                    ),
+                    react_konva_two_frames_ms: displayAt - responseAt,
+                    total_ms: displayAt - began,
+                  },
                 ]);
+              }
             }),
           );
         }
@@ -674,6 +692,7 @@ export function CVPanel(props: Props) {
       data-cv-tool={tool}
       data-mask-strokes={strokes.length}
       data-preview-times={JSON.stringify(previewTimes)}
+      data-preview-phase-times={JSON.stringify(previewPhases)}
       data-commit-times={JSON.stringify(commitTimes)}
       data-preview-samples={previewTimes.length}
       data-commit-samples={commitTimes.length}

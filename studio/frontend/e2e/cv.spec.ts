@@ -523,6 +523,24 @@ test("measure bounded Smart Edge and mask/refinement on a representative 4K sour
       page,
       (await panel.getAttribute("data-proposal-id"))!,
     );
+    const phaseSamples = JSON.parse(
+      (await panel.getAttribute("data-preview-phase-times"))!,
+    );
+    const smartHTTP = await page.evaluate(() =>
+      performance
+        .getEntriesByType("resource")
+        .filter((e) => /\/cv-(jobs|proposals)/.test(e.name))
+        .map((e) => {
+          const r = e as PerformanceResourceTiming;
+          return {
+            path: new URL(r.name).pathname,
+            duration_ms: r.duration,
+            ttfb_ms: r.responseStart - r.requestStart,
+            body_transfer_ms: r.responseEnd - r.responseStart,
+            bytes: r.encodedBodySize,
+          };
+        }),
+    );
     await tool(page, "Magic Select");
     const start = Date.now();
     await dragROI(page, [1200, 600], [3330, 1680]);
@@ -560,6 +578,8 @@ test("measure bounded Smart Edge and mask/refinement on a representative 4K sour
       source: [3840, 2160],
       dpr: 2,
       preview_samples: previews,
+      preview_phase_samples: phaseSamples,
+      smart_http_resource_timings: smartHTTP,
       commit_samples: commits,
       preview_p50_ms: percentile(previews, 0.5),
       preview_p95_ms: percentile(previews, 0.95),
