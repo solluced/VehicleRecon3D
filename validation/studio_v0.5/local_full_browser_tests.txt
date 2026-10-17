@@ -1,0 +1,35 @@
+
+> vehiclerecon-studio@0.5.0 e2e
+> playwright test
+
+
+Running 24 tests using 1 worker
+
+(node:6896) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  1 e2e\authoring.spec.ts:20:1 › manual authoring survives refresh and backend restart, with conflicts fenced (17.8s)
+  ok  2 e2e\authoring.spec.ts:318:1 › laptop canvas, high-DPI 1:1 and stale review state (4.6s)
+  ok  3 e2e\cv.spec.ts:137:1 › Smart Edge source pixels survive zoom/pan/DPR2, bounded fit, ACCEPT and exact undo (9.4s)
+  ok  4 e2e\cv.spec.ts:243:1 › Magic Select refines FG/BG mask, accepts one component and preserves original bytes (7.6s)
+  ok  5 e2e\cv.spec.ts:303:1 › wheel candidates require confirmation and never move world axle geometry (7.5s)
+  ok  6 e2e\cv.spec.ts:345:1 › external observation edit stales a proposal and the API rejects acceptance (8.8s)
+  ok  7 e2e\cv.spec.ts:418:1 › disabled provider leaves manual point authoring and offline UI intact (5.6s)
+  ok  8 e2e\cv.spec.ts:483:1 › measure bounded Smart Edge and mask/refinement on a representative 4K source (22.6s)
+  ok  9 e2e\multiview-performance.spec.ts:20:1 › measure four 2D views plus Three.js with 5000 controls and live projections (26.4s)
+  ok 10 e2e\multiview.spec.ts:64:1 › multi-view binding, distinct moves, fit proposal, 3D selection, reviews and roundtrip (14.8s)
+  ok 11 e2e\multiview.spec.ts:257:1 › known Mark II conflict is visible without editing canonical data (2.7s)
+  ok 12 e2e\multiview.spec.ts:295:1 › native Three.js X and XZ gizmos preview locally and commit once at release (4.0s)
+  ok 13 e2e\performance.spec.ts:21:1 › measure 4K, 5000 canonical controls and 20 display layers (28.0s)
+  ok 14 e2e\reconciliation.spec.ts:70:1 › positive manual candidate, graphs, independent evidence, explicit activation and exact undo (5.8s)
+  ok 15 e2e\reconciliation.spec.ts:156:1 › Mark II rejected candidate is visibly excessive, immutable and cannot activate (3.2s)
+  ok 16 e2e\reconciliation.spec.ts:200:1 › stale calibration fences activation and requires regeneration (4.4s)
+  ok 17 e2e\reconciliation.spec.ts:220:1 › replacement preserves old source and world and displays unmeasured transfer proposals (4.2s)
+  ok 18 e2e\surfaces.spec.ts:41:1 › surface patch creation, four boundaries, orientation, real mesh inspectors and stable reopen (9.7s)
+  ok 19 e2e\surfaces.spec.ts:117:1 › surface corner FAIL, correction PASS, undo FAIL, redo PASS and safe cycle draft (6.2s)
+  ok 20 e2e\surfaces.spec.ts:162:1 › rejected source blocks preview and creates no canonical surface writes (3.0s)
+  ok 21 e2e\surfaces.spec.ts:181:1 › 27 patch preview, dependency-local edit and real browser upload/redraw inspectors (5.1s)
+  ok 22 e2e\surfaces.spec.ts:257:1 › declared G0 gap FAIL, fix PASS, undo FAIL, redo PASS (5.5s)
+  ok 23 e2e\surfaces.spec.ts:294:1 › cage edit visibly stales mesh, current cage review required before regeneration (4.8s)
+  ok 24 e2e\surfaces.spec.ts:332:1 › actual Mark II read-only copy remains blocked and hash-identical (3.0s)
+
+  24 passed (3.7m)

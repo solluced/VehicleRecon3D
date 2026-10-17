@@ -1,0 +1,67 @@
+{
+  "status": "PASS",
+  "canonical_surface_edits": 100,
+  "patches": 27,
+  "browser_heap_bytes": {
+    "baseline": 7712444,
+    "peak": 24083820,
+    "post_gc": 10624092
+  },
+  "backend_rss_bytes": {
+    "baseline": 76955648,
+    "sampled_peak": 95223808,
+    "post_gc": 89763840
+  },
+  "samples": [
+    {
+      "edits": 10,
+      "browser_heap_after_gc_bytes": 9717656,
+      "backend_rss_bytes": 79962112
+    },
+    {
+      "edits": 20,
+      "browser_heap_after_gc_bytes": 9855868,
+      "backend_rss_bytes": 82214912
+    },
+    {
+      "edits": 30,
+      "browser_heap_after_gc_bytes": 9968856,
+      "backend_rss_bytes": 85344256
+    },
+    {
+      "edits": 40,
+      "browser_heap_after_gc_bytes": 10060860,
+      "backend_rss_bytes": 86372352
+    },
+    {
+      "edits": 50,
+      "browser_heap_after_gc_bytes": 10195304,
+      "backend_rss_bytes": 87678976
+    },
+    {
+      "edits": 60,
+      "browser_heap_after_gc_bytes": 10246648,
+      "backend_rss_bytes": 87748608
+    },
+    {
+      "edits": 70,
+      "browser_heap_after_gc_bytes": 10296996,
+      "backend_rss_bytes": 95223808
+    },
+    {
+      "edits": 80,
+      "browser_heap_after_gc_bytes": 10345588,
+      "backend_rss_bytes": 88813568
+    },
+    {
+      "edits": 90,
+      "browser_heap_after_gc_bytes": 10607568,
+      "backend_rss_bytes": 89821184
+    },
+    {
+      "edits": 100,
+      "browser_heap_after_gc_bytes": 10624092,
+      "backend_rss_bytes": 89763840
+    }
+  ]
+}

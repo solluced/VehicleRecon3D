@@ -1,0 +1,45 @@
+{
+  "status": "PASS",
+  "image": [
+    3840,
+    2160
+  ],
+  "canonical_entities": 5000,
+  "display_layers": 20,
+  "device_pixel_ratio": 1,
+  "viewport": {
+    "width": 1500,
+    "height": 1000
+  },
+  "browser": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+  "cpu": "AMD Ryzen 7 5800X 8-Core Processor             ",
+  "logical_cpus": 16,
+  "system_memory_bytes": 34277924864,
+  "input": "Scripted browser pointer/wheel events through production Konva handlers; canonical property edits via visible UI",
+  "first_editor_display_ms": 831,
+  "pan": {
+    "samples": 114,
+    "frame_p50_ms": 6.8999999994412065,
+    "frame_p95_ms": 10,
+    "draw_p95_ms": 1.7000000001862645,
+    "fps": 140.25590551184317
+  },
+  "zoom": {
+    "samples": 114,
+    "frame_p50_ms": 7,
+    "frame_p95_ms": 10.200000000186265,
+    "draw_p95_ms": 1.7999999998137355,
+    "fps": 138.8888888887628
+  },
+  "drag_frame_p95_ms": 7.3999999994412065,
+  "picking_p95_ms": 0.10000000055879354,
+  "selection_visible_p95_ms": 11.899999999441206,
+  "repeated_real_edits": 8,
+  "commit_with_verification_p95_ms": 2340,
+  "browser_heap_before_bytes": 6708700,
+  "browser_heap_after_gc_bytes": 8665736,
+  "browser_heap_growth_bytes": 1957036,
+  "backend_rss_before_bytes": 90222592,
+  "backend_rss_after_bytes": 159744000,
+  "browser_errors": []
+}

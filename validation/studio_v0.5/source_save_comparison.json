@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "workload_unchanged": true,
+  "scenario_source_unchanged": true,
+  "baseline_v0_4_p95_ms": 2340,
+  "v0_5_p95_ms": 2342,
+  "difference_ms": 2,
+  "percent_change": 0.08547008547008517,
+  "interpretation": "2 ms / 0.09% variation in identical visible-save + canonical-readback scenario; no material regression."
+}

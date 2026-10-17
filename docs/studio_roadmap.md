@@ -3,9 +3,12 @@
 v0.4: **SHIPPED**. Advanced reference reconciliation is delivered; see
 [release evidence](../validation/studio_v0.4/README.md).
 
-v0.5: **CURRENT NEXT PHASE**. Bounded surface authoring is the active
-implementation phase. Core operation semantics and source/cage acceptance gates
-remain authoritative; Blender owns final production geometry.
+v0.5: **SHIPPED**. Bounded surface authoring satisfies all 34 phase exit items;
+see the [manual](studio_user_manual_v0.5.md), [core contracts](surface_authoring.md)
+and [release evidence](../validation/studio_v0.5/README.md). It was marked
+CURRENT NEXT PHASE at implementation kickoff. Core operation semantics and current
+source/cage acceptance remain authoritative; Blender owns final production geometry.
+The next planned increment is v0.6 production build orchestration; it is not started.
 
 v0.3 implements optional local annotation assistance: a discoverable CVProvider
 registry, CPU OpenCV edges/Smart Edge/GrabCut/circle candidates, noncanonical

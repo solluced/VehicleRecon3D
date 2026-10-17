@@ -1,0 +1,39 @@
+{
+  "status": "PASS",
+  "comparison": "fresh cold v1 versus published accepted v1 decoded GLB",
+  "attributes": {
+    "POSITION": {
+      "exact": true,
+      "max_absolute_difference": 0.0,
+      "elements": 118687
+    },
+    "NORMAL": {
+      "exact": true,
+      "max_absolute_difference": 0.0,
+      "elements": 118687
+    },
+    "indices": {
+      "exact": true,
+      "max_absolute_difference": 0.0,
+      "elements": 728544
+    },
+    "TEXCOORD_0": {
+      "exact": false,
+      "max_absolute_difference": 5.960464477539063e-08,
+      "elements": 14690
+    }
+  },
+  "nodes_equal": true,
+  "proof_bytes_equal": {
+    "validation/surface_reflections.png": true,
+    "validation/surface_matcap.png": true,
+    "validation/perspective_surface.png": true,
+    "validation/front.png": true,
+    "validation/side.png": true,
+    "validation/rear.png": true,
+    "validation/top.png": true,
+    "validation/perspective.png": true
+  },
+  "delivery_manifest_valid": true,
+  "exact_embedded_glb": true
+}

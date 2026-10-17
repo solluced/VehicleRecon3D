@@ -1,0 +1,625 @@
+{
+  "operations": [
+    {
+      "id": "polyline",
+      "version": 1,
+      "description": "Piecewise linear curve through ordered world points.",
+      "parameter_schema": {
+        "type": "object",
+        "properties": {
+          "points": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 3,
+              "maxItems": 3
+            },
+            "minItems": 2,
+            "maxItems": 4096
+          }
+        },
+        "required": [
+          "points"
+        ],
+        "additionalProperties": false
+      },
+      "required_inputs": [],
+      "optional_inputs": [],
+      "input_dimensions": {},
+      "output_type": "curve",
+      "dimensional_expectations": "World coordinates and offsets in metres; normalized parameters in [0,1].",
+      "preview_supported": true,
+      "topology_supported": false,
+      "limitation": null
+    },
+    {
+      "id": "chord_hermite",
+      "version": 1,
+      "description": "Chord-length cubic Hermite interpolation through world points.",
+      "parameter_schema": {
+        "type": "object",
+        "properties": {
+          "points": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 3,
+              "maxItems": 3
+            },
+            "minItems": 2,
+            "maxItems": 4096
+          }
+        },
+        "required": [
+          "points"
+        ],
+        "additionalProperties": false
+      },
+      "required_inputs": [],
+      "optional_inputs": [],
+      "input_dimensions": {},
+      "output_type": "curve",
+      "dimensional_expectations": "World coordinates and offsets in metres; normalized parameters in [0,1].",
+      "preview_supported": true,
+      "topology_supported": false,
+      "limitation": null
+    },
+    {
+      "id": "shape_preserving_hermite",
+      "version": 1,
+      "description": "Componentwise shape-preserving Hermite curve.",
+      "parameter_schema": {
+        "type": "object",
+        "properties": {
+          "points": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 3,
+              "maxItems": 3
+            },
+            "minItems": 2,
+            "maxItems": 4096
+          },
+          "endpoint_epsilon": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 0.001
+          }
+        },
+        "required": [
+          "points"
+        ],
+        "additionalProperties": false
+      },
+      "required_inputs": [],
+      "optional_inputs": [],
+      "input_dimensions": {},
+      "output_type": "curve",
+      "dimensional_expectations": "World coordinates and offsets in metres; normalized parameters in [0,1].",
+      "preview_supported": true,
+      "topology_supported": false,
+      "limitation": null
+    },
+    {
+      "id": "bezier_rail_range",
+      "version": 1,
+      "description": "Monotone-X range of an existing cage Bezier rail.",
+      "parameter_schema": {
+        "type": "object",
+        "properties": {
+          "curve": {
+            "type": "string",
+            "minLength": 1
+          },
+          "x_range": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 2,
+            "maxItems": 2
+          }
+        },
+        "required": [
+          "curve",
+          "x_range"
+        ],
+        "additionalProperties": false
+      },
+      "required_inputs": [],
+      "optional_inputs": [],
+      "input_dimensions": {},
+      "output_type": "curve",
+      "dimensional_expectations": "World coordinates and offsets in metres; normalized parameters in [0,1].",
+      "preview_supported": true,
+      "topology_supported": false,
+      "limitation": null
+    },
+    {
+      "id": "curve_sample",
+      "version": 1,
+      "description": "Sample one world point from a normalized curve parameter.",
+      "parameter_schema": {
+        "type": "object",
+        "properties": {
+          "curve": {
+            "type": "string",
+            "minLength": 1
+          },
+          "t": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "curve",
+          "t"
+        ],
+        "additionalProperties": false
+      },
+      "required_inputs": [
+        "curve"
+      ],
+      "optional_inputs": [],
+      "input_dimensions": {
+        "curve": [
+          "curve"
+        ]
+      },
+      "output_type": "point",
+      "dimensional_expectations": "World coordinates and offsets in metres; normalized parameters in [0,1].",
+      "preview_supported": true,
+      "topology_supported": false,
+      "limitation": null
+    },
+    {
+      "id": "lerp",
+      "version": 1,
+      "description": "Blend two points at t, or span two curves as a surface.",
+      "parameter_schema": {
+        "type": "object",
+        "properties": {
+          "a": {
+            "type": "string",
+            "minLength": 1
+          },
+          "b": {
+            "type": "string",
+            "minLength": 1
+          },
+          "t": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "a",
+          "b"
+        ],
+        "additionalProperties": false
+      },
+      "required_inputs": [
+        "a",
+        "b"
+      ],
+      "optional_inputs": [],
+      "input_dimensions": {
+        "a": [
+          "curve",
+          "point"
+        ],
+        "b": [
+          "curve",
+          "point"
+        ]
+      },
+      "output_type": "surface_or_point",
+      "dimensional_expectations": "World coordinates and offsets in metres; normalized parameters in [0,1].",
+      "preview_supported": true,
+      "topology_supported": true,
+      "limitation": null
+    },
+    {
+      "id": "offset",
+      "version": 1,
+      "description": "Translate an existing curve or point by a world vector.",
+      "parameter_schema": {
+        "type": "object",
+        "properties": {
+          "source": {
+            "type": "string",
+            "minLength": 1
+          },
+          "offset": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 3,
+            "maxItems": 3
+          }
+        },
+        "required": [
+          "source",
+          "offset"
+        ],
+        "additionalProperties": false
+      },
+      "required_inputs": [
+        "source"
+      ],
+      "optional_inputs": [],
+      "input_dimensions": {
+        "source": [
+          "curve",
+          "point"
+        ]
+      },
+      "output_type": "curve_or_point",
+      "dimensional_expectations": "World coordinates and offsets in metres; normalized parameters in [0,1].",
+      "preview_supported": true,
+      "topology_supported": false,
+      "limitation": null
+    },
+    {
+      "id": "coons",
+      "version": 1,
+      "description": "Four-boundary Coons surface with explicit corner agreement.",
+      "parameter_schema": {
+        "type": "object",
+        "properties": {
+          "bottom": {
+            "type": "string",
+            "minLength": 1
+          },
+          "top": {
+            "type": "string",
+            "minLength": 1
+          },
+          "left": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "right": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "corner_tolerance": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 0.01
+          }
+        },
+        "required": [
+          "bottom",
+          "top"
+        ],
+        "additionalProperties": false
+      },
+      "required_inputs": [
+        "bottom",
+        "top"
+      ],
+      "optional_inputs": [
+        "left",
+        "right"
+      ],
+      "input_dimensions": {
+        "bottom": [
+          "curve"
+        ],
+        "top": [
+          "curve"
+        ],
+        "left": [
+          "curve"
+        ],
+        "right": [
+          "curve"
+        ]
+      },
+      "output_type": "surface",
+      "dimensional_expectations": "World coordinates and offsets in metres; normalized parameters in [0,1].",
+      "preview_supported": true,
+      "topology_supported": true,
+      "limitation": null
+    },
+    {
+      "id": "cubic_boundary_roll",
+      "version": 1,
+      "description": "Cubic transition between inner and outer curves.",
+      "parameter_schema": {
+        "type": "object",
+        "properties": {
+          "inner": {
+            "type": "string",
+            "minLength": 1
+          },
+          "outer": {
+            "type": "string",
+            "minLength": 1
+          },
+          "first_control_scale": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 3,
+            "maxItems": 3
+          },
+          "second_scale": {
+            "type": "number"
+          },
+          "slopes": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 1,
+            "maxItems": 4096
+          }
+        },
+        "required": [
+          "inner",
+          "outer",
+          "first_control_scale",
+          "second_scale",
+          "slopes"
+        ],
+        "additionalProperties": false
+      },
+      "required_inputs": [
+        "inner",
+        "outer"
+      ],
+      "optional_inputs": [],
+      "input_dimensions": {
+        "inner": [
+          "curve"
+        ],
+        "outer": [
+          "curve"
+        ]
+      },
+      "output_type": "surface",
+      "dimensional_expectations": "World coordinates and offsets in metres; normalized parameters in [0,1].",
+      "preview_supported": true,
+      "topology_supported": true,
+      "limitation": null
+    },
+    {
+      "id": "ribbon",
+      "version": 1,
+      "description": "Span a curve between two world-vector offsets.",
+      "parameter_schema": {
+        "type": "object",
+        "properties": {
+          "curve": {
+            "type": "string",
+            "minLength": 1
+          },
+          "start_offset": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 3,
+            "maxItems": 3
+          },
+          "end_offset": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 3,
+            "maxItems": 3
+          }
+        },
+        "required": [
+          "curve",
+          "start_offset",
+          "end_offset"
+        ],
+        "additionalProperties": false
+      },
+      "required_inputs": [
+        "curve"
+      ],
+      "optional_inputs": [],
+      "input_dimensions": {
+        "curve": [
+          "curve"
+        ]
+      },
+      "output_type": "surface",
+      "dimensional_expectations": "World coordinates and offsets in metres; normalized parameters in [0,1].",
+      "preview_supported": true,
+      "topology_supported": true,
+      "limitation": null
+    },
+    {
+      "id": "bilinear_patch",
+      "version": 1,
+      "description": "Bilinear surface through four ordered corner points.",
+      "parameter_schema": {
+        "type": "object",
+        "properties": {
+          "points": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 3,
+              "maxItems": 3
+            },
+            "minItems": 4,
+            "maxItems": 4
+          }
+        },
+        "required": [
+          "points"
+        ],
+        "additionalProperties": false
+      },
+      "required_inputs": [],
+      "optional_inputs": [],
+      "input_dimensions": {},
+      "output_type": "surface",
+      "dimensional_expectations": "World coordinates and offsets in metres; normalized parameters in [0,1].",
+      "preview_supported": true,
+      "topology_supported": true,
+      "limitation": null
+    },
+    {
+      "id": "arch_annulus",
+      "version": 1,
+      "description": "Hermite inner/outer arch boundaries with a cubic transition.",
+      "parameter_schema": {
+        "type": "object",
+        "properties": {
+          "inner_points": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 3,
+              "maxItems": 3
+            },
+            "minItems": 2,
+            "maxItems": 4096
+          },
+          "outer_points": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 3,
+              "maxItems": 3
+            },
+            "minItems": 2,
+            "maxItems": 4096
+          },
+          "first_control_scale": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 3,
+            "maxItems": 3
+          },
+          "second_scale": {
+            "type": "number"
+          },
+          "slopes": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 1,
+            "maxItems": 4096
+          }
+        },
+        "required": [
+          "inner_points",
+          "outer_points",
+          "first_control_scale",
+          "second_scale",
+          "slopes"
+        ],
+        "additionalProperties": false
+      },
+      "required_inputs": [],
+      "optional_inputs": [],
+      "input_dimensions": {},
+      "output_type": "surface",
+      "dimensional_expectations": "World coordinates and offsets in metres; normalized parameters in [0,1].",
+      "preview_supported": true,
+      "topology_supported": true,
+      "limitation": null
+    },
+    {
+      "id": "boundary_stitch",
+      "version": 1,
+      "description": "Discrete matching boundary rows; Blender audit required.",
+      "parameter_schema": {
+        "type": "object",
+        "properties": {
+          "bottom": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 3,
+              "maxItems": 3
+            },
+            "minItems": 2,
+            "maxItems": 4096
+          },
+          "top": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 3,
+              "maxItems": 3
+            },
+            "minItems": 2,
+            "maxItems": 4096
+          },
+          "rows": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "maxItems": 4096
+          }
+        },
+        "required": [
+          "bottom",
+          "top",
+          "rows"
+        ],
+        "additionalProperties": false
+      },
+      "required_inputs": [],
+      "optional_inputs": [],
+      "input_dimensions": {},
+      "output_type": "mesh",
+      "dimensional_expectations": "World coordinates and offsets in metres; normalized parameters in [0,1].",
+      "preview_supported": false,
+      "topology_supported": false,
+      "limitation": "Discrete boundary_stitch has no callable surface domain."
+    }
+  ],
+  "capabilities": {
+    "mirror": true,
+    "mirror_plane": "Y=0 (existing Blender symmetry)",
+    "support_rows": "Explicit U/V sampling schedules; no independent strength parameter.",
+    "patch_boundary_extraction": false,
+    "patch_boundary_reason": "No trusted core boundary extraction operation.",
+    "self_intersection": "Deferred to Blender geometry audit.",
+    "cage_boundaries": "bezier_rail_range: VECTOR handles, strictly increasing X; AUTO requires Blender."
+  }
+}

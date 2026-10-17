@@ -1,0 +1,1052 @@
+{
+  "config": {
+    "argv": [
+      "/opt/hostedtoolcache/node/24.21.0/x64/bin/node",
+      "/home/runner/work/VehicleRecon3D/VehicleRecon3D/studio/frontend/node_modules/.bin/playwright",
+      "test"
+    ],
+    "configFile": "/home/runner/work/VehicleRecon3D/VehicleRecon3D/studio/frontend/playwright.config.ts",
+    "rootDir": "/home/runner/work/VehicleRecon3D/VehicleRecon3D/studio/frontend/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "ci": {
+        "commitHref": "https://github.com/solluced/VehicleRecon3D/commit/a3fd25e293157f157fa13307707fa85fc82535c0",
+        "commitHash": "a3fd25e293157f157fa13307707fa85fc82535c0",
+        "buildHref": "https://github.com/solluced/VehicleRecon3D/actions/runs/39059086712"
+      },
+      "gitCommit": {
+        "shortHash": "a3fd25e",
+        "hash": "a3fd25e293157f157fa13307707fa85fc82535c0",
+        "subject": "Describe both conditional lerp output dimensions in the core registry",
+        "body": "Describe both conditional lerp output dimensions in the core registry\n",
+        "author": {
+          "name": "Codex",
+          "email": "codex@local.invalid",
+          "time": 1792262388000
+        },
+        "committer": {
+          "name": "Codex",
+          "email": "codex@local.invalid",
+          "time": 1792262388000
+        },
+        "branch": "main"
+      },
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/home/runner/work/VehicleRecon3D/VehicleRecon3D/studio/frontend/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "ci": {
+            "commitHref": "https://github.com/solluced/VehicleRecon3D/commit/a3fd25e293157f157fa13307707fa85fc82535c0",
+            "commitHash": "a3fd25e293157f157fa13307707fa85fc82535c0",
+            "buildHref": "https://github.com/solluced/VehicleRecon3D/actions/runs/39059086712"
+          },
+          "gitCommit": {
+            "shortHash": "a3fd25e",
+            "hash": "a3fd25e293157f157fa13307707fa85fc82535c0",
+            "subject": "Describe both conditional lerp output dimensions in the core registry",
+            "body": "Describe both conditional lerp output dimensions in the core registry\n",
+            "author": {
+              "name": "Codex",
+              "email": "codex@local.invalid",
+              "time": 1792262388000
+            },
+            "committer": {
+              "name": "Codex",
+              "email": "codex@local.invalid",
+              "time": 1792262388000
+            },
+            "branch": "main"
+          },
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "/home/runner/work/VehicleRecon3D/VehicleRecon3D/studio/frontend/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 120000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/home/runner/work/VehicleRecon3D/VehicleRecon3D/studio/frontend/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "ci": {
+            "commitHref": "https://github.com/solluced/VehicleRecon3D/commit/a3fd25e293157f157fa13307707fa85fc82535c0",
+            "commitHash": "a3fd25e293157f157fa13307707fa85fc82535c0",
+            "buildHref": "https://github.com/solluced/VehicleRecon3D/actions/runs/39059086712"
+          },
+          "gitCommit": {
+            "shortHash": "a3fd25e",
+            "hash": "a3fd25e293157f157fa13307707fa85fc82535c0",
+            "subject": "Describe both conditional lerp output dimensions in the core registry",
+            "body": "Describe both conditional lerp output dimensions in the core registry\n",
+            "author": {
+              "name": "Codex",
+              "email": "codex@local.invalid",
+              "time": 1792262388000
+            },
+            "committer": {
+              "name": "Codex",
+              "email": "codex@local.invalid",
+              "time": 1792262388000
+            },
+            "branch": "main"
+          },
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "/home/runner/work/VehicleRecon3D/VehicleRecon3D/studio/frontend/e2e",
+        "snapshotDir": "/home/runner/work/VehicleRecon3D/VehicleRecon3D/studio/frontend/e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 120000,
+        "use": {
+          "headless": true,
+          "viewport": {
+            "width": 1500,
+            "height": 1000
+          },
+          "launchOptions": {
+            "args": [
+              "--no-first-run",
+              "--js-flags=--expose-gc",
+              "--use-gl=angle",
+              "--use-angle=swiftshader"
+            ]
+          },
+          "screenshot": "only-on-failure"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "../../build/studio05-e2e-results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "authoring.spec.ts",
+      "file": "authoring.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "manual authoring survives refresh and backend restart, with conflicts fenced",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 25120,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T18:41:10.089Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ffbac78a90ea7b98869d-63598a601d6ffd465bfb",
+          "file": "authoring.spec.ts",
+          "line": 20,
+          "column": 1
+        },
+        {
+          "title": "laptop canvas, high-DPI 1:1 and stale review state",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4083,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T18:41:37.622Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ffbac78a90ea7b98869d-bb8c569a24d84c1ad2fc",
+          "file": "authoring.spec.ts",
+          "line": 318,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "cv.spec.ts",
+      "file": "cv.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Smart Edge source pixels survive zoom/pan/DPR2, bounded fit, ACCEPT and exact undo",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 10512,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T18:41:41.726Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "da3c3a1ef58ec1969942-420dad4762cbc53ec97e",
+          "file": "cv.spec.ts",
+          "line": 137,
+          "column": 1
+        },
+        {
+          "title": "Magic Select refines FG/BG mask, accepts one component and preserves original bytes",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 10739,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T18:41:52.818Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "da3c3a1ef58ec1969942-6e322427dc69bff09b7e",
+          "file": "cv.spec.ts",
+          "line": 243,
+          "column": 1
+        },
+        {
+          "title": "wheel candidates require confirmation and never move world axle geometry",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 9617,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T18:42:03.568Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "da3c3a1ef58ec1969942-e09c81408b1c428be6ac",
+          "file": "cv.spec.ts",
+          "line": 303,
+          "column": 1
+        },
+        {
+          "title": "external observation edit stales a proposal and the API rejects acceptance",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8789,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T18:42:13.201Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "da3c3a1ef58ec1969942-1456f719445c5e4c5c6d",
+          "file": "cv.spec.ts",
+          "line": 345,
+          "column": 1
+        },
+        {
+          "title": "disabled provider leaves manual point authoring and offline UI intact",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8914,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T18:42:22.000Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "da3c3a1ef58ec1969942-73f5471c3422345ab005",
+          "file": "cv.spec.ts",
+          "line": 418,
+          "column": 1
+        },
+        {
+          "title": "measure bounded Smart Edge and mask/refinement on a representative 4K source",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 22602,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T18:42:30.925Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "da3c3a1ef58ec1969942-42de424fbeeb19205680",
+          "file": "cv.spec.ts",
+          "line": 483,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "multiview-performance.spec.ts",
+      "file": "multiview-performance.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "measure four 2D views plus Three.js with 5000 controls and live projections",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 104803,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T18:42:53.556Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "effc2364baf5927842e3-7b8884b0ea535ccd6ff6",
+          "file": "multiview-performance.spec.ts",
+          "line": 20,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "multiview.spec.ts",
+      "file": "multiview.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "multi-view binding, distinct moves, fit proposal, 3D selection, reviews and roundtrip",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 20675,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T18:44:39.633Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8d23bba7fd23579de33f-f54aecfeb9f4386ccd13",
+          "file": "multiview.spec.ts",
+          "line": 64,
+          "column": 1
+        },
+        {
+          "title": "known Mark II conflict is visible without editing canonical data",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7305,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T18:45:00.467Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8d23bba7fd23579de33f-441ed7c9f8e0ad56f670",
+          "file": "multiview.spec.ts",
+          "line": 257,
+          "column": 1
+        },
+        {
+          "title": "native Three.js X and XZ gizmos preview locally and commit once at release",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8558,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T18:45:07.790Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8d23bba7fd23579de33f-ca10e9bd94115c40648d",
+          "file": "multiview.spec.ts",
+          "line": 295,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "performance.spec.ts",
+      "file": "performance.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "measure 4K, 5000 canonical controls and 20 display layers",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 120217,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T18:45:16.368Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b15d6361b2fc38288977-c8efc7a014aec9d19c40",
+          "file": "performance.spec.ts",
+          "line": 21,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "reconciliation.spec.ts",
+      "file": "reconciliation.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "positive manual candidate, graphs, independent evidence, explicit activation and exact undo",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8958,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T18:47:17.820Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6565ecb37ba2a832b80c-890adf07b9eb3e9e97d7",
+          "file": "reconciliation.spec.ts",
+          "line": 70,
+          "column": 1
+        },
+        {
+          "title": "Mark II rejected candidate is visibly excessive, immutable and cannot activate",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7505,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T18:47:26.949Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6565ecb37ba2a832b80c-98201058aaa97cf24fa7",
+          "file": "reconciliation.spec.ts",
+          "line": 156,
+          "column": 1
+        },
+        {
+          "title": "stale calibration fences activation and requires regeneration",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7278,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T18:47:34.470Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6565ecb37ba2a832b80c-46f22b2e18c2c79851b2",
+          "file": "reconciliation.spec.ts",
+          "line": 200,
+          "column": 1
+        },
+        {
+          "title": "replacement preserves old source and world and displays unmeasured transfer proposals",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7075,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T18:47:41.763Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6565ecb37ba2a832b80c-0576def88cbe264aa32c",
+          "file": "reconciliation.spec.ts",
+          "line": 220,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "surfaces.spec.ts",
+      "file": "surfaces.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "surface patch creation, four boundaries, orientation, real mesh inspectors and stable reopen",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 11166,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T18:47:48.860Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "73439bbadadd24f35576-0aa688c3ec6419b032f1",
+          "file": "surfaces.spec.ts",
+          "line": 41,
+          "column": 1
+        },
+        {
+          "title": "surface corner FAIL, correction PASS, undo FAIL, redo PASS and safe cycle draft",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 9487,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T18:48:00.376Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "73439bbadadd24f35576-256c720399870b4c5bf1",
+          "file": "surfaces.spec.ts",
+          "line": 117,
+          "column": 1
+        },
+        {
+          "title": "rejected source blocks preview and creates no canonical surface writes",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6930,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T18:48:09.877Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "73439bbadadd24f35576-31092b0e3dfc04cf904e",
+          "file": "surfaces.spec.ts",
+          "line": 162,
+          "column": 1
+        },
+        {
+          "title": "27 patch preview, dependency-local edit and real browser upload/redraw inspectors",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8625,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T18:48:16.825Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "73439bbadadd24f35576-89260258f7b224859b5c",
+          "file": "surfaces.spec.ts",
+          "line": 181,
+          "column": 1
+        },
+        {
+          "title": "declared G0 gap FAIL, fix PASS, undo FAIL, redo PASS",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 9604,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T18:48:25.467Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "73439bbadadd24f35576-d9d09c7bbc3a9dadaef6",
+          "file": "surfaces.spec.ts",
+          "line": 257,
+          "column": 1
+        },
+        {
+          "title": "cage edit visibly stales mesh, current cage review required before regeneration",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8149,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T18:48:35.086Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "73439bbadadd24f35576-b6788cdcfb5bde4606ad",
+          "file": "surfaces.spec.ts",
+          "line": 294,
+          "column": 1
+        },
+        {
+          "title": "actual Mark II read-only copy remains blocked and hash-identical",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6913,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T18:48:43.246Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "73439bbadadd24f35576-d6304a85bdcb77afe768",
+          "file": "surfaces.spec.ts",
+          "line": 332,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-17T18:41:09.458Z",
+    "duration": 460798.654,
+    "expected": 24,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

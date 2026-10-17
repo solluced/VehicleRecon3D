@@ -1,0 +1,13 @@
+{
+  "patches": 27,
+  "first_visible_preview_ms": 836.7248,
+  "incremental_visible_preview_ms": 327.3228999999992,
+  "selection_ms": 3.805100000001403,
+  "patch_edit_ms": 850.0366999999969,
+  "wire_toggle_ms": 51.30819999999949,
+  "normals_toggle_ms": 30.13140000000203,
+  "meshes": "27",
+  "upload_ms": 23.90000000037253,
+  "redraw_ms": 15.400000000372529,
+  "browser_heap_bytes": 21167904
+}

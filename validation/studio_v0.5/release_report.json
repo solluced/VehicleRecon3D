@@ -1,0 +1,457 @@
+{
+  "status": "PASS",
+  "version": "0.5",
+  "runtime_commit": "a3fd25e293157f157fa13307707fa85fc82535c0",
+  "base_commit": "354671dee26b0817f48b2ace625b08160e0bbf0f",
+  "ci": {
+    "run_id": 39059086712,
+    "url": "https://github.com/solluced/VehicleRecon3D/actions/runs/39059086712",
+    "jobs": "4/4 PASS"
+  },
+  "definition_of_done": [
+    {
+      "item": "Surfaces workspace exists",
+      "status": "PASS",
+      "evidence": [
+        "focused_surface_tests.txt",
+        "browser_tests.json",
+        "surfaces_authoring.png",
+        "surfaces_dense.png"
+      ]
+    },
+    {
+      "item": "canonical surface_graph reused",
+      "status": "PASS",
+      "evidence": [
+        "focused_surface_tests.txt",
+        "browser_tests.json"
+      ]
+    },
+    {
+      "item": "operation registry exposed",
+      "status": "PASS",
+      "evidence": [
+        "focused_surface_tests.txt",
+        "browser_tests.json"
+      ]
+    },
+    {
+      "item": "no arbitrary scripting introduced",
+      "status": "PASS",
+      "evidence": [
+        "focused_surface_tests.txt",
+        "browser_tests.json"
+      ]
+    },
+    {
+      "item": "patch creation/deletion works",
+      "status": "PASS",
+      "evidence": [
+        "focused_surface_tests.txt",
+        "browser_tests.json"
+      ]
+    },
+    {
+      "item": "stable patch IDs work",
+      "status": "PASS",
+      "evidence": [
+        "focused_surface_tests.txt",
+        "browser_tests.json"
+      ]
+    },
+    {
+      "item": "boundary picking works",
+      "status": "PASS",
+      "evidence": [
+        "focused_surface_tests.txt",
+        "browser_tests.json",
+        "surfaces_authoring.png",
+        "surfaces_dense.png"
+      ]
+    },
+    {
+      "item": "boundary orientation works",
+      "status": "PASS",
+      "evidence": [
+        "focused_surface_tests.txt",
+        "browser_tests.json"
+      ]
+    },
+    {
+      "item": "corner mismatch detected",
+      "status": "PASS",
+      "evidence": [
+        "focused_surface_tests.txt",
+        "browser_tests.json"
+      ]
+    },
+    {
+      "item": "parameter editing works",
+      "status": "PASS",
+      "evidence": [
+        "focused_surface_tests.txt",
+        "browser_tests.json"
+      ]
+    },
+    {
+      "item": "support-row editing works where supported",
+      "status": "PASS",
+      "evidence": [
+        "focused_surface_tests.txt",
+        "browser_tests.json"
+      ]
+    },
+    {
+      "item": "mirror/material role works where supported",
+      "status": "PASS",
+      "evidence": [
+        "focused_surface_tests.txt",
+        "browser_tests.json"
+      ]
+    },
+    {
+      "item": "DAG viewer works",
+      "status": "PASS",
+      "evidence": [
+        "focused_surface_tests.txt",
+        "browser_tests.json"
+      ]
+    },
+    {
+      "item": "cycles reject",
+      "status": "PASS",
+      "evidence": [
+        "focused_surface_tests.txt",
+        "browser_tests.json"
+      ]
+    },
+    {
+      "item": "graph validation panel works",
+      "status": "PASS",
+      "evidence": [
+        "focused_surface_tests.txt",
+        "browser_tests.json"
+      ]
+    },
+    {
+      "item": "coarse core preview works",
+      "status": "PASS",
+      "evidence": [
+        "focused_surface_tests.txt",
+        "browser_tests.json"
+      ]
+    },
+    {
+      "item": "preview is revision-bound",
+      "status": "PASS",
+      "evidence": [
+        "focused_surface_tests.txt",
+        "browser_tests.json"
+      ]
+    },
+    {
+      "item": "Three.js patch selection works",
+      "status": "PASS",
+      "evidence": [
+        "focused_surface_tests.txt",
+        "browser_tests.json",
+        "surfaces_authoring.png",
+        "surfaces_dense.png"
+      ]
+    },
+    {
+      "item": "real preview wireframe works",
+      "status": "PASS",
+      "evidence": [
+        "focused_surface_tests.txt",
+        "browser_tests.json",
+        "surfaces_authoring.png",
+        "surfaces_dense.png"
+      ]
+    },
+    {
+      "item": "normals inspector works",
+      "status": "PASS",
+      "evidence": [
+        "focused_surface_tests.txt",
+        "browser_tests.json",
+        "surfaces_authoring.png",
+        "surfaces_dense.png"
+      ]
+    },
+    {
+      "item": "G0 gap metrics work",
+      "status": "PASS",
+      "evidence": [
+        "focused_surface_tests.txt",
+        "browser_tests.json"
+      ]
+    },
+    {
+      "item": "tangent metrics shown only where supported",
+      "status": "PASS",
+      "evidence": [
+        "focused_surface_tests.txt",
+        "browser_tests.json"
+      ]
+    },
+    {
+      "item": "continuity heatmap works",
+      "status": "PASS",
+      "evidence": [
+        "focused_surface_tests.txt",
+        "browser_tests.json",
+        "surfaces_authoring.png",
+        "surfaces_dense.png"
+      ]
+    },
+    {
+      "item": "degenerate preview fails",
+      "status": "PASS",
+      "evidence": [
+        "focused_surface_tests.txt",
+        "browser_tests.json"
+      ]
+    },
+    {
+      "item": "source/cage acceptance gate enforced headlessly",
+      "status": "PASS",
+      "evidence": [
+        "focused_surface_tests.txt",
+        "browser_tests.json"
+      ]
+    },
+    {
+      "item": "Mark II surfaces remain blocked",
+      "status": "PASS",
+      "evidence": [
+        "focused_surface_tests.txt",
+        "browser_tests.json"
+      ]
+    },
+    {
+      "item": "draft/incomplete authoring is safe",
+      "status": "PASS",
+      "evidence": [
+        "focused_surface_tests.txt",
+        "browser_tests.json"
+      ]
+    },
+    {
+      "item": "surface edits are undoable",
+      "status": "PASS",
+      "evidence": [
+        "focused_surface_tests.txt",
+        "browser_tests.json"
+      ]
+    },
+    {
+      "item": "save/reopen roundtrip works",
+      "status": "PASS",
+      "evidence": [
+        "focused_surface_tests.txt",
+        "browser_tests.json"
+      ]
+    },
+    {
+      "item": "incremental invalidation works",
+      "status": "PASS",
+      "evidence": [
+        "focused_surface_tests.txt",
+        "browser_tests.json"
+      ]
+    },
+    {
+      "item": "performance measured",
+      "status": "PASS",
+      "evidence": [
+        "source_save_comparison.json",
+        "surface_browser_performance.json",
+        "retention_100_edits.json"
+      ]
+    },
+    {
+      "item": "memory retention measured",
+      "status": "PASS",
+      "evidence": [
+        "retention_100_edits.json",
+        "browser_retention_100_edits.json"
+      ]
+    },
+    {
+      "item": "browser E2E passes",
+      "status": "PASS",
+      "evidence": [
+        "focused_surface_tests.txt",
+        "browser_tests.json"
+      ]
+    },
+    {
+      "item": "Tesla unchanged",
+      "status": "PASS",
+      "evidence": [
+        "protected.json",
+        "glb_comparison.json",
+        "tesla/pipeline_report.json",
+        "tesla/control_regression.json"
+      ]
+    }
+  ],
+  "operations": [
+    "polyline",
+    "chord_hermite",
+    "shape_preserving_hermite",
+    "bezier_rail_range",
+    "curve_sample",
+    "lerp",
+    "offset",
+    "coons",
+    "cubic_boundary_roll",
+    "ribbon",
+    "bilinear_patch",
+    "arch_annulus",
+    "boundary_stitch"
+  ],
+  "preview_supported_operations": [
+    "polyline",
+    "chord_hermite",
+    "shape_preserving_hermite",
+    "bezier_rail_range",
+    "curve_sample",
+    "lerp",
+    "offset",
+    "coons",
+    "cubic_boundary_roll",
+    "ribbon",
+    "bilinear_patch",
+    "arch_annulus"
+  ],
+  "preview_surface_operations": [
+    "coons",
+    "cubic_boundary_roll",
+    "arch_annulus",
+    "ribbon",
+    "bilinear_patch",
+    "lerp (curve inputs)"
+  ],
+  "capability_limits": {
+    "mirror": true,
+    "mirror_plane": "Y=0 (existing Blender symmetry)",
+    "support_rows": "Explicit U/V sampling schedules; no independent strength parameter.",
+    "patch_boundary_extraction": false,
+    "patch_boundary_reason": "No trusted core boundary extraction operation.",
+    "self_intersection": "Deferred to Blender geometry audit.",
+    "cage_boundaries": "bezier_rail_range: VECTOR handles, strictly increasing X; AUTO requires Blender."
+  },
+  "surface_graph": {
+    "canonical": "generated/surface_graph.json",
+    "schema_version": 2,
+    "positive_patches": 2,
+    "dense_patches": 27,
+    "stable_ids": true,
+    "typed_commands": true,
+    "roundtrip": "PASS",
+    "undo_redo": "EXACT BYTES"
+  },
+  "quality": {
+    "G0": "PASS; individual max/RMS and declared tolerance",
+    "normal_compatibility": "Sampled G1-like only; no strict G1/G2 claim",
+    "topology": "Actual coarse indexed mesh edges",
+    "degenerate": "FAIL as required",
+    "stale_preview": "Visibly STALE; core revision/review gates"
+  },
+  "gates": {
+    "source": "CURRENT ACCEPTED REQUIRED",
+    "cage": "CURRENT ACCEPTED REQUIRED",
+    "MarkII": "BLOCKED; no override"
+  },
+  "tests": {
+    "python": 344,
+    "frontend": 51,
+    "browser_ci": 24,
+    "browser_local_full": 24,
+    "browser_local_surface_recheck": 7,
+    "browser_retention_release": 1
+  },
+  "performance": {
+    "source": {
+      "status": "PASS",
+      "workload_unchanged": true,
+      "scenario_source_unchanged": true,
+      "baseline_v0_4_p95_ms": 2340,
+      "v0_5_p95_ms": 2342,
+      "difference_ms": 2,
+      "percent_change": 0.08547008547008517,
+      "interpretation": "2 ms / 0.09% variation in identical visible-save + canonical-readback scenario; no material regression."
+    },
+    "surface_parameter_edit_p95_ms": 227.25790000004054,
+    "first_core_preview_ms": 1138.1463999987318,
+    "incremental_preview_p95_ms": 381.55940000069677,
+    "browser_workload": {
+      "patches": 27,
+      "first_visible_preview_ms": 836.7248,
+      "incremental_visible_preview_ms": 327.3228999999992,
+      "selection_ms": 3.805100000001403,
+      "patch_edit_ms": 850.0366999999969,
+      "wire_toggle_ms": 51.30819999999949,
+      "normals_toggle_ms": 30.13140000000203,
+      "meshes": "27",
+      "upload_ms": 23.90000000037253,
+      "redraw_ms": 15.400000000372529,
+      "browser_heap_bytes": 21167904
+    },
+    "workload": {
+      "patches": 27,
+      "operations": [
+        "coons",
+        "bilinear_patch"
+      ],
+      "preview_quality": "medium",
+      "canonical_surface_edits": 100,
+      "cv_source_size": [
+        512,
+        512
+      ],
+      "cv_generations": 100
+    },
+    "RSS_bytes": {
+      "baseline": 46907392,
+      "peak": 190316544,
+      "post_gc": 184229888
+    },
+    "browser_heap_bytes": {
+      "baseline": 7712444,
+      "peak": 24083820,
+      "post_gc": 10624092
+    }
+  },
+  "tesla": {
+    "iou": {
+      "side": 0.95723,
+      "top": 0.936083,
+      "front": 0.931202,
+      "rear": 0.944724
+    },
+    "stages": "14/14 PASS",
+    "geometry": "PASS",
+    "GLB": "PASS",
+    "desktop_mobile_viewers": "PASS",
+    "accepted_geometry_modified": false
+  },
+  "mark2": {
+    "hashes_unchanged": true,
+    "source": "INCONSISTENT_SOURCE",
+    "portability": "BLOCKED",
+    "cage": "FAIL",
+    "surfaces": "NOT STARTED",
+    "details": "NOT STARTED"
+  },
+  "blockers": [],
+  "deferred_capabilities": [
+    "Previous patch edge extraction has no trusted generic operation",
+    "AUTO / non-monotone-X cage boundary preview",
+    "Arbitrary mirror planes / independently edited mirrored coordinates",
+    "Independent support-row strength/offset semantics",
+    "Self-intersection certification deferred to Blender audit"
+  ]
+}

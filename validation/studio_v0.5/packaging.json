@@ -1,0 +1,26 @@
+{
+  "status": "PASS",
+  "installed_core_and_studio_imports": true,
+  "resource_root_from_installed_core": true,
+  "installed_app_index_assets_bootstrap_schema_project": true,
+  "static_files_in_wheel": [
+    "vehiclerecon_studio/static/index.html",
+    "vehiclerecon_studio/static/assets/CVPanel-BpB-nxZD.js",
+    "vehiclerecon_studio/static/assets/CVPanel-ByzFR0O2.css",
+    "vehiclerecon_studio/static/assets/MultiWorkspace-CngjCdFb.js",
+    "vehiclerecon_studio/static/assets/OrbitControls-CgYo-9YU.js",
+    "vehiclerecon_studio/static/assets/Preview3D-g7keDRKD.js",
+    "vehiclerecon_studio/static/assets/RectificationWorkspace-Bxc2WtHI.css",
+    "vehiclerecon_studio/static/assets/RectificationWorkspace-dKPoyCLG.js",
+    "vehiclerecon_studio/static/assets/SurfaceWorkspace-CqqrHvkw.css",
+    "vehiclerecon_studio/static/assets/SurfaceWorkspace-D-EGmXs0.js",
+    "vehiclerecon_studio/static/assets/index-C8fLmVeB.css",
+    "vehiclerecon_studio/static/assets/index-DlLh1nZ9.js"
+  ],
+  "static_bytes_match_final_build": true,
+  "runtime_node_or_blender_invoked": false,
+  "wheel_sha256": {
+    "vehiclerecon-0.1.0-py3-none-any.whl": "9d0cea935c4445d67ee29853e72f795e110795b6710cf90c1309be2f50d1bd16",
+    "vehiclerecon_studio-0.5.0-py3-none-any.whl": "b8e32432d2e2e5f4a974407c59946103e7d0deb2d546581177705a786a16e445"
+  }
+}

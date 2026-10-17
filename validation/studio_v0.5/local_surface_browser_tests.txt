@@ -1,0 +1,18 @@
+
+> vehiclerecon-studio@0.5.0 e2e
+> playwright test surfaces.spec.ts
+
+
+Running 7 tests using 1 worker
+
+(node:33008) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 e2e\surfaces.spec.ts:41:1 › surface patch creation, four boundaries, orientation, real mesh inspectors and stable reopen (9.9s)
+  ok 2 e2e\surfaces.spec.ts:117:1 › surface corner FAIL, correction PASS, undo FAIL, redo PASS and safe cycle draft (6.7s)
+  ok 3 e2e\surfaces.spec.ts:162:1 › rejected source blocks preview and creates no canonical surface writes (3.0s)
+  ok 4 e2e\surfaces.spec.ts:181:1 › 27 patch preview, dependency-local edit and real browser upload/redraw inspectors (5.1s)
+  ok 5 e2e\surfaces.spec.ts:257:1 › declared G0 gap FAIL, fix PASS, undo FAIL, redo PASS (5.4s)
+  ok 6 e2e\surfaces.spec.ts:294:1 › cage edit visibly stales mesh, current cage review required before regeneration (4.9s)
+  ok 7 e2e\surfaces.spec.ts:332:1 › actual Mark II read-only copy remains blocked and hash-identical (3.0s)
+
+  7 passed (39.8s)

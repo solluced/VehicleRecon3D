@@ -1,0 +1,760 @@
+{
+  "unresolved": {
+    "status": "FAIL",
+    "validation": [
+      {
+        "category": "graph",
+        "status": "FAIL",
+        "message": "Unknown surface node missing"
+      }
+    ]
+  },
+  "cycle": {
+    "status": "FAIL",
+    "validation": [
+      {
+        "category": "graph",
+        "status": "FAIL",
+        "message": "Surface graph cycle"
+      }
+    ]
+  },
+  "unsupported": {
+    "status": "FAIL",
+    "validation": [
+      {
+        "category": "graph",
+        "status": "FAIL",
+        "message": "nodes/7: {'id': 'sample.a', 'op': 'python', 'parameters': {'bottom': 'bottom.a', 'top': 'top.a', 'left': 'left', 'right': 'shared'}, 'dependencies': ['bottom.a', 'left', 'shared', 'top.a'], 'draft': False, 'reversed': []} is not valid under any of the given schemas"
+      }
+    ]
+  },
+  "parameter": {
+    "status": "FAIL",
+    "validation": [
+      {
+        "category": "graph",
+        "status": "FAIL",
+        "message": "nodes/7: {'id': 'sample.a', 'op': 'coons', 'parameters': {'bottom': 'bottom.a', 'top': 'top.a', 'left': 'left', 'right': 'shared', 'corner_tolerance': -1}, 'dependencies': ['bottom.a', 'left', 'shared', 'top.a'], 'draft': False, 'reversed': []} is not valid under any of the given schemas"
+      }
+    ]
+  },
+  "nan": {
+    "status": "FAIL",
+    "validation": [
+      {
+        "category": "graph",
+        "status": "FAIL",
+        "message": "NaN and Infinity are forbidden"
+      }
+    ]
+  },
+  "orientation": {
+    "status": "FAIL",
+    "certified_current": false,
+    "validation": [
+      {
+        "category": "schema",
+        "status": "PASS",
+        "message": "Contract satisfied"
+      },
+      {
+        "category": "references",
+        "status": "PASS",
+        "message": "Contract satisfied"
+      },
+      {
+        "category": "DAG",
+        "status": "PASS",
+        "message": "Contract satisfied"
+      },
+      {
+        "category": "operation contract",
+        "status": "PASS",
+        "message": "Contract satisfied"
+      },
+      {
+        "category": "parameters",
+        "status": "PASS",
+        "message": "Contract satisfied"
+      },
+      {
+        "category": "boundaries",
+        "status": "PASS",
+        "message": "Assigned inputs are structurally valid; evaluate to inspect corners."
+      },
+      {
+        "category": "evaluation",
+        "status": "BLOCKED",
+        "message": "Coons corners disagree by 1.0m (allowed 1e-06)"
+      }
+    ],
+    "corners": {
+      "sample.a": [
+        {
+          "connection": "left(0) → bottom(0)",
+          "expected": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "actual": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "gap_m": 1.0,
+          "tolerance_m": 1e-06,
+          "status": "FAIL"
+        },
+        {
+          "connection": "left(1) → top(0)",
+          "expected": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "actual": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "gap_m": 1.0,
+          "tolerance_m": 1e-06,
+          "status": "FAIL"
+        },
+        {
+          "connection": "right(0) → bottom(1)",
+          "expected": [
+            1.0,
+            0.0,
+            0.0
+          ],
+          "actual": [
+            1.0,
+            0.0,
+            0.0
+          ],
+          "gap_m": 0.0,
+          "tolerance_m": 1e-06,
+          "status": "PASS"
+        },
+        {
+          "connection": "right(1) → top(1)",
+          "expected": [
+            1.0,
+            1.0,
+            0.0
+          ],
+          "actual": [
+            1.0,
+            1.0,
+            0.0
+          ],
+          "gap_m": 0.0,
+          "tolerance_m": 1e-06,
+          "status": "PASS"
+        }
+      ]
+    },
+    "adjacency": []
+  },
+  "degenerate": {
+    "status": "FAIL",
+    "certified_current": false,
+    "validation": [
+      {
+        "category": "schema",
+        "status": "PASS",
+        "message": "Contract satisfied"
+      },
+      {
+        "category": "references",
+        "status": "PASS",
+        "message": "Contract satisfied"
+      },
+      {
+        "category": "DAG",
+        "status": "PASS",
+        "message": "Contract satisfied"
+      },
+      {
+        "category": "operation contract",
+        "status": "PASS",
+        "message": "Contract satisfied"
+      },
+      {
+        "category": "parameters",
+        "status": "PASS",
+        "message": "Contract satisfied"
+      },
+      {
+        "category": "boundaries",
+        "status": "PASS",
+        "message": "Assigned inputs are structurally valid; evaluate to inspect corners."
+      },
+      {
+        "category": "evaluation",
+        "status": "PASS",
+        "message": "Core sampled graph"
+      },
+      {
+        "category": "topology preview",
+        "status": "FAIL",
+        "message": "Numerical, winding and declared connectivity checks; self-intersection deferred."
+      }
+    ],
+    "corners": {
+      "sample.b": [
+        {
+          "connection": "left(0) → bottom(0)",
+          "expected": [
+            1.0,
+            0.0,
+            0.0
+          ],
+          "actual": [
+            1.0,
+            0.0,
+            0.0
+          ],
+          "gap_m": 0.0,
+          "tolerance_m": 1e-06,
+          "status": "PASS"
+        },
+        {
+          "connection": "left(1) → top(0)",
+          "expected": [
+            1.0,
+            1.0,
+            0.0
+          ],
+          "actual": [
+            1.0,
+            1.0,
+            0.0
+          ],
+          "gap_m": 0.0,
+          "tolerance_m": 1e-06,
+          "status": "PASS"
+        },
+        {
+          "connection": "right(0) → bottom(1)",
+          "expected": [
+            2.0,
+            0.0,
+            0.0
+          ],
+          "actual": [
+            2.0,
+            0.0,
+            0.0
+          ],
+          "gap_m": 0.0,
+          "tolerance_m": 1e-06,
+          "status": "PASS"
+        },
+        {
+          "connection": "right(1) → top(1)",
+          "expected": [
+            2.0,
+            1.0,
+            0.0
+          ],
+          "actual": [
+            2.0,
+            1.0,
+            0.0
+          ],
+          "gap_m": 0.0,
+          "tolerance_m": 1e-06,
+          "status": "PASS"
+        }
+      ]
+    },
+    "adjacency": [
+      {
+        "a": "panel.a",
+        "b": "panel.b",
+        "edge_a": "right",
+        "edge_b": "left",
+        "reverse": false,
+        "tolerance_m": 0.0001,
+        "max_gap_m": 1.4142135623730951,
+        "rms_gap_m": 1.159202311936963,
+        "normal_angle_max_deg": 90.0,
+        "tangent_label": "G1-like normal compatibility; no strict G1/G2 guarantee",
+        "status": "FAIL",
+        "samples": [
+          [
+            0.5,
+            0.0,
+            0.0
+          ],
+          [
+            0.5,
+            0.03125,
+            0.0
+          ],
+          [
+            0.5,
+            0.0625,
+            0.0
+          ],
+          [
+            0.5,
+            0.09375,
+            0.0
+          ],
+          [
+            0.5,
+            0.125,
+            0.0
+          ],
+          [
+            0.5,
+            0.15625,
+            0.0
+          ],
+          [
+            0.5,
+            0.1875,
+            0.0
+          ],
+          [
+            0.5,
+            0.21875,
+            0.0
+          ],
+          [
+            0.5,
+            0.25,
+            0.0
+          ],
+          [
+            0.5,
+            0.28125,
+            0.0
+          ],
+          [
+            0.5,
+            0.3125,
+            0.0
+          ],
+          [
+            0.5,
+            0.34375,
+            0.0
+          ],
+          [
+            0.5,
+            0.375,
+            0.0
+          ],
+          [
+            0.5,
+            0.40625,
+            0.0
+          ],
+          [
+            0.5,
+            0.4375,
+            0.0
+          ],
+          [
+            0.5,
+            0.46875,
+            0.0
+          ],
+          [
+            0.5,
+            0.5,
+            0.0
+          ]
+        ]
+      }
+    ]
+  },
+  "discontinuous": {
+    "status": "FAIL",
+    "certified_current": false,
+    "validation": [
+      {
+        "category": "schema",
+        "status": "PASS",
+        "message": "Contract satisfied"
+      },
+      {
+        "category": "references",
+        "status": "PASS",
+        "message": "Contract satisfied"
+      },
+      {
+        "category": "DAG",
+        "status": "PASS",
+        "message": "Contract satisfied"
+      },
+      {
+        "category": "operation contract",
+        "status": "PASS",
+        "message": "Contract satisfied"
+      },
+      {
+        "category": "parameters",
+        "status": "PASS",
+        "message": "Contract satisfied"
+      },
+      {
+        "category": "boundaries",
+        "status": "PASS",
+        "message": "Assigned inputs are structurally valid; evaluate to inspect corners."
+      },
+      {
+        "category": "evaluation",
+        "status": "PASS",
+        "message": "Core sampled graph"
+      },
+      {
+        "category": "topology preview",
+        "status": "FAIL",
+        "message": "Numerical, winding and declared connectivity checks; self-intersection deferred."
+      }
+    ],
+    "corners": {
+      "sample.a": [
+        {
+          "connection": "left(0) → bottom(0)",
+          "expected": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "actual": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "gap_m": 0.0,
+          "tolerance_m": 1e-06,
+          "status": "PASS"
+        },
+        {
+          "connection": "left(1) → top(0)",
+          "expected": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "actual": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "gap_m": 0.0,
+          "tolerance_m": 1e-06,
+          "status": "PASS"
+        },
+        {
+          "connection": "right(0) → bottom(1)",
+          "expected": [
+            1.0,
+            0.0,
+            0.0
+          ],
+          "actual": [
+            1.0,
+            0.0,
+            0.0
+          ],
+          "gap_m": 0.0,
+          "tolerance_m": 1e-06,
+          "status": "PASS"
+        },
+        {
+          "connection": "right(1) → top(1)",
+          "expected": [
+            1.0,
+            1.0,
+            0.0
+          ],
+          "actual": [
+            1.0,
+            1.0,
+            0.0
+          ],
+          "gap_m": 0.0,
+          "tolerance_m": 1e-06,
+          "status": "PASS"
+        }
+      ],
+      "sample.b": [
+        {
+          "connection": "left(0) → bottom(0)",
+          "expected": [
+            1.0,
+            0.0,
+            0.0
+          ],
+          "actual": [
+            1.0,
+            0.0,
+            0.0
+          ],
+          "gap_m": 0.0,
+          "tolerance_m": 1e-06,
+          "status": "PASS"
+        },
+        {
+          "connection": "left(1) → top(0)",
+          "expected": [
+            1.0,
+            1.0,
+            0.0
+          ],
+          "actual": [
+            1.0,
+            1.0,
+            0.0
+          ],
+          "gap_m": 0.0,
+          "tolerance_m": 1e-06,
+          "status": "PASS"
+        },
+        {
+          "connection": "right(0) → bottom(1)",
+          "expected": [
+            2.0,
+            0.0,
+            0.0
+          ],
+          "actual": [
+            2.0,
+            0.0,
+            0.0
+          ],
+          "gap_m": 0.0,
+          "tolerance_m": 1e-06,
+          "status": "PASS"
+        },
+        {
+          "connection": "right(1) → top(1)",
+          "expected": [
+            2.0,
+            1.0,
+            0.0
+          ],
+          "actual": [
+            2.0,
+            1.0,
+            0.0
+          ],
+          "gap_m": 0.0,
+          "tolerance_m": 1e-06,
+          "status": "PASS"
+        }
+      ]
+    },
+    "adjacency": [
+      {
+        "a": "panel.a",
+        "b": "panel.b",
+        "edge_a": "right",
+        "edge_b": "right",
+        "reverse": false,
+        "tolerance_m": 0.0001,
+        "max_gap_m": 1.0,
+        "rms_gap_m": 1.0,
+        "normal_angle_max_deg": 0.0,
+        "tangent_label": "G1-like normal compatibility; no strict G1/G2 guarantee",
+        "status": "FAIL",
+        "samples": [
+          [
+            1.5,
+            0.0,
+            0.0
+          ],
+          [
+            1.5,
+            0.0625,
+            0.0
+          ],
+          [
+            1.5,
+            0.125,
+            0.0
+          ],
+          [
+            1.5,
+            0.1875,
+            0.0
+          ],
+          [
+            1.5,
+            0.25,
+            0.0
+          ],
+          [
+            1.5,
+            0.3125,
+            0.0
+          ],
+          [
+            1.5,
+            0.375,
+            0.0
+          ],
+          [
+            1.5,
+            0.4375,
+            0.0
+          ],
+          [
+            1.5,
+            0.5,
+            0.0
+          ],
+          [
+            1.5,
+            0.5625,
+            0.0
+          ],
+          [
+            1.5,
+            0.625,
+            0.0
+          ],
+          [
+            1.5,
+            0.6875,
+            0.0
+          ],
+          [
+            1.5,
+            0.75,
+            0.0
+          ],
+          [
+            1.5,
+            0.8125,
+            0.0
+          ],
+          [
+            1.5,
+            0.875,
+            0.0
+          ],
+          [
+            1.5,
+            0.9375,
+            0.0
+          ],
+          [
+            1.5,
+            1.0,
+            0.0
+          ]
+        ]
+      },
+      {
+        "a": "panel.a",
+        "edge_a": "right",
+        "b": "panel.b",
+        "edge_b": "left",
+        "reverse": false,
+        "tolerance_m": 1e-06,
+        "max_gap_m": 0.0,
+        "rms_gap_m": 0.0,
+        "normal_angle_max_deg": 0.0,
+        "tangent_label": "G1-like normal compatibility; no strict G1/G2 guarantee",
+        "status": "PASS",
+        "samples": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            1.0,
+            0.0625,
+            0.0
+          ],
+          [
+            1.0,
+            0.125,
+            0.0
+          ],
+          [
+            1.0,
+            0.1875,
+            0.0
+          ],
+          [
+            1.0,
+            0.25,
+            0.0
+          ],
+          [
+            1.0,
+            0.3125,
+            0.0
+          ],
+          [
+            1.0,
+            0.375,
+            0.0
+          ],
+          [
+            1.0,
+            0.4375,
+            0.0
+          ],
+          [
+            1.0,
+            0.5,
+            0.0
+          ],
+          [
+            1.0,
+            0.5625,
+            0.0
+          ],
+          [
+            1.0,
+            0.625,
+            0.0
+          ],
+          [
+            1.0,
+            0.6875,
+            0.0
+          ],
+          [
+            1.0,
+            0.75,
+            0.0
+          ],
+          [
+            1.0,
+            0.8125,
+            0.0
+          ],
+          [
+            1.0,
+            0.875,
+            0.0
+          ],
+          [
+            1.0,
+            0.9375,
+            0.0
+          ],
+          [
+            1.0,
+            1.0,
+            0.0
+          ]
+        ]
+      }
+    ]
+  }
+}

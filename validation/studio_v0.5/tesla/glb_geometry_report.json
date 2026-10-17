@@ -1,0 +1,1347 @@
+{
+  "status": "PASS",
+  "glb_sha256": "22def8478ced8b13d48dc81910d150ddf8014e8bc46b3d54a149b295710db64c",
+  "source_blend_sha256": "08aa25916379eda1d76138e2f7de2e913d1459cbeec77daec9a5fc682468ce13",
+  "geometry_hash": "6fa8c5a8174917222d9b7b8641dc28afbc55dbc388e67313362924ec43f2e96d",
+  "mesh_nodes": 191,
+  "triangles": 245920,
+  "objects": [
+    {
+      "object": "COWL_TRANSITION",
+      "pass": true,
+      "source_triangles": 1872,
+      "glb_triangles": 1872,
+      "max_bounds_error_m": 0.0
+    },
+    {
+      "object": "PILLAR_A_FOOT",
+      "pass": true,
+      "source_triangles": 1344,
+      "glb_triangles": 1344,
+      "max_bounds_error_m": 0.0
+    },
+    {
+      "object": "NOSE_HOOD_BRIDGE",
+      "pass": true,
+      "source_triangles": 2752,
+      "glb_triangles": 2752,
+      "max_bounds_error_m": 0.0
+    },
+    {
+      "object": "NOSE_CHEEK",
+      "pass": true,
+      "source_triangles": 1856,
+      "glb_triangles": 1856,
+      "max_bounds_error_m": 0.0
+    },
+    {
+      "object": "BUMPER_FRONT",
+      "pass": true,
+      "source_triangles": 4168,
+      "glb_triangles": 4168,
+      "max_bounds_error_m": 0.0
+    },
+    {
+      "object": "LIP_FRONT",
+      "pass": true,
+      "source_triangles": 2680,
+      "glb_triangles": 2680,
+      "max_bounds_error_m": 0.0
+    },
+    {
+      "object": "FENDER_FRONT",
+      "pass": true,
+      "source_triangles": 9344,
+      "glb_triangles": 9344,
+      "max_bounds_error_m": 0.0
+    },
+    {
+      "object": "ARCH_RETURN_FRONT",
+      "pass": true,
+      "source_triangles": 3808,
+      "glb_triangles": 3808,
+      "max_bounds_error_m": 0.0
+    },
+    {
+      "object": "FENDER_REAR",
+      "pass": true,
+      "source_triangles": 8896,
+      "glb_triangles": 8896,
+      "max_bounds_error_m": 0.0
+    },
+    {
+      "object": "ARCH_RETURN_REAR",
+      "pass": true,
+      "source_triangles": 3808,
+      "glb_triangles": 3808,
+      "max_bounds_error_m": 0.0
+    },
+    {
+      "object": "BELTLINE_LEDGE",
+      "pass": true,
+      "source_triangles": 3952,
+      "glb_triangles": 3952,
+      "max_bounds_error_m": 0.0
+    },
+    {
+      "object": "FRAME_TOP_GLASS_FRONT",
+      "pass": true,
+      "source_triangles": 2080,
+      "glb_triangles": 2080,
+      "max_bounds_error_m": 0.0
+    },
+    {
+      "object": "FRAME_BOTTOM_GLASS_FRONT",
+      "pass": true,
+      "source_triangles": 2080,
+      "glb_triangles": 2080,
+      "max_bounds_error_m": 0.0
+    },
+    {
+      "object": "FRAME_FRONT_GLASS_FRONT",
+      "pass": true,
+      "source_triangles": 1216,
+      "glb_triangles": 1216,
+      "max_bounds_error_m": 0.0
+    },
+    {
+      "object": "FRAME_TOP_GLASS_REAR_SIDE",
+      "pass": true,
+      "source_triangles": 2080,
+      "glb_triangles": 2080,
+      "max_bounds_error_m": 0.0
+    },
+    {
+      "object": "FRAME_BOTTOM_GLASS_REAR_SIDE",
+      "pass": true,
+      "source_triangles": 2080,
+      "glb_triangles": 2080,
+      "max_bounds_error_m": 0.0
+    },
+    {
+      "object": "FRAME_BACK_GLASS_REAR_SIDE",
+      "pass": true,
+      "source_triangles": 1136,
+      "glb_triangles": 1136,
+      "max_bounds_error_m": 0.0
+    },
+    {
+      "object": "ROOF_RAIL",
+      "pass": true,
+      "source_triangles": 3808,
+      "glb_triangles": 3808,
+      "max_bounds_error_m": 0.0
+    },
+    {
+      "object": "PILLAR_C_QUARTER",
+      "pass": true,
+      "source_triangles": 3952,
+      "glb_triangles": 3952,
+      "max_bounds_error_m": 0.0
+    },
+    {
+      "object": "BUMPER_REAR",
+      "pass": true,
+      "source_triangles": 2872,
+      "glb_triangles": 2872,
+      "max_bounds_error_m": 0.0
+    },
+    {
+      "object": "ROCKER",
+      "pass": true,
+      "source_triangles": 3952,
+      "glb_triangles": 3952,
+      "max_bounds_error_m": 0.0
+    },
+    {
+      "object": "WHEELHOUSE_FRONT",
+      "pass": true,
+      "source_triangles": 392,
+      "glb_triangles": 392,
+      "max_bounds_error_m": 0.0
+    },
+    {
+      "object": "WHEELHOUSE_REAR",
+      "pass": true,
+      "source_triangles": 392,
+      "glb_triangles": 392,
+      "max_bounds_error_m": 0.0
+    },
+    {
+      "object": "PILLAR_B",
+      "pass": true,
+      "source_triangles": 216,
+      "glb_triangles": 216,
+      "max_bounds_error_m": 0.0
+    },
+    {
+      "object": "WIRE_HOOD",
+      "pass": true,
+      "source_triangles": 4352,
+      "glb_triangles": 4352,
+      "max_bounds_error_m": 0.0
+    },
+    {
+      "object": "WIRE_FENDER_FRONT",
+      "pass": true,
+      "source_triangles": 9344,
+      "glb_triangles": 9344,
+      "max_bounds_error_m": 0.0
+    },
+    {
+      "object": "WIRE_FENDER_REAR",
+      "pass": true,
+      "source_triangles": 8896,
+      "glb_triangles": 8896,
+      "max_bounds_error_m": 0.0
+    },
+    {
+      "object": "WIRE_DOOR_FL",
+      "pass": true,
+      "source_triangles": 2664,
+      "glb_triangles": 2664,
+      "max_bounds_error_m": 0.0
+    },
+    {
+      "object": "WIRE_DOOR_FR",
+      "pass": true,
+      "source_triangles": 2664,
+      "glb_triangles": 2664,
+      "max_bounds_error_m": 0.0
+    },
+    {
+      "object": "WIRE_DOOR_RL",
+      "pass": true,
+      "source_triangles": 2664,
+      "glb_triangles": 2664,
+      "max_bounds_error_m": 0.0
+    },
+    {
+      "object": "WIRE_DOOR_RR",
+      "pass": true,
+      "source_triangles": 2664,
+      "glb_triangles": 2664,
+      "max_bounds_error_m": 0.0
+    },
+    {
+      "object": "WIRE_BUMPER_FRONT",
+      "pass": true,
+      "source_triangles": 4168,
+      "glb_triangles": 4168,
+      "max_bounds_error_m": 0.0
+    },
+    {
+      "object": "WIRE_BUMPER_REAR",
+      "pass": true,
+      "source_triangles": 2872,
+      "glb_triangles": 2872,
+      "max_bounds_error_m": 0.0
+    },
+    {
+      "object": "WIRE_REAR_HATCH",
+      "pass": true,
+      "source_triangles": 4904,
+      "glb_triangles": 4904,
+      "max_bounds_error_m": 0.0
+    },
+    {
+      "object": "WIRE_REAR_HATCH_TOP",
+      "pass": true,
+      "source_triangles": 2752,
+      "glb_triangles": 2752,
+      "max_bounds_error_m": 0.0
+    },
+    {
+      "object": "WIRE_PILLAR_C_QUARTER",
+      "pass": true,
+      "source_triangles": 3952,
+      "glb_triangles": 3952,
+      "max_bounds_error_m": 0.0
+    },
+    {
+      "object": "WIRE_PILLAR_A_FOOT",
+      "pass": true,
+      "source_triangles": 1344,
+      "glb_triangles": 1344,
+      "max_bounds_error_m": 0.0
+    },
+    {
+      "object": "WIRE_NOSE_HOOD_BRIDGE",
+      "pass": true,
+      "source_triangles": 2752,
+      "glb_triangles": 2752,
+      "max_bounds_error_m": 0.0
+    },
+    {
+      "object": "WIRE_NOSE_CHEEK",
+      "pass": true,
+      "source_triangles": 1856,
+      "glb_triangles": 1856,
+      "max_bounds_error_m": 0.0
+    },
+    {
+      "object": "WIRE_BELTLINE_LEDGE",
+      "pass": true,
+      "source_triangles": 3952,
+      "glb_triangles": 3952,
+      "max_bounds_error_m": 0.0
+    },
+    {
+      "object": "WIRE_COWL_TRANSITION",
+      "pass": true,
+      "source_triangles": 1872,
+      "glb_triangles": 1872,
+      "max_bounds_error_m": 0.0
+    },
+    {
+      "object": "WIRE_GLASS_WINDSHIELD",
+      "pass": true,
+      "source_triangles": 4288,
+      "glb_triangles": 4288,
+      "max_bounds_error_m": 0.0
+    },
+    {
+      "object": "WIRE_GLASS_ROOF",
+      "pass": true,
+      "source_triangles": 4288,
+      "glb_triangles": 4288,
+      "max_bounds_error_m": 0.0
+    },
+    {
+      "object": "WIRE_GLASS_REAR",
+      "pass": true,
+      "source_triangles": 4288,
+      "glb_triangles": 4288,
+      "max_bounds_error_m": 0.0
+    },
+    {
+      "object": "WIRE_GLASS_FRONT_LEFT",
+      "pass": true,
+      "source_triangles": 1736,
+      "glb_triangles": 1736,
+      "max_bounds_error_m": 0.0
+    },
+    {
+      "object": "WIRE_GLASS_FRONT_RIGHT",
+      "pass": true,
+      "source_triangles": 1736,
+      "glb_triangles": 1736,
+      "max_bounds_error_m": 0.0
+    },
+    {
+      "object": "WIRE_GLASS_REAR_LEFT",
+      "pass": true,
+      "source_triangles": 1736,
+      "glb_triangles": 1736,
+      "max_bounds_error_m": 0.0
+    },
+    {
+      "object": "WIRE_GLASS_REAR_RIGHT",
+      "pass": true,
+      "source_triangles": 1736,
+      "glb_triangles": 1736,
+      "max_bounds_error_m": 0.0
+    },
+    {
+      "object": "HOOD",
+      "pass": true,
+      "source_triangles": 4352,
+      "glb_triangles": 4352,
+      "max_bounds_error_m": 0.0
+    },
+    {
+      "object": "DOOR_FR",
+      "pass": true,
+      "source_triangles": 2664,
+      "glb_triangles": 2664,
+      "max_bounds_error_m": 0.0
+    },
+    {
+      "object": "DOOR_RR",
+      "pass": true,
+      "source_triangles": 2664,
+      "glb_triangles": 2664,
+      "max_bounds_error_m": 0.0
+    },
+    {
+      "object": "REAR_HATCH_TOP",
+      "pass": true,
+      "source_triangles": 2752,
+      "glb_triangles": 2752,
+      "max_bounds_error_m": 0.0
+    },
+    {
+      "object": "REAR_HATCH",
+      "pass": true,
+      "source_triangles": 4904,
+      "glb_triangles": 4904,
+      "max_bounds_error_m": 0.0
+    },
+    {
+      "object": "DOOR_FL",
+      "pass": true,
+      "source_triangles": 2664,
+      "glb_triangles": 2664,
+      "max_bounds_error_m": 0.0
+    },
+    {
+      "object": "INNER_DOOR_FL",
+      "pass": true,
+      "source_triangles": 2664,
+      "glb_triangles": 2664,
+      "max_bounds_error_m": 0.0
+    },
+    {
+      "object": "INNER_DOOR_FR",
+      "pass": true,
+      "source_triangles": 2664,
+      "glb_triangles": 2664,
+      "max_bounds_error_m": 0.0
+    },
+    {
+      "object": "DOOR_RL",
+      "pass": true,
+      "source_triangles": 2664,
+      "glb_triangles": 2664,
+      "max_bounds_error_m": 0.0
+    },
+    {
+      "object": "INNER_DOOR_RL",
+      "pass": true,
+      "source_triangles": 2664,
+      "glb_triangles": 2664,
+      "max_bounds_error_m": 0.0
+    },
+    {
+      "object": "INNER_DOOR_RR",
+      "pass": true,
+      "source_triangles": 2664,
+      "glb_triangles": 2664,
+      "max_bounds_error_m": 0.0
+    },
+    {
+      "object": "HANDLE_FL",
+      "pass": true,
+      "source_triangles": 188,
+      "glb_triangles": 188,
+      "max_bounds_error_m": 1.7695128917694092e-08
+    },
+    {
+      "object": "HANDLE_FR",
+      "pass": true,
+      "source_triangles": 188,
+      "glb_triangles": 188,
+      "max_bounds_error_m": 1.7695128917694092e-08
+    },
+    {
+      "object": "HANDLE_RL",
+      "pass": true,
+      "source_triangles": 188,
+      "glb_triangles": 188,
+      "max_bounds_error_m": 2.2351741790771484e-08
+    },
+    {
+      "object": "HANDLE_RR",
+      "pass": true,
+      "source_triangles": 188,
+      "glb_triangles": 188,
+      "max_bounds_error_m": 2.2351741790771484e-08
+    },
+    {
+      "object": "MIRROR_STEM_L",
+      "pass": true,
+      "source_triangles": 256,
+      "glb_triangles": 256,
+      "max_bounds_error_m": 0.0
+    },
+    {
+      "object": "MIRROR_L",
+      "pass": true,
+      "source_triangles": 188,
+      "glb_triangles": 188,
+      "max_bounds_error_m": 5.587935447692871e-08
+    },
+    {
+      "object": "MIRROR_STEM_R",
+      "pass": true,
+      "source_triangles": 256,
+      "glb_triangles": 256,
+      "max_bounds_error_m": 0.0
+    },
+    {
+      "object": "MIRROR_R",
+      "pass": true,
+      "source_triangles": 188,
+      "glb_triangles": 188,
+      "max_bounds_error_m": 5.587935447692871e-08
+    },
+    {
+      "object": "GLASS_WINDSHIELD",
+      "pass": true,
+      "source_triangles": 4288,
+      "glb_triangles": 4288,
+      "max_bounds_error_m": 0.0
+    },
+    {
+      "object": "GLASS_ROOF",
+      "pass": true,
+      "source_triangles": 4288,
+      "glb_triangles": 4288,
+      "max_bounds_error_m": 0.0
+    },
+    {
+      "object": "GLASS_REAR",
+      "pass": true,
+      "source_triangles": 4288,
+      "glb_triangles": 4288,
+      "max_bounds_error_m": 0.0
+    },
+    {
+      "object": "GLASS_FRONT_RIGHT",
+      "pass": true,
+      "source_triangles": 1736,
+      "glb_triangles": 1736,
+      "max_bounds_error_m": 0.0
+    },
+    {
+      "object": "GLASS_REAR_RIGHT",
+      "pass": true,
+      "source_triangles": 1736,
+      "glb_triangles": 1736,
+      "max_bounds_error_m": 0.0
+    },
+    {
+      "object": "GLASS_FRONT_LEFT",
+      "pass": true,
+      "source_triangles": 1736,
+      "glb_triangles": 1736,
+      "max_bounds_error_m": 0.0
+    },
+    {
+      "object": "GLASS_REAR_LEFT",
+      "pass": true,
+      "source_triangles": 1736,
+      "glb_triangles": 1736,
+      "max_bounds_error_m": 0.0
+    },
+    {
+      "object": "MIRROR_GLASS_L",
+      "pass": true,
+      "source_triangles": 188,
+      "glb_triangles": 188,
+      "max_bounds_error_m": 5.587935447692871e-08
+    },
+    {
+      "object": "MIRROR_GLASS_R",
+      "pass": true,
+      "source_triangles": 188,
+      "glb_triangles": 188,
+      "max_bounds_error_m": 5.587935447692871e-08
+    },
+    {
+      "object": "LIGHT_HEAD_R",
+      "pass": true,
+      "source_triangles": 536,
+      "glb_triangles": 536,
+      "max_bounds_error_m": 0.0
+    },
+    {
+      "object": "LIGHT_HEAD_L",
+      "pass": true,
+      "source_triangles": 536,
+      "glb_triangles": 536,
+      "max_bounds_error_m": 0.0
+    },
+    {
+      "object": "LED_HEAD_L",
+      "pass": true,
+      "source_triangles": 1792,
+      "glb_triangles": 1792,
+      "max_bounds_error_m": 0.0
+    },
+    {
+      "object": "LED_HEAD_R",
+      "pass": true,
+      "source_triangles": 1792,
+      "glb_triangles": 1792,
+      "max_bounds_error_m": 0.0
+    },
+    {
+      "object": "INTAKE_CENTER",
+      "pass": true,
+      "source_triangles": 1164,
+      "glb_triangles": 1164,
+      "max_bounds_error_m": 0.0
+    },
+    {
+      "object": "INTAKE_SIDE_R",
+      "pass": true,
+      "source_triangles": 176,
+      "glb_triangles": 176,
+      "max_bounds_error_m": 0.0
+    },
+    {
+      "object": "INTAKE_SIDE_L",
+      "pass": true,
+      "source_triangles": 176,
+      "glb_triangles": 176,
+      "max_bounds_error_m": 0.0
+    },
+    {
+      "object": "GRILLE_SLAT",
+      "pass": true,
+      "source_triangles": 1024,
+      "glb_triangles": 1024,
+      "max_bounds_error_m": 0.0
+    },
+    {
+      "object": "GRILLE_SLAT.001",
+      "pass": true,
+      "source_triangles": 1024,
+      "glb_triangles": 1024,
+      "max_bounds_error_m": 0.0
+    },
+    {
+      "object": "GRILLE_SLAT.002",
+      "pass": true,
+      "source_triangles": 1024,
+      "glb_triangles": 1024,
+      "max_bounds_error_m": 0.0
+    },
+    {
+      "object": "LIGHT_TAIL_R",
+      "pass": true,
+      "source_triangles": 344,
+      "glb_triangles": 344,
+      "max_bounds_error_m": 0.0
+    },
+    {
+      "object": "LIGHT_TAIL_L",
+      "pass": true,
+      "source_triangles": 344,
+      "glb_triangles": 344,
+      "max_bounds_error_m": 0.0
+    },
+    {
+      "object": "DIFFUSER_REAR",
+      "pass": true,
+      "source_triangles": 2072,
+      "glb_triangles": 2072,
+      "max_bounds_error_m": 0.0
+    },
+    {
+      "object": "DIFFUSER_FIN",
+      "pass": true,
+      "source_triangles": 188,
+      "glb_triangles": 188,
+      "max_bounds_error_m": 6.705522537231445e-08
+    },
+    {
+      "object": "DIFFUSER_FIN.001",
+      "pass": true,
+      "source_triangles": 188,
+      "glb_triangles": 188,
+      "max_bounds_error_m": 6.705522537231445e-08
+    },
+    {
+      "object": "DIFFUSER_FIN.002",
+      "pass": true,
+      "source_triangles": 188,
+      "glb_triangles": 188,
+      "max_bounds_error_m": 6.705522537231445e-08
+    },
+    {
+      "object": "DIFFUSER_FIN.003",
+      "pass": true,
+      "source_triangles": 188,
+      "glb_triangles": 188,
+      "max_bounds_error_m": 6.705522537231445e-08
+    },
+    {
+      "object": "DIFFUSER_FIN.004",
+      "pass": true,
+      "source_triangles": 188,
+      "glb_triangles": 188,
+      "max_bounds_error_m": 6.705522537231445e-08
+    },
+    {
+      "object": "TAIL_RETURN_HOUSING_L",
+      "pass": true,
+      "source_triangles": 768,
+      "glb_triangles": 768,
+      "max_bounds_error_m": 0.0
+    },
+    {
+      "object": "TAIL_RETURN_LENS_L",
+      "pass": true,
+      "source_triangles": 768,
+      "glb_triangles": 768,
+      "max_bounds_error_m": 0.0
+    },
+    {
+      "object": "TAIL_RETURN_HOUSING_R",
+      "pass": true,
+      "source_triangles": 768,
+      "glb_triangles": 768,
+      "max_bounds_error_m": 0.0
+    },
+    {
+      "object": "TAIL_RETURN_LENS_R",
+      "pass": true,
+      "source_triangles": 768,
+      "glb_triangles": 768,
+      "max_bounds_error_m": 0.0
+    },
+    {
+      "object": "TIRE_FL",
+      "pass": true,
+      "source_triangles": 1024,
+      "glb_triangles": 1024,
+      "max_bounds_error_m": 2.9802322387695312e-08
+    },
+    {
+      "object": "BRAKE_DISC_FL",
+      "pass": true,
+      "source_triangles": 64,
+      "glb_triangles": 64,
+      "max_bounds_error_m": 2.9802322387695312e-08
+    },
+    {
+      "object": "TIRE_FR",
+      "pass": true,
+      "source_triangles": 1024,
+      "glb_triangles": 1024,
+      "max_bounds_error_m": 2.9802322387695312e-08
+    },
+    {
+      "object": "BRAKE_DISC_FR",
+      "pass": true,
+      "source_triangles": 64,
+      "glb_triangles": 64,
+      "max_bounds_error_m": 2.9802322387695312e-08
+    },
+    {
+      "object": "TIRE_RL",
+      "pass": true,
+      "source_triangles": 1024,
+      "glb_triangles": 1024,
+      "max_bounds_error_m": 2.9802322387695312e-08
+    },
+    {
+      "object": "BRAKE_DISC_RL",
+      "pass": true,
+      "source_triangles": 64,
+      "glb_triangles": 64,
+      "max_bounds_error_m": 2.9802322387695312e-08
+    },
+    {
+      "object": "TIRE_RR",
+      "pass": true,
+      "source_triangles": 1024,
+      "glb_triangles": 1024,
+      "max_bounds_error_m": 2.9802322387695312e-08
+    },
+    {
+      "object": "BRAKE_DISC_RR",
+      "pass": true,
+      "source_triangles": 64,
+      "glb_triangles": 64,
+      "max_bounds_error_m": 2.9802322387695312e-08
+    },
+    {
+      "object": "RIM_FL",
+      "pass": true,
+      "source_triangles": 768,
+      "glb_triangles": 768,
+      "max_bounds_error_m": 2.9802322387695312e-08
+    },
+    {
+      "object": "AERO_SPOKE_FL_1",
+      "pass": true,
+      "source_triangles": 156,
+      "glb_triangles": 156,
+      "max_bounds_error_m": 5.21540641784668e-08
+    },
+    {
+      "object": "AERO_SPOKE_FL_2",
+      "pass": true,
+      "source_triangles": 156,
+      "glb_triangles": 156,
+      "max_bounds_error_m": 5.960464477539063e-08
+    },
+    {
+      "object": "AERO_SPOKE_FL_3",
+      "pass": true,
+      "source_triangles": 156,
+      "glb_triangles": 156,
+      "max_bounds_error_m": 4.842877388000488e-08
+    },
+    {
+      "object": "AERO_SPOKE_FL_4",
+      "pass": true,
+      "source_triangles": 156,
+      "glb_triangles": 156,
+      "max_bounds_error_m": 5.960464477539063e-08
+    },
+    {
+      "object": "AERO_SPOKE_FL_5",
+      "pass": true,
+      "source_triangles": 156,
+      "glb_triangles": 156,
+      "max_bounds_error_m": 4.470348358154297e-08
+    },
+    {
+      "object": "AERO_SPOKE_FL_6",
+      "pass": true,
+      "source_triangles": 156,
+      "glb_triangles": 156,
+      "max_bounds_error_m": 5.21540641784668e-08
+    },
+    {
+      "object": "AERO_SPOKE_FL_7",
+      "pass": true,
+      "source_triangles": 156,
+      "glb_triangles": 156,
+      "max_bounds_error_m": 5.960464477539063e-08
+    },
+    {
+      "object": "AERO_SPOKE_FL_8",
+      "pass": true,
+      "source_triangles": 156,
+      "glb_triangles": 156,
+      "max_bounds_error_m": 4.842877388000488e-08
+    },
+    {
+      "object": "AERO_SPOKE_FL_9",
+      "pass": true,
+      "source_triangles": 156,
+      "glb_triangles": 156,
+      "max_bounds_error_m": 5.960464477539063e-08
+    },
+    {
+      "object": "AERO_SPOKE_FL_10",
+      "pass": true,
+      "source_triangles": 156,
+      "glb_triangles": 156,
+      "max_bounds_error_m": 4.470348358154297e-08
+    },
+    {
+      "object": "HUB_FL",
+      "pass": true,
+      "source_triangles": 124,
+      "glb_triangles": 124,
+      "max_bounds_error_m": 7.450580596923828e-09
+    },
+    {
+      "object": "CENTER_CAP_FL",
+      "pass": true,
+      "source_triangles": 124,
+      "glb_triangles": 124,
+      "max_bounds_error_m": 5.960464477539063e-08
+    },
+    {
+      "object": "LUG_FL",
+      "pass": true,
+      "source_triangles": 124,
+      "glb_triangles": 124,
+      "max_bounds_error_m": 3.073364496231079e-08
+    },
+    {
+      "object": "LUG_FL.001",
+      "pass": true,
+      "source_triangles": 124,
+      "glb_triangles": 124,
+      "max_bounds_error_m": 3.073364496231079e-08
+    },
+    {
+      "object": "LUG_FL.002",
+      "pass": true,
+      "source_triangles": 124,
+      "glb_triangles": 124,
+      "max_bounds_error_m": 3.073364496231079e-08
+    },
+    {
+      "object": "LUG_FL.003",
+      "pass": true,
+      "source_triangles": 124,
+      "glb_triangles": 124,
+      "max_bounds_error_m": 3.073364496231079e-08
+    },
+    {
+      "object": "LUG_FL.004",
+      "pass": true,
+      "source_triangles": 124,
+      "glb_triangles": 124,
+      "max_bounds_error_m": 3.073364496231079e-08
+    },
+    {
+      "object": "RIM_FR",
+      "pass": true,
+      "source_triangles": 768,
+      "glb_triangles": 768,
+      "max_bounds_error_m": 2.9802322387695312e-08
+    },
+    {
+      "object": "AERO_SPOKE_FR_1",
+      "pass": true,
+      "source_triangles": 156,
+      "glb_triangles": 156,
+      "max_bounds_error_m": 4.470348358154297e-08
+    },
+    {
+      "object": "AERO_SPOKE_FR_2",
+      "pass": true,
+      "source_triangles": 156,
+      "glb_triangles": 156,
+      "max_bounds_error_m": 5.960464477539063e-08
+    },
+    {
+      "object": "AERO_SPOKE_FR_3",
+      "pass": true,
+      "source_triangles": 156,
+      "glb_triangles": 156,
+      "max_bounds_error_m": 4.842877388000488e-08
+    },
+    {
+      "object": "AERO_SPOKE_FR_4",
+      "pass": true,
+      "source_triangles": 156,
+      "glb_triangles": 156,
+      "max_bounds_error_m": 5.960464477539063e-08
+    },
+    {
+      "object": "AERO_SPOKE_FR_5",
+      "pass": true,
+      "source_triangles": 156,
+      "glb_triangles": 156,
+      "max_bounds_error_m": 4.470348358154297e-08
+    },
+    {
+      "object": "AERO_SPOKE_FR_6",
+      "pass": true,
+      "source_triangles": 156,
+      "glb_triangles": 156,
+      "max_bounds_error_m": 4.470348358154297e-08
+    },
+    {
+      "object": "AERO_SPOKE_FR_7",
+      "pass": true,
+      "source_triangles": 156,
+      "glb_triangles": 156,
+      "max_bounds_error_m": 5.960464477539063e-08
+    },
+    {
+      "object": "AERO_SPOKE_FR_8",
+      "pass": true,
+      "source_triangles": 156,
+      "glb_triangles": 156,
+      "max_bounds_error_m": 4.842877388000488e-08
+    },
+    {
+      "object": "AERO_SPOKE_FR_9",
+      "pass": true,
+      "source_triangles": 156,
+      "glb_triangles": 156,
+      "max_bounds_error_m": 5.960464477539063e-08
+    },
+    {
+      "object": "AERO_SPOKE_FR_10",
+      "pass": true,
+      "source_triangles": 156,
+      "glb_triangles": 156,
+      "max_bounds_error_m": 4.470348358154297e-08
+    },
+    {
+      "object": "HUB_FR",
+      "pass": true,
+      "source_triangles": 124,
+      "glb_triangles": 124,
+      "max_bounds_error_m": 7.450580596923828e-09
+    },
+    {
+      "object": "CENTER_CAP_FR",
+      "pass": true,
+      "source_triangles": 124,
+      "glb_triangles": 124,
+      "max_bounds_error_m": 5.960464477539063e-08
+    },
+    {
+      "object": "LUG_FR",
+      "pass": true,
+      "source_triangles": 124,
+      "glb_triangles": 124,
+      "max_bounds_error_m": 3.073364496231079e-08
+    },
+    {
+      "object": "LUG_FR.001",
+      "pass": true,
+      "source_triangles": 124,
+      "glb_triangles": 124,
+      "max_bounds_error_m": 3.073364496231079e-08
+    },
+    {
+      "object": "LUG_FR.002",
+      "pass": true,
+      "source_triangles": 124,
+      "glb_triangles": 124,
+      "max_bounds_error_m": 3.073364496231079e-08
+    },
+    {
+      "object": "LUG_FR.003",
+      "pass": true,
+      "source_triangles": 124,
+      "glb_triangles": 124,
+      "max_bounds_error_m": 3.073364496231079e-08
+    },
+    {
+      "object": "LUG_FR.004",
+      "pass": true,
+      "source_triangles": 124,
+      "glb_triangles": 124,
+      "max_bounds_error_m": 3.073364496231079e-08
+    },
+    {
+      "object": "RIM_RL",
+      "pass": true,
+      "source_triangles": 768,
+      "glb_triangles": 768,
+      "max_bounds_error_m": 2.9802322387695312e-08
+    },
+    {
+      "object": "AERO_SPOKE_RL_1",
+      "pass": true,
+      "source_triangles": 156,
+      "glb_triangles": 156,
+      "max_bounds_error_m": 5.21540641784668e-08
+    },
+    {
+      "object": "AERO_SPOKE_RL_2",
+      "pass": true,
+      "source_triangles": 156,
+      "glb_triangles": 156,
+      "max_bounds_error_m": 5.960464477539063e-08
+    },
+    {
+      "object": "AERO_SPOKE_RL_3",
+      "pass": true,
+      "source_triangles": 156,
+      "glb_triangles": 156,
+      "max_bounds_error_m": 4.842877388000488e-08
+    },
+    {
+      "object": "AERO_SPOKE_RL_4",
+      "pass": true,
+      "source_triangles": 156,
+      "glb_triangles": 156,
+      "max_bounds_error_m": 5.960464477539063e-08
+    },
+    {
+      "object": "AERO_SPOKE_RL_5",
+      "pass": true,
+      "source_triangles": 156,
+      "glb_triangles": 156,
+      "max_bounds_error_m": 4.470348358154297e-08
+    },
+    {
+      "object": "AERO_SPOKE_RL_6",
+      "pass": true,
+      "source_triangles": 156,
+      "glb_triangles": 156,
+      "max_bounds_error_m": 5.21540641784668e-08
+    },
+    {
+      "object": "AERO_SPOKE_RL_7",
+      "pass": true,
+      "source_triangles": 156,
+      "glb_triangles": 156,
+      "max_bounds_error_m": 5.960464477539063e-08
+    },
+    {
+      "object": "AERO_SPOKE_RL_8",
+      "pass": true,
+      "source_triangles": 156,
+      "glb_triangles": 156,
+      "max_bounds_error_m": 4.842877388000488e-08
+    },
+    {
+      "object": "AERO_SPOKE_RL_9",
+      "pass": true,
+      "source_triangles": 156,
+      "glb_triangles": 156,
+      "max_bounds_error_m": 5.960464477539063e-08
+    },
+    {
+      "object": "AERO_SPOKE_RL_10",
+      "pass": true,
+      "source_triangles": 156,
+      "glb_triangles": 156,
+      "max_bounds_error_m": 4.470348358154297e-08
+    },
+    {
+      "object": "HUB_RL",
+      "pass": true,
+      "source_triangles": 124,
+      "glb_triangles": 124,
+      "max_bounds_error_m": 7.450580596923828e-09
+    },
+    {
+      "object": "CENTER_CAP_RL",
+      "pass": true,
+      "source_triangles": 124,
+      "glb_triangles": 124,
+      "max_bounds_error_m": 5.960464477539063e-08
+    },
+    {
+      "object": "LUG_RL",
+      "pass": true,
+      "source_triangles": 124,
+      "glb_triangles": 124,
+      "max_bounds_error_m": 3.073364496231079e-08
+    },
+    {
+      "object": "LUG_RL.001",
+      "pass": true,
+      "source_triangles": 124,
+      "glb_triangles": 124,
+      "max_bounds_error_m": 3.073364496231079e-08
+    },
+    {
+      "object": "LUG_RL.002",
+      "pass": true,
+      "source_triangles": 124,
+      "glb_triangles": 124,
+      "max_bounds_error_m": 3.073364496231079e-08
+    },
+    {
+      "object": "LUG_RL.003",
+      "pass": true,
+      "source_triangles": 124,
+      "glb_triangles": 124,
+      "max_bounds_error_m": 3.073364496231079e-08
+    },
+    {
+      "object": "LUG_RL.004",
+      "pass": true,
+      "source_triangles": 124,
+      "glb_triangles": 124,
+      "max_bounds_error_m": 3.073364496231079e-08
+    },
+    {
+      "object": "RIM_RR",
+      "pass": true,
+      "source_triangles": 768,
+      "glb_triangles": 768,
+      "max_bounds_error_m": 2.9802322387695312e-08
+    },
+    {
+      "object": "AERO_SPOKE_RR_1",
+      "pass": true,
+      "source_triangles": 156,
+      "glb_triangles": 156,
+      "max_bounds_error_m": 4.470348358154297e-08
+    },
+    {
+      "object": "AERO_SPOKE_RR_2",
+      "pass": true,
+      "source_triangles": 156,
+      "glb_triangles": 156,
+      "max_bounds_error_m": 5.960464477539063e-08
+    },
+    {
+      "object": "AERO_SPOKE_RR_3",
+      "pass": true,
+      "source_triangles": 156,
+      "glb_triangles": 156,
+      "max_bounds_error_m": 4.842877388000488e-08
+    },
+    {
+      "object": "AERO_SPOKE_RR_4",
+      "pass": true,
+      "source_triangles": 156,
+      "glb_triangles": 156,
+      "max_bounds_error_m": 5.960464477539063e-08
+    },
+    {
+      "object": "AERO_SPOKE_RR_5",
+      "pass": true,
+      "source_triangles": 156,
+      "glb_triangles": 156,
+      "max_bounds_error_m": 4.470348358154297e-08
+    },
+    {
+      "object": "AERO_SPOKE_RR_6",
+      "pass": true,
+      "source_triangles": 156,
+      "glb_triangles": 156,
+      "max_bounds_error_m": 4.470348358154297e-08
+    },
+    {
+      "object": "AERO_SPOKE_RR_7",
+      "pass": true,
+      "source_triangles": 156,
+      "glb_triangles": 156,
+      "max_bounds_error_m": 5.960464477539063e-08
+    },
+    {
+      "object": "AERO_SPOKE_RR_8",
+      "pass": true,
+      "source_triangles": 156,
+      "glb_triangles": 156,
+      "max_bounds_error_m": 4.842877388000488e-08
+    },
+    {
+      "object": "AERO_SPOKE_RR_9",
+      "pass": true,
+      "source_triangles": 156,
+      "glb_triangles": 156,
+      "max_bounds_error_m": 5.960464477539063e-08
+    },
+    {
+      "object": "AERO_SPOKE_RR_10",
+      "pass": true,
+      "source_triangles": 156,
+      "glb_triangles": 156,
+      "max_bounds_error_m": 4.470348358154297e-08
+    },
+    {
+      "object": "HUB_RR",
+      "pass": true,
+      "source_triangles": 124,
+      "glb_triangles": 124,
+      "max_bounds_error_m": 7.450580596923828e-09
+    },
+    {
+      "object": "CENTER_CAP_RR",
+      "pass": true,
+      "source_triangles": 124,
+      "glb_triangles": 124,
+      "max_bounds_error_m": 5.960464477539063e-08
+    },
+    {
+      "object": "LUG_RR",
+      "pass": true,
+      "source_triangles": 124,
+      "glb_triangles": 124,
+      "max_bounds_error_m": 3.073364496231079e-08
+    },
+    {
+      "object": "LUG_RR.001",
+      "pass": true,
+      "source_triangles": 124,
+      "glb_triangles": 124,
+      "max_bounds_error_m": 3.073364496231079e-08
+    },
+    {
+      "object": "LUG_RR.002",
+      "pass": true,
+      "source_triangles": 124,
+      "glb_triangles": 124,
+      "max_bounds_error_m": 3.073364496231079e-08
+    },
+    {
+      "object": "LUG_RR.003",
+      "pass": true,
+      "source_triangles": 124,
+      "glb_triangles": 124,
+      "max_bounds_error_m": 3.073364496231079e-08
+    },
+    {
+      "object": "LUG_RR.004",
+      "pass": true,
+      "source_triangles": 124,
+      "glb_triangles": 124,
+      "max_bounds_error_m": 3.073364496231079e-08
+    },
+    {
+      "object": "FRONT_SEAT_BASE",
+      "pass": true,
+      "source_triangles": 188,
+      "glb_triangles": 188,
+      "max_bounds_error_m": 1.4901161193847656e-08
+    },
+    {
+      "object": "FRONT_SEAT_BACK",
+      "pass": true,
+      "source_triangles": 188,
+      "glb_triangles": 188,
+      "max_bounds_error_m": 5.367398991928951e-08
+    },
+    {
+      "object": "FRONT_HEADREST",
+      "pass": true,
+      "source_triangles": 188,
+      "glb_triangles": 188,
+      "max_bounds_error_m": 2.9802322387695312e-08
+    },
+    {
+      "object": "FRONT_SEAT_BASE.001",
+      "pass": true,
+      "source_triangles": 188,
+      "glb_triangles": 188,
+      "max_bounds_error_m": 1.4901161193847656e-08
+    },
+    {
+      "object": "FRONT_SEAT_BACK.001",
+      "pass": true,
+      "source_triangles": 188,
+      "glb_triangles": 188,
+      "max_bounds_error_m": 5.367398991928951e-08
+    },
+    {
+      "object": "FRONT_HEADREST.001",
+      "pass": true,
+      "source_triangles": 188,
+      "glb_triangles": 188,
+      "max_bounds_error_m": 2.9802322387695312e-08
+    },
+    {
+      "object": "REAR_BENCH",
+      "pass": true,
+      "source_triangles": 188,
+      "glb_triangles": 188,
+      "max_bounds_error_m": 2.9802322387695312e-08
+    },
+    {
+      "object": "REAR_BACKREST",
+      "pass": true,
+      "source_triangles": 188,
+      "glb_triangles": 188,
+      "max_bounds_error_m": 5.21540641784668e-08
+    },
+    {
+      "object": "DASHBOARD",
+      "pass": true,
+      "source_triangles": 188,
+      "glb_triangles": 188,
+      "max_bounds_error_m": 1.4901161193847656e-08
+    },
+    {
+      "object": "CENTER_CONSOLE",
+      "pass": true,
+      "source_triangles": 188,
+      "glb_triangles": 188,
+      "max_bounds_error_m": 2.9802322387695312e-08
+    },
+    {
+      "object": "CENTER_DISPLAY",
+      "pass": true,
+      "source_triangles": 188,
+      "glb_triangles": 188,
+      "max_bounds_error_m": 2.9802322387695312e-08
+    },
+    {
+      "object": "STEERING_WHEEL",
+      "pass": true,
+      "source_triangles": 1152,
+      "glb_triangles": 1152,
+      "max_bounds_error_m": 6.512602901409537e-08
+    },
+    {
+      "object": "CABIN_FLOOR",
+      "pass": true,
+      "source_triangles": 188,
+      "glb_triangles": 188,
+      "max_bounds_error_m": 5.960464477539063e-08
+    }
+  ]
+}

@@ -1,0 +1,723 @@
+{
+  "numTotalTestSuites": 13,
+  "numPassedTestSuites": 13,
+  "numFailedTestSuites": 0,
+  "numPendingTestSuites": 0,
+  "numTotalTests": 51,
+  "numPassedTests": 51,
+  "numFailedTests": 0,
+  "numPendingTests": 0,
+  "numTodoTests": 0,
+  "snapshot": {
+    "added": 0,
+    "failure": false,
+    "filesAdded": 0,
+    "filesRemoved": 0,
+    "filesRemovedList": [],
+    "filesUnmatched": 0,
+    "filesUpdated": 0,
+    "matched": 0,
+    "total": 0,
+    "unchecked": 0,
+    "uncheckedKeysByFile": [],
+    "unmatched": 0,
+    "updated": 0,
+    "didUpdate": false
+  },
+  "startTime": 1792261723588,
+  "success": true,
+  "testResults": [
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [],
+          "fullName": "directed Smart Edge waits for a start and publishes only a dashed transient layer",
+          "status": "passed",
+          "title": "directed Smart Edge waits for a start and publishes only a dashed transient layer",
+          "duration": 312.3198,
+          "failureMessages": [],
+          "meta": {},
+          "tags": [],
+          "benchmarks": []
+        },
+        {
+          "ancestorTitles": [],
+          "fullName": "candidate semantics and explicit partial ACCEPT call only the canonical transaction bridge",
+          "status": "passed",
+          "title": "candidate semantics and explicit partial ACCEPT call only the canonical transaction bridge",
+          "duration": 201.70129999999972,
+          "failureMessages": [],
+          "meta": {},
+          "tags": [],
+          "benchmarks": []
+        },
+        {
+          "ancestorTitles": [],
+          "fullName": "source change stales proposals; rejection and parameter RERUN never call canonical edits",
+          "status": "passed",
+          "title": "source change stales proposals; rejection and parameter RERUN never call canonical edits",
+          "duration": 214.64559999999983,
+          "failureMessages": [],
+          "meta": {},
+          "tags": [],
+          "benchmarks": []
+        },
+        {
+          "ancestorTitles": [],
+          "fullName": "mask brushes and diagnostic visibility modify proposal requests/layers without canonical writes",
+          "status": "passed",
+          "title": "mask brushes and diagnostic visibility modify proposal requests/layers without canonical writes",
+          "duration": 260.0607,
+          "failureMessages": [],
+          "meta": {},
+          "tags": [],
+          "benchmarks": []
+        },
+        {
+          "ancestorTitles": [],
+          "fullName": "an unavailable provider leaves the manual exit available and assisted input inactive",
+          "status": "passed",
+          "title": "an unavailable provider leaves the manual exit available and assisted input inactive",
+          "duration": 28.19329999999991,
+          "failureMessages": [],
+          "meta": {},
+          "tags": [],
+          "benchmarks": []
+        },
+        {
+          "ancestorTitles": [],
+          "fullName": "an active proposal becomes stale when its pinned canonical source revision changes",
+          "status": "passed",
+          "title": "an active proposal becomes stale when its pinned canonical source revision changes",
+          "duration": 127.33190000000013,
+          "failureMessages": [],
+          "meta": {},
+          "tags": [],
+          "benchmarks": []
+        },
+        {
+          "ancestorTitles": [],
+          "fullName": "tool activation cancels a late submitted job and prevents its result/error from replacing the new mode",
+          "status": "passed",
+          "title": "tool activation cancels a late submitted job and prevents its result/error from replacing the new mode",
+          "duration": 101.95029999999997,
+          "failureMessages": [],
+          "meta": {},
+          "tags": [],
+          "benchmarks": []
+        }
+      ],
+      "startTime": 1792261725372,
+      "endTime": 1792261726617.9502,
+      "status": "passed",
+      "message": "",
+      "name": "F:/T/studio/frontend/src/cv-panel.test.tsx"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "source coordinates and navigation"
+          ],
+          "fullName": "source coordinates and navigation roundtrips pixels at scale 0.05",
+          "status": "passed",
+          "title": "roundtrips pixels at scale 0.05",
+          "duration": 2.6318999999999733,
+          "failureMessages": [],
+          "meta": {},
+          "tags": [],
+          "benchmarks": []
+        },
+        {
+          "ancestorTitles": [
+            "source coordinates and navigation"
+          ],
+          "fullName": "source coordinates and navigation roundtrips pixels at scale 1",
+          "status": "passed",
+          "title": "roundtrips pixels at scale 1",
+          "duration": 0.30060000000000286,
+          "failureMessages": [],
+          "meta": {},
+          "tags": [],
+          "benchmarks": []
+        },
+        {
+          "ancestorTitles": [
+            "source coordinates and navigation"
+          ],
+          "fullName": "source coordinates and navigation roundtrips pixels at scale 5",
+          "status": "passed",
+          "title": "roundtrips pixels at scale 5",
+          "duration": 0.25440000000000396,
+          "failureMessages": [],
+          "meta": {},
+          "tags": [],
+          "benchmarks": []
+        },
+        {
+          "ancestorTitles": [
+            "source coordinates and navigation"
+          ],
+          "fullName": "source coordinates and navigation keeps the source pixel under pointer fixed while zooming",
+          "status": "passed",
+          "title": "keeps the source pixel under pointer fixed while zooming",
+          "duration": 0.5199000000000069,
+          "failureMessages": [],
+          "meta": {},
+          "tags": [],
+          "benchmarks": []
+        },
+        {
+          "ancestorTitles": [
+            "source coordinates and navigation"
+          ],
+          "fullName": "source coordinates and navigation fits a 4K source without changing aspect ratio",
+          "status": "passed",
+          "title": "fits a 4K source without changing aspect ratio",
+          "duration": 0.5423000000000116,
+          "failureMessages": [],
+          "meta": {},
+          "tags": [],
+          "benchmarks": []
+        },
+        {
+          "ancestorTitles": [
+            "source coordinates and navigation"
+          ],
+          "fullName": "source coordinates and navigation clamps zoom to supported bounds",
+          "status": "passed",
+          "title": "clamps zoom to supported bounds",
+          "duration": 0.30989999999999895,
+          "failureMessages": [],
+          "meta": {},
+          "tags": [],
+          "benchmarks": []
+        },
+        {
+          "ancestorTitles": [
+            "picking and layer edit policy"
+          ],
+          "fullName": "picking and layer edit policy picks by pixel distance and stable identity",
+          "status": "passed",
+          "title": "picks by pixel distance and stable identity",
+          "duration": 0.5553999999999917,
+          "failureMessages": [],
+          "meta": {},
+          "tags": [],
+          "benchmarks": []
+        },
+        {
+          "ancestorTitles": [
+            "picking and layer edit policy"
+          ],
+          "fullName": "picking and layer edit policy honors locked and hidden presentation layers",
+          "status": "passed",
+          "title": "honors locked and hidden presentation layers",
+          "duration": 0.43269999999998277,
+          "failureMessages": [],
+          "meta": {},
+          "tags": [],
+          "benchmarks": []
+        },
+        {
+          "ancestorTitles": [
+            "revisioned core command adapter"
+          ],
+          "fullName": "revisioned core command adapter updates revision from committed backend snapshot",
+          "status": "passed",
+          "title": "updates revision from committed backend snapshot",
+          "duration": 1.536299999999983,
+          "failureMessages": [],
+          "meta": {},
+          "tags": [],
+          "benchmarks": []
+        },
+        {
+          "ancestorTitles": [
+            "revisioned core command adapter"
+          ],
+          "fullName": "revisioned core command adapter stops writes on conflict and never silently retries",
+          "status": "passed",
+          "title": "stops writes on conflict and never silently retries",
+          "duration": 0.8943000000000154,
+          "failureMessages": [],
+          "meta": {},
+          "tags": [],
+          "benchmarks": []
+        },
+        {
+          "ancestorTitles": [
+            "revisioned core command adapter"
+          ],
+          "fullName": "revisioned core command adapter reverts failed drag to reloaded canonical coordinates",
+          "status": "passed",
+          "title": "reverts failed drag to reloaded canonical coordinates",
+          "duration": 0.4814000000000078,
+          "failureMessages": [],
+          "meta": {},
+          "tags": [],
+          "benchmarks": []
+        },
+        {
+          "ancestorTitles": [
+            "revisioned core command adapter"
+          ],
+          "fullName": "revisioned core command adapter commits one drag command rather than pointer moves",
+          "status": "passed",
+          "title": "commits one drag command rather than pointer moves",
+          "duration": 1.4762000000000057,
+          "failureMessages": [],
+          "meta": {},
+          "tags": [],
+          "benchmarks": []
+        },
+        {
+          "ancestorTitles": [
+            "revisioned core command adapter"
+          ],
+          "fullName": "revisioned core command adapter uses backend history for undo",
+          "status": "passed",
+          "title": "uses backend history for undo",
+          "duration": 0.6432000000000073,
+          "failureMessages": [],
+          "meta": {},
+          "tags": [],
+          "benchmarks": []
+        },
+        {
+          "ancestorTitles": [
+            "revisioned core command adapter"
+          ],
+          "fullName": "revisioned core command adapter uses backend history for redo",
+          "status": "passed",
+          "title": "uses backend history for redo",
+          "duration": 0.2113999999999976,
+          "failureMessages": [],
+          "meta": {},
+          "tags": [],
+          "benchmarks": []
+        },
+        {
+          "ancestorTitles": [
+            "revisioned core command adapter"
+          ],
+          "fullName": "revisioned core command adapter does not reclassify an own notification as a conflict",
+          "status": "passed",
+          "title": "does not reclassify an own notification as a conflict",
+          "duration": 0.2790999999999997,
+          "failureMessages": [],
+          "meta": {},
+          "tags": [],
+          "benchmarks": []
+        },
+        {
+          "ancestorTitles": [
+            "revisioned core command adapter"
+          ],
+          "fullName": "revisioned core command adapter never blocks canonical dragging while presentation preferences save",
+          "status": "passed",
+          "title": "never blocks canonical dragging while presentation preferences save",
+          "duration": 0.33339999999998327,
+          "failureMessages": [],
+          "meta": {},
+          "tags": [],
+          "benchmarks": []
+        },
+        {
+          "ancestorTitles": [
+            "revisioned core command adapter"
+          ],
+          "fullName": "revisioned core command adapter treats event cursors as hints and rechecks canonical revision",
+          "status": "passed",
+          "title": "treats event cursors as hints and rechecks canonical revision",
+          "duration": 0.30989999999999895,
+          "failureMessages": [],
+          "meta": {},
+          "tags": [],
+          "benchmarks": []
+        },
+        {
+          "ancestorTitles": [
+            "revisioned core command adapter"
+          ],
+          "fullName": "revisioned core command adapter does not turn a lease renewal racing own edits into a conflict",
+          "status": "passed",
+          "title": "does not turn a lease renewal racing own edits into a conflict",
+          "duration": 0.36889999999999645,
+          "failureMessages": [],
+          "meta": {},
+          "tags": [],
+          "benchmarks": []
+        }
+      ],
+      "startTime": 1792261723888,
+      "endTime": 1792261723901.369,
+      "status": "passed",
+      "message": "",
+      "name": "F:/T/studio/frontend/src/editor.test.ts"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [],
+          "fullName": "preserves unedited provenance metadata during a property edit",
+          "status": "passed",
+          "title": "preserves unedited provenance metadata during a property edit",
+          "duration": 194.98489999999993,
+          "failureMessages": [],
+          "meta": {},
+          "tags": [],
+          "benchmarks": []
+        },
+        {
+          "ancestorTitles": [],
+          "fullName": "filters actual profile roles and commits selection",
+          "status": "passed",
+          "title": "filters actual profile roles and commits selection",
+          "duration": 14.695400000000063,
+          "failureMessages": [],
+          "meta": {},
+          "tags": [],
+          "benchmarks": []
+        },
+        {
+          "ancestorTitles": [],
+          "fullName": "keeps nullable physical measurements unknown when cleared",
+          "status": "passed",
+          "title": "keeps nullable physical measurements unknown when cleared",
+          "duration": 3.125099999999975,
+          "failureMessages": [],
+          "meta": {},
+          "tags": [],
+          "benchmarks": []
+        },
+        {
+          "ancestorTitles": [],
+          "fullName": "generates enum and boolean controls from schema",
+          "status": "passed",
+          "title": "generates enum and boolean controls from schema",
+          "duration": 6.0456000000001495,
+          "failureMessages": [],
+          "meta": {},
+          "tags": [],
+          "benchmarks": []
+        }
+      ],
+      "startTime": 1792261725372,
+      "endTime": 1792261725591.0457,
+      "status": "passed",
+      "message": "",
+      "name": "F:/T/studio/frontend/src/forms.test.tsx"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [],
+          "fullName": "keeps source/world moves explicit and disables world modification in source mode",
+          "status": "passed",
+          "title": "keeps source/world moves explicit and disables world modification in source mode",
+          "duration": 432.1892999999998,
+          "failureMessages": [],
+          "meta": {},
+          "tags": [],
+          "benchmarks": []
+        },
+        {
+          "ancestorTitles": [],
+          "fullName": "never auto-accepts reviews and submits the inspected subject with reviewer and note",
+          "status": "passed",
+          "title": "never auto-accepts reviews and submits the inspected subject with reviewer and note",
+          "duration": 115.77239999999983,
+          "failureMessages": [],
+          "meta": {},
+          "tags": [],
+          "benchmarks": []
+        },
+        {
+          "ancestorTitles": [],
+          "fullName": "shows four independent source viewports with coverage and declared tolerance",
+          "status": "passed",
+          "title": "shows four independent source viewports with coverage and declared tolerance",
+          "duration": 52.0951,
+          "failureMessages": [],
+          "meta": {},
+          "tags": [],
+          "benchmarks": []
+        }
+      ],
+      "startTime": 1792261725376,
+      "endTime": 1792261725976.0952,
+      "status": "passed",
+      "message": "",
+      "name": "F:/T/studio/frontend/src/multiview.test.tsx"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [],
+          "fullName": "edits manual anchors, respects exact locks and does not write canonical state on generation",
+          "status": "passed",
+          "title": "edits manual anchors, respects exact locks and does not write canonical state on generation",
+          "duration": 445.8735999999999,
+          "failureMessages": [],
+          "meta": {},
+          "tags": [],
+          "benchmarks": []
+        },
+        {
+          "ancestorTitles": [],
+          "fullName": "renders authoritative graphs, limit text, preview, comparison and gates explicit activation",
+          "status": "passed",
+          "title": "renders authoritative graphs, limit text, preview, comparison and gates explicit activation",
+          "duration": 228.7559000000001,
+          "failureMessages": [],
+          "meta": {},
+          "tags": [],
+          "benchmarks": []
+        },
+        {
+          "ancestorTitles": [],
+          "fullName": "requires a rejection reason and keeps stale activation disabled",
+          "status": "passed",
+          "title": "requires a rejection reason and keeps stale activation disabled",
+          "duration": 135.26589999999987,
+          "failureMessages": [],
+          "meta": {},
+          "tags": [],
+          "benchmarks": []
+        },
+        {
+          "ancestorTitles": [],
+          "fullName": "presents read-only Mark II rejection without an activation override",
+          "status": "passed",
+          "title": "presents read-only Mark II rejection without an activation override",
+          "duration": 44.4056999999998,
+          "failureMessages": [],
+          "meta": {},
+          "tags": [],
+          "benchmarks": []
+        },
+        {
+          "ancestorTitles": [],
+          "fullName": "refreshes historical freshness when current source validation fails",
+          "status": "passed",
+          "title": "refreshes historical freshness when current source validation fails",
+          "duration": 124.57160000000022,
+          "failureMessages": [],
+          "meta": {},
+          "tags": [],
+          "benchmarks": []
+        }
+      ],
+      "startTime": 1792261725376,
+      "endTime": 1792261726355.5715,
+      "status": "passed",
+      "message": "",
+      "name": "F:/T/studio/frontend/src/RectificationWorkspace.test.tsx"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [],
+          "fullName": "preserves manual reference selection for an existing study",
+          "status": "passed",
+          "title": "preserves manual reference selection for an existing study",
+          "duration": 1.7313000000000045,
+          "failureMessages": [],
+          "meta": {},
+          "tags": [],
+          "benchmarks": []
+        },
+        {
+          "ancestorTitles": [],
+          "fullName": "displays the replacement bound to a view even with older global preferences",
+          "status": "passed",
+          "title": "displays the replacement bound to a view even with older global preferences",
+          "duration": 0.28369999999998186,
+          "failureMessages": [],
+          "meta": {},
+          "tags": [],
+          "benchmarks": []
+        }
+      ],
+      "startTime": 1792261723914,
+      "endTime": 1792261723916.2837,
+      "status": "passed",
+      "message": "",
+      "name": "F:/T/studio/frontend/src/reference-selection.test.ts"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [],
+          "fullName": "merges validated changed entities in exact canonical order",
+          "status": "passed",
+          "title": "merges validated changed entities in exact canonical order",
+          "duration": 3.044700000000006,
+          "failureMessages": [],
+          "meta": {},
+          "tags": [],
+          "benchmarks": []
+        },
+        {
+          "ancestorTitles": [],
+          "fullName": "fences wrong revisions, project identities and missing/duplicate entities",
+          "status": "passed",
+          "title": "fences wrong revisions, project identities and missing/duplicate entities",
+          "duration": 1.6694999999999993,
+          "failureMessages": [],
+          "meta": {},
+          "tags": [],
+          "benchmarks": []
+        }
+      ],
+      "startTime": 1792261723893,
+      "endTime": 1792261723897.6694,
+      "status": "passed",
+      "message": "",
+      "name": "F:/T/studio/frontend/src/snapshot-delta.test.ts"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [],
+          "fullName": "shows hard gate while still allowing explicit canonical drafts",
+          "status": "passed",
+          "title": "shows hard gate while still allowing explicit canonical drafts",
+          "duration": 246.83730000000014,
+          "failureMessages": [],
+          "meta": {},
+          "tags": [],
+          "benchmarks": []
+        },
+        {
+          "ancestorTitles": [],
+          "fullName": "shares stable selection across list and schema properties, with typed reversal",
+          "status": "passed",
+          "title": "shares stable selection across list and schema properties, with typed reversal",
+          "duration": 112.2344999999998,
+          "failureMessages": [],
+          "meta": {},
+          "tags": [],
+          "benchmarks": []
+        },
+        {
+          "ancestorTitles": [],
+          "fullName": "marks old mesh stale after a canonical revision change",
+          "status": "passed",
+          "title": "marks old mesh stale after a canonical revision change",
+          "duration": 72.846,
+          "failureMessages": [],
+          "meta": {},
+          "tags": [],
+          "benchmarks": []
+        }
+      ],
+      "startTime": 1792261725390,
+      "endTime": 1792261725821.846,
+      "status": "passed",
+      "message": "",
+      "name": "F:/T/studio/frontend/src/SurfaceWorkspace.test.tsx"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "world interaction safety"
+          ],
+          "fullName": "world interaction safety locks unselected coordinates in X",
+          "status": "passed",
+          "title": "locks unselected coordinates in X",
+          "duration": 3.0623999999999967,
+          "failureMessages": [],
+          "meta": {},
+          "tags": [],
+          "benchmarks": []
+        },
+        {
+          "ancestorTitles": [
+            "world interaction safety"
+          ],
+          "fullName": "world interaction safety locks unselected coordinates in Y",
+          "status": "passed",
+          "title": "locks unselected coordinates in Y",
+          "duration": 0.4252999999999929,
+          "failureMessages": [],
+          "meta": {},
+          "tags": [],
+          "benchmarks": []
+        },
+        {
+          "ancestorTitles": [
+            "world interaction safety"
+          ],
+          "fullName": "world interaction safety locks unselected coordinates in Z",
+          "status": "passed",
+          "title": "locks unselected coordinates in Z",
+          "duration": 0.3508000000000209,
+          "failureMessages": [],
+          "meta": {},
+          "tags": [],
+          "benchmarks": []
+        },
+        {
+          "ancestorTitles": [
+            "world interaction safety"
+          ],
+          "fullName": "world interaction safety locks unselected coordinates in XY",
+          "status": "passed",
+          "title": "locks unselected coordinates in XY",
+          "duration": 0.30230000000000246,
+          "failureMessages": [],
+          "meta": {},
+          "tags": [],
+          "benchmarks": []
+        },
+        {
+          "ancestorTitles": [
+            "world interaction safety"
+          ],
+          "fullName": "world interaction safety locks unselected coordinates in XZ",
+          "status": "passed",
+          "title": "locks unselected coordinates in XZ",
+          "duration": 0.3352999999999895,
+          "failureMessages": [],
+          "meta": {},
+          "tags": [],
+          "benchmarks": []
+        },
+        {
+          "ancestorTitles": [
+            "world interaction safety"
+          ],
+          "fullName": "world interaction safety locks unselected coordinates in YZ",
+          "status": "passed",
+          "title": "locks unselected coordinates in YZ",
+          "duration": 0.32749999999998636,
+          "failureMessages": [],
+          "meta": {},
+          "tags": [],
+          "benchmarks": []
+        },
+        {
+          "ancestorTitles": [
+            "world interaction safety"
+          ],
+          "fullName": "world interaction safety refuses unconstrained or nonfinite gestures",
+          "status": "passed",
+          "title": "refuses unconstrained or nonfinite gestures",
+          "duration": 1.3285000000000196,
+          "failureMessages": [],
+          "meta": {},
+          "tags": [],
+          "benchmarks": []
+        }
+      ],
+      "startTime": 1792261723878,
+      "endTime": 1792261723884.3286,
+      "status": "passed",
+      "message": "",
+      "name": "F:/T/studio/frontend/src/world-tools.test.ts"
+    }
+  ]
+}

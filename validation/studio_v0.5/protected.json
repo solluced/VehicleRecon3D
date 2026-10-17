@@ -1,0 +1,36 @@
+{
+  "status": "PASS",
+  "base_commit": "354671dee26b0817f48b2ace625b08160e0bbf0f",
+  "protected_tracked_changes": [],
+  "mark2_protected_sha256_checks": {
+    "project.json": true,
+    "generated/calibration.json": true,
+    "generated/cage.json": true,
+    "generated/surface_graph.json": true,
+    "generated/details.json": true,
+    "output/mark2_cage_corrected.blend": true,
+    "input/multiview.png": true,
+    "input/control_overlay.png": true,
+    "input/surface_target.png": true
+  },
+  "mark2_source": "INCONSISTENT_SOURCE",
+  "mark2_surfaces": "NOT STARTED",
+  "mark2_details": "NOT STARTED",
+  "mark2_rectification_accepted": false,
+  "tesla_cold_stages": {
+    "preflight": "PASS",
+    "references": "PASS",
+    "calibration": "PASS",
+    "overlay": "PASS",
+    "cage": "PASS",
+    "surfaces": "PASS",
+    "silhouette": "PASS",
+    "details": "PASS",
+    "geometry": "PASS",
+    "presentation": "PASS",
+    "export": "PASS",
+    "glb_verify": "PASS",
+    "viewer": "PASS",
+    "delivery": "PASS"
+  }
+}
