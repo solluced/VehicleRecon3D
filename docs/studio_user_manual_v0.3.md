@@ -28,7 +28,8 @@ BLOCKED, surfaces and details NOT STARTED. This release does not resume it.
 `CV proposal ≠ source observation ≠ world geometry`.
 
 Proposals live in a separate dashed purple transient layer. Accepted source
-observations use the normal solid display. Stale proposals are orange; rejected
+observations use canonical colours and selectable controls; inferred canonical
+evidence retains its existing inferred styling. Stale proposals are orange; rejected
 components are muted. View, exact image SHA, calibrated crop, canonical source
 revision, provider version, parameters and input hash remain inspectable.
 

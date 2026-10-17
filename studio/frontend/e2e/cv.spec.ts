@@ -434,6 +434,14 @@ test("disabled provider leaves manual point authoring and offline UI intact", as
           (await snapshot(page, "cv_false_positive")).observations.length,
       )
       .toBe(before.observations.length + 1);
+    await page.getByRole('button',{name:'Landmark',exact:true}).click();
+    let p=await pixel(page,[100,110]);await page.mouse.click(p.x,p.y);await saved(page);
+    await expect.poll(async()=>(await snapshot(page,'cv_false_positive')).observations.length).toBe(before.observations.length+2);
+    await page.getByRole('button',{name:'Measure',exact:true}).click();
+    for(const q of [[100,130],[160,130]]){p=await pixel(page,q);await page.mouse.click(p.x,p.y);}
+    await expect(page.getByText(/2 knots.*source px/)).toBeVisible();
+    await page.getByRole('button',{name:'Finish curve',exact:true}).click();await saved(page);
+    await expect.poll(async()=>(await snapshot(page,'cv_false_positive')).observations.filter((o:any)=>o.kind==='axis').length).toBe(1);
     checkOffline();
   } finally {
     await running.stop();

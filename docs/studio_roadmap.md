@@ -1,10 +1,18 @@
 # Studio implementation roadmap and architecture exit
 
+v0.3 implements optional local annotation assistance: a discoverable CVProvider
+registry, CPU OpenCV edges/Smart Edge/GrabCut/circle candidates, noncanonical
+source-pinned proposals, explicit partial acceptance and core undo. See the
+[v0.3 manual](studio_user_manual_v0.3.md), [provider contract](cv_provider.md) and
+[release evidence](../validation/studio_v0.3/README.md). Neural providers, full
+rectification editing, surfaces, Render and Cyberpunk remain deferred.
+
 v0.2 implementation now includes multi-view consistency, individual residuals,
 coverage, proposals, source/cage review and live Three.js cage interaction.
 [Current manual](studio_user_manual_v0.2.md) and
 [measured release evidence](../validation/studio_v0.2/README.md) define the shipped
-scope. CV, rectification editing, surfaces, Render and Cyberpunk remain deferred.
+scope for that historical phase. Its optional CV baseline is implemented in
+v0.3; rectification editing, surfaces, Render and Cyberpunk remain deferred.
 
 v0.1B update: the manual 2D vertical slice now ships as the optional Studio
 distribution. Launch, original image import, source tools, schema properties,
@@ -14,7 +22,7 @@ below remain planned.
 
 Historical architecture phase: this baseline delivered documentation only,
 on core base `a3592f3`; no production Studio code or optional prototype is added.
-The current availability is defined by the v0.2 update above; remaining stages
+The current availability is defined by the v0.3 update above; remaining stages
 below are planned capabilities.
 
 v0.1A implementation update: the six core foundation dependencies below are now

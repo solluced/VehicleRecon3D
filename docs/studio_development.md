@@ -63,9 +63,10 @@ geometry format. Restart Studio after changing trusted core code/schemas/profile
 
 Build release wheels from a clean checkout or a fresh build directory. Setuptools
 can retain removed assets in an old `studio/backend/build/lib` directory; a wheel
-must contain exactly the current `static/index.html` and its four asset files,
-including both lazy chunks. The v0.2 installed-wheel check verifies every asset
-against the current source bytes and checks the packaged solver schema.
+must contain exactly the current `static/index.html` and its six asset files,
+including lazy CV, multi-view and Three.js chunks. The v0.3 installed-wheel check
+verifies all seven static files against current build bytes and checks the
+packaged solver/CV schemas and provider import.
 
 ## Implemented adapters
 
@@ -80,7 +81,8 @@ The CSP permits only self scripts/styles/connections, self/blob images, and no
 objects, base URLs or framing. `style-src-attr 'unsafe-inline'` is limited to
 style attributes needed for Konva's numeric canvas/layout sizing; script sources
 and style elements receive no unsafe-inline/eval exception. Assets/fonts are
-local. There is no telemetry, CV runtime, model download or remote inference.
+local. There is no telemetry, model download or remote inference. The optional
+CV runtime stays in the local backend worker.
 
 `workspace.Registry` resolves opaque IDs under startup roots and rejects path
 traversal, symlinks/junctions and unsafe creation names/case aliases. Imports
@@ -235,8 +237,9 @@ keys return the same response, and altered requests conflict. Revision fencing
 still protects an expired/evicted canonical retry. This cache and live undo do
 not survive restart. UI preferences are best effort. Schema memoization remains
 8192 entries / 8 MiB, keyed to exact records and schemas. One latest snapshot and
-one derived analysis are cached per opened project; no decoded images are cached
-by the backend. Browser/GPU image storage is separate from Python RSS.
+one derived analysis are cached per opened project. The v0.2 editor had no
+backend image cache; v0.3's optional CV worker adds bounded decoded/edge storage
+described below. Browser/GPU image storage is separate from Python RSS.
 
 Reproduce a 100-edit backend profile:
 

@@ -133,6 +133,7 @@ export function CVPanel(props: Props) {
   useEffect(() => {
     let alive = true;
     cancelAll();
+    setEdge(null);
     setTrace(null);
     setAnchor(null);
     setPreview([]);

@@ -304,3 +304,28 @@ the changed evidence; the backend must not silently review the newest images
 instead. The specialized writer derives record hashes from disk, not from
 client-supplied replacement hash fields. Source/cage decisions use the same
 subject-digest precondition for the evidence they accept.
+
+## Implemented v0.3 assistance and mutation responses
+
+The architecture examples above include future endpoints. The shipped local
+CV API is defined by [cv_provider.md](cv_provider.md) and the strict `cv_request`,
+`cv_edit` and `cv_proposal` schemas. `GET /api/v1/cv/providers` discovers installed
+capabilities; project-scoped `cv-context`, `cv-jobs`, `cv-proposals` and `cv-traces`
+routes operate on opaque source identities. Proposal rasters are session-owned
+same-origin PNGs. Jobs emit `cv_job_changed` with revision/progress/result and can
+be cancelled. Explicit component ACCEPT delegates to typed core commands; edits,
+rejection and deterministic proposal caches are noncanonical.
+
+Canonical mutations default to the existing full snapshot response. Clients may
+request `response_format: "delta"`: if the exact before-snapshot is cached, the
+response includes `snapshot_delta` with `base_revision`, new revision, complete
+non-observation metadata, changed observation upserts, removed IDs and the exact
+observation order. Otherwise it falls back to a full snapshot. A client must
+fence the base revision and validate the resulting entity set/order, then reload
+on mismatch. `GET /projects/{id}` always remains an explicit full reload.
+
+Only presentation preferences may request `response_format: "ack"`, returning
+revision plus `preferences_saved`. Their typed allowlist, lease/revision checks,
+atomic write and fsync still run; canonical edits cannot use acknowledgement-only
+responses. Delta generation follows normal authoritative snapshot validation;
+it does not skip schema/semantic checks or replace canonical reload authority.

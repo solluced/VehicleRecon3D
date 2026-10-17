@@ -109,6 +109,7 @@ def test_proposal_partial_accept_source_only_undo_and_reject_noop(env):
     r=post('cv-proposals/'+p['proposal_id']+'/accept',proposal_revision=p['proposal_revision'],component_ids=[ids[0]],semantic_roles={ids[0]:'wheel'})
     assert r.status_code==200,r.text
     assert len(r.json()['accepted_observation_ids'])==1
+    assert r.json()['proposal']['components'][0]['semantic_role']=='wheel'
     obs=next(o for o in get().json()['observations'] if o['id']==r.json()['accepted_observation_ids'][0])
     assert obs['kind']=='circle' and obs['view']=='side' and obs['visibility']=='inferred' and not obs['measured']
     assert get('analysis').json()['world_landmarks']==world

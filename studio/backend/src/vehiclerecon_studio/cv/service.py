@@ -279,7 +279,8 @@ class CVService:
                 if self.registry.requests.get(transaction_key):self.registry.requests.pop(transaction_key)
                 p['status']='ACCEPTED';p['proposal_revision']+=1
                 for c in p['components']:
-                    if c['id'] in ids:c['status']='ACCEPTED'
+                    if c['id'] in ids:
+                        c['status']='ACCEPTED';c['semantic_role']=roles.get(c['id'],c['semantic_role'])
                     elif c['status']=='ACTIVE':c['status']='STALE'
                 self.proposals.put(proposal_id,entry)
                 response={**result,'accepted_observation_ids':new_ids,'proposal':copy.deepcopy(p)}
