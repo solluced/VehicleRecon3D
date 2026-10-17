@@ -110,6 +110,8 @@ export function CVPanel(props: Props) {
         .catch(() => {});
     jobs.current.clear();
     previewRunning.current = false;
+    drag.current = [];
+    if (mounted.current) setBusy(false);
   }, [base, client]);
   useEffect(() => {
     mounted.current = true;
@@ -178,6 +180,8 @@ export function CVPanel(props: Props) {
     }
   }, [client.state.conflict]);
   useEffect(() => {
+    cancelAll();
+    setBusy(false);
     setTool(props.initialTool);
     setAnchor(null);
     setTrace(null);
@@ -294,6 +298,7 @@ export function CVPanel(props: Props) {
     extra: Record<string, unknown> = {},
     supersedes?: string,
   ) {
+    const epoch = generation.current;
     setBusy(true);
     setError("");
     try {
@@ -311,13 +316,15 @@ export function CVPanel(props: Props) {
         );
       return p;
     } catch (e) {
-      if (mounted.current) setError((e as Error).message);
+      if (mounted.current && epoch === generation.current)
+        setError((e as Error).message);
       return null;
     } finally {
-      if (mounted.current) setBusy(false);
+      if (mounted.current && epoch === generation.current) setBusy(false);
     }
   }
   async function edgeMap() {
+    const epoch = generation.current;
     setBusy(true);
     setError("");
     try {
@@ -325,9 +332,10 @@ export function CVPanel(props: Props) {
       setEdge(p);
       setEdgeVisible(true);
     } catch (e) {
-      setError((e as Error).message);
+      if (mounted.current && epoch === generation.current)
+        setError((e as Error).message);
     } finally {
-      setBusy(false);
+      if (mounted.current && epoch === generation.current) setBusy(false);
     }
   }
   function schedulePreview() {
@@ -397,6 +405,7 @@ export function CVPanel(props: Props) {
       const started = performance.now(),
         directed = [trail.current[0], ...trail.current.slice(-126), point];
       cancelAll();
+      const epoch = generation.current;
       setBusy(true);
       setError("");
       try {
@@ -415,6 +424,7 @@ export function CVPanel(props: Props) {
               proposal_ids: [trace.proposal_id, segment.proposal_id],
             })
           : segment;
+        if (!mounted.current || epoch !== generation.current) return;
         setTrace(combined);
         choose(combined);
         const points = combined.components[0].original_points!;
@@ -432,9 +442,10 @@ export function CVPanel(props: Props) {
           }),
         );
       } catch (e) {
-        setError((e as Error).message);
+        if (mounted.current && epoch === generation.current)
+          setError((e as Error).message);
       } finally {
-        setBusy(false);
+        if (mounted.current && epoch === generation.current) setBusy(false);
       }
       return;
     }
@@ -581,6 +592,7 @@ export function CVPanel(props: Props) {
   }, [canvas, onCanvas]);
   async function edit(action: string, extra: Record<string, unknown> = {}) {
     if (!proposal || !component) return;
+    const epoch = generation.current;
     setBusy(true);
     setError("");
     try {
@@ -595,12 +607,14 @@ export function CVPanel(props: Props) {
           },
         },
       );
+      if (!mounted.current || epoch !== generation.current) return;
       setProposal(p);
       setSelected([component.id]);
     } catch (e) {
-      setError((e as Error).message);
+      if (mounted.current && epoch === generation.current)
+        setError((e as Error).message);
     } finally {
-      setBusy(false);
+      if (mounted.current && epoch === generation.current) setBusy(false);
     }
   }
   async function decide(action: "accept" | "reject") {

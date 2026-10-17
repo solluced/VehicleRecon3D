@@ -284,3 +284,41 @@ it("an active proposal becomes stale when its pinned canonical source revision c
   ).toBe(true);
   expect(f.run).not.toHaveBeenCalled();
 });
+it("tool activation cancels a late submitted job and prevents its result/error from replacing the new mode", async () => {
+  const f = fixture("magic_select");
+  await f.ready();
+  let resolveJob!: (v: any) => void;
+  f.post.mockImplementationOnce(
+    () =>
+      new Promise((resolve) => {
+        resolveJob = resolve;
+      }),
+  );
+  await act(async () => f.canvas.onDown([20, 30]));
+  await act(async () => f.canvas.onUp([200, 210]));
+  expect(screen.getByTestId("cv-panel").getAttribute("data-busy")).toBe("true");
+  f.rendered.rerender(
+    <CVPanel {...f.props} initialTool="smart_edge" activation={2} />,
+  );
+  await act(async () =>
+    resolveJob({
+      job_id: "late-job",
+      activity: "RUNNING",
+      result: null,
+      proposal_id: null,
+    }),
+  );
+  await waitFor(() =>
+    expect(
+      f.post.mock.calls.some((c) => c[0].endsWith("/late-job/cancel")),
+    ).toBe(true),
+  );
+  expect(screen.getByTestId("cv-panel").getAttribute("data-cv-tool")).toBe(
+    "smart_edge",
+  );
+  expect(screen.getByTestId("cv-panel").getAttribute("data-busy")).toBe(
+    "false",
+  );
+  expect(screen.queryByRole("alert")).toBeNull();
+  expect(f.run).not.toHaveBeenCalled();
+});
