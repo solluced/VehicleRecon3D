@@ -43,13 +43,26 @@ See [architecture](docs/architecture.md), [project format](docs/project_format.m
 [inference standard](docs/inference_standard.md), [pipeline](docs/pipeline.md)
 and [adding a vehicle](docs/adding_a_vehicle.md).
 
-The planned local visual editor is documented in the
+The local visual editor is documented in the
 [VehicleRecon Studio architecture baseline](docs/studio_architecture.md) and
 [implementation roadmap](docs/studio_roadmap.md). The
 [v0.1A core authoring foundation](docs/core_authoring.md) implements v2 contracts,
-typed editing, atomic recovery, acceptance gates and managed jobs. A production
-Studio frontend, HTTP backend and launch command are not implemented.
-V1 projects continue without migration or Studio dependencies.
+typed editing, atomic recovery, acceptance gates and managed jobs.
+**Studio v0.1B** adds the optional authenticated loopback FastAPI service and
+React/TypeScript/Konva manual source editor:
+
+```powershell
+python -m pip install -e studio/backend
+vehicle-recon studio --root projects
+```
+
+Open/create v2 drafts, import original images, edit points/curves/properties,
+undo/redo and reopen canonical files. V1 stays read-only in Studio and runs
+unchanged through the CLI. Node and Blender are not needed for normal manual
+authoring; prebuilt assets ship with the optional distribution. See
+[installation/development](docs/studio_development.md) and the
+[v0.1B user manual](docs/studio_user_manual_v0.1b.md). 3D authoring, CV, surface
+editing and Studio Blender build orchestration remain deferred.
 
 The accepted baseline remains frozen in `tests/fixtures/tesla/baseline/`.
 The original 91-file Tesla project, including its coupled Python scripts, is

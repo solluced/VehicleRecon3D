@@ -92,6 +92,10 @@ project code. Command families:
 - SetMeasurement (optionally updating a dimension); SetTolerance.
 - SetSourceDisposition; SetCageReview; SetCoveragePolicy.
 - SetCalibrationView; SetViewerLabel; bounded SetProjectSettings sections.
+- SetProjectMetadata; SetObservationProperties, preserving stable identity.
+- RegisterReference through `authoring.imports.import_reference`: exact immutable
+  source bytes, computed SHA/dimensions and source-only view crops, with no invented
+  affine/metric calibration. Decoders enforce their own import resource budgets.
 - AddRectificationAnchor/RemoveRectificationAnchor for inactive candidates.
 
 Commands check expected revision/IDs, apply in memory, validate schemas/source

@@ -1,5 +1,11 @@
 # Studio implementation roadmap and architecture exit
 
+v0.1B update: the manual 2D vertical slice now ships as the optional Studio
+distribution. Launch, original image import, source tools, schema properties,
+core history, conflict/reopen and browser/performance tests are implemented.
+[Current manual](studio_user_manual_v0.1b.md) defines availability; later stages
+below remain planned.
+
 Status: architecture baseline for review. This phase delivers documentation only,
 on core base `a3592f3`; no production Studio code or optional prototype is added.
 The command/API/packages described in these documents are planned capabilities.

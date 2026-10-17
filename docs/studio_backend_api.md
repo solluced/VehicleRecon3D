@@ -1,5 +1,11 @@
 # Studio local backend contract
 
+v0.1B implements the manual-authoring subset listed in
+[Studio development](studio_development.md#implemented-adapters). Those routes
+adapt the accepted core services, including typed source metadata/import commands
+and core event forwarding. Other prototypes below remain planned: there are no
+pipeline/CV/world/surface authoring or review-acceptance HTTP endpoints in v0.1B.
+
 Status: **proposed API v1, not implemented**. Document-schema versions are
 independent. FastAPI/OpenAPI and generated TypeScript clients are planned;
 the examples below are contract prototypes, not existing endpoints.

@@ -1,5 +1,10 @@
 # VehicleRecon Studio architecture baseline
 
+v0.1B update: the optional localhost backend and manual React/Konva source editor
+are implemented. See [development](studio_development.md) and the
+[user manual](studio_user_manual_v0.1b.md) for the shipped subset. The original
+design status below is historical; 3D/CV/surface/build workspaces remain planned.
+
 Implementation update, v0.1A: the [core authoring foundation](core_authoring.md)
 now provides v2 contracts, editing/storage, early reviews and managed jobs.
 The design-phase status below records the original architecture baseline;
