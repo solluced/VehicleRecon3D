@@ -23,8 +23,9 @@ class Reconciliation:
     def load(self,ident,candidate_id):
         path=self.path(ident,candidate_id)
         if not path.is_file() or path.stat().st_size>256*1024:raise ReferenceError('Unknown or oversized candidate')
-        return read_json(path)
+        p=read_json(path);validate(p,'rectification_candidate');return p
     def store(self,ident,p):
+        validate(p,'rectification_candidate')
         root=self.registry.resolve(ident);path=self.path(ident,p['id']);raw=(json.dumps(p,allow_nan=False,indent=2)+'\n').encode()
         if len(raw)>256*1024:raise SchemaError('Candidate evidence exceeds 256 KiB; narrow the correspondence set')
         atomic_write(root,path.relative_to(root).as_posix(),raw)
@@ -35,12 +36,12 @@ class Reconciliation:
         cal=read_json(p.path(p.data['generated']['calibration'],exists=True));view=saved['affected_view']
         matches=saved['base_calibration_sha256']==digest_file(p.path(p.data['generated']['calibration'])) and saved['source_sha256']==digest_file(p.path(p.data['references']['multiview']))
         plot=audit(saved['rectification'],cal['views'][view]['crop'],wheelbase_m=cal.get('datums',{}).get('stock_body_dimensions_m',{}).get('wheelbase'))
-        return {'read_only':True,'view':view,'gauge_view':saved['reference_gauge'],'references':self.registry.snapshot(ident)['references'],
-            'candidates':[{'id':'legacy_mark2','status':'REJECTED','active':False,'freshness':'current' if matches else 'STALE',
+        return {'read_only':True,'view':view,'views':cal['views'],'gauge_view':saved['reference_gauge'],'references':self.registry.snapshot(ident)['references'],
+            'candidates':[{'id':'legacy_mark2','view':view,'revision':1,'status':'REJECTED','active':False,'freshness':'current' if matches else 'STALE',
                 'creator':'Existing documented reconciliation','request':{'view':view,'gauge_view':saved['reference_gauge'],**saved['rectification']},
                 'report':{**plot,'eligible':False,'status':'REJECTED','distortion':'EXCESSIVE','reasons':['REJECTED / NOT ACTIVE','OUTSIDE SCALE LIMIT',saved['rejection']],
                     'allowed_scale':[.9,1.1],'historical_magnitude':magnitude,'rms_all_landmark_correction_px':magnitude[view]['rms_landmark_correction_px'],
-                    'held_out':magnitude[view].get('corrections',[]),'anchors':saved['rectification']['anchors']}}]}
+                    'held_out':magnitude[view].get('corrections',[]),'anchors':[{**a,'id':f'legacy_{i}','role':'FIT','locked':a['image'] in (0,1)} for i,a in enumerate(saved['rectification']['anchors'])]}}]}
     def context(self,ident,view):
         root=self.registry.resolve(ident)
         with self.registry.lock,ProjectLock(root,'reconciliation-inspect'):
@@ -50,7 +51,7 @@ class Reconciliation:
             w=Workspace(root);cal=w.documents['calibration'];d=cal['views'][view];rows=evidence(w,view)
             if len(rows)>128:raise SchemaError('Reconciliation supports at most 128 measured correspondences per view')
             left,top,right,bottom=d['crop'];a,b=left,right;anchors=[];bound=set()
-            for x,name in ((0,'front_axle'),(1,'rear_axle')):
+            for x,name in ((0,'domain_start'),(1,'domain_end')):
                 match=next((r for r in rows if abs(r['pixel'][0]-(a+x*(b-a)))<1e-9 and abs(r['projected_affine'][0]-(a+x*(b-a)))<1e-9),None)
                 anchor={'id':'datum_'+str(x),'semantic':name,'image':x,'world_normalized':x,'role':'FIT','locked':True,'confidence':1,
                     'provenance':'Explicit normalized datum; confirm image/affine domains'}
@@ -62,7 +63,7 @@ class Reconciliation:
                     'world_normalized':(r['projected_affine'][0]-a)/(b-a),'role':'HELD_OUT','locked':False,
                     'confidence':r['provenance'].get('confidence',1),'provenance':r['provenance']['method'],'observation_id':r['observation_id']})
             request={'view':view,'gauge_view':'side' if view!='side' else 'top','reference_role':d.get('reference_id','multiview'),
-                'axis':'u','image_domain_px':[a,b],'affine_domain_px':[a,b],'anchors':sorted(anchors,key=lambda r:r['image']),
+                'axis':'u','image_domain_px':[a,b],'affine_domain_px':[a,b],'anchors':sorted(anchors[:64],key=lambda r:r['image']),
                 'max_scale_change':.1,'allow_extrapolation':False}
             directory=self.path(ident,'0'*32).parent
             paths=list(directory.glob('*.json')) if directory.is_dir() else []
@@ -73,7 +74,7 @@ class Reconciliation:
                 candidates.append({k:p[k] for k in ('id','revision','status','active','freshness','creator','view')})
                 candidates[-1]['summary']={k:report.get(k) for k in ('eligible','distortion','whole_crop','local_scale_range','before','after','extrapolation')}
             return {'read_only':False,'view':view,'revision':w.revision,'default_request':request,'evidence':rows,
-                'calibration':d,'references':self.registry.snapshot(ident)['references'],'candidates':candidates}
+                'calibration':d,'views':cal['views'],'references':self.registry.snapshot(ident)['references'],'candidates':candidates}
     def inspect(self,ident,candidate_id,*,w=None):
         p=self.load(ident,candidate_id);root=self.registry.resolve(ident);rev=revision(root)
         key=(ident,candidate_id,p['revision']);report=self.cache.get(key)
@@ -82,15 +83,16 @@ class Reconciliation:
         if p['status']=='ACTIVE':
             project=Project(root);cal=read_json(project.path(project.data['generated']['calibration']))
             active=cal['views'][p['view']].get('rectification')==model(p['request'])
-        status='ACTIVE' if active else 'REJECTED' if p['status']=='REJECTED' else report['status'] if same else 'STALE'
-        return {**p,'status':status,'active':active,'freshness':'current' if same or active else 'STALE','report':copy.deepcopy(report)}
+        fresh=same or (active and rev==p.get('activation_revision'))
+        status='REJECTED' if p['status']=='REJECTED' else 'STALE' if not fresh else 'ACTIVE' if active else report['status']
+        return {**p,'status':status,'active':active,'freshness':'current' if fresh else 'STALE','report':copy.deepcopy(report)}
     def create(self,ident,body):
         if set(body)-{'expected_revision','request','creator','confirm_datums'}:raise SchemaError('Unknown candidate generation field')
         if not isinstance(body.get('creator'),str) or not 1<=len(body['creator'].strip())<=300:raise SchemaError('Candidate creator required')
         root=self.registry.resolve(ident)
         with self.registry.lock,ProjectLock(root,'reconciliation-candidate'):
             if revision(root)!=body.get('expected_revision'):raise ConflictError('Candidate source changed')
-            w=Workspace(root);request=body['request'];validate(request,'reconciliation_request')
+            w=Workspace(root);request=body.get('request');validate(request,'reconciliation_request')
             default=w.documents['calibration']['views'][request['view']]['crop'];axis=0 if request['axis']=='u' else 1
             domain=[default[axis],default[axis+2]]
             if (request['image_domain_px']!=domain or request['affine_domain_px']!=domain) and body.get('confirm_datums') is not True:

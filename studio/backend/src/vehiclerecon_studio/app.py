@@ -82,7 +82,7 @@ def create_app(config):
     def roots():return [{'id':k,'label':p.name,'revision':registry.root_revision(k)} for k,p in registry.roots.items()]
 
     @app.get('/api/v1/capabilities')
-    def capabilities():return {'version':'0.3','document_versions':[1,2],'writable_versions':[2],'image_formats':['PNG','JPEG'],
+    def capabilities():return {'version':'0.4','document_versions':[1,2],'writable_versions':[2],'image_formats':['PNG','JPEG'],
         'max_upload_bytes':config.max_upload,'max_pixels':config.max_pixels,'pipeline':False,
         'CV':any(p['available'] for p in registry.cv.catalog()),'epoch':registry.bus.epoch,'idempotency_survives_restart':False}
 

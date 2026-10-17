@@ -264,8 +264,9 @@ class Registry:
                 self.seen[ident]=result['revision'];lease['expires']=time.monotonic()+45
                 if response_format=='ack':result={**result,'preferences_saved':True}
                 else:
-                    snapshot=self.snapshot(ident,tab,validated_workspace=session._committed_workspace if session else None)
-                    if session:session._committed_workspace=None
+                    try:snapshot=self.snapshot(ident,tab,validated_workspace=session._committed_workspace if session else None)
+                    finally:
+                        if session:session._committed_workspace=None
                     if response_format=='delta' and before is not None:
                         from .deltas import snapshot_delta
                         result={**result,'snapshot_delta':snapshot_delta(before,snapshot)}

@@ -229,7 +229,7 @@ export class EditorClient {
     if (!(await this.open(id))) return;
     if (this.writable) await this.run("reload");
   }
-  async import(file: File) {
+  async import(file: File, replacementView?: string) {
     if (!this.writable) return;
     const s = this.state.snapshot!;
     this.set({ busy: true, error: null });
@@ -243,6 +243,12 @@ export class EditorClient {
             "If-Match": s.revision,
             "X-Expected-Revision": s.revision,
             "X-Editor-Lease": this.state.lease,
+            ...(replacementView
+              ? {
+                  "X-Replacement-View": replacementView,
+                  "X-Confirm-Replacement": "true",
+                }
+              : {}),
             "Idempotency-Key": crypto.randomUUID().replaceAll("-", ""),
           },
           body: file,

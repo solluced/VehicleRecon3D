@@ -73,7 +73,14 @@ export type Snapshot = {
   references: Reference[];
   roles: string[];
   measurements: Measurement[];
-  views: Record<string, { crop_id: Record<string, string> }>;
+  views: Record<
+    string,
+    {
+      crop_id: Record<string, string>;
+      reference_role?: string;
+      source_state?: string;
+    }
+  >;
   readiness: Record<string, Ready | unknown>;
   history: { undo: boolean; redo: boolean };
   preferences: Preferences;

@@ -251,7 +251,9 @@ class AuthoringSession:
                 w.documents['project']['dimensions'][c['dimension']] = value
             return 'measurements'
         if op == 'SetCalibrationView':
-            value = copy.deepcopy(c['data']);previous = cal['views'].get(c['view'],{}).get('landmarks',{})
+            value = copy.deepcopy(c['data']);old_view=cal['views'].get(c['view'],{});previous = old_view.get('landmarks',{})
+            for field in ('reference_id','source_history','source_state'):
+                if field in old_view and field not in value:value[field]=copy.deepcopy(old_view[field])
             if any(k in value.get('landmarks',{}) for k in ('observations','source_curves')):
                 raise SchemaError('Use observation commands to edit authored source objects')
             value['landmarks'] = {**previous,**value.get('landmarks',{})}

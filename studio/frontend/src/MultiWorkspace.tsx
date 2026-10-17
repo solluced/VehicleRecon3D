@@ -344,6 +344,9 @@ export function MultiWorkspace({
     if (!pointTool || mode !== "observation" || !client.writable) return;
     const reference =
       snapshot.references.find(
+        (r) => r.role === snapshot.views[v]?.reference_role,
+      ) ||
+      snapshot.references.find(
         (r) => r.sha256 === analysis?.calibration_source_sha256,
       ) ||
       snapshot.references.find((r) => r.role === "multiview") ||
@@ -610,7 +613,11 @@ export function MultiWorkspace({
                 {ref && analysis ? (
                   <SourceCanvas
                     observations={displayObservations}
-                    reference={ref}
+                    reference={
+                      snapshot.references.find(
+                        (r) => r.role === snapshot.views[v]?.reference_role,
+                      ) || ref
+                    }
                     url={`/api/v1/projects/${snapshot.id}/references/${ref.id}/image`}
                     preferences={{
                       ...prefs,

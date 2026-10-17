@@ -1,0 +1,172 @@
+.rect-workspace {
+  padding: 24px;
+  max-width: 1700px;
+  margin: auto;
+  color: var(--text, #dce7eb);
+}
+.rect-toolbar,
+.rect-controls {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.rect-toolbar > div {
+  flex: 1;
+}
+.rect-toolbar h2 {
+  margin: 4px 0;
+}
+.rect-toolbar p {
+  color: #a8bdc6;
+}
+.rect-workspace label {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  margin: 6px;
+}
+.rect-workspace input,
+.rect-workspace select {
+  max-width: 200px;
+}
+.rect-workspace button {
+  margin: 5px;
+}
+.rect-panel,
+.rect-graph {
+  border: 1px solid #36505d;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 18px 0;
+  background: #12232d;
+}
+.rect-reference-pair,
+.rect-comparison {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+.rect-comparison {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+.rect-comparison > div {
+  padding: 15px;
+  border: 1px solid #45616e;
+}
+.rect-source {
+  width: 100%;
+  max-height: 360px;
+  background: #dce5e9;
+  touch-action: none;
+}
+.rect-source .anchor {
+  cursor: ew-resize;
+}
+.rect-source .locked {
+  cursor: default;
+}
+.rect-table {
+  overflow: auto;
+  max-height: 480px;
+}
+.rect-table input {
+  width: 125px;
+}
+.rect-workspace table {
+  border-collapse: collapse;
+  width: 100%;
+}
+.rect-workspace td,
+.rect-workspace th {
+  padding: 8px;
+  border-bottom: 1px solid #36505d;
+  text-align: left;
+}
+.rect-danger {
+  border: 2px solid #e8a067;
+  background: #36251e;
+  padding: 16px;
+}
+.rect-candidates {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  max-height: 400px;
+  overflow: auto;
+}
+.rect-candidates article {
+  display: grid;
+  border: 1px solid #45616e;
+  padding: 12px;
+  min-width: 210px;
+}
+.rect-graphs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+.rect-graphs > label,
+.rect-graphs > p {
+  grid-column: 1/-1;
+}
+.rect-graph {
+  margin: 0;
+  padding: 12px;
+}
+.rect-graph svg {
+  width: 100%;
+  touch-action: none;
+}
+.rect-graph text {
+  fill: #c9d9e0;
+  font-size: 12px;
+}
+.rect-graph figcaption {
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.rect-graph output {
+  display: block;
+  min-height: 3em;
+  font-size: 12px;
+}
+.rect-preview {
+  display: block;
+  width: 100%;
+  max-height: 470px;
+}
+.rect-overlay {
+  display: grid;
+  max-width: 800px;
+  margin: auto;
+}
+.rect-overlay > svg {
+  grid-area: 1/1;
+  width: 100%;
+  max-height: 470px;
+}
+.rect-summary p {
+  margin: 8px 0;
+}
+.rect-workspace pre {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  max-height: 320px;
+  overflow: auto;
+}
+.rect-workspace details {
+  margin: 12px 0;
+}
+.rect-workspace input[type="checkbox"] {
+  width: auto;
+}
+@media (max-width: 1000px) {
+  .rect-graphs,
+  .rect-reference-pair {
+    grid-template-columns: 1fr;
+  }
+  .rect-workspace {
+    padding: 14px;
+  }
+}

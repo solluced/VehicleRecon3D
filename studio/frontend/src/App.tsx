@@ -16,6 +16,11 @@ const CVPanel = lazy(() =>
 const MultiWorkspace = lazy(() =>
   import("./MultiWorkspace").then((m) => ({ default: m.MultiWorkspace })),
 );
+const RectificationWorkspace = lazy(() =>
+  import("./RectificationWorkspace").then((m) => ({
+    default: m.RectificationWorkspace,
+  })),
+);
 import { Properties, RolePicker, SchemaField, Settings } from "./Forms";
 import {
   category,
@@ -63,7 +68,8 @@ export default function App() {
     );
   const [eventsStatus, setEventsStatus] = useState("Connecting"),
     [showReady, setShowReady] = useState(true),
-    [multi, setMulti] = useState(false);
+    [multi, setMulti] = useState(false),
+    [rectification, setRectification] = useState(false);
   const pendingPrefs = useRef<ReturnType<typeof setTimeout> | null>(null),
     prefsRef = useRef(prefs);
   const [cvOpen, setCVOpen] = useState(false),
@@ -131,6 +137,7 @@ export default function App() {
       active_view: s.preferences.active_view || "side",
     });
     setSelection(null);
+    setRectification(false);
     setDraft([]);
     setPage("editor");
     setRole(s.roles?.includes("roof") ? "roof" : s.roles?.[0] || "roof");
@@ -157,6 +164,10 @@ export default function App() {
     await list();
   }
   const reference =
+    snapshot?.references.find(
+      (r) =>
+        r.role === snapshot.views[prefs.active_view || "side"]?.reference_role,
+    ) ||
     snapshot?.references.find((r) => r.role === prefs.reference_id) ||
     snapshot?.references.find((r) => r.role === "multiview") ||
     snapshot?.references[0];
@@ -282,7 +293,7 @@ export default function App() {
       if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "z") {
         e.preventDefault();
         void client.run(e.shiftKey ? "redo" : "undo");
-      } else if (multi || cvOpen) return;
+      } else if (multi || cvOpen || rectification) return;
       else if (e.key === "Enter") void finish();
       else if (e.key === "Delete" || e.key === "Backspace") {
         e.preventDefault();
@@ -334,7 +345,7 @@ export default function App() {
           </span>
         </button>
         <span className="phase-label">
-          RECONSTRUCTION WORKSPACE <b>0.3</b>
+          RECONSTRUCTION WORKSPACE <b>0.4</b>
         </span>
         <span className="connection">
           <i />
@@ -444,6 +455,7 @@ export default function App() {
               aria-pressed={multi}
               onClick={() => {
                 setMulti(!multi);
+                setRectification(false);
                 setCVOpen(false);
                 setAssist(undefined);
                 setDraft([]);
@@ -451,6 +463,19 @@ export default function App() {
               }}
             >
               {multi ? "Source editor" : "Multi-view / 3D"}
+            </button>
+            <button
+              aria-pressed={rectification}
+              onClick={() => {
+                setRectification(!rectification);
+                setMulti(false);
+                setCVOpen(false);
+                setAssist(undefined);
+                setDraft([]);
+                setTool("select");
+              }}
+            >
+              Reference → Rectification
             </button>
           </div>
           {state.error && (
@@ -466,7 +491,11 @@ export default function App() {
               </details>
             </div>
           )}
-          {multi ? (
+          {rectification ? (
+            <Suspense fallback={<p>Opening rectification workspace…</p>}>
+              <RectificationWorkspace snapshot={snapshot} client={client} />
+            </Suspense>
+          ) : multi ? (
             <Suspense fallback={<p>Opening multi-view workspace…</p>}>
               <MultiWorkspace
                 snapshot={snapshot}
@@ -1048,7 +1077,7 @@ export default function App() {
       <footer>
         <span>VehicleRecon Studio</span>
         <span>Local workspace · Original sources preserved</span>
-        <span>Annotation assistance / 0.3</span>
+        <span>Reference reconciliation / 0.4</span>
       </footer>
     </div>
   );

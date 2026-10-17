@@ -57,3 +57,27 @@ def test_stale_source_crop_and_calibration_cannot_activate(tmp_path):
     assert current(w,p)
     (w.root/'input/reference.png').write_bytes((w.root/'input/reference.png').read_bytes()+b'\n')
     assert not current(w,p)
+
+def test_individual_heldout_failure_is_not_averaged_away(tmp_path):
+    req=prepare(tmp_path/'study');p=make_candidate(Workspace(tmp_path/'study'),req,ident='heldout',creator='Tester')
+    row=next(e for e in p['evidence'] if e['observation_id']==next(a['observation_id'] for a in req['anchors'] if a['role']=='HELD_OUT'))
+    row['pixel'][1]+=1
+    result=evaluate(p)
+    assert not result['eligible'] and any(e['status']=='FAIL' for e in result['held_out'])
+    assert any('Held-out residual fails' in reason for reason in result['reasons'])
+
+def test_crop_calibration_staleness_and_candidate_comparison(tmp_path):
+    req=prepare(tmp_path/'study');w=Workspace(tmp_path/'study');p=make_candidate(w,req,ident='compare',creator='Tester')
+    other=copy.deepcopy(p);other['request']['anchors'][2]['world_normalized']+=.002
+    assert evaluate(p)['whole_crop']!=evaluate(other)['whole_crop']
+    w.documents['calibration']['views']['top']['crop'][0]+=1
+    assert not current(w,p)
+    w.documents['calibration']['views']['top']['crop'][0]-=1
+    w.documents['calibration']['views']['top']['origin'][0]+=.01
+    assert not current(w,p)
+
+def test_domain_order_rejected_as_validation_error(tmp_path):
+    req=prepare(tmp_path/'study');p=make_candidate(Workspace(tmp_path/'study'),req,ident='domain',creator='Tester')
+    for domain in ([100,100],[100,0]):
+        p['request']['image_domain_px']=domain
+        assert not evaluate(p)['eligible']

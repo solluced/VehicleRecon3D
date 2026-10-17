@@ -15,6 +15,7 @@ def rms(values):return math.sqrt(sum(v*v for v in values)/len(values)) if values
 def evidence(workspace,view):
     from ..authoring.projection import registered
     cal=workspace.documents['calibration'];cage=workspace.documents.get('cage',{'curves':[],'landmarks':{}})
+    if not all(all(k in data for k in ('origin','u_basis','v_basis')) for data in cal['views'].values()):return []
     affine=copy.deepcopy(cal);affine['views'][view].pop('rectification',None)
     transform=CalibrationTransform(affine);current=CalibrationTransform(cal);obs=observations(cal);rows=[]
     for link in cal.get('correspondences',[]):
@@ -43,8 +44,10 @@ def make_candidate(workspace,request,*,ident,creator):
     axis=0 if request['axis']=='u' else 1
     start=[d['crop'][0],d['crop'][1]];end=list(start)
     start[axis],end[axis]=request['affine_domain_px']
-    equivalent_m=math.dist(CalibrationTransform(cal).pixel_to_world(view,*start),CalibrationTransform(cal).pixel_to_world(view,*end))
-    return {'schema_version':2,'id':ident,'status':'DRAFT','revision':1,'view':view,
+    affine=copy.deepcopy(cal);affine['views'][view].pop('rectification',None)
+    equivalent_m=(math.dist(CalibrationTransform(affine).pixel_to_world(view,*start),CalibrationTransform(affine).pixel_to_world(view,*end))
+        if all(all(k in data for k in ('origin','u_basis','v_basis')) for data in cal['views'].values()) else None)
+    return {'record_type':'reference_reconciliation','schema_version':2,'id':ident,'status':'DRAFT','revision':1,'view':view,
         'source_revision':workspace.revision,'base_calibration_hash':digest_data(cal),
         'source_hashes':{k:digest_file(workspace.project.path(p,exists=True)) for k,p in workspace.project.data['references'].items()},
         'crop':copy.deepcopy(d['crop']),'request':copy.deepcopy(request),'evidence':rows,
@@ -72,9 +75,9 @@ def audit(rectification,crop,*,wheelbase_m=None,samples=257):
         p=warp.maximum_identity_correction(*region)
         return {**p,'maximum_correction_px':p['maximum_absolute_normalized']*(b-a),
             'maximum_equivalent_mm':p['maximum_absolute_normalized']*wheelbase_m*1000 if wheelbase_m else None,'range':list(region)}
-    ext=warp.derivative_extrema(lo,hi)
+    ext=warp.derivative_extrema(min(lo,warp.x[0]),max(hi,warp.x[-1]))
     points=[]
-    xs=sorted(set([lo+(hi-lo)*i/(samples-1) for i in range(samples)]+list(warp.x)+[0,1]))
+    xs=sorted(set([lo+(hi-lo)*i/(samples-1) for i in range(samples)]+[lo+(hi-lo)*i/10 for i in range(11)]+list(warp.x)+[0,1]))
     for x in xs:
         y=warp(x);q=y-x
         points.append({'x':x,'y':y,'correction':q,'correction_px':q*(b-a),'equivalent_mm':q*wheelbase_m*1000 if wheelbase_m else None,
@@ -82,6 +85,7 @@ def audit(rectification,crop,*,wheelbase_m=None,samples=257):
     outside=max(0,min(hi,warp.x[0])-lo)+max(0,hi-max(lo,warp.x[-1]))
     return {'samples':points,'derivative_extrema':ext,'local_scale_range':[ext['minimum']['derivative'],ext['maximum']['derivative']],
         'between_datums':correction([0,1]),'whole_crop':correction([lo,hi]),
+        'overhangs':{'front':correction([lo,min(0,hi)]) if lo<0 else None,'rear':correction([max(1,lo),hi]) if hi>1 else None},
         'extrapolation':{'fraction':outside/(hi-lo),'fitted_support':[warp.x[0],warp.x[-1]],
             'front_range':[lo,min(0,hi)] if lo<0 else None,'rear_range':[max(1,lo),hi] if hi>1 else None,
             'policy':'Positive linear tails outside fitted support; overhangs reported separately from between-datum evidence'},

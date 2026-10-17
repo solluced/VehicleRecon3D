@@ -1,112 +1,317 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://vehiclerecon.local/schemas/rectification_candidate.schema.json",
-  "type": "object",
-  "properties": {
-    "schema_version": {
-      "const": 2
-    },
-    "id": {
-      "$ref": "https://vehiclerecon.local/schemas/authoring.schema.json#/$defs/id"
-    },
-    "view": {
-      "enum": [
-        "front",
-        "side",
-        "rear",
-        "top"
-      ]
-    },
-    "status": {
-      "enum": [
-        "CANDIDATE",
-        "REJECTED"
-      ]
-    },
-    "revision": {
-      "type": "integer",
-      "minimum": 1
-    },
-    "base_calibration_hash": {
-      "$ref": "https://vehiclerecon.local/schemas/authoring.schema.json#/$defs/sha256"
-    },
-    "rectification": {
+  "oneOf": [
+    {
       "type": "object",
       "properties": {
-        "type": {
-          "const": "piecewise_monotonic"
+        "schema_version": {
+          "const": 2
         },
-        "axis": {
+        "id": {
+          "$ref": "https://vehiclerecon.local/schemas/authoring.schema.json#/$defs/id"
+        },
+        "view": {
           "enum": [
-            "u",
-            "v"
+            "front",
+            "side",
+            "rear",
+            "top"
           ]
         },
-        "image_domain_px": {
+        "status": {
+          "enum": [
+            "CANDIDATE",
+            "REJECTED"
+          ]
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "base_calibration_hash": {
+          "$ref": "https://vehiclerecon.local/schemas/authoring.schema.json#/$defs/sha256"
+        },
+        "rectification": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "const": "piecewise_monotonic"
+            },
+            "axis": {
+              "enum": [
+                "u",
+                "v"
+              ]
+            },
+            "image_domain_px": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 2,
+              "maxItems": 2
+            },
+            "affine_domain_px": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 2,
+              "maxItems": 2
+            },
+            "anchors": {
+              "type": "array",
+              "minItems": 2,
+              "items": {
+                "type": "object",
+                "properties": {
+                  "image": {
+                    "type": "number"
+                  },
+                  "world_normalized": {
+                    "type": "number"
+                  },
+                  "semantic": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "required": [
+                  "image",
+                  "world_normalized",
+                  "semantic"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "max_scale_change": {
+              "type": "number",
+              "minimum": 0,
+              "exclusiveMaximum": 1
+            }
+          },
+          "required": [
+            "type",
+            "axis",
+            "image_domain_px",
+            "affine_domain_px",
+            "anchors"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "schema_version",
+        "id",
+        "view",
+        "status",
+        "revision",
+        "base_calibration_hash",
+        "rectification"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "record_type": {
+          "const": "reference_reconciliation"
+        },
+        "schema_version": {
+          "const": 2
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{32}$"
+        },
+        "status": {
+          "enum": [
+            "DRAFT",
+            "EVALUATED",
+            "REJECTED",
+            "ELIGIBLE_FOR_ACTIVATION",
+            "ACTIVE"
+          ]
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "view": {
+          "enum": [
+            "front",
+            "side",
+            "rear",
+            "top"
+          ]
+        },
+        "source_revision": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "base_calibration_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "source_hashes": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        },
+        "crop": {
           "type": "array",
           "items": {
             "type": "number"
           },
-          "minItems": 2,
-          "maxItems": 2
+          "minItems": 4,
+          "maxItems": 4
         },
-        "affine_domain_px": {
-          "type": "array",
-          "items": {
-            "type": "number"
-          },
-          "minItems": 2,
-          "maxItems": 2
+        "request": {
+          "$ref": "https://vehiclerecon.local/schemas/reconciliation_request.schema.json"
         },
-        "anchors": {
+        "creator": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        },
+        "algorithm": {
+          "const": "PiecewiseMonotonicAxisWarp/1"
+        },
+        "wheelbase_m": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "exclusiveMinimum": 0
+        },
+        "physical_basis": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        },
+        "evidence": {
           "type": "array",
-          "minItems": 2,
+          "maxItems": 128,
           "items": {
             "type": "object",
             "properties": {
-              "image": {
-                "type": "number"
+              "id": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1000
               },
-              "world_normalized": {
-                "type": "number"
+              "observation_id": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1000
               },
               "semantic": {
                 "type": "string",
-                "minLength": 1
+                "minLength": 1,
+                "maxLength": 1000
+              },
+              "pixel": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                },
+                "minItems": 2,
+                "maxItems": 2
+              },
+              "projected_affine": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                },
+                "minItems": 2,
+                "maxItems": 2
+              },
+              "projected_raw": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                },
+                "minItems": 2,
+                "maxItems": 2
+              },
+              "tolerance_px": {
+                "type": "number",
+                "minimum": 0
+              },
+              "critical": {
+                "type": "boolean"
+              },
+              "world_entity_id": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1000
+              },
+              "reference_id": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1000
+              },
+              "source_sha256": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              },
+              "measured": {
+                "const": true
+              },
+              "provenance": {
+                "type": "object"
               }
             },
             "required": [
-              "image",
-              "world_normalized",
-              "semantic"
+              "id",
+              "observation_id",
+              "semantic",
+              "pixel",
+              "projected_affine",
+              "projected_raw",
+              "tolerance_px",
+              "critical",
+              "world_entity_id",
+              "reference_id",
+              "source_sha256",
+              "measured",
+              "provenance"
             ],
             "additionalProperties": false
           }
         },
-        "max_scale_change": {
-          "type": "number",
-          "minimum": 0,
-          "exclusiveMaximum": 1
+        "reason": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        },
+        "activation_revision": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
         }
       },
       "required": [
-        "type",
-        "axis",
-        "image_domain_px",
-        "affine_domain_px",
-        "anchors"
+        "record_type",
+        "schema_version",
+        "id",
+        "status",
+        "revision",
+        "view",
+        "source_revision",
+        "base_calibration_hash",
+        "source_hashes",
+        "crop",
+        "request",
+        "creator",
+        "algorithm",
+        "wheelbase_m",
+        "physical_basis",
+        "evidence"
       ],
       "additionalProperties": false
     }
-  },
-  "required": [
-    "schema_version",
-    "id",
-    "view",
-    "status",
-    "revision",
-    "base_calibration_hash",
-    "rectification"
-  ],
-  "additionalProperties": false
+  ]
 }
