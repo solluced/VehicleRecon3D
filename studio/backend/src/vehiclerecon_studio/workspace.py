@@ -14,7 +14,7 @@ from vehiclerecon.authoring.workspace import Workspace
 from vehiclerecon.authoring.service import AuthoringSession
 from vehiclerecon.authoring.versions import create_draft, inspect_version, preview_migration, execute_migration
 from vehiclerecon.authoring.readiness import readiness
-from vehiclerecon.authoring.contracts import observations, crop_identity
+from vehiclerecon.authoring.contracts import observations, crop_identity, HELPER_ROLES
 from vehiclerecon.authoring.imports import import_reference
 from vehiclerecon.core.project import Project, RESOURCE_ROOT, read_json
 from vehiclerecon.core.revisions import revision
@@ -48,7 +48,7 @@ def guard(root, path):
 class Registry:
     def __init__(self,config):
         self.config=config;self.projects={};self.roots={uuid.uuid4().hex:p for p in config.roots}
-        self.lock=threading.RLock();self.sessions={};self.leases={};self.seen={};self.requests={};self.bus=EventBus()
+        self.lock=threading.RLock();self.sessions={};self.leases={};self.seen={};self.requests={};self.snapshots={};self.bus=EventBus();self.decode_slots=threading.BoundedSemaphore(2)
         self.scan()
 
     def scan(self):
@@ -89,7 +89,22 @@ class Registry:
 
     def snapshot(self,ident,tab=None):
         root=self.resolve(ident)
-        with ProjectLock(root,'studio-inspect'):
+        with self.lock,ProjectLock(root,'studio-inspect'):
+            current=revision(root);data=read_json(root/'project.json');proofs=set()
+            if data.get('schema_version')==2:
+                cal_path=data.get('generated',{}).get('calibration')
+                if cal_path:proofs.update(read_json(root/cal_path).get('authoring_policy',{}).get('required_proofs',[]))
+                for name in ('source','cage'):
+                    decision=guard(root,root/f'validation/{name}_review.json')
+                    if decision.is_file():proofs.update(read_json(decision).get('proof_hashes',{}))
+            proof_hashes={}
+            path_project=object.__new__(Project);path_project.root=root
+            for relative in proofs:
+                path=path_project.path(relative);guard(root,root/relative)
+                proof_hashes[relative]=digest_file(path) if path.is_file() else None
+            key=digest_data([current,proof_hashes]);cached=self.snapshots.get(ident)
+            if cached and cached[0]==key:
+                return {**cached[1],**self.presentation(root,ident,tab)}
             info=inspect_version(root)
             if not info['supported']:return {'id':ident,'revision':info['revision'],'version':info['version'],'read_only':True,'issues':info['issues']}
             p=Project(root);v=p.data['schema_version'];cal={};obs=[]
@@ -98,16 +113,23 @@ class Registry:
             refs=inventory(p)
             for role,ref in refs.items():
                 ref['id']=digest_data([role,ref['sha256']])[:32];ref['role']=role;ref.pop('path')
-            history=self.sessions.get((ident,tab))
-            active=self.leases.get(ident);editable=bool(active and active['tab']==tab and active['expires']>time.monotonic())
-            pref=guard(root,root/'.studio/session.json');preferences=read_json(pref) if pref.is_file() else {}
-            return {'id':ident,'revision':revision(root),'version':v,'read_only':v!=2,'project':p.data,
+            result={'id':ident,'revision':current,'version':v,'read_only':v!=2,'project':p.data,
                     'references':list(refs.values()),'observations':obs,
-                    'views':{name:{'crop_id':crop_identity(role,data.get('crop')) for role in refs} for name,data in cal.get('views',{}).items()},
-                    'roles':p.profile['roles']+p.profile['optional_roles']+['axis','datum','measurement'],
-                    'measurements':cal.get('datums',{}).get('measurements',[]),'readiness':readiness(root),
-                    'history':{'undo':bool(history and history.undo_stack),'redo':bool(history and history.redo_stack)},
-                    'editable':editable,'preferences':preferences}
+                    'views':{name:{'crop_id':{role:crop_identity(role,data.get('crop')) for role in refs}} for name,data in cal.get('views',{}).items()},
+                    'roles':p.profile['roles']+p.profile['optional_roles']+list(HELPER_ROLES),
+                    'measurements':cal.get('datums',{}).get('measurements',[]),'readiness':readiness(root,workspace=w) if v==2 else readiness(root),
+                    **self.presentation(root,ident,tab)}
+            self.snapshots[ident]=(key,result)
+            return result
+
+    def presentation(self,root,ident,tab):
+        history=self.sessions.get((ident,tab));active=self.leases.get(ident)
+        editable=bool(active and active['tab']==tab and active['expires']>time.monotonic())
+        pref=guard(root,root/'.studio/session.json');preferences={}
+        if pref.is_file() and pref.stat().st_size<=2*1024*1024:
+            try:preferences=read_json(pref);self.validate_preferences(preferences)
+            except SchemaError:preferences={}
+        return {'history':{'undo':bool(history and history.undo_stack),'redo':bool(history and history.redo_stack)},'editable':editable,'preferences':preferences}
 
     def acquire(self,ident,tab,expected):
         root=self.resolve(ident)
@@ -162,7 +184,7 @@ class Registry:
                 self.requests[key]=(fingerprint,result)
                 if len(self.requests)>512:self.requests.pop(next(iter(self.requests)))
                 for kind in ('project_changed','validation_changed','revision_changed'):
-                    self.bus.emit(kind,project_id=ident,revision=result['revision'])
+                    self.bus.emit(kind,project_id=ident,revision=result['revision'],actor_tab=tab.rsplit(':',1)[-1])
                 return result
 
     @staticmethod
@@ -177,6 +199,11 @@ class Registry:
         except Exception as exc:raise SchemaError('Invalid UI preferences: '+getattr(exc,'message','invalid state')) from exc
 
     def decode_image(self,raw):
+        if not self.decode_slots.acquire(blocking=False):raise APIError(429,'DECODE_BUSY','Two image decodes are active; retry after they finish')
+        try:return self._decode_image(raw)
+        finally:self.decode_slots.release()
+
+    def _decode_image(self,raw):
         if not raw or len(raw)>self.config.max_upload:raise APIError(413,'UPLOAD','Image exceeds encoded size limit')
         with warnings.catch_warnings():
             warnings.simplefilter('error',Image.DecompressionBombWarning)

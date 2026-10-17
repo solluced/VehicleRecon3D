@@ -16,7 +16,7 @@ def launch(*, roots=(), port=0, host='127.0.0.1', browser=True):
         sock.bind((host,port));sock.listen(128)
         config=Config(roots=roots,port=sock.getsockname()[1]);app=create_app(config)
         if not (config.static/'index.html').is_file():raise ValueError('Studio frontend is not built. See docs/studio_development.md')
-        server=uvicorn.Server(uvicorn.Config(app,host=host,port=config.port,access_log=False,log_level='warning',proxy_headers=False))
+        server=uvicorn.Server(uvicorn.Config(app,host=host,port=config.port,access_log=False,log_level='warning',proxy_headers=False,limit_concurrency=16))
         if browser:
             def open_browser():
                 import time

@@ -4,6 +4,7 @@ import json
 import re
 import secrets
 import time
+import math
 import uuid
 from pathlib import Path
 from fastapi import FastAPI, Request
@@ -12,7 +13,7 @@ from starlette.concurrency import run_in_threadpool
 from vehiclerecon.core.errors import ReconError, ConflictError, LockError
 from vehiclerecon.core.project import Project, RESOURCE_ROOT, read_json
 from vehiclerecon.core.revisions import revision
-from vehiclerecon.core.manifest import digest_file
+from vehiclerecon.core.manifest import digest_file, digest_data
 from vehiclerecon.core.locking import ProjectLock
 from vehiclerecon.authoring.service import AuthoringSession
 from vehiclerecon.authoring.versions import create_draft
@@ -35,8 +36,10 @@ def create_app(config):
         # Technical core messages may contain local paths; primary feedback is bounded.
         message=str(exc)
         for root in config.roots:message=message.replace(str(root),'<project root>')
+        message=message.replace(str(RESOURCE_ROOT),'<installed resources>')
+        concise=message[:1200] if len(message)<=200 else 'The selected entity or setting is invalid. Correct its values and try again.'
         return JSONResponse({'code':'LOCKED' if status==423 else 'STALE_REVISION' if status==409 else 'VALIDATION',
-            'message':message[:1200],'issues':[{'message':message[:1200]}],'retryable':status in (409,423)},status_code=status)
+            'message':concise,'issues':[{'document':'authoring','pointer':'/commands','message':message[:1200]}],'retryable':status in (409,423)},status_code=status)
 
     @app.exception_handler(Exception)
     async def internal_error(request,exc):
@@ -94,6 +97,7 @@ def create_app(config):
     @app.post('/api/v1/projects')
     def create_project(request:Request,body:dict):
         precondition(request,body);root_id=body.get('root_id')
+        if set(body)-{'root_id','name','profile','dimensions','expected_revision'}:raise APIError(422,'FIELDS','Unknown project creation field')
         if root_id not in registry.roots:raise APIError(404,'ROOT','Unknown allowed root')
         name=body.get('name','')
         if not re.fullmatch('[A-Za-z][A-Za-z0-9_-]{0,63}',name) or re.fullmatch('(con|prn|aux|nul|com[1-9]|lpt[1-9])',name,re.I):
@@ -103,12 +107,18 @@ def create_app(config):
         dims=body.get('dimensions',{})
         if not isinstance(dims,dict) or set(dims)-{'length_m','width_m','height_m','wheelbase_m'}:raise APIError(422,'DIMENSIONS','Unknown dimension')
         for value in dims.values():
-            if value is not None and (isinstance(value,bool) or not isinstance(value,(int,float)) or value<=0):raise APIError(422,'DIMENSIONS','Dimensions must be positive or unknown')
+            if value is not None and (isinstance(value,bool) or not isinstance(value,(int,float)) or not math.isfinite(value) or value<=0):raise APIError(422,'DIMENSIONS','Dimensions must be positive or unknown')
         root=registry.roots[root_id]
         with registry.lock:
+            key=request.headers.get('idempotency-key','')
+            if not re.fullmatch('[A-Za-z0-9_-]{16,100}',key):raise APIError(428,'IDEMPOTENCY','Idempotency-Key required')
+            fingerprint=digest_data(['create',tab(request),body]);cached=registry.requests.get(key)
+            if cached:
+                if cached[0]!=fingerprint:raise ConflictError('Idempotency key reused with a different request')
+                return cached[1]
             if registry.root_revision(root_id)!=body['expected_revision']:raise ConflictError('Project root changed; refresh project list')
             path=guard(root,root/name.lower())
-            if path.exists():raise ConflictError('Project already exists')
+            if path.exists() or any(p.name.casefold()==name.casefold() for p in root.iterdir()):raise ConflictError('Project already exists')
             create_draft(path,profile=profile);author=AuthoringSession(path)
             commands=[{'type':'SetProjectMetadata','values':{'asset_name':name}}]
             for dimension,value in dims.items():
@@ -117,14 +127,18 @@ def create_app(config):
             author.apply(commands,expected_revision=author.revision)
             registry.scan();ident=next(k for k,v in registry.projects.items() if v==path)
             registry.bus.emit('project_changed',project_id=ident,revision=revision(path))
-            return registry.snapshot(ident)
+            result=registry.snapshot(ident);registry.requests[key]=(fingerprint,result)
+            if len(registry.requests)>512:registry.requests.pop(next(iter(registry.requests)))
+            return result
 
     @app.get('/api/v1/projects/{ident}')
     def inspect_project(ident:str,request:Request):
         snap=registry.snapshot(ident,tab(request));return JSONResponse(snap,headers={'ETag':'"'+snap['revision']+'"'})
 
     @app.get('/api/v1/projects/{ident}/revision')
-    def current_revision(ident:str):return {'revision':revision(registry.resolve(ident))}
+    def current_revision(ident:str):
+        with registry.lock,ProjectLock(registry.resolve(ident),'studio-revision-read'):
+            return {'revision':revision(registry.resolve(ident))}
 
     @app.get('/api/v1/projects/{ident}/readiness')
     def project_readiness(ident:str):return registry.snapshot(ident)['readiness']
@@ -139,7 +153,8 @@ def create_app(config):
     @app.post('/api/v1/projects/{ident}/release')
     def release(ident:str,request:Request,body:dict):
         precondition(request,body)
-        with registry.lock:
+        with registry.lock,ProjectLock(registry.resolve(ident),'studio-lease-release'):
+            if revision(registry.resolve(ident))!=body['expected_revision']:raise ConflictError('Project changed before lease release')
             active=registry.leases.get(ident)
             if active and active['tab']==tab(request) and active['id']==body.get('lease_id'):registry.leases.pop(ident)
         return {'revision':body['expected_revision']}
@@ -168,7 +183,7 @@ def create_app(config):
     @app.get('/api/v1/projects/{ident}/references/{ref_id}/image')
     def image(ident:str,ref_id:str):
         root=registry.resolve(ident)
-        with ProjectLock(root,'studio-reference-read'):
+        with registry.lock,ProjectLock(root,'studio-reference-read'):
             snap=registry.snapshot(ident);ref=next((r for r in snap['references'] if r['id']==ref_id),None)
             if ref is None:raise APIError(404,'REFERENCE','Unknown reference')
             p=Project(root);path=guard(root,root/p.data['references'][ref['role']]);raw=path.read_bytes()
@@ -183,17 +198,18 @@ def create_app(config):
         async def stream():
             cursor=request.headers.get('last-event-id')
             try:
-                while streams.get(key)==owner and not await request.is_disconnected():
+                while streams.get(key)==owner and time.monotonic()-request.scope['studio_session']['created']<12*3600 and not await request.is_disconnected():
                     for ident in list(registry.projects):
                         try:
                             def probe():
                                 root=registry.resolve(ident)
-                                with ProjectLock(root,'studio-revision-watch'):return revision(root)
-                            rev=await run_in_threadpool(probe)
-                            if ident in registry.seen and registry.seen[ident]!=rev:
-                                registry.bus.emit('conflict',project_id=ident,revision=rev,reason='External canonical change')
-                                registry.bus.emit('revision_changed',project_id=ident,revision=rev)
-                            registry.seen[ident]=rev
+                                with registry.lock,ProjectLock(root,'studio-revision-watch'):
+                                    rev=revision(root)
+                                    if ident in registry.seen and registry.seen[ident]!=rev:
+                                        registry.bus.emit('conflict',project_id=ident,revision=rev,reason='External canonical change')
+                                        registry.bus.emit('revision_changed',project_id=ident,revision=rev)
+                                    registry.seen[ident]=rev
+                            await run_in_threadpool(probe)
                         except (ReconError,APIError,OSError,ValueError):pass
                     records=registry.bus.replay(cursor)
                     for event in records:

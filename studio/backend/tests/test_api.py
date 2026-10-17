@@ -24,7 +24,7 @@ def env(tmp_path):
     client=TestClient(app,base_url=config.origin,raise_server_exceptions=False)
     response=client.post('/api/v1/session/bootstrap',json={'secret':secret},headers={'Origin':config.origin})
     assert response.status_code==200,response.text
-    headers={'Origin':config.origin,'X-CSRF-Token':response.json()['csrf'],'X-Studio-Tab':uuid.uuid4().hex}
+    headers={'Origin':config.origin,'X-CSRF-Token':response.json()['csrf'],'X-Studio-Tab':uuid.uuid4().hex,'Idempotency-Key':uuid.uuid4().hex}
     ident=client.get('/api/v1/projects').json()[0]['id'];snap=client.get('/api/v1/projects/'+ident,headers=headers).json()
     headers['If-Match']=snap['revision']
     lease=client.post(f'/api/v1/projects/{ident}/leases',json={'expected_revision':snap['revision']},headers=headers).json()['lease_id']
@@ -85,6 +85,14 @@ def test_invalid_shell_raw_patch_and_gate_commands_not_available(env):
         assert revision(env[5]/'study')==before
     for url in ['/api/v1/shell','/api/v1/file?path=project.json','/api/v1/run']:
         assert env[0].get(url).status_code==404
+
+
+def test_new_observation_uses_snapshot_crop_identity(env):
+    c,app,h,ident,lease,root,_=env;snap=c.get('/api/v1/projects/'+ident,headers=h).json()
+    o=copy.deepcopy(snap['observations'][0]);o.update(id='new_source_point',view='side',crop_id=snap['views']['side']['crop_id'][o['reference_id']])
+    result=post(env,'transactions',commands=[{'type':'AddObservation','view':'side','observation':o}])
+    assert result.status_code==200,result.text
+    assert any(o['id']=='new_source_point' for o in result.json()['snapshot']['observations'])
 
 
 @pytest.mark.parametrize('ident',['..','C:%5CWindows','%2e%2e%2fsecret','not_registered'])
@@ -167,3 +175,49 @@ def test_sse_epoch_and_expired_cursor_resync():
 def test_loopback_binding_only(tmp_path):
     for host in ('0.0.0.0','::','localhost'):
         with pytest.raises(ValueError):Config((tmp_path,),9173,host=host)
+
+
+def test_create_request_is_idempotent_and_case_alias_rejected(env):
+    c,app,h,ident,lease,root,_=env;r=c.get('/api/v1/roots').json()[0]
+    body={'root_id':r['id'],'name':'NewStudy','expected_revision':r['revision']}
+    headers={**h,'If-Match':r['revision']}
+    first=c.post('/api/v1/projects',json=body,headers=headers)
+    assert first.status_code==200,first.text
+    assert c.post('/api/v1/projects',json=body,headers=headers).json()==first.json()
+    body['name']='Different'
+    assert c.post('/api/v1/projects',json=body,headers=headers).status_code==409
+    current=c.get('/api/v1/roots').json()[0]['revision'];body.update(name='NEWSTUDY',expected_revision=current)
+    assert c.post('/api/v1/projects',json=body,headers={**h,'If-Match':current,'Idempotency-Key':uuid.uuid4().hex}).status_code==409
+
+
+def test_corrupt_or_deleted_ui_state_does_not_remove_authoring(env):
+    c,app,h,ident,lease,root,_=env;before=revision(root/'study')
+    ui=root/'study/.studio';ui.mkdir();(ui/'session.json').write_text('{bad json')
+    snap=c.get('/api/v1/projects/'+ident,headers=h).json()
+    assert snap['preferences']=={} and len(snap['observations'])==4
+    (ui/'session.json').unlink();assert revision(root/'study')==before
+
+
+def test_budgeted_decode_and_cross_site_fetch(env):
+    c,app,h,ident,lease,root,_=env;reg=app.state.registry
+    reg.decode_slots.acquire();reg.decode_slots.acquire()
+    try:
+        r=c.post(f'/api/v1/projects/{ident}/reference-imports',content=b'anything',headers=h)
+        assert r.status_code==429
+    finally:reg.decode_slots.release();reg.decode_slots.release()
+    for path in ('/api/v1/events?tab_id='+'a'*32,'/api/v1/schemas','/api/v1/projects'):
+        assert c.get(path,headers={'Sec-Fetch-Site':'cross-site'}).status_code==403
+
+
+def test_linked_project_is_not_indexed(env):
+    import os,subprocess
+    c,app,h,ident,lease,root,_=env;outside=root.parent/'outside-project';outside.mkdir()
+    (outside/'project.json').write_text('{"private":true}')
+    link=root/'linked'
+    if os.name=='nt':
+        made=subprocess.run(['cmd','/c','mklink','/J',str(link),str(outside)],capture_output=True)
+        assert made.returncode==0
+    else:link.symlink_to(outside,target_is_directory=True)
+    assert all(p.get('project',{}).get('project_id')!='outside' for p in c.get('/api/v1/projects').json())
+    from vehiclerecon_studio.workspace import guard,APIError
+    with pytest.raises(APIError):guard(root,link)
