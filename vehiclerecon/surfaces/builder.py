@@ -24,11 +24,14 @@ def order(nodes):
 
 class Graph:
     def __init__(self,config,curves=None,vector=Vector,*,workspace=None,cache=None,identity=''):
-        if config.get('schema_version')==2:
+        if config.get('schema_version')==2 or workspace is not None:
             from ..authoring.reviews import require_acceptance
             from .authoring import graph_contract
             from ..core.errors import BlockedError
             if workspace is None:raise BlockedError('v2 evaluation requires current accepted source/cage workspace')
+            from ..core.revisions import revision
+            from ..core.errors import ConflictError
+            if revision(workspace.root)!=workspace.revision:raise ConflictError('Surface evaluation workspace is stale')
             require_acceptance(workspace)
             graph_contract(config,workspace.documents.get('cage'))
             if any(n.get('draft') for n in config['nodes']):raise BlockedError('DRAFT / INCOMPLETE graph cannot execute')
@@ -56,6 +59,7 @@ class Graph:
         op=node['op'];p=node['parameters'];v=self.vector
         def boundary(key):
             value=self.get(p[key])
+            if key in node.get('reversed',[]) and not callable(value):raise SchemaError('Only curve inputs can reverse orientation')
             return (lambda t:value(1-t)) if key in node.get('reversed',[]) else value
         if op=='polyline':return polyline(p['points'],v)
         if op=='chord_hermite':return chord_hermite(p['points'],v)
@@ -63,13 +67,13 @@ class Graph:
         if op=='bezier_rail_range':
             if p['curve'] not in self.curves:raise ReferenceError(f"Unknown cage curve {p['curve']}")
             return bezier_rail_range(self.curves[p['curve']],*p['x_range'])
-        if op=='curve_sample':return self.get(p['curve'])(p['t'])
+        if op=='curve_sample':return boundary('curve')(p['t'])
         if op=='lerp':
-            a,b=self.get(p['a']),self.get(p['b'])
+            a,b=boundary('a'),boundary('b')
             if callable(a):return lambda u,t:a(u).lerp(b(u),t)
             return a.lerp(b,p['t'])
         if op=='offset':
-            source=self.get(p['source']);offset=v(p['offset'])
+            source=boundary('source');offset=v(p['offset'])
             return (lambda t:source(t)+offset) if callable(source) else source+offset
         if op=='coons':
             from .coons import corner_report

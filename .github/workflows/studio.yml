@@ -74,4 +74,6 @@ jobs:
             build/studio03-*.png
             build/studio04-*.json
             build/studio04-*.png
+            build/studio05-*.json
+            build/studio05-*.png
             studio/frontend/test-results/

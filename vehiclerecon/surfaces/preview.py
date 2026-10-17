@@ -23,7 +23,7 @@ def cage_curves(workspace):
     from ..authoring.contracts import resolved_cage
     from ..cage.schema import expand
     cage=resolved_cage(workspace.documents.get('cage',{'curves':[],'landmarks':{}}))
-    geometry=workspace.documents.get('calibration',{}).get('wheel_geometry',{})
+    geometry=workspace.documents.get('calibration',{}).get('wheel_geometry',{'axles':[]})
     result={}
     for curve in expand(cage,geometry):
         if curve['handles']!='VECTOR' or curve.get('cyclic'):continue
@@ -113,16 +113,25 @@ def evaluate(workspace, *, config=None, expected_revision=None, quality='low', c
     g=copy.deepcopy(config if config is not None else workspace.documents.get('surface_graph',empty_graph()))
     if g.get('schema_version')!=2:raise BlockedError('Legacy graph preview requires explicit v2 authoring contract')
     graph_contract(g,workspace.documents.get('cage'))
+    if not g['patches']:raise BlockedError('No surface patches authored')
+    if g.get('stitches') or any(n['op']=='boundary_stitch' for n in g['nodes']):raise BlockedError('Discrete boundary_stitch preview is unsupported; use Blender for this graph')
     if len(g['patches'])>256 or len(g['nodes'])>2048:raise SchemaError('Coarse preview budget exceeded')
     identity=digest_data([implementation_identity(),workspace.documents.get('cage'),workspace.documents.get('calibration')])
     result={'revision':workspace.revision,'graph_hash':digest_data(g),'identity':identity,'quality':quality,
         'label':'COARSE AUTHORING PREVIEW','topology_label':'preview topology','authority':'Blender owns final geometry; no Class-A or game-ready certification.',
         'self_intersection':'NOT TESTED — deferred to Blender geometry audit','patches':[],'corners':{},'adjacency':[],
-        'validation':validate_graph(workspace,g),'status':'PASS','evaluated_nodes':[],'sampled_patches':[]}
+        'validation':validate_graph(workspace,g),'status':'PASS','evaluated_nodes':[],'sampled_patches':[],'boundaries':[]}
     graph=Graph.__new__(Graph)
     try:
         Graph.__init__(graph,g,cage_curves(workspace),workspace=workspace,cache=cache.nodes if cache else None,identity=identity)
         result['evaluated_nodes']=graph.evaluated
+        for n in g['nodes']:
+            if n['op'] in ('polyline','chord_hermite','shape_preserving_hermite','bezier_rail_range','offset'):
+                value=graph.get(n['id'])
+                if callable(value):
+                    points=[list(value(i/32)) for i in range(33)]
+                    from ..core.project import finite
+                    finite(points);result['boundaries'].append({'id':n['id'],'points':points})
         for n in g['nodes']:
             if n['op']=='coons':
                 def boundary(key):
@@ -144,6 +153,7 @@ def evaluate(workspace, *, config=None, expected_revision=None, quality='low', c
                 if len(set(map(tuple,positions)))!=len(vertices):issues.append('Duplicate vertices / self-collapsed patch')
                 for t in triangles:
                     a,b,c=(vertices[i] for i in t);normal=cross(b-a,c-a);lengths=[(a-b).length,(b-c).length,(c-a).length]
+                    if not math.isfinite(normal.length) or not all(math.isfinite(x) for x in lengths):raise SchemaError('Nonfinite triangle area or edge length')
                     if normal.length<1e-14:issues.append('Zero-area triangle')
                     if min(lengths)<1e-14 or max(lengths)/max(min(lengths),1e-20)>1e4:issues.append('Extreme triangle aspect ratio')
                     if normal.dot(normal_target)<-1e-14:issues.append('Reversed winding against expected normal')
@@ -161,6 +171,8 @@ def evaluate(workspace, *, config=None, expected_revision=None, quality='low', c
                     mesh['triangles'] += [[c+offset,b+offset,a+offset] for a,b,c in list(mesh['triangles'])]
                     mesh['normals'] += [[x,-y,z] for x,y,z in list(mesh['normals'])]
                     mesh['face_normals'] += [{'origin':[f['origin'][0],-f['origin'][1],f['origin'][2]],'normal':[f['normal'][0],-f['normal'][1],f['normal'][2]]} for f in list(face_normals)]
+                from ..core.project import finite
+                finite(mesh)
                 if cache:cache.put(key,mesh)
                 result['sampled_patches'].append(p['id'])
             result['patches'].append(mesh)
@@ -178,8 +190,17 @@ def evaluate(workspace, *, config=None, expected_revision=None, quality='low', c
         result['validation'] += [{'category':'evaluation','status':'PASS','message':'Core sampled graph'},
                                   {'category':'topology preview','status':result['status'],'message':'Numerical, winding and declared connectivity checks; self-intersection deferred.'}]
     except (ReconError,KeyError,ValueError,TypeError,OverflowError,ZeroDivisionError) as exc:
-        result.update(status='FAIL',patches=[],corners=getattr(graph,'corners',{}))
+        corners=getattr(graph,'corners',{})
+        from ..core.project import finite
+        try:finite(corners)
+        except SchemaError:corners={}
+        result.update(status='FAIL',patches=[],boundaries=[],adjacency=[],corners=corners)
         result['validation'].append({'category':'evaluation','status':'BLOCKED','message':str(exc)[:2000]})
+    from ..core.project import finite
+    try:finite(result)
+    except SchemaError:
+        result.update(status='FAIL',patches=[],boundaries=[],adjacency=[],corners={})
+        result['validation'].append({'category':'evaluation','status':'FAIL','message':'Nonfinite numerical output rejected'})
     if revision(workspace.root)!=workspace.revision:raise ConflictError('Preview inputs changed during evaluation')
     result['generation_ms']=(time.perf_counter()-started)*1000
     result['certified_current']=result['status'] in ('PASS','WARNING')

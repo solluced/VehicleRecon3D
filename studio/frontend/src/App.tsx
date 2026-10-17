@@ -21,6 +21,9 @@ const RectificationWorkspace = lazy(() =>
     default: m.RectificationWorkspace,
   })),
 );
+const SurfaceWorkspace = lazy(() =>
+  import("./SurfaceWorkspace").then((m) => ({ default: m.SurfaceWorkspace })),
+);
 import { Properties, RolePicker, SchemaField, Settings } from "./Forms";
 import {
   category,
@@ -70,7 +73,8 @@ export default function App() {
   const [eventsStatus, setEventsStatus] = useState("Connecting"),
     [showReady, setShowReady] = useState(true),
     [multi, setMulti] = useState(false),
-    [rectification, setRectification] = useState(false);
+    [rectification, setRectification] = useState(false),
+    [surfaces, setSurfaces] = useState(false);
   const pendingPrefs = useRef<ReturnType<typeof setTimeout> | null>(null),
     prefsRef = useRef(prefs);
   const [cvOpen, setCVOpen] = useState(false),
@@ -339,7 +343,7 @@ export default function App() {
           </span>
         </button>
         <span className="phase-label">
-          RECONSTRUCTION WORKSPACE <b>0.4</b>
+          RECONSTRUCTION WORKSPACE <b>0.5</b>
         </span>
         <span className="connection">
           <i />
@@ -449,6 +453,7 @@ export default function App() {
               aria-pressed={multi}
               onClick={() => {
                 setMulti(!multi);
+                setSurfaces(false);
                 setRectification(false);
                 setCVOpen(false);
                 setAssist(undefined);
@@ -462,6 +467,7 @@ export default function App() {
               aria-pressed={rectification}
               onClick={() => {
                 setRectification(!rectification);
+                setSurfaces(false);
                 setMulti(false);
                 setCVOpen(false);
                 setAssist(undefined);
@@ -470,6 +476,18 @@ export default function App() {
               }}
             >
               Reference → Rectification
+            </button>
+            <button
+              aria-pressed={surfaces}
+              onClick={() => {
+                setSurfaces(!surfaces);
+                setRectification(false);
+                setMulti(false);
+                setCVOpen(false);
+                setAssist(undefined);
+              }}
+            >
+              Surfaces
             </button>
           </div>
           {state.error && (
@@ -485,7 +503,11 @@ export default function App() {
               </details>
             </div>
           )}
-          {rectification ? (
+          {surfaces ? (
+            <Suspense fallback={<p>Opening Surfaces…</p>}>
+              <SurfaceWorkspace snapshot={snapshot} client={client} />
+            </Suspense>
+          ) : rectification ? (
             <Suspense fallback={<p>Opening rectification workspace…</p>}>
               <RectificationWorkspace snapshot={snapshot} client={client} />
             </Suspense>
@@ -1071,7 +1093,7 @@ export default function App() {
       <footer>
         <span>VehicleRecon Studio</span>
         <span>Local workspace · Original sources preserved</span>
-        <span>Reference reconciliation / 0.4</span>
+        <span>Bounded surface authoring / 0.5</span>
       </footer>
     </div>
   );

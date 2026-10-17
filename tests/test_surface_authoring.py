@@ -126,3 +126,38 @@ def test_transient_invalid_graph_is_reported_without_becoming_canonical(root):
     g=graph(root);g['nodes'][-1]['dependencies'].append('missing')
     assert validate_graph(Workspace(root),g)[0]['status']=='FAIL'
     assert Workspace(root).documents['surface_graph']!=g
+
+
+def test_live_cage_range_ribbon_and_mirror_are_core_owned(root):
+    s=AuthoringSession(root)
+    apply(s,dict(type='AddSurfaceNode',node_id='cage.range',op='bezier_rail_range'),
+          dict(type='SetSurfaceParameter',node_id='cage.range',parameter='curve',value='roof_edge'),
+          dict(type='SetSurfaceParameter',node_id='cage.range',parameter='x_range',value=[-.5,.5]),
+          dict(type='SetSurfaceDraft',node_id='cage.range',draft=False))
+    apply(s,dict(type='AddSurfacePatch',patch_id='cage.ribbon',node_id='ribbon.sample',name='Bounded rail ribbon',semantic_role='strip',op='ribbon'),
+          dict(type='SetSurfaceBoundary',node_id='ribbon.sample',boundary='curve',source='cage.range'),
+          dict(type='SetSurfaceParameter',node_id='ribbon.sample',parameter='start_offset',value=[0,0,0]),
+          dict(type='SetSurfaceParameter',node_id='ribbon.sample',parameter='end_offset',value=[0,.2,0]),
+          dict(type='SetSurfaceDraft',node_id='ribbon.sample',draft=False),
+          dict(type='SetSurfaceMirror',patch_id='cage.ribbon',enabled=True))
+    r=evaluate(Workspace(root));assert r['status']=='PASS'
+    mesh=next(p for p in r['patches'] if p['id']=='cage.ribbon');half=len(mesh['positions'])//2
+    assert mesh['mirror_counterpart']=='cage.ribbon.mirror'
+    assert mesh['positions'][0]==[-.5,.5,1] and mesh['positions'][half]==[-.5,-.5,1]
+    assert all(n[2]>0 for n in mesh['normals'])
+
+
+def test_unsupported_stitch_preview_and_numerical_overflow_never_certify(root):
+    w=Workspace(root);g=graph(root)
+    g['nodes'].append(dict(id='stitch',op='boundary_stitch',parameters={'bottom':[[0,0,0],[1,0,0]],'top':[[0,1,0],[1,1,0]],'rows':[1]},dependencies=[],draft=False))
+    with pytest.raises(BlockedError,match='unsupported'):evaluate(w,config=g)
+    g=graph(root);n=next(n for n in g['nodes'] if n['id']=='sample.a')
+    n.update(op='bilinear_patch',parameters={'points':[[1e308,0,0],[-1e308,0,0],[0,1e308,0],[0,-1e308,0]]},dependencies=[])
+    r=evaluate(w,config=g);assert r['status']=='FAIL' and not r['certified_current']
+    json.dumps(r,allow_nan=False)
+
+
+def test_direct_graph_rejects_a_stale_workspace(root):
+    w=Workspace(root);s=AuthoringSession(root)
+    apply(s,dict(type='MoveWorldLandmark',world_entity_id='roof_corner',point=[.001,.5,1]))
+    with pytest.raises(ConflictError):Graph(graph(root),workspace=w)

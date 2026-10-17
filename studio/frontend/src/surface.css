@@ -1,0 +1,124 @@
+.surface-workspace {
+  padding: 18px;
+  background: #0e1821;
+  color: #dce8ee;
+  overflow: auto;
+  min-height: calc(100vh - 130px);
+}
+.surface-header,
+.surface-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.surface-header h2 {
+  margin: 0 0 8px;
+}
+.surface-notice {
+  color: #f1c56d;
+  border-left: 3px solid #f1c56d;
+  padding: 9px 12px;
+  background: #24313a;
+}
+.surface-grid {
+  display: grid;
+  grid-template-columns: 230px minmax(420px, 1fr) 310px;
+  gap: 16px;
+}
+.surface-grid aside {
+  background: #15232e;
+  padding: 12px;
+  max-height: 650px;
+  overflow: auto;
+}
+.surface-workspace label {
+  display: block;
+  margin: 8px 0;
+}
+.surface-workspace input,
+.surface-workspace select,
+.surface-workspace textarea {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+.surface-workspace textarea {
+  width: 100%;
+  height: 72px;
+}
+.surface-workspace small {
+  display: block;
+  font-size: 10px;
+  overflow-wrap: anywhere;
+}
+.surface-workspace button {
+  white-space: normal;
+}
+.surface-workspace [role="list"] button,
+.surface-bottom button {
+  display: block;
+  text-align: left;
+  width: 100%;
+  margin: 4px 0;
+}
+.surface-workspace button[aria-pressed="true"] {
+  outline: 2px solid #7bcade;
+}
+.surface-canvas [data-testid="surface-three-canvas"] {
+  height: 490px;
+  width: 100%;
+}
+.surface-canvas canvas {
+  display: block;
+}
+.surface-stale {
+  outline: 3px dashed #e8ac55;
+  opacity: 0.65;
+}
+.surface-bottom {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr 1fr;
+  gap: 16px;
+  margin-top: 18px;
+}
+.surface-bottom > div {
+  background: #15232e;
+  padding: 12px;
+  max-height: 380px;
+  overflow: auto;
+}
+.surface-boundary {
+  padding: 8px 0;
+  border-bottom: 1px solid #38505d;
+}
+.surface-parameter {
+  margin: 10px 0;
+}
+.surface-workspace dl {
+  font-size: 12px;
+}
+.surface-workspace dd {
+  margin: 3px 0 12px;
+}
+.surface-workspace code {
+  overflow-wrap: anywhere;
+}
+.surface-workspace li {
+  margin-bottom: 8px;
+}
+@media (max-width: 1100px) {
+  .surface-grid {
+    grid-template-columns: 210px 1fr;
+  }
+  .surface-grid > aside:last-child {
+    grid-column: 1/-1;
+    max-height: none;
+  }
+  .surface-bottom {
+    grid-template-columns: 1fr;
+  }
+  .surface-canvas [data-testid="surface-three-canvas"] {
+    height: 380px;
+  }
+}

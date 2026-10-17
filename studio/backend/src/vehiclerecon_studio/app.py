@@ -82,12 +82,53 @@ def create_app(config):
     def roots():return [{'id':k,'label':p.name,'revision':registry.root_revision(k)} for k,p in registry.roots.items()]
 
     @app.get('/api/v1/capabilities')
-    def capabilities():return {'version':'0.4','document_versions':[1,2],'writable_versions':[2],'image_formats':['PNG','JPEG'],
+    def capabilities():return {'version':'0.5','document_versions':[1,2],'writable_versions':[2],'image_formats':['PNG','JPEG'],
         'max_upload_bytes':config.max_upload,'max_pixels':config.max_pixels,'pipeline':False,
         'CV':any(p['available'] for p in registry.cv.catalog()),'epoch':registry.bus.epoch,'idempotency_survives_restart':False}
 
     @app.get('/api/v1/cv/providers')
     def cv_providers():return {'providers':registry.cv.catalog(),'limits':{'queue':4,'source_pixels':16777216,'local_search_pixels':262144,'mask_roi_pixels':4194304}}
+
+    @app.get('/api/v1/surface-operations')
+    def surface_operations():
+        from vehiclerecon.surfaces.authoring import registry as operations
+        return operations()
+
+    @app.get('/api/v1/projects/{ident}/surfaces')
+    def surface_graph(ident:str):
+        from vehiclerecon.authoring.workspace import Workspace
+        from vehiclerecon.surfaces.preview import inspect
+        root=registry.resolve(ident)
+        with registry.lock,ProjectLock(root,'studio-surface-inspect'):
+            if Project(root).data['schema_version']!=2:
+                return {'revision':revision(root),'graph':None,'evaluation_allowed':False,'gate':'BLOCKED BY SOURCE/CAGE ACCEPTANCE',
+                        'cage_boundaries':[],'validation':[{'category':'authoring','status':'BLOCKED','message':'Legacy project is read-only; current v2 source/cage acceptance required.'}]}
+            return JSONResponse(inspect(Workspace(root)))
+
+    @app.post('/api/v1/projects/{ident}/surface-validation')
+    def surface_validation(ident:str,request:Request,body:dict):
+        precondition(request,body)
+        if set(body)-{'expected_revision','graph'}:raise APIError(422,'FIELDS','Unknown validation field')
+        from vehiclerecon.authoring.workspace import Workspace
+        from vehiclerecon.surfaces.preview import validate_graph
+        root=registry.resolve(ident)
+        with registry.lock,ProjectLock(root,'studio-surface-validation'):
+            w=Workspace(root)
+            if w.revision!=body['expected_revision']:raise ConflictError('Graph revision changed')
+            return {'revision':w.revision,'validation':validate_graph(w,body.get('graph',{}))}
+
+    @app.post('/api/v1/projects/{ident}/surface-preview')
+    def surface_preview(ident:str,request:Request,body:dict):
+        precondition(request,body)
+        if set(body)-{'expected_revision','quality','graph'}:raise APIError(422,'FIELDS','Unknown preview field')
+        from vehiclerecon.authoring.workspace import Workspace
+        from vehiclerecon.surfaces.preview import evaluate
+        root=registry.resolve(ident)
+        with registry.lock,ProjectLock(root,'studio-surface-preview'):
+            result=evaluate(Workspace(root),config=body.get('graph'),quality=body.get('quality','low'),
+                            expected_revision=body['expected_revision'],cache=registry.surface_cache)
+            registry.bus.emit('surface_preview_ready' if result['certified_current'] else 'surface_validation_changed',project_id=ident,revision=result['revision'])
+            return JSONResponse(result)
 
     @app.get('/api/v1/reconciliation/retention')
     def reconciliation_retention():return registry.reconciliation.metrics()

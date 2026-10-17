@@ -9,7 +9,7 @@ export default defineConfig({
   fullyParallel: false,
   reporter: [
     ["list"],
-    ["json", { outputFile: "../../build/studio04-e2e-results.json" }],
+    ["json", { outputFile: "../../build/studio05-e2e-results.json" }],
   ],
   use: {
     headless: true,

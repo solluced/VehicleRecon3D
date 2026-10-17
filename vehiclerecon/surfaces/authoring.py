@@ -7,6 +7,20 @@ from .builder import OPERATIONS, order
 INPUTS = {'curve_sample':['curve'], 'lerp':['a','b'], 'offset':['source'],
           'coons':['bottom','top','left','right'], 'cubic_boundary_roll':['inner','outer'], 'ribbon':['curve']}
 SURFACES = {'coons','cubic_boundary_roll','arch_annulus','ribbon','bilinear_patch'}
+DESCRIPTIONS = {
+    'polyline':'Piecewise linear curve through ordered world points.',
+    'chord_hermite':'Chord-length cubic Hermite interpolation through world points.',
+    'shape_preserving_hermite':'Componentwise shape-preserving Hermite curve.',
+    'bezier_rail_range':'Monotone-X range of an existing cage Bezier rail.',
+    'curve_sample':'Sample one world point from a normalized curve parameter.',
+    'lerp':'Blend two points at t, or span two curves as a surface.',
+    'offset':'Translate an existing curve or point by a world vector.',
+    'coons':'Four-boundary Coons surface with explicit corner agreement.',
+    'cubic_boundary_roll':'Cubic transition between inner and outer curves.',
+    'arch_annulus':'Hermite inner/outer arch boundaries with a cubic transition.',
+    'ribbon':'Span a curve between two world-vector offsets.',
+    'bilinear_patch':'Bilinear surface through four ordered corner points.',
+    'boundary_stitch':'Discrete matching boundary rows; Blender audit required.'}
 COMMANDS = {'AddSurfacePatch','DeleteSurfacePatch','AddSurfaceNode','DeleteSurfaceNode',
             'SetSurfaceOperation','SetSurfaceParameter','SetSurfaceBoundary','ReverseSurfaceBoundary',
             'SetSurfaceDraft','SetSurfaceResolution','SetSurfaceMaterialRole','SetSurfaceMirror',
@@ -15,13 +29,14 @@ COMMANDS = {'AddSurfacePatch','DeleteSurfacePatch','AddSurfaceNode','DeleteSurfa
 
 def registry():
     """Parameter schemas are the production contracts, never a UI-owned palette."""
-    schema=read_json(RESOURCE_ROOT/'schemas/surface_graph.schema.json')
+    schema=read_json(RESOURCE_ROOT/'schemas/surface_graph_v2.schema.json')
     result=[]
     for node in schema['properties']['nodes']['items']['oneOf']:
-        p=node['properties'];op=p['op']['const'];params=p['parameters'];inputs=INPUTS.get(op,[])
-        result.append({'id':op,'version':1,'description':op.replace('_',' '),
+        p=node['properties'];op=p['op']['const'];params=node['allOf'][0]['then']['properties']['parameters'];inputs=INPUTS.get(op,[])
+        result.append({'id':op,'version':1,'description':DESCRIPTIONS[op],
             'parameter_schema':params,'required_inputs':[x for x in inputs if x in params.get('required',[])],
             'optional_inputs':[x for x in inputs if x not in params.get('required',[])],
+            'input_dimensions':{k:['curve','point'] if op in ('offset','lerp') else ['curve'] for k in inputs},
             'output_type':'surface' if op in SURFACES or op=='lerp' else 'mesh' if op=='boundary_stitch' else 'point' if op=='curve_sample' else 'curve_or_point' if op=='offset' else 'curve',
             'dimensional_expectations':'World coordinates and offsets in metres; normalized parameters in [0,1].',
             'preview_supported':op!='boundary_stitch','topology_supported':op in SURFACES or op=='lerp',
@@ -55,11 +70,17 @@ def graph_contract(config, cage=None):
         if n['dependencies']!=dependencies(n):raise SchemaError('Dependencies must match operation inputs: '+n['id'])
         if set(n.get('reversed',[]))-set(INPUTS.get(n['op'],[])):raise SchemaError('Unsupported boundary orientation')
         if n['op']=='bezier_rail_range' and cage is not None:
-            if n['parameters'].get('curve') not in {c['id'] for c in cage['curves']}:raise ReferenceError('Unknown cage boundary')
+            names={c['id'] for c in cage['curves'] if not c['symmetry']}
+            names.update(c['id']+'_'+side for c in cage['curves'] if c['symmetry'] for side,_ in cage['sides'])
+            if 'curve' in n['parameters'] and n['parameters']['curve'] not in names:raise ReferenceError('Unknown cage boundary')
         for k in ('t',):
             if k in n['parameters'] and not 0<=n['parameters'][k]<=1:raise SchemaError('Normalized parameter outside [0,1]')
         if n['op']=='bezier_rail_range' and 'x_range' in n['parameters'] and n['parameters']['x_range'][0]==n['parameters']['x_range'][1]:raise SchemaError('Empty rail range')
+        if n['op']=='boundary_stitch' and 'rows' in n['parameters']:
+            rows=n['parameters']['rows']
+            if not rows or rows[-1]!=1 or any(not 0<x<=1 for x in rows) or any(a>=b for a,b in zip(rows,rows[1:])):raise SchemaError('Stitch rows must increase strictly to 1')
         op=n['op'];params=n['parameters'];inputs={k:kinds[v] for k,v in params.items() if k in INPUTS.get(op,[]) and v in kinds}
+        if any(inputs.get(k) not in ('curve',None) for k in n.get('reversed',[])):raise SchemaError('Only curve inputs support reversal')
         if op in ('coons','cubic_boundary_roll','ribbon','curve_sample') and any(v!='curve' for v in inputs.values()):raise SchemaError('Operation requires curve inputs: '+n['id'])
         if op=='lerp':
             if len(set(inputs.values()))>1 or any(v not in ('curve','point') for v in inputs.values()):raise SchemaError('lerp requires two curves or two points')
@@ -78,6 +99,10 @@ def graph_contract(config, cage=None):
         if sum(x*x for x in normal)<1e-20:raise SchemaError('Normal direction cannot be zero')
     for a in config.get('adjacency',[]):
         if a['a'] not in patches or a['b'] not in patches or a['a']==a['b']:raise ReferenceError('Invalid adjacency patch identity')
+    for stitch in config.get('stitches',[]):
+        if stitch['surface'] not in patches or kinds.get(stitch['target'])!='curve':raise ReferenceError('Unresolved stitch surface/target')
+        lo,hi=stitch['u_range']
+        if not 0<=lo<hi<=1:raise SchemaError('Invalid stitch range')
     return ordered
 
 

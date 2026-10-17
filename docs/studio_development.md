@@ -1,9 +1,24 @@
-# Studio development — v0.4
+# Studio development — v0.5
 
 Studio is a separate optional Python distribution and React/TypeScript/Konva/Three.js
 workspace. Mandatory core dependencies remain unchanged. Human release name is
-v0.4; the optional distribution/frontend package version is 0.4.0. Canonical
+v0.5; the optional distribution/frontend package version is 0.5.0. Canonical
 document version 2 and transport `/api/v1` are independent versions.
+
+The [surface authoring contract](surface_authoring.md) documents the core registry,
+explicit graph drafts, typed commands, review gates, coarse evaluator and limitations.
+Studio renders sampled output; it owns no surface equations. The v0.4 reconciliation,
+CV, source and multi-view paths remain available. New graph documents use surface
+schema v2; accepted v1 graphs are not silently migrated.
+
+Focused checks: `pytest tests/test_surface_authoring.py`,
+`pytest studio/backend/tests/test_surface_api.py`, frontend `npm test`, and
+`npm run e2e -- surfaces.spec.ts`. Run the reproducible 27-patch/100-edit/CV-cache
+release workload with `python studio/backend/tests/benchmark_surfaces.py` from the
+repository root; its private projects and JSON evidence live under `build/`.
+The full browser suite retains the same 4K/5,000-point/20-layer source-save scenario
+for comparison against the v0.4 p95 baseline of 2340 ms. Lightweight CI remains four
+jobs and does not invoke Blender; the complete cold Tesla gate is release-only.
 
 ## Install and run
 

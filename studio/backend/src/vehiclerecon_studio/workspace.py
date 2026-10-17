@@ -55,6 +55,8 @@ class Registry:
         self.cv=CVService(self)
         from .reconciliation import Reconciliation
         self.reconciliation=Reconciliation(self)
+        from vehiclerecon.surfaces.preview import PreviewCache
+        self.surface_cache=PreviewCache()
 
     def scan(self):
         with self.lock:
@@ -220,6 +222,8 @@ class Registry:
                     commands=body.get('commands',[])
                     allowed={'AddObservation','MoveObservation','DeleteObservation','SetObservationProperties','AddSplinePoint','MoveSplinePoint','DeleteSplinePoint','SplitSpline','MergeSpline','SetMeasurement','SetProjectMetadata','SetProjectSettings','SetViewerLabel',
                              'AddWorldLandmark','MoveWorldLandmark','DeleteWorldLandmark','BindObservation','UnbindObservation','SetTolerance','SetCoveragePolicy'}
+                    from vehiclerecon.surfaces.authoring import COMMANDS
+                    allowed.update(COMMANDS)
                     if not isinstance(commands,list) or not 1<=len(commands)<=100:raise SchemaError('1..100 commands required')
                     for command in commands:
                         if command.get('type') not in allowed or (command.get('target','observation')!='observation' and command.get('type')!='MoveSplinePoint'):raise SchemaError('Operation unavailable in this authoring workspace')
@@ -278,6 +282,9 @@ class Registry:
                 if operation not in ('preferences','reload'):
                     for kind in ('residuals_changed','source_review_changed','cage_review_changed'):
                         self.bus.emit(kind,project_id=ident,revision=result['revision'],actor_tab=tab.rsplit(':',1)[-1])
+                    if 'surfaces' in result.get('stale',{}).get('stages',[]):
+                        for kind in ('surface_graph_changed','surface_preview_stale','surface_validation_changed'):
+                            self.bus.emit(kind,project_id=ident,revision=result['revision'],actor_tab=tab.rsplit(':',1)[-1])
                 return result
 
     @staticmethod

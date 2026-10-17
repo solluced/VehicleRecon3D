@@ -19,4 +19,5 @@ studio/frontend/playwright-report/
 studio/frontend/coverage/
 studio/frontend/*.tsbuildinfo
 studio/backend/build/
+tests/fixtures/surface_authoring_v2/.cache/
 projects/*/.studio/
