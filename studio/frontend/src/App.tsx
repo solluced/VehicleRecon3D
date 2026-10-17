@@ -9,6 +9,10 @@ import {
 } from "react";
 import { API, EditorClient, type APIError } from "./api";
 import { SourceCanvas, type Tool } from "./Canvas";
+import type { AssistCanvas, AssistTool } from "./cv-types";
+const CVPanel = lazy(() =>
+  import("./CVPanel").then((m) => ({ default: m.CVPanel })),
+);
 const MultiWorkspace = lazy(() =>
   import("./MultiWorkspace").then((m) => ({ default: m.MultiWorkspace })),
 );
@@ -62,6 +66,10 @@ export default function App() {
     [multi, setMulti] = useState(false);
   const pendingPrefs = useRef<ReturnType<typeof setTimeout> | null>(null),
     prefsRef = useRef(prefs);
+  const [cvOpen, setCVOpen] = useState(false),
+    [cvTool, setCVTool] = useState<AssistTool>("smart_edge"),
+    [cvActivation, setCVActivation] = useState(0),
+    [assist, setAssist] = useState<AssistCanvas | undefined>();
   prefsRef.current = prefs;
   async function list() {
     const [p, r] = await Promise.all([
@@ -169,7 +177,11 @@ export default function App() {
       await client.commands([
         { type: "AddObservation", view, observation: base("point", pixel) },
       ]);
-    } else if (tool === "polyline" || tool === "spline")
+    } else if (
+      tool === "polyline" ||
+      tool === "spline" ||
+      (tool === "measure" && draft.length < 2)
+    )
       setDraft((d) => [...d, pixel]);
     else if (tool === "insert" && selected && "points" in selected) {
       const after = selection?.point || selected.points.at(-1)!.id;
@@ -186,7 +198,7 @@ export default function App() {
     }
   }
   function base(
-    kind: "point" | "polyline" | "spline",
+    kind: "point" | "polyline" | "spline" | "axis",
     pixel?: number[],
   ): Observation {
     const common = {
@@ -224,8 +236,12 @@ export default function App() {
     return { ...common, kind, points };
   }
   async function finish() {
-    if (draft.length < 2 || !(tool === "polyline" || tool === "spline")) return;
-    const observation = base(tool);
+    if (
+      draft.length < 2 ||
+      !(tool === "polyline" || tool === "spline" || tool === "measure")
+    )
+      return;
+    const observation = base(tool === "measure" ? "axis" : tool);
     if (
       await client.commands([{ type: "AddObservation", view, observation }])
     ) {
@@ -266,7 +282,7 @@ export default function App() {
       if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "z") {
         e.preventDefault();
         void client.run(e.shiftKey ? "redo" : "undo");
-      } else if (multi) return;
+      } else if (multi || cvOpen) return;
       else if (e.key === "Enter") void finish();
       else if (e.key === "Delete" || e.key === "Backspace") {
         e.preventDefault();
@@ -318,7 +334,7 @@ export default function App() {
           </span>
         </button>
         <span className="phase-label">
-          RECONSTRUCTION WORKSPACE <b>0.2</b>
+          RECONSTRUCTION WORKSPACE <b>0.3</b>
         </span>
         <span className="connection">
           <i />
@@ -428,6 +444,8 @@ export default function App() {
               aria-pressed={multi}
               onClick={() => {
                 setMulti(!multi);
+                setCVOpen(false);
+                setAssist(undefined);
                 setDraft([]);
                 setTool("select");
               }}
@@ -640,6 +658,8 @@ export default function App() {
                             !(selected && "points" in selected)))
                       }
                       onClick={() => {
+                        setCVOpen(false);
+                        setAssist(undefined);
                         setTool(t);
                         setDraft([]);
                       }}
@@ -652,8 +672,57 @@ export default function App() {
                           polyline: "⌁ Polyline",
                           spline: "∿ Spline",
                           insert: "+ Knot",
+                          measure: "Measure",
                         }[t]
                       }
+                    </button>
+                  ))}
+                  <button
+                    disabled={!client.writable}
+                    onClick={() => {
+                      setCVOpen(false);
+                      setAssist(undefined);
+                      setTool("point");
+                      setDraft([]);
+                    }}
+                  >
+                    Landmark
+                  </button>
+                  <button
+                    disabled={!client.writable}
+                    onClick={() => {
+                      setCVOpen(false);
+                      setAssist(undefined);
+                      setTool("measure");
+                      setDraft([]);
+                    }}
+                  >
+                    Measure
+                  </button>
+                  {(
+                    [
+                      ["smart_edge", "Smart Edge"],
+                      ["magic_select", "Magic Select"],
+                      ["detect_wheels", "Detect Wheels"],
+                      ["trace_contour", "Trace Contour"],
+                    ] as [AssistTool, string][]
+                  ).map(([t, label]) => (
+                    <button
+                      key={t}
+                      disabled={!reference}
+                      className={
+                        cvOpen && cvTool === t ? "active cv-tool" : "cv-tool"
+                      }
+                      onClick={() => {
+                        setCVTool(t);
+                        setCVActivation((v) => v + 1);
+                        setCVOpen(true);
+                        setTool("select");
+                        setDraft([]);
+                        setSelection(null);
+                      }}
+                    >
+                      {label}
                     </button>
                   ))}
                   <span className="tool-separator" />
@@ -678,7 +747,7 @@ export default function App() {
                     Delete {selection?.point ? "knot" : "entity"}
                   </button>
                 </div>
-                {["point", "polyline", "spline"].includes(tool) && (
+                {["point", "polyline", "spline", "measure"].includes(tool) && (
                   <div className="creation-bar">
                     <label>
                       New object role
@@ -694,7 +763,12 @@ export default function App() {
                     </label>
                     {tool !== "point" && (
                       <>
-                        <span>{draft.length} knots · Enter to finish</span>
+                        <span>
+                          {draft.length} knots · Enter to finish
+                          {tool === "measure" && draft.length === 2
+                            ? ` · ${Math.hypot(draft[1][0] - draft[0][0], draft[1][1] - draft[0][1]).toFixed(2)} source px`
+                            : ""}
+                        </span>
                         <button
                           disabled={draft.length < 2}
                           onClick={() => void finish()}
@@ -780,6 +854,8 @@ export default function App() {
                 )}
                 {reference ? (
                   <SourceCanvas
+                    assist={cvOpen ? assist : undefined}
+                    crop={cvOpen ? assist?.crop : undefined}
                     observations={snapshot.observations}
                     reference={reference}
                     url={
@@ -872,75 +948,97 @@ export default function App() {
                 </div>
               </main>
               <aside className="right-panel">
-                <div className="inspector-tabs">
-                  <button
-                    className={inspector === "properties" ? "active" : ""}
-                    onClick={() => setInspector("properties")}
-                  >
-                    Properties
-                  </button>
-                  <button
-                    className={inspector === "settings" ? "active" : ""}
-                    onClick={() => setInspector("settings")}
-                  >
-                    Settings
-                  </button>
-                </div>
-                {inspector === "settings" ? (
-                  <Settings
-                    snapshot={snapshot}
-                    schemas={schemas}
-                    profiles={profiles}
-                    client={client}
-                    disabled={!client.writable}
-                  />
-                ) : selected ? (
-                  <>
-                    <Properties
-                      key={selected.id}
-                      observation={selected}
-                      selection={selection}
+                {cvOpen && reference ? (
+                  <Suspense fallback={<p>Opening annotation tools…</p>}>
+                    <CVPanel
+                      key={snapshot.id + reference.id + view}
+                      snapshot={snapshot}
                       client={client}
-                      roles={snapshot.roles}
-                      onRoleChanged={setRole}
-                      canEdit={canEdit}
+                      reference={reference}
+                      view={view}
+                      initialTool={cvTool}
+                      activation={cvActivation}
+                      onCanvas={setAssist}
+                      onExit={() => {
+                        setCVOpen(false);
+                        setAssist(undefined);
+                        setTool("select");
+                      }}
                     />
-                    <label className="layer-assignment">
-                      Display layer
-                      <select
-                        aria-label="Selected display layer"
-                        value={layerFor(selected, prefs)}
-                        onChange={(e) =>
-                          preference({
-                            assignments: {
-                              ...prefs.assignments,
-                              [selected.id]: e.target.value,
-                            },
-                          })
-                        }
-                      >
-                        {Object.entries(prefs.layers || {})
-                          .filter(([, l]) => l.category !== "image")
-                          .map(([id, l]) => (
-                            <option key={id} value={id}>
-                              {l.name}
-                            </option>
-                          ))}
-                      </select>
-                    </label>
-                  </>
+                  </Suspense>
                 ) : (
-                  <div className="inspector-empty">
-                    <span>↖</span>
-                    <h3>Select an observation</h3>
-                    <p>
-                      Inspect source coordinates, semantic role and provenance
-                      here.
-                    </p>
-                    <small>
-                      Only source observations are edited in this workspace.
-                    </small>
-                  </div>
+                  <>
+                    <div className="inspector-tabs">
+                      <button
+                        className={inspector === "properties" ? "active" : ""}
+                        onClick={() => setInspector("properties")}
+                      >
+                        Properties
+                      </button>
+                      <button
+                        className={inspector === "settings" ? "active" : ""}
+                        onClick={() => setInspector("settings")}
+                      >
+                        Settings
+                      </button>
+                    </div>
+                    {inspector === "settings" ? (
+                      <Settings
+                        snapshot={snapshot}
+                        schemas={schemas}
+                        profiles={profiles}
+                        client={client}
+                        disabled={!client.writable}
+                      />
+                    ) : selected ? (
+                      <>
+                        <Properties
+                          key={selected.id}
+                          observation={selected}
+                          selection={selection}
+                          client={client}
+                          roles={snapshot.roles}
+                          onRoleChanged={setRole}
+                          canEdit={canEdit}
+                        />
+                        <label className="layer-assignment">
+                          Display layer
+                          <select
+                            aria-label="Selected display layer"
+                            value={layerFor(selected, prefs)}
+                            onChange={(e) =>
+                              preference({
+                                assignments: {
+                                  ...prefs.assignments,
+                                  [selected.id]: e.target.value,
+                                },
+                              })
+                            }
+                          >
+                            {Object.entries(prefs.layers || {})
+                              .filter(([, l]) => l.category !== "image")
+                              .map(([id, l]) => (
+                                <option key={id} value={id}>
+                                  {l.name}
+                                </option>
+                              ))}
+                          </select>
+                        </label>
+                      </>
+                    ) : (
+                      <div className="inspector-empty">
+                        <span>↖</span>
+                        <h3>Select an observation</h3>
+                        <p>
+                          Inspect source coordinates, semantic role and
+                          provenance here.
+                        </p>
+                        <small>
+                          Only source observations are edited in this workspace.
+                        </small>
+                      </div>
+                    )}
+                  </>
                 )}
               </aside>
             </div>
@@ -950,7 +1048,7 @@ export default function App() {
       <footer>
         <span>VehicleRecon Studio</span>
         <span>Local workspace · Original sources preserved</span>
-        <span>Multi-view consistency / 0.2</span>
+        <span>Annotation assistance / 0.3</span>
       </footer>
     </div>
   );

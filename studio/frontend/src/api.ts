@@ -1,4 +1,5 @@
 import type { AuthoringCommand, Snapshot } from "./types";
+import { applySnapshotDelta, type SnapshotDelta } from "./snapshot-delta";
 export class APIError extends Error {
   constructor(
     public status: number,
@@ -127,15 +128,26 @@ export class EditorClient {
     const s = this.state.snapshot!;
     this.set({ busy: true, error: null });
     try {
-      const result = await this.api.post<{ snapshot: Snapshot }>(
-        "/projects/" + s.id + "/" + operation,
-        {
-          ...fields,
-          expected_revision: s.revision,
-          lease_id: this.state.lease,
-        },
-      );
-      this.set({ snapshot: result.snapshot, busy: false });
+      const result = await this.api.post<{
+        snapshot?: Snapshot;
+        snapshot_delta?: SnapshotDelta;
+      }>("/projects/" + s.id + "/" + operation, {
+        ...fields,
+        expected_revision: s.revision,
+        lease_id: this.state.lease,
+        response_format: "delta",
+      });
+      let snapshot: Snapshot;
+      try {
+        snapshot =
+          result.snapshot || applySnapshotDelta(s, result.snapshot_delta!);
+      } catch {
+        throw new APIError(
+          409,
+          "Incremental response is out of date. Reload canonical state to continue.",
+        );
+      }
+      this.set({ snapshot, busy: false });
       return true;
     } catch (error) {
       const e = error as APIError;
@@ -166,6 +178,7 @@ export class EditorClient {
         preferences,
         expected_revision: s.revision,
         lease_id: this.state.lease,
+        response_format: "ack",
       });
     } catch (error) {
       const e = error as APIError;

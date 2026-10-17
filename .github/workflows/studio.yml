@@ -70,4 +70,6 @@ jobs:
             build/studio-v01b-*.png
             build/studio02-*.json
             build/studio02-*.png
+            build/studio03-*.json
+            build/studio03-*.png
             studio/frontend/test-results/

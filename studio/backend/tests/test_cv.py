@@ -65,6 +65,18 @@ def test_mask_refinement_and_circle_candidates_source_pixel_coordinates():
     assert [c['center'][0] for c in circles]==pytest.approx([70,185],abs=2)
     assert all(c['semantic_role']=='UNKNOWN' and 'not probability' in c['score_meaning'] for c in circles)
 
+def test_mask_matches_analytic_pixels_and_weak_noisy_search_is_deterministic():
+    cv=pytest.importorskip('cv2');provider=OpenCVProvider()
+    result=_run(provider,'body_mask.png','segment_object',{'roi':[15,40,245,205]})
+    raw=cv.imdecode(np.frombuffer(result['rasters']['mask'],np.uint8),cv.IMREAD_UNCHANGED)
+    source=cv.imdecode(np.frombuffer((FIXTURES/'body_mask.png').read_bytes(),np.uint8),cv.IMREAD_COLOR)[40:205,15:245]
+    actual=raw[:,:,3]>0;expected=np.any(source<250,axis=2)
+    assert np.count_nonzero(actual&expected)/np.count_nonzero(actual|expected)>.99
+    parameters={'preset':'Weak','trajectory':[[108,30],[109,90],[110,150]],'search_radius':12}
+    a=_run(provider,'weak_noisy.png','smart_edge',parameters);b=_run(provider,'weak_noisy.png','smart_edge',parameters)
+    assert a==b and a['search_pixels']<=262144
+    assert a['components'][0]['semantic_role']=='UNKNOWN'
+
 def _source(env,filename):
     _,_,_,get,root,_,_,_=env
     target=root/'input/reference.png';target.write_bytes((FIXTURES/filename).read_bytes())

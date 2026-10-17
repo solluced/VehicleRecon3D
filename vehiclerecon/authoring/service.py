@@ -121,7 +121,8 @@ class AuthoringSession:
     @staticmethod
     def _flush(w):
         data = w.documents['project'];prior=w._flushed_documents
-        if data!=prior.get('project'):w.files['project.json'] = _bytes(data)
+        if data!=prior.get('project'):
+            w.files['project.json'] = _bytes(data);prior['project']=copy.deepcopy(data)
         w.project.data = copy.deepcopy(data)
         if w.project.profile['id']!=data['vehicle_profile']:
             from ..core.project import read_json, RESOURCE_ROOT
@@ -129,7 +130,7 @@ class AuthoringSession:
         for kind in ('calibration','cage','surface_graph','details','silhouette_traces'):
             if kind in w.documents and (w.documents[kind]!=prior.get(kind) or data['generated'][kind] not in w.files):
                 w.files[data['generated'][kind]] = _bytes(w.documents[kind])
-        w._flushed_documents=copy.deepcopy(w.documents)
+                prior[kind]=copy.deepcopy(w.documents[kind])
 
     @staticmethod
     def _touch(cal, selected):

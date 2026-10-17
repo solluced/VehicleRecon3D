@@ -1,0 +1,146 @@
+.cv-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+  font-size: 12px;
+  color: #d9e6ee;
+}
+.cv-panel h2,
+.cv-panel h3 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 500;
+}
+.cv-panel p {
+  margin: 0;
+  line-height: 1.6;
+}
+.cv-panel label {
+  display: flex;
+  gap: 7px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.cv-panel label select,
+.cv-panel label input:not([type="checkbox"]) {
+  width: 100%;
+}
+.cv-panel input[type="checkbox"] {
+  accent-color: #d49cf1;
+}
+.cv-panel select,
+.cv-panel input {
+  min-width: 0;
+}
+.cv-panel fieldset,
+.cv-panel details,
+.cv-panel section {
+  border: 1px solid #3c455b;
+  border-radius: 5px;
+  padding: 10px;
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  min-width: 0;
+}
+.cv-panel legend {
+  color: #d8acf0;
+  padding: 0 5px;
+}
+.cv-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.cv-heading button {
+  padding: 5px;
+}
+.cv-contract {
+  border-left: 3px solid #cf91eb;
+  padding: 8px;
+  background: #282334;
+  color: #e4c7f1;
+}
+.cv-tool-grid,
+.cv-actions {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.cv-tool-grid button {
+  flex: 1 0 42%;
+}
+.cv-panel button.active {
+  border-color: #d89bf1;
+  background: #45334f;
+}
+.cv-coordinates {
+  display: flex;
+  gap: 6px;
+}
+.cv-coordinates label {
+  flex: 1;
+  min-width: 0;
+  font-size: 10px;
+}
+.cv-candidates {
+  display: grid;
+  gap: 6px;
+  max-height: 230px;
+  overflow: auto;
+}
+.cv-candidate {
+  padding: 8px;
+  border: 1px dashed #9a74af;
+  border-radius: 4px;
+}
+.cv-candidate.selected {
+  background: #30283b;
+  border-color: #daa9f0;
+}
+.cv-candidate span {
+  flex: 1;
+  font-size: 11px;
+}
+.cv-candidate small {
+  display: block;
+  color: #b9a5c7;
+  margin-top: 4px;
+}
+.cv-error {
+  color: #f4bd9e;
+  border: 1px solid #8f5a49;
+  padding: 8px;
+  border-radius: 4px;
+}
+.cv-fit-evidence {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 6px;
+  margin: 0;
+  font-size: 10px;
+}
+.cv-fit-evidence dd {
+  margin: 0;
+  color: #dfbaf3;
+}
+.cv-panel code {
+  font-size: 10px;
+  overflow-wrap: anywhere;
+}
+.cv-panel pre {
+  font-size: 10px;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  max-height: 160px;
+  overflow: auto;
+}
+.tool-bar {
+  flex-wrap: wrap;
+}
+.tool-bar .cv-tool {
+  border-color: #665075;
+  color: #e1b5f4;
+}

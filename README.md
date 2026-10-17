@@ -48,9 +48,10 @@ The local visual editor is documented in the
 [implementation roadmap](docs/studio_roadmap.md). The
 [v0.1A core authoring foundation](docs/core_authoring.md) implements v2 contracts,
 typed editing, atomic recovery, acceptance gates and managed jobs.
-**Studio v0.2** adds coordinated views, correspondences, explicit world landmarks,
-fit proposals, residual heatmaps/reviews and a live Three.js cage preview to the
-optional authenticated FastAPI + React/TypeScript/Konva source editor:
+**Studio v0.3** preserves coordinated views, correspondences, explicit world landmarks,
+fit proposals, residual heatmaps/reviews and a live Three.js cage preview. It adds
+optional local Smart Edge, Magic Select, contour and wheel proposals to the
+authenticated FastAPI + React/TypeScript/Konva source editor:
 
 ```powershell
 python -m pip install -e studio/backend
@@ -62,9 +63,11 @@ undo/redo and reopen canonical files. V1 stays read-only in Studio and runs
 unchanged through the CLI. Node and Blender are not needed for normal manual
 authoring; prebuilt assets ship with the optional distribution. See
 [installation/development](docs/studio_development.md) and the
-[v0.2 user manual](docs/studio_user_manual_v0.2.md). Core-computed geometry stays
-authoritative; proposals require explicit apply. CV, surface editing and Studio
-Blender build orchestration remain deferred.
+[v0.3 user manual](docs/studio_user_manual_v0.3.md). Install the CPU-only baseline
+with `python -m pip install -e "studio/backend[cv]"`, or keep using manual tools
+without it. CV proposals require inspection and explicit ACCEPT into source
+observations; they do not move world geometry. Surface editing and Studio Blender
+build orchestration remain deferred.
 
 The accepted baseline remains frozen in `tests/fixtures/tesla/baseline/`.
 The original 91-file Tesla project, including its coupled Python scripts, is

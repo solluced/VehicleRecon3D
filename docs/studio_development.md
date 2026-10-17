@@ -1,8 +1,8 @@
-# Studio development — v0.2
+# Studio development — v0.3
 
 Studio is a separate optional Python distribution and React/TypeScript/Konva/Three.js
 workspace. Mandatory core dependencies remain unchanged. Human release name is
-v0.2; the optional distribution/frontend package version is 0.2.0. Canonical
+v0.3; the optional distribution/frontend package version is 0.3.0. Canonical
 document version 2 and transport `/api/v1` are independent versions.
 
 ## Install and run
@@ -24,6 +24,13 @@ vehicle-recon studio --root F:/T/projects
 # Equivalent:
 python -m vehiclerecon studio --root F:/T/projects
 ```
+
+The optional CPU provider is installed explicitly with
+`python -m pip install -e "studio/backend[test,cv]"`. It pins
+`opencv-python-headless==4.14.0.94` (OpenCV runtime 4.14.0). No model, GPU, cloud
+service or runtime download is used. `vehicle-recon studio --disable-cv` disables
+assistance even when the dependency is installed. See the
+[v0.3 manual](studio_user_manual_v0.3.md) and [provider contract](cv_provider.md).
 
 The checked-in production frontend is included in the Studio wheel. Normal
 launch needs no Node process or Blender. The default allowed root is

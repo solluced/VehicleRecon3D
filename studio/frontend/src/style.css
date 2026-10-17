@@ -1247,6 +1247,8 @@ footer {
     font-size: 9px;
   }
 }
+.tool-bar { flex-wrap: wrap; }
+.tool-bar .cv-tool { border-color: #665075; color: #e1b5f4; }
 @media (max-width: 850px) {
   .editor-grid {
     grid-template-columns: 160px minmax(240px, 1fr) 225px;

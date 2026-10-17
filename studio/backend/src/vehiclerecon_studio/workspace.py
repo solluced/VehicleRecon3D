@@ -191,6 +191,9 @@ class Registry:
 
     def mutate(self,ident,tab,body,key,operation):
         with self.lock:
+            response_format=body.get('response_format','full')
+            if response_format not in ('full','delta','ack') or response_format=='ack' and operation!='preferences':
+                raise SchemaError('Unknown response format or acknowledgement requested for a canonical edit')
             if not re.fullmatch('[A-Za-z0-9_-]{16,100}',key or ''):raise APIError(428,'IDEMPOTENCY','Idempotency-Key required')
             fingerprint=digest_data([ident,tab,operation,{k:(hashlib.sha256(v).hexdigest() if isinstance(v,bytes) else v) for k,v in body.items()}]);cached=self.requests.get(key)
             if cached:
@@ -206,7 +209,9 @@ class Registry:
                 if not expected:raise APIError(428,'REVISION','expected_revision required')
                 if revision(root)!=expected:
                     self.bus.emit('conflict',project_id=ident,revision=revision(root));raise ConflictError('External revision changed; reload project')
-                session=self.session(ident,tab)
+                cached_before=self.snapshots.get(ident)
+                before=cached_before[1] if cached_before and cached_before[1].get('revision')==expected else None
+                session=None if operation in ('preferences','reload') else self.session(ident,tab)
                 if operation=='transactions':
                     commands=body.get('commands',[])
                     allowed={'AddObservation','MoveObservation','DeleteObservation','SetObservationProperties','AddSplinePoint','MoveSplinePoint','DeleteSplinePoint','SplitSpline','MergeSpline','SetMeasurement','SetProjectMetadata','SetProjectSettings','SetViewerLabel',
@@ -248,7 +253,13 @@ class Registry:
                     result=import_reference(session,body['_raw'],reference_id=body.get('reference_id','multiview'),expected_revision=expected)
                 else:raise APIError(404,'OPERATION','Unsupported operation')
                 self.seen[ident]=result['revision'];lease['expires']=time.monotonic()+45
-                snapshot=self.snapshot(ident,tab);result={**result,'snapshot':snapshot}
+                if response_format=='ack':result={**result,'preferences_saved':True}
+                else:
+                    snapshot=self.snapshot(ident,tab)
+                    if response_format=='delta' and before is not None:
+                        from .deltas import snapshot_delta
+                        result={**result,'snapshot_delta':snapshot_delta(before,snapshot)}
+                    else:result={**result,'snapshot':snapshot}
                 self.requests[key]=(fingerprint,result)
                 if len(self.requests)>512:self.requests.pop(next(iter(self.requests)))
                 for kind in (('session_changed',) if operation in ('preferences','reload') else ('validation_changed','revision_changed')):

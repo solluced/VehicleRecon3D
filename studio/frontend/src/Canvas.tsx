@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import Konva from "konva";
+import type { AssistCanvas } from "./cv-types";
 import { heatColors, type ResidualRow } from "./multiview-types";
 import {
   controls,
@@ -22,7 +23,7 @@ import {
   type XY,
 } from "./types";
 export type Tool =
-  "select" | "pan" | "point" | "polyline" | "spline" | "insert";
+  "select" | "pan" | "point" | "polyline" | "spline" | "insert" | "measure";
 type Props = {
   observations: Observation[];
   reference: Reference;
@@ -43,6 +44,7 @@ type Props = {
   crop?: number[];
   active?: boolean;
   onActivate?: () => void;
+  assist?: AssistCanvas;
 };
 export function SourceCanvas(props: Props) {
   const host = useRef<HTMLDivElement>(null),
@@ -99,6 +101,12 @@ export function SourceCanvas(props: Props) {
   useEffect(() => {
     if (props.focus) adapter.current?.focus(props.focus.pixel);
   }, [props.focus?.key]);
+  useEffect(() => {
+    adapter.current?.draw();
+  }, [props.assist]);
+  useEffect(() => {
+    if (props.crop) adapter.current?.fit();
+  }, [props.crop?.join(",")]);
   function nav(kind: string) {
     const a = adapter.current;
     if (!a) return;
@@ -198,6 +206,8 @@ class Adapter {
     null;
   frame = 0;
   destroyed = false;
+  assistDown = false;
+  rasterImages = new Map<string, HTMLImageElement | null>();
   keyDown = (e: KeyboardEvent) => {
     if (
       e.code === "Space" &&
@@ -211,7 +221,7 @@ class Adapter {
     if (e.code === "Space") this.space = false;
   };
   outside = () => {
-    if (this.gesture) this.up();
+    if (this.gesture || this.assistDown) this.up();
   };
   constructor(
     public container: HTMLDivElement,
@@ -334,6 +344,15 @@ class Adapter {
       };
       return;
     }
+    if (
+      p.assist?.active &&
+      p.assist.sourceId === p.reference.id &&
+      p.assist.view === p.view
+    ) {
+      this.assistDown = true;
+      p.assist.onDown([source.x, source.y]);
+      return;
+    }
     if (p.tool !== "select") {
       if (p.writable) p.onClick([source.x, source.y]);
       return;
@@ -383,6 +402,8 @@ class Adapter {
     if (!screen) return;
     const q = this.source();
     this.cursor(`${q.x.toFixed(1)}, ${q.y.toFixed(1)} px`);
+    if (this.props().assist?.active && !this.gesture)
+      this.props().assist?.onMove([q.x, q.y], this.assistDown);
     const g = this.gesture;
     if (!g) return;
     g.moved =
@@ -400,6 +421,12 @@ class Adapter {
     }
   }
   up() {
+    if (this.assistDown) {
+      this.assistDown = false;
+      const q = this.source();
+      this.props().assist?.onUp([q.x, q.y]);
+      return;
+    }
     const g = this.gesture;
     if (!g) return;
     this.gesture = null;
@@ -421,6 +448,7 @@ class Adapter {
     }
   }
   cancel() {
+    this.assistDown = false;
     this.gesture = null;
     this.override = null;
     this.draw();
@@ -465,6 +493,119 @@ class Adapter {
         );
       }
     }
+  }
+  paintAssist(context: Konva.Context) {
+    const p = this.props(),
+      a = p.assist,
+      c = context._context,
+      s = this.camera.scale;
+    this.container.dataset.cvProposals = String(a?.components.length || 0);
+    this.container.dataset.cvActive = String(a?.active || false);
+    this.container.dataset.cvCrop = JSON.stringify(a?.crop || null);
+    this.container.dataset.cvPreviewPoints = String(a?.preview.length || 0);
+    if (!a || a.sourceId !== p.reference.id || a.view !== p.view) return;
+    c.save();
+    for (const raster of a.rasters) {
+      let im = this.rasterImages.get(raster.url);
+      if (!this.rasterImages.has(raster.url)) {
+        this.rasterImages.set(raster.url, null);
+        const next = new Image();
+        next.onload = () => {
+          if (!this.destroyed && this.rasterImages.has(raster.url)) {
+            this.rasterImages.set(raster.url, next);
+            this.draw();
+          }
+        };
+        next.src = raster.url;
+        if (this.rasterImages.size > 4)
+          this.rasterImages.delete(this.rasterImages.keys().next().value!);
+      }
+      if (im) {
+        const [x, y, r, b] = raster.bounds;
+        c.globalAlpha = raster.opacity;
+        c.drawImage(im, x, y, r - x, b - y);
+      }
+    }
+    const line = (points: number[][], color: string, dash: number[]) => {
+      if (!points.length) return;
+      c.beginPath();
+      points.forEach((v, i) =>
+        i ? c.lineTo(v[0], v[1]) : c.moveTo(v[0], v[1]),
+      );
+      c.strokeStyle = color;
+      c.setLineDash(dash.map((v) => v / s));
+      c.stroke();
+    };
+    if (a.visible)
+      for (const component of a.components) {
+        if (component.status === "ACCEPTED") continue;
+        c.globalAlpha =
+          a.opacity * (component.status === "REJECTED" ? 0.25 : 1);
+        c.lineWidth = (a.selected.includes(component.id) ? 2.5 : 1.5) / s;
+        if (a.original && component.original_points)
+          line(component.original_points, "#91a2b8", [2, 3]);
+        const color =
+          component.status === "STALE"
+            ? "#efb365"
+            : component.status === "REJECTED"
+              ? "#758195"
+              : "#dc9df5";
+        c.strokeStyle = color;
+        c.setLineDash([7 / s, 4 / s]);
+        c.beginPath();
+        if (component.kind === "circle" && component.center) {
+          c.arc(
+            component.center[0],
+            component.center[1],
+            component.radius_px!,
+            0,
+            Math.PI * 2,
+          );
+          c.stroke();
+          c.beginPath();
+          c.arc(
+            component.center[0],
+            component.center[1],
+            3 / s,
+            0,
+            Math.PI * 2,
+          );
+          c.stroke();
+        } else if (component.kind === "spline" && component.knots) {
+          component.knots.forEach((k, i) => {
+            if (!i) c.moveTo(k.pixel[0], k.pixel[1]);
+            else {
+              const prev = component.knots![i - 1];
+              c.bezierCurveTo(
+                prev.right[0],
+                prev.right[1],
+                k.left[0],
+                k.left[1],
+                k.pixel[0],
+                k.pixel[1],
+              );
+            }
+          });
+          c.stroke();
+        } else line(component.points || [], color, [7, 4]);
+      }
+    c.globalAlpha = 1;
+    c.lineWidth = 2 / s;
+    line(a.preview, "#f9ce79", [5, 3]);
+    if (a.preview.length) {
+      c.beginPath();
+      c.setLineDash([]);
+      c.fillStyle = "#f9ce79";
+      c.arc(a.preview[0][0], a.preview[0][1], 4 / s, 0, Math.PI * 2);
+      c.fill();
+    }
+    if (a.box) {
+      const [x, y, r, b] = a.box;
+      c.strokeStyle = "#f9ce79";
+      c.setLineDash([5 / s, 3 / s]);
+      c.strokeRect(x, y, r - x, b - y);
+    }
+    c.restore();
   }
   visible() {
     const p = this.props();
@@ -552,6 +693,12 @@ class Adapter {
       new Konva.Shape({
         listening: false,
         sceneFunc: (context) => this.paintResiduals(context),
+      }),
+    );
+    this.vectorGroup.add(
+      new Konva.Shape({
+        listening: false,
+        sceneFunc: (context) => this.paintAssist(context),
       }),
     );
     this.draw();
@@ -660,5 +807,6 @@ class Adapter {
     window.removeEventListener("keyup", this.keyUp);
     window.removeEventListener("mouseup", this.outside);
     this.stage.destroy();
+    this.rasterImages.clear();
   }
 }

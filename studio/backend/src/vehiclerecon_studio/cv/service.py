@@ -235,7 +235,7 @@ class CVService:
             return copy.deepcopy(p)
 
     def accept(self,ident,owner,proposal_id,body,key):
-        if set(body)-{'expected_revision','lease_id','proposal_revision','component_ids','semantic_roles','confirm_observed'}:
+        if set(body)-{'expected_revision','lease_id','proposal_revision','component_ids','semantic_roles','confirm_observed','response_format'}:
             raise SchemaError('Unknown CV acceptance field')
         with self.registry.lock:
             if not isinstance(key,str) or not re.fullmatch('[A-Za-z0-9_-]{16,100}',key):
@@ -274,7 +274,8 @@ class CVService:
                         observation['points']=[{'id':'cvk_'+uuid.uuid4().hex,**k} for k in knots]
                     commands.append({'type':'AddObservation','view':p['view'],'observation':observation})
                 transaction_key=hashlib.sha256((key+':cv-transaction').encode()).hexdigest()
-                result=self.registry.mutate(ident,owner,{'expected_revision':body['expected_revision'],'lease_id':body.get('lease_id'),'commands':commands},transaction_key,'transactions')
+                result=self.registry.mutate(ident,owner,{'expected_revision':body['expected_revision'],'lease_id':body.get('lease_id'),
+                    'commands':commands,'response_format':body.get('response_format','full')},transaction_key,'transactions')
                 if self.registry.requests.get(transaction_key):self.registry.requests.pop(transaction_key)
                 p['status']='ACCEPTED';p['proposal_revision']+=1
                 for c in p['components']:

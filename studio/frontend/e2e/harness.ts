@@ -12,7 +12,10 @@ export const repo = resolve("../.."),
         ? ".venv/Scripts/python.exe"
         : ".venv/bin/python",
     );
-export async function server(root: string): Promise<{
+export async function server(
+  root: string,
+  cv_enabled = true,
+): Promise<{
   origin: string;
   secret: string;
   pid: number;
@@ -24,7 +27,7 @@ export async function server(root: string): Promise<{
     [resolve(repo, "studio/backend/tests/browser_server.py")],
     { cwd: repo, stdio: ["pipe", "pipe", "pipe"], windowsHide: true },
   );
-  process.stdin!.end(JSON.stringify({ root, secret }) + "\n");
+  process.stdin!.end(JSON.stringify({ root, secret, cv_enabled }) + "\n");
   const info = await new Promise<{ origin: string; pid: number }>(
     (ok, fail) => {
       let text = "";

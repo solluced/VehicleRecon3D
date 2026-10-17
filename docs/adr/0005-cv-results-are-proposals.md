@@ -1,6 +1,6 @@
 # ADR 0005 — CV results are proposals
 
-Status: selected architecture baseline for review; implementation pending.
+Status: accepted architecture; local OpenCV baseline implemented in Studio v0.3.
 
 ## Context
 
@@ -37,3 +37,6 @@ require separate explicit product design; nothing sends images off-device by
 default.
 
 See [CVProvider contract](../studio_backend_api.md#cvprovider-interface-prototype).
+The implemented optional provider, job and proposal contracts are documented in
+[cv_provider.md](../cv_provider.md); user workflows are in the
+[v0.3 manual](../studio_user_manual_v0.3.md).
