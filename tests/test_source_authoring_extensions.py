@@ -47,3 +47,29 @@ def test_reused_readiness_matches_fresh_and_rejects_stale_workspace(tmp_path):
     assert readiness(tmp_path,workspace=w)==readiness(tmp_path)
     path=tmp_path/'project.json';path.write_bytes(path.read_bytes()+b'\n')
     with pytest.raises(ConflictError):readiness(tmp_path,workspace=w)
+
+
+def test_profile_change_cannot_reuse_an_inspected_source_subject(tmp_path):
+    from vehiclerecon.authoring.reviews import subject
+    shutil.copytree(REPOSITORY/'tests/fixtures/authoring_v2',tmp_path,dirs_exist_ok=True)
+    s=AuthoringSession(tmp_path);before=s.revision;inspected=subject(Workspace(tmp_path),'source')
+    with pytest.raises(ConflictError):
+        s.apply([{'type':'SetProjectMetadata','values':{'vehicle_profile':'coupe'}},
+                 {'type':'SetSourceDisposition','decision':'ACCEPTED','reviewer':'Fixture reviewer','notes':['Old profile evidence only.'],'expected_subject':inspected}],expected_revision=before)
+    assert s.revision==before
+
+
+def test_partial_view_draft_supports_source_add_and_delete(tmp_path):
+    from vehiclerecon.core.transactions import commit
+    from vehiclerecon.authoring.contracts import crop_identity
+    import json
+    create_draft(tmp_path);s=AuthoringSession(tmp_path)
+    raw=(REPOSITORY/'tests/fixtures/authoring_v2/input/reference.png').read_bytes()
+    result=import_reference(s,raw,expected_revision=s.revision);w=Workspace(tmp_path)
+    cal=w.documents['calibration'];cal['views']['front']={'landmarks':{}};cal['views']['side']={'landmarks':{}}
+    commit(tmp_path,{'generated/calibration.json':json.dumps(cal).encode()},expected_revision=w.revision,validator=w.validate)
+    template=json.loads((REPOSITORY/'tests/fixtures/authoring_v2/generated/calibration.json').read_text())['views']['side']['landmarks']['observations'][0]
+    template.update(id='partial_point',source_sha256=result['sha256'],crop_id=crop_identity('multiview',None))
+    s.apply([{'type':'AddObservation','view':'side','observation':template}],expected_revision=s.revision)
+    s.apply([{'type':'DeleteObservation','observation_id':'partial_point'}],expected_revision=s.revision)
+    assert Workspace(tmp_path).documents['calibration']['views']['side']['landmarks']['observations']==[]

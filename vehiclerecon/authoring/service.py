@@ -100,6 +100,9 @@ class AuthoringSession:
     def _flush(w):
         data = w.documents['project'];w.files['project.json'] = _bytes(data)
         w.project.data = copy.deepcopy(data)
+        if w.project.profile['id']!=data['vehicle_profile']:
+            from ..core.project import read_json, RESOURCE_ROOT
+            w.project.profile=read_json(RESOURCE_ROOT/'profiles'/f"{data['vehicle_profile']}.json")
         for kind in ('calibration','cage','surface_graph','details','silhouette_traces'):
             if kind in w.documents:w.files[data['generated'][kind]] = _bytes(w.documents[kind])
 
@@ -138,13 +141,13 @@ class AuthoringSession:
             if 'source' not in cal:
                 cal.update(source=c['path'],source_size=c['size'],source_sha256=c['sha256'])
             for view in ('front','side','rear','top'):
-                cal['views'].setdefault(view,{'crop':[0,0,*c['size']],
-                    'landmarks':{'observations':[],'source_curves':[]}})
+                data=cal['views'].setdefault(view,{'crop':[0,0,*c['size']]})
+                data.setdefault('landmarks',{'observations':[],'source_curves':[]})
             return 'references'
         if op == 'AddObservation':
             if c['observation']['id'] in observations(cal):raise ConflictError('Observation ID already exists')
             data = cal['views'].setdefault(c['view'],{'landmarks':{}})
-            data['landmarks'].setdefault('observations',[]).append(copy.deepcopy(c['observation']));return 'observations'
+            data.setdefault('landmarks',{}).setdefault('observations',[]).append(copy.deepcopy(c['observation']));return 'observations'
         obs = observations(cal)
         if op == 'SetObservationProperties':
             if c['observation_id'] not in obs:raise ReferenceError('Observation ID missing')
@@ -166,6 +169,7 @@ class AuthoringSession:
                 o['pixel' if o['kind']=='point' else 'center'] = c['pixel'];self._touch(cal,[o])
             else:
                 for view in cal['views'].values():
+                    if 'landmarks' not in view:continue
                     for field in ('observations','source_curves'):
                         view['landmarks'][field] = [x for x in view['landmarks'].get(field,[]) if x['id']!=o['id']]
             return 'observations'
@@ -297,6 +301,7 @@ class AuthoringSession:
                 entity['point_ids'] += other['point_ids'][1:];cage['curves'].remove(other)
             else:
                 for view in cal['views'].values():
+                    if 'landmarks' not in view:continue
                     for field in ('observations','source_curves'):
                         view['landmarks'][field] = [o for o in view['landmarks'].get(field,[]) if o['id']!=other['id']]
             for link in cal['correspondences']:
